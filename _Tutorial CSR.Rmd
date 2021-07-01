@@ -1,0 +1,781 @@
+---
+title: "Tutorial CSR - Basics in R"
+author: "Jochem Tolsma"
+bibliography: bibliography.bib
+csl: apa-old-doi-prefix.csl
+output:
+  html_document:
+    highlight: haddock
+    number_sections: yes
+    self_contained: yes
+    theme: lumen
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    mathjax: null
+    code_download: yes
+    code_folding: show 
+---
+
+<!--set global settings--> 
+```{r, globalsettings, echo=FALSE, warning=FALSE}
+library(knitr)
+opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE, warning = FALSE, message = FALSE, cache=TRUE, attr.source = ".numberLines")
+options(width = 100)
+```
+
+<!--copy to clipboard-->
+```{r klippy, echo=FALSE, include=TRUE}
+require(klippy)
+klippy::klippy('')
+klippy::klippy(position = c('top', 'right'))
+#klippy::klippy(color = 'darkred')
+#klippy::klippy(tooltip_message = 'Click to copy', tooltip_success = 'Done')
+```
+
+<!--define some custom css-->
+```{css, echo=FALSE}
+pre {
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: auto;
+  margin: 0px;
+}
+
+.watch-out {
+  background-color: lightpink;
+  border: 3px solid red;
+  font-weight: bold;
+}
+
+.large {
+  max-height: 1100px;
+  overflow-y: auto;
+  overflow-x: auto;
+  width: 1100px;
+}
+
+
+body{ /* Normal  */
+      font-size: 14px;
+  }
+
+h1 { /* Header 1 */
+  font-size: 20px;
+  font-weight: bold;
+  }
+  
+h2 { /* Header 2 */
+  font-size: 18px;
+  color: DarkBlue;
+}
+
+h3 { /* Header 3 */
+  font-size: 16px;
+  color: DarkBlue;
+}
+
+blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 14px;
+  border-left: 6px solid #eee;
+  background-color:lightcyan
+}
+
+caption {
+  font-size: 14px;
+  color: black;
+  font-weight: bold
+}
+
+pre.numberSource a.sourceLine {
+  left: -1em;
+}
+
+```
+
+<!--load required functions -->
+```{r start, message=FALSE, echo=FALSE, results='hide'}
+require(foreign) || install.packages("foreign"); library(foreign)
+require(installr) || install.packages("installr"); library(foreign)
+require(mice) || install.packages("mice"); library(mice)
+require(klippy) || install.packages("klippy"); library(klippy)
+require(bibtex) || install.packages("bibtex"); library(bibtex)
+
+rm(list=ls())
+
+updateR()
+
+```
+
+<!---custom functions -->
+```{r, echo=FALSE}
+biblio <- bibtex::read.bib("bibliography.bib")
+ref <- function(x){capture.output(print(biblio[x]))}
+```
+
+Latest Version: `r format(Sys.Date(), "%d-%m-%Y")`
+
+Please email any comments to: j.tolsma@ru.nl	
+
+# Getting up and running
+
+* install the latest version of R: [R](https://cran.r-project.org/)
+* install the latest version of RStudio: [RStudio](www.rstudio.com) 
+* open RStudio and follow a brief tour/tutorial
+  + [brief tour of Gulzar](https://web.cs.ucla.edu/~gulzar/rstudio/basic-tutorial.html)
+  + lot of youtube videos for RStudio  
+  + check out the tutorials at [R-bloggers](https://www.r-bloggers.com/how-to-learn-r-2/) 
+  + or here: https://data-flair.training/blogs/exporting-data-from-r/
+  + and of course at Rstudio and CRAN
+  
+
+Open RStudio. Your screen will look something like this: 
+
+
+**Figure 1. Screenshot**[]{#anchor}
+![Figure 1. Screenshot](screenshot.PNG) 
+
+
+* I will show you around the major subwindows and taps in RStudio. 
+
+# Working with RScript  
+
+* Open a new R-script (via file --> new --> RScript ([**Arrow 1, Figure 1**](#anchor)), or simply hit *Ctrl+Shift+N*)
+  
+- Make sure to start your script with your name, date.    
+- Always make to start with a clean workspace.  
+- Load the additional packages you will need later.  
+- Always make sure to start with the latest versions of R and your packages.  
+- Always define your workdirectory.    
+
+Thus your RScript will look something like this:
+
+```{r, eval=FALSE}
+###########################
+#Title: Tutorial CSR
+#Author: J Tolsma
+#version: 30-10-2019
+###########################
+
+##########################
+#before I start I will always do this
+
+#start with clean workspace 
+rm(list=ls())
+
+#install.packages I will need later here
+install.packages("installr") #you  first install packages
+require(installr) #then you will need to load them. This package is used to simply update R
+install.packages("foreign")
+require(foreign) #used to read in spss data files
+
+#update if necessarry
+updateR()
+
+#define workdirectory, note the double backslashes
+setwd('C:\\Users\\Jochem\\Documents\\CRP\\') #change to your own workdirectory
+
+```
+
+
+Do you see I start some lines with a `#` these lines are comments and not code/commands. This is similar as the `*` sign in SPSS.  
+To run some code, you place your cursor in the line and hit *Ctrl+Enter*. You may also select the code you want to run, or copy and paste it directly in the console window ([**Arrow 2, Figure 1**](#anchor)). To see which commands you have executed, you may want to have a look at the history tab ([**Arrow 3, Figure 1**](#anchor))). 
+
+> Hint 1: In the upper right corner of the code blocks you see a *copy-and-paste* sign. You may use this to copy and paste the code of this tutorial in your own script. 
+> Hint 2: You really want to learn R? Never ever copy and paste code. Type the code yourself. 
+
+# Installing additional packages    
+You will probably always need to load and/or install additional packages. You may want to use RStudio's functionality ([**Arrow 4, Figure1**](#anchor)). I normally prefer to put everyting in my script. See for example in the code block above, line 9 to 12. 
+
+# I don't understand the code!!
+When you see `functionname()` it means we use a build-in function of R
+If you want to see how lines/commands/functions work, try to decipher them from the inside out. Thus if you want to dechiper `rm(list=ls())`:  
+
+* `ls()`
+* `list=ls()`
+* `list`  
+
+Let's give it a go: 
+```{r, results}
+tesvariable <- 4
+ls()
+list=ls()
+list
+ls()
+rm(list)
+ls()
+#? :-)
+rm(list=ls())
+ls()
+
+```
+  
+If you want to know more about specific functions, try to use the help function. 
+For example try the following:  
+
+* `?ls`  
+* `?rm`  
+
+At first it will be difficult to read the R Documentation pages. Don't worry, you will get the hang of it.
+
+# Hello world!
+Don't ask me why, but every tutorial needs to start with printing **Hello world!**. Thus here we go.
+```{r helloworld}
+myString <- "Hello world!"
+print ( myString)
+```
+
+
+# Reading in spss.sav files
+
+We are going to work with two datasets you used during the lecture: "Culturele Veranderingen". For more information on these datasets, see [here](https://www.scp.nl/Onderzoek/Bronnen/Beknopte_onderzoeksbeschrijvingen/Culturele_veranderingen_in_Nederland_CV).
+
+Please download the files to your working directory. 
+
+Cultural Changes_2008.sav:
+```{r includecv08, echo=FALSE}
+xfun::embed_file('Cultural Changes_2008.sav') 
+```
+  
+Cultural Changes_2010.sav:
+```{r includecv10, echo=FALSE}
+xfun::embed_file('Cultural Changes_2010.sav')
+```
+
+
+```{r readingspss, warning=FALSE, message=FALSE}
+#ignore the warnings  
+#?read.spss
+
+cv08 <- read.spss("Cultural Changes_2008.sav", use.value.labels=T, to.data.frame=T)
+cv10 <- read.spss("Cultural Changes_2010.sav", use.value.labels=T, to.data.frame=T)
+
+#normally I think setting use.value.labels=F is more convenient. Thus lets load the data again but now without labels 
+
+cv08_nolab <- read.spss("Cultural Changes_2008.sav", use.value.labels=F, to.data.frame=T)
+cv10_nolab <- read.spss("Cultural Changes_2010.sav", use.value.labels=F, to.data.frame=T)
+
+```
+
+So you see I read in the data by using the function `read.spss()`. Within this function I set some arguments/parameters (e.g. use.value.labels).  
+
+Now we can inspect our datasets: 
+
+* Find the *Environment* tab in the upper right window ([**Arrow 5, Figure1**](#anchor)).  
+  + Find the little arrow and decollap.
+  + What do we see?     
+* Double click on one of the datasets.
+  + What happens?
+  + Go to the new window and have a look at the data.  
+  + Close this window when finished.     
+* Lets use some build-in functions to get more information of our dataset.  
+
+```{r inspectingdata}
+names(cv08)
+summary(cv08)
+head(cv08)
+str(cv08)
+fix(cv08)
+```
+
+# Data manipulations
+Okay, lets start playing around with our dataset. We are going to have a look at specific variables, define missings, recode some values, etc. 
+
+## Define missings
+
+Lets use age as example. This variable is called **lftop** in CV. 
+First have a look at this variable. 
+
+```{r datamanip, results='hold'}
+summary(cv08$lftop)
+table(cv08$lftop, useNA="always")
+```
+  
+  
+> To substract a variable from a dataframe we use the name of the dataset, a dollar sign and the name of the variable: `datasetname$variablename`
+
+We have category 'onbekend', which should be a missing.
+Let's copy the original variable in a new one, and attach it to the dataset. 
+Thus not:   
+`lftop_new <-  cv08$lftop`  
+but:
+```{r}
+cv08$lftop_new <-  cv08$lftop
+```
+  
+You probably already noticed that to assign values to a new object we use `<-`
+What we now want to do is to replace those values of our new variable 'cv08$lftop_new` which have the values **Onbekend**. 
+
+```{r}
+cv08$lftop_new[cv08$lftop_new=="Onbekend"] <-  NA
+```
+Dont forget, if you want to understand the code work inside out. 
+
+> Note that `==` is a logical operator. What are the other logical operators in R?   
+> Note that `[]` is used to subset elements from an object (e.g. dataframe/vector/matrix)  
+> Note that `NA` is used in R to define missing values. It means Not Applicable. 
+
+
+How am I to remember all that code/syntax??!!  
+
+* By using them.  
+* You don't need to, you just need to remember in which script you used them before.  
+* By using the existing cheat sheets:
+  + see here  
+  + and here  
+* By making your own cheat sheets.  
+
+So did our recode work?
+```{r}
+table(cv08$lftop_new, useNA="always")
+levels(cv08$lftop_new)
+```
+
+But we want age as numeric variable not as a factor (categorical). 
+```{r}
+str(cv08$lftop_new)
+cv08$agen <- as.numeric(as.character(cv08$lftop_new))
+table(cv08$agen, useNA="always")
+str(cv08$agen)
+```
+
+> Hint: R is case sensitive. Just try to avoid capitals in your variable names. There are people who have set up a whole list of rules how to name and label stuff. Interesting? You can have a look here: 
+
+
+## Recoding variables
+So, we defined a missing value for age. As a second example let us recode the variable education. This one is called **var006n** in CV08. Lets create a new variable **educ3** with three levels:  
+1. primairy  
+2. secundairy  
+3. tertiairy  
+
+```{r recode}
+levels(cv08$var006n)
+table(cv08$var006n, useNA="always")
+
+#lets make it a numeric var first
+cv08$educn <- as.numeric(cv08$var006n)
+#check
+table(cv08$educn, useNA="always")
+
+#start with an empty variable
+cv08$educ3 <- NA
+#fill category by category
+cv08$educ3[cv08$educn==2 | cv08$educn==3] <- 1
+cv08$educ3[cv08$educn>3 & cv08$educn<8] <- 2
+cv08$educ3[cv08$educn>7 & cv08$educn<11] <- 3
+
+#check
+table(cv08$educ3, useNA="always")
+prop.table(table(cv08$educ3, useNA="always"))
+
+#now educ3 is a numeric variable, we want it as factor
+cv08$educ3 <- as.factor(cv08$educ3)
+table(cv08$educ3, useNA="always")
+levels(cv08$educ3) <- c("primary", "secondary", "tertiary")
+table(cv08$educ3, useNA="always")
+```
+
+## Means and counting specific values
+
+Next step. Lets calculate a mean. 
+We will use three questions in CV on polarization. This does not make any theoretical sense of course. 
+
+```{r means}
+
+#Step 1: have a look at the vars
+summary(cv08$int055)
+summary(cv08$int056)
+summary(cv08$int057)
+
+#Step 2: make numeric
+cv08$int055n <- as.numeric(cv08$int055)
+table(cv08$int055n, useNA="always")
+cv08$int056n <- as.numeric(cv08$int056)
+table(cv08$int056n, useNA="always")
+cv08$int057n <- as.numeric(cv08$int057)
+table(cv08$int057n, useNA="always")
+
+#Step 3: define missings and recode
+cv08$int055n[cv08$int055n<5] <- NA
+cv08$int055n <- cv08$int055n  - 4
+cv08$int056n[cv08$int056n<5] <- NA
+cv08$int056n <- cv08$int056n  - 4
+cv08$int057n[cv08$int057n<5] <- NA
+cv08$int057n <- cv08$int057n  - 4
+
+#Step 4: calculate means. 
+#How does the function mean work in R?
+mean(cv08$int055n)
+mean(cv08$int055n, na.rm=TRUE)
+mean(c(cv08$int055n, cv08$int056n, cv08$int057n), na.rm = T)
+```
+
+This is not what we want. What we want is to calculate a mean for each row/respondent. 
+This will do the trick:
+```{r means2}
+testmeans <- rowMeans(cbind(cv08$int055n, cv08$int056n, cv08$int057n), na.rm = T)
+head(testmeans)
+
+#what we really want is a mean but only if there is a maximum of 1 NA in the three variables
+#lets first count how many missings we have for each respondent
+nmis <- rowSums(is.na(cbind(cv08$int055n, cv08$int056n, cv08$int057n)))
+
+# ?is.na
+# ?rowSums
+
+testmeans <- ifelse(nmis<2,testmeans, NA)
+
+#Step 5: lets add the calculated means to our dataset
+cv08$int_mean <- testmeans
+
+#Bonus: count specific values
+#so now we have this, it is easy to find how many times respondents answered 'zeer groot', that is '1'
+timesZG <- rowSums(cbind(cv08$int055n, cv08$int056n, cv08$int057n)==1)
+timesZGb <- rowSums(cbind(cv08$int055n, cv08$int056n, cv08$int057n)==1, na.rm=T)
+```
+
+> So what are you adding to your cheat sheet?
+> `mean()`, `rowMeans()`, `rowSums`, `cbind()`, `is.na()`, `ifelse()`
+
+# Merging data files
+## stacked cross sections and panel data in long and wide format
+
+What you need to know 1: Panel or stack cross-sections?  
+What you need to know 2: If panel, do you want data in long or wide format? 
+
+We need to follow these steps:  
+* Step1: select variables  
+* Step2: make consistent
+* Step3: perform the actual merging. Make sure to include necessary identifier variables. 
+
+
+```{r merging}
+#step 1: selecting the variables you want to keep.
+#for this tutorial only 6 variables: id, age, sex, educ, health, region (not that R is case sensitive)
+cv08_sel <- cv08[,c("we_id", "lftop", "geslacht", "var006n", "v401", "landd")]
+cv10_sel <- cv10[,c("Sleutel", "var002", "var001", "Vltoplop", "V401", "Landd")]
+```
+
+> Note that to select rows, you need to set an expression before the "," , to select columns, after the ",". Thus with `dataset[i,j]` you will select row *i* and column *j*. 
+> You have learned to subset dataframes by using indici (e.g. `dataset[,1:3]`), logical expressions (e.g. `dataset[var1>1,])`, and names (e.g. `dataset[,varname]`).
+
+```{r merging2, results='hide'}
+#step 2: making the variables similar across individual datasets
+#step 2a: making names the same
+names(cv08_sel) <- names(cv10_sel) <- c("id", "age", "sex", "educ", "health", "region")
+
+#step 2b: making levels and labels consistent
+summary(cv08_sel)
+summary(cv10_sel)
+#they look very consistent already. but check carefully. 
+
+#we don't want id to be a factor but numeric. Note that we don't want the factor level values as numbers but the actual labels as numbers. 
+
+#id
+cv08_sel$id <- as.numeric(as.character(cv08_sel$id))
+cv10_sel$id <- as.numeric(as.character(cv10_sel$id))
+
+#age
+cv08_sel$age <- as.numeric(as.character(cv08_sel$age))
+cv10_sel$age <- as.numeric(as.character(cv10_sel$age))
+
+#sex men
+levels(cv08_sel$sex)
+levels(cv10_sel$sex)
+table(cv08_sel$sex, useNA="always")
+table(cv10_sel$sex, useNA="always")
+#lets make it a numeric var first
+cv08_sel$sexn <- as.numeric(cv08_sel$sex)
+table(cv08_sel$sexn)
+#recode into dummy
+cv08_sel$men <- ifelse(cv08_sel$sexn==2, 1, 0)
+cv08_sel$men <- ifelse(cv08_sel$sexn==1, NA, cv08_sel$men)
+#check
+table(cv08_sel$men, useNA="always")
+#lets make it a numeric var first
+cv10_sel$sexn <- as.numeric(cv10_sel$sex)
+table(cv10_sel$sexn)
+#recode into dummy
+cv10_sel$men <- ifelse(cv10_sel$sexn==2, 1, 0)
+#check
+table(cv10_sel$men, useNA="always")
+
+#educ educ3
+levels(cv08_sel$educ)
+levels(cv10_sel$educ)
+table(cv08_sel$educ, useNA="always")
+table(cv10_sel$educ, useNA="always")
+#lets make it a numeric var first
+cv08_sel$educn <- as.numeric(cv08_sel$educ)
+table(cv08_sel$educn)
+#recode into 3cats: 1 primair, 2 secundair, 3 is tertiair
+cv08_sel$educ3 <- NA
+cv08_sel$educ3[cv08_sel$educn==2 | cv08_sel$educn==3] <- 1
+cv08_sel$educ3[cv08_sel$educn>3 & cv08_sel$educn<8] <- 2
+cv08_sel$educ3[cv08_sel$educn>7 & cv08_sel$educn<11] <- 3
+#check
+table(cv08_sel$educ3, useNA="always")
+prop.table(table(cv08_sel$educ3, useNA="always"))
+
+#lets make it a numeric var first
+cv10_sel$educn <- as.numeric(cv10_sel$educ)
+table(cv10_sel$educn)
+#recode into 3cats: 1 primair, 2 secundari, 3 is tertiair
+cv10_sel$educ3 <- NA
+cv10_sel$educ3[cv10_sel$educn<3] <- 1 #correct?
+cv10_sel$educ3[cv10_sel$educn>2 & cv10_sel$educn<6] <- 2
+cv10_sel$educ3[cv10_sel$educn==6] <- 3
+#check
+table(cv10_sel$educ3, useNA="always")
+prop.table(table(cv10_sel$educ3, useNA="always"))
+
+#step 3: match. 
+#lets add a wave variable
+cv08_sel$wave <- 2008
+cv10_sel$wave <- 2010
+
+#let make a fake ID, we will use this later when we pretend CV is panel data. 
+cv08_sel$id2 <- rank(cv08_sel$id)
+cv10_sel$id2 <- rank(cv10_sel$id)
+
+#simply place one dataset under the other thus row bind (rbind)
+#check first if same vars in both datasets.
+#perhaps clean up first. 
+
+cv08_sel <- cv08_sel[,c("id","id2", "age", "men", "educ3", "health", "region", "wave")]
+cv10_sel <- cv10_sel[,c("id", "id2", "age", "men", "educ3", "health", "region", "wave")]
+
+summary(cv08_sel)
+summary(cv10_sel)
+
+cv_tot <- rbind(cv08_sel, cv10_sel)
+
+#step 4: checks
+summary(cv_tot)
+head(cv_tot)
+
+#okay lets pretend it was panel data
+#cv_tot would then be a panel dataset in long format. 
+#lets make a panel dataset in wide format
+cv_tot_panel <- merge(cv08_sel, cv10_sel, all=TRUE, by="id2")
+head(cv_tot_panel)
+#rename variables. and when necessary merge again with third wave. not very efficient but it works.
+
+#many people prefer the reshape function. (i like doing it myself but here it goes)
+?reshape
+cv_tot_panel <- reshape(cv_tot, timevar="wave", idvar="id2", direction="wide")
+head(cv_tot_panel)
+```
+
+
+# Aggregate data  
+Lets suppose you want to add the mean age of each region as contextual variable to your data. 
+
+```{r, aggregate, results='hold'}
+#step 1. construct dataset with aggregate info
+age_region <- aggregate(cv_tot$age, by=list(cv_tot$region), FUN=mean)
+head(age_region)
+```
+
+Ai, we have missings in age. 
+You see that in our aggregate function we specified with FUN (i.e. function) we want te be performed on the data. We thus have to specify that it should be with the option, na.rm=T. 
+
+```{r functions, class.source="watch-out" }
+#I dont expect you to understand this part. We will explain writing functions another time.
+fmeannarm <- function(x){mean(x,na.rm=T)}
+
+NOPE
+THIS is MUCH BETTER
+age_region <- aggregate(cv_tot$age, by=list(cv_tot$region), FUN=mean, na.rm = TRUE)
+
+```
+
+```{r, aggregate2, results='hold'}
+age_region <- aggregate(cv_tot$age, by=list(cv_tot$region), FUN=fmeannarm)
+age_region
+#lets correct variable names
+names(age_region) <- c("region","age_region")
+age_region
+
+#step 2. match to dataset
+cv_total <- merge(cv_tot, age_region, by="region", all.x=TRUE)
+head(cv_total)
+tail(cv_total)
+```
+
+# missing values
+
+Suppose you want to estimate the following model:
+
+```{r, model1}
+model1 <- lm(as.numeric(health) ~ men + age +  as.factor(educ3) + as.factor(region), data=cv_total)
+summary(model1)
+```
+
+You see that 22 cases are deleted due to missingness but what happened with your health variable? 
+
+```{r, results="hold"}
+cv_total$health[cv_total$health=="Weigert"] <- NA
+cv_total$healthn <- as.numeric(cv_total$health) - 4
+table(cv_total$health)
+table(cv_total$healthn)
+```
+
+Of course we have several options:  
+* listwise deletion. Only use when very few missings
+* replace missing values with intuitive values or add missing as a separate category.  
+* impute missing values. A bit complicated but the best option. 
+
+## Option 1: listwise deletion
+
+```{r, listwise}
+#step1 define all missings
+summary(cv_total)
+model2 <- lm(as.numeric(healthn) ~ men + age +  as.factor(educ3) + as.factor(region), data=cv_total)
+summary(model2)
+```
+
+You see 23 cases deleted due to missingness
+
+
+## Option 2: replacing missing values. 
+Don't replace missings on dependent variable.  
+For categorical variables add category missing.
+For continues/metric variables replace missing with mean value.
+
+```{r replace, results="hold"}
+cv_total$men2 <- ifelse(is.na(cv_total$men), 2, cv_total$men)
+summary(cv_total$men2)
+
+cv_total$educ3b <- ifelse(is.na(cv_total$educ3), 4, cv_total$educ3)
+summary(cv_total$educ3b)
+
+cv_total$age2 <- ifelse(is.na(cv_total$age), mean(cv_total$age, na.rm=TRUE), cv_total$age)
+#And lets make a dummy that indicates for whom we replaced missing values. 
+cv_total$age_mis <- ifelse(is.na(cv_total$age), 1,0)
+summary(cv_total$age2)
+table(cv_total$age_mis)
+
+#pay attention, now use categorical variable men2
+model3 <- lm(healthn ~ as.factor(men2) + age2 + age_mis +  as.factor(educ3b) + as.factor(region), data=cv_total)
+summary(model3)
+```
+
+## Option 3: impute missing values  
+
+We will use the R package mice (@mice).
+
+For theory please see:  
+* [https://stefvanbuuren.name/Winnipeg](https://stefvanbuuren.name/Winnipeg)  
+* [https://stefvanbuuren.name/Winnipeg/Lectures/Winnipeg.pdf](https://stefvanbuuren.name/Winnipeg/Lectures/Winnipeg.pdf)  
+* For great reading see: [https://bookdown.org/mwheymans/bookmi/](https://bookdown.org/mwheymans/bookmi/)
+
+Read the literature, lectures and have a look at all vignettes of the package mice (here). This is not basic stuff!
+
+
+```{r mice, results="hold", error=TRUE }
+#lets start with the original dataset, that is without replacement of the missings
+cv_total <- cv_total[,c("id", "id2", "age", "men", "educ3", "health", "region", "wave")]
+#define all missings
+#only for health needs to be redefined
+cv_total$health[cv_total$health=="Weigert"] <- NA
+cv_total$health <- as.numeric(cv_total$health) - 4
+
+#multiple imputation
+#take into account measurement level of variables
+cv_total$men <- as.factor(cv_total$men)
+cv_total$educ3 <- as.factor(cv_total$educ3)
+
+#check pattern
+md.pattern(cv_total)
+#we do not have real patterns. thus mcar. tis is only seldom the case!!
+
+#lets impute
+names(cv_total)
+# [1] "id"     "id2"    "age"    "men"    "educ3"  "health" "region" "wave"  
+imp <- mice(data=cv_total, method=c("","", "pmm", "logreg",    "polr",  "pmm", "" ,""  ))
+#does not work. probably because we do not have a lot of missings ;-)
+imp <- mice(data=cv_total, method=c("","", "cart", "logreg",    "polr",  "cart", "" ,""  ))
+attributes(imp)
+
+summary(cv_total)
+summary(complete(imp))
+summary(with(imp, mean(age)))
+
+#how did we predict
+imp$pred
+
+#ai, we do not want to use id id2 and wave to predict the other variables thus needs to correct
+pred <- imp$pred
+pred[,"id"] <- 0
+pred[,"id2"] <- 0
+pred[,"wave"] <- 0
+pred
+
+#rerun
+#good practice: use a seed. this will help in replicating your results!
+imp <- mice(data=cv_total, method=c("","", "cart", "logreg",    "polr",  "cart", "" ,""  ), pred=pred, seed=45622)
+plot(imp)
+#in real life: check convergence, check plausible values. see vignette 2 of mice package
+
+#and fit model on imputed dataset
+model_imp <- with(imp, lm(as.numeric(health) ~ men + age + educ3 + region))
+pool_model_imp <- pool(model_imp)
+summary(pool_model_imp)
+```
+# Cheatsheets
+
+There are many cheatsheets available on the web.You may use google to find some. You will also find them within RStudio, by navigating to the *Help* tab ([**Arrow 6, Figure 1**](#anchor)) and then click on the little house "Show R Help".  
+
+At the very minimum, have a look at the following very helpful cheatsheets: 
+
+* [base-r.pdf](base-r.pdf)  
+* [Rrefcard.pdf](Rrefcard.pdf)
+* [R_Cheat_Data.pdf](R_Cheat_Data.pdf)
+
+The best cheatsheets are the ones you make yourself. 
+
+## **Packages**  
++ foreign: import .sav files
++ haven: import spss/stata files
++ intallr: to quickly update your R version and packages
++ mice: used to impute missing data  
+
+## **Operators**
++ `<-` : e.g. `x <- 4`  
++ Logical operators: `==`, `>`, `<`, `<=`, `>=`, `&`, `|`, `&&`, `||`  
++ `$`: used to extract vectors from an object. E.g. `df$x`
++ `[]`: used to extract elements from a vector. E.g. `x[2]`  
++ `[,]`: used to extract elements from a matrix. E.g. `xmat[2,3]`
+
+## **Functions**  
++ `setwd("yourpath\\subpath\\")`: set your workdirectory
++ `install.packages("packagename")`  
++ `require(packagename)`  
++ `updateR()`: update your R.  
++ `read.spss()`
++ `c()`: e.g. `x <- c(2,4,6)` 
++ `cbind()`: e.g. `cbind(c1, c2, c3)` binds columns into a matrix  
++ `rbind()`: e.g. `rbind(r1, r2, r3)` bind rows into a matrix 
++ `rm()`: remove objects  
++ `ls()`: lists object in your Environment  
++ `print("Hello world!")`  
++ `names(object)`  
++ `summary(object)` 
++ `head(object)` 
++ `str(object)` 
++ `fix(object)`
++ `levels(variable)` 
++ `table(variable)`   
+
+## **Objects**  
++ `x <- c(2,4,6)`: `x` is a numerical string without dimensions  
++ `xmat <- cbind(x, x)`: `xmat` is a matrix with 3 rows and 2 columns
++ `xlist <- list(x)`: `xlist` is a list with only one element, `x`  
++ `xdf <- data.frame(x)`: `xdf` is a dataframe. Your data is often stored in a data frame. 
+
+**Thank you for reading this tutorial!!**
+
+# References
