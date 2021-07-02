@@ -1,7 +1,7 @@
 --- 
 title: "SNASS Social Network Analysis for Social Scientists"
 author: "Jochem Tolsma"
-date: "2021-07-01"
+date: "2021-07-02"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]

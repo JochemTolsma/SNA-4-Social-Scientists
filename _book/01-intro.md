@@ -1,5 +1,125 @@
 # Introduction {#intro}
 
+
+
+## Overview
+
+Sociologists study how societies affect the lives of their members and, vice versa, how individuals shape the societies in which they live. Within societies people make and break relations with specific others and thereby form **social networks**.\
+Individuals are embedded in many different social networks (e.g. based on friendships, bullying, family relations). Within these social networks individuals influence each others' attitudes, behaviors and relations via complex dynamic processes. The attitudes, behaviors and relations of individuals shape, in turn, the societies they live in. They give rise to **social phenomena** such as inequality, segregation, polarization and cohesion. It is not possible to explain many macro-level social phenomena, let alone to solve many urgent **social problems**, without taking into account social networks. For example, researchers may be able to deduce hypotheses from an established theory on political opinions of individuals but the same theory is not able to explain when and where **political polarization** occurs. For this, a social network perspective is necessary. It can thus be no surprise that the study of the causes and consequences of social networks lies at the core of sociology.
+
+### Definitions
+
+> **Social Networks**
+>
+> :   A social network is an finite set of actors and the relation(s) defined on this set. The actors are social entities (people, organizations, countries, etc.) whose specific ties (friendship, competition, collaboration, etc.), constitute the network [@Wasserman1994 : 20].\
+>     Networks are also called: graphs or sociograms\
+>     Actors are also called: points, nodes, agents or vertices.\
+>     Relations are also called: ties, edges or connections.
+>
+> <span style='color: red;'>**Social Networks is/are no theory nor a method.**</span> Social networks are social phenomena with causes and consequences. The size, composition, structure, and evolution of social networks can be explained. Social networks have an impact on individuals (e.g. attitudes and behavior), dyads (e.g. relations), institutions (e.g. efficiency) and societies (e.g. segregation, opinion polarization).
+
+> **Social Network Perspective**
+>
+> :   It is the acknowledgment that individuals are embedded within social networks - no man is an island - and that this has theoretical, data, and methodological consequences.\
+>     Theoretical consequences: A social network perspective may force to a rethinking of existing hypotheses and may lead to new research questions on the causes and consequences of social networks.\
+>     Data consequences: To apply a Social Network Perspective, we need data on social networks. Social network data is special in that we need not only information on the social agents (e.g. people, organizations) but also on the ties (or relations) between them. As a consequence, there are many unique practical and ethical aspects related to the collection of network data. Methodological consequences: A social network perspective will make explicit that empirical observations of individuals are not always independent and that the (complex) interdependencies between observations that result from social networks have consequences for many of our traditional research methods which assume independence of observations. It may lead to the development and adoption of new social network analysis techniques.
+>
+> Applying a social network perspective leads to theoretical and methodological advancements.
+
+> **Social phenomenon**
+>
+> :   collective human behavior
+
+> **Social problem**
+>
+> :   a social phenomenon which people consider undesired.
+
+> **Polarization**
+>
+> :   Polarization is a social problem and a society is said to be polarized when (sizeable) (and clearly distinguishable) groups in society hold (ever more) opposing, extreme (political) attitudes.
+
+## Aim
+
+The intended learning outcomes of the course are:
+
+1.  Theoretical knowledge and insight:
+    -   you will be able to define core concepts related to a social network perspective\
+    -   You will be able to summarize what a social network perspective in social science research entails.\
+2.  Academic attitude:\
+    -   you develop a positive attitude towards applying a social network perspective in social science research.\
+3.  Research skills: you will be able to apply a social network perspective in social science research. This encompasses:\
+    -   you will be able to deduce relevant and new social network hypotheses from existing theories\
+    -   you will be able able to collect and wrangle social network data\
+    -   you will be able to test these hypotheses with different social network analysis techniques.\
+
+## Structure
+
+This course is structured along three different dimensions:  
+
+1.    **Type** of Social Network: dyad, egonet, socionet (complete network)   
+2.    **Causes or Consequences** of social networks
+3.    **Implications** of applying a social network perspective: Theoretical, Data and  Methodological
+
+**Table. 1.1 ** Topics discussed within the course {#structure}
+
+| Type of Social Network           | Causes or Consequences | Implications | Book section |
+|----------------------------------|------------------------|------------------|------------------|
+| Dyads                            | Causes                 | Theory           | |
+| Dyads                            | Causes                 | Method           | |
+| Dyads                            | Consequences           | Theory           | |
+| Dyads                            | Consequences           | Method           | |
+| Dyads                            | NA                     | Data             | |
+| Egonets                          | Causes                 | Theory           | |
+| Egonets                          | Causes                 | Method           | |
+| Egonets                          | Consequences           | Theory           | |
+| Egonets                          | Consequences           | Method           | |
+| Egonets                          | NA                     | Data             | |
+| Socionet                         | Causes                 | Theory           | |
+| Socionet                         | Causes                 | Method           | |
+| Socionet                         | Consequences           | Theory           | |
+| Socionet                         | Consequences           | Method           | |
+| Socionet                         | NA                     | Data             | |
+
+
+<span style='color: red;'>**Feel free to jump to the section you are most interested in. But there is a clear order in the sections. The best way to accumulate theoretical and methodological knowledge, and to gain the necessary R-skills to successfully apply a social network perspective to your own research is by going through the sections one by.**</span>
+
+
+## Causes and Consequences
+
+**...or Selection and Influence**\
+Social networks consist of social relations between people. For example friendships, bullying relations or working-together-during-the-course-social-networks relations.\
+The continuous process of making and breaking social relations is also called **selection**. And the reasons why we make and brake relations with specific persons are important **causes** for the structures of the social networks we observe. Thus the causes of social networks are strongly related to selection processes.\
+The people with whom we form social relations also **influence** our attitudes, behaviors and future relations. How we think, behave and with whom we make, break or maintain social relations is for an important part the **consequence** of the social networks in which we are embedded. Thus the consequences of social networks are strongly related to influence processes (but also to selection processes).\
+Selection and influence processes are firmly entangled. See below for an example. 
+
+
+<iframe src="https://player.vimeo.com/video/451942562" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+-  The shapes represent social agents (e.g. individuals).  
+  -   The shape (circle or square) of the social agent is a time-stable characteristic (e.g. sex).  
+  -   The fill of the shape (no fill, pattern fill, solid fill) is a time-varying characteristic (e.g. music taste).
+-   The line between the shapes (no line, dashed, solid) signifies the strength of the relationship (e.g. romantic relationship)
+
+We could call the selection process 'Opposite Attracts' and we could call the influence process 'Circle beats square'.\ Let us focus on the selection process first. If there is not tie between the agents, you will notice that a tie will be formed (become stronger) between dissimilar agents. When a tie is present between agents, you will notice that a tie will be broken (become weaker) when agents are similar with respect to their time-varying characteristic.\ Let us now focus on the influence process. When a strong tie is present, you will notice that the square agents will assimilate to the time-varying characteristic of the circle agents. We do not know of course the mechanism behind this assimilation (or influence) process. Is it the square who (voluntary) adopts the behavior of the circle or does the circle forces the square to follow suit?      
+
+
+## What makes this course stand out?
+
+This course is not an introduction to Sociology, Social Networks or Social Network Analysis. It is also not a course in R. I assume you have some intuitive understanding of what social networks are and have opened R or RStudio at one point in your life but both are not necessary prerequisites to follow this course. There are very good (online) introductions to the study of Social Networks, see for example [here](https://bookdown.org/markhoff/social_network_analysis/) and [here](https://eehh-stanford.github.io/SNA-workshop/). A good short introduction to R for this course can be found in Chapter \@ref(tutorial) or have a look [here](https://rafalab.github.io/dsbook/) for a more thorough introduction to Data Science with R.\
+This course is tailored for research master and PhD students. I will assume that you are interested in and have studied social problems in your academic career and that your research interests fits one of the following broad themes: **inequality**, **cohesion** and **diversity**. For an excellent introduction into sociology see [@Tubergen2020]. However, up to this point, when you deduced hypotheses from existing theories you did not explicitly acknowledge that individuals are interconnected in social networks. You were neither aware that this may have theoretical consequences for existing hypotheses nor that this gives rise to new research questions. Up to this point, when you tested your hypotheses you assumed that your observations were independent (e.g. OLS) or, at most, that the nonindependence was relatively easy to take into account (e.g. multi-level analysis).\
+In this course you will learn to apply a social network perspective in the study of inequality, cohesion and diversity. You will become able to deduce more precise and new hypotheses. You will become able to test these hypotheses with social network techniques that take into account and explain complex interdependencies.
+
+> That individuals are interconnected and hence that observations are not independent can be seen as a **nuisance**. That our observations are not independent violates many assumptions of analysis techniques that social scientists commonly apply (e.g. OLS). In order to correctly estimate the effects of interest we need to take these interdependencies into account with social network analysis techniques.\
+    However, that individuals are interconnected and hence that observations are correlated or co-vary also is **theoretically interesting**. It gives rise to a complete new type of research questions. Where normally our research questions refer to describing or explaining the variance between individuals (e.g. why individuals differ) the new set of research questions refer to describing and explaining the covariance between individuals (why some people are more (dis)similar to one another than others.)
+
+
+
+
+
+<!---
+To: Update R tutorial 
+
+
 You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
 
 Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
@@ -53,3 +173,5 @@ Table: (\#tab:nice-tab)Here is a nice table!
 |          5.1|         3.8|          1.5|         0.3|setosa  |
 
 You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+--->
+

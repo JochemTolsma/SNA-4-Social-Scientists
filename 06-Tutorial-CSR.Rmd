@@ -1,8 +1,8 @@
-# Introduction to R for SNA
+# Introduction to R for SNA {#tutorial}
 
 ```{r, globalsettings, echo=FALSE, warning=FALSE, results='hide'}
 library(knitr)
-opts_chunk$set(attr.source = ".numberLines")
+opts_chunk$set(attr.source = ".numberLines", cache=TRUE)
 options(width = 100)
 require(xfun)
 require(foreign)
