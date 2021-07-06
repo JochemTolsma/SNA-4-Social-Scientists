@@ -14,6 +14,9 @@ x-degree-network
 socionets
 causes-and-consequences
 implications
+theoretical-implications
+methodological-implications
+data-implications
 what-makes-this-course-stand-out
 literature
 methods
