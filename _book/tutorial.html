@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Introduction to R for SNA | SNASS Social Network Analysis for Social Scientists</title>
+  <title>Chapter 6 Introduction to R for SNA | SNASS</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Introduction to R for SNA | SNASS Social Network Analysis for Social Scientists" />
+  <meta property="og:title" content="Chapter 6 Introduction to R for SNA | SNASS" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,16 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Introduction to R for SNA | SNASS Social Network Analysis for Social Scientists" />
+  <meta name="twitter:title" content="Chapter 6 Introduction to R for SNA | SNASS" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
 <meta name="author" content="Jochem Tolsma" />
+<meta name="author" content="Bas hofstra" />
 
 
-<meta name="date" content="2021-07-02" />
+<meta name="date" content="2021-07-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -130,69 +131,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">SNASS</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About the authors</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#definitions"><i class="fa fa-check"></i><b>2.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#definitions"><i class="fa fa-check"></i><b>1.1.1</b> Definitions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#aim"><i class="fa fa-check"></i><b>2.2</b> Aim</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#structure"><i class="fa fa-check"></i><b>2.3</b> Structure</a></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#causes-and-consequences"><i class="fa fa-check"></i><b>2.4</b> Causes and Consequences</a></li>
-<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#what-makes-this-course-stand-out"><i class="fa fa-check"></i><b>2.5</b> What makes this course stand out?</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
-<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
-<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#aim"><i class="fa fa-check"></i><b>1.2</b> Aim</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#structure"><i class="fa fa-check"></i><b>1.3</b> Structure</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#type-of-social-network"><i class="fa fa-check"></i><b>1.3.1</b> Type of Social Network</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#causes-and-consequences"><i class="fa fa-check"></i><b>1.3.2</b> Causes and Consequences</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#implications"><i class="fa fa-check"></i><b>1.3.3</b> Implications</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
-<li class="chapter" data-level="7" data-path="tutorial.html"><a href="tutorial.html"><i class="fa fa-check"></i><b>7</b> Introduction to R for SNA</a>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#what-makes-this-course-stand-out"><i class="fa fa-check"></i><b>1.4</b> What makes this course stand out?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
+<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="tutorial.html"><a href="tutorial.html#preliminary-notes"><i class="fa fa-check"></i><b>7.1</b> Preliminary notes</a></li>
-<li class="chapter" data-level="7.2" data-path="tutorial.html"><a href="tutorial.html#getting-up-and-running"><i class="fa fa-check"></i><b>7.2</b> Getting up and running</a></li>
-<li class="chapter" data-level="7.3" data-path="tutorial.html"><a href="tutorial.html#working-with-rscript"><i class="fa fa-check"></i><b>7.3</b> Working with RScript</a></li>
-<li class="chapter" data-level="7.4" data-path="tutorial.html"><a href="tutorial.html#installing-additional-packages"><i class="fa fa-check"></i><b>7.4</b> Installing additional packages</a></li>
-<li class="chapter" data-level="7.5" data-path="tutorial.html"><a href="tutorial.html#i-dont-understand-the-code"><i class="fa fa-check"></i><b>7.5</b> I don’t understand the code!!</a></li>
-<li class="chapter" data-level="7.6" data-path="tutorial.html"><a href="tutorial.html#reading-in-data-files"><i class="fa fa-check"></i><b>7.6</b> Reading in data files</a></li>
-<li class="chapter" data-level="7.7" data-path="tutorial.html"><a href="tutorial.html#define-missings"><i class="fa fa-check"></i><b>7.7</b> Define missings</a>
+<li class="chapter" data-level="4.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
+<li class="chapter" data-level="4.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
+<li class="chapter" data-level="6" data-path="tutorial.html"><a href="tutorial.html"><i class="fa fa-check"></i><b>6</b> Introduction to R for SNA</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="tutorial.html"><a href="tutorial.html#r-base"><i class="fa fa-check"></i><b>7.7.1</b> R Base</a></li>
-<li class="chapter" data-level="7.7.2" data-path="tutorial.html"><a href="tutorial.html#tidy"><i class="fa fa-check"></i><b>7.7.2</b> Tidy</a></li>
-</ul></li>
-<li class="chapter" data-level="7.8" data-path="tutorial.html"><a href="tutorial.html#recoding-variables"><i class="fa fa-check"></i><b>7.8</b> Recoding variables</a>
+<li class="chapter" data-level="6.1" data-path="tutorial.html"><a href="tutorial.html#preliminary-notes"><i class="fa fa-check"></i><b>6.1</b> Preliminary notes</a></li>
+<li class="chapter" data-level="6.2" data-path="tutorial.html"><a href="tutorial.html#getting-up-and-running"><i class="fa fa-check"></i><b>6.2</b> Getting up and running</a></li>
+<li class="chapter" data-level="6.3" data-path="tutorial.html"><a href="tutorial.html#working-with-rscript"><i class="fa fa-check"></i><b>6.3</b> Working with RScript</a></li>
+<li class="chapter" data-level="6.4" data-path="tutorial.html"><a href="tutorial.html#installing-additional-packages"><i class="fa fa-check"></i><b>6.4</b> Installing additional packages</a></li>
+<li class="chapter" data-level="6.5" data-path="tutorial.html"><a href="tutorial.html#i-dont-understand-the-code"><i class="fa fa-check"></i><b>6.5</b> I don’t understand the code!!</a></li>
+<li class="chapter" data-level="6.6" data-path="tutorial.html"><a href="tutorial.html#reading-in-data-files"><i class="fa fa-check"></i><b>6.6</b> Reading in data files</a></li>
+<li class="chapter" data-level="6.7" data-path="tutorial.html"><a href="tutorial.html#define-missings"><i class="fa fa-check"></i><b>6.7</b> Define missings</a>
 <ul>
-<li class="chapter" data-level="7.8.1" data-path="tutorial.html"><a href="tutorial.html#r-base-1"><i class="fa fa-check"></i><b>7.8.1</b> R Base</a></li>
-<li class="chapter" data-level="7.8.2" data-path="tutorial.html"><a href="tutorial.html#tidy-1"><i class="fa fa-check"></i><b>7.8.2</b> Tidy</a></li>
+<li class="chapter" data-level="6.7.1" data-path="tutorial.html"><a href="tutorial.html#r-base"><i class="fa fa-check"></i><b>6.7.1</b> R Base</a></li>
+<li class="chapter" data-level="6.7.2" data-path="tutorial.html"><a href="tutorial.html#tidy"><i class="fa fa-check"></i><b>6.7.2</b> Tidy</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="tutorial.html"><a href="tutorial.html#means-and-counting-specific-values"><i class="fa fa-check"></i><b>7.9</b> Means and counting specific values</a>
+<li class="chapter" data-level="6.8" data-path="tutorial.html"><a href="tutorial.html#recoding-variables"><i class="fa fa-check"></i><b>6.8</b> Recoding variables</a>
 <ul>
-<li class="chapter" data-level="7.9.1" data-path="tutorial.html"><a href="tutorial.html#r-base-2"><i class="fa fa-check"></i><b>7.9.1</b> R Base</a></li>
-<li class="chapter" data-level="7.9.2" data-path="tutorial.html"><a href="tutorial.html#tidy-2"><i class="fa fa-check"></i><b>7.9.2</b> Tidy</a></li>
+<li class="chapter" data-level="6.8.1" data-path="tutorial.html"><a href="tutorial.html#r-base-1"><i class="fa fa-check"></i><b>6.8.1</b> R Base</a></li>
+<li class="chapter" data-level="6.8.2" data-path="tutorial.html"><a href="tutorial.html#tidy-1"><i class="fa fa-check"></i><b>6.8.2</b> Tidy</a></li>
 </ul></li>
-<li class="chapter" data-level="7.10" data-path="tutorial.html"><a href="tutorial.html#merging-data-files"><i class="fa fa-check"></i><b>7.10</b> Merging data files</a>
+<li class="chapter" data-level="6.9" data-path="tutorial.html"><a href="tutorial.html#means-and-counting-specific-values"><i class="fa fa-check"></i><b>6.9</b> Means and counting specific values</a>
 <ul>
-<li class="chapter" data-level="7.10.1" data-path="tutorial.html"><a href="tutorial.html#r-base-3"><i class="fa fa-check"></i><b>7.10.1</b> R Base</a></li>
-<li class="chapter" data-level="7.10.2" data-path="tutorial.html"><a href="tutorial.html#tidy-3"><i class="fa fa-check"></i><b>7.10.2</b> Tidy</a></li>
+<li class="chapter" data-level="6.9.1" data-path="tutorial.html"><a href="tutorial.html#r-base-2"><i class="fa fa-check"></i><b>6.9.1</b> R Base</a></li>
+<li class="chapter" data-level="6.9.2" data-path="tutorial.html"><a href="tutorial.html#tidy-2"><i class="fa fa-check"></i><b>6.9.2</b> Tidy</a></li>
 </ul></li>
-<li class="chapter" data-level="7.11" data-path="tutorial.html"><a href="tutorial.html#aggregate-data"><i class="fa fa-check"></i><b>7.11</b> Aggregate data</a>
+<li class="chapter" data-level="6.10" data-path="tutorial.html"><a href="tutorial.html#merging-data-files"><i class="fa fa-check"></i><b>6.10</b> Merging data files</a>
 <ul>
-<li class="chapter" data-level="7.11.1" data-path="tutorial.html"><a href="tutorial.html#r-base-4"><i class="fa fa-check"></i><b>7.11.1</b> R Base</a></li>
-<li class="chapter" data-level="7.11.2" data-path="tutorial.html"><a href="tutorial.html#tidy-4"><i class="fa fa-check"></i><b>7.11.2</b> Tidy</a></li>
+<li class="chapter" data-level="6.10.1" data-path="tutorial.html"><a href="tutorial.html#r-base-3"><i class="fa fa-check"></i><b>6.10.1</b> R Base</a></li>
+<li class="chapter" data-level="6.10.2" data-path="tutorial.html"><a href="tutorial.html#tidy-3"><i class="fa fa-check"></i><b>6.10.2</b> Tidy</a></li>
 </ul></li>
-<li class="chapter" data-level="7.12" data-path="tutorial.html"><a href="tutorial.html#missing-values"><i class="fa fa-check"></i><b>7.12</b> Missing values</a>
+<li class="chapter" data-level="6.11" data-path="tutorial.html"><a href="tutorial.html#aggregate-data"><i class="fa fa-check"></i><b>6.11</b> Aggregate data</a>
 <ul>
-<li class="chapter" data-level="7.12.1" data-path="tutorial.html"><a href="tutorial.html#r-base-5"><i class="fa fa-check"></i><b>7.12.1</b> R Base</a></li>
-<li class="chapter" data-level="7.12.2" data-path="tutorial.html"><a href="tutorial.html#tidy-5"><i class="fa fa-check"></i><b>7.12.2</b> Tidy</a></li>
+<li class="chapter" data-level="6.11.1" data-path="tutorial.html"><a href="tutorial.html#r-base-4"><i class="fa fa-check"></i><b>6.11.1</b> R Base</a></li>
+<li class="chapter" data-level="6.11.2" data-path="tutorial.html"><a href="tutorial.html#tidy-4"><i class="fa fa-check"></i><b>6.11.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="6.12" data-path="tutorial.html"><a href="tutorial.html#missing-values"><i class="fa fa-check"></i><b>6.12</b> Missing values</a>
+<ul>
+<li class="chapter" data-level="6.12.1" data-path="tutorial.html"><a href="tutorial.html#r-base-5"><i class="fa fa-check"></i><b>6.12.1</b> R Base</a></li>
+<li class="chapter" data-level="6.12.2" data-path="tutorial.html"><a href="tutorial.html#tidy-5"><i class="fa fa-check"></i><b>6.12.2</b> Tidy</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> References</a></li>
+<li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -206,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SNASS Social Network Analysis for Social Scientists</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SNASS</a>
           </h1>
         </div>
 
@@ -214,8 +219,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tutorial" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Introduction to R for SNA</h1>
+<div id="tutorial" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Introduction to R for SNA</h1>
 <pre><code>## Loading required package: xfun</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;xfun&#39;</code></pre>
@@ -241,16 +246,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     cbind, rbind</code></pre>
-<p>Latest Version: 02-07-2021</p>
+<p>Latest Version: 06-07-2021</p>
 <p>Please email any comments to: <a href="mailto:j.tolsma@ru.nl" class="email">j.tolsma@ru.nl</a></p>
-<div id="preliminary-notes" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Preliminary notes</h2>
+<div id="preliminary-notes" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Preliminary notes</h2>
 <p>This very short R tutorial is for students who already have some experience with R who want to make the switch from stata/spss to R.</p>
 <p>- In this tutorial I assume you will work with RScripts (.R files) not with Rmarkdown (.Rmd files)<br />
 - I will show you how to do things in base R and in a Tidyverse way.</p>
 </div>
-<div id="getting-up-and-running" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Getting up and running</h2>
+<div id="getting-up-and-running" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Getting up and running</h2>
 <ul>
 <li>install the latest version of R: <a href="https://cran.r-project.org/">R</a></li>
 <li>install the latest version of RStudio: <a href="www.rstudio.com">RStudio</a></li>
@@ -268,17 +273,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure"><span id="fig:screenshot"></span>
 <img src="Screenshot.png" alt="Screenshot Rstudio" width="100%" />
 <p class="caption">
-Figure 7.1: Screenshot Rstudio
+Figure 6.1: Screenshot Rstudio
 </p>
 </div>
 <ul>
 <li>During the workgroup I will show you around the major subwindows and taps in RStudio.</li>
 </ul>
 </div>
-<div id="working-with-rscript" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Working with RScript</h2>
+<div id="working-with-rscript" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Working with RScript</h2>
 <ul>
-<li>Open a new R-script (via file –&gt; new –&gt; RScript (see Figure <a href="tutorial.html#fig:screenshot">7.1</a> <strong>Arrow 1</strong>), or simply hit <em>Ctrl+Shift+N</em>)</li>
+<li>Open a new R-script (via file –&gt; new –&gt; RScript (see Figure <a href="tutorial.html#fig:screenshot">6.1</a> <strong>Arrow 1</strong>), or simply hit <em>Ctrl+Shift+N</em>)</li>
 <li>Start your script with your name and date.</li>
 <li>Start with a clean workspace.</li>
 <li>Start with the latest versions of R, RStudio and your packages.</li>
@@ -307,18 +312,18 @@ Figure 7.1: Screenshot Rstudio
 <span id="cb14-19"><a href="tutorial.html#cb14-19"></a><span class="co">#define workdirectory, note the double backslashes</span></span>
 <span id="cb14-20"><a href="tutorial.html#cb14-20"></a><span class="fu">setwd</span>(<span class="st">&#39;C:</span><span class="sc">\\</span><span class="st">SNA-4-Social-Scientists</span><span class="sc">\\</span><span class="st">&#39;</span>) <span class="co">#change to your own workdirectory</span></span></code></pre></div>
 <p>Do you see I start some lines with a <code>#</code> these lines are comments and not code/commands. This is similar as the <code>*</code> sign in SPSS.<br />
-To run some code, you place your cursor in the line and hit <em>Ctrl+Enter</em>. You may also select the code you want to run, or copy and paste it directly in the console window (<a href="tutorial.html#fig:screenshot">7.1</a> <strong>Arrow 2</strong>). To see which commands you have executed, you may want to have a look at the history tab (<a href="tutorial.html#fig:screenshot">7.1</a> <strong>Arrow 3</strong>).</p>
+To run some code, you place your cursor in the line and hit <em>Ctrl+Enter</em>. You may also select the code you want to run, or copy and paste it directly in the console window (<a href="tutorial.html#fig:screenshot">6.1</a> <strong>Arrow 2</strong>). To see which commands you have executed, you may want to have a look at the history tab (<a href="tutorial.html#fig:screenshot">6.1</a> <strong>Arrow 3</strong>).</p>
 <blockquote>
 <p>Hint 1: In the upper right corner of the code blocks you see a <em>copy-and-paste</em> sign. You may use this to copy and paste the code of this tutorial in your own script.<br />
 Hint 2: You really want to learn R? Never ever copy and paste code. Type the code yourself.</p>
 </blockquote>
 </div>
-<div id="installing-additional-packages" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> Installing additional packages</h2>
-<p>You will probably always need to load and/or install additional packages. You may want to use RStudio’s functionality (<a href="tutorial.html#fig:screenshot">7.1</a> <strong>Arrow 4</strong>). I normally prefer to put everything in my script. See for example in the code block above, line 9 to 12.</p>
+<div id="installing-additional-packages" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Installing additional packages</h2>
+<p>You will probably always need to load and/or install additional packages. You may want to use RStudio’s functionality (<a href="tutorial.html#fig:screenshot">6.1</a> <strong>Arrow 4</strong>). I normally prefer to put everything in my script. See for example in the code block above, line 9 to 12.</p>
 </div>
-<div id="i-dont-understand-the-code" class="section level2" number="7.5">
-<h2><span class="header-section-number">7.5</span> I don’t understand the code!!</h2>
+<div id="i-dont-understand-the-code" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> I don’t understand the code!!</h2>
 <p>When you see <code>functionname()</code><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> it means we use a build-in function of R If you want to see how lines/commands/functions work, try to decipher them from the inside out. Thus if you want to dechiper <code>rm(list=ls())</code>:</p>
 <ul>
 <li><code>ls()</code></li>
@@ -380,8 +385,8 @@ Hint 2: You really want to learn R? Never ever copy and paste code. Type the cod
 </ul>
 </blockquote>
 </div>
-<div id="reading-in-data-files" class="section level2" number="7.6">
-<h2><span class="header-section-number">7.6</span> Reading in data files</h2>
+<div id="reading-in-data-files" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> Reading in data files</h2>
 <p>We are going to work with two datasets: “Culturele Veranderingen.” For more information on these datasets, see <a href="https://www.scp.nl/Onderzoek/Bronnen/Beknopte_onderzoeksbeschrijvingen/Culturele_veranderingen_in_Nederland_CV">here</a>.</p>
 <p>Please download the files to your working directory.</p>
 <p><a href="%22addfiles\Cultural_Changes_2008.sav%22">Cultural_Changes_2008.sav</a><br />
@@ -407,7 +412,7 @@ Hint 2: You really want to learn R? Never ever copy and paste code. Type the cod
 <p>So you see I read in the data by using the function <code>read.spss()</code> of the package ‘foreign.’ Within this function I set some arguments/parameters (e.g. use.value.labels).</p>
 <p>Now we can inspect our datasets and look for some differences:</p>
 <ul>
-<li><p>Find the <em>Environment</em> tab in the upper right window (<a href="tutorial.html#fig:screenshot">7.1</a> <strong>Arrow 5</strong>).</p>
+<li><p>Find the <em>Environment</em> tab in the upper right window (<a href="tutorial.html#fig:screenshot">6.1</a> <strong>Arrow 5</strong>).</p>
 <ul>
 <li>Find the little arrow and decollapse.</li>
 <li>What do we see?<br />
@@ -2029,11 +2034,11 @@ Hint 2: You really want to learn R? Never ever copy and paste code. Type the cod
 <p>Add to your cheat sheet under <strong>functions</strong>: <code>str(), summary(), attributes(), attr(), table(), names(), head(), fix(), View()</code></p>
 </blockquote>
 </div>
-<div id="define-missings" class="section level2" number="7.7">
-<h2><span class="header-section-number">7.7</span> Define missings</h2>
+<div id="define-missings" class="section level2" number="6.7">
+<h2><span class="header-section-number">6.7</span> Define missings</h2>
 <p>Okay, lets start playing around with our dataset. We are going to have a look at specific variables, define missings, recode some values, etc. I will focus on the dataset created by the haven package.</p>
-<div id="r-base" class="section level3" number="7.7.1">
-<h3><span class="header-section-number">7.7.1</span> R Base</h3>
+<div id="r-base" class="section level3" number="6.7.1">
+<h3><span class="header-section-number">6.7.1</span> R Base</h3>
 <p>Lets use age as example. This variable is called <strong>lftop</strong> in CV. First have a look at this variable.</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb61-1"><a href="tutorial.html#cb61-1"></a><span class="fu">str</span>(cv08_haven<span class="sc">$</span>lftop)</span>
 <span id="cb61-2"><a href="tutorial.html#cb61-2"></a><span class="fu">summary</span>(cv08_haven<span class="sc">$</span>lftop)</span>
@@ -2128,8 +2133,8 @@ I will use all_lower_case_underscore_seperated.<br />
 Add to your cheat sheet <code>as.character()</code> and <code>as.numeric()</code>.</p>
 </blockquote>
 </div>
-<div id="tidy" class="section level3" number="7.7.2">
-<h3><span class="header-section-number">7.7.2</span> Tidy</h3>
+<div id="tidy" class="section level3" number="6.7.2">
+<h3><span class="header-section-number">6.7.2</span> Tidy</h3>
 <p>Copy the variable<br />
 We will ‘mutate’ the original dataset by adding a variable.</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb75-1"><a href="tutorial.html#cb75-1"></a>cv08_haven <span class="ot">&lt;-</span> <span class="fu">mutate</span>(cv08_haven, <span class="at">lftop_new=</span>lftop)</span></code></pre></div>
@@ -2157,14 +2162,14 @@ How do you know it is part of Tidyverse? Well, if you don’t load tidyverse, th
 </blockquote>
 </div>
 </div>
-<div id="recoding-variables" class="section level2" number="7.8">
-<h2><span class="header-section-number">7.8</span> Recoding variables</h2>
+<div id="recoding-variables" class="section level2" number="6.8">
+<h2><span class="header-section-number">6.8</span> Recoding variables</h2>
 <p>So, we defined a missing value for age. As a second example let us recode the variable education. This one is called <strong>var006n</strong> in CV08. Lets create a new variable <strong>educ3</strong> with three levels:<br />
 1. primary<br />
 2. secondary<br />
 3. tertiary</p>
-<div id="r-base-1" class="section level3" number="7.8.1">
-<h3><span class="header-section-number">7.8.1</span> R Base</h3>
+<div id="r-base-1" class="section level3" number="6.8.1">
+<h3><span class="header-section-number">6.8.1</span> R Base</h3>
 <div class="sourceCode" id="cb80"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb80-1"><a href="tutorial.html#cb80-1"></a><span class="fu">levels</span>(cv08<span class="sc">$</span>var006n)</span></code></pre></div>
 <pre><code>##  [1] &quot;onbekend&quot;                               &quot;OP &lt; 12 jr  of volgt actueel bas.ondw.&quot;
 ##  [3] &quot;basisonderwijs&quot;                         &quot;vmbo&quot;                                  
@@ -2224,8 +2229,8 @@ How do you know it is part of Tidyverse? Well, if you don’t load tidyverse, th
 <p>Is this really the first time we encountered the function <code>c()</code>? Well, make sure it is somewhere at the top of your cheat sheet.</p>
 </blockquote>
 </div>
-<div id="tidy-1" class="section level3" number="7.8.2">
-<h3><span class="header-section-number">7.8.2</span> Tidy</h3>
+<div id="tidy-1" class="section level3" number="6.8.2">
+<h3><span class="header-section-number">6.8.2</span> Tidy</h3>
 <p>And now the fun starts. Tidyverse includes a <code>dplyr::recode</code> function, but this function does not work on labeled variables imported via the haven package. Luckily, there is a package that extends the original function, <code>labelled</code>.</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb94-1"><a href="tutorial.html#cb94-1"></a><span class="co">#install.packages(&quot;labelled&quot;)</span></span>
 <span id="cb94-2"><a href="tutorial.html#cb94-2"></a><span class="fu">require</span>(labelled) <span class="co">#to be able to use the recode function on haven labelled variables</span></span></code></pre></div>
@@ -2289,10 +2294,10 @@ How do you know it is part of Tidyverse? Well, if you don’t load tidyverse, th
 <span id="cb107-4"><a href="tutorial.html#cb107-4"></a>         <span class="at">educ3=</span><span class="fu">factor</span>(educ3, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;primary&quot;</span>, <span class="st">&quot;secondary&quot;</span>, <span class="st">&quot;tertiary&quot;</span>)))</span></code></pre></div>
 </div>
 </div>
-<div id="means-and-counting-specific-values" class="section level2" number="7.9">
-<h2><span class="header-section-number">7.9</span> Means and counting specific values</h2>
-<div id="r-base-2" class="section level3" number="7.9.1">
-<h3><span class="header-section-number">7.9.1</span> R Base</h3>
+<div id="means-and-counting-specific-values" class="section level2" number="6.9">
+<h2><span class="header-section-number">6.9</span> Means and counting specific values</h2>
+<div id="r-base-2" class="section level3" number="6.9.1">
+<h3><span class="header-section-number">6.9.1</span> R Base</h3>
 <p>Next step. Lets calculate a mean. We will use three questions in CV on polarization. This does not make any theoretical sense of course.</p>
 <div class="sourceCode" id="cb108"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb108-1"><a href="tutorial.html#cb108-1"></a><span class="co">#Step 1: have a look at the vars</span></span>
 <span id="cb108-2"><a href="tutorial.html#cb108-2"></a><span class="fu">summary</span>(cv08<span class="sc">$</span>int055)</span></code></pre></div>
@@ -2372,8 +2377,8 @@ How do you know it is part of Tidyverse? Well, if you don’t load tidyverse, th
 <p>Did you also notice that the logicals <strong>FALSE</strong> and <strong>TRUE</strong> can be summed? (FALSE equals 0 and TRUE equals 1).</p>
 </blockquote>
 </div>
-<div id="tidy-2" class="section level3" number="7.9.2">
-<h3><span class="header-section-number">7.9.2</span> Tidy</h3>
+<div id="tidy-2" class="section level3" number="6.9.2">
+<h3><span class="header-section-number">6.9.2</span> Tidy</h3>
 <div class="sourceCode" id="cb129"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb129-1"><a href="tutorial.html#cb129-1"></a><span class="co">#Step 1: have a look at the vars</span></span>
 <span id="cb129-2"><a href="tutorial.html#cb129-2"></a><span class="fu">str</span>(cv08_haven<span class="sc">$</span>int055)</span></code></pre></div>
 <pre><code>##  dbl+lbl [1:1963]  3,  3,  3,  2, -3,  1,  2,  3,  3,  2,  2,  3,  3,  3,  3,  2,  3,  2,  3,  ...
@@ -2448,8 +2453,8 @@ How do you know it is part of Tidyverse? Well, if you don’t load tidyverse, th
 </blockquote>
 </div>
 </div>
-<div id="merging-data-files" class="section level2" number="7.10">
-<h2><span class="header-section-number">7.10</span> Merging data files</h2>
+<div id="merging-data-files" class="section level2" number="6.10">
+<h2><span class="header-section-number">6.10</span> Merging data files</h2>
 <p>What you need to know 1: Panel or stacked cross-sections?<br />
 What you need to know 2: If panel, do you want data in long or wide format?</p>
 <p>We need to follow these steps:</p>
@@ -2459,10 +2464,10 @@ What you need to know 2: If panel, do you want data in long or wide format?</p>
 <li>Step3: perform the actual merging. Make sure to include necessary identifier variables.</li>
 <li>Step4: check your results!!</li>
 </ul>
-<div id="r-base-3" class="section level3" number="7.10.1">
-<h3><span class="header-section-number">7.10.1</span> R Base</h3>
-<div id="step1-select-variables" class="section level4" number="7.10.1.1">
-<h4><span class="header-section-number">7.10.1.1</span> Step1: select variables</h4>
+<div id="r-base-3" class="section level3" number="6.10.1">
+<h3><span class="header-section-number">6.10.1</span> R Base</h3>
+<div id="step1-select-variables" class="section level4" number="6.10.1.1">
+<h4><span class="header-section-number">6.10.1.1</span> Step1: select variables</h4>
 <div class="sourceCode" id="cb147"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb147-1"><a href="tutorial.html#cb147-1"></a><span class="co">#step 1: selecting the variables you want to keep.</span></span>
 <span id="cb147-2"><a href="tutorial.html#cb147-2"></a><span class="co">#for this tutorial only 6 variables: id, age, sex, educ, health, region (not that R is case sensitive)</span></span>
 <span id="cb147-3"><a href="tutorial.html#cb147-3"></a>cv08_sel <span class="ot">&lt;-</span> cv08[,<span class="fu">c</span>(<span class="st">&quot;we_id&quot;</span>, <span class="st">&quot;lftop&quot;</span>, <span class="st">&quot;geslacht&quot;</span>, <span class="st">&quot;var006n&quot;</span>, <span class="st">&quot;v401&quot;</span>, <span class="st">&quot;landd&quot;</span>)]</span>
@@ -2471,8 +2476,8 @@ What you need to know 2: If panel, do you want data in long or wide format?</p>
 <p>Note that to select rows, you need to set an expression before the “,” [row,] and to select columns, after the “,” [,col]. Thus with <code>dataset[i,j]</code> you will select row <em>i</em> and column <em>j</em>. You have learned to subset dataframes by using indici (e.g. <code>dataset[,1:3]</code>), logical expressions (e.g. <code>dataset[var1&gt;1,])</code>, and names (e.g. <code>dataset[,"varname"]</code>).</p>
 </blockquote>
 </div>
-<div id="step2-make-consistent" class="section level4" number="7.10.1.2">
-<h4><span class="header-section-number">7.10.1.2</span> Step2: make consistent</h4>
+<div id="step2-make-consistent" class="section level4" number="6.10.1.2">
+<h4><span class="header-section-number">6.10.1.2</span> Step2: make consistent</h4>
 <div class="sourceCode" id="cb148"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb148-1"><a href="tutorial.html#cb148-1"></a><span class="co">#step 2: making the variables similar across individual datasets</span></span>
 <span id="cb148-2"><a href="tutorial.html#cb148-2"></a><span class="co">#step 2a: making names the same</span></span>
 <span id="cb148-3"><a href="tutorial.html#cb148-3"></a><span class="fu">names</span>(cv08_sel) <span class="ot">&lt;-</span> <span class="fu">names</span>(cv10_sel) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;educ&quot;</span>, <span class="st">&quot;health&quot;</span>, <span class="st">&quot;region&quot;</span>)</span>
@@ -2543,8 +2548,8 @@ What you need to know 2: If panel, do you want data in long or wide format?</p>
 <span id="cb150-50"><a href="tutorial.html#cb150-50"></a><span class="fu">table</span>(cv10_sel<span class="sc">$</span>educ3, <span class="at">useNA=</span><span class="st">&quot;always&quot;</span>)</span>
 <span id="cb150-51"><a href="tutorial.html#cb150-51"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(cv10_sel<span class="sc">$</span>educ3, <span class="at">useNA=</span><span class="st">&quot;always&quot;</span>))</span></code></pre></div>
 </div>
-<div id="step3-merge" class="section level4" number="7.10.1.3">
-<h4><span class="header-section-number">7.10.1.3</span> Step3: merge</h4>
+<div id="step3-merge" class="section level4" number="6.10.1.3">
+<h4><span class="header-section-number">6.10.1.3</span> Step3: merge</h4>
 <div class="sourceCode" id="cb151"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb151-1"><a href="tutorial.html#cb151-1"></a><span class="co">#lets add a wave variable</span></span>
 <span id="cb151-2"><a href="tutorial.html#cb151-2"></a>cv08_sel<span class="sc">$</span>wave <span class="ot">&lt;-</span> <span class="dv">2008</span></span>
 <span id="cb151-3"><a href="tutorial.html#cb151-3"></a>cv10_sel<span class="sc">$</span>wave <span class="ot">&lt;-</span> <span class="dv">2010</span></span>
@@ -2596,8 +2601,8 @@ What you need to know 2: If panel, do you want data in long or wide format?</p>
 ##  (Other)        :   0</code></pre>
 <div class="sourceCode" id="cb155"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb155-1"><a href="tutorial.html#cb155-1"></a>cv_tot <span class="ot">&lt;-</span> <span class="fu">rbind</span>(cv08_sel, cv10_sel)</span></code></pre></div>
 </div>
-<div id="step4-check" class="section level4" number="7.10.1.4">
-<h4><span class="header-section-number">7.10.1.4</span> Step4: check</h4>
+<div id="step4-check" class="section level4" number="6.10.1.4">
+<h4><span class="header-section-number">6.10.1.4</span> Step4: check</h4>
 <div class="sourceCode" id="cb156"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb156-1"><a href="tutorial.html#cb156-1"></a><span class="fu">summary</span>(cv_tot)</span></code></pre></div>
 <pre><code>##        id                id2            age             men            educ3      
 ##  Min.   :20131231   Min.   :   1   Min.   :16.00   Min.   :0.000   Min.   :1.000  
@@ -2626,8 +2631,8 @@ What you need to know 2: If panel, do you want data in long or wide format?</p>
 <p>Okay, lets pretend it was panel data. <code>cv_tot</code> would then be a panel dataset in long format. But oftentimes, you want a panel dataset in wide format.<br />
 If you don’t know the difference between long and wide format, check the differences between <code>cv_tot</code> and <code>cv_tot_panel</code> after step3b.</p>
 </div>
-<div id="step3b-merge" class="section level4" number="7.10.1.5">
-<h4><span class="header-section-number">7.10.1.5</span> Step3b: merge</h4>
+<div id="step3b-merge" class="section level4" number="6.10.1.5">
+<h4><span class="header-section-number">6.10.1.5</span> Step3b: merge</h4>
 <div class="sourceCode" id="cb160"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb160-1"><a href="tutorial.html#cb160-1"></a><span class="co">#lets make a panel dataset in wide format</span></span>
 <span id="cb160-2"><a href="tutorial.html#cb160-2"></a>cv_tot_panel <span class="ot">&lt;-</span> <span class="fu">merge</span>(cv08_sel, cv10_sel, <span class="at">all=</span><span class="cn">TRUE</span>, <span class="at">by=</span><span class="st">&quot;id2&quot;</span>)</span>
 <span id="cb160-3"><a href="tutorial.html#cb160-3"></a><span class="fu">head</span>(cv_tot_panel)</span></code></pre></div>
@@ -2666,10 +2671,10 @@ If you don’t know the difference between long and wide format, check the diffe
 ## 6          2       goed, West-Nederland</code></pre>
 </div>
 </div>
-<div id="tidy-3" class="section level3" number="7.10.2">
-<h3><span class="header-section-number">7.10.2</span> Tidy</h3>
-<div id="step1-select-variables-1" class="section level4" number="7.10.2.1">
-<h4><span class="header-section-number">7.10.2.1</span> Step1: select variables</h4>
+<div id="tidy-3" class="section level3" number="6.10.2">
+<h3><span class="header-section-number">6.10.2</span> Tidy</h3>
+<div id="step1-select-variables-1" class="section level4" number="6.10.2.1">
+<h4><span class="header-section-number">6.10.2.1</span> Step1: select variables</h4>
 <div class="sourceCode" id="cb164"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb164-1"><a href="tutorial.html#cb164-1"></a><span class="co">#step 1: selecting the variables you want to keep.</span></span>
 <span id="cb164-2"><a href="tutorial.html#cb164-2"></a><span class="co">#for this tutorial only 6 variables: id, age, sex, educ, health, region (not that R is case sensitive)</span></span>
 <span id="cb164-3"><a href="tutorial.html#cb164-3"></a>cv08_sel <span class="ot">&lt;-</span> cv08_haven <span class="sc">%&gt;%</span></span>
@@ -2678,8 +2683,8 @@ If you don’t know the difference between long and wide format, check the diffe
 <span id="cb164-6"><a href="tutorial.html#cb164-6"></a>cv10_sel <span class="ot">&lt;-</span> cv10_haven <span class="sc">%&gt;%</span></span>
 <span id="cb164-7"><a href="tutorial.html#cb164-7"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;Sleutel&quot;</span>, <span class="st">&quot;var002&quot;</span>, <span class="st">&quot;var001&quot;</span>, <span class="st">&quot;Vltoplop&quot;</span>, <span class="st">&quot;V401&quot;</span>, <span class="st">&quot;Landd&quot;</span>))</span></code></pre></div>
 </div>
-<div id="step2-make-consistent-1" class="section level4" number="7.10.2.2">
-<h4><span class="header-section-number">7.10.2.2</span> Step2: make consistent</h4>
+<div id="step2-make-consistent-1" class="section level4" number="6.10.2.2">
+<h4><span class="header-section-number">6.10.2.2</span> Step2: make consistent</h4>
 <div class="sourceCode" id="cb165"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb165-1"><a href="tutorial.html#cb165-1"></a><span class="co">#step 2: making the variables similar across individual datasets</span></span>
 <span id="cb165-2"><a href="tutorial.html#cb165-2"></a><span class="co">#step 2a: making names the same</span></span>
 <span id="cb165-3"><a href="tutorial.html#cb165-3"></a><span class="fu">names</span>(cv08_sel) <span class="ot">&lt;-</span> <span class="fu">names</span>(cv10_sel) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;educ&quot;</span>, <span class="st">&quot;health&quot;</span>, <span class="st">&quot;region&quot;</span>)</span>
@@ -2719,8 +2724,8 @@ If you don’t know the difference between long and wide format, check the diffe
 <span id="cb165-37"><a href="tutorial.html#cb165-37"></a>    <span class="at">educ3=</span><span class="fu">na_if</span>(educ3, <span class="sc">-</span><span class="dv">9</span>),</span>
 <span id="cb165-38"><a href="tutorial.html#cb165-38"></a>    <span class="at">educ3=</span><span class="fu">factor</span>(educ3, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;primary&quot;</span>, <span class="st">&quot;secondary&quot;</span>, <span class="st">&quot;tertiary&quot;</span>)))</span></code></pre></div>
 </div>
-<div id="step3-merge-1" class="section level4" number="7.10.2.3">
-<h4><span class="header-section-number">7.10.2.3</span> Step3: merge</h4>
+<div id="step3-merge-1" class="section level4" number="6.10.2.3">
+<h4><span class="header-section-number">6.10.2.3</span> Step3: merge</h4>
 <div class="sourceCode" id="cb166"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb166-1"><a href="tutorial.html#cb166-1"></a><span class="co">#lets add a wave variable</span></span>
 <span id="cb166-2"><a href="tutorial.html#cb166-2"></a>cv08_sel<span class="sc">$</span>wave <span class="ot">&lt;-</span> <span class="dv">2008</span></span>
 <span id="cb166-3"><a href="tutorial.html#cb166-3"></a>cv10_sel<span class="sc">$</span>wave <span class="ot">&lt;-</span> <span class="dv">2010</span></span>
@@ -2741,8 +2746,8 @@ If you don’t know the difference between long and wide format, check the diffe
 <span id="cb166-18"><a href="tutorial.html#cb166-18"></a></span>
 <span id="cb166-19"><a href="tutorial.html#cb166-19"></a>cv_tot_tidy <span class="ot">&lt;-</span> cv08_sel <span class="sc">%&gt;%</span> <span class="fu">add_row</span>(cv10_sel)</span></code></pre></div>
 </div>
-<div id="step4-check-1" class="section level4" number="7.10.2.4">
-<h4><span class="header-section-number">7.10.2.4</span> Step4: check</h4>
+<div id="step4-check-1" class="section level4" number="6.10.2.4">
+<h4><span class="header-section-number">6.10.2.4</span> Step4: check</h4>
 <div class="sourceCode" id="cb167"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb167-1"><a href="tutorial.html#cb167-1"></a><span class="fu">summary</span>(cv_tot_tidy)</span></code></pre></div>
 <pre><code>##        id                id2            age             men              educ3     
 ##  Min.   :20131231   Min.   :   1   Min.   :16.00   Min.   :0.000   primary  : 839  
@@ -2774,18 +2779,18 @@ If you don’t know the difference between long and wide format, check the diffe
 <p>Okay, lets pretend it was panel data <code>cv_tot</code> would then be a panel dataset in long format. But oftentimes, you want a panel dataset in wide format.<br />
 If you don’t know the difference between long and wide format, check the differences between <code>cv_tot</code> and <code>cv_tot_panel</code> after step 3b.</p>
 </div>
-<div id="step3b-merge-1" class="section level4" number="7.10.2.5">
-<h4><span class="header-section-number">7.10.2.5</span> Step3b: merge</h4>
+<div id="step3b-merge-1" class="section level4" number="6.10.2.5">
+<h4><span class="header-section-number">6.10.2.5</span> Step3b: merge</h4>
 <div class="sourceCode" id="cb171"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb171-1"><a href="tutorial.html#cb171-1"></a><span class="co">#lets make a panel dataset in wide format</span></span>
 <span id="cb171-2"><a href="tutorial.html#cb171-2"></a>cv_tot_panel_tidy <span class="ot">&lt;-</span> <span class="fu">full_join</span>(cv08_sel, cv10_sel, <span class="at">by=</span><span class="st">&quot;id2&quot;</span>, <span class="at">suffix=</span><span class="fu">c</span>(<span class="st">&quot;.2008&quot;</span>, <span class="st">&quot;.2010&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="aggregate-data" class="section level2" number="7.11">
-<h2><span class="header-section-number">7.11</span> Aggregate data</h2>
+<div id="aggregate-data" class="section level2" number="6.11">
+<h2><span class="header-section-number">6.11</span> Aggregate data</h2>
 <p>Lets suppose you want to add the mean age of each region as contextual variable to your data.</p>
-<div id="r-base-4" class="section level3" number="7.11.1">
-<h3><span class="header-section-number">7.11.1</span> R Base</h3>
+<div id="r-base-4" class="section level3" number="6.11.1">
+<h3><span class="header-section-number">6.11.1</span> R Base</h3>
 <div class="sourceCode" id="cb172"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb172-1"><a href="tutorial.html#cb172-1"></a><span class="co">#step 1. construct dataset with aggregate info</span></span>
 <span id="cb172-2"><a href="tutorial.html#cb172-2"></a>age_region <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(cv_tot<span class="sc">$</span>age, <span class="at">by=</span><span class="fu">list</span>(cv_tot<span class="sc">$</span>region), <span class="at">FUN=</span>mean)</span>
 <span id="cb172-3"><a href="tutorial.html#cb172-3"></a><span class="fu">head</span>(age_region)</span></code></pre></div>
@@ -2843,15 +2848,15 @@ If you don’t know the difference between long and wide format, check the diffe
 ## 3  West-Nederland 46.88416
 ## 4  Zuid-Nederland 48.52500</code></pre>
 </div>
-<div id="tidy-4" class="section level3" number="7.11.2">
-<h3><span class="header-section-number">7.11.2</span> Tidy</h3>
+<div id="tidy-4" class="section level3" number="6.11.2">
+<h3><span class="header-section-number">6.11.2</span> Tidy</h3>
 <p>** TO DO **</p>
 </div>
 </div>
-<div id="missing-values" class="section level2" number="7.12">
-<h2><span class="header-section-number">7.12</span> Missing values</h2>
-<div id="r-base-5" class="section level3" number="7.12.1">
-<h3><span class="header-section-number">7.12.1</span> R Base</h3>
+<div id="missing-values" class="section level2" number="6.12">
+<h2><span class="header-section-number">6.12</span> Missing values</h2>
+<div id="r-base-5" class="section level3" number="6.12.1">
+<h3><span class="header-section-number">6.12.1</span> R Base</h3>
 <p>Suppose you want to estimate the following model:</p>
 <div class="sourceCode" id="cb178"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb178-1"><a href="tutorial.html#cb178-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.numeric</span>(health) <span class="sc">~</span> men <span class="sc">+</span> age <span class="sc">+</span>  <span class="fu">as.factor</span>(educ3) <span class="sc">+</span> <span class="fu">as.factor</span>(region), <span class="at">data=</span>cv_total)</span>
 <span id="cb178-2"><a href="tutorial.html#cb178-2"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
@@ -2898,8 +2903,8 @@ If you don’t know the difference between long and wide format, check the diffe
 * listwise deletion. Only use when very few missings
 * replace missing values with intuitive values or add missing as a separate category.<br />
 * impute missing values. A bit complicated but the best option.</p>
-<div id="option-1-listwise-deletion" class="section level4" number="7.12.1.1">
-<h4><span class="header-section-number">7.12.1.1</span> Option 1: listwise deletion</h4>
+<div id="option-1-listwise-deletion" class="section level4" number="6.12.1.1">
+<h4><span class="header-section-number">6.12.1.1</span> Option 1: listwise deletion</h4>
 <div class="sourceCode" id="cb182"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb182-1"><a href="tutorial.html#cb182-1"></a><span class="co">#step1 define all missings</span></span>
 <span id="cb182-2"><a href="tutorial.html#cb182-2"></a><span class="fu">summary</span>(cv_total)</span></code></pre></div>
 <pre><code>##                      region           id                id2            age             men       
@@ -2948,8 +2953,8 @@ If you don’t know the difference between long and wide format, check the diffe
 ## F-statistic: 76.63 on 7 and 4868 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>You see 23 cases deleted due to missingness</p>
 </div>
-<div id="option-2-replacing-missing-values." class="section level4" number="7.12.1.2">
-<h4><span class="header-section-number">7.12.1.2</span> Option 2: replacing missing values.</h4>
+<div id="option-2-replacing-missing-values." class="section level4" number="6.12.1.2">
+<h4><span class="header-section-number">6.12.1.2</span> Option 2: replacing missing values.</h4>
 <p>Don’t replace missings on dependent variable.<br />
 For categorical variables add category missing.
 For continues/metric variables replace missing with mean value.</p>
@@ -3007,8 +3012,8 @@ For continues/metric variables replace missing with mean value.</p>
 ## Multiple R-squared:  0.09797,    Adjusted R-squared:  0.09612 
 ## F-statistic: 53.08 on 10 and 4887 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div id="option-3-impute-missing-values" class="section level4" number="7.12.1.3">
-<h4><span class="header-section-number">7.12.1.3</span> Option 3: impute missing values</h4>
+<div id="option-3-impute-missing-values" class="section level4" number="6.12.1.3">
+<h4><span class="header-section-number">6.12.1.3</span> Option 3: impute missing values</h4>
 <p>We will use the R package mice (<span class="citation"><a href="references-1.html#ref-mice" role="doc-biblioref">van Buuren and Groothuis-Oudshoorn</a> (<a href="references-1.html#ref-mice" role="doc-biblioref">2011</a>)</span>).</p>
 <p>For theory please see:<br />
 * <a href="https://stefvanbuuren.name/Winnipeg">https://stefvanbuuren.name/Winnipeg</a><br />
@@ -3182,8 +3187,8 @@ For continues/metric variables replace missing with mean value.</p>
 ## 8 regionZuid-Nederland  0.01582036 0.0387973170  0.4077694 4888.453 6.834609e-01</code></pre>
 </div>
 </div>
-<div id="tidy-5" class="section level3" number="7.12.2">
-<h3><span class="header-section-number">7.12.2</span> Tidy</h3>
+<div id="tidy-5" class="section level3" number="6.12.2">
+<h3><span class="header-section-number">6.12.2</span> Tidy</h3>
 <p>** TO DO **</p>
 <hr />
 <p><strong>Thank you for reading this tutorial!!</strong></p>
@@ -3252,20 +3257,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

@@ -1,7 +1,8 @@
 --- 
-title: "SNASS Social Network Analysis for Social Scientists"
-author: "Jochem Tolsma"
-date: "2021-07-02"
+title: "SNASS"
+subtitle: "Social Network Analysis for Social Scientists"
+author: ["Jochem Tolsma", "Bas hofstra"]
+date: "2021-07-06"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -10,7 +11,12 @@ link-citations: yes
 description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
 ---
 
-# Prerequisites
+
+
+
+# About the authors {-}
+
+<!---
 
 This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
 
@@ -28,3 +34,5 @@ Remember each Rmd file contains one and only one chapter, and a chapter is defin
 To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
 
 
+
+---> 

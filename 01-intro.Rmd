@@ -1,3 +1,9 @@
+--- 
+title: "SNASS"
+subtitle: "Social Network Analysis for Social Scientists"
+---  
+
+
 # Introduction {#intro}
 
 ```{r colorize, echo=FALSE}
@@ -97,7 +103,252 @@ This course is structured along three different dimensions:
 
 ### Type of Social Network  
 
-TO DO  
+#### **Dyads**   
+
+The smallest possible social network is a network between two persons (or, more precisely, between two social agents). A network between two persons is also called a dyad. In the clip below I will introduce you to the the main concepts involved in a dyad. Naturally, the same concepts also play a role in larger social networks. 
+
+
+<iframe src="https://player.vimeo.com/video/452233600" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+For slides, see [here](dyads.pdf).
+  
+>
+After having watched the video you should be able to:  
+- give a definition of a dyad.  
+- explain what is meant by time-varying and time-constant actor attributes and dyad attributes.  
+- explain that relations between ego and alter can be classified  based on whether relations are directed or undirected and on the level of measurement of the relation (i.e. nominal, ordinal, interval, ratio). 
+- be familiar with al the synonyms for networks, agents and relations. 
+- provide examples of dyads, and the relations between ego and alter.
+
+  
+#### **Egonets**  
+
+We could define an egocentric social network as a set of actors that all have relationships with ego. This definition is quite similar to Marsden's [@marsden1990] definition: "Sets of ties surrounding sampled individual units." To illustrate what is meant by these definitions, let us us consider the following 'world'. And visualize the best-friend-forever relationships in this world.
+
+
+```{r, echo=FALSE, results='hide', message=FALSE}
+require(igraph)
+set.seed(34676)
+degs <- sample(1:5, 100, replace=TRUE)
+if (sum(degs) %% 2 != 0) { degs[1] <- degs[1] + 1 }
+g4 <- sample_degseq(degs, method="vl")
+g4 <- simplify(g4)
+edges <- get.adjacency(g4)
+edges_mat <- matrix(as.numeric(edges), nrow=nrow(edges))
+edges_mat[4,24] <- 1
+```
+
+```{r, echo=FALSE}
+set.seed(37676)
+l4 <- layout.kamada.kawai(g4)
+g4 <- graph_from_adjacency_matrix(edges_mat, mode = "undirected")
+#changing V
+V(g4)$label=""
+V(g4)$color <- "blue"
+#changing E
+E(g4)$arrow.size=.4
+E(g4)$curved=.3
+E(g4)$color="black"
+plot(g4, layout=l4, margin=0,)
+
+
+```
+\
+And now sample a random person. The person we sampled, ego, is made red and square in our network. 
+
+```{r, echo=FALSE}
+V(g4)$color[96]="red"
+V(g4)$shape="circle"
+V(g4)$shape[96]="square"
+plot(g4, layout=l4)
+```
+\
+Let us zoom in a little bit. 
+
+```{r, echo=FALSE}
+l5 <- l4
+l5[,1] <- l5[,1] - 1.5
+l5[,2] <- l5[,2] - .25
+l5 <- l5 / 1.6
+plot(g4, layout=l5, rescale=F)
+
+```
+
+##### 1.0 degree  
+
+Let's suppose we had asked this person to name all its best-friend-forevers (BFFs). If we would assume that BFF relations are undirected, then this person's egocentric or 1.0 degree network would look like this: 
+
+```{r, echo=FALSE}
+
+edges_mat[c(1:100)[-96], c(1:100)[-96]] <- 0
+noisolates <- rowSums(edges_mat, na.rm=T)>0
+
+#same appearance
+g5 <- graph_from_adjacency_matrix(edges_mat[noisolates,noisolates], mode = "undirected")
+V(g5)$label=""
+V(g5)$color <- V(g4)$color[noisolates]
+E(g5)$arrow.size=.4
+E(g5)$curved=.3
+E(g5)$color="black"
+V(g5)$shape <- V(g4)$shape[noisolates]
+plot(g5, layout=l5[noisolates,], rescale=F)
+
+```
+\
+The alters with whom ego is not connected are not part of the egocentric network. And generally, if we collect data we do not have any information on these unconnected alters. 
+
+##### 1.5 degree network  
+
+We may have asked ego - with the question below - whether its BFFs are also BFFs of one another.
+
+> Please think about the relations between the people you just mentioned. Some of them may be total strangers in the sense that they wouldn’t recognize each other if they bumped into each other on the street. Others may be especially close, as close or closer to each other as they are to you. Are they especially close? PROBE: As close or closer to each other as they are to you?
+
+
+It turns out that two alters in ego's BFF-network are also BFFs of each other. If we know the relations between the alters in a 1.0 degree network it becomes a 1.5 degree network. See below: 
+
+```{r, echo=FALSE}
+edges <- get.adjacency(g4)
+edges_mat <- matrix(as.numeric(edges), nrow=nrow(edges))
+edges_mat[4,24] <- 1
+connected <- adjacent_vertices(g4, 96)
+subnet <- c(96, as.numeric(unlist(connected)))
+
+
+g6 <- graph_from_adjacency_matrix(edges_mat[subnet,subnet], mode = "undirected")
+
+#same appearance
+V(g6)$label=""
+V(g6)$color <- V(g4)$color[subnet]
+E(g6)$arrow.size=.4
+E(g6)$curved=.3
+E(g6)$color="black"
+V(g6)$shape <- V(g4)$shape[subnet]
+plot(g6,layout=l5[subnet,], rescale=F)
+```
+\
+In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this [section](https://www.jochemtolsma.nl/courses/complete-networks/socio2/#triad-level).  <!---insert correct link ---> 
+
+
+##### 2.0 degree network
+
+Perhaps, instead of asking whether there are BFF relations between the BFFs of ego, we  could also have used a snowball sampling method and interviewed the alters (or BFFs) of ego. Note that the focal actor (initial sampled unit) remains ego. 
+Thus, if we would have asked ego's alters to name their BFFs, we would have discovered the following 2.0 degree network: 
+```{r, echo=FALSE}
+subnet_new <- list()
+for (i in 1:length(subnet)) {
+  connected <- adjacent_vertices(g4, subnet[i])
+  subnet_new[[i]] <- as.numeric(unlist(connected))
+}
+subnet_new <- unique(unlist(subnet_new))
+
+g7 <- graph_from_adjacency_matrix(edges_mat[subnet_new,subnet_new], mode = "undirected")
+
+new <- subnet_new[which(!(subnet_new %in% subnet))]
+
+V(g4)$color[new] <- "lightblue"
+
+#same appearance
+V(g7)$label=""
+V(g7)$color <- V(g4)$color[subnet_new]
+E(g7)$arrow.size=.4
+E(g7)$curved=.3
+E(g7)$color="black"
+V(g7)$shape <- V(g4)$shape[subnet_new]
+plot(g7,layout=l4[subnet_new,])
+
+
+```
+\
+The newly discovered alters are in light blue. Naturally, we also observe the BFF relation between ego's alters appearing. Please note that in a 2.0 degree network the number of alters within the 1.0 degree network of ego will remain the same (assuming that ego did not forget to mention a BFF). 
+
+##### 2.X degree network
+
+Any ideas about what a 2.5 degree network would look like. To be honest, I don't. Do these networks include all relations between all nodes, or only the relations between the alters in the separate 1.0 degree networks? Perhaps we could call the latter a 2.5 degree network and the former a 2.75 degree network. 
+
+#### **Socionets**  
+
+A complete, full, or sociocentric network is a network within a sampled context or foci of which we know all nodes and all connections between nodes. The boundaries of the network are thus a priori defined and the contexts in which nodes are present are the sampled units. 
+We may for example sample a classroom, neighborhood, university or country and collect all relations between all nodes within this context.  
+
+>
+You now have come across a general definition for social networks and specific definitions for dyadic, egocentric and sociocentric social networks.  You also know that the social agents within the networks may not necessarily have to be persons but can also be companies, or political parties for example. A network in which the relations between two different type of nodes are present are called **multiple-mode networks**.  
+Similarly, between one type of node (e.g. persons) we may have information on more than one type of relation. These networks are called **multiplex networks**.  
+The networks we have considered so far refer to networks of binary relations (yes/no). If the relations can vary in strength, we call the networks a **weighted network**.\
+Thus, we can have a two-mode, multiplex, weighted, directed network but also a single-mode, uniplex, binary, undirected network. 
+
+It turns out that many (complete) social networks share certain network characteristics. This is called the small-world phenomena and is discussed in more detail [here](). <!---insert correct link ---> But let us start with a teaser. Suppose we live in a world, called "Smallworld", of 105 persons (a small world indeed) and have information on all friendship (or trust) relations between its citizens. How could such a network look like? It turns out that (large) social networks of positive relations often have a specific structure. And this structure is called **A Small World**. Lets have a look at the small world structure of SmallWorld.
+
+<!--- fix figure caption ---> 
+```{r, echo=FALSE}
+
+#https://bookdown.org/markhoff/social_network_analysis/bridges-holes-the-small-world-problem-and-simulation.html
+simulate_caveman <- function(n = 25, clique_size = 5){
+  require(igraph)
+  # Groups are all the same size, so I check whether N is divisible by the size of groups
+  if ( ((n%/%clique_size) * clique_size) != n){
+    stop("n is not evenly divisible by clique_size")
+  }
+  
+  groups = n/clique_size # this determines the number of groups
+  
+  el <- data.frame(PersonA = 1:n, Group = NA) # I create a dataframe which has people and the groups they are in
+  # I treat it like a person to group edgelist
+  
+  group_vector = c()
+  for (i in 1:groups){
+    group_vector <- c(group_vector, rep(i, clique_size))
+  }  
+
+  el$Group <- group_vector
+  
+  inc <- table(el) # I use the table function to turn the person to group edgelist into an incidence matrix
+  adj <- inc %*% t(inc) # And I use matrix multiplication with the transpose to turn the person to group incidence matrix
+  # into a person to person adjacency matrix
+  
+  diag(adj) <- 0 
+  
+  g <- graph.adjacency(adj, mode = "undirected") # I graph this matrix
+
+  group_connect <- seq(from = 1, to = n, by = clique_size) # I determine the points of connection using a sequence funciton
+  
+  for( i in 1:(length(group_connect)-1)){
+    p1 <- group_connect[i] + 1
+    p2 <- group_connect[i+1]
+    g <- add.edges(g, c(p1,p2)) # And I connect the points of connection using add.edges
+  }
+    g <- add.edges(g, c(group_connect[1],(group_connect[groups]+1))) # finally I connect the ends of the structure so that it forms a circle
+
+    return(g)    
+}
+
+set.seed(43635)
+caveman_net <- simulate_caveman(n = 105, clique_size = 15) 
+
+#par(mar = c(2,2,2,2))
+#plot(caveman_net, layout = layout.kamada.kawai(caveman_net), vertex.size = 2, vertex.label = NA, vertex.color = "grey80")
+caveman_net_rewired <-  rewire(caveman_net, keeping_degseq(niter = 180))
+
+E(caveman_net_rewired)$color <- "grey80"
+V(caveman_net_rewired)$color <- "red"
+#layout = layout.kamada.kawai(caveman_net)
+#plot.igraph(caveman_net_rewired, vertex.size = 4, vertex.label=NA)
+
+#graph.density(caveman_net_rewired)
+
+smallworld <- caveman_net_rewired
+# net.js <- caveman_net_rewired
+# graph_attr(net.js, "layout") <- NULL 
+# library(threejs)
+# gjs <- graphjs(net.js, main="Smallworld", bg="gray10", showLabels=F, stroke=F,                curvature=0.1, attraction=0.9, repulsion=1.2, opacity=0.9, vertex.color = "red", edge.color="grey", brush=TRUE, vertex.size = 1)
+# print(gjs)
+#saveWidget(gjs, file="smallworld.html")
+
+```
+
+<iframe src="smallworld.html" width="780" height="780" style="border: none;"></iframe>
+
+Play with the small world network of Smallworld. Zoom in and out, turn it around and click on some nodes. How would you describe the structure of the network in Smallworld. Well, I would describe it as a network with a: (1) **relatively low density**; (2) **relatively high degree of clustering** and (3) **a relatively low average degree of separation (or path length)**. These three characteristics are defining features of small world networks. But what does density, clustering and path length mean?, and what do we mean with 'relatively', that does not sound very scientific does it?! Don't you worry, you will learn this during the course. 
+
 
 ### Causes and Consequences
 

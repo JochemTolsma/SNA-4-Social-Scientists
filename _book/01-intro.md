@@ -1,3 +1,9 @@
+--- 
+title: "SNASS"
+subtitle: "Social Network Analysis for Social Scientists"
+---  
+
+
 # Introduction {#intro}
 
 
@@ -60,7 +66,9 @@ This course is structured along three different dimensions:
 2.    **Causes or Consequences** of social networks
 3.    **Implications** of applying a social network perspective: Theoretical, Data and  Methodological
 
-**Table. 1.1 ** Topics discussed within the course {#structure}
+<!--- perhaps put in a table and use knitr:kable so we have nicer layout and can use table caps! --->
+
+**Table. 1.1 ** Topics discussed within the course
 
 | Type of Social Network           | Causes or Consequences | Implications | Book section |
 |----------------------------------|------------------------|------------------|------------------|
@@ -84,7 +92,160 @@ This course is structured along three different dimensions:
 <span style='color: red;'>**Feel free to jump to the section you are most interested in. But there is a clear order in the sections. The best way to accumulate theoretical and methodological knowledge, and to gain the necessary R-skills to successfully apply a social network perspective to your own research is by going through the sections one by.**</span>
 
 
-## Causes and Consequences
+### Type of Social Network  
+
+#### **Dyads**   
+
+The smallest possible social network is a network between two persons (or, more precisely, between two social agents). A network between two persons is also called a dyad. In the clip below I will introduce you to the the main concepts involved in a dyad. Naturally, the same concepts also play a role in larger social networks. 
+
+
+<iframe src="https://player.vimeo.com/video/452233600" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+For slides, see [here](dyads.pdf).
+  
+>
+After having watched the video you should be able to:  
+- give a definition of a dyad.  
+- explain what is meant by time-varying and time-constant actor attributes and dyad attributes.  
+- explain that relations between ego and alter can be classified  based on whether relations are directed or undirected and on the level of measurement of the relation (i.e. nominal, ordinal, interval, ratio). 
+- be familiar with al the synonyms for networks, agents and relations. 
+- provide examples of dyads, and the relations between ego and alter.
+
+  
+#### **Egonets**  
+
+We could define an egocentric social network as a set of actors that all have relationships with ego. This definition is quite similar to Marsden's [@marsden1990] definition: "Sets of ties surrounding sampled individual units."[^M] To illustrate what is meant by these definitions, let us us consider the following 'world'. And visualize the best-friend-forever relationships in this world.
+
+
+
+
+<img src="01-intro_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+\
+And now sample a random person. The person we sampled, ego, is made red and square in our network. 
+
+<img src="01-intro_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+\
+Let us zoom in a little bit. 
+
+<img src="01-intro_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+
+##### 1.0 degree  
+
+Let's suppose we had asked this person to name all its best-friend-forevers (BFFs). If we would assume that BFF relations are undirected, then this person's egocentric or 1.0 degree network would look like this: 
+
+<img src="01-intro_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+\
+The alters with whom ego is not connected are not part of the egocentric network. And generally, if we collect data we do not have any information on these unconnected alters. 
+
+##### 1.5 degree network  
+
+We may have asked ego - with the question below - whether its BFFs are also BFFs of one another.
+
+> Please think about the relations between the people you just mentioned. Some of them may be total strangers in the sense that they wouldn’t recognize each other if they bumped into each other on the street. Others may be especially close, as close or closer to each other as they are to you. Are they especially close? PROBE: As close or closer to each other as they are to you?
+
+
+It turns out that two alters in ego's BFF-network are also BFFs of each other. If we know the relations between the alters in a 1.0 degree network it becomes a 1.5 degree network. See below: 
+
+<img src="01-intro_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+\
+In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this [section](https://www.jochemtolsma.nl/courses/complete-networks/socio2/#triad-level).  <!---insert correct link ---> 
+
+
+##### 2.0 degree network
+
+Perhaps, instead of asking whether there are BFF relations between the BFFs of ego, we  could also have used a snowball sampling method and interviewed the alters (or BFFs) of ego. Note that the focal actor (initial sampled unit) remains ego. 
+Thus, if we would have asked ego's alters to name their BFFs, we would have discovered the following 2.0 degree network: 
+<img src="01-intro_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+The newly discovered alters are in light blue. Naturally, we also observe the BFF relation between ego's alters appearing. Please note that in a 2.0 degree network the number of alters within the 1.0 degree network of ego will remain the same (assuming that ego did not forget to mention a BFF). 
+
+##### 2.X degree network
+
+Any ideas about what a 2.5 degree network would look like. To be honest, I don't. Do these networks include all relations between all nodes, or only the relations between the alters in the separate 1.0 degree networks? Perhaps we could call the latter a 2.5 degree network and the former a 2.75 degree network. 
+
+#### **Socionets**  
+
+A complete, full, or sociocentric network is a network within a sampled context or foci of which we know all nodes and all connections between nodes. The boundaries of the network are thus a priori defined and the contexts in which nodes are present are the sampled units. 
+We may for example sample a classroom, neighborhood, university or country and collect all relations between all nodes within this context.  
+
+>
+You now have come across a general definition for social networks and specific definitions for dyadic, egocentric and sociocentric social networks.  You also know that the social agents within the networks may not necessarily have to be persons but can also be companies, or political parties for example. A network in which the relations between two different type of nodes are present are called **multiple-mode networks**.  
+Similarly, between one type of node (e.g. persons) we may have information on more than one type of relation. These networks are called **multiplex networks**.  
+The networks we have considered so far refer to networks of binary relations (yes/no). If the relations can vary in strength, we call the networks a **weighted network**.\
+Thus, we can have a two-mode, multiplex, weighted, directed network but also a single-mode, uniplex, binary, undirected network. 
+
+It turns out that many (complete) social networks share certain network characteristics. This is called the small-world phenomena and is discussed in more detail [here](). <!---insert correct link ---> But let us start with a teaser. Suppose we live in a world, called "Smallworld", of 105 persons (a small world indeed) and have information on all friendship (or trust) relations between its citizens. How could such a network look like? It turns out that (large) social networks of positive relations often have a specific structure. And this structure is called **A Small World**. Lets have a look at the small world structure of SmallWorld.
+
+
+```r
+#https://bookdown.org/markhoff/social_network_analysis/bridges-holes-the-small-world-problem-and-simulation.html
+simulate_caveman <- function(n = 25, clique_size = 5){
+  require(igraph)
+  # Groups are all the same size, so I check whether N is divisible by the size of groups
+  if ( ((n%/%clique_size) * clique_size) != n){
+    stop("n is not evenly divisible by clique_size")
+  }
+  
+  groups = n/clique_size # this determines the number of groups
+  
+  el <- data.frame(PersonA = 1:n, Group = NA) # I create a dataframe which has people and the groups they are in
+  # I treat it like a person to group edgelist
+  
+  group_vector = c()
+  for (i in 1:groups){
+    group_vector <- c(group_vector, rep(i, clique_size))
+  }  
+
+  el$Group <- group_vector
+  
+  inc <- table(el) # I use the table function to turn the person to group edgelist into an incidence matrix
+  adj <- inc %*% t(inc) # And I use matrix multiplication with the transpose to turn the person to group incidence matrix
+  # into a person to person adjacency matrix
+  
+  diag(adj) <- 0 
+  
+  g <- graph.adjacency(adj, mode = "undirected") # I graph this matrix
+
+  group_connect <- seq(from = 1, to = n, by = clique_size) # I determine the points of connection using a sequence funciton
+  
+  for( i in 1:(length(group_connect)-1)){
+    p1 <- group_connect[i] + 1
+    p2 <- group_connect[i+1]
+    g <- add.edges(g, c(p1,p2)) # And I connect the points of connection using add.edges
+  }
+    g <- add.edges(g, c(group_connect[1],(group_connect[groups]+1))) # finally I connect the ends of the structure so that it forms a circle
+
+    return(g)    
+}
+
+set.seed(43635)
+caveman_net <- simulate_caveman(n = 105, clique_size = 15) 
+
+#par(mar = c(2,2,2,2))
+#plot(caveman_net, layout = layout.kamada.kawai(caveman_net), vertex.size = 2, vertex.label = NA, vertex.color = "grey80")
+caveman_net_rewired <-  rewire(caveman_net, keeping_degseq(niter = 180))
+
+E(caveman_net_rewired)$color <- "grey80"
+V(caveman_net_rewired)$color <- "red"
+#layout = layout.kamada.kawai(caveman_net)
+#plot.igraph(caveman_net_rewired, vertex.size = 4, vertex.label=NA)
+
+#graph.density(caveman_net_rewired)
+
+smallworld <- caveman_net_rewired
+# net.js <- caveman_net_rewired
+# graph_attr(net.js, "layout") <- NULL 
+# library(threejs)
+# gjs <- graphjs(net.js, main="Smallworld", bg="gray10", showLabels=F, stroke=F,                curvature=0.1, attraction=0.9, repulsion=1.2, opacity=0.9, vertex.color = "red", edge.color="grey", brush=TRUE, vertex.size = 1)
+# print(gjs)
+#saveWidget(gjs, file="smallworld.html")
+```
+
+<iframe src="smallworld.html" width="780" height="780" style="border: none;"></iframe>
+
+Play with the small world network of Smallworld. Zoom in and out, turn it around and click on some nodes. How would you describe the structure of the network in Smallworld. Well, I would describe it as a network with a: (1) **relatively low density**; (2) **relatively high degree of clustering** and (3) **a relatively low average degree of separation (or path length)**. These three characteristics are defining features of small world networks. But what does density, clustering and path length mean?, and what do we mean with 'relatively', that does not sound very scientific does it?! Don't you worry, you will learn this during the course. 
+
+
+### Causes and Consequences
 
 **...or Selection and Influence**\
 Social networks consist of social relations between people. For example friendships, bullying relations or working-together-during-the-course-social-networks relations.\
@@ -101,6 +262,10 @@ Selection and influence processes are firmly entangled. See below for an example
 -   The line between the shapes (no line, dashed, solid) signifies the strength of the relationship (e.g. romantic relationship)
 
 We could call the selection process 'Opposite Attracts' and we could call the influence process 'Circle beats square'.\ Let us focus on the selection process first. If there is not tie between the agents, you will notice that a tie will be formed (become stronger) between dissimilar agents. When a tie is present between agents, you will notice that a tie will be broken (become weaker) when agents are similar with respect to their time-varying characteristic.\ Let us now focus on the influence process. When a strong tie is present, you will notice that the square agents will assimilate to the time-varying characteristic of the circle agents. We do not know of course the mechanism behind this assimilation (or influence) process. Is it the square who (voluntary) adopts the behavior of the circle or does the circle forces the square to follow suit?      
+
+
+###  Implications  
+
 
 
 ## What makes this course stand out?

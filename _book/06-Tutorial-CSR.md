@@ -62,7 +62,7 @@
 ##     cbind, rbind
 ```
 
-Latest Version: 02-07-2021
+Latest Version: 06-07-2021
 
 Please email any comments to: [j.tolsma\@ru.nl](mailto:j.tolsma@ru.nl){.email}
 
