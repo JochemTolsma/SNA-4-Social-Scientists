@@ -2,7 +2,7 @@
 title: "SNASS"
 subtitle: "Social Network Analysis for Social Scientists"
 author: ["Jochem Tolsma", "Bas hofstra"]
-date: "2021-07-06"
+date: "2021-07-07"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]

@@ -8,6 +8,12 @@ subtitle: "Social Network Analysis for Social Scientists"
 
 
 
+
+  
+
+
+
+
 ## Overview
 
 Sociologists study how societies affect the lives of their members and, vice versa, how individuals shape the societies in which they live. Within societies people make and break relations with specific others and thereby form **social networks**.\
@@ -92,9 +98,9 @@ This course is structured along three different dimensions:
 <span style='color: red;'>**Feel free to jump to the section you are most interested in. But there is a clear order in the sections. The best way to accumulate theoretical and methodological knowledge, and to gain the necessary R-skills to successfully apply a social network perspective to your own research is by going through the sections one by.**</span>
 
 
-### Type of Social Network  
+### Type of Social Network {.tabset}
 
-#### **Dyads**   
+#### **Dyads** {-}  
 
 The smallest possible social network is a network between two persons (or, more precisely, between two social agents). A network between two persons is also called a dyad. In the clip below I will introduce you to the the main concepts involved in a dyad. Naturally, the same concepts also play a role in larger social networks. 
 
@@ -113,7 +119,7 @@ After having watched the video you should be able to:
 - provide examples of dyads, and the relations between ego and alter.\
 
   
-#### **Egonets**  
+#### **Egonets** {-} 
 
 We could define an egocentric social network as a set of actors that all have relationships with ego. This definition is quite similar to Marsden's [@marsden1990] definition: "Sets of ties surrounding sampled individual units." To illustrate what is meant by these definitions, let us us consider the following 'world'. And visualize the best-friend-forever relationships in this world.
 
@@ -130,7 +136,7 @@ Let us zoom in a little bit.
 
 <img src="01-intro_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
-##### 1.0 degree  
+##### 1.0 degree {-}  
 
 Let's suppose we had asked this person to name all its best-friend-forevers (BFFs). If we would assume that BFF relations are undirected, then this person's egocentric or 1.0 degree network would look like this: 
 
@@ -138,12 +144,15 @@ Let's suppose we had asked this person to name all its best-friend-forevers (BFF
 \
 The alters with whom ego is not connected are not part of the egocentric network. And generally, if we collect data we do not have any information on these unconnected alters. 
 
-##### 1.5 degree network  
+##### 1.5 degree network {-}  
 
 We may have asked ego - with the question below - whether its BFFs are also BFFs of one another.
 
-> Please think about the relations between the people you just mentioned. Some of them may be total strangers in the sense that they wouldn’t recognize each other if they bumped into each other on the street. Others may be especially close, as close or closer to each other as they are to you. Are they especially close? PROBE: As close or closer to each other as they are to you?
+<!---quotes and meetinstrumenten als cursief en ingesprongen, wellicht eigen css maken? ---> 
 
+<p class= "quote"> 
+Please think about the relations between the people you just mentioned. Some of them may be total strangers in the sense that they wouldn’t recognize each other if they bumped into each other on the street. Others may be especially close, as close or closer to each other as they are to you. Are they especially close? PROBE: As close or closer to each other as they are to you?
+</p> 
 
 It turns out that two alters in ego's BFF-network are also BFFs of each other. If we know the relations between the alters in a 1.0 degree network it becomes a 1.5 degree network. See below: 
 
@@ -152,7 +161,7 @@ It turns out that two alters in ego's BFF-network are also BFFs of each other. I
 In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this [section](https://www.jochemtolsma.nl/courses/complete-networks/socio2/#triad-level).  <!---insert correct link ---> 
 
 
-##### 2.0 degree network
+##### 2.0 degree network {-}
 
 Perhaps, instead of asking whether there are BFF relations between the BFFs of ego, we  could also have used a snowball sampling method and interviewed the alters (or BFFs) of ego. Note that the focal actor (initial sampled unit) remains ego. 
 Thus, if we would have asked ego's alters to name their BFFs, we would have discovered the following 2.0 degree network: 
@@ -160,11 +169,11 @@ Thus, if we would have asked ego's alters to name their BFFs, we would have disc
 \
 The newly discovered alters are in light blue. Naturally, we also observe the BFF relation between ego's alters appearing. Please note that in a 2.0 degree network the number of alters within the 1.0 degree network of ego will remain the same (assuming that ego did not forget to mention a BFF). 
 
-##### 2.X degree network
+##### 2.X degree network {-}
 
 Any ideas about what a 2.5 degree network would look like. To be honest, I don't. Do these networks include all relations between all nodes, or only the relations between the alters in the separate 1.0 degree networks? Perhaps we could call the latter a 2.5 degree network and the former a 2.75 degree network. 
 
-#### **Socionets**  
+#### **Socionets** {-}  
 
 A complete, full, or sociocentric network is a network within a sampled context or foci of which we know all nodes and all connections between nodes. The boundaries of the network are thus a priori defined and the contexts in which nodes are present are the sampled units. 
 We may for example sample a classroom, neighborhood, university or country and collect all relations between all nodes within this context.  
@@ -239,10 +248,14 @@ Enjoy!!
 
 ---   
 
+## References {-}
+
+<div id="refs"></div>
 
 
 
 <!---
+
 To: Update R tutorial 
 
 

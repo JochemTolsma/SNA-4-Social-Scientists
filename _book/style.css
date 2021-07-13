@@ -70,3 +70,10 @@ caption {
   color: black;
   font-weight: bold
 }
+
+.quote {
+  margin-left: 40px;
+  font-size: 14px;
+  background-color: #f5f5f5;
+  font-style: italic
+}
