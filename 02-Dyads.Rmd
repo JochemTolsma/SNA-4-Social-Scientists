@@ -1,4 +1,7 @@
-# Dyads
+# (PART) Part I DYADS {-} 
+
+
+# Theory
 
 <!---we need to include this somewhere as general r script---> 
 
@@ -30,16 +33,16 @@ After having watched the video you should be able to:
 - provide examples of dyads, and the relations between ego and alter.\
 
     
-## Causes of dyads (theory)
+## Causes of dyads
 
-An important research topic within sociology is assortative mating (or intermarriage) (see: [@kalmijn1998]; [@schwartz2013]; [@blossfeld2009]. Scholars in this field try to explain why two people in an exclusive relationship like marriage (or cohabition or best friend) are more similar to one another with respect to defining characteristics (e.g. social class, ethnicity) than two random persons. Assortative mating is a special case of **homophily**. Assortative mating is an important topic within sociology because it is, next to social mobility, an important indicator of the **openness of society**. \  
-Selection and influence processes are important reasons why partners (ego and alter) within a dyad are more similar than two random persons. We may prefer to marry someone who is similar to us on key social dimensions, share our attitudes and opinions and show similar behavior. Once married we may influence each other and assimilate to one another. A third reason why we observe homophily within couples is that partners are likely to have shared and will share the same social environment or context. The social environment pre-marriage may in part determine characteristics of the pool of potential marriage partners (i.e. the choice set). For example when neighbourhoods and schools are segregated along ethnic and educational division lines, the potential marriage partners we meet are likely to be more similar to us than a random person in society at large. The shared social environment post-marriage may exert a similar influence on both partners, consider for example economic recession's effects on different geographic regions. This may impact the job opportunities for both partners similarly (assuming they live in the same house).
+An important research topic within sociology is assortative mating (or intermarriage) (see: [@kalmijn1998; @schwartz2013; @blossfeld2009]). Scholars in this field try to explain why two people in an exclusive relationship like marriage (or cohabition or best friends) are more similar to one another with respect to defining characteristics (e.g. social class, ethnicity) than two random persons. Assortative mating is a special case of **homophily**. Assortative mating is an important topic within sociology because it is, next to social mobility, an important indicator of the **openness of society**.\  
 
-> Please note that causes and consequences of homophily are closely related. A shared social environment and partner preferences may predict (or cause) homophily within dyads. But once a dyad is formed, a consequence of this relationship may be that partnes become more similar over time, as a result of a shared environment, influence and (de)selection processes. If you want to disentangle these processes, it is necessarry to have information on the degree of homophily between potential marriage partners would they be randomly assigned to one another, the degree of homophily at the beginning of the union, the degree of homophily within couples after a specific time period.  
+**Selection** and **influence** processes are important reasons why partners (ego and alter) within a dyad are more similar than two random persons. We may prefer to marry someone who is similar to us on key social dimensions, share our attitudes and opinions and show similar behavior. Once married we may influence each other and assimilate to one another. A third reason why we observe homophily within couples is that partners are likely to have shared and will share the **same social context**. With shared social context we mean the shared social and physical environment and shared life experiences. The environment pre-marriage may in part determine characteristics of the pool of potential marriage partners (i.e. the choice set). For example when neighbourhoods and schools are segregated along ethnic and educational division lines, the potential marriage partners we meet are likely to be more similar to us than a random person in society at large. The shared social environment post-marriage may exert a similar influence on both partners, consider for example economic recession's effects on different geographic regions. This may impact the job opportunities for both partners similarly (assuming they live in the same house). An example of shared life experiences, would be having children. 
+
+> Please note that causes and consequences of homophily are closely related. A shared social context and partner preferences may predict (or cause) homophily within dyads. But once a dyad is formed, a consequence of this relationship may be that partnes become more similar over time, as a result of a shared environment, influence and (de)selection processes. If you want to disentangle these processes, it is necessarry to have information on the degree of homophily between potential marriage partners would they be randomly assigned to one another, the degree of homophily at the beginning of the union, the degree of homophily within couples after a specific time period.  
 
 <!---fill in the blanks--->
 
-### Definitions
 
 > **homophily**
 >
@@ -68,7 +71,7 @@ For slides, see [here](multilevel-framework.pdf).
 
 >
 After having watched the video and after heaving read this page, you should be able to:  
-
+>
 - Understand and summarize the building blocks of the multi-level framework which can be used to explain the emergence of social networks.  
   - macro-level (independent) variable(s)  
     - social conditions  
@@ -88,20 +91,20 @@ After having watched the video and after heaving read this page, you should be a
 
 For more background reading on the multi-level framework (aka "Coleman-boat", "Coleman-bathtub", "micro-macro models") see [@coleman1994] and [@raub2011, especially paragraph 4.4]. 
 
-`r colorize("**The GTF is a framework, is not a theory from which you can deduce hypotheses.**", "red")` Before we can do that, we need to fill in the blanks. That is, we need to make the social contexts (bridge assumptions) explicit. We need a Theory of Action. We need to think of the interdependencies and how they impact the aggregation mechanism.
+`r colorize("**The GTF is a framework, not a theory from which you can deduce hypotheses.**", "red")` Before we can do that, we need to fill in the blanks. That is, we need to make the social contexts (bridge assumptions) explicit. We need a Theory of Action. We need to think of the interdependencies and how they impact the aggregation mechanism.
    
 So, let's get started...
   
-#### Social context effects  
+#### Social context effects {-}  
 
 **Characteristics of the social context** in which people are embedded (the marco- and meso-level) may impact people's preferences and resources.  
-Example 1: The level of economic inequality impacts how financial resources are unequally distributed across educational groups within society.\  
-Hypo1: In countries with more wealth inequality, the difference between educational groups in economic resources is larger.\  
-Example 2: Societal norms may impact your own views and opinions and thus preferences.\ 
+Example 1: The level of economic inequality impacts how financial resources are unequally distributed across educational groups within society.  
+Hypo1: In countries with more wealth inequality, the difference between educational groups in economic resources is larger.  
+Example 2: Societal norms may impact your own views and opinions and thus preferences.  
 Hypo2: In countries with more equal gender norms, men's (women's) preferences for a partner with a higher education are stronger (weaker).
 
-#### The special role of restrictions  
-**Restrictions** or constraints also refer to macro-level characteristics but restrictions do not directly impact preferences and resources (i.e. choice input) but instead influence, or *constrain* how these preferences and resources lead to choice-output; we have a constrained choice model. Restrictions - in studies on the emergence of social networks - impact the *choice-set*, the relevant choice-options that a person has.\  
+#### The special role of restrictions  {-} 
+**Restrictions** or constraints also refer to macro-level characteristics but restrictions do not directly impact preferences and resources (i.e. choice input) but instead influence, or *constrain* how these preferences and resources lead to choice-output; we have a constrained choice model. Restrictions - in studies on the emergence of social networks - impact the *choice-set*, the relevant choice-options that a person has.  
 If I would like to marry a grizzly bear but if there are no grizzly bears around which I can marry, I cannot act upon my preferences (commonly the example is about Eskimos but that may be considered more politically incorrect). This is called a *structural restriction*. A more realistic example would be the distribution of educational degrees within society, which depend on educational expansion and inequality of educational opportunities.  
 Next, to structural restrictions we may also have *normative restrictions*, the formal and informal rules of institutions. A formal normative restriction would be a *law* that forbids me to marry a grizzly bear. An informal normative restriction would be a *social norm*, e.g. my parents who disapprove of my preference to marry a grizzly bear.  
 Please note that social norms may thus impact my preferences directly (a social context effect) and indirectly (act as a restriction). 
@@ -111,7 +114,7 @@ Example1: Preferences for a partner with a similar educational level are more li
 `r colorize("In the literature on resources you will see that restrictions are also commonly understood as the absence of resources. I am a stubborn scientists and DO NOT FOLLOW THIS TERMINOLOGY and neither should you.", "red")` 
 
 
-#### Theory of Action  
+#### Theory of Action  {-} 
 
 Persons have **preferences** for a partner with a specific educational-level. Commonly, people prefer higher-educated partners (because of instrumental motives) and people have homomphilic preferences. Preferences may differ between persons with different educational levels and between men and women.  
 Persons also have **resources** (i.e. economic, cultural, cognitive, social resources) that may affect the search behavior of persons.\ 
@@ -123,7 +126,7 @@ Concretely, if we want to explain the degree of intermarriage within society, we
 
 >Our Theory of Action assumes a cost benefit evaluation of some sort, in line with Rational Action Theory. However, social scientists' view on human's rationality is different than the view of classical economists. Social scientists speak of restricted or bounded rationality (i.e. a weak rationality assumption); people are not always able to have or process all relevant information to make accurate and correct cost-benefit evaluations. We make questimates about the costs involved in our decision and about the likelihood that our behavior will yield the desired goal. Within sociology, actor's goals are not only economic, monatory goals. Actor's goals can be physical and social goals (i.e. health, happiness, avoidance of downwards mobility). For a nice paper on Rational Action Theory for Sociologists, see [@goldthorpe1998].     
 
-## Transformation rules  
+#### Transformation rules {-}  
 
 We now almost have all ingredients to explain (or predict) the degree of intermarriage in society. We 'only' need the aggregation mechanisms: the micro-to-macro link. We thereby need to know the macro-level (intended and unintended) consequences of individual actions. That is, we need to know how the marriage market functions.\   
 
@@ -152,15 +155,15 @@ Given the market model above, can you predict who will marry whom?
 
 Well, I can not. You may be a mathematical wizard and able to find a closed solution by some algebra. Another option could be to to make a simplified model and try to simulate the macro-level outcome based purely on our micro-level theory of action and the rules of the marriage market. We call this Agent-Based-Modelling (see <!---and some nice refs--->). I programmed a simply ABM based on the above. There are some parameters in the model which you can change. 
 
-Suppose...\ 
+Suppose...   
 
-1. **%_men=50**: We have an equal gender distribution in society (50% men, 50% women; range: 1-99).\  
-2. **_men_EducHigh=50**: 50% of our male population is higher educated and 50% is lower educated (range: 1-99).\  
-3. **_women_EducHigh=50**: 50% of our female population is higher educated and 50% is lower educated (range: 1-99).\  
-4. **pref_men_EH=0**: Higher educated men do not have any preference with respect to the educational level of their partner. (range: 0-10)\
-4. **pref_men_EL=0**: Lower educated men do not have any preference with respect to the educational level of their partner. (range: 0-10)\
-4. **pref_women_EH=0**: Higher educated women do not have any preference with respect to the educational level of their partner. (range: 0-10)\
-4. **pref_women_EL=0**: Lower educated women do not have any preference with respect to the educational level of their partner. (range: 0-10)\
+1. **%_men=50**:  We have an equal gender distribution in society (50% men, 50% women; range: 1-99).    
+2. **_men_EducHigh=50**: 50% of our male population is higher educated and 50% is lower educated (range: 1-99).  
+3. **_women_EducHigh=50**: 50% of our female population is higher educated and 50% is lower educated (range: 1-99).  
+4. **pref_men_EH=0**: Higher educated men do not have any preference with respect to the educational level of their partner. (range: 0-10)
+4. **pref_men_EL=0**: Lower educated men do not have any preference with respect to the educational level of their partner. (range: 0-10)
+4. **pref_women_EH=0**: Higher educated women do not have any preference with respect to the educational level of their partner. (range: 0-10)
+4. **pref_women_EL=0**: Lower educated women do not have any preference with respect to the educational level of their partner. (range: 0-10)
 
 Can you make a guess about the resulting degree of eductional homogamy?? Press update to see if you were correct. 
 Play around with (agent-based simulation) model below.  
@@ -170,7 +173,7 @@ Play around with (agent-based simulation) model below.
 Go to app [here](https://jtolsma.shinyapps.io/marriagemarket/)
 
 
-## Causes of dyads (methods)
+### Causes of dyads (methods)
 
 When testing hypotheses on assortative mating two methodological approaches can be used. We may predict the **frequency of specific dyads** in our population with loglinear models and the data we use is commonly structured in a table like the one below. 
 
@@ -203,20 +206,119 @@ Which methodology is preferred should depend on your hypotheses and on the data 
 
 ## Consequences of dyads (theory)
 
-Assortative mating has consequences for both partners. Just to mention a few: relationship quality; time spend together on culture consumption; divorce rates; household income.
-In [this section] I will explain a general theoretical framework for explaining how (1) dyad characteristics impact partner characteristics (e.g. number of children on working hour preferences); (2) how characteristics/behavior of one partner may impact characteristics/behavior of the other partner (e.g. my working hours may impact your working hours) and subsequently (3) how the characteristics/behaviors of both partners impact dyad-characteristics (e.g. our working hours on household income). 
+Assortative mating, or more generally mating, has consequences for both partners. Just to mention a few: relationship quality; time spend together on culture consumption; divorce rates; number of children; household income; working hours. I hope you see that these concepts all refer to the dyad-level but that you may group these concepts by how they are measured, namely at the dyad-level itself (yes/no divorce, number of children) or at the ego/alter-level and aggregated to the dyad-level (e.g. total working hours of the couple is the sum of the working hours of both individual partners, culture consumption is the consumed culture of both partners (alone and together)). But with both type of concepts, it should be clear that they are the consequence of interdependent actions of both partners (e.g. commonly both partners decide on whether to have and make children). 
 
+Thus, once again, homophily within couples may be the result of: 
+
+- **selection**  
+- **shared context** 
+- **(dyadic) influence**  
+
+But what do we mean with 'influence'? Let's read the following quote. 
+
+<p class= "quote"> 
+People influence one another, and as the importance and immediacy of a group or individual increases, this influence becomes stronger (Latané, 1981). Forces of influence are especially strong within romantic relationships because these relationships are important, are predicated on mutual acceptance, and involve frequent exposure to the habits of one's partner." @bartel2017romantic  
+</p> 
+
+It would say this a quite naive conceptualisation of **influence**. It is implicitly assumed that partners will match their opinions/behaviors. Thus influence here is convergence. But why should partners' characteristics converge over time, why would homophily increase? And, it still does not become clear what the 'forces of influence' are. 
+
+Let us make a distinction between:  
+
+  - positive influence: alters become more similar to each other over time  
+  - negative influence: alters become more distinct to each other over time 
+  - positive feedback influence: characteristics develop in same direction over time  
+  
+Now suppose these influence processes are the only reasons why alters change (i.e. the *ceteris paribus* condition). How could dyad similarity develop over time. See below: 
+
+```{r, echo=FALSE, fig.cap="Positive influence"}
+library(ggplot2)
+time <- rep(c(1:10),2)
+
+couple <- rep(c("man", "woman"), each=10)
+
+opinion1 <- 4 + .3*c(1:10)
+opinion2 <- 14 + -.3*c(1:10)
+opinion <- c(opinion1, opinion2)
+
+df <- data.frame(time,opinion, couple)
+
+ggplot(df, aes(x = time, y = opinion, colour = couple)) +
+  geom_line(size=1.5) + 
+  geom_point(size=4) + 
+  ylim(0,30) 
+
+
+```
+
+```{r, echo=FALSE, fig.cap="Negative influence"}
+library(ggplot2)
+time <- rep(c(1:10),2)
+
+couple <- rep(c("man", "woman"), each=10)
+
+opinion1 <- 8 + -.8*c(1:10)
+opinion2 <- 14 + .8*c(1:10)
+opinion <- c(opinion1, opinion2)
+
+df <- data.frame(time,opinion, couple)
+
+ggplot(df, aes(x = time, y = opinion, colour = couple)) +
+  geom_line(size=1.5) + 
+  geom_point(size=4) + 
+  ylim(0,30) 
+
+
+```
+
+```{r, echo=FALSE, fig.cap="Positive feedback influence"}
+library(ggplot2)
+time <- rep(c(1:10),2)
+couple <- rep(c("man", "woman"), each=10)
+opinion1 <- 4 + .5*c(1:10)
+opinion2 <- 14 + .5*c(1:10)
+opinion <- c(opinion1, opinion2)
+df <- data.frame(time,opinion, couple)
+
+ggplot(df, aes(x = time, y = opinion, colour = couple)) +
+  geom_line(size=1.5) + 
+  geom_point(size=4) + 
+  ylim(0,30) 
+
+
+```
+
+
+There are several 'forces of positive influence mechanisms': 
+
+  - information: We may exchange new effective information and arguments with our alters.
+  - persuasion (and dissuasion): we may convince, force or pressure our alters to become similar to us.  
+  - contagion: this can be taken quite literally, like how the flu spreads but also more metaphorically like how (health) behaviors like drinking, smoking, sporting spread (because our alters increase the opportunities for these behaviors).   
+  - assimilation: we may mimic our alters because of a psychological need for similarity, because we think this will be good for our identity / social status, etc.    
+
+`r colorize("The literature is not very clear and consistent about different type of incluence processes and which influence mechanisms are at play. You will thus also see that authors use socialisation when talking about (positive) influence processes. ", "red")` 
+
+There are several 'forces of negative influence mechanisms': 
+
+  - information: We may exchange new counter-effective information and arguments with our alters. This would especially become relevant whey we don't like or belief the source of information and arguments.  
+  - persuasion (and dissuasion): we may convince, force or pressure our alters to become dissimilar to us. 
+  - polarisation: we may distance ourselves from our alters because of a psychological need for distinctiveness. This would especially become relevant when we are already distinct on key social dimensions.  
+
+There are several 'forces of positive feedback influence mechanisms': 
+
+  - confirmation: information and arguments are repeated and existing opinions and behaviors of both alters reinforced.  
+  - competition: we may have a psychological need to be better/higher/more than our alter. 
+  
+
+The crucial difference between the positive feedback mechanisms and the positive influence mechanisms are that as a result of the former homophily between the alters does not necessarily change. Note that positive feedback could entail increasing and decreasing the opinion or behavior.    
+
+  
 ## Consequences of dyads (methods)
-The method used to explain consequences of dyads depends on our Unit of Analysis. If it is the dyad itself (e.g. relationship quality) methods are relatively straightforward, because we may assume that the observations at the dyad-level are independent. If, on the other hand, the unit of analysis are the partners themselves that make up the dyad, we need to acknowledge that the observations between the partners of the same couple are not independent. In part exactly because partners select and influence each other. One solution could be to simply randomly select one partner of each couple or, if partners can be clearly distinguised - for example men and women in heterosexual couples - the different partners could be analyzed seperately. A disadvantage of the latter two approaches is, however, that the covariance between the partners cannot be explained anymore, although this may exactly be the focus of our research questions.  A more elegant solution, is to take the interdependencies into account and model these explictly. This can be done within a multi-level framework and within a structural-equation modelling framework. 
+The method used to explain consequences of dyads depends on our Unit of Analysis. If it is the dyad itself (e.g. mean relationship quality) methods are relatively straightforward, because we may assume that the observations at the dyad-level are independent. If, on the other hand, the unit of analysis are the partners themselves that make up the dyad, we need to acknowledge that the observations between the partners of the same couple are not independent. In part exactly because partners select and influence each other and share a social context. One solution could be to simply randomly select one partner of each couple or, if partners can be clearly distinguished - for example men and women in heterosexual couples - the different partners could be analyzed separately. A disadvantage of the latter two approaches is, however, that the covariance between the partners cannot be explained anymore, although this may exactly be the focus of our research questions.  A more elegant solution, is to take the interdependencies into account and model these explicitly. This can be done within a multi-level framework and within a structural-equation modelling framework. 
 
-however, would be  In [this section](https://www.jochemtolsma.nl/courses/dyads/dyads4/) I will demonstrate how to use actor-partner interdependence models for these situations.
-
-
-
-## Literature
+When we discussed the methods to analyze causes of homogamy, we were interested in homophily within couples at one point in time and focus on selection as explanans. Now, when we discuss the consequences of dyads, we are interested in explaining trends in homophily within couples and focus on shared context and influence processes as explanans. 
 
 
-
+<!--
 **Part 2: Consequences**  
 
 Cook, W. L., & Kenny, D. A. (2005). The actor–partner interdependence model: A model of bidirectional effects in developmental studies. *International Journal of Behavioral Development*, 29(2), 101-109.  
@@ -229,6 +331,46 @@ Recommended:
 Verbakel, E., & De Graaf, P. M. (2009). Partner effects on labour market participation and job level: opposing mechanisms. *Work, Employment & Society*, 23(4), 635-654.  
 
 Keizer, R., Schenk, N., 2012. Becoming a parent and relationship satisfaction: A longitudinal dyadic perspective. *Journal of Marriage and Family*, 74, 759-773.  
+
+-->  
+
+
+---  
+
+
+# Methods  
+
+## Before you start  
+
+## Causes  
+
+### Odds Ratio  
+
+### Loglinear Model  
+
+### Conditional multinomial logit model  
+
+## Consequences  
+
+### APIM  
+
+### CLPM  
+
+### RI-CLPM  
+
+
+
+---  
+
+# Data  
+
+## Sampling  
+
+## Ethical considerations  
+
+## Measurement  
+
+---  
 
 
 

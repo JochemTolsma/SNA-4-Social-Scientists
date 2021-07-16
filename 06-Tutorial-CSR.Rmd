@@ -971,4 +971,42 @@ summary(pool_model_imp)
 
 **Thank you for reading this tutorial!!**
 
-# References
+---  
+
+
+  
+
+# Covariance and Correlation {#variance}
+
+Social scientists try to explain variance and covariance. It is therefore a good idea to learn by heart the formula for variance and covariance. The sample variance of a random continuous variable X, VAR(X), is as follows: 
+
+$$VAR(X)=s_{xx}^2 = s_x^2= \frac{\Sigma^n_{i=1}(X_i-\overline{X})(X_i-\overline{X})}{n-1}= \frac{\Sigma^n_{i=1}(X_i-\overline{X})^2}{n-1}$$  
+The sample standard deviation is given by:  
+
+$$STD(X)=\sqrt{s_x^2}=s_x$$   
+
+The sample covariance of two random continuous variables X and Y, COV(X,Y) is as follows:
+
+$$COV(X,Y)=s_{xy}^2 = \frac{\Sigma^n_{i=1}(X_i-\overline{X})(Y_i-\overline{Y})}{n-1}$$  
+
+The sample correlation coefficient between two random continuous variables X and Y, COR(X,Y), is a covariance on standardized variables ($z_x=X_{sd}=(X-\overline{X})/s_x$) and hence:  
+
+$$COR(X,Y)=r_{xy} = \frac{s_{xy}^2}{s_x s_y}= \frac{\Sigma^n_i(X_i-\overline{X})(Y_i-\overline{Y})}{\sqrt{\Sigma^n_i(X_i-\overline{X})^2}\sqrt{\Sigma^n_i(Y_i-\overline{Y})^2}}$$
+Just to be complete. The population equivalent of the covariance: 
+
+$$\sigma _{xy}^2 = \frac{\Sigma^n_i(X_i - \mu_x)(Y_i-\mu_y)}{N},$$
+with $\mu$ the population mean. 
+And the correlation within the population is: 
+
+$$\rho_{xy} = \frac{\sigma_{xy}^2}{\sigma_x \sigma_y}$$
+
+---  
+
+# References {-}
+
+<div id="refs"></div>
+
+---  
+
+
+
