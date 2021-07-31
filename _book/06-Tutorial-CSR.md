@@ -27,14 +27,14 @@
 ```
 
 ```
-## -- Attaching packages ----------------------------------------------------------- tidyverse 1.3.1 --
+## -- Attaching packages ----------------------------------------------------------- tidyverse 1.3.0 --
 ```
 
 ```
-## v ggplot2 3.3.3     v purrr   0.3.4
-## v tibble  3.1.0     v dplyr   1.0.5
-## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   1.4.0     v forcats 0.5.1
+## v ggplot2 3.3.2     v purrr   0.3.4
+## v tibble  3.0.4     v dplyr   1.0.2
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.0
 ```
 
 ```
@@ -64,7 +64,11 @@
 ##     cbind, rbind
 ```
 
-Latest Version: 16-07-2021
+```
+## Loading required package: labelled
+```
+
+Latest Version: 31-07-2021
 
 Please email any comments to: [j.tolsma\@ru.nl](mailto:j.tolsma@ru.nl){.email}
 

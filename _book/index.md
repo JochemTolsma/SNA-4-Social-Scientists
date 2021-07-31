@@ -2,7 +2,7 @@
 title: "SNASS"
 subtitle: "Social Network Analysis for Social Scientists"
 author: ["Jochem Tolsma", "Bas hofstra"]
-date: "2021-07-16"
+date: "2021-07-31"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -10,6 +10,8 @@ biblio-style: apalike
 link-citations: yes
 description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
 ---
+
+
 
 
 
@@ -25,8 +27,7 @@ The **bookdown** package can be installed from CRAN or Github:
 
 ```r
 install.packages("bookdown")
-# or the development version
-# devtools::install_github("rstudio/bookdown")
+# or the development version devtools::install_github('rstudio/bookdown')
 ```
 
 Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.

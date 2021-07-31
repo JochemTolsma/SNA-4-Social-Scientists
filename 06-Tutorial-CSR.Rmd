@@ -10,6 +10,7 @@ require(xfun)
 require(foreign)
 require(tidyverse)
 require(mice)
+require(labelled)
 ```
 
 Latest Version: `r format(Sys.Date(), "%d-%m-%Y")`
