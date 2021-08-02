@@ -68,7 +68,7 @@
 ## Loading required package: labelled
 ```
 
-Latest Version: 31-07-2021
+Latest Version: 02-08-2021
 
 Please email any comments to: [j.tolsma\@ru.nl](mailto:j.tolsma@ru.nl){.email}
 

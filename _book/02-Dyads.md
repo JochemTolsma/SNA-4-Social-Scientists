@@ -32,7 +32,7 @@ After having watched the video you should be able to:
 
 An important research topic within sociology is assortative mating (or intermarriage) (see: [@kalmijn1998; @schwartz2013; @blossfeld2009]). Scholars in this field try to explain why two people in an exclusive relationship like marriage (or cohabition or best friends) are more similar to one another with respect to defining characteristics (e.g. social class, ethnicity) than two random persons. Assortative mating is a special case of **homophily**. Assortative mating is an important topic within sociology because it is, next to social mobility, an important indicator of the **openness of society**.\  
 
-**Selection** and **influence** processes are important reasons why partners (ego and alter) within a dyad are more similar than two random persons. We may prefer to marry someone who is similar to us on key social dimensions, share our attitudes and opinions and show similar behavior. Once married we may influence each other and assimilate to one another. A third reason why we observe homophily within couples is that partners are likely to have shared and will share the **same social context**. With shared social context we mean the shared social and physical environment and shared life experiences. The environment pre-marriage may in part determine characteristics of the pool of potential marriage partners (i.e. the choice set). For example when neighbourhoods and schools are segregated along ethnic and educational division lines, the potential marriage partners we meet are likely to be more similar to us than a random person in society at large. The shared social environment post-marriage may exert a similar influence on both partners, consider for example economic recession's effects on different geographic regions. This may impact the job opportunities for both partners similarly (assuming they live in the same house). An example of shared life experiences, would be having children. 
+**Selection** and **influence** processes are important reasons why partners (ego and alter) within a dyad are more similar than two random persons. We may prefer to marry someone who is similar to us on key social dimensions, share our attitudes and opinions and show similar behavior. Once married we may influence each other and assimilate to one another. A third reason why we observe homophily within couples is that partners are likely to have shared and will share the **same social context**. With shared social context we mean the shared social and physical environment and shared life experiences. The environment pre-marriage may in part determine characteristics of the pool of potential marriage partners (i.e. the choice set). For example when neighborhoods and schools are segregated along ethnic and educational division lines, the potential marriage partners we meet are likely to be more similar to us than a random person in society at large. The shared social environment post-marriage may exert a similar influence on both partners, consider for example economic recession's effects on different geographic regions. This may impact the job opportunities for both partners similarly (assuming they live in the same house). An example of shared life experiences, would be having children. 
 
 > Please note that causes and consequences of homophily are closely related. A shared social context and partner preferences may predict (or cause) homophily within dyads. But once a dyad is formed, a consequence of this relationship may be that partnes become more similar over time, as a result of a shared environment, influence and (de)selection processes. If you want to disentangle these processes, it is necessarry to have information on the degree of homophily between potential marriage partners would they be randomly assigned to one another, the degree of homophily at the beginning of the union, the degree of homophily within couples after a specific time period.  
 
@@ -56,7 +56,7 @@ You will also come across the terms:
 
 <!--- do we want to move the GTF to the intro? ---> 
 
-### General Theoretical Framework
+### General Theoretical Framework {#GTF}
 
 In this section, I would like to introduce a General Theoretical Framework (or micro-macro model) which can be used to explain more or less any social phenomena you are interested in. The GTF can thus also be used to explain the emergence of social networks, and thus also to explain the emergence of dyads, and thus also to explain educational intermarriage. 
 
@@ -150,7 +150,7 @@ Given the market model above, can you predict who will marry whom?
 
 Well, I can not. You may be a mathematical wizard and able to find a closed solution by some algebra. Another option could be to to make a simplified model and try to simulate the macro-level outcome based purely on our micro-level theory of action and the rules of the marriage market. We call this Agent-Based-Modelling (see <!---and some nice refs--->). I programmed a simply ABM based on the above. There are some parameters in the model which you can change. 
 
-Suppose...   
+Suppose...  
 
 1. **%_men=50**:  We have an equal gender distribution in society (50% men, 50% women; range: 1-99).    
 2. **_men_EducHigh=50**: 50% of our male population is higher educated and 50% is lower educated (range: 1-99).  
@@ -170,36 +170,224 @@ Go to app [here](https://jtolsma.shinyapps.io/marriagemarket/)
 
 ### Causes of dyads (methods)
 
-When testing hypotheses on assortative mating two methodological approaches can be used. We may predict the **frequency of specific dyads** in our population with loglinear models and the data we use is commonly structured in a table like the one below. 
+<!---see!!! 
+https://link.springer.com/chapter/10.1007/978-3-319-93227-9_13
 
-**Table.** Dyad frequencies 
+https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
+---> 
 
-|  | Wife educ-high| Wife educ-low 
-| ----------- | ----------- | ----------- |
-| **Husband educ-high** | 350 | 150 |
-| **Husband educ-low** | 200 | 400 |
+When testing hypotheses on assortative mating many methodological approaches can be used. We may predict the **frequency of specific dyads** in our population with loglinear models and the data we use is commonly structured in a square table like the one below. Loglinear models are, in essence, nothing more than a nice, parsimonious and fancy way to calculate [odds ratio's](#OR). If we have a small, well filled table of just a few attributes, [loglinear models](#LLM) are considered to be the golden standard. 
 
-Another approach is to take the **characteristics of the dyad** (e.g. endogamy versus mixed) as the dependent variable. This dependent variable can than be explained by applying (conditional) (multinomial) logistic regression techniques. In this case, the data is commonly structured in long format and looks something like the table below. 
+<table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>(\#tab:tabledyads)Assortative Mating (dyad frequency)</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;font-weight: bold;">   </th>
+   <th style="text-align:center;font-weight: bold;"> Wife educ-high </th>
+   <th style="text-align:center;font-weight: bold;"> Wife educ-low </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Husband educ-high </td>
+   <td style="text-align:center;"> 350 </td>
+   <td style="text-align:center;"> 150 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;"> Husband educ-low </td>
+   <td style="text-align:center;"> 200 </td>
+   <td style="text-align:center;"> 400 </td>
+  </tr>
+</tbody>
+</table>
 
-**Table.** Dyad characteristics 
-
-|Dyad_id  | Wife educ| Husband educ | dyad_educ   
-| ----------- | ----------- | ----------- | ----------- | 
-| 1 | high | low | high-low |  
-| 2 | high | low | high-low |  
-| 3 | low | low | low-low |  
-| 4 | low | high | low-high |  
-| 5 | high | low | high-low |  
-| ... | ... | ... | ... |  
 
 
+Another approach is to take the **characteristics of the dyad** (e.g. 1 = intermarriage and 0 = no intermarriage) as the dependent variable. This dependent variable can than be explained by applying (conditional) (multinomial) [logistic regression](#LM) techniques. In this case, the data is commonly structured in long format and looks something like the table below. 
 
-Which methodology is preferred should depend on your hypotheses and on the data you have to your availability. Since I assume most readers are raised within the regression tradition, in [this section] we will practice with estimating conditional multinomial logistic regression models. 
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; "><table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>(\#tab:tabledyads2)Assortative Mating (dyad characteristic)</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> dyad_id </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> wife educ </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> wife age </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> husband educ </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> husband age </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> intermarriage </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 30.63 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 26.91 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 24.79 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 34.61 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 19.00 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 25.92 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 29.31 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 39.08 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 25.32 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 30.11 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 6 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 23.86 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 19.01 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 7 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 36.36 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 35.34 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 8 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 35.58 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 22.64 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 9 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 24.24 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 36.36 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 10 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 20.27 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 20.79 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 11 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 24.08 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 34.20 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 12 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 44.44 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 23.97 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 13 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 33.40 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 25.77 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 14 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 27.86 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 35.55 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 15 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 21.97 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 19.44 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 16 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 38.16 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 18.42 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 17 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 44.85 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 37.86 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 18 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 30.91 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 23.21 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 19 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 24.30 </td>
+   <td style="text-align:center;"> HIGH </td>
+   <td style="text-align:center;"> 31.53 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 20 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 36.19 </td>
+   <td style="text-align:center;"> LOW </td>
+   <td style="text-align:center;"> 21.50 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+</tbody>
+</table></div>
+
+
+Which methodology is preferred should depend on your hypotheses and on the data you have to your availability. 
 
 > Please be aware that in both approaches we normally do not have information on (the frequency or characteristics of) dyads in which there is no relation between ego and alter. Thus, you may have information on characteristics of me and my wife but you do not have information on all other women (or men) I could have married but didn't. I fished my wife out of the sea but we don't know what the other fish looked like. (Luckily my wife is no scientist and won't read this clarification.)
 
 
-## Consequences of dyads (theory)
+## Consequences of dyads (theory) {#dt}
 
 Assortative mating, or more generally mating, has consequences for both partners. Just to mention a few: relationship quality; time spend together on culture consumption; divorce rates; number of children; household income; working hours. I hope you see that these concepts all refer to the dyad-level but that you may group these concepts by how they are measured, namely at the dyad-level itself (yes/no divorce, number of children) or at the ego/alter-level and aggregated to the dyad-level (e.g. total working hours of the couple is the sum of the working hours of both individual partners, culture consumption is the consumed culture of both partners (alone and together)). But with both type of concepts, it should be clear that they are the consequence of interdependent actions of both partners (e.g. commonly both partners decide on whether to have and make children). 
 
@@ -219,47 +407,56 @@ It would say this a quite naive conceptualisation of **influence**. It is implic
 
 Let us make a distinction between:  
 
-  - positive influence: alters become more similar to each other over time  
-  - negative influence: alters become more distinct to each other over time 
-  - positive feedback influence: characteristics develop in same direction over time  
+- positive influence: alters become more similar to each other over time  
+- negative influence: alters become more distinct to each other over time  
+- positive feedback influence: characteristics develop in same direction over time  
   
-Now suppose these influence processes are the only reasons why alters change (i.e. the *ceteris paribus* condition). How could dyad similarity develop over time. See below: 
+Now suppose these influence processes are the only reasons why alters change (i.e. the *ceteris paribus* condition). How could dyad similarity develop over time. 
 
 <div class="figure">
-<img src="02-Dyads_files/figure-html/unnamed-chunk-1-1.png" alt="Positive influence" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-1)Positive influence</p>
+<img src="02-Dyads_files/figure-html/pi-1.png" alt="Positive influence" width="672" />
+<p class="caption">(\#fig:pi)Positive influence</p>
 </div>
 
-<div class="figure">
-<img src="02-Dyads_files/figure-html/unnamed-chunk-2-1.png" alt="Negative influence" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-2)Negative influence</p>
-</div>
+With [positive influence]\@ref(fig:pi) actors will become more similar to each other over time. 
 
 <div class="figure">
-<img src="02-Dyads_files/figure-html/unnamed-chunk-3-1.png" alt="Positive feedback influence" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-3)Positive feedback influence</p>
+<img src="02-Dyads_files/figure-html/ni-1.png" alt="Negative influence" width="672" />
+<p class="caption">(\#fig:ni)Negative influence</p>
 </div>
+
+With [negative influence]\@ref(fig:ni) actors will become more distinct to each other over time. 
+
+
+<div class="figure">
+<img src="02-Dyads_files/figure-html/pfi-1.png" alt="Positive feedback influence" width="672" />
+<p class="caption">(\#fig:pfi)Positive feedback influence</p>
+</div>
+
+With [positive feedback]\@ref(fig:pfi) actors will develop in the same direction. 
+Naturally, we need to be aware that other mechanisms may also explain these trends. For example, with respect [the figure above]\@ref(fig:pfi), a shared environment may also explain a shared trend. More concretely, when a couple gets children, both spouses may become happier over time. 
 
 
 There are several 'forces of positive influence mechanisms': 
 
-  - information: We may exchange new effective information and arguments with our alters.
-  - persuasion (and dissuasion): we may convince, force or pressure our alters to become similar to us.  
-  - contagion: this can be taken quite literally, like how the flu spreads but also more metaphorically like how (health) behaviors like drinking, smoking, sporting spread (because our alters increase the opportunities for these behaviors).   
-  - assimilation: we may mimic our alters because of a psychological need for similarity, because we think this will be good for our identity / social status, etc.    
+- information: We may exchange new effective information and arguments with our alters.  
+- persuasion (and dissuasion): we may convince, force or pressure our alters to become similar to us.  
+- contagion: this can be taken quite literally, like how the flu spreads but also more metaphorically like how (health) behaviors like drinking, smoking, sporting spread (because our alters increase the opportunities for these behaviors).  
+- assimilation: we may mimic our alters because of a psychological need for similarity, because we think this will be good for our identity / social status, etc.    
 
 <span style='color: red;'>The literature is not very clear and consistent about different type of incluence processes and which influence mechanisms are at play. You will thus also see that authors use socialisation when talking about (positive) influence processes. </span> 
 
 There are several 'forces of negative influence mechanisms': 
 
-  - information: We may exchange new counter-effective information and arguments with our alters. This would especially become relevant whey we don't like or belief the source of information and arguments.  
-  - persuasion (and dissuasion): we may convince, force or pressure our alters to become dissimilar to us. 
-  - polarisation: we may distance ourselves from our alters because of a psychological need for distinctiveness. This would especially become relevant when we are already distinct on key social dimensions.  
+- information: We may exchange new counter-effective information and arguments with our alters. This would especially become relevant whey we don't like or belief the source of information and arguments.  
+- persuasion (and dissuasion): we may convince, force or pressure our alters to become dissimilar to us.  
+- polarisation: we may distance ourselves from our alters because of a psychological need for distinctiveness. This would especially become relevant when we are already distinct on key social dimensions.  
 
 There are several 'forces of positive feedback influence mechanisms': 
 
-  - confirmation: information and arguments are repeated and existing opinions and behaviors of both alters reinforced.  
-  - competition: we may have a psychological need to be better/higher/more than our alter. 
+- confirmation: information and arguments are repeated and existing opinions and behaviors of both alters reinforced.  
+- competition: we may have a psychological need to be better/higher/more than our alter.  
+
   
 
 The crucial difference between the positive feedback mechanisms and the positive influence mechanisms are that as a result of the former homophily between the alters does not necessarily change. Note that positive feedback could entail increasing and decreasing the opinion or behavior.    
@@ -296,11 +493,11 @@ Keizer, R., Schenk, N., 2012. Becoming a parent and relationship satisfaction: A
 
 ## Causes  
 
-### Odds Ratio  
+### Odds Ratio {#OR}  
 
-### Loglinear Model  
+### Loglinear Model {#LLM}  
 
-### Conditional multinomial logit model  
+### Conditional multinomial logit model {#LM}  
 
 ## Consequences  {.tabset .tabset-fade}  
 
@@ -355,7 +552,10 @@ Let us briefly discuss these three common causes and demonstrate how the resulti
 
 We will start with a fictive population of unmarried persons. Some political opinion is distributed as follows within society. 
 
-<img src="02-Dyads_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<div class="figure">
+<img src="02-Dyads_files/figure-html/unnamed-chunk-2-1.png" alt="Distribution of opinions within population" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-2)Distribution of opinions within population</p>
+</div>
 But these individuals want to get married. Who do they pick. Well, we discussed the marriage market here. 
 <!--- insert link to marriage market ---> 
 
@@ -363,7 +563,7 @@ Marriage Market: Constrained Decisions with whom to marry (or cohabit).
 
 Let us assume that the opinion did not yet change but that bachelors prefer, to some extent, a partner with a similar political opinion. What does the political opinion distribution look like for the mean political opinion of the couples. 
 
-<img src="02-Dyads_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="02-Dyads_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 Well, the preference for a partner with similar political opinions was definitely not strong enough to substantially change the opinion distribution.[^sim]
 
@@ -391,12 +591,12 @@ Some examples:
 
 Suppose these life events are more likely for some couples than others. More specifically, assume that the occurrence of life events is associated with the mean political opinion of the couple (at time T). The life event consequently influences the mean political opinion of the couple (at time T+1). 
 
-<img src="02-Dyads_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="02-Dyads_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
 We now clearly observe polarization between couples. 
 However, if we go back to the individual-level again, we do not (clearly) observe polarization between individuals. 
 
-<img src="02-Dyads_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="02-Dyads_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 In order to also observe (pronounced) polarization between individuals, there needs to be some influence between partners
 
@@ -415,7 +615,7 @@ Why would partners influence each other? Well, we discussed influence here. <!--
   - need for similarity  
 
 
-<img src="02-Dyads_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="02-Dyads_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 ---   
 
@@ -429,17 +629,17 @@ Or phrased otherwise, what could dyadic influence look like?
 - Convergence (assimilation)   
 - Mimic change after 'shocks' 
 
+<img src="02-Dyads_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+
+<img src="02-Dyads_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+
+<img src="02-Dyads_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+
 <img src="02-Dyads_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 <img src="02-Dyads_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 <img src="02-Dyads_files/figure-html/unnamed-chunk-12-1.png" width="672" />
-
-<img src="02-Dyads_files/figure-html/unnamed-chunk-13-1.png" width="672" />
-
-<img src="02-Dyads_files/figure-html/unnamed-chunk-14-1.png" width="672" />
-
-<img src="02-Dyads_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 
 
@@ -771,7 +971,7 @@ Controlling for education.
 
 <div class="figure">
 <img src="hsem_a_1784738_f0001_oc.jpg" alt="RI-CLPM" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-18)RI-CLPM</p>
+<p class="caption">(\#fig:unnamed-chunk-15)RI-CLPM</p>
 </div>
   
 
@@ -5860,7 +6060,7 @@ hypo1
 ```
 
 <table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-27)Results Hypo1</caption>
+<caption>(\#tab:unnamed-chunk-24)Results Hypo1</caption>
  <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
@@ -11290,7 +11490,7 @@ hypo2
 ```
 
 <table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-36)Results Hypo2</caption>
+<caption>(\#tab:unnamed-chunk-33)Results Hypo2</caption>
  <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
