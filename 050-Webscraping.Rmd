@@ -26,7 +26,7 @@ require(rvest)
 require(devtools)
 #devtools::install_github("jkeirstead/scholar")
 require(scholar)
-setwd("/Users/u351132/repos/SNA-4-Social-Scientists-main/")
+setwd("/Users/u351132/repos/SNA-4-Social-Scientists/")
 ```
 
 
