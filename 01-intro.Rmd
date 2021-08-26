@@ -4,24 +4,16 @@ subtitle: "Social Network Analysis for Social Scientists"
 ---  
 
 
-# Introduction {#intro}
+```{r globalsettings, echo=FALSE, warning=FALSE}
+library(knitr)
+opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE, warning = FALSE, message = FALSE,comment = "#>", cache=TRUE)
+options(width = 100)
+source("util.r")
 
-
-
-
-  
-
-
-```{r colorize, echo=FALSE}
-colorize <- function(x, color) {
-  if (knitr::is_latex_output()) {
-    sprintf("\\textcolor{%s}{%s}", color, x)
-  } else if (knitr::is_html_output()) {
-    sprintf("<span style='color: %s;'>%s</span>", color,
-      x)
-  } else x
-}
 ```
+
+
+# Introduction {#intro}
 
 ## Overview
 

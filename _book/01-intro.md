@@ -4,15 +4,10 @@ subtitle: "Social Network Analysis for Social Scientists"
 ---  
 
 
+
+
+
 # Introduction {#intro}
-
-
-
-
-  
-
-
-
 
 ## Overview
 
@@ -263,8 +258,8 @@ Figures and tables with captions will be placed in `figure` and `table` environm
 
 
 ```r
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
+par(mar = c(4, 4, 0.1, 0.1))
+plot(pressure, type = "b", pch = 19)
 ```
 
 <div class="figure" style="text-align: center">

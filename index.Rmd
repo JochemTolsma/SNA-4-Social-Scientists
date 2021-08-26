@@ -23,8 +23,12 @@ knitr::write_bib(c(
 library(knitr)
 opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE, warning = FALSE, message = FALSE,comment = "#>", cache=TRUE)
 options(width = 100)
+source("util.r")
 
 ```
+
+
+
 
 # About the authors {-}
 

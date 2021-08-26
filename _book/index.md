@@ -2,7 +2,7 @@
 title: "SNASS"
 subtitle: "Social Network Analysis for Social Scientists"
 author: ["Jochem Tolsma", "Bas hofstra"]
-date: "2021-08-02"
+date: "2021-08-26"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -10,6 +10,9 @@ biblio-style: apalike
 link-citations: yes
 description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
 ---
+
+
+
 
 
 
