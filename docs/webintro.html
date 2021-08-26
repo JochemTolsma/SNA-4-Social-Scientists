@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 Webscraping for Sociologists | SNASS</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 Webscraping for Sociologists | SNASS" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 Webscraping for Sociologists | SNASS" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Jochem Tolsma" />
+<meta name="author" content="Bas hofstra" />
+
+
+<meta name="date" content="2021-08-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-3.html"/>
+<link rel="next" href="tutorial.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SNASS</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About the authors</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#definitions"><i class="fa fa-check"></i><b>1.1.1</b> Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#aim"><i class="fa fa-check"></i><b>1.2</b> Aim</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#structure"><i class="fa fa-check"></i><b>1.3</b> Structure</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#type-of-social-network"><i class="fa fa-check"></i><b>1.3.1</b> Type of Social Network</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#causes-and-consequences"><i class="fa fa-check"></i><b>1.3.2</b> Causes and Consequences</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#implications"><i class="fa fa-check"></i><b>1.3.3</b> Implications</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#what-makes-this-course-stand-out"><i class="fa fa-check"></i><b>1.4</b> What makes this course stand out?</a></li>
+</ul></li>
+<li class="part"><span><b>I Part I DYADS</b></span></li>
+<li class="chapter" data-level="2" data-path="theory.html"><a href="theory.html"><i class="fa fa-check"></i><b>2</b> Theory</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#causes-of-dyads"><i class="fa fa-check"></i><b>2.1</b> Causes of dyads</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="theory.html"><a href="theory.html#GTF"><i class="fa fa-check"></i><b>2.1.1</b> General Theoretical Framework</a></li>
+<li class="chapter" data-level="2.1.2" data-path="theory.html"><a href="theory.html#causes-of-dyads-methods"><i class="fa fa-check"></i><b>2.1.2</b> Causes of dyads (methods)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="theory.html"><a href="theory.html#dt"><i class="fa fa-check"></i><b>2.2</b> Consequences of dyads (theory)</a></li>
+<li class="chapter" data-level="2.3" data-path="theory.html"><a href="theory.html#consequences-of-dyads-methods"><i class="fa fa-check"></i><b>2.3</b> Consequences of dyads (methods)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#causes"><i class="fa fa-check"></i><b>3.1</b> Causes</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="methods.html"><a href="methods.html#OR"><i class="fa fa-check"></i><b>3.1.1</b> Odds Ratio</a></li>
+<li class="chapter" data-level="3.1.2" data-path="methods.html"><a href="methods.html#LLM"><i class="fa fa-check"></i><b>3.1.2</b> Loglinear Model</a></li>
+<li class="chapter" data-level="3.1.3" data-path="methods.html"><a href="methods.html#LM"><i class="fa fa-check"></i><b>3.1.3</b> Conditional multinomial logit model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#consequences"><i class="fa fa-check"></i><b>3.2</b> Consequences</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="methods.html"><a href="methods.html#selection"><i class="fa fa-check"></i><b>3.2.1</b> Selection</a></li>
+<li class="chapter" data-level="3.2.2" data-path="methods.html"><a href="methods.html#common-context"><i class="fa fa-check"></i><b>3.2.2</b> Common context</a></li>
+<li class="chapter" data-level="3.2.3" data-path="methods.html"><a href="methods.html#dyadic-influence"><i class="fa fa-check"></i><b>3.2.3</b> Dyadic Influence</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#dyadic-influence-mechanisms"><i class="fa fa-check"></i><b>3.3</b> Dyadic Influence: Mechanisms</a></li>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#expectations"><i class="fa fa-check"></i><b>3.4</b> Expectations</a></li>
+<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#data"><i class="fa fa-check"></i><b>3.5</b> Data</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="methods.html"><a href="methods.html#variables"><i class="fa fa-check"></i><b>3.5.1</b> Variables</a></li>
+<li class="chapter" data-level="3.5.2" data-path="methods.html"><a href="methods.html#descriptives"><i class="fa fa-check"></i><b>3.5.2</b> Descriptives</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#analysis"><i class="fa fa-check"></i><b>3.6</b> Analysis</a></li>
+<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#modelling-strategy"><i class="fa fa-check"></i><b>3.7</b> Modelling strategy</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="methods.html"><a href="methods.html#robustness"><i class="fa fa-check"></i><b>3.7.1</b> Robustness</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="methods.html"><a href="methods.html#results-hypo1"><i class="fa fa-check"></i><b>3.8</b> Results Hypo1</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="methods.html"><a href="methods.html#clpm"><i class="fa fa-check"></i><b>3.8.1</b> CLPM</a></li>
+<li class="chapter" data-level="3.8.2" data-path="methods.html"><a href="methods.html#ri-clpm"><i class="fa fa-check"></i><b>3.8.2</b> RI-CLPM</a></li>
+<li class="chapter" data-level="3.8.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm"><i class="fa fa-check"></i><b>3.8.3</b> SC-RI-CLPM</a></li>
+<li class="chapter" data-level="3.8.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm"><i class="fa fa-check"></i><b>3.8.4</b> LT-RI-CLPM</a></li>
+<li class="chapter" data-level="3.8.5" data-path="methods.html"><a href="methods.html#summary-results-hypo1"><i class="fa fa-check"></i><b>3.8.5</b> Summary results hypo1</a></li>
+<li class="chapter" data-level="3.8.6" data-path="methods.html"><a href="methods.html#conclusion-hypo1"><i class="fa fa-check"></i><b>3.8.6</b> Conclusion hypo1</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="methods.html"><a href="methods.html#results-hypo2"><i class="fa fa-check"></i><b>3.9</b> Results Hypo2</a>
+<ul>
+<li class="chapter" data-level="3.9.1" data-path="methods.html"><a href="methods.html#clpm-1"><i class="fa fa-check"></i><b>3.9.1</b> CLPM</a></li>
+<li class="chapter" data-level="3.9.2" data-path="methods.html"><a href="methods.html#ri-clpm-1"><i class="fa fa-check"></i><b>3.9.2</b> RI-CLPM</a></li>
+<li class="chapter" data-level="3.9.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm-1"><i class="fa fa-check"></i><b>3.9.3</b> SC-RI-CLPM</a></li>
+<li class="chapter" data-level="3.9.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm-1"><i class="fa fa-check"></i><b>3.9.4</b> LT-RI-CLPM</a></li>
+<li class="chapter" data-level="3.9.5" data-path="methods.html"><a href="methods.html#summary-results-hypo2"><i class="fa fa-check"></i><b>3.9.5</b> Summary results Hypo2</a></li>
+<li class="chapter" data-level="3.9.6" data-path="methods.html"><a href="methods.html#conclusion-hypo2"><i class="fa fa-check"></i><b>3.9.6</b> Conclusion Hypo2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i><b>4</b> Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-1.html"><a href="data-1.html#sampling"><i class="fa fa-check"></i><b>4.1</b> Sampling</a></li>
+<li class="chapter" data-level="4.2" data-path="data-1.html"><a href="data-1.html#ethical-considerations"><i class="fa fa-check"></i><b>4.2</b> Ethical considerations</a></li>
+<li class="chapter" data-level="4.3" data-path="data-1.html"><a href="data-1.html#measurement"><i class="fa fa-check"></i><b>4.3</b> Measurement</a></li>
+</ul></li>
+<li class="part"><span><b>II Part 2 EGONETS</b></span></li>
+<li class="chapter" data-level="5" data-path="theory-1.html"><a href="theory-1.html"><i class="fa fa-check"></i><b>5</b> Theory</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="theory-1.html"><a href="theory-1.html#causes-1"><i class="fa fa-check"></i><b>5.1</b> Causes</a></li>
+<li class="chapter" data-level="5.2" data-path="theory-1.html"><a href="theory-1.html#consequences-1"><i class="fa fa-check"></i><b>5.2</b> Consequences</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="methods-1.html"><a href="methods-1.html"><i class="fa fa-check"></i><b>6</b> Methods</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="methods-1.html"><a href="methods-1.html#before-you-start"><i class="fa fa-check"></i><b>6.1</b> Before you start</a></li>
+<li class="chapter" data-level="6.2" data-path="methods-1.html"><a href="methods-1.html#causes-2"><i class="fa fa-check"></i><b>6.2</b> Causes</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="methods-1.html"><a href="methods-1.html#aggregation"><i class="fa fa-check"></i><b>6.2.1</b> Aggregation</a></li>
+<li class="chapter" data-level="6.2.2" data-path="methods-1.html"><a href="methods-1.html#disaggregation"><i class="fa fa-check"></i><b>6.2.2</b> Disaggregation</a></li>
+<li class="chapter" data-level="6.2.3" data-path="methods-1.html"><a href="methods-1.html#micro-macro-model"><i class="fa fa-check"></i><b>6.2.3</b> Micro-macro Model</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="methods-1.html"><a href="methods-1.html#consequences-2"><i class="fa fa-check"></i><b>6.3</b> Consequences</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="methods-1.html"><a href="methods-1.html#macro-micro-model"><i class="fa fa-check"></i><b>6.3.1</b> Macro-micro model</a></li>
+<li class="chapter" data-level="6.3.2" data-path="methods-1.html"><a href="methods-1.html#micro-macro-ri-clpm"><i class="fa fa-check"></i><b>6.3.2</b> Micro-macro-RI-CLPM</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-2.html"><a href="data-2.html"><i class="fa fa-check"></i><b>7</b> Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="data-2.html"><a href="data-2.html#sampling-1"><i class="fa fa-check"></i><b>7.1</b> Sampling</a></li>
+<li class="chapter" data-level="7.2" data-path="data-2.html"><a href="data-2.html#ethical-considerations-1"><i class="fa fa-check"></i><b>7.2</b> Ethical considerations</a></li>
+<li class="chapter" data-level="7.3" data-path="data-2.html"><a href="data-2.html#measurement-1"><i class="fa fa-check"></i><b>7.3</b> Measurement</a></li>
+</ul></li>
+<li class="part"><span><b>III Part 3 SOCIONETS</b></span></li>
+<li class="chapter" data-level="8" data-path="theory-2.html"><a href="theory-2.html"><i class="fa fa-check"></i><b>8</b> Theory</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="theory-2.html"><a href="theory-2.html#causes-3"><i class="fa fa-check"></i><b>8.1</b> Causes</a></li>
+<li class="chapter" data-level="8.2" data-path="theory-2.html"><a href="theory-2.html#consequences-3"><i class="fa fa-check"></i><b>8.2</b> Consequences</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="methods-2.html"><a href="methods-2.html"><i class="fa fa-check"></i><b>9</b> Methods</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="methods-2.html"><a href="methods-2.html#causes-4"><i class="fa fa-check"></i><b>9.1</b> Causes</a></li>
+<li class="chapter" data-level="9.2" data-path="methods-2.html"><a href="methods-2.html#consequences-4"><i class="fa fa-check"></i><b>9.2</b> Consequences</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="data-3.html"><a href="data-3.html"><i class="fa fa-check"></i><b>10</b> Data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="data-3.html"><a href="data-3.html#sampling-2"><i class="fa fa-check"></i><b>10.1</b> Sampling</a></li>
+<li class="chapter" data-level="10.2" data-path="data-3.html"><a href="data-3.html#ethical-considerations-2"><i class="fa fa-check"></i><b>10.2</b> Ethical considerations</a></li>
+<li class="chapter" data-level="10.3" data-path="data-3.html"><a href="data-3.html#measurement-2"><i class="fa fa-check"></i><b>10.3</b> Measurement</a></li>
+</ul></li>
+<li class="part"><span><b>IV Part 4 Webscraping</b></span></li>
+<li class="chapter" data-level="11" data-path="webintro.html"><a href="webintro.html"><i class="fa fa-check"></i><b>11</b> Webscraping for Sociologists</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="webintro.html"><a href="webintro.html#chapter-overview"><i class="fa fa-check"></i><b>11.1</b> Chapter overview</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="webintro.html"><a href="webintro.html#definitions-1"><i class="fa fa-check"></i><b>11.1.1</b> Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="webintro.html"><a href="webintro.html#promises-and-pitfalls"><i class="fa fa-check"></i><b>11.2</b> Promises and pitfalls</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="webintro.html"><a href="webintro.html#promises"><i class="fa fa-check"></i><b>11.2.1</b> Promises</a></li>
+<li class="chapter" data-level="11.2.2" data-path="webintro.html"><a href="webintro.html#pitfalls"><i class="fa fa-check"></i><b>11.2.2</b> Pitfalls</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="webintro.html"><a href="webintro.html#best-of-both-worlds"><i class="fa fa-check"></i><b>11.3</b> Best of both worlds?</a></li>
+<li class="chapter" data-level="11.4" data-path="webintro.html"><a href="webintro.html#where-does-this-lead-us"><i class="fa fa-check"></i><b>11.4</b> Where does this lead us?</a></li>
+<li class="chapter" data-level="11.5" data-path="webintro.html"><a href="webintro.html#ethics"><i class="fa fa-check"></i><b>11.5</b> Ethics</a></li>
+<li class="chapter" data-level="11.6" data-path="webintro.html"><a href="webintro.html#webscraping-techniques"><i class="fa fa-check"></i><b>11.6</b> Webscraping techniques</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="webintro.html"><a href="webintro.html#manual"><i class="fa fa-check"></i><b>11.6.1</b> Manual</a></li>
+<li class="chapter" data-level="11.6.2" data-path="webintro.html"><a href="webintro.html#apis"><i class="fa fa-check"></i><b>11.6.2</b> APIs</a></li>
+<li class="chapter" data-level="11.6.3" data-path="webintro.html"><a href="webintro.html#crawling"><i class="fa fa-check"></i><b>11.6.3</b> Crawling</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="webintro.html"><a href="webintro.html#hands-on-webscraping"><i class="fa fa-check"></i><b>11.7</b> Hands-on webscraping</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="webintro.html"><a href="webintro.html#staging-your-script"><i class="fa fa-check"></i><b>11.7.1</b> Staging your script</a></li>
+<li class="chapter" data-level="11.7.2" data-path="webintro.html"><a href="webintro.html#getting-anchor-data"><i class="fa fa-check"></i><b>11.7.2</b> Getting “anchor” data</a></li>
+<li class="chapter" data-level="11.7.3" data-path="webintro.html"><a href="webintro.html#google-scholar-profiles-and-publications"><i class="fa fa-check"></i><b>11.7.3</b> Google Scholar Profiles and Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Part 5 Network Visualisation</b></span></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="tutorial.html"><a href="tutorial.html"><i class="fa fa-check"></i><b>A</b> Introduction to R for SNA</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="tutorial.html"><a href="tutorial.html#preliminary-notes"><i class="fa fa-check"></i><b>A.1</b> Preliminary notes</a></li>
+<li class="chapter" data-level="A.2" data-path="tutorial.html"><a href="tutorial.html#getting-up-and-running"><i class="fa fa-check"></i><b>A.2</b> Getting up and running</a></li>
+<li class="chapter" data-level="A.3" data-path="tutorial.html"><a href="tutorial.html#working-with-rscript"><i class="fa fa-check"></i><b>A.3</b> Working with RScript</a></li>
+<li class="chapter" data-level="A.4" data-path="tutorial.html"><a href="tutorial.html#installing-additional-packages"><i class="fa fa-check"></i><b>A.4</b> Installing additional packages</a></li>
+<li class="chapter" data-level="A.5" data-path="tutorial.html"><a href="tutorial.html#i-dont-understand-the-code"><i class="fa fa-check"></i><b>A.5</b> I don’t understand the code!!</a></li>
+<li class="chapter" data-level="A.6" data-path="tutorial.html"><a href="tutorial.html#reading-in-data-files"><i class="fa fa-check"></i><b>A.6</b> Reading in data files</a></li>
+<li class="chapter" data-level="A.7" data-path="tutorial.html"><a href="tutorial.html#define-missings"><i class="fa fa-check"></i><b>A.7</b> Define missings</a>
+<ul>
+<li class="chapter" data-level="A.7.1" data-path="tutorial.html"><a href="tutorial.html#r-base"><i class="fa fa-check"></i><b>A.7.1</b> R Base</a></li>
+<li class="chapter" data-level="A.7.2" data-path="tutorial.html"><a href="tutorial.html#tidy"><i class="fa fa-check"></i><b>A.7.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.8" data-path="tutorial.html"><a href="tutorial.html#recoding-variables"><i class="fa fa-check"></i><b>A.8</b> Recoding variables</a>
+<ul>
+<li class="chapter" data-level="A.8.1" data-path="tutorial.html"><a href="tutorial.html#r-base-1"><i class="fa fa-check"></i><b>A.8.1</b> R Base</a></li>
+<li class="chapter" data-level="A.8.2" data-path="tutorial.html"><a href="tutorial.html#tidy-1"><i class="fa fa-check"></i><b>A.8.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.9" data-path="tutorial.html"><a href="tutorial.html#means-and-counting-specific-values"><i class="fa fa-check"></i><b>A.9</b> Means and counting specific values</a>
+<ul>
+<li class="chapter" data-level="A.9.1" data-path="tutorial.html"><a href="tutorial.html#r-base-2"><i class="fa fa-check"></i><b>A.9.1</b> R Base</a></li>
+<li class="chapter" data-level="A.9.2" data-path="tutorial.html"><a href="tutorial.html#tidy-2"><i class="fa fa-check"></i><b>A.9.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.10" data-path="tutorial.html"><a href="tutorial.html#merging-data-files"><i class="fa fa-check"></i><b>A.10</b> Merging data files</a>
+<ul>
+<li class="chapter" data-level="A.10.1" data-path="tutorial.html"><a href="tutorial.html#r-base-3"><i class="fa fa-check"></i><b>A.10.1</b> R Base</a></li>
+<li class="chapter" data-level="A.10.2" data-path="tutorial.html"><a href="tutorial.html#tidy-3"><i class="fa fa-check"></i><b>A.10.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.11" data-path="tutorial.html"><a href="tutorial.html#aggregate-data"><i class="fa fa-check"></i><b>A.11</b> Aggregate data</a>
+<ul>
+<li class="chapter" data-level="A.11.1" data-path="tutorial.html"><a href="tutorial.html#r-base-4"><i class="fa fa-check"></i><b>A.11.1</b> R Base</a></li>
+<li class="chapter" data-level="A.11.2" data-path="tutorial.html"><a href="tutorial.html#tidy-4"><i class="fa fa-check"></i><b>A.11.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.12" data-path="tutorial.html"><a href="tutorial.html#missing-values"><i class="fa fa-check"></i><b>A.12</b> Missing values</a>
+<ul>
+<li class="chapter" data-level="A.12.1" data-path="tutorial.html"><a href="tutorial.html#r-base-5"><i class="fa fa-check"></i><b>A.12.1</b> R Base</a></li>
+<li class="chapter" data-level="A.12.2" data-path="tutorial.html"><a href="tutorial.html#tidy-5"><i class="fa fa-check"></i><b>A.12.2</b> Tidy</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>B</b> Covariance and Correlation</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SNASS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="webintro" class="section level1" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Webscraping for Sociologists</h1>
+<p>Latest Version: 26-08-2021</p>
+<p>Please email any comments to: <a href="mailto:bas.hofstra@ru.nl" class="email">bas.hofstra@ru.nl</a></p>
+<!---I think I have run into the rate limit. to be able to build the book, I have set eval=FALSE globally--->
+<div id="chapter-overview" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Chapter overview</h2>
+<p class="quote">
+“[The] technological revolution in mobile, Web, and Internet communications has the potential to revolutionize our understanding of ourselves and how we interact. Merton was right: Social science has still not found its Kepler. But three hundred years after Alexander Pope argued that the proper study of mankind should lie not in the heavens but in ourselves, we have finally found our telescope. Let the revolution begin…” <span class="citation">(<a href="references.html#ref-watts2011everything" role="doc-biblioref">Watts 2011</a>: 266)</span>
+</p>
+<p>Watts’ already-famous quote predicts a revolution in the social sciences. He and others <span class="citation">(see also <a href="references.html#ref-lazer2009social" role="doc-biblioref">Lazer et al. 2009</a>)</span> essentially argue that social science will be revolutionized by the unprecedented use of of the social internet. Given that people overwhelmingly adopted internet technologies and given that many of the platforms that offer these technologies automatically archive all kinds of behavior <span class="citation">(<a href="references.html#ref-spiro2016research" role="doc-biblioref">Spiro 2016</a>)</span> such as clicks, messages, social media relationships, and so forth, there may be a treasure trove of data on the internet that social scientists can use for their research on social processes. In this chapter, we discuss some of the promises and pitfalls of webscraping so-called “digital trace” data <span class="citation">(<a href="references.html#ref-golder2014digital" role="doc-biblioref">Golder and Macy 2014</a>)</span> on the internet for social network analysis. We are then going to discuss some different techniques that are often used for webscraping. Note that the fast-pace nature of the internet inherently means that by the time you read this text, some of the things we discuss will be outdated. (Which can be argued to be one of the pitfalls of social science research with webscraping!) We are also getting our hands dirty with a hands-on example of digital trace data that we are going to collect ourselves. So by the end of this chapter, you will be familiar with some of the unique opportunities and difficulties of webscraped (social network) data, have a birds-eye perspective on the different techniques for scraping the web for your own research, have knowledge on the ethics surrounding webscraping, and have more in-depth experience on one specific package for webscraping bibliometric data in <code>R</code>. In short, you will have firsthand knowledge on the current state-of-the-art in sociological data collection. There are really good, exhaustive resources for webscraping and computational sociology. See, for instance, the book by Robert Ackland <span class="citation">(<a href="references.html#ref-ackland2013web" role="doc-biblioref">Ackland 2013</a>)</span>. Yet, to get up to speed for this chapter, you need to read the first chapter of Bas Hofstra’s dissertation <span class="citation">(<a href="references.html#ref-hofstra2017online" role="doc-biblioref">Hofstra 2017</a>)</span>, Golder and Macy’s Annual Review of Sociology article <span class="citation">(<a href="references.html#ref-golder2014digital" role="doc-biblioref">Golder and Macy 2014</a>)</span>, and Lazer and colleagues’ Science article <span class="citation">(<a href="references.html#ref-lazer2009social" role="doc-biblioref">Lazer et al. 2009</a>)</span>.</p>
+<p>(TODO: referenties in blue box zetten)</p>
+<div id="definitions-1" class="section level3" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> Definitions</h3>
+<blockquote>
+<dl>
+<dt><strong>Webscraping</strong></dt>
+<dd><p>The process by which you collect data from the internet. This can entail different routes: manual data collection, automated data collection via code, and so forth.</p>
+</dd>
+</dl>
+</blockquote>
+<blockquote>
+<dl>
+<dt><strong>Digital footprints</strong></dt>
+<dd><p>Automatically logged behavioral signals that actors – broadly construed: individuals, companies, organizations, groups, etc. – leave on the internet. This may imply many things, including the messages one leaves on Instagram posts, back-and-forth conversations on Whatsapp, companies’ job advertisements, university course texts, and so forth. All of these signals can capture some social process: networking on social media, signalling specific job requirements, or university course prerequisites. This also means that digital footprints can contain a lot of different and sometimes unstructured data types. Social network data is obvious: who is friends with whom on Facebook, who Tweets to whom, and so forth. Network data (not social) is also obvious. For instance, which website links to what other websites. (Sidenote: Google’s page-rank algorithm made them succesful, and this page-rank algorithm is based on network centrality that essentially filters out “influential” websites quickly. In other words, Google became such an influential company because of network analyses.) It can also contain (unstructured) text data, which in itself signals a lot of interesting social processes that one may consider.</p>
+</dd>
+</dl>
+</blockquote>
+<blockquote>
+<dl>
+<dt><strong>Computational sociology</strong></dt>
+<dd><p>Problem-driven, empirical sociology, but with the empirical part specifically containing some form of digital footprint data and/or some new methodological technique. Sociologists are usually (necessarily?) interested in digital footprints concerning some social process. Because digital footprints are often related to social <em>network</em> processes (e.g., befriending on Facebook, messaging on Twitter, etc.), a lot of computational sociology includes some form of social network analysis. Because this is often, though not always, the case, discussing webscraping in the context of this book on social network analyses makes perfect sense. Some claim Agent-Based Modelling to be part of computational sociology too, others not. Again others claim performing RSiena analyses is part of computational sociology, others not. Note that this definition-issue is somewhat of a useless moving target. Computational sociology’s definition will be different next week depending on who you ask. In this book, we use a pragmatic definition. This means that you are a computational sociologists if you use digital footprint data and/or use relatively new methodological techniques in your research. Also note that there is a certain cause-effect sequence in the three definions above: using webscraping techniques to gather digital footprint data to study social problems makes you a computational sociologist.</p>
+</dd>
+</dl>
+</blockquote>
+</div>
+</div>
+<div id="promises-and-pitfalls" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> Promises and pitfalls</h2>
+<p>Like every data source in the social sciences and beyond, there are unique features as well as difficult challenges to webscraped data. In this subsection, we will discuss some of these advantages and challenges of webscraping and, by extension, digital footprint data. Like we discussed before, most of the research using webscraped digital footprint data concerns social networks and so we situate these promises and pitfalls in the context of social network analysis. Note, however, that some of the promises and pitfalls generalize to other types of digital footprint data too.</p>
+<div id="promises" class="section level3" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> Promises</h3>
+<div id="social-networks" class="section level5 unnumbered">
+<h5><strong>(Social) networks</strong></h5>
+<p>One of the crucial advantages of scraping data from the internet is that it is relatively easy to collect sociologically interesting network data. This may sound like a surprising thing to note in a book on social network analyses. But imagine a world without the internet, and then imagine that you are a social scientist interested in <em>weak ties</em>. What toolset do you have available to collect data on and then study those weak ties? You would probably think about qualitative interviews or collecting survey data. For the purpose of studying weak ties, however, both of these methods of data collection suffer from some some weaknesses. For instance, it is incredibly hard for respondents to recall those social ties that are weakly related. So asking about weak ties will likely not yield very reliable and valid results. That is, respondents will mostly acquiesce to naming those ties that they met recently or which are relatively stronger. (There are some techniques to circumvent some of these issues, but those have their own drawbacks too <span class="citation">(see <a href="references.html#ref-hofstra2021beyond" role="doc-biblioref">Hofstra, Corten, and Tubergen 2021</a>)</span>.) Most surveys are also restricted, in that respondents can only name five social ties. It is possible to collect sociometric data of entire contexts in surveys, for instance by presenting respondents with a class-roster or department-roster and asking them who their trustees, friends, etc. This book even devotes an entire section to such data. Yet, such a design is pretty expensive to set up and quite taxing for respondents.</p>
+<p>In contrast, an inherent feature of many places on the social internet, respondents curate themselves who their connections are over a long time-span (e.g., friendships on Facebook) or leave many traces of interactions (e.g., mentioning someone on Twitter). Sometimes networks online are even pushed towards network closure by recommendation systems on platforms like Facebook or Instagram. These data are relatively easy and cheap to collect with some creativity on the scientist’s part. This will often lead to large and complete networks are not restricted by relationship type (e.g., strong or weak), social context (e.g., family or school friends), respondent recall (acquiesce to strong ties), or social desirability bias (e.g., only nominating the popular kid in town). As an examplary paper who circumvents some of the “regular” biases of social network research mentioned above, see <span class="citation"><a href="references.html#ref-hofstra2017sources" role="doc-biblioref">Hofstra et al.</a> (<a href="references.html#ref-hofstra2017sources" role="doc-biblioref">2017</a>)</span> who analyze segregation among weak ties by means of Facebook data. The benefits mentioned here are also prime reasons as to why much research using digital traces incorporates some type of social network analysis.</p>
+</div>
+<div id="dynamics" class="section level5 unnumbered">
+<h5><strong>Dynamics</strong></h5>
+<p>A second advantage of webscraped data is that these data are often <em>time-stamped</em>. This means that the the researcher knows exactly when the digital trace – e.g., the social interaction on Twitter – occurred. So the researcher can potentially perform some sort of longitudinal analyses so as to come closer to causal estimates in inferential statistical models. In the context of webscraped social networks this is particularly useful so as to separate selection from influence in larger social networks. Gathering such longitudinal sociometric data for many social foci (e.g., school classes) is difficult (yet, definitely not impossible!), whereas collecting time-stamped social interactions on the internet may be somewhat easier. Note also that whereas network data collected in, for instance, school classes often contain the same time-stamp and that longitudinal sociometric data is often collected using the same timestamp</p>
+</div>
+<div id="signals" class="section level5 unnumbered">
+<h5><strong>Signals</strong></h5>
+<p>A third advantage of webscraped data is that it can potentially capture behavioral signals that are otherwise hard to come by. In controlled lab environments some xyz, it’s hard. In survey data it’s hard to xyz. Yet, online xyz, makes that we can xyz. Similar to online social network data, digital footprints can be unobtrusively collected, such that social desirability biases or xyz . One should, however, be aware that the way one behaves online may not necessarily be representative for “offline” behavior. Yet, to study sensitive topics such as political polarization, x, or y, digital trace data may offer an alternative route (one that is less prone to social desirability biases) to xxx.</p>
+</div>
+<div id="size" class="section level5 unnumbered">
+<h5><strong>Size</strong></h5>
+<p>Finally, and we discuss why this is both a blessing and a curse, webscraping can lead to collected data that may contain a lot of observations. See this study of xyz, or this study by xyz of abc. More data is not always better data, yet the sheer size of data – under appropriate sampling! – may make it easier to observe some intervention xyz. See xyz.</p>
+</div>
+</div>
+<div id="pitfalls" class="section level3" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> Pitfalls</h3>
+<div id="sampling-3" class="section level5 unnumbered">
+<h5><strong>Sampling</strong></h5>
+<ul>
+<li>Often non representative (convenience sampling)</li>
+</ul>
+</div>
+<div id="size-1" class="section level5 unnumbered">
+<h5><strong>Size</strong></h5>
+<ul>
+<li>Data size may be a pitfall; hard to analyze, sampling necessary, and sampling from social networks is especially hard</li>
+</ul>
+</div>
+<div id="thin" class="section level5 unnumbered">
+<h5><strong>Thin</strong></h5>
+<ul>
+<li>Many rows, yet not much information about those rows</li>
+</ul>
+</div>
+<div id="data-structure" class="section level5 unnumbered">
+<h5><strong>Data structure</strong></h5>
+<ul>
+<li>Unstructured data, hard to work with, requires some skill/imagination</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="best-of-both-worlds" class="section level2" number="11.3">
+<h2><span class="header-section-number">11.3</span> Best of both worlds?</h2>
+<p>The most-impactful computational sociology papers leverage the strengths of digital trace data but simultaneously account for (or at least acknowledge) its weaknesses. Some examples here</p>
+</div>
+<div id="where-does-this-lead-us" class="section level2" number="11.4">
+<h2><span class="header-section-number">11.4</span> Where does this lead us?</h2>
+<p>1- New tests of old sociological hypotheses made possible by the availability of digital footprint data;
+2- Tests of newly derived sociological hypotheses made possible by the availability of digital footprint data;
+3- Tests of new theories about “the internet” as social phenomenon by itself.</p>
+<p>(TO DO: Small worlds nieuwe test oude vraag: mooi voorbeeld om te integreren.)</p>
+</div>
+<div id="ethics" class="section level2" number="11.5">
+<h2><span class="header-section-number">11.5</span> Ethics</h2>
+<p>In webscraping digital footprins, one has to always consider ethics. In an ideal situation, a researcher has informed consent to study research subjects. In practice, however, the nature of webscraping digital footprints makes it very difficult to obtain such consent. Ethic review boards</p>
+</div>
+<div id="webscraping-techniques" class="section level2" number="11.6">
+<h2><span class="header-section-number">11.6</span> Webscraping techniques</h2>
+<div id="manual" class="section level3" number="11.6.1">
+<h3><span class="header-section-number">11.6.1</span> Manual</h3>
+<p>Army of research assistants looking up information, saving that</p>
+</div>
+<div id="apis" class="section level3" number="11.6.2">
+<h3><span class="header-section-number">11.6.2</span> APIs</h3>
+<p>Utilizing structures in place</p>
+</div>
+<div id="crawling" class="section level3" number="11.6.3">
+<h3><span class="header-section-number">11.6.3</span> Crawling</h3>
+<p>Designing own crawlers</p>
+<hr />
+</div>
+</div>
+<div id="hands-on-webscraping" class="section level2" number="11.7">
+<h2><span class="header-section-number">11.7</span> Hands-on webscraping</h2>
+<!---I think you should make clear in the beginning, what you want to scrape and why!! -->
+<!---I think you should also introduce the packge, manual, vignette a bit. So students see how you came up with the used functions. --->
+<p>Now that we learned about webscraping and some of its techniques, it is time to get our hands dirty ourselves. In what follows is a short tutorial on webscraping where we will be collecting data from webpages on the internet. We will use the specific case of sociology staff at Radboud University. What do they publish? Where? And with whom do they collaborate? We assume you followed the R tutorial in this book, or that you otherwise have at least some experience with coding in R. In the rest of this tutorial, we will switch between base R and Tidyverse (just a bit), whatever is most convenient. (Note that this will happen often if you become an applied computational sociologist.)</p>
+<div id="staging-your-script" class="section level3" number="11.7.1">
+<h3><span class="header-section-number">11.7.1</span> Staging your script</h3>
+<ul>
+<li>Open a new R-script (via file –&gt; new –&gt; RScript (or simply hit <em>Ctrl+Shift+N</em> or <em>Cmd+Shift+N</em> if you work on Mac)</li>
+<li>Before you start scraping and analyzing, take all the precautionary steps noted in <a href="tutorial.html#tutorial">A</a></li>
+</ul>
+<p>So for this tutorial, your starting script will look something like this:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="webintro.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">######################################### Title: Webscraping in R Author: Bas Hofstra Version: 29-07-2021</span></span>
+<span id="cb28-2"><a href="webintro.html#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="webintro.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># start with clean workspace</span></span>
+<span id="cb28-4"><a href="webintro.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb28-5"><a href="webintro.html#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="webintro.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># I assume you already installed this one!</span></span>
+<span id="cb28-7"><a href="webintro.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;httr&quot;</span>)</span>
+<span id="cb28-8"><a href="webintro.html#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(httr)</span>
+<span id="cb28-9"><a href="webintro.html#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;xml2&quot;</span>)</span>
+<span id="cb28-10"><a href="webintro.html#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(xml2)</span>
+<span id="cb28-11"><a href="webintro.html#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rvest&quot;</span>)</span>
+<span id="cb28-12"><a href="webintro.html#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rvest)</span>
+<span id="cb28-13"><a href="webintro.html#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb28-14"><a href="webintro.html#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(devtools)</span>
+<span id="cb28-15"><a href="webintro.html#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Note we&#39;re doing something different here. We&#39;re installing a *latest* version directly from GitHub</span></span>
+<span id="cb28-16"><a href="webintro.html#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="co"># This is because the released version of this packages contains some errors!</span></span>
+<span id="cb28-17"><a href="webintro.html#cb28-17" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;jkeirstead/scholar&quot;</span>)</span>
+<span id="cb28-18"><a href="webintro.html#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-19"><a href="webintro.html#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(scholar)</span>
+<span id="cb28-20"><a href="webintro.html#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="webintro.html#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="co"># define workdirectory, note the double backslashes setwd(&#39;/yourpathhere)&#39;</span></span></code></pre></div>
+</div>
+<div id="getting-anchor-data" class="section level3" number="11.7.2">
+<h3><span class="header-section-number">11.7.2</span> Getting “anchor” data</h3>
+<p>What do we mean by anchor data? Our goal is to get to know (i) who the Radboud University Department of Sociology staff is, (ii) what they publish with respect to scientific work, and (iii) who they collaborate with. So that means at least three data sources we need to collect from somewhere. What would be a nice starting (read: anchor) point be? First, we have to know who is on the sociology staff. Let’s check out <a href="https://www.ru.nl/sociology/">the Radboud sociology website</a>. There is lots of intruiging information, but not on who is who. There is, however, a specific link to the <a href="https://www.ru.nl/sociology/research/staff/">research staff</a>. Here we do see a nice list on who is on the sociology staff. How do we get that data? It is actually quite simple, the package <code>xml2</code> has a very nice function <code>html_read()</code> which simply derives the source html of a webpage:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="webintro.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s first get the staff page read_html is a function that simply extracts html webpages and puts</span></span>
+<span id="cb29-2"><a href="webintro.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># them in xml format</span></span>
+<span id="cb29-3"><a href="webintro.html#cb29-3" aria-hidden="true" tabindex="-1"></a>soc_staff <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://www.ru.nl/sociology/research/staff/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="webintro.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soc_staff)</span></code></pre></div>
+<p>That looks kinda weird. What type of object did we store it by putting the html into <code>soc_staff</code>?</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="webintro.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(soc_staff)</span></code></pre></div>
+<p>So it is is stored in something that’s called an xml object. Not important for now what that is. But it is important to extract the relevant table that we saw on the sociology staff website. How do we do that? Go to the <a href="%22googlechromes://www.ru.nl/sociology/research/staff/%22">https://www.ru.nl/sociology/research/staff/</a> in Google Chrome and then press “Inspect” on the webpage (right click–&gt;Inspect).</p>
+<p>Look at the screenshot below, you should be able to see something like this. In the html code we extracted from the Radboud website, we need to go to one of the nodes first. If you move your cursor over “body” in the html code on the right-hand side of your screen, the entire “body” of the page should become some shade of blue. This means that the elements encapsulated in the “body” node captures everything that turned blue.</p>
+<p>Next, we need to look at the specific elements on the page that we need to extract. Somewhat by informed trial and error, looking for the correct code, we can select the elements we want. In the screenshot below, you see that the “td” elements actually are the ones we need. So we need code that looks for the node “body” and the “td” elements in the xml object and then extract those elements in it. Note that you can click on the arrows once you are in the “Inspect” mode in the web browser to trial-and-error to get at the correct elements.</p>
+<p>Something like the code below should do just that:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="webintro.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># so we need to find WHERE the table is located in the html &#39;inspect element&#39; in mozilla firefox or</span></span>
+<span id="cb32-2"><a href="webintro.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;view page source&#39; and you see that everything AFTER /td in the &#39;body&#39; of the page seems to be the</span></span>
+<span id="cb32-3"><a href="webintro.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># table we do need</span></span>
+<span id="cb32-4"><a href="webintro.html#cb32-4" aria-hidden="true" tabindex="-1"></a>soc_staff <span class="ot">&lt;-</span> soc_staff <span class="sc">%&gt;%</span> rvest<span class="sc">::</span><span class="fu">html_nodes</span>(<span class="st">&quot;body&quot;</span>) <span class="sc">%&gt;%</span> xml2<span class="sc">::</span><span class="fu">xml_find_all</span>(<span class="st">&quot;//td&quot;</span>) <span class="sc">%&gt;%</span> rvest<span class="sc">::</span><span class="fu">html_text</span>()</span></code></pre></div>
+<blockquote>
+<p>Question: What happens in the code above? Why do we specify ‘body’ and ‘//td?’</p>
+</blockquote>
+<p>Let us check out what happened to the soc_staff object now:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="webintro.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soc_staff)  <span class="co"># looks much better!</span></span></code></pre></div>
+<p>So it looks much nicer but does not seem to be in the entirely correct order. We have odd rows and even rows: odd rows are names, even rows have the expertise of staff. We need to get a bit creative to put the data in a nicer format. The <code>%%</code> operator gives a “remainder” of integers (whole numbers). So 10/2=5 with no remainder, but 11/2=5 with a remainder of 1.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="webintro.html#cb34-1" aria-hidden="true" tabindex="-1"></a>odd <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">%%</span><span class="dv">2</span> <span class="sc">!=</span> <span class="dv">0</span></span>
+<span id="cb34-2"><a href="webintro.html#cb34-2" aria-hidden="true" tabindex="-1"></a>even <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">%%</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span></span></code></pre></div>
+<blockquote>
+<p>Question: Can you find out what the following function does?</p>
+</blockquote>
+<p>How long are the data?</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="webintro.html#cb35-1" aria-hidden="true" tabindex="-1"></a>nstaf <span class="ot">&lt;-</span> <span class="fu">length</span>(soc_staff)  <span class="co"># 94</span></span>
+<span id="cb35-2"><a href="webintro.html#cb35-2" aria-hidden="true" tabindex="-1"></a>nstaf</span></code></pre></div>
+<p>Alright, can we get the odd rows out of there?</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="webintro.html#cb36-1" aria-hidden="true" tabindex="-1"></a>soc_names <span class="ot">&lt;-</span> soc_staff[<span class="fu">odd</span>(<span class="dv">1</span><span class="sc">:</span>nstaf)]  <span class="co"># in the 1 until 94st number, get the odd elements</span></span>
+<span id="cb36-2"><a href="webintro.html#cb36-2" aria-hidden="true" tabindex="-1"></a>soc_names</span></code></pre></div>
+<p>And how about people’s expertise?</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="webintro.html#cb37-1" aria-hidden="true" tabindex="-1"></a>soc_experts <span class="ot">&lt;-</span> soc_staff[<span class="fu">even</span>(<span class="dv">1</span><span class="sc">:</span>nstaf)]  <span class="co"># in the 1 until 94st number, get the even elements</span></span>
+<span id="cb37-2"><a href="webintro.html#cb37-2" aria-hidden="true" tabindex="-1"></a>soc_experts</span></code></pre></div>
+<p>Finally, can we merge those two vectors?</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="webintro.html#cb38-1" aria-hidden="true" tabindex="-1"></a>soc_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(soc_names, soc_experts))  <span class="co"># columnbind those and we have a DF for soc staff!</span></span>
+<span id="cb38-2"><a href="webintro.html#cb38-2" aria-hidden="true" tabindex="-1"></a>soc_df</span></code></pre></div>
+<p>That looks much better! Now we only need to remove the redundant rows that state “expertise,” “staff,” and so forth.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="webintro.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect again, and remove the rows we don&#39;t need (check for yourself to be certain!)</span></span>
+<span id="cb39-2"><a href="webintro.html#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="webintro.html#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="webintro.html#cb39-4" aria-hidden="true" tabindex="-1"></a>delrows <span class="ot">&lt;-</span> <span class="fu">which</span>(soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;Staff:&quot;</span> <span class="sc">|</span> soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;PhD:&quot;</span> <span class="sc">|</span> soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;External PhD:&quot;</span> <span class="sc">|</span> </span>
+<span id="cb39-5"><a href="webintro.html#cb39-5" aria-hidden="true" tabindex="-1"></a>    soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;Guest researchers:&quot;</span>)</span>
+<span id="cb39-6"><a href="webintro.html#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="webintro.html#cb39-7" aria-hidden="true" tabindex="-1"></a>soc_df <span class="ot">&lt;-</span> soc_df[<span class="sc">-</span>delrows, ]</span>
+<span id="cb39-8"><a href="webintro.html#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="webintro.html#cb39-9" aria-hidden="true" tabindex="-1"></a>soc_df</span></code></pre></div>
+<p>Now we have a nice relatively clean dataset with all sociology staff and their expterise. But there is yet some work to do before we can move on. We need to do some data cleaning. Ideally, we have staff their first and last names in clean columns. So the last name seems easy, everything before the comma. Do you understand the code below? <code>gsub</code> is a function that remove something and replaces it with something else. In the code below it replaces everything that’s behind a comma with nothing in the column <code>soc_names</code> in the data frame <code>soc_df</code>.</p>
+<p>The first name is trickier, we need some more difficult <em>expressions</em> to extract first names from this string. It’s not necessary for now to exactly know how the expressions below work, but if you want to get into it, here’s <a href="https://r4ds.had.co.nz/strings.html">a nice resource</a>. The important part of the code below is that it extracts everything that’s in between the brackets.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="webintro.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Last name seems to be everything before the comma</span></span>
+<span id="cb40-2"><a href="webintro.html#cb40-2" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>last_name <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;,.*$&quot;</span>, <span class="st">&quot;&quot;</span>, soc_df<span class="sc">$</span>soc_names)</span>
+<span id="cb40-3"><a href="webintro.html#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="webintro.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first name is everything between brackets</span></span>
+<span id="cb40-5"><a href="webintro.html#cb40-5" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>first_name <span class="ot">&lt;-</span> <span class="fu">str_extract_all</span>(soc_df<span class="sc">$</span>soc_names, <span class="st">&quot;(?&lt;=</span><span class="sc">\\</span><span class="st">().+?(?=</span><span class="sc">\\</span><span class="st">))&quot;</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb40-6"><a href="webintro.html#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="webintro.html#cb40-7" aria-hidden="true" tabindex="-1"></a>soc_df</span>
+<span id="cb40-8"><a href="webintro.html#cb40-8" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>first_name</span></code></pre></div>
+<p>So we need yet to do some manual cleaning, one name seemed to be inconsistent with how the other names were listed on the webpage. As data get bigger, this becomes impossible to do manually and we simply have to accept this as noise.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="webintro.html#cb41-1" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>last_name <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; J. </span><span class="sc">\\</span><span class="st">(Jansje</span><span class="sc">\\</span><span class="st">) van MSc&quot;</span>, <span class="st">&quot;&quot;</span>, soc_df<span class="sc">$</span>last_name)</span></code></pre></div>
+<p>Not quite there yet. To be sure, we’ll trim some white space in the variables we know created. This means we remove spaces before and after strings.</p>
+<!---
+Dont we want to have everything in lower case? 
+Dont you want to run a script to remove all common special characters?
+--->
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="webintro.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># trimws looses all spacing before and after (if you specify &#39;both&#39;) a character string</span></span>
+<span id="cb42-2"><a href="webintro.html#cb42-2" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>last_name <span class="ot">&lt;-</span> <span class="fu">trimws</span>(soc_df<span class="sc">$</span>last_name, <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;both&quot;</span>), <span class="at">whitespace =</span> <span class="st">&quot;[ </span><span class="sc">\t\r\n</span><span class="st">]&quot;</span>)</span>
+<span id="cb42-3"><a href="webintro.html#cb42-3" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>first_name <span class="ot">&lt;-</span> <span class="fu">trimws</span>(soc_df<span class="sc">$</span>first_name, <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;both&quot;</span>), <span class="at">whitespace =</span> <span class="st">&quot;[ </span><span class="sc">\t\r\n</span><span class="st">]&quot;</span>)</span>
+<span id="cb42-4"><a href="webintro.html#cb42-4" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>soc_experts <span class="ot">&lt;-</span> <span class="fu">trimws</span>(soc_df<span class="sc">$</span>soc_experts, <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;both&quot;</span>), <span class="at">whitespace =</span> <span class="st">&quot;[ </span><span class="sc">\t\r\n</span><span class="st">]&quot;</span>)</span>
+<span id="cb42-5"><a href="webintro.html#cb42-5" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>soc_names <span class="ot">&lt;-</span> <span class="fu">trimws</span>(soc_df<span class="sc">$</span>soc_names, <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;both&quot;</span>), <span class="at">whitespace =</span> <span class="st">&quot;[ </span><span class="sc">\t\r\n</span><span class="st">]&quot;</span>)</span></code></pre></div>
+<p>Finally, because we’re quite sure that all these staff belong to Radboud University, we simply create a variable that contains a character string.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="webintro.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set affiliation to radboud, comes in handy for querying google scholar</span></span>
+<span id="cb43-2"><a href="webintro.html#cb43-2" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>affiliation <span class="ot">&lt;-</span> <span class="st">&quot;radboud university&quot;</span></span></code></pre></div>
+<p>How do the data look?</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="webintro.html#cb44-1" aria-hidden="true" tabindex="-1"></a>soc_df</span></code></pre></div>
+<p>Pretty good, so I think we can move on to the next section.</p>
+</div>
+<div id="google-scholar-profiles-and-publications" class="section level3" number="11.7.3">
+<h3><span class="header-section-number">11.7.3</span> Google Scholar Profiles and Publications</h3>
+<p>What we now have is a data frame of sociology staff members. So we succesfully gathered the anchor data set we can move on with. Next, we need to find out whether these staff have a Google Scholar profile. I imagine you have accessed <a href="www.scholar.google.com">Google Scholar</a> many times during your studies for finding scientists or publications. The nice thing about Google Scholar is that it lists collaborators, publications, and citations on profiles. So what we first need to do is look for Google Scholar profiles among sociology staff. Luckily, we cleaned first and last names and have their affiliation. That makes looking them up much easier. So we need to do this for every person in our data frame. Before we query Google Scholar, we first need to learn a neat trick: <em>for loops</em>. Can you follow the code below? We can do all kinds of things automatically in a for loop.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="webintro.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The &#39;for loop&#39;: for every i in a vector (can be numbers, strings, etc.), say 1 to 10, you can do</span></span>
+<span id="cb45-2"><a href="webintro.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;something&#39;</span></span>
+<span id="cb45-3"><a href="webintro.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb45-4"><a href="webintro.html#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(i)  <span class="co"># So for every i from 1 to 10, we print i, see what happens!</span></span>
+<span id="cb45-5"><a href="webintro.html#cb45-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-6"><a href="webintro.html#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="webintro.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co"># or do something more complicated</span></span>
+<span id="cb45-8"><a href="webintro.html#cb45-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)  <span class="co"># draw 10 normally distributed numbers with mean 0 and SD 1 (so z-scores, essentially)</span></span>
+<span id="cb45-9"><a href="webintro.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(p))  <span class="co"># relatively, normal, right?</span></span>
+<span id="cb45-10"><a href="webintro.html#cb45-10" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="dv">0</span>  <span class="co"># make an element we can fill up in the loop below</span></span>
+<span id="cb45-11"><a href="webintro.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb45-12"><a href="webintro.html#cb45-12" aria-hidden="true" tabindex="-1"></a>    u[i] <span class="ot">&lt;-</span> p[i] <span class="sc">*</span> p[i]  <span class="co"># get p-squared for every i-th element in vector p</span></span>
+<span id="cb45-13"><a href="webintro.html#cb45-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(u[i])  <span class="co"># and print that squared element</span></span>
+<span id="cb45-14"><a href="webintro.html#cb45-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Now that we know how to implement for loops in our workflow, we can utilize them to do slightly more complicated stuff. We want to know the identifying <em>link</em> on Google Scholar for each sociology staff member. We first set an empty identifier in our data frame so that we can “fill up” that data column later.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="webintro.html#cb46-1" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>gs_id <span class="ot">&lt;-</span> <span class="st">&quot;&quot;</span>  <span class="co"># we set an empty identifier</span></span></code></pre></div>
+<p>So let’s move on with attempting to find Google Scholar profiles. The package <code>scholar</code> has a very nice function <code>get_scholar_id</code>. It needs a last name, first name, and affiliation. Luckily, we already found those on the Radboud University website! So we can fill in those. Let’s try it for one staff member first.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="webintro.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;addfiles/function_fix.R&quot;</span>)  <span class="co"># Put the function_fix.R in your working directory, we need this first line.</span></span>
+<span id="cb47-2"><a href="webintro.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_scholar_id_fix</span>(<span class="at">last_name =</span> <span class="st">&quot;tolsma&quot;</span>, <span class="at">first_name =</span> <span class="st">&quot;jochem&quot;</span>, <span class="at">affiliation =</span> <span class="st">&quot;radboud university&quot;</span>)</span></code></pre></div>
+<p>We now know that Jochem’s Scholar ID is “Iu23-90AAAAJ.” That’s very convenient, because now we can use the package <code>scholar</code> to extract a range of useful information from his Google Scholar profile. Let’s try it out on his profile first. Notice the nice function <code>get_profiles</code>. We simply have to input his Google Scholar ID and it shows everything on the profile</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="webintro.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_profile</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>)  <span class="co"># Jochem&#39;s profile</span></span></code></pre></div>
+<p>Next up, Jochem’s publications. Notice how not everything is in a nice data frame format yet, we’ll get to that later.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="webintro.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_publications</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>)  <span class="co"># Jochem&#39;s pubs</span></span></code></pre></div>
+<p>When and how often was Jochem cited? Seems like an increasing trend line!</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="webintro.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_citation_history</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>)  <span class="co"># Jochem&#39;s citation history</span></span></code></pre></div>
+<p>Get jochem’s collaborators, and the collaborators of those collaborators. So essentially a “one-step-further-than-Jochem” network.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="webintro.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_coauthors</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>, <span class="at">n_coauthors =</span> <span class="dv">50</span>, <span class="at">n_deep =</span> <span class="dv">1</span>)  <span class="co"># Jochem&#39;s collaborators and their co-authors!</span></span></code></pre></div>
+<p>Notice, however, that we could easily plot Jochem’s collaboration network already! (Though we leave the specifics for the sister-tutorial on viz.)</p>
+<!---this one bugs. have set eval=FALSE--->
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="webintro.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_coauthors</span>(<span class="fu">get_coauthors</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>, <span class="at">n_coauthors =</span> <span class="dv">50</span>, <span class="at">n_deep =</span> <span class="dv">1</span>), <span class="at">size_labels =</span> <span class="dv">2</span>)  <span class="co"># Doesn&#39;t look like much yet, but we&#39;ll make it prettier later.</span></span></code></pre></div>
+<p>So let’s gather these data, but now for <em>all</em> sociology staff simultaneously! For this, we use the for loop again. The for loop I make below is a bit more complicated, but follows the same logic as before. For each row (i) in <code>soc_df</code>, we attempt to query Google Scholar on the basis of the first name, last name, and affiliation listed in that row in the data frame. We use some handy subsetting, e.g., <code>soc_df[i, 3]</code> means we input <code>last_name=</code> with the last name (which is the third column) found in the i-th row in the data frame. The same goes for first name and affiliation. We fill up <code>gs_id</code> in the data frame with the Google Scholar IDs we’ll hopefully find. The <code>for (i in nrow(soc_df))</code> simply means we let i run for however many rows the data frame has. Finally, the <code>tryCatch({})</code> function makes that we can continue the loop even though we may encounter errors for a given row. Here, that probably means that not every row (i.e., sociology staff member) can be found on Google Scholar. We print the error, but continue the for loop with the <code>tryCatch({})</code> function. In the final rows of the code below. We simply drop those rows that we cannot identify on Google Scholar.</p>
+<!--- i dont think it is good practice to use column numbers. peharps your code will change. best to use column names --->
+<!---why did you set eval=FALSE? does not take too long. Don't forget we cache everything--->
+<!---if you use eval=FALSE. Don't forget to save the objects and load them in next script (with echo=FALSE)--->
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="webintro.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look throught get_scholar_id_fix(last_name, first_name, affiliation) </span></span>
+<span id="cb53-2"><a href="webintro.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="co"># if we can find google scholar profiles of sociology staff!</span></span>
+<span id="cb53-3"><a href="webintro.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df)) {</span>
+<span id="cb53-4"><a href="webintro.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb53-5"><a href="webintro.html#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>({</span>
+<span id="cb53-6"><a href="webintro.html#cb53-6" aria-hidden="true" tabindex="-1"></a>     soc_df[i,<span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)] <span class="ot">&lt;-</span> <span class="fu">get_scholar_id_fix</span>(<span class="at">last_name =</span> soc_df[i, <span class="dv">3</span>], <span class="co"># so search on last_name of staff (third column)</span></span>
+<span id="cb53-7"><a href="webintro.html#cb53-7" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">first_name =</span> soc_df[i,<span class="dv">4</span>],  <span class="co"># search on first_name of staff (fourth column)</span></span>
+<span id="cb53-8"><a href="webintro.html#cb53-8" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">affiliation =</span> soc_df[i,<span class="dv">5</span>]) <span class="co"># search on affiliation of each staff (fifth column)</span></span>
+<span id="cb53-9"><a href="webintro.html#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="webintro.html#cb53-10" aria-hidden="true" tabindex="-1"></a>    }, <span class="at">error=</span><span class="cf">function</span>(e){<span class="fu">cat</span>(<span class="st">&quot;ERROR :&quot;</span>,<span class="fu">conditionMessage</span>(e), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)}) <span class="co"># continue on error, but print the error</span></span>
+<span id="cb53-11"><a href="webintro.html#cb53-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb53-12"><a href="webintro.html#cb53-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-13"><a href="webintro.html#cb53-13" aria-hidden="true" tabindex="-1"></a><span class="co"># remove those without pubs from the df</span></span>
+<span id="cb53-14"><a href="webintro.html#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="co"># seems we&#39;re left with about 34 sociology staff members!</span></span>
+<span id="cb53-15"><a href="webintro.html#cb53-15" aria-hidden="true" tabindex="-1"></a>soc_df <span class="ot">&lt;-</span> soc_df[<span class="sc">!</span>soc_df<span class="sc">$</span>gs_id <span class="sc">==</span> <span class="st">&quot;&quot;</span>, ]</span>
+<span id="cb53-16"><a href="webintro.html#cb53-16" aria-hidden="true" tabindex="-1"></a>soc_df</span></code></pre></div>
+<p>It works! So what is left to do is simply to get the data we already extracted for Jochem, but for all sociology staff. For that, we need a bunch of for loops. Let’s first gather the profiles and publications. We store those in a <code>list()</code> which is an object in which you can store multiple data frames, vectors, matrices, and so forth. This is particularly good for for loops because you can store information that is – at first sight – not necessarily compatible. For instance, matrices of different length. Note that bind a Google Scholar ID to the publications too.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="webintro.html#cb54-1" aria-hidden="true" tabindex="-1"></a>soc_list_profiles <span class="ot">&lt;-</span> <span class="fu">list</span>()  <span class="co"># first we create an empty list that we then fill up with the for loop</span></span>
+<span id="cb54-2"><a href="webintro.html#cb54-2" aria-hidden="true" tabindex="-1"></a>soc_list_publications <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb54-3"><a href="webintro.html#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="webintro.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df)) {</span>
+<span id="cb54-5"><a href="webintro.html#cb54-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb54-6"><a href="webintro.html#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># note how you call different elements in a list &#39;[[]]&#39;, fill in the i-th element</span></span>
+<span id="cb54-7"><a href="webintro.html#cb54-7" aria-hidden="true" tabindex="-1"></a>    soc_list_profiles[[i]] <span class="ot">&lt;-</span> <span class="fu">get_profile</span>(soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)])  <span class="co"># Note how we call row i (remember how to call rows in a DF/Matrix) and then the associated scholar id</span></span>
+<span id="cb54-8"><a href="webintro.html#cb54-8" aria-hidden="true" tabindex="-1"></a>    soc_list_publications[[i]] <span class="ot">&lt;-</span> <span class="fu">get_publications</span>(soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)])</span>
+<span id="cb54-9"><a href="webintro.html#cb54-9" aria-hidden="true" tabindex="-1"></a>    soc_list_publications[[i]][, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)] <span class="ot">&lt;-</span> soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)]  <span class="co"># note that we again attach an id</span></span>
+<span id="cb54-10"><a href="webintro.html#cb54-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># so both functions here call the entire profile and pubs for an author, based on google scholar ids</span></span>
+<span id="cb54-11"><a href="webintro.html#cb54-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb54-12"><a href="webintro.html#cb54-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb54-13"><a href="webintro.html#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice how fast the data blow up! 34 scholars publish ~3000 papers</span></span>
+<span id="cb54-14"><a href="webintro.html#cb54-14" aria-hidden="true" tabindex="-1"></a>soc_df_publications <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(soc_list_publications)</span>
+<span id="cb54-15"><a href="webintro.html#cb54-15" aria-hidden="true" tabindex="-1"></a>soc_df_publications</span></code></pre></div>
+<!---this really goes too fast for students--->
+<p>We need to do some relatively involved data handling to attach the Google Scholar profiles in <code>soc_list_profiles</code> to the <code>soc_df</code>. That is mostly because profile elements can contain more than one row. For instance, co-authors are stored in long format per profile that do not easily merge to a data frame where each staff member is a row. So we need to get only the profile elements that have a single element per profile element (e.g., total cites). Seems these are the first 8 elements. So we need to get those out of the lists and store those in a new list. We use a couple of functions to first <code>unlist</code> the 1 tot 8-th elements in that list, make it a data frame, and <em>transpose</em> the data such that each row contains 8 columns. We then use the function <code>bind_rows()</code> to simply make a data frame from the list elements. We then merge it to <code>soc_df</code>. So what we end up with is a sociology staff data frame with much more information than before: citations, indices, expertise listed on Google Scholar, and so forth.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="webintro.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the profiles too, just to be sure</span></span>
+<span id="cb55-2"><a href="webintro.html#cb55-2" aria-hidden="true" tabindex="-1"></a>soc_profiles_df <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb55-3"><a href="webintro.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(soc_list_profiles)) {</span>
+<span id="cb55-4"><a href="webintro.html#cb55-4" aria-hidden="true" tabindex="-1"></a>    soc_profiles_df[[i]] <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">t</span>(<span class="fu">unlist</span>(soc_list_profiles[[i]][<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])))  <span class="co">#some annyoing data handling</span></span>
+<span id="cb55-5"><a href="webintro.html#cb55-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb55-6"><a href="webintro.html#cb55-6" aria-hidden="true" tabindex="-1"></a>soc_profiles_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(soc_profiles_df)</span>
+<span id="cb55-7"><a href="webintro.html#cb55-7" aria-hidden="true" tabindex="-1"></a>soc_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(soc_df, soc_profiles_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="at">gs_id =</span> <span class="st">&quot;id&quot;</span>))  <span class="co"># merge data with soc_df</span></span>
+<span id="cb55-8"><a href="webintro.html#cb55-8" aria-hidden="true" tabindex="-1"></a>soc_df</span></code></pre></div>
+<p>So we have papers and profile. Remember how we got Jochem’s citation history? We want that for each staff member too. Yet again, we use a for loop. We first store the citation history in a list. But notice the <code>if</code> statement! We only continue the for loop for that i-th element if some statement is <code>TRUE</code>. Here, we attempt to find out if the i-th element, the citation history of the staff member, has a length than is larger than 0. Some staff members are never cited (which happens all the time if papers are only just published), and so for these staff members that is no list element that contains information. We only attach a Google Scholar ID for those staff members that are cited at least once. We bind the rows again and end up with a data frame in <em>long format</em>: three columns with years, cites, and Google Scholar ID. Therefore, there is more than one row per staff member.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="webintro.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get citation history of a scholar</span></span>
+<span id="cb56-2"><a href="webintro.html#cb56-2" aria-hidden="true" tabindex="-1"></a>soc_staff_cit <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb56-3"><a href="webintro.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df)) {</span>
+<span id="cb56-4"><a href="webintro.html#cb56-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb56-5"><a href="webintro.html#cb56-5" aria-hidden="true" tabindex="-1"></a>    soc_staff_cit[[i]] <span class="ot">&lt;-</span> <span class="fu">get_citation_history</span>(soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)])</span>
+<span id="cb56-6"><a href="webintro.html#cb56-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb56-7"><a href="webintro.html#cb56-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">nrow</span>(soc_staff_cit[[i]]) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb56-8"><a href="webintro.html#cb56-8" aria-hidden="true" tabindex="-1"></a>        soc_staff_cit[[i]][, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)] <span class="ot">&lt;-</span> soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)]  <span class="co"># again attach the gs_id as third column</span></span>
+<span id="cb56-9"><a href="webintro.html#cb56-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb56-10"><a href="webintro.html#cb56-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb56-11"><a href="webintro.html#cb56-11" aria-hidden="true" tabindex="-1"></a>soc_staff_cit <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(soc_staff_cit)</span>
+<span id="cb56-12"><a href="webintro.html#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(soc_staff_cit)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;gs_id&quot;</span></span>
+<span id="cb56-13"><a href="webintro.html#cb56-13" aria-hidden="true" tabindex="-1"></a>soc_staff_cit</span></code></pre></div>
+<!---should you not explain somewhere that in google scholar you have to add you coauthors manually--->
+<p>Next, we get the collaborators. For loop should be clear by now. We get collaborators for a given Google Scholar ID, 50 of them, with a distance of at most 1. We then bind_rows again, and remove those staff members that did not list any collaborator.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="webintro.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the first 10 at most! n_deep means the co-authors of my co-authors, which can blow up fairly</span></span>
+<span id="cb57-2"><a href="webintro.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># quickly, so keep that number low.</span></span>
+<span id="cb57-3"><a href="webintro.html#cb57-3" aria-hidden="true" tabindex="-1"></a>soc_collabs <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb57-4"><a href="webintro.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df)) {</span>
+<span id="cb57-5"><a href="webintro.html#cb57-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb57-6"><a href="webintro.html#cb57-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># one deep</span></span>
+<span id="cb57-7"><a href="webintro.html#cb57-7" aria-hidden="true" tabindex="-1"></a>    soc_collabs[[i]] <span class="ot">&lt;-</span> <span class="fu">get_coauthors</span>(soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)], <span class="at">n_coauthors =</span> <span class="dv">10</span>, <span class="at">n_deep =</span> <span class="dv">1</span>)  <span class="co"># note again the gs_id that I use</span></span>
+<span id="cb57-8"><a href="webintro.html#cb57-8" aria-hidden="true" tabindex="-1"></a>    soc_collabs[[i]][, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)] <span class="ot">&lt;-</span> soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)]</span>
+<span id="cb57-9"><a href="webintro.html#cb57-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb57-10"><a href="webintro.html#cb57-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb57-11"><a href="webintro.html#cb57-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-12"><a href="webintro.html#cb57-12" aria-hidden="true" tabindex="-1"></a>soc_df_collabs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">bind_rows</span>(soc_collabs))</span>
+<span id="cb57-13"><a href="webintro.html#cb57-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-14"><a href="webintro.html#cb57-14" aria-hidden="true" tabindex="-1"></a>soc_df_collabs <span class="ot">&lt;-</span> soc_df_collabs[<span class="sc">!</span><span class="fu">is.na</span>(soc_df_collabs<span class="sc">$</span>author), ]</span>
+<span id="cb57-15"><a href="webintro.html#cb57-15" aria-hidden="true" tabindex="-1"></a>soc_df_collabs</span></code></pre></div>
+<p>Finally, we want to get the <em>article</em> citation history! Notice how we got like ~3K articles? For all of those articles we need in each year how often they were cited. That means a lot of queries to Google Scholar. We need to prevent that we hit the so-called <em>rate-limit</em>. This means that our IP will be blocked for requesting access to a webpage because we did it too often too quickly. Luckily, we can randomize our calls by time in a for loop! Do you understand the code below? (Hint: the code annotation kinda gives it away.)</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="webintro.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># because we don&#39;t wanna &#39;Rate limit&#39; google scholar, they throw you out if you make to many</span></span>
+<span id="cb58-2"><a href="webintro.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co"># requests, we randomize request time do you understand the code below?</span></span>
+<span id="cb58-3"><a href="webintro.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb58-4"><a href="webintro.html#cb58-4" aria-hidden="true" tabindex="-1"></a>    time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb58-5"><a href="webintro.html#cb58-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(time)</span>
+<span id="cb58-6"><a href="webintro.html#cb58-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;: R slept for&quot;</span>, <span class="fu">round</span>(time, <span class="dv">1</span>), <span class="st">&quot;seconds&quot;</span>))</span>
+<span id="cb58-7"><a href="webintro.html#cb58-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb58-8"><a href="webintro.html#cb58-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-9"><a href="webintro.html#cb58-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-10"><a href="webintro.html#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="co"># for every number from 1 to 10 we draw one number from 0 to 5 from a uniform distribution we put the</span></span>
+<span id="cb58-11"><a href="webintro.html#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="co"># wrapper sys.sleep around it that we put R to sleep for the drawn number</span></span></code></pre></div>
+<p>So we time-randomize our calls to Google. In this final for loop, we again put the citation history in a list and only put a Google Scholar ID next to it if there is any citation ever on that paper. Notice how we now call columns and rows from <code>soc_df_publications</code>. This is because those contain both the publications of staff members <em>and</em> the publication ids which we need to gather the citation history of papers. Finally, we <code>bind_rows()</code> again to have data frame in long format with year, citation, publication id, and Google Scholar ID. Notice how this will take way too long for this tutorial to finish. For instance, let’s say the mean waiting time is 2 seconds per query. That means at 2*3000 papers=6000 seconds, which is longer than 90 minutes. So we already gathered the data for you to continue with.</p>
+<!---there is a bug in get_article_cite_history function if in one year there is no citation. And this happens quit often.  --->
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="webintro.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get citation history of a scholar-paper</span></span>
+<span id="cb59-2"><a href="webintro.html#cb59-2" aria-hidden="true" tabindex="-1"></a>soc_art_cit <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb59-3"><a href="webintro.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df_publications)) {</span>
+<span id="cb59-4"><a href="webintro.html#cb59-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(<span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">4</span>))</span>
+<span id="cb59-5"><a href="webintro.html#cb59-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tryCatch</span>({</span>
+<span id="cb59-6"><a href="webintro.html#cb59-6" aria-hidden="true" tabindex="-1"></a>        soc_art_cit[[i]] <span class="ot">&lt;-</span> <span class="fu">get_article_cite_history</span>(soc_df_publications[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)], soc_df_publications[i, </span>
+<span id="cb59-7"><a href="webintro.html#cb59-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">c</span>(<span class="st">&quot;pubid&quot;</span>)])</span>
+<span id="cb59-8"><a href="webintro.html#cb59-8" aria-hidden="true" tabindex="-1"></a>    }, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb59-9"><a href="webintro.html#cb59-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cat</span>(<span class="st">&quot;ERROR :&quot;</span>, <span class="fu">conditionMessage</span>(e), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb59-10"><a href="webintro.html#cb59-10" aria-hidden="true" tabindex="-1"></a>    })  <span class="co"># continue on error, but print the error </span></span>
+<span id="cb59-11"><a href="webintro.html#cb59-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tryCatch</span>({</span>
+<span id="cb59-12"><a href="webintro.html#cb59-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="fu">nrow</span>(soc_art_cit[[i]]) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb59-13"><a href="webintro.html#cb59-13" aria-hidden="true" tabindex="-1"></a>            soc_art_cit[[i]][, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)] <span class="ot">&lt;-</span> soc_df_publications[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)]</span>
+<span id="cb59-14"><a href="webintro.html#cb59-14" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb59-15"><a href="webintro.html#cb59-15" aria-hidden="true" tabindex="-1"></a>    }, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb59-16"><a href="webintro.html#cb59-16" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cat</span>(<span class="st">&quot;ERROR :&quot;</span>, <span class="fu">conditionMessage</span>(e), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb59-17"><a href="webintro.html#cb59-17" aria-hidden="true" tabindex="-1"></a>    })  <span class="co"># continue on error, but print the error </span></span>
+<span id="cb59-18"><a href="webintro.html#cb59-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb59-19"><a href="webintro.html#cb59-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-20"><a href="webintro.html#cb59-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-21"><a href="webintro.html#cb59-21" aria-hidden="true" tabindex="-1"></a>soc_art_cit <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(soc_art_cit)</span></code></pre></div>
+<p>Let’s save the data we need in for the next tutorial.</p>
+<!---I don't see the data in the addfiles folder yet--->
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="webintro.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save the DFs thus far</span></span>
+<span id="cb60-2"><a href="webintro.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(soc_df_publications, <span class="st">&quot;addfiles/soc_df_publications.rda&quot;</span>)<span class="er">)</span></span>
+<span id="cb60-3"><a href="webintro.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(soc_df, <span class="st">&quot;addfiles/soc_df.rda&quot;</span>)<span class="er">)</span></span>
+<span id="cb60-4"><a href="webintro.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(soc_df_collabs, <span class="st">&quot;addfiles/soc_df_collabs.rda&quot;</span>)<span class="er">)</span></span>
+<span id="cb60-5"><a href="webintro.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co">#save(soc_art_cit, &quot;addfiles/soc_art_cit.rda&quot;)) Notice how we did this one for you.</span></span>
+<span id="cb60-6"><a href="webintro.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(soc_staff_cit, <span class="st">&quot;addfiles/soc_staff_cit.rda&quot;</span>)<span class="er">)</span></span></code></pre></div>
+<!---if students did not succeed, give the links to the data in our repository --->
+<p>Nicely done, this was the webscraping tutorial for bibliometric data. We gathered useful information about sociology staff:<br />
+- 1.1 who actually is the staff on the RU website?<br />
+- 1.2 staff google scholar profiles (we merged 1.1 and 1.2)<br />
+- 2 publications and total cites per publication<br />
+- 3 collaborators plus their collaborators (“friends-of-friends”)<br />
+- 4 publication citation history (cites per year)<br />
+- 5 citation history of scholars themselves (cites per year)<br />
+</p>
+<p><strong>Next, we can move on to some cool network visualization.</strong></p>
+<hr />
+
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tutorial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SNA-4-Social-Scientists.pdf", "SNA-4-Social-Scientists.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

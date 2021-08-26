@@ -1,0 +1,80 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+pre.numberSource code > span > a:first-child::before {
+  left: -0.3em;
+}
+
+pre {
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: auto;
+  margin: 0px;
+}
+
+.watch-out {
+  background-color: lightpink;
+  border: 3px solid red;
+  font-weight: bold;
+}
+
+.large {
+  max-height: 1100px;
+  overflow-y: auto;
+  overflow-x: auto;
+  width: 1100px;
+}
+
+
+body{ /* Normal  */
+      font-size: 14px;
+  }
+
+h1 { /* Header 1 */
+  font-size: 20px;
+  font-weight: bold;
+  }
+
+h2 { /* Header 2 */
+  font-size: 18px;
+  color: DarkBlue;
+}
+
+h3 { /* Header 3 */
+  font-size: 16px;
+  color: DarkBlue;
+}
+
+blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 14px;
+  border-left: 6px solid #eee;
+  background-color:lightcyan
+}
+
+caption {
+  font-size: 14px;
+  color: black;
+  font-weight: bold
+}
+
+.quote {
+  margin-left: 40px;
+  margin-right: 40px;
+  font-size: 14px;
+  background-color: #ffffe0;
+  font-style: italic
+}
