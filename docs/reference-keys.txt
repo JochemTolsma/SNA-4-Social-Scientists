@@ -7,6 +7,9 @@ fig:unnamed-chunk-2
 fig:unnamed-chunk-15
 tab:unnamed-chunk-24
 tab:unnamed-chunk-33
+fig:inspect
+fig:inspectbody
+fig:inspecttd
 fig:screenshot
 intro
 overview
