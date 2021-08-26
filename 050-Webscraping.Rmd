@@ -219,16 +219,24 @@ soc_staff <- soc_staff %>%
   rvest::html_text()
 ```
 
+```{r, echo=FALSE, eval=FALSE}
+save(soc_staff, file="soc_staff.RData")
+```
+
 > Question: What happens in the code above? Why do we specify 'body' and '//td'? 
 
 Let us check out what happened to the soc_staff object now:
 
-```{r}
+```{r, echo=FALSE, eval=TRUE}
+load("soc_staff.RData")
+```
+
+```{r, eval=TRUE}
 head(soc_staff) # looks much better!
 ```
 
 So it looks much nicer but does not seem to be in the entirely correct order. We have odd rows and even rows: odd rows are names, even rows have the expertise of staff. We need to get a bit creative to put the data in a nicer format. The `%%` operator gives a "remainder" of integers (whole numbers). So 10/2=5 with no remainder, but 11/2=5 with a remainder of 1. 
-```{r}
+```{r, eval=TRUE}
 odd <- function(x) x%%2 != 0
 even <- function(x) x%%2 == 0
 ```
@@ -237,33 +245,33 @@ even <- function(x) x%%2 == 0
 
 How long are the data?
 
-```{r}
-nstaf <- length(soc_staff) # 94
+```{r, eval=TRUE}
+nstaf <- length(soc_staff) 
 nstaf
 ```
 
 Alright, can we get the odd rows out of there?
 
-```{r}
+```{r, eval=TRUE}
 soc_names <- soc_staff[odd(1:nstaf)] # in the 1 until 94st number, get the odd elements
 soc_names
 ```
 
 And how about people's expertise?
-```{r}
+```{r, eval=TRUE}
 soc_experts <- soc_staff[even(1:nstaf)] # in the 1 until 94st number, get the even elements
 soc_experts
 ```
 
 Finally, can we merge those two vectors?
-```{r}
+```{r , eval=TRUE}
 soc_df <- data.frame(cbind(soc_names, soc_experts)) # columnbind those and we have a DF for soc staff!
 soc_df
 ```
 
 That looks much better! Now we only need to remove the redundant rows that state "expertise", "staff," and so forth.
 
-```{r, results='hold'}
+```{r, results='hold' , eval=TRUE}
 # inspect again, and remove the rows we don't need (check for yourself to be certain!)
 
 
@@ -278,7 +286,7 @@ Now we have a nice relatively clean dataset with all sociology staff and their e
 
 The first name is trickier, we need some more difficult *expressions* to extract first names from this string. It's not necessary for now to exactly know how the expressions below work, but if you want to get into it, here's [a nice resource](https://r4ds.had.co.nz/strings.html). The important part of the code below is that it extracts everything that's in between the brackets.
 
-```{r}
+```{r, eval=TRUE}
 # Last name seems to be everything before the comma
 soc_df$last_name <- gsub(",.*$", "", soc_df$soc_names)
 
@@ -286,13 +294,11 @@ soc_df$last_name <- gsub(",.*$", "", soc_df$soc_names)
 soc_df$first_name <- str_extract_all(soc_df$soc_names, "(?<=\\().+?(?=\\))", simplify = TRUE)
 
 soc_df
-soc_df$first_name
 ```
-
 
 So we need yet to do some manual cleaning, one name seemed to be inconsistent with how the other names were listed on the webpage. As data get bigger, this becomes impossible to do manually and we simply have to accept this as noise. 
 
-```{r}
+```{r, eval=TRUE}
 soc_df$last_name <- gsub(" J. \\(Jansje\\) van MSc", "", soc_df$last_name)
 ```
 
@@ -304,7 +310,7 @@ Dont you want to run a script to remove all common special characters?
 ---> 
 
 
-```{r}
+```{r, eval=TRUE}
 # trimws looses all spacing before and after (if you specify "both") a character string
 soc_df$last_name <- trimws(soc_df$last_name, which = c("both"), whitespace = "[ \t\r\n]")
 soc_df$first_name <- trimws(soc_df$first_name, which = c("both"), whitespace = "[ \t\r\n]")
@@ -314,15 +320,24 @@ soc_df$soc_names <- trimws(soc_df$soc_names, which = c("both"), whitespace = "[ 
 
 Finally, because we're quite sure that all these staff belong to Radboud University, we simply create a variable that contains a character string.
 
-```{r}
+```{r, eval=TRUE}
 # set affiliation to radboud, comes in handy for querying google scholar
 soc_df$affiliation <- "radboud university"
 ```
 
 How do the data look?
-```{r}
+```{r, eval=TRUE}
 soc_df
 ```
+
+```{r, echo=FALSE, eval=FALSE}
+save(soc_df, file="soc_dfv1.RData")
+```
+
+```{r, echo=FALSE, eval=TRUE}
+load("soc_dfv1.RData")
+```
+
 
 Pretty good, so I think we can move on to the next section.
 
@@ -331,56 +346,56 @@ Pretty good, so I think we can move on to the next section.
 What we now have is a data frame of sociology staff members. So we succesfully gathered the anchor data set we can move on with. Next, we need to find out whether these staff have a Google Scholar profile. I imagine you have accessed [Google Scholar](www.scholar.google.com) many times during your studies for finding scientists or publications. The nice thing about Google Scholar is that it lists collaborators, publications, and citations on profiles. So what we first need to do is look for Google Scholar profiles among sociology staff. Luckily, we cleaned first and last names and have their affiliation. That makes looking them up much easier. So we need to do this for every person in our data frame. Before we query Google Scholar, we first need to learn a neat trick: *for loops*. Can you follow the code below? We can do all kinds of things automatically in a for loop.
 
 
-```{r}
+```{r, eval=TRUE}
 # The "for loop": for every i in a vector (can be numbers, strings, etc.), say 1 to 10, you can do 'something'
 for (i in 1:10) {
   print(i) # So for every i from 1 to 10, we print i, see what happens!
 }
-
-# or do something more complicated
-p <- rnorm(10, 0, 1) # draw 10 normally distributed numbers with mean 0 and SD 1 (so z-scores, essentially)
-plot(density(p)) # relatively, normal, right?
-u <- 0 # make an element we can fill up in the loop below
-for (i in 1:10) {
-  u[i] <- p[i]*p[i] # get p-squared for every i-th element in vector p
-  print(u[i]) # and print that squared element
-}
+# 
+# # or do something more complicated
+# p <- rnorm(10, 0, 1) # draw 10 normally distributed numbers with mean 0 and SD 1 (so z-scores, essentially)
+# plot(density(p)) # relatively, normal, right?
+# u <- 0 # make an element we can fill up in the loop below
+# for (i in 1:10) {
+#   u[i] <- p[i]*p[i] # get p-squared for every i-th element in vector p
+#   print(u[i]) # and print that squared element
+# }
 
 ```
 
 Now that we know how to implement for loops in our workflow, we can utilize them to do slightly more complicated stuff. We want to know the identifying *link* on Google Scholar for each sociology staff member. We first set an empty identifier in our data frame so that we can "fill up" that data column later.
-```{r}
+```{r, eval=TRUE}
 soc_df$gs_id <- "" # we set an empty identifier
 ```
 
 So let's move on with attempting to find Google Scholar profiles. The package `scholar` has a very nice function `get_scholar_id`. It needs a last name, first name, and affiliation. Luckily, we already found those on the Radboud University website! So we can fill in those. Let's try it for one staff member first.
 
-```{r}
+```{r, eval=TRUE}
 source("addfiles/function_fix.R") # Put the function_fix.R in your working directory, we need this first line.
 get_scholar_id_fix(last_name="tolsma", first_name="jochem", affiliation="radboud university")
 ```
 
 We now know that Jochem's Scholar ID is "Iu23-90AAAAJ". That's very convenient, because now we can use the package `scholar` to extract a range of useful information from his Google Scholar profile. Let's try it out on his profile first. Notice the nice function `get_profiles`. We simply have to input his Google Scholar ID and it shows everything on the profile
 
-```{r}
+```{r, eval=TRUE}
 get_profile("Iu23-90AAAAJ") # Jochem's profile
 ```
 
 Next up, Jochem's publications. Notice how not everything is in a nice data frame format yet, we'll get to that later.
 
-```{r}
+```{r, eval=TRUE}
 get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 ```
 
 When and how often was Jochem cited? Seems like an increasing trend line!
 
-```{r}
+```{r, eval=TRUE}
 get_citation_history("Iu23-90AAAAJ") # Jochem's citation history
 ```
 
 Get jochem's collaborators, and the collaborators of those collaborators. So essentially a "one-step-further-than-Jochem" network. 
 
-```{r}
+```{r, eval=TRUE}
 get_coauthors("Iu23-90AAAAJ", n_coauthors = 50, n_deep = 1) # Jochem's collaborators and their co-authors!
 
 ```
@@ -415,6 +430,17 @@ for (i in 1:nrow(soc_df)) {
 # remove those without pubs from the df
 # seems we're left with about 34 sociology staff members!
 soc_df <- soc_df[!soc_df$gs_id == "", ]
+```
+
+```{r, echo=FALSE, eval=FALSE}
+save(soc_df, file="soc_dfv2.RData")
+```
+
+```{r, echo=FALSE, eval=TRUE}
+load("soc_dfv2.RData")
+```
+
+```{r, eval=TRUE}
 soc_df
 ```
 
@@ -435,8 +461,19 @@ for (i in 1:nrow(soc_df)) {
 }
 # Notice how fast the data blow up! 34 scholars publish ~3000 papers
 soc_df_publications <- bind_rows(soc_list_publications)
-soc_df_publications
 ```
+
+```{r, echo=FALSE}
+save(soc_df_publications, file="soc_df_publications.RData")
+save(soc_list_profiles, file="soc_list_profiles.RData")
+```
+
+```{r, echo=FALSE, eval=TRUE}
+load("soc_df_publications.RData")
+load("soc_list_profiles.RData")
+
+```
+
 
 <!---this really goes too fast for students---> 
 
@@ -450,8 +487,20 @@ for (i in 1:length(soc_list_profiles)) {
 }
 soc_profiles_df <- bind_rows(soc_profiles_df)
 soc_df <- left_join(soc_df, soc_profiles_df, by = c("gs_id" = "id")) # merge data with soc_df
+```
+
+```{r, echo=FALSE, eval=FALSE}
+save(soc_df, file="soc_dfv3.RData")
+```
+
+```{r, echo=FALSE, eval=TRUE}
+load("soc_dfv3.RData")
+```
+
+```{r, eval=TRUE}
 soc_df
 ```
+
 
 So we have papers and profile. Remember how we got Jochem's citation history? We want that for each staff member too. Yet again, we use a for loop. We first store the citation history in a list. But notice the `if` statement! We only continue the for loop for that i-th element if some statement is `TRUE`. Here, we attempt to find out if the i-th element, the citation history of the staff member, has a length than is larger than 0. Some staff members are never cited (which happens all the time if papers are only just published), and so for these staff members that is no list element that contains information. We only attach a Google Scholar ID for those staff members that are cited at least once. We bind the rows again and end up with a data frame in *long format*: three columns with years, cites, and Google Scholar ID. Therefore, there is more than one row per staff member.
 
@@ -469,9 +518,25 @@ for (i in 1:nrow(soc_df)) {
 }
 soc_staff_cit <- bind_rows(soc_staff_cit)
 colnames(soc_staff_cit)[3] <- "gs_id"
+```
+```{r, echo=FALSE, eval=FALSE}
+save(soc_staff_cit, file="soc_staff_cit.RData")
+```
+
+```{r, echo=FALSE, eval=TRUE}
+load("soc_staff_cit.RData")
+```
+
+```{r, eval=TRUE}
 soc_staff_cit
 ```
+
+
+
+
 <!---should you not explain somewhere that in google scholar you have to add you coauthors manually---> 
+<!---why only 10? And which 10. should you not --->
+<!---I think this goes wrong, you may end up looking for some coauthors multiple times---> 
 
 Next, we get the collaborators. For loop should be clear by now. We get collaborators for a given Google Scholar ID, 50 of them, with a distance of at most 1. We then bind_rows again, and remove those staff members that did not list any collaborator.
 
@@ -490,9 +555,21 @@ for (i in 1:nrow(soc_df)) {
 soc_df_collabs <- data.frame(bind_rows(soc_collabs))
 
 soc_df_collabs <- soc_df_collabs[!is.na(soc_df_collabs$author),]
+```
+
+```{r, echo=FALSE, eval=FALSE}
+save(soc_df_collabs, file="soc_df_collabs.RData")
+```
+
+```{r, echo=FALSE, eval=TRUE}
+load("soc_df_collabs.RData")
+```
+
+```{r, eval=TRUE}
 soc_df_collabs
 ```
 
+<!---
 Finally, we want to get the *article* citation history! Notice how we got like ~3K articles? For all of those articles we need in each year how often they were cited. That means a lot of queries to Google Scholar. We need to prevent that we hit the so-called *rate-limit*. This means that our IP will be blocked for requesting access to a webpage because we did it too often too quickly. Luckily, we can randomize our calls by time in a for loop! Do you understand the code below? (Hint: the code annotation kinda gives it away.)
 
 ```{r}
@@ -514,7 +591,7 @@ for (i in 1:10) {
 So we time-randomize our calls to Google. In this final for loop, we again put the citation history in a list and only put a Google Scholar ID next to it if there is any citation ever on that paper. Notice how we now call columns and rows from `soc_df_publications`. This is because those contain both the publications of staff members *and* the publication ids which we need to gather the citation history of papers. Finally, we `bind_rows()` again to have data frame in long format with year, citation, publication id, and Google Scholar ID. Notice how this will take way too long for this tutorial to finish. For instance, let's say the mean waiting time is 2 seconds per query. That means at 2*3000 papers=6000 seconds, which is longer than 90 minutes. So we already gathered the data for you to continue with. 
 
 
-<!---there is a bug in get_article_cite_history function if in one year there is no citation. And this happens quit often.  ---> 
+there is a bug in get_article_cite_history function if in one year there is no citation. And this happens quit often. 
 
 ```{r, eval=FALSE, echo=FALSE}
 
@@ -581,6 +658,8 @@ for (i in 1:nrow(soc_df_publications)) {
 
 soc_art_cit <- bind_rows(soc_art_cit)
 ```
+
+---> 
 
 Let's save the data we need in for the next tutorial.
 
