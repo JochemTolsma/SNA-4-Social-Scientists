@@ -1,8 +1,10 @@
 # (PART) Part 4 Webscraping  {-} 
 
+<!---put the dataframes in a kable and then use a scrollbox. you can also have captions. works best. see last part of script ---> 
+
 # Webscraping for Sociologists {#webintro}
 
-Latest Version: 26-08-2021
+Latest Version: 27-08-2021
 
 Please email any comments to: bas.hofstra@ru.nl	
 
@@ -166,10 +168,10 @@ head(soc_staff)
 
 ```
 #> $node
-#> <pointer: 0x0000000012df8ac0>
+#> <pointer: 0x000000002260a350>
 #> 
 #> $doc
-#> <pointer: 0x0000000014b58bf0>
+#> <pointer: 0x0000000013568680>
 ```
 
 That looks kinda weird. What type of object did we store it by putting the html into `soc_staff`?
@@ -223,106 +225,103 @@ Let us check out what happened to the soc_staff object now:
 
 
 ```r
-knitr::kable(soc_staff, booktabs = TRUE)  # looks much better!
+soc_staff  # looks much better!
 ```
 
-
-
-|x                                                                                                              |
-|:--------------------------------------------------------------------------------------------------------------|
-|Staff:                                                                                                         |
-|Expertise:                                                                                                     |
-|Batenburg, prof. dr. R. (Ronald)                                                                               |
-|Healthcare, labour market and healthcare professions and training                                              |
-|Begall, dr. K.H. (Katia)                                                                                       |
-|Family, life course, labour market participation, division of household tasks and gender norms                 |
-|Bekhuis, dr. H. (Hidde)                                                                                        |
-|Welfare state, nationalism and sports                                                                          |
-|Berg, dr. L. van den (Lonneke)                                                                                 |
-|Family, life course and transition to adulthood                                                                |
-|Blommaert, dr. L. (Lieselotte)                                                                                 |
-|Discrimination and inequality on the labour market                                                             |
-|Damman, dr. M. (Marleen)                                                                                       |
-|Labour market, life course, older workers, retirement and solo self-employed                                   |
-|Eisinga, prof. dr. R.N. (Rob)                                                                                  |
-|Methods of research and statistics                                                                             |
-|Gesthuizen, dr. M.J.W. (Maurice)                                                                               |
-|Poverty en social cohesion                                                                                     |
-|Glas, dr. S. (Saskia)                                                                                          |
-|Islam, gender attitudes and sexuality                                                                          |
-|Hek, dr. M. van (Margriet)                                                                                     |
-|Educational inequality, gender inequality, organizational sociology and culture                                |
-|Hoekman, dr. R. H. A.(Remco)                                                                                   |
-|Sports and policy sociology                                                                                    |
-|Hofstra, dr. B. (Bas)                                                                                          |
-|Diversity, inequality and innovation                                                                           |
-|Kraaykamp, prof. dr. G.L.M. (Gerbert)                                                                          |
-|Educational inequality, culture and health                                                                     |
-|Meuleman, dr. (Roza)                                                                                           |
-|Culture and nationalism                                                                                        |
-|Savelkoul, dr. M.J. (Michael)                                                                                  |
-|Ethnic diversity, prejudice and social cohesion                                                                |
-|Scheepers, prof. dr. P.L.H. (Peer)                                                                             |
-|Comparative research, social cohesion and diversity                                                            |
-|Spierings, dr. C.H.B.M. (Niels)                                                                                |
-|Islam, gender, populism, social media, Middle East and migration                                               |
-|Tolsma, dr. J. (Jochem)                                                                                        |
-|Inequality, criminology and ethnic diversity                                                                   |
-|Verbakel, prof. dr. C.M.C. (Ellen)
-                                Head of the department                     |
-|Health, family and work                                                                                        |
-|Visser, dr. M. (Mark)                                                                                          |
-|Older workers, radicalism and social cohesion                                                                  |
-|Wolbers, prof. dr. M.H.J. (Maarten)                                                                            |
-|Educational inequality and labour market inequality                                                            |
-|PhD:                                                                                                           |
-|Expertise:                                                                                                     |
-|Bussemakers, C. (Carlijn) MSc                                                                                  |
-|Adverse youth experiences and social inequality                                                                |
-|Franken, R. (Rob) MSc                                                                                          |
-|Sport networks and motivation for sustainable sports participation                                             |
-|Firat, M. (Mustafa) MSc                                                                                        |
-|Social inequality, older workers, life course and retirement                                                   |
-|Geurts, P.G. (Nella) MSc                                                                                       |
-|Integration and migration                                                                                      |
-|Hendriks, I.P. (Inge) MSc                                                                                      |
-|Resistance to refugees and social cohesion                                                                     |
-|Jeroense, T.M.G. (Thijmen) MSc                                                                                 |
-|Political participation, segregation, opinion polarization and voting behaviour                                |
-|Linders, N. (Nik) MSc                                                                                          |
-|Populism, gender, masculinity and sexuality                                                                    |
-|Loh, S.M. (Renae) MSc                                                                                          |
-|Educational sociology, social stratification, gender inequality and information communication technology (ICT) |
-|Meijeren, M. (Maikel) MSc                                                                                      |
-|Social capital, volunteer work and diversity                                                                   |
-|Mensvoort, C.A. van (Carly) MSc                                                                                |
-|Gender, leadership and social norms                                                                            |
-|Müller, K. (Katrin) MSc                                                                                        |
-|Opinions about discrimination, migration and inequality                                                        |
-|Raiber, K. (Klara) MSc                                                                                         |
-|Informal care, employment, social inequality and gender                                                        |
-|Ramaekers, M.J.M. (Marlou) MSc                                                                                 |
-|Prosocial behaviour and family                                                                                 |
-|Wiertsema, S. (Sara) MSc                                                                                       |
-|Inequality in sports and physical activity, school-to-work transition and employment                           |
-|External PhD:                                                                                                  |
-|Expertise:                                                                                                     |
-|Betkó, drs. J.G. (János)                                                                                       |
-|Social assistance benefit, poverty, reintegration, RCT and social experiment                                   |
-|Houten, J. (Jasper) van MSc                                                                                    |
-|Sports                                                                                                         |
-|Middendorp J. (Jansje) van MSc                                                                                 |
-|Home administration                                                                                            |
-|Vis, E. (Elize) MSc                                                                                            |
-|Healthcare, labour market, healthcare professions and training, health and social capital                      |
-|Weber, T. (Tijmen) MSc                                                                                         |
-|International student mobility and the internationalization of higher education                                |
-|Guest researchers:                                                                                             |
-|Expertise:                                                                                                     |
-|Sterkens, dr. C.J.A. (Carl)                                                                                    |
-|Religious conflicts, cohesion, religion and the philosophy of life                                             |
-|Vermeer, dr. P.A.D.M. (Paul)                                                                                   |
-|Socialization processes, secularisation, religion and the philosophy of life                                   |
+```
+#>  [1] "Staff:"                                                                                                                                                            
+#>  [2] "Expertise:"                                                                                                                                                        
+#>  [3] "Batenburg, prof. dr. R. (Ronald)"                                                                                                                                  
+#>  [4] "Healthcare, labour market and healthcare professions and training"                                                                                                 
+#>  [5] "Begall, dr. K.H. (Katia)"                                                                                                                                          
+#>  [6] "Family, life course, labour market participation, division of household tasks and gender norms"                                                                    
+#>  [7] "Bekhuis, dr. H. (Hidde)"                                                                                                                                           
+#>  [8] "Welfare state, nationalism and sports"                                                                                                                             
+#>  [9] "Berg, dr. L. van den (Lonneke)"                                                                                                                                    
+#> [10] "Family, life course and transition to adulthood"                                                                                                                   
+#> [11] "Blommaert, dr. L. (Lieselotte)"                                                                                                                                    
+#> [12] "Discrimination and inequality on the labour market"                                                                                                                
+#> [13] "Damman, dr. M. (Marleen)"                                                                                                                                          
+#> [14] "Labour market, life course, older workers, retirement and solo self-employed"                                                                                      
+#> [15] "Eisinga, prof. dr. R.N. (Rob)"                                                                                                                                     
+#> [16] "Methods of research and statistics"                                                                                                                                
+#> [17] "Gesthuizen, dr. M.J.W. (Maurice)"                                                                                                                                  
+#> [18] "\r\n                                Poverty en social cohesion\r\n                              "                                                                  
+#> [19] "Glas, dr. S. (Saskia)"                                                                                                                                             
+#> [20] "Islam, gender attitudes and sexuality"                                                                                                                             
+#> [21] "Hek, dr. M. van (Margriet)"                                                                                                                                        
+#> [22] "Educational inequality, gender inequality, organizational sociology and culture"                                                                                   
+#> [23] "Hoekman, dr. R. H. A.(Remco)"                                                                                                                                      
+#> [24] "Sports and policy sociology"                                                                                                                                       
+#> [25] "Hofstra, dr. B. (Bas)"                                                                                                                                             
+#> [26] "Diversity, inequality and innovation"                                                                                                                              
+#> [27] "Kraaykamp, prof. dr. G.L.M. (Gerbert)"                                                                                                                             
+#> [28] "Educational inequality, culture and health"                                                                                                                        
+#> [29] "Meuleman, dr. (Roza)"                                                                                                                                              
+#> [30] "Culture and nationalism"                                                                                                                                           
+#> [31] "Savelkoul, dr. M.J. (Michael)"                                                                                                                                     
+#> [32] "Ethnic diversity, prejudice and social cohesion"                                                                                                                   
+#> [33] "Scheepers, prof. dr. P.L.H. (Peer)"                                                                                                                                
+#> [34] "Comparative research, social cohesion and diversity"                                                                                                               
+#> [35] "Spierings, dr. C.H.B.M. (Niels)"                                                                                                                                   
+#> [36] "Islam, gender, populism, social media, Middle East and migration"                                                                                                  
+#> [37] "Tolsma, dr. J. (Jochem)"                                                                                                                                           
+#> [38] "Inequality, criminology and ethnic diversity"                                                                                                                      
+#> [39] "\r\n                                Verbakel, prof. dr. C.M.C. (Ellen)\r\n                                Head of the department\r\n                              "
+#> [40] "Health, family and work"                                                                                                                                           
+#> [41] "Visser, dr. M. (Mark)"                                                                                                                                             
+#> [42] "Older workers, radicalism and social cohesion"                                                                                                                     
+#> [43] "Wolbers, prof. dr. M.H.J. (Maarten)"                                                                                                                               
+#> [44] "Educational inequality and labour market inequality"                                                                                                               
+#> [45] "PhD:"                                                                                                                                                              
+#> [46] "Expertise:"                                                                                                                                                        
+#> [47] "Bussemakers, C. (Carlijn) MSc"                                                                                                                                     
+#> [48] "Adverse youth experiences and social inequality"                                                                                                                   
+#> [49] "Franken, R. (Rob) MSc"                                                                                                                                             
+#> [50] "Sport networks and motivation for sustainable sports participation"                                                                                                
+#> [51] "Firat, M. (Mustafa) MSc"                                                                                                                                           
+#> [52] "Social inequality, older workers, life course and retirement"                                                                                                      
+#> [53] "Geurts, P.G. (Nella) MSc"                                                                                                                                          
+#> [54] "Integration and migration"                                                                                                                                         
+#> [55] "Hendriks, I.P. (Inge) MSc"                                                                                                                                         
+#> [56] "Resistance to refugees and social cohesion"                                                                                                                        
+#> [57] "Jeroense, T.M.G. (Thijmen) MSc"                                                                                                                                    
+#> [58] "Political participation, segregation, opinion polarization and voting behaviour"                                                                                   
+#> [59] "Linders, N. (Nik) MSc"                                                                                                                                             
+#> [60] "Populism, gender, masculinity and sexuality"                                                                                                                       
+#> [61] "Loh, S.M. (Renae) MSc"                                                                                                                                             
+#> [62] "Educational sociology, social stratification, gender inequality and information communication technology (ICT)"                                                    
+#> [63] "Meijeren, M. (Maikel) MSc"                                                                                                                                         
+#> [64] "Social capital, volunteer work and diversity"                                                                                                                      
+#> [65] "Mensvoort, C.A. van (Carly) MSc"                                                                                                                                   
+#> [66] "Gender, leadership and social norms"                                                                                                                               
+#> [67] "Müller, K. (Katrin) MSc"                                                                                                                                           
+#> [68] "Opinions about discrimination, migration and inequality"                                                                                                           
+#> [69] "Raiber, K. (Klara) MSc"                                                                                                                                            
+#> [70] "Informal care, employment, social inequality and gender"                                                                                                           
+#> [71] "Ramaekers, M.J.M. (Marlou) MSc"                                                                                                                                    
+#> [72] "Prosocial behaviour and family"                                                                                                                                    
+#> [73] "Wiertsema, S. (Sara) MSc"                                                                                                                                          
+#> [74] "Inequality in sports and physical activity, school-to-work transition and employment"                                                                              
+#> [75] "External PhD:"                                                                                                                                                     
+#> [76] "Expertise:"                                                                                                                                                        
+#> [77] "Betkó, drs. J.G. (János)"                                                                                                                                          
+#> [78] "Social assistance benefit, poverty, reintegration, RCT and social experiment"                                                                                      
+#> [79] "Houten, J. (Jasper) van MSc"                                                                                                                                       
+#> [80] "Sports"                                                                                                                                                            
+#> [81] "Middendorp J. (Jansje) van MSc"                                                                                                                                    
+#> [82] "Home administration"                                                                                                                                               
+#> [83] "Vis, E. (Elize) MSc"                                                                                                                                               
+#> [84] "Healthcare, labour market, healthcare professions and training, health and social capital"                                                                         
+#> [85] "Weber, T. (Tijmen) MSc"                                                                                                                                            
+#> [86] "International student mobility and the internationalization of higher education"                                                                                   
+#> [87] "Guest researchers:"                                                                                                                                                
+#> [88] "Expertise:"                                                                                                                                                        
+#> [89] "Sterkens, dr. C.J.A. (Carl)"                                                                                                                                       
+#> [90] "Religious conflicts, cohesion, religion and the philosophy of life"                                                                                                
+#> [91] "Vermeer, dr. P.A.D.M. (Paul)"                                                                                                                                      
+#> [92] "Socialization processes, secularisation, religion and the philosophy of life"
+```
 
 So it looks much nicer but does not seem to be in the entirely correct order. We have odd rows and even rows: odd rows are names, even rows have the expertise of staff. We need to get a bit creative to put the data in a nicer format. The `%%` operator gives a "remainder" of integers (whole numbers). So 10/2=5 with no remainder, but 11/2=5 with a remainder of 1. 
 
@@ -462,7 +461,7 @@ Finally, can we merge those two vectors?
 
 ```r
 soc_df <- data.frame(cbind(soc_names, soc_experts))  # columnbind those and we have a DF for soc staff!
-knitr::kable(soc_df, booktabs = TRUE)
+knitr::kable(soc_df, booktabs = TRUE)  #add scrollbox
 ```
 
 
@@ -529,7 +528,7 @@ delrows <- which(soc_df$soc_names == "Staff:" | soc_df$soc_names == "PhD:" | soc
 
 soc_df <- soc_df[-delrows, ]
 
-knitr::kable(soc_df, booktabs = TRUE)
+knitr::kable(soc_df, booktabs = TRUE)  #add scrollbox
 ```
 
 
@@ -1648,51 +1647,43 @@ knitr::kable(soc_df, booktabs = TRUE)
 
 
 
-|   |soc_names                                                                                  |soc_experts                                                                                                    |last_name   |first_name |affiliation        |gs_id |
-|:--|:------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-----------|:----------|:------------------|:-----|
-|2  |Batenburg, prof. dr. R. (Ronald)                                                           |Healthcare, labour market and healthcare professions and training                                              |Batenburg   |Ronald     |radboud university |      |
-|3  |Begall, dr. K.H. (Katia)                                                                   |Family, life course, labour market participation, division of household tasks and gender norms                 |Begall      |Katia      |radboud university |      |
-|4  |Bekhuis, dr. H. (Hidde)                                                                    |Welfare state, nationalism and sports                                                                          |Bekhuis     |Hidde      |radboud university |      |
-|5  |Berg, dr. L. van den (Lonneke)                                                             |Family, life course and transition to adulthood                                                                |Berg        |Lonneke    |radboud university |      |
-|6  |Blommaert, dr. L. (Lieselotte)                                                             |Discrimination and inequality on the labour market                                                             |Blommaert   |Lieselotte |radboud university |      |
-|7  |Damman, dr. M. (Marleen)                                                                   |Labour market, life course, older workers, retirement and solo self-employed                                   |Damman      |Marleen    |radboud university |      |
-|8  |Eisinga, prof. dr. R.N. (Rob)                                                              |Methods of research and statistics                                                                             |Eisinga     |Rob        |radboud university |      |
-|9  |Gesthuizen, dr. M.J.W. (Maurice)                                                           |Poverty en social cohesion                                                                                     |Gesthuizen  |Maurice    |radboud university |      |
-|10 |Glas, dr. S. (Saskia)                                                                      |Islam, gender attitudes and sexuality                                                                          |Glas        |Saskia     |radboud university |      |
-|11 |Hek, dr. M. van (Margriet)                                                                 |Educational inequality, gender inequality, organizational sociology and culture                                |Hek         |Margriet   |radboud university |      |
-|12 |Hoekman, dr. R. H. A.(Remco)                                                               |Sports and policy sociology                                                                                    |Hoekman     |Remco      |radboud university |      |
-|13 |Hofstra, dr. B. (Bas)                                                                      |Diversity, inequality and innovation                                                                           |Hofstra     |Bas        |radboud university |      |
-|14 |Kraaykamp, prof. dr. G.L.M. (Gerbert)                                                      |Educational inequality, culture and health                                                                     |Kraaykamp   |Gerbert    |radboud university |      |
-|15 |Meuleman, dr. (Roza)                                                                       |Culture and nationalism                                                                                        |Meuleman    |Roza       |radboud university |      |
-|16 |Savelkoul, dr. M.J. (Michael)                                                              |Ethnic diversity, prejudice and social cohesion                                                                |Savelkoul   |Michael    |radboud university |      |
-|17 |Scheepers, prof. dr. P.L.H. (Peer)                                                         |Comparative research, social cohesion and diversity                                                            |Scheepers   |Peer       |radboud university |      |
-|18 |Spierings, dr. C.H.B.M. (Niels)                                                            |Islam, gender, populism, social media, Middle East and migration                                               |Spierings   |Niels      |radboud university |      |
-|19 |Tolsma, dr. J. (Jochem)                                                                    |Inequality, criminology and ethnic diversity                                                                   |Tolsma      |Jochem     |radboud university |      |
+|   |soc_names                                                                                  |soc_experts                                                                                                    |last_name   |first_name |affiliation        |gs_id        |
+|:--|:------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-----------|:----------|:------------------|:------------|
+|2  |Batenburg, prof. dr. R. (Ronald)                                                           |Healthcare, labour market and healthcare professions and training                                              |Batenburg   |Ronald     |radboud university |UK7nVSEAAAAJ |
+|3  |Begall, dr. K.H. (Katia)                                                                   |Family, life course, labour market participation, division of household tasks and gender norms                 |Begall      |Katia      |radboud university |e7zfTqMAAAAJ |
+|4  |Bekhuis, dr. H. (Hidde)                                                                    |Welfare state, nationalism and sports                                                                          |Bekhuis     |Hidde      |radboud university |Q4saWX8AAAAJ |
+|5  |Berg, dr. L. van den (Lonneke)                                                             |Family, life course and transition to adulthood                                                                |Berg        |Lonneke    |radboud university |vzBNQ1kAAAAJ |
+|6  |Blommaert, dr. L. (Lieselotte)                                                             |Discrimination and inequality on the labour market                                                             |Blommaert   |Lieselotte |radboud university |RG54uasAAAAJ |
+|7  |Damman, dr. M. (Marleen)                                                                   |Labour market, life course, older workers, retirement and solo self-employed                                   |Damman      |Marleen    |radboud university |MEv-V_YAAAAJ |
+|8  |Eisinga, prof. dr. R.N. (Rob)                                                              |Methods of research and statistics                                                                             |Eisinga     |Rob        |radboud university |GDHdsXAAAAAJ |
+|9  |Gesthuizen, dr. M.J.W. (Maurice)                                                           |Poverty en social cohesion                                                                                     |Gesthuizen  |Maurice    |radboud university |n6hiblQAAAAJ |
+|10 |Glas, dr. S. (Saskia)                                                                      |Islam, gender attitudes and sexuality                                                                          |Glas        |Saskia     |radboud university |ZMc0j2YAAAAJ |
+|11 |Hek, dr. M. van (Margriet)                                                                 |Educational inequality, gender inequality, organizational sociology and culture                                |Hek         |Margriet   |radboud university |ZvLlx2EAAAAJ |
+|12 |Hoekman, dr. R. H. A.(Remco)                                                               |Sports and policy sociology                                                                                    |Hoekman     |Remco      |radboud university |LsMimOEAAAAJ |
+|13 |Hofstra, dr. B. (Bas)                                                                      |Diversity, inequality and innovation                                                                           |Hofstra     |Bas        |radboud university |Nx7pDywAAAAJ |
+|14 |Kraaykamp, prof. dr. G.L.M. (Gerbert)                                                      |Educational inequality, culture and health                                                                     |Kraaykamp   |Gerbert    |radboud university |l8aM4jAAAAAJ |
+|15 |Meuleman, dr. (Roza)                                                                       |Culture and nationalism                                                                                        |Meuleman    |Roza       |radboud university |iKs_5WkAAAAJ |
+|16 |Savelkoul, dr. M.J. (Michael)                                                              |Ethnic diversity, prejudice and social cohesion                                                                |Savelkoul   |Michael    |radboud university |_f3krXUAAAAJ |
+|17 |Scheepers, prof. dr. P.L.H. (Peer)                                                         |Comparative research, social cohesion and diversity                                                            |Scheepers   |Peer       |radboud university |hPeXxvEAAAAJ |
+|18 |Spierings, dr. C.H.B.M. (Niels)                                                            |Islam, gender, populism, social media, Middle East and migration                                               |Spierings   |Niels      |radboud university |cy3Ye6sAAAAJ |
+|19 |Tolsma, dr. J. (Jochem)                                                                    |Inequality, criminology and ethnic diversity                                                                   |Tolsma      |Jochem     |radboud university |Iu23-90AAAAJ |
 |20 |Verbakel, prof. dr. C.M.C. (Ellen)
-                                Head of the department |Health, family and work                                                                                        |Verbakel    |Ellen      |radboud university |      |
-|21 |Visser, dr. M. (Mark)                                                                      |Older workers, radicalism and social cohesion                                                                  |Visser      |Mark       |radboud university |      |
-|22 |Wolbers, prof. dr. M.H.J. (Maarten)                                                        |Educational inequality and labour market inequality                                                            |Wolbers     |Maarten    |radboud university |      |
-|24 |Bussemakers, C. (Carlijn) MSc                                                              |Adverse youth experiences and social inequality                                                                |Bussemakers |Carlijn    |radboud university |      |
-|25 |Franken, R. (Rob) MSc                                                                      |Sport networks and motivation for sustainable sports participation                                             |Franken     |Rob        |radboud university |      |
-|26 |Firat, M. (Mustafa) MSc                                                                    |Social inequality, older workers, life course and retirement                                                   |Firat       |Mustafa    |radboud university |      |
-|27 |Geurts, P.G. (Nella) MSc                                                                   |Integration and migration                                                                                      |Geurts      |Nella      |radboud university |      |
-|28 |Hendriks, I.P. (Inge) MSc                                                                  |Resistance to refugees and social cohesion                                                                     |Hendriks    |Inge       |radboud university |      |
-|29 |Jeroense, T.M.G. (Thijmen) MSc                                                             |Political participation, segregation, opinion polarization and voting behaviour                                |Jeroense    |Thijmen    |radboud university |      |
-|30 |Linders, N. (Nik) MSc                                                                      |Populism, gender, masculinity and sexuality                                                                    |Linders     |Nik        |radboud university |      |
-|31 |Loh, S.M. (Renae) MSc                                                                      |Educational sociology, social stratification, gender inequality and information communication technology (ICT) |Loh         |Renae      |radboud university |      |
-|32 |Meijeren, M. (Maikel) MSc                                                                  |Social capital, volunteer work and diversity                                                                   |Meijeren    |Maikel     |radboud university |      |
-|33 |Mensvoort, C.A. van (Carly) MSc                                                            |Gender, leadership and social norms                                                                            |Mensvoort   |Carly      |radboud university |      |
-|34 |Müller, K. (Katrin) MSc                                                                    |Opinions about discrimination, migration and inequality                                                        |Müller      |Katrin     |radboud university |      |
-|35 |Raiber, K. (Klara) MSc                                                                     |Informal care, employment, social inequality and gender                                                        |Raiber      |Klara      |radboud university |      |
-|36 |Ramaekers, M.J.M. (Marlou) MSc                                                             |Prosocial behaviour and family                                                                                 |Ramaekers   |Marlou     |radboud university |      |
-|37 |Wiertsema, S. (Sara) MSc                                                                   |Inequality in sports and physical activity, school-to-work transition and employment                           |Wiertsema   |Sara       |radboud university |      |
-|39 |Betkó, drs. J.G. (János)                                                                   |Social assistance benefit, poverty, reintegration, RCT and social experiment                                   |Betkó       |János      |radboud university |      |
-|40 |Houten, J. (Jasper) van MSc                                                                |Sports                                                                                                         |Houten      |Jasper     |radboud university |      |
-|41 |Middendorp J. (Jansje) van MSc                                                             |Home administration                                                                                            |Middendorp  |Jansje     |radboud university |      |
-|42 |Vis, E. (Elize) MSc                                                                        |Healthcare, labour market, healthcare professions and training, health and social capital                      |Vis         |Elize      |radboud university |      |
-|43 |Weber, T. (Tijmen) MSc                                                                     |International student mobility and the internationalization of higher education                                |Weber       |Tijmen     |radboud university |      |
-|45 |Sterkens, dr. C.J.A. (Carl)                                                                |Religious conflicts, cohesion, religion and the philosophy of life                                             |Sterkens    |Carl       |radboud university |      |
-|46 |Vermeer, dr. P.A.D.M. (Paul)                                                               |Socialization processes, secularisation, religion and the philosophy of life                                   |Vermeer     |Paul       |radboud university |      |
+                                Head of the department |Health, family and work                                                                                        |Verbakel    |Ellen      |radboud university |w2McVJAAAAAJ |
+|21 |Visser, dr. M. (Mark)                                                                      |Older workers, radicalism and social cohesion                                                                  |Visser      |Mark       |radboud university |ItITloQAAAAJ |
+|22 |Wolbers, prof. dr. M.H.J. (Maarten)                                                        |Educational inequality and labour market inequality                                                            |Wolbers     |Maarten    |radboud university |TqKrXnMAAAAJ |
+|24 |Bussemakers, C. (Carlijn) MSc                                                              |Adverse youth experiences and social inequality                                                                |Bussemakers |Carlijn    |radboud university |bDPtkIoAAAAJ |
+|25 |Franken, R. (Rob) MSc                                                                      |Sport networks and motivation for sustainable sports participation                                             |Franken     |Rob        |radboud university |p3IwtT4AAAAJ |
+|26 |Firat, M. (Mustafa) MSc                                                                    |Social inequality, older workers, life course and retirement                                                   |Firat       |Mustafa    |radboud university |_ukytQYAAAAJ |
+|27 |Geurts, P.G. (Nella) MSc                                                                   |Integration and migration                                                                                      |Geurts      |Nella      |radboud university |VCTvbTkAAAAJ |
+|29 |Jeroense, T.M.G. (Thijmen) MSc                                                             |Political participation, segregation, opinion polarization and voting behaviour                                |Jeroense    |Thijmen    |radboud university |izq-KNUAAAAJ |
+|31 |Loh, S.M. (Renae) MSc                                                                      |Educational sociology, social stratification, gender inequality and information communication technology (ICT) |Loh         |Renae      |radboud university |tFaMPOQAAAAJ |
+|33 |Mensvoort, C.A. van (Carly) MSc                                                            |Gender, leadership and social norms                                                                            |Mensvoort   |Carly      |radboud university |z6iMs-UAAAAJ |
+|34 |Müller, K. (Katrin) MSc                                                                    |Opinions about discrimination, migration and inequality                                                        |Müller      |Katrin     |radboud university |lkVq32sAAAAJ |
+|35 |Raiber, K. (Klara) MSc                                                                     |Informal care, employment, social inequality and gender                                                        |Raiber      |Klara      |radboud university |xE65HUcAAAAJ |
+|36 |Ramaekers, M.J.M. (Marlou) MSc                                                             |Prosocial behaviour and family                                                                                 |Ramaekers   |Marlou     |radboud university |fp99JAQAAAAJ |
+|40 |Houten, J. (Jasper) van MSc                                                                |Sports                                                                                                         |Houten      |Jasper     |radboud university |iR4UIwwAAAAJ |
+|41 |Middendorp J. (Jansje) van MSc                                                             |Home administration                                                                                            |Middendorp  |Jansje     |radboud university |gs0li6MAAAAJ |
+|43 |Weber, T. (Tijmen) MSc                                                                     |International student mobility and the internationalization of higher education                                |Weber       |Tijmen     |radboud university |KfLALRIAAAAJ |
 
 It works! So what is left to do is simply to get the data we already extracted for Jochem, but for all sociology staff. For that, we need a bunch of for loops. Let's first gather the profiles and publications. We store those in a `list()` which is an object in which you can store multiple data frames, vectors, matrices, and so forth. This is particularly good for for loops because you can store information that is -- at first sight -- not necessarily compatible. For instance, matrices of different length. Note that bind a Google Scholar ID to the publications too. 
 
@@ -1745,51 +1736,43 @@ knitr::kable(soc_df, booktabs = TRUE)
 
 
 
-|   |soc_names                                                                                  |soc_experts                                                                                                    |last_name   |first_name |affiliation        |gs_id |
-|:--|:------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-----------|:----------|:------------------|:-----|
-|2  |Batenburg, prof. dr. R. (Ronald)                                                           |Healthcare, labour market and healthcare professions and training                                              |Batenburg   |Ronald     |radboud university |      |
-|3  |Begall, dr. K.H. (Katia)                                                                   |Family, life course, labour market participation, division of household tasks and gender norms                 |Begall      |Katia      |radboud university |      |
-|4  |Bekhuis, dr. H. (Hidde)                                                                    |Welfare state, nationalism and sports                                                                          |Bekhuis     |Hidde      |radboud university |      |
-|5  |Berg, dr. L. van den (Lonneke)                                                             |Family, life course and transition to adulthood                                                                |Berg        |Lonneke    |radboud university |      |
-|6  |Blommaert, dr. L. (Lieselotte)                                                             |Discrimination and inequality on the labour market                                                             |Blommaert   |Lieselotte |radboud university |      |
-|7  |Damman, dr. M. (Marleen)                                                                   |Labour market, life course, older workers, retirement and solo self-employed                                   |Damman      |Marleen    |radboud university |      |
-|8  |Eisinga, prof. dr. R.N. (Rob)                                                              |Methods of research and statistics                                                                             |Eisinga     |Rob        |radboud university |      |
-|9  |Gesthuizen, dr. M.J.W. (Maurice)                                                           |Poverty en social cohesion                                                                                     |Gesthuizen  |Maurice    |radboud university |      |
-|10 |Glas, dr. S. (Saskia)                                                                      |Islam, gender attitudes and sexuality                                                                          |Glas        |Saskia     |radboud university |      |
-|11 |Hek, dr. M. van (Margriet)                                                                 |Educational inequality, gender inequality, organizational sociology and culture                                |Hek         |Margriet   |radboud university |      |
-|12 |Hoekman, dr. R. H. A.(Remco)                                                               |Sports and policy sociology                                                                                    |Hoekman     |Remco      |radboud university |      |
-|13 |Hofstra, dr. B. (Bas)                                                                      |Diversity, inequality and innovation                                                                           |Hofstra     |Bas        |radboud university |      |
-|14 |Kraaykamp, prof. dr. G.L.M. (Gerbert)                                                      |Educational inequality, culture and health                                                                     |Kraaykamp   |Gerbert    |radboud university |      |
-|15 |Meuleman, dr. (Roza)                                                                       |Culture and nationalism                                                                                        |Meuleman    |Roza       |radboud university |      |
-|16 |Savelkoul, dr. M.J. (Michael)                                                              |Ethnic diversity, prejudice and social cohesion                                                                |Savelkoul   |Michael    |radboud university |      |
-|17 |Scheepers, prof. dr. P.L.H. (Peer)                                                         |Comparative research, social cohesion and diversity                                                            |Scheepers   |Peer       |radboud university |      |
-|18 |Spierings, dr. C.H.B.M. (Niels)                                                            |Islam, gender, populism, social media, Middle East and migration                                               |Spierings   |Niels      |radboud university |      |
-|19 |Tolsma, dr. J. (Jochem)                                                                    |Inequality, criminology and ethnic diversity                                                                   |Tolsma      |Jochem     |radboud university |      |
-|20 |Verbakel, prof. dr. C.M.C. (Ellen)
-                                Head of the department |Health, family and work                                                                                        |Verbakel    |Ellen      |radboud university |      |
-|21 |Visser, dr. M. (Mark)                                                                      |Older workers, radicalism and social cohesion                                                                  |Visser      |Mark       |radboud university |      |
-|22 |Wolbers, prof. dr. M.H.J. (Maarten)                                                        |Educational inequality and labour market inequality                                                            |Wolbers     |Maarten    |radboud university |      |
-|24 |Bussemakers, C. (Carlijn) MSc                                                              |Adverse youth experiences and social inequality                                                                |Bussemakers |Carlijn    |radboud university |      |
-|25 |Franken, R. (Rob) MSc                                                                      |Sport networks and motivation for sustainable sports participation                                             |Franken     |Rob        |radboud university |      |
-|26 |Firat, M. (Mustafa) MSc                                                                    |Social inequality, older workers, life course and retirement                                                   |Firat       |Mustafa    |radboud university |      |
-|27 |Geurts, P.G. (Nella) MSc                                                                   |Integration and migration                                                                                      |Geurts      |Nella      |radboud university |      |
-|28 |Hendriks, I.P. (Inge) MSc                                                                  |Resistance to refugees and social cohesion                                                                     |Hendriks    |Inge       |radboud university |      |
-|29 |Jeroense, T.M.G. (Thijmen) MSc                                                             |Political participation, segregation, opinion polarization and voting behaviour                                |Jeroense    |Thijmen    |radboud university |      |
-|30 |Linders, N. (Nik) MSc                                                                      |Populism, gender, masculinity and sexuality                                                                    |Linders     |Nik        |radboud university |      |
-|31 |Loh, S.M. (Renae) MSc                                                                      |Educational sociology, social stratification, gender inequality and information communication technology (ICT) |Loh         |Renae      |radboud university |      |
-|32 |Meijeren, M. (Maikel) MSc                                                                  |Social capital, volunteer work and diversity                                                                   |Meijeren    |Maikel     |radboud university |      |
-|33 |Mensvoort, C.A. van (Carly) MSc                                                            |Gender, leadership and social norms                                                                            |Mensvoort   |Carly      |radboud university |      |
-|34 |Müller, K. (Katrin) MSc                                                                    |Opinions about discrimination, migration and inequality                                                        |Müller      |Katrin     |radboud university |      |
-|35 |Raiber, K. (Klara) MSc                                                                     |Informal care, employment, social inequality and gender                                                        |Raiber      |Klara      |radboud university |      |
-|36 |Ramaekers, M.J.M. (Marlou) MSc                                                             |Prosocial behaviour and family                                                                                 |Ramaekers   |Marlou     |radboud university |      |
-|37 |Wiertsema, S. (Sara) MSc                                                                   |Inequality in sports and physical activity, school-to-work transition and employment                           |Wiertsema   |Sara       |radboud university |      |
-|39 |Betkó, drs. J.G. (János)                                                                   |Social assistance benefit, poverty, reintegration, RCT and social experiment                                   |Betkó       |János      |radboud university |      |
-|40 |Houten, J. (Jasper) van MSc                                                                |Sports                                                                                                         |Houten      |Jasper     |radboud university |      |
-|41 |Middendorp J. (Jansje) van MSc                                                             |Home administration                                                                                            |Middendorp  |Jansje     |radboud university |      |
-|42 |Vis, E. (Elize) MSc                                                                        |Healthcare, labour market, healthcare professions and training, health and social capital                      |Vis         |Elize      |radboud university |      |
-|43 |Weber, T. (Tijmen) MSc                                                                     |International student mobility and the internationalization of higher education                                |Weber       |Tijmen     |radboud university |      |
-|45 |Sterkens, dr. C.J.A. (Carl)                                                                |Religious conflicts, cohesion, religion and the philosophy of life                                             |Sterkens    |Carl       |radboud university |      |
-|46 |Vermeer, dr. P.A.D.M. (Paul)                                                               |Socialization processes, secularisation, religion and the philosophy of life                                   |Vermeer     |Paul       |radboud university |      |
+|soc_names                                                                                  |soc_experts                                                                                                    |last_name   |first_name |affiliation.x      |gs_id        |name                      |affiliation.y                                                                                 |total_cites |h_index |i10_index |fields                                          |homepage                                                                                                 |
+|:------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:-----------|:----------|:------------------|:------------|:-------------------------|:---------------------------------------------------------------------------------------------|:-----------|:-------|:---------|:-----------------------------------------------|:--------------------------------------------------------------------------------------------------------|
+|Batenburg, prof. dr. R. (Ronald)                                                           |Healthcare, labour market and healthcare professions and training                                              |Batenburg   |Ronald     |radboud university |UK7nVSEAAAAJ |Ronald Batenburg          |Programmaleider NIVEL en bijzonder hoogleraar Radboud Universiteit Nijmegen                   |3608        |30      |87        |verified email at nivel.nl - homepage           |https://www.nivel.nl/nl/ronald-batenburg                                                                 |
+|Begall, dr. K.H. (Katia)                                                                   |Family, life course, labour market participation, division of household tasks and gender norms                 |Begall      |Katia      |radboud university |e7zfTqMAAAAJ |Katia Begall              |Radboud University Nijmegen                                                                   |936         |9       |9         |verified email at maw.ru.nl                     |NA                                                                                                       |
+|Bekhuis, dr. H. (Hidde)                                                                    |Welfare state, nationalism and sports                                                                          |Bekhuis     |Hidde      |radboud university |Q4saWX8AAAAJ |Hidde Bekhuis             |Post Doc Sociology, Radboud University Nijmegen                                               |348         |8       |7         |verified email at ru.nl                         |NA                                                                                                       |
+|Berg, dr. L. van den (Lonneke)                                                             |Family, life course and transition to adulthood                                                                |Berg        |Lonneke    |radboud university |vzBNQ1kAAAAJ |Lonneke van den Berg      |Radboud University                                                                            |34          |3       |2         |verified email at maw.ru.nl - homepage          |https://www.ru.nl/personen/berg-l-van-den-lonneke/                                                       |
+|Blommaert, dr. L. (Lieselotte)                                                             |Discrimination and inequality on the labour market                                                             |Blommaert   |Lieselotte |radboud university |RG54uasAAAAJ |Lieselotte Blommaert      |Sociology/Social Cultural Research, Radboud University, Nijmegen, the                         |317         |7       |7         |verified email at ru.nl - homepage              |http://www.ru.nl/english/people/blommaert-e/                                                             |
+|Damman, dr. M. (Marleen)                                                                   |Labour market, life course, older workers, retirement and solo self-employed                                   |Damman      |Marleen    |radboud university |MEv-V_YAAAAJ |Marleen Damman            |Assistant Professor, Utrecht University                                                       |515         |10      |12        |verified email at uu.nl - homepage              |https://www.uu.nl/staff/MDamman                                                                          |
+|Eisinga, prof. dr. R.N. (Rob)                                                              |Methods of research and statistics                                                                             |Eisinga     |Rob        |radboud university |GDHdsXAAAAAJ |Rob Eisinga               |Professor social science research methods, Radboud University Nijmegen                        |4994        |33      |77        |verified email at ru.nl - homepage              |http://robeisinga.ruhosting.nl/                                                                          |
+|Gesthuizen, dr. M.J.W. (Maurice)                                                           |Poverty en social cohesion                                                                                     |Gesthuizen  |Maurice    |radboud university |n6hiblQAAAAJ |Maurice Gesthuizen        |Sociology, Radboud University Nijmegen, the Netherland - Assistant Professor                  |2425        |24      |41        |verified email at maw.ru.nl - homepage          |http://www.ru.nl/methodenentechnieken/methoden-technieken/medewerkers/vm_medewerkers/maurice_gesthuizen/ |
+|Glas, dr. S. (Saskia)                                                                      |Islam, gender attitudes and sexuality                                                                          |Glas        |Saskia     |radboud university |ZMc0j2YAAAAJ |Saskia Glas               |PhD student, Radboud University                                                               |70          |4       |2         |verified email at ru.nl                         |NA                                                                                                       |
+|Hek, dr. M. van (Margriet)                                                                 |Educational inequality, gender inequality, organizational sociology and culture                                |Hek         |Margriet   |radboud university |ZvLlx2EAAAAJ |Margriet van Hek          |Radboud University                                                                            |262         |8       |7         |verified email at maw.ru.nl                     |NA                                                                                                       |
+|Hoekman, dr. R. H. A.(Remco)                                                               |Sports and policy sociology                                                                                    |Hoekman     |Remco      |radboud university |LsMimOEAAAAJ |Remco Hoekman             |Director, Mulier Institute / Senior researcher, Radboud University                            |610         |12      |15        |verified email at mulierinstituut.nl - homepage |https://www.mulierinstituut.nl/over-mulier/medewerkers/remco-hoekman/                                    |
+|Hofstra, dr. B. (Bas)                                                                      |Diversity, inequality and innovation                                                                           |Hofstra     |Bas        |radboud university |Nx7pDywAAAAJ |Bas Hofstra               |Assistant Professor, Radboud University                                                       |384         |7       |7         |verified email at ru.nl - homepage              |http://www.bashofstra.com/                                                                               |
+|Kraaykamp, prof. dr. G.L.M. (Gerbert)                                                      |Educational inequality, culture and health                                                                     |Kraaykamp   |Gerbert    |radboud university |l8aM4jAAAAAJ |Gerbert Kraaykamp         |Professor of Sociology, Radboud Universiteit Nijmegen                                         |7724        |46      |98        |verified email at maw.ru.nl - homepage          |https://www.ru.nl/english/people/kraaykamp-g/                                                            |
+|Meuleman, dr. (Roza)                                                                       |Culture and nationalism                                                                                        |Meuleman    |Roza       |radboud university |iKs_5WkAAAAJ |Roza Meuleman             |Assistant Professor - Sociology - Radboud University Nijmegen                                 |214         |8       |6         |verified email at ru.nl                         |NA                                                                                                       |
+|Savelkoul, dr. M.J. (Michael)                                                              |Ethnic diversity, prejudice and social cohesion                                                                |Savelkoul   |Michael    |radboud university |_f3krXUAAAAJ |Michael Savelkoul         |Assistant Professor - Sociology, Radboud University Nijmegen, the Netherlands                 |580         |8       |7         |verified email at maw.ru.nl                     |NA                                                                                                       |
+|Scheepers, prof. dr. P.L.H. (Peer)                                                         |Comparative research, social cohesion and diversity                                                            |Scheepers   |Peer       |radboud university |hPeXxvEAAAAJ |peer scheepers            |hoogleraar methodologie, faculteit der sociale wetenschappen radboud universiteit             |14399       |61      |180       |verified email at maw.ru.nl                     |NA                                                                                                       |
+|Spierings, dr. C.H.B.M. (Niels)                                                            |Islam, gender, populism, social media, Middle East and migration                                               |Spierings   |Niels      |radboud university |cy3Ye6sAAAAJ |Niels Spierings           |Associate Professor of Sociology, Radboud University                                          |1662        |22      |33        |verified email at ru.nl - homepage              |https://www.ru.nl/english/people/spierings-c/                                                            |
+|Tolsma, dr. J. (Jochem)                                                                    |Inequality, criminology and ethnic diversity                                                                   |Tolsma      |Jochem     |radboud university |Iu23-90AAAAJ |Jochem Tolsma             |Professor, Radboud University Nijmegen / University of Groningen                              |2260        |22      |33        |verified email at ru.nl - homepage              |http://www.jochemtolsma.nl/                                                                              |
+|Verbakel, prof. dr. C.M.C. (Ellen)
+                                Head of the department |Health, family and work                                                                                        |Verbakel    |Ellen      |radboud university |w2McVJAAAAAJ |Ellen Verbakel            |Professor of Sociology, Department of Sociology, Radboud University Nijmegen                  |1474        |24      |32        |verified email at maw.ru.nl - homepage          |http://www.ellenverbakel.nl/                                                                             |
+|Visser, dr. M. (Mark)                                                                      |Older workers, radicalism and social cohesion                                                                  |Visser      |Mark       |radboud university |ItITloQAAAAJ |Mark Visser               |Assistant Professor, Radboud University                                                       |381         |9       |8         |verified email at ru.nl - homepage              |https://www.researchgate.net/profile/Mark_Visser                                                         |
+|Wolbers, prof. dr. M.H.J. (Maarten)                                                        |Educational inequality and labour market inequality                                                            |Wolbers     |Maarten    |radboud university |TqKrXnMAAAAJ |Maarten HJ Wolbers        |Professor of Sociology, Radboud University, Nijmegen                                          |3624        |29      |58        |verified email at ru.nl - homepage              |http://www.socsci.ru.nl/maartenw/                                                                        |
+|Bussemakers, C. (Carlijn) MSc                                                              |Adverse youth experiences and social inequality                                                                |Bussemakers |Carlijn    |radboud university |bDPtkIoAAAAJ |Carlijn Bussemakers       |Department of Sociology, Radboud University                                                   |37          |3       |1         |verified email at maw.ru.nl                     |NA                                                                                                       |
+|Franken, R. (Rob) MSc                                                                      |Sport networks and motivation for sustainable sports participation                                             |Franken     |Rob        |radboud university |p3IwtT4AAAAJ |Rob JM Franken            |Unknown affiliation                                                                           |1219        |11      |12        |no verified email                               |NA                                                                                                       |
+|Firat, M. (Mustafa) MSc                                                                    |Social inequality, older workers, life course and retirement                                                   |Firat       |Mustafa    |radboud university |_ukytQYAAAAJ |mustafa Inc               |firat university                                                                              |5298        |34      |173       |verified email at firat.edu.tr                  |NA                                                                                                       |
+|Geurts, P.G. (Nella) MSc                                                                   |Integration and migration                                                                                      |Geurts      |Nella      |radboud university |VCTvbTkAAAAJ |Nella Geurts              |Department of Sociology, Radboud University                                                   |32          |3       |1         |verified email at ru.nl                         |NA                                                                                                       |
+|Jeroense, T.M.G. (Thijmen) MSc                                                             |Political participation, segregation, opinion polarization and voting behaviour                                |Jeroense    |Thijmen    |radboud university |izq-KNUAAAAJ |Thijmen Jeroense          |PhD candidate, Radboud University Nijmegen                                                    |1           |1       |0         |verified email at ru.nl - homepage              |https://www.ru.nl/personen/jeroense-t/                                                                   |
+|Loh, S.M. (Renae) MSc                                                                      |Educational sociology, social stratification, gender inequality and information communication technology (ICT) |Loh         |Renae      |radboud university |tFaMPOQAAAAJ |Renae Sze Ming Loh        |PhD candidate, Radboud University                                                             |70          |2       |2         |verified email at ru.nl - homepage              |http://renaeloh.com/                                                                                     |
+|Mensvoort, C.A. van (Carly) MSc                                                            |Gender, leadership and social norms                                                                            |Mensvoort   |Carly      |radboud university |z6iMs-UAAAAJ |Carly van Mensvoort       |Radboud University                                                                            |35          |2       |2         |verified email at ru.nl - homepage              |https://www.ru.nl/english/people/mensvoort-c-van/                                                        |
+|Müller, K. (Katrin) MSc                                                                    |Opinions about discrimination, migration and inequality                                                        |Müller      |Katrin     |radboud university |lkVq32sAAAAJ |Kathrin Friederike Müller |Post-Doc, Universtität Rostock/CAIS NRW                                                       |201         |9       |9         |verified email at uni-rostock.de - homepage     |https://www.imf.uni-rostock.de/institut/mitarbeiterinnen/lehrende/dr-kathrin-friederike-mueller/         |
+|Raiber, K. (Klara) MSc                                                                     |Informal care, employment, social inequality and gender                                                        |Raiber      |Klara      |radboud university |xE65HUcAAAAJ |Klara Raiber              |PhD candidate, Radboud University Nijmegen                                                    |4           |1       |0         |verified email at maw.ru.nl - homepage          |https://www.ru.nl/english/people/raiber-k/                                                               |
+|Ramaekers, M.J.M. (Marlou) MSc                                                             |Prosocial behaviour and family                                                                                 |Ramaekers   |Marlou     |radboud university |fp99JAQAAAAJ |Marlou Ramaekers          |PhD Candidate, Radboud University                                                             |NA          |NA      |NA        |verified email at ru.nl                         |NA                                                                                                       |
+|Houten, J. (Jasper) van MSc                                                                |Sports                                                                                                         |Houten      |Jasper     |radboud university |iR4UIwwAAAAJ |Jasper van Houten         |PhD Candidate, HAN Institute of Sport and Exercise Studies (Hogeschool van Arnhem en Nijmegen |31          |4       |1         |verified email at ru.nl - homepage              |https://www.researchgate.net/profile/Jasper_Houten                                                       |
+|Middendorp J. (Jansje) van MSc                                                             |Home administration                                                                                            |Middendorp  |Jansje     |radboud university |gs0li6MAAAAJ |Jansje van Middendorp     |Buitenpromovendus Radboud Universiteit                                                        |3           |1       |0         |verified email at ru.nl                         |NA                                                                                                       |
+|Weber, T. (Tijmen) MSc                                                                     |International student mobility and the internationalization of higher education                                |Weber       |Tijmen     |radboud university |KfLALRIAAAAJ |Tijmen Weber              |Lecturer Statistics and Research, HAN University of Applied Sciences                          |42          |2       |2         |verified email at han.nl                        |NA                                                                                                       |
 
 
 So we have papers and profile. Remember how we got Jochem's citation history? We want that for each staff member too. Yet again, we use a for loop. We first store the citation history in a list. But notice the `if` statement! We only continue the for loop for that i-th element if some statement is `TRUE`. Here, we attempt to find out if the i-th element, the citation history of the staff member, has a length than is larger than 0. Some staff members are never cited (which happens all the time if papers are only just published), and so for these staff members that is no list element that contains information. We only attach a Google Scholar ID for those staff members that are cited at least once. We bind the rows again and end up with a data frame in *long format*: three columns with years, cites, and Google Scholar ID. Therefore, there is more than one row per staff member.

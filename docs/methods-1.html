@@ -5,27 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Methods | SNASS</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="Chapter 6 Methods | SNASS" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Methods | SNASS" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 6 Methods | SNASS" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
   
 
-<meta name="author" content="Jochem Tolsma" />
-<meta name="author" content="Bas hofstra" />
 
 
-<meta name="date" content="2021-08-26" />
+<meta name="date" content="2021-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,8 +32,8 @@
   
 <link rel="prev" href="theory-1.html"/>
 <link rel="next" href="data-2.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -52,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -60,6 +60,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -120,6 +121,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,13 +160,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">SNASS</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About the authors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-authors"><i class="fa fa-check"></i>About the authors</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a>
-<ul>
-<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#definitions"><i class="fa fa-check"></i><b>1.1.1</b> Definitions</a></li>
-</ul></li>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#aim"><i class="fa fa-check"></i><b>1.2</b> Aim</a></li>
 <li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#structure"><i class="fa fa-check"></i><b>1.3</b> Structure</a>
 <ul>
@@ -152,16 +176,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#what-makes-this-course-stand-out"><i class="fa fa-check"></i><b>1.4</b> What makes this course stand out?</a></li>
 </ul></li>
-<li class="part"><span><b>I Part I DYADS</b></span></li>
+<li class="part"><span><b>I DYADS</b></span></li>
 <li class="chapter" data-level="2" data-path="theory.html"><a href="theory.html"><i class="fa fa-check"></i><b>2</b> Theory</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#causes-of-dyads"><i class="fa fa-check"></i><b>2.1</b> Causes of dyads</a>
+<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#network-structures-i"><i class="fa fa-check"></i><b>2.1</b> Network structures I</a></li>
+<li class="chapter" data-level="2.2" data-path="theory.html"><a href="theory.html#causes-of-dyads"><i class="fa fa-check"></i><b>2.2</b> Causes of dyads</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="theory.html"><a href="theory.html#GTF"><i class="fa fa-check"></i><b>2.1.1</b> General Theoretical Framework</a></li>
-<li class="chapter" data-level="2.1.2" data-path="theory.html"><a href="theory.html#causes-of-dyads-methods"><i class="fa fa-check"></i><b>2.1.2</b> Causes of dyads (methods)</a></li>
+<li class="chapter" data-level="2.2.1" data-path="theory.html"><a href="theory.html#GTF"><i class="fa fa-check"></i><b>2.2.1</b> General Theoretical Framework</a></li>
+<li class="chapter" data-level="2.2.2" data-path="theory.html"><a href="theory.html#social-context-effects"><i class="fa fa-check"></i><b>2.2.2</b> Social context effects</a></li>
+<li class="chapter" data-level="2.2.3" data-path="theory.html"><a href="theory.html#the-special-role-of-restrictions"><i class="fa fa-check"></i><b>2.2.3</b> The special role of restrictions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="theory.html"><a href="theory.html#theory-of-action"><i class="fa fa-check"></i><b>2.2.4</b> Theory of Action</a></li>
+<li class="chapter" data-level="2.2.5" data-path="theory.html"><a href="theory.html#transformation-rules"><i class="fa fa-check"></i><b>2.2.5</b> Transformation rules</a></li>
+<li class="chapter" data-level="2.2.6" data-path="theory.html"><a href="theory.html#agent-based-modelling"><i class="fa fa-check"></i><b>2.2.6</b> Agent Based Modelling</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="theory.html"><a href="theory.html#dt"><i class="fa fa-check"></i><b>2.2</b> Consequences of dyads (theory)</a></li>
-<li class="chapter" data-level="2.3" data-path="theory.html"><a href="theory.html#consequences-of-dyads-methods"><i class="fa fa-check"></i><b>2.3</b> Consequences of dyads (methods)</a></li>
+<li class="chapter" data-level="2.3" data-path="theory.html"><a href="theory.html#dt"><i class="fa fa-check"></i><b>2.3</b> Consequences of dyads</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="theory.html"><a href="theory.html#influence-mechanisms"><i class="fa fa-check"></i><b>2.3.1</b> Influence mechanisms</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
@@ -171,41 +202,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="methods.html"><a href="methods.html#LLM"><i class="fa fa-check"></i><b>3.1.2</b> Loglinear Model</a></li>
 <li class="chapter" data-level="3.1.3" data-path="methods.html"><a href="methods.html#LM"><i class="fa fa-check"></i><b>3.1.3</b> Conditional multinomial logit model</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#consequences"><i class="fa fa-check"></i><b>3.2</b> Consequences</a>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#consequences"><i class="fa fa-check"></i><b>3.2</b> Consequences</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#consequences-of-dyads-methods"><i class="fa fa-check"></i><b>3.3</b> Consequences of dyads (methods)</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="methods.html"><a href="methods.html#selection"><i class="fa fa-check"></i><b>3.2.1</b> Selection</a></li>
-<li class="chapter" data-level="3.2.2" data-path="methods.html"><a href="methods.html#common-context"><i class="fa fa-check"></i><b>3.2.2</b> Common context</a></li>
-<li class="chapter" data-level="3.2.3" data-path="methods.html"><a href="methods.html#dyadic-influence"><i class="fa fa-check"></i><b>3.2.3</b> Dyadic Influence</a></li>
+<li class="chapter" data-level="3.3.1" data-path="methods.html"><a href="methods.html#selection"><i class="fa fa-check"></i><b>3.3.1</b> Selection</a></li>
+<li class="chapter" data-level="3.3.2" data-path="methods.html"><a href="methods.html#common-context"><i class="fa fa-check"></i><b>3.3.2</b> Common context</a></li>
+<li class="chapter" data-level="3.3.3" data-path="methods.html"><a href="methods.html#dyadic-influence"><i class="fa fa-check"></i><b>3.3.3</b> Dyadic Influence</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#dyadic-influence-mechanisms"><i class="fa fa-check"></i><b>3.3</b> Dyadic Influence: Mechanisms</a></li>
-<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#expectations"><i class="fa fa-check"></i><b>3.4</b> Expectations</a></li>
-<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#data"><i class="fa fa-check"></i><b>3.5</b> Data</a>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#dyadic-influence-mechanisms"><i class="fa fa-check"></i><b>3.4</b> Dyadic Influence: Mechanisms</a></li>
+<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#expectations"><i class="fa fa-check"></i><b>3.5</b> Expectations</a></li>
+<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#data"><i class="fa fa-check"></i><b>3.6</b> Data</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="methods.html"><a href="methods.html#variables"><i class="fa fa-check"></i><b>3.5.1</b> Variables</a></li>
-<li class="chapter" data-level="3.5.2" data-path="methods.html"><a href="methods.html#descriptives"><i class="fa fa-check"></i><b>3.5.2</b> Descriptives</a></li>
+<li class="chapter" data-level="3.6.1" data-path="methods.html"><a href="methods.html#variables"><i class="fa fa-check"></i><b>3.6.1</b> Variables</a></li>
+<li class="chapter" data-level="3.6.2" data-path="methods.html"><a href="methods.html#descriptives"><i class="fa fa-check"></i><b>3.6.2</b> Descriptives</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#analysis"><i class="fa fa-check"></i><b>3.6</b> Analysis</a></li>
-<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#modelling-strategy"><i class="fa fa-check"></i><b>3.7</b> Modelling strategy</a>
+<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#analysis"><i class="fa fa-check"></i><b>3.7</b> Analysis</a></li>
+<li class="chapter" data-level="3.8" data-path="methods.html"><a href="methods.html#modelling-strategy"><i class="fa fa-check"></i><b>3.8</b> Modelling strategy</a>
 <ul>
-<li class="chapter" data-level="3.7.1" data-path="methods.html"><a href="methods.html#robustness"><i class="fa fa-check"></i><b>3.7.1</b> Robustness</a></li>
+<li class="chapter" data-level="3.8.1" data-path="methods.html"><a href="methods.html#robustness"><i class="fa fa-check"></i><b>3.8.1</b> Robustness</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="methods.html"><a href="methods.html#results-hypo1"><i class="fa fa-check"></i><b>3.8</b> Results Hypo1</a>
+<li class="chapter" data-level="3.9" data-path="methods.html"><a href="methods.html#results-hypo1"><i class="fa fa-check"></i><b>3.9</b> Results Hypo1</a>
 <ul>
-<li class="chapter" data-level="3.8.1" data-path="methods.html"><a href="methods.html#clpm"><i class="fa fa-check"></i><b>3.8.1</b> CLPM</a></li>
-<li class="chapter" data-level="3.8.2" data-path="methods.html"><a href="methods.html#ri-clpm"><i class="fa fa-check"></i><b>3.8.2</b> RI-CLPM</a></li>
-<li class="chapter" data-level="3.8.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm"><i class="fa fa-check"></i><b>3.8.3</b> SC-RI-CLPM</a></li>
-<li class="chapter" data-level="3.8.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm"><i class="fa fa-check"></i><b>3.8.4</b> LT-RI-CLPM</a></li>
-<li class="chapter" data-level="3.8.5" data-path="methods.html"><a href="methods.html#summary-results-hypo1"><i class="fa fa-check"></i><b>3.8.5</b> Summary results hypo1</a></li>
-<li class="chapter" data-level="3.8.6" data-path="methods.html"><a href="methods.html#conclusion-hypo1"><i class="fa fa-check"></i><b>3.8.6</b> Conclusion hypo1</a></li>
+<li class="chapter" data-level="3.9.1" data-path="methods.html"><a href="methods.html#clpm"><i class="fa fa-check"></i><b>3.9.1</b> CLPM</a></li>
+<li class="chapter" data-level="3.9.2" data-path="methods.html"><a href="methods.html#ri-clpm"><i class="fa fa-check"></i><b>3.9.2</b> RI-CLPM</a></li>
+<li class="chapter" data-level="3.9.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm"><i class="fa fa-check"></i><b>3.9.3</b> SC-RI-CLPM</a></li>
+<li class="chapter" data-level="3.9.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm"><i class="fa fa-check"></i><b>3.9.4</b> LT-RI-CLPM</a></li>
+<li class="chapter" data-level="3.9.5" data-path="methods.html"><a href="methods.html#summary-results-hypo1"><i class="fa fa-check"></i><b>3.9.5</b> Summary results hypo1</a></li>
+<li class="chapter" data-level="3.9.6" data-path="methods.html"><a href="methods.html#conclusion-hypo1"><i class="fa fa-check"></i><b>3.9.6</b> Conclusion hypo1</a></li>
 </ul></li>
-<li class="chapter" data-level="3.9" data-path="methods.html"><a href="methods.html#results-hypo2"><i class="fa fa-check"></i><b>3.9</b> Results Hypo2</a>
+<li class="chapter" data-level="3.10" data-path="methods.html"><a href="methods.html#results-hypo2"><i class="fa fa-check"></i><b>3.10</b> Results Hypo2</a>
 <ul>
-<li class="chapter" data-level="3.9.1" data-path="methods.html"><a href="methods.html#clpm-1"><i class="fa fa-check"></i><b>3.9.1</b> CLPM</a></li>
-<li class="chapter" data-level="3.9.2" data-path="methods.html"><a href="methods.html#ri-clpm-1"><i class="fa fa-check"></i><b>3.9.2</b> RI-CLPM</a></li>
-<li class="chapter" data-level="3.9.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm-1"><i class="fa fa-check"></i><b>3.9.3</b> SC-RI-CLPM</a></li>
-<li class="chapter" data-level="3.9.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm-1"><i class="fa fa-check"></i><b>3.9.4</b> LT-RI-CLPM</a></li>
-<li class="chapter" data-level="3.9.5" data-path="methods.html"><a href="methods.html#summary-results-hypo2"><i class="fa fa-check"></i><b>3.9.5</b> Summary results Hypo2</a></li>
-<li class="chapter" data-level="3.9.6" data-path="methods.html"><a href="methods.html#conclusion-hypo2"><i class="fa fa-check"></i><b>3.9.6</b> Conclusion Hypo2</a></li>
+<li class="chapter" data-level="3.10.1" data-path="methods.html"><a href="methods.html#clpm-1"><i class="fa fa-check"></i><b>3.10.1</b> CLPM</a></li>
+<li class="chapter" data-level="3.10.2" data-path="methods.html"><a href="methods.html#ri-clpm-1"><i class="fa fa-check"></i><b>3.10.2</b> RI-CLPM</a></li>
+<li class="chapter" data-level="3.10.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm-1"><i class="fa fa-check"></i><b>3.10.3</b> SC-RI-CLPM</a></li>
+<li class="chapter" data-level="3.10.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm-1"><i class="fa fa-check"></i><b>3.10.4</b> LT-RI-CLPM</a></li>
+<li class="chapter" data-level="3.10.5" data-path="methods.html"><a href="methods.html#summary-results-hypo2"><i class="fa fa-check"></i><b>3.10.5</b> Summary results Hypo2</a></li>
+<li class="chapter" data-level="3.10.6" data-path="methods.html"><a href="methods.html#conclusion-hypo2"><i class="fa fa-check"></i><b>3.10.6</b> Conclusion Hypo2</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i><b>4</b> Data</a>
@@ -263,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="11.1" data-path="webintro.html"><a href="webintro.html#chapter-overview"><i class="fa fa-check"></i><b>11.1</b> Chapter overview</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="webintro.html"><a href="webintro.html#definitions-1"><i class="fa fa-check"></i><b>11.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="11.1.1" data-path="webintro.html"><a href="webintro.html#definitions"><i class="fa fa-check"></i><b>11.1.1</b> Definitions</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="webintro.html"><a href="webintro.html#promises-and-pitfalls"><i class="fa fa-check"></i><b>11.2</b> Promises and pitfalls</a>
 <ul>
@@ -418,6 +450,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -438,6 +471,10 @@ gitbook.start({
 "text": null
 },
 "download": ["SNA-4-Social-Scientists.pdf", "SNA-4-Social-Scientists.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

@@ -31,10 +31,10 @@
 ```
 
 ```
-## v ggplot2 3.3.3     v purrr   0.3.4
-## v tibble  3.1.0     v dplyr   1.0.5
+## v ggplot2 3.3.5     v purrr   0.3.4
+## v tibble  3.1.4     v dplyr   1.0.7
 ## v tidyr   1.1.3     v stringr 1.4.0
-## v readr   1.4.0     v forcats 0.5.1
+## v readr   2.0.1     v forcats 0.5.1
 ```
 
 ```
@@ -68,7 +68,7 @@
 ## Loading required package: labelled
 ```
 
-Latest Version: 26-08-2021
+Latest Version: 27-08-2021
 
 Please email any comments to: [j.tolsma\@ru.nl](mailto:j.tolsma@ru.nl){.email}
 
@@ -714,7 +714,7 @@ str(cv08_haven)
 ```
 
 ```
-## tibble[,278] [1,963 x 278] (S3: tbl_df/tbl/data.frame)
+## tibble [1,963 x 278] (S3: tbl_df/tbl/data.frame)
 ##  $ we_id   : dbl+lbl [1:1963] 36775330, 36775340, 36775420, 36775440, 36775450, 36775460, 36775480, 367...
 ##    ..@ label        : chr "WE_ID"
 ##    ..@ format.spss  : chr "F10.0"
@@ -1968,14 +1968,14 @@ head(cv08_haven)
 
 ```
 ## # A tibble: 6 x 278
-##     we_id  veilignr   lft1 geslacht   allochtn lft01 lftop gewicht var006n    v040   var723  var723a
-##   <dbl+l>     <dbl> <dbl+> <chr+lbl> <dbl+lbl> <dbl> <dbl>   <dbl> <dbl+l> <dbl+l> <dbl+lb> <dbl+lb>
-## 1  3.68e7 811002474     51 M [Man]   0 [geen ~    50    51   8423. 6 [hbo] 2 [Nee] -5 [N.v~ -5 [N.v~
-## 2  3.68e7 811002539     39 V [Vrouw] 0 [geen ~    38    39   6244. 8 [wo]  1 [Ja]  45       -5 [N.v~
-## 3  3.68e7 811002551     16 V [Vrouw] 1 [alloc~    15    16  13434. 3 [mav~ 2 [Nee] -5 [N.v~ -5 [N.v~
-## 4  3.68e7 811002563     30 M [Man]   0 [geen ~    29    29   8997  8 [wo]  1 [Ja]  20       -5 [N.v~
-## 5  3.68e7 811002743     57 M [Man]   0 [geen ~    56    57   8423. 6 [hbo] 2 [Nee] -5 [N.v~ -5 [N.v~
-## 6  3.68e7 811002607     49 V [Vrouw] 1 [alloc~    48    49   9537. 2 [vmb~ 2 [Nee] -5 [N.v~ -5 [N.v~
+##    we_id veilignr  lft1 geslacht allochtn lft01 lftop gewicht var006n    v040   var723  var723a
+##   <dbl+>    <dbl> <dbl> <chr+lb> <dbl+lb> <dbl> <dbl>   <dbl> <dbl+l> <dbl+l> <dbl+lb> <dbl+lb>
+## 1 3.68e7   8.11e8    51 M [Man]  0 [geen~    50    51   8423. 6 [hbo] 2 [Nee] -5 [N.v~ -5 [N.v~
+## 2 3.68e7   8.11e8    39 V [Vrou~ 0 [geen~    38    39   6244. 8 [wo]  1 [Ja]  45       -5 [N.v~
+## 3 3.68e7   8.11e8    16 V [Vrou~ 1 [allo~    15    16  13434. 3 [mav~ 2 [Nee] -5 [N.v~ -5 [N.v~
+## 4 3.68e7   8.11e8    30 M [Man]  0 [geen~    29    29   8997  8 [wo]  1 [Ja]  20       -5 [N.v~
+## 5 3.68e7   8.11e8    57 M [Man]  0 [geen~    56    57   8423. 6 [hbo] 2 [Nee] -5 [N.v~ -5 [N.v~
+## 6 3.68e7   8.11e8    49 V [Vrou~ 1 [allo~    48    49   9537. 2 [vmb~ 2 [Nee] -5 [N.v~ -5 [N.v~
 ## # ... with 266 more variables: v202n <dbl+lbl>, var1061a <dbl+lbl>, var1061b <dbl+lbl>,
 ## #   var1062a <dbl+lbl>, var1062b <dbl+lbl>, int137n <dbl+lbl>, int138n <dbl+lbl>,
 ## #   int139n <dbl+lbl>, int140n <dbl+lbl>, int141n <dbl+lbl>, v401 <dbl+lbl>, var1343 <dbl+lbl>,
@@ -2325,17 +2325,7 @@ And now the fun starts. Tidyverse includes a `dplyr::recode` function, but this 
 ```{.r .numberLines}
 #install.packages("labelled")
 require(labelled) #to be able to use the recode function on haven labelled variables
-```
 
-```
-## Loading required package: labelled
-```
-
-```
-## Warning: package 'labelled' was built under R version 4.0.5
-```
-
-```{.r .numberLines}
 #inspect variable
 str(cv08_haven$var006n)
 ```

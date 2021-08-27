@@ -1,5 +1,6 @@
 base
 knitr
+kableExtra
 ggplot2
 dplyr
 haven
@@ -12,4 +13,3 @@ future
 future.apply
 purrr
 tidyr
-kableExtra

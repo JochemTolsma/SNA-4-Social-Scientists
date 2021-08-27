@@ -14,7 +14,6 @@ subtitle: "Social Network Analysis for Social Scientists"
 Sociologists study how societies affect the lives of their members and, vice versa, how individuals shape the societies in which they live. Within societies people make and break relations with specific others and thereby form **social networks**.\
 Individuals are embedded in many different social networks (e.g. based on friendships, bullying, family relations). Within these social networks individuals influence each others' attitudes, behaviors and relations via complex dynamic processes. The attitudes, behaviors and relations of individuals shape, in turn, the societies they live in. They give rise to **social phenomena** such as inequality, segregation, polarization and cohesion. It is not possible to explain many macro-level social phenomena, let alone to solve many urgent **social problems**, without taking into account social networks. For example, researchers may be able to deduce hypotheses from an established theory on political opinions of individuals but the same theory is not able to explain when and where **political polarization** occurs. For this, a social network perspective is necessary. It can thus be no surprise that the study of the causes and consequences of social networks lies at the core of sociology.
 
-### Definitions
 
 > **Social Networks**
 >
@@ -71,29 +70,30 @@ This course is structured along three different dimensions:
 
 **Table. 1.1 ** Topics discussed within the course
 
-| Type of Social Network           | Causes or Consequences | Implications | Book section |
-|----------------------------------|------------------------|------------------|------------------|
-| Dyads                            | Causes                 | Theory           | |
-| Dyads                            | Causes                 | Method           | |
-| Dyads                            | Consequences           | Theory           | |
-| Dyads                            | Consequences           | Method           | |
-| Dyads                            | NA                     | Data             | |
-| Egonets                          | Causes                 | Theory           | |
-| Egonets                          | Causes                 | Method           | |
-| Egonets                          | Consequences           | Theory           | |
-| Egonets                          | Consequences           | Method           | |
-| Egonets                          | NA                     | Data             | |
-| Socionet                         | Causes                 | Theory           | |
-| Socionet                         | Causes                 | Method           | |
-| Socionet                         | Consequences           | Theory           | |
-| Socionet                         | Consequences           | Method           | |
-| Socionet                         | NA                     | Data             | |
+| Type of Social Network           | Causes or Consequences | Implications | 
+|----------------------------------|------------------------|------------------|
+| Dyads                            | Causes                 | Theory           |
+| Dyads                            | Causes                 | Method           |
+| Dyads                            | Consequences           | Theory           |
+| Dyads                            | Consequences           | Method           |
+| Dyads                            | NA                     | Data             |
+| Egonets                          | Causes                 | Theory           |
+| Egonets                          | Causes                 | Method           |
+| Egonets                          | Consequences           | Theory           |
+| Egonets                          | Consequences           | Method           |
+| Egonets                          | NA                     | Data             |
+| Socionet                         | Causes                 | Theory           |
+| Socionet                         | Causes                 | Method           |
+| Socionet                         | Consequences           | Theory           |
+| Socionet                         | Consequences           | Method           |
+| Socionet                         | NA                     | Data             |
 
 
-<span style='color: red;'>**Feel free to jump to the section you are most interested in. But there is a clear order in the sections. The best way to accumulate theoretical and methodological knowledge, and to gain the necessary R-skills to successfully apply a social network perspective to your own research is by going through the sections one by.**</span>
+<span style='color: red;'>**Feel free to use the menu on the left and to jump to the section you are most interested in. But there is a clear order in the sections. The best way to accumulate theoretical and methodological knowledge, and to gain the necessary R-skills to successfully apply a social network perspective to your own research is by going through the sections one by.**</span>
 
+Below I will discuss three dimensions in a little bit more detail.  
 
-### Type of Social Network {.tabset}
+### Type of Social Network
 
 #### **Dyads** {-}  
 
@@ -242,68 +242,4 @@ In this course you will learn to apply a social network perspective in the study
 Enjoy!!
 
 ---   
-
-
-
-
-
-<!---
-
-To: Update R tutorial 
-
-
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
-
-Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
-
-
-```r
-par(mar = c(4, 4, 0.1, 0.1))
-plot(pressure, type = "b", pch = 19)
-```
-
-<div class="figure" style="text-align: center">
-<img src="01-intro_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
-<p class="caption">(\#fig:nice-fig)Here is a nice figure!</p>
-</div>
-
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
-
-
-```r
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
-
-
-
-Table: (\#tab:nice-tab)Here is a nice table!
-
-| Sepal.Length| Sepal.Width| Petal.Length| Petal.Width|Species |
-|------------:|-----------:|------------:|-----------:|:-------|
-|          5.1|         3.5|          1.4|         0.2|setosa  |
-|          4.9|         3.0|          1.4|         0.2|setosa  |
-|          4.7|         3.2|          1.3|         0.2|setosa  |
-|          4.6|         3.1|          1.5|         0.2|setosa  |
-|          5.0|         3.6|          1.4|         0.2|setosa  |
-|          5.4|         3.9|          1.7|         0.4|setosa  |
-|          4.6|         3.4|          1.4|         0.3|setosa  |
-|          5.0|         3.4|          1.5|         0.2|setosa  |
-|          4.4|         2.9|          1.4|         0.2|setosa  |
-|          4.9|         3.1|          1.5|         0.1|setosa  |
-|          5.4|         3.7|          1.5|         0.2|setosa  |
-|          4.8|         3.4|          1.6|         0.2|setosa  |
-|          4.8|         3.0|          1.4|         0.1|setosa  |
-|          4.3|         3.0|          1.1|         0.1|setosa  |
-|          5.8|         4.0|          1.2|         0.2|setosa  |
-|          5.7|         4.4|          1.5|         0.4|setosa  |
-|          5.4|         3.9|          1.3|         0.4|setosa  |
-|          5.1|         3.5|          1.4|         0.3|setosa  |
-|          5.7|         3.8|          1.7|         0.3|setosa  |
-|          5.1|         3.8|          1.5|         0.3|setosa  |
-
-You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
---->
 

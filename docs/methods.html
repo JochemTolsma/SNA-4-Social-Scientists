@@ -5,27 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Methods | SNASS</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="Chapter 3 Methods | SNASS" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Methods | SNASS" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 3 Methods | SNASS" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
   
 
-<meta name="author" content="Jochem Tolsma" />
-<meta name="author" content="Bas hofstra" />
 
 
-<meta name="date" content="2021-08-26" />
+<meta name="date" content="2021-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,8 +32,8 @@
   
 <link rel="prev" href="theory.html"/>
 <link rel="next" href="data-1.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -52,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -60,6 +60,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -120,6 +121,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,13 +160,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">SNASS</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About the authors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-authors"><i class="fa fa-check"></i>About the authors</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a>
-<ul>
-<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#definitions"><i class="fa fa-check"></i><b>1.1.1</b> Definitions</a></li>
-</ul></li>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#aim"><i class="fa fa-check"></i><b>1.2</b> Aim</a></li>
 <li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#structure"><i class="fa fa-check"></i><b>1.3</b> Structure</a>
 <ul>
@@ -152,16 +176,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#what-makes-this-course-stand-out"><i class="fa fa-check"></i><b>1.4</b> What makes this course stand out?</a></li>
 </ul></li>
-<li class="part"><span><b>I Part I DYADS</b></span></li>
+<li class="part"><span><b>I DYADS</b></span></li>
 <li class="chapter" data-level="2" data-path="theory.html"><a href="theory.html"><i class="fa fa-check"></i><b>2</b> Theory</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#causes-of-dyads"><i class="fa fa-check"></i><b>2.1</b> Causes of dyads</a>
+<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#network-structures-i"><i class="fa fa-check"></i><b>2.1</b> Network structures I</a></li>
+<li class="chapter" data-level="2.2" data-path="theory.html"><a href="theory.html#causes-of-dyads"><i class="fa fa-check"></i><b>2.2</b> Causes of dyads</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="theory.html"><a href="theory.html#GTF"><i class="fa fa-check"></i><b>2.1.1</b> General Theoretical Framework</a></li>
-<li class="chapter" data-level="2.1.2" data-path="theory.html"><a href="theory.html#causes-of-dyads-methods"><i class="fa fa-check"></i><b>2.1.2</b> Causes of dyads (methods)</a></li>
+<li class="chapter" data-level="2.2.1" data-path="theory.html"><a href="theory.html#GTF"><i class="fa fa-check"></i><b>2.2.1</b> General Theoretical Framework</a></li>
+<li class="chapter" data-level="2.2.2" data-path="theory.html"><a href="theory.html#social-context-effects"><i class="fa fa-check"></i><b>2.2.2</b> Social context effects</a></li>
+<li class="chapter" data-level="2.2.3" data-path="theory.html"><a href="theory.html#the-special-role-of-restrictions"><i class="fa fa-check"></i><b>2.2.3</b> The special role of restrictions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="theory.html"><a href="theory.html#theory-of-action"><i class="fa fa-check"></i><b>2.2.4</b> Theory of Action</a></li>
+<li class="chapter" data-level="2.2.5" data-path="theory.html"><a href="theory.html#transformation-rules"><i class="fa fa-check"></i><b>2.2.5</b> Transformation rules</a></li>
+<li class="chapter" data-level="2.2.6" data-path="theory.html"><a href="theory.html#agent-based-modelling"><i class="fa fa-check"></i><b>2.2.6</b> Agent Based Modelling</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="theory.html"><a href="theory.html#dt"><i class="fa fa-check"></i><b>2.2</b> Consequences of dyads (theory)</a></li>
-<li class="chapter" data-level="2.3" data-path="theory.html"><a href="theory.html#consequences-of-dyads-methods"><i class="fa fa-check"></i><b>2.3</b> Consequences of dyads (methods)</a></li>
+<li class="chapter" data-level="2.3" data-path="theory.html"><a href="theory.html#dt"><i class="fa fa-check"></i><b>2.3</b> Consequences of dyads</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="theory.html"><a href="theory.html#influence-mechanisms"><i class="fa fa-check"></i><b>2.3.1</b> Influence mechanisms</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
@@ -171,41 +202,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="methods.html"><a href="methods.html#LLM"><i class="fa fa-check"></i><b>3.1.2</b> Loglinear Model</a></li>
 <li class="chapter" data-level="3.1.3" data-path="methods.html"><a href="methods.html#LM"><i class="fa fa-check"></i><b>3.1.3</b> Conditional multinomial logit model</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#consequences"><i class="fa fa-check"></i><b>3.2</b> Consequences</a>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#consequences"><i class="fa fa-check"></i><b>3.2</b> Consequences</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#consequences-of-dyads-methods"><i class="fa fa-check"></i><b>3.3</b> Consequences of dyads (methods)</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="methods.html"><a href="methods.html#selection"><i class="fa fa-check"></i><b>3.2.1</b> Selection</a></li>
-<li class="chapter" data-level="3.2.2" data-path="methods.html"><a href="methods.html#common-context"><i class="fa fa-check"></i><b>3.2.2</b> Common context</a></li>
-<li class="chapter" data-level="3.2.3" data-path="methods.html"><a href="methods.html#dyadic-influence"><i class="fa fa-check"></i><b>3.2.3</b> Dyadic Influence</a></li>
+<li class="chapter" data-level="3.3.1" data-path="methods.html"><a href="methods.html#selection"><i class="fa fa-check"></i><b>3.3.1</b> Selection</a></li>
+<li class="chapter" data-level="3.3.2" data-path="methods.html"><a href="methods.html#common-context"><i class="fa fa-check"></i><b>3.3.2</b> Common context</a></li>
+<li class="chapter" data-level="3.3.3" data-path="methods.html"><a href="methods.html#dyadic-influence"><i class="fa fa-check"></i><b>3.3.3</b> Dyadic Influence</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#dyadic-influence-mechanisms"><i class="fa fa-check"></i><b>3.3</b> Dyadic Influence: Mechanisms</a></li>
-<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#expectations"><i class="fa fa-check"></i><b>3.4</b> Expectations</a></li>
-<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#data"><i class="fa fa-check"></i><b>3.5</b> Data</a>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#dyadic-influence-mechanisms"><i class="fa fa-check"></i><b>3.4</b> Dyadic Influence: Mechanisms</a></li>
+<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#expectations"><i class="fa fa-check"></i><b>3.5</b> Expectations</a></li>
+<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#data"><i class="fa fa-check"></i><b>3.6</b> Data</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="methods.html"><a href="methods.html#variables"><i class="fa fa-check"></i><b>3.5.1</b> Variables</a></li>
-<li class="chapter" data-level="3.5.2" data-path="methods.html"><a href="methods.html#descriptives"><i class="fa fa-check"></i><b>3.5.2</b> Descriptives</a></li>
+<li class="chapter" data-level="3.6.1" data-path="methods.html"><a href="methods.html#variables"><i class="fa fa-check"></i><b>3.6.1</b> Variables</a></li>
+<li class="chapter" data-level="3.6.2" data-path="methods.html"><a href="methods.html#descriptives"><i class="fa fa-check"></i><b>3.6.2</b> Descriptives</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#analysis"><i class="fa fa-check"></i><b>3.6</b> Analysis</a></li>
-<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#modelling-strategy"><i class="fa fa-check"></i><b>3.7</b> Modelling strategy</a>
+<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#analysis"><i class="fa fa-check"></i><b>3.7</b> Analysis</a></li>
+<li class="chapter" data-level="3.8" data-path="methods.html"><a href="methods.html#modelling-strategy"><i class="fa fa-check"></i><b>3.8</b> Modelling strategy</a>
 <ul>
-<li class="chapter" data-level="3.7.1" data-path="methods.html"><a href="methods.html#robustness"><i class="fa fa-check"></i><b>3.7.1</b> Robustness</a></li>
+<li class="chapter" data-level="3.8.1" data-path="methods.html"><a href="methods.html#robustness"><i class="fa fa-check"></i><b>3.8.1</b> Robustness</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="methods.html"><a href="methods.html#results-hypo1"><i class="fa fa-check"></i><b>3.8</b> Results Hypo1</a>
+<li class="chapter" data-level="3.9" data-path="methods.html"><a href="methods.html#results-hypo1"><i class="fa fa-check"></i><b>3.9</b> Results Hypo1</a>
 <ul>
-<li class="chapter" data-level="3.8.1" data-path="methods.html"><a href="methods.html#clpm"><i class="fa fa-check"></i><b>3.8.1</b> CLPM</a></li>
-<li class="chapter" data-level="3.8.2" data-path="methods.html"><a href="methods.html#ri-clpm"><i class="fa fa-check"></i><b>3.8.2</b> RI-CLPM</a></li>
-<li class="chapter" data-level="3.8.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm"><i class="fa fa-check"></i><b>3.8.3</b> SC-RI-CLPM</a></li>
-<li class="chapter" data-level="3.8.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm"><i class="fa fa-check"></i><b>3.8.4</b> LT-RI-CLPM</a></li>
-<li class="chapter" data-level="3.8.5" data-path="methods.html"><a href="methods.html#summary-results-hypo1"><i class="fa fa-check"></i><b>3.8.5</b> Summary results hypo1</a></li>
-<li class="chapter" data-level="3.8.6" data-path="methods.html"><a href="methods.html#conclusion-hypo1"><i class="fa fa-check"></i><b>3.8.6</b> Conclusion hypo1</a></li>
+<li class="chapter" data-level="3.9.1" data-path="methods.html"><a href="methods.html#clpm"><i class="fa fa-check"></i><b>3.9.1</b> CLPM</a></li>
+<li class="chapter" data-level="3.9.2" data-path="methods.html"><a href="methods.html#ri-clpm"><i class="fa fa-check"></i><b>3.9.2</b> RI-CLPM</a></li>
+<li class="chapter" data-level="3.9.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm"><i class="fa fa-check"></i><b>3.9.3</b> SC-RI-CLPM</a></li>
+<li class="chapter" data-level="3.9.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm"><i class="fa fa-check"></i><b>3.9.4</b> LT-RI-CLPM</a></li>
+<li class="chapter" data-level="3.9.5" data-path="methods.html"><a href="methods.html#summary-results-hypo1"><i class="fa fa-check"></i><b>3.9.5</b> Summary results hypo1</a></li>
+<li class="chapter" data-level="3.9.6" data-path="methods.html"><a href="methods.html#conclusion-hypo1"><i class="fa fa-check"></i><b>3.9.6</b> Conclusion hypo1</a></li>
 </ul></li>
-<li class="chapter" data-level="3.9" data-path="methods.html"><a href="methods.html#results-hypo2"><i class="fa fa-check"></i><b>3.9</b> Results Hypo2</a>
+<li class="chapter" data-level="3.10" data-path="methods.html"><a href="methods.html#results-hypo2"><i class="fa fa-check"></i><b>3.10</b> Results Hypo2</a>
 <ul>
-<li class="chapter" data-level="3.9.1" data-path="methods.html"><a href="methods.html#clpm-1"><i class="fa fa-check"></i><b>3.9.1</b> CLPM</a></li>
-<li class="chapter" data-level="3.9.2" data-path="methods.html"><a href="methods.html#ri-clpm-1"><i class="fa fa-check"></i><b>3.9.2</b> RI-CLPM</a></li>
-<li class="chapter" data-level="3.9.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm-1"><i class="fa fa-check"></i><b>3.9.3</b> SC-RI-CLPM</a></li>
-<li class="chapter" data-level="3.9.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm-1"><i class="fa fa-check"></i><b>3.9.4</b> LT-RI-CLPM</a></li>
-<li class="chapter" data-level="3.9.5" data-path="methods.html"><a href="methods.html#summary-results-hypo2"><i class="fa fa-check"></i><b>3.9.5</b> Summary results Hypo2</a></li>
-<li class="chapter" data-level="3.9.6" data-path="methods.html"><a href="methods.html#conclusion-hypo2"><i class="fa fa-check"></i><b>3.9.6</b> Conclusion Hypo2</a></li>
+<li class="chapter" data-level="3.10.1" data-path="methods.html"><a href="methods.html#clpm-1"><i class="fa fa-check"></i><b>3.10.1</b> CLPM</a></li>
+<li class="chapter" data-level="3.10.2" data-path="methods.html"><a href="methods.html#ri-clpm-1"><i class="fa fa-check"></i><b>3.10.2</b> RI-CLPM</a></li>
+<li class="chapter" data-level="3.10.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm-1"><i class="fa fa-check"></i><b>3.10.3</b> SC-RI-CLPM</a></li>
+<li class="chapter" data-level="3.10.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm-1"><i class="fa fa-check"></i><b>3.10.4</b> LT-RI-CLPM</a></li>
+<li class="chapter" data-level="3.10.5" data-path="methods.html"><a href="methods.html#summary-results-hypo2"><i class="fa fa-check"></i><b>3.10.5</b> Summary results Hypo2</a></li>
+<li class="chapter" data-level="3.10.6" data-path="methods.html"><a href="methods.html#conclusion-hypo2"><i class="fa fa-check"></i><b>3.10.6</b> Conclusion Hypo2</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i><b>4</b> Data</a>
@@ -263,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="11.1" data-path="webintro.html"><a href="webintro.html#chapter-overview"><i class="fa fa-check"></i><b>11.1</b> Chapter overview</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="webintro.html"><a href="webintro.html#definitions-1"><i class="fa fa-check"></i><b>11.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="11.1.1" data-path="webintro.html"><a href="webintro.html#definitions"><i class="fa fa-check"></i><b>11.1.1</b> Definitions</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="webintro.html"><a href="webintro.html#promises-and-pitfalls"><i class="fa fa-check"></i><b>11.2</b> Promises and pitfalls</a>
 <ul>
@@ -353,6 +385,489 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 3</span> Methods</h1>
 <div id="causes" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Causes</h2>
+<!---see!!! 
+https://link.springer.com/chapter/10.1007/978-3-319-93227-9_13
+
+https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
+--->
+<p>When testing hypotheses on assortative mating many methodological approaches can be used. We may predict the <strong>frequency of specific dyads</strong> in our population with loglinear models and the data we use is commonly structured in a square table like the one below. Loglinear models are, in essence, nothing more than a nice, parsimonious and fancy way to calculate <a href="methods.html#OR">odds ratio’s</a>. If we have a small, well filled table of just a few attributes, <a href="methods.html#LLM">loglinear models</a> are considered to be the golden standard.</p>
+<table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabledyads">Table 3.1: </span>Assortative Mating (dyad frequency)
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;">
+</th>
+<th style="text-align:center;font-weight: bold;">
+Wife educ-high
+</th>
+<th style="text-align:center;font-weight: bold;">
+Wife educ-low
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Husband educ-high
+</td>
+<td style="text-align:center;">
+350
+</td>
+<td style="text-align:center;">
+150
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;">
+Husband educ-low
+</td>
+<td style="text-align:center;">
+200
+</td>
+<td style="text-align:center;">
+400
+</td>
+</tr>
+</tbody>
+</table>
+<p>Another approach is to take the <strong>characteristics of the dyad</strong> (e.g. 1 = intermarriage and 0 = no intermarriage) as the dependent variable. This dependent variable can than be explained by applying (conditional) (multinomial) <a href="methods.html#LM">logistic regression</a> techniques. In this case, the data is commonly structured in long format and looks something like the table below.</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabledyads2">Table 3.2: </span>Assortative Mating (dyad characteristic)
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+dyad_id
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+wife educ
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+wife age
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+husband educ
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+husband age
+</th>
+<th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;">
+intermarriage
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+30.63
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+26.91
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+24.79
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+34.61
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+19.00
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+25.92
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+29.31
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+39.08
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+25.32
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+30.11
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+23.86
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+19.01
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+36.36
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+35.34
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+35.58
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+22.64
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+24.24
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+36.36
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+20.27
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+20.79
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+24.08
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+34.20
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+12
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+44.44
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+23.97
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+33.40
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+25.77
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+14
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+27.86
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+35.55
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+21.97
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+19.44
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+16
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+38.16
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+18.42
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+17
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+44.85
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+37.86
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+18
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+30.91
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+23.21
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+19
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+24.30
+</td>
+<td style="text-align:center;">
+HIGH
+</td>
+<td style="text-align:center;">
+31.53
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+20
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+36.19
+</td>
+<td style="text-align:center;">
+LOW
+</td>
+<td style="text-align:center;">
+21.50
+</td>
+<td style="text-align:center;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Which methodology is preferred should depend on your hypotheses and on the data you have to your availability.</p>
+<blockquote>
+<p>Please be aware that in both approaches we normally do not have information on (the frequency or characteristics of) dyads in which there is no relation between ego and alter. Thus, you may have information on characteristics of me and my wife but you do not have information on all other women (or men) I could have married but didn’t. I fished my wife out of the sea but we don’t know what the other fish looked like. (Luckily my wife is no scientist and won’t read this clarification.)</p>
+</blockquote>
 <div id="OR" class="section level3" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Odds Ratio</h3>
 </div>
@@ -365,6 +880,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="consequences" class="section level2 tabset tabset-fade" number="3.2">
 <h2><span class="header-section-number">3.2</span> Consequences</h2>
+</div>
+<div id="consequences-of-dyads-methods" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Consequences of dyads (methods)</h2>
+<p>The method used to explain consequences of dyads depends on our Unit of Analysis. If it is the dyad itself (e.g. mean relationship quality) methods are relatively straightforward, because we may assume that the observations at the dyad-level are independent. If, on the other hand, the unit of analysis are the partners themselves that make up the dyad, we need to acknowledge that the observations between the partners of the same couple are not independent. In part exactly because partners select and influence each other and share a social context. One solution could be to simply randomly select one partner of each couple or, if partners can be clearly distinguished - for example men and women in heterosexual couples - the different partners could be analyzed separately. A disadvantage of the latter two approaches is, however, that the covariance between the partners cannot be explained anymore, although this may exactly be the focus of our research questions. A more elegant solution, is to take the interdependencies into account and model these explicitly. This can be done within a multi-level framework and within a structural-equation modelling framework.</p>
+<p>When we discussed the methods to analyze causes of homogamy, we were interested in homophily within couples at one point in time and focused on selection as explanans. Now, when we discuss the consequences of dyads, we are interested in explaining trends in homophily within couples and focus on shared context and influence processes as explanans.</p>
 <hr />
 <p><strong>PARTNERS AND POLITICS - When do we listen to our partner</strong>’s political opinion?</p>
 <html>
@@ -399,10 +919,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Let us briefly discuss these three common causes and demonstrate how the resulting homophily within couples could contribute to polarization at the society level.</p>
 <hr />
-<div id="selection" class="section level3" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Selection</h3>
+<div id="selection" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Selection</h3>
 <p>We will start with a fictive population of unmarried persons. Some political opinion is distributed as follows within society.</p>
-<div class="figure"><span id="fig:unnamed-chunk-2"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
 <img src="02-Dyads_files/figure-html/unnamed-chunk-2-1.png" alt="Distribution of opinions within population" width="672" />
 <p class="caption">
 Figure 3.1: Distribution of opinions within population
@@ -418,8 +938,8 @@ Figure 3.1: Distribution of opinions within population
 <!---insert link here--->
 <hr />
 </div>
-<div id="common-context" class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Common context</h3>
+<div id="common-context" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Common context</h3>
 <p>What is a ‘common context?’</p>
 <p>Some examples:</p>
 <ul>
@@ -445,8 +965,8 @@ However, if we go back to the individual-level again, we do not (clearly) observ
 <p>In order to also observe (pronounced) polarization between individuals, there needs to be some influence between partners</p>
 <hr />
 </div>
-<div id="dyadic-influence" class="section level3" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Dyadic Influence</h3>
+<div id="dyadic-influence" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Dyadic Influence</h3>
 <p>Why would partners influence each other? Well, we discussed influence here. <!---insert link---></p>
 <ul>
 <li>Dyadic (positive) influence:
@@ -462,8 +982,8 @@ However, if we go back to the individual-level again, we do not (clearly) observ
 <hr />
 </div>
 </div>
-<div id="dyadic-influence-mechanisms" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Dyadic Influence: Mechanisms</h2>
+<div id="dyadic-influence-mechanisms" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Dyadic Influence: Mechanisms</h2>
 <p>What happens within the couple?
 Or phrased otherwise, what could dyadic influence look like?</p>
 <ul>
@@ -483,11 +1003,11 @@ Or phrased otherwise, what could dyadic influence look like?</p>
 <p><img src="02-Dyads_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <hr />
 </div>
-<div id="expectations" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Expectations</h2>
+<div id="expectations" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Expectations</h2>
 <p>Now, let us try to formulate several hypotheses on influence processes taking place within couples. Naturally, these hypotheses should be derived from existing (and established) theories. But the aim here is not to teach you how to derive hypotheses but to test hypotheses on dyadic influence.</p>
 <p class="quote">
-“People influence one another, and as the importance and immediacy of a group or individual increases, this influence becomes stronger (Latané, 1981). Forces of influence are especially strong within romantic relationships because these relationships are important, are predicated on mutual acceptance, and involve frequent exposure to the habits of one’s partner.” <span class="citation"><a href="references.html#ref-bartel2017romantic" role="doc-biblioref">Bartel et al.</a> (<a href="references.html#ref-bartel2017romantic" role="doc-biblioref">2017</a>)</span>
+“People influence one another, and as the importance and immediacy of a group or individual increases, this influence becomes stronger (Latané, 1981). Forces of influence are especially strong within romantic relationships because these relationships are important, are predicated on mutual acceptance, and involve frequent exposure to the habits of one’s partner.” <span class="citation"><a href="#ref-bartel2017romantic" role="doc-biblioref">Bartel et al.</a> (<a href="#ref-bartel2017romantic" role="doc-biblioref">2017</a>)</span>
 </p>
 <p>Naive conceptualisation of <strong>influence</strong>. It is assumed that partners will match their opinions/behaviors. Thus influence here is convergence and reaction to shocks.</p>
 <p><strong>Hypothesis 1 Partner influence hypothesis</strong>: Partners opinions will become more similar to one another over time.<br />
@@ -505,8 +1025,8 @@ Hypo1 LT-RI-CLPM: Even if we take into account that...:
 <p><strong>Hypothesis 3 Educational dominance hypothesis:</strong> The spouse with the lowest education is more influenced by their partner than the spouse with the highest education.**</p>
 <hr />
 </div>
-<div id="data" class="section level2 tabset tabset-fade" number="3.5">
-<h2><span class="header-section-number">3.5</span> Data</h2>
+<div id="data" class="section level2 tabset tabset-fade" number="3.6">
+<h2><span class="header-section-number">3.6</span> Data</h2>
 <p><a href="https://www.lissdata.nl/">
 <img src="lisslogo_0.png">
 </a></p>
@@ -521,8 +1041,8 @@ Hypo1 LT-RI-CLPM: Even if we take into account that...:
 <p>Please download this data file to your working directory.</p>
 <p><a href="addfiles\partner_dataprepped.Rdata">partner_dataprepped.Rdata</a><br />
 </p>
-<div id="variables" class="section level3" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> Variables</h3>
+<div id="variables" class="section level3" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Variables</h3>
 <p>Variables of interest and value labels:</p>
 <ul>
 <li>Education: = highest completed education in years (4-16.5)</li>
@@ -576,14 +1096,14 @@ We nemen enkel mensen van 25 jaar en ouder mee. Van hen verwachten we dat ze kla
 </p>
 <hr />
 </div>
-<div id="descriptives" class="section level3" number="3.5.2">
-<h3><span class="header-section-number">3.5.2</span> Descriptives</h3>
+<div id="descriptives" class="section level3" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> Descriptives</h3>
 <p><strong>TO DO</strong></p>
 <hr />
 </div>
 </div>
-<div id="analysis" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> Analysis</h2>
+<div id="analysis" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> Analysis</h2>
 <p>As always, make sure to start properly. See here. <!---insert link---></p>
 <p>We need to do some additional dataprep. Have a look at the dataset. It is in long format but we will need a wide format.</p>
 <p>I know it is a bit cumbersome, but we will make a datafile for each dependent variable separately and will use some shorter names. The data files are stored in a list called <code>datalist_ori</code>.</p>
@@ -772,21 +1292,21 @@ We nemen enkel mensen van 25 jaar en ouder mee. Van hen verwachten we dat ze kla
 <span id="cb1-183"><a href="methods.html#cb1-183" aria-hidden="true" tabindex="-1"></a>datalist_ori[[<span class="dv">4</span>]] <span class="ot">&lt;-</span> dat_ori</span></code></pre></div>
 <hr />
 </div>
-<div id="modelling-strategy" class="section level2 tabset tabset-fade" number="3.7">
-<h2><span class="header-section-number">3.7</span> Modelling strategy</h2>
+<div id="modelling-strategy" class="section level2 tabset tabset-fade" number="3.8">
+<h2><span class="header-section-number">3.8</span> Modelling strategy</h2>
 <ul>
 <li>Actor effects: stability effects<br />
 </li>
 <li>Partner effects: influence effects</li>
 </ul>
 <p>Controlling for education.</p>
-<div class="figure"><span id="fig:unnamed-chunk-15"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-15"></span>
 <img src="hsem_a_1784738_f0001_oc.jpg" alt="RI-CLPM" width="100%" />
 <p class="caption">
 Figure 3.2: RI-CLPM
 </p>
 </div>
-<p>Source: <span class="citation">(<a href="references.html#ref-mulder2020three" role="doc-biblioref">Mulder and Hamaker 2020</a>)</span>(<a href="https://www.tandfonline.com/doi/full/10.1080/10705511.2020.1784738" class="uri">https://www.tandfonline.com/doi/full/10.1080/10705511.2020.1784738</a>)</p>
+<p>Source: <span class="citation">(<a href="#ref-mulder2020three" role="doc-biblioref">Mulder and Hamaker 2020</a>)</span>(<a href="https://www.tandfonline.com/doi/full/10.1080/10705511.2020.1784738" class="uri">https://www.tandfonline.com/doi/full/10.1080/10705511.2020.1784738</a>)</p>
 <ul>
 <li>We will compare the results across four different modeling strategies:
 <ul>
@@ -798,8 +1318,8 @@ Figure 3.2: RI-CLPM
 <li>RI/RS-CLPM (11 waves)</li>
 </ul></li>
 </ul>
-<div id="robustness" class="section level3" number="3.7.1">
-<h3><span class="header-section-number">3.7.1</span> Robustness</h3>
+<div id="robustness" class="section level3" number="3.8.1">
+<h3><span class="header-section-number">3.8.1</span> Robustness</h3>
 <ul>
 <li><p>We will test our hypotheses for four different dependent variables:</p>
 <ul>
@@ -819,11 +1339,11 @@ Figure 3.2: RI-CLPM
 <hr />
 </div>
 </div>
-<div id="results-hypo1" class="section level2 tabset tabset-fade" number="3.8">
-<h2><span class="header-section-number">3.8</span> Results Hypo1</h2>
+<div id="results-hypo1" class="section level2 tabset tabset-fade" number="3.9">
+<h2><span class="header-section-number">3.9</span> Results Hypo1</h2>
 <p><strong>Hypo1 RI-CLPM: When your partner’s opinion is relatively high (compared to your partners average opinion over time) at time T, your own opinion will be relatively high (compared to your own average opinion over time) at time T+1.</strong></p>
-<div id="clpm" class="section level3" number="3.8.1">
-<h3><span class="header-section-number">3.8.1</span> CLPM</h3>
+<div id="clpm" class="section level3" number="3.9.1">
+<h3><span class="header-section-number">3.9.1</span> CLPM</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="methods.html#cb2-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
 <span id="cb2-2"><a href="methods.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="methods.html#cb2-3" aria-hidden="true" tabindex="-1"></a>myModel <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
@@ -1757,8 +2277,8 @@ Figure 3.2: RI-CLPM
 #&gt;    .y11               0.525    0.022   23.738    0.000</code></pre>
 <hr />
 </div>
-<div id="ri-clpm" class="section level3" number="3.8.2">
-<h3><span class="header-section-number">3.8.2</span> RI-CLPM</h3>
+<div id="ri-clpm" class="section level3" number="3.9.2">
+<h3><span class="header-section-number">3.9.2</span> RI-CLPM</h3>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="methods.html#cb5-1" aria-hidden="true" tabindex="-1"></a>RICLPM <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
 <span id="cb5-2"><a href="methods.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">  # Create between components (random intercepts)</span></span>
 <span id="cb5-3"><a href="methods.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">  RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5 + 1*x6 + 1*x7 + 1*x8 + 1*x9 + 1*x10 + 1*x11</span></span>
@@ -3018,8 +3538,8 @@ Figure 3.2: RI-CLPM
 #&gt;    .y11               0.000</code></pre>
 <hr />
 </div>
-<div id="sc-ri-clpm" class="section level3" number="3.8.3">
-<h3><span class="header-section-number">3.8.3</span> SC-RI-CLPM</h3>
+<div id="sc-ri-clpm" class="section level3" number="3.9.3">
+<h3><span class="header-section-number">3.9.3</span> SC-RI-CLPM</h3>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="methods.html#cb8-1" aria-hidden="true" tabindex="-1"></a>SCCLPM <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
 <span id="cb8-2"><a href="methods.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">  # Create between components </span></span>
 <span id="cb8-3"><a href="methods.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">  RIx =~ 1*x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 + x10 + x11</span></span>
@@ -4279,8 +4799,8 @@ Figure 3.2: RI-CLPM
 #&gt;    .y11               0.000</code></pre>
 <hr />
 </div>
-<div id="lt-ri-clpm" class="section level3" number="3.8.4">
-<h3><span class="header-section-number">3.8.4</span> LT-RI-CLPM</h3>
+<div id="lt-ri-clpm" class="section level3" number="3.9.4">
+<h3><span class="header-section-number">3.9.4</span> LT-RI-CLPM</h3>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="methods.html#cb11-1" aria-hidden="true" tabindex="-1"></a>LTRICLPM <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
 <span id="cb11-2"><a href="methods.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="st">  # Create between components (random intercepts)</span></span>
 <span id="cb11-3"><a href="methods.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="st">  RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5 + 1*x6 + 1*x7 + 1*x8 + 1*x9 + 1*x10 + 1*x11</span></span>
@@ -5726,8 +6246,8 @@ Figure 3.2: RI-CLPM
 #&gt;    .y11               0.000</code></pre>
 <hr />
 </div>
-<div id="summary-results-hypo1" class="section level3" number="3.8.5">
-<h3><span class="header-section-number">3.8.5</span> Summary results hypo1</h3>
+<div id="summary-results-hypo1" class="section level3" number="3.9.5">
+<h3><span class="header-section-number">3.9.5</span> Summary results hypo1</h3>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="methods.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;addfiles/results.Rdata&quot;</span>)</span>
 <span id="cb14-2"><a href="methods.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="methods.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)  <span class="co">#for kable/kables</span></span>
@@ -5828,7 +6348,7 @@ Figure 3.2: RI-CLPM
 <span id="cb14-98"><a href="methods.html#cb14-98" aria-hidden="true" tabindex="-1"></a>hypo1</span></code></pre></div>
 <table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-24">Table 3.1: </span>Results Hypo1
+<span id="tab:unnamed-chunk-24">Table 3.3: </span>Results Hypo1
 </caption>
 <thead>
 <tr>
@@ -5904,7 +6424,7 @@ pvalue
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 stability
 </td>
 <td style="text-align:center;">
@@ -5945,7 +6465,7 @@ stability
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 partner-effect
 </td>
 <td style="text-align:center;">
@@ -5991,7 +6511,7 @@ partner-effect
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 stability
 </td>
 <td style="text-align:center;">
@@ -6032,7 +6552,7 @@ stability
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 partner-effect
 </td>
 <td style="text-align:center;">
@@ -6078,7 +6598,7 @@ partner-effect
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 stability
 </td>
 <td style="text-align:center;">
@@ -6119,7 +6639,7 @@ stability
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 partner-effect
 </td>
 <td style="text-align:center;">
@@ -6165,7 +6685,7 @@ partner-effect
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 stability
 </td>
 <td style="text-align:center;">
@@ -6206,7 +6726,7 @@ stability
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 partner-effect
 </td>
 <td style="text-align:center;">
@@ -6250,16 +6770,16 @@ partner-effect
 </table>
 <hr />
 </div>
-<div id="conclusion-hypo1" class="section level3" number="3.8.6">
-<h3><span class="header-section-number">3.8.6</span> Conclusion hypo1</h3>
+<div id="conclusion-hypo1" class="section level3" number="3.9.6">
+<h3><span class="header-section-number">3.9.6</span> Conclusion hypo1</h3>
 <hr />
 </div>
 </div>
-<div id="results-hypo2" class="section level2 tabset tabset-fade" number="3.9">
-<h2><span class="header-section-number">3.9</span> Results Hypo2</h2>
+<div id="results-hypo2" class="section level2 tabset tabset-fade" number="3.10">
+<h2><span class="header-section-number">3.10</span> Results Hypo2</h2>
 <p><strong>Hypo2 RI-CLPM: Women are more influenced by their (male) spouse than men are influenced by their (female) spouse.</strong></p>
-<div id="clpm-1" class="section level3" number="3.9.1">
-<h3><span class="header-section-number">3.9.1</span> CLPM</h3>
+<div id="clpm-1" class="section level3" number="3.10.1">
+<h3><span class="header-section-number">3.10.1</span> CLPM</h3>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="methods.html#cb15-1" aria-hidden="true" tabindex="-1"></a>myModel <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
 <span id="cb15-2"><a href="methods.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="st">  ### control for education</span></span>
 <span id="cb15-3"><a href="methods.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="st">  x1 + x2 + x3 +x4 + x5 + x6 + x7 + x8 + x9 + x10 + x11 ~ ex*oplx</span></span>
@@ -7217,8 +7737,8 @@ partner-effect
 #&gt;     dif3             -0.006    0.003   -2.275    0.023</code></pre>
 <hr />
 </div>
-<div id="ri-clpm-1" class="section level3" number="3.9.2">
-<h3><span class="header-section-number">3.9.2</span> RI-CLPM</h3>
+<div id="ri-clpm-1" class="section level3" number="3.10.2">
+<h3><span class="header-section-number">3.10.2</span> RI-CLPM</h3>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="methods.html#cb18-1" aria-hidden="true" tabindex="-1"></a>RICLPM <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
 <span id="cb18-2"><a href="methods.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="st">  # Create between components (random intercepts)</span></span>
 <span id="cb18-3"><a href="methods.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="st">  RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5 + 1*x6 + 1*x7 + 1*x8 + 1*x9 + 1*x10 + 1*x11</span></span>
@@ -8510,8 +9030,8 @@ partner-effect
 #&gt;     dif3             -0.024    0.002  -10.618    0.000</code></pre>
 <hr />
 </div>
-<div id="sc-ri-clpm-1" class="section level3" number="3.9.3">
-<h3><span class="header-section-number">3.9.3</span> SC-RI-CLPM</h3>
+<div id="sc-ri-clpm-1" class="section level3" number="3.10.3">
+<h3><span class="header-section-number">3.10.3</span> SC-RI-CLPM</h3>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="methods.html#cb21-1" aria-hidden="true" tabindex="-1"></a>SCCLPM <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
 <span id="cb21-2"><a href="methods.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="st">  # Create between components (random intercepts)</span></span>
 <span id="cb21-3"><a href="methods.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="st">  RIx =~ 1*x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 + x10 + x11</span></span>
@@ -9803,8 +10323,8 @@ partner-effect
 #&gt;     dif3             -0.025    0.002  -10.223    0.000</code></pre>
 <hr />
 </div>
-<div id="lt-ri-clpm-1" class="section level3" number="3.9.4">
-<h3><span class="header-section-number">3.9.4</span> LT-RI-CLPM</h3>
+<div id="lt-ri-clpm-1" class="section level3" number="3.10.4">
+<h3><span class="header-section-number">3.10.4</span> LT-RI-CLPM</h3>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="methods.html#cb24-1" aria-hidden="true" tabindex="-1"></a>LTRICLPM <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
 <span id="cb24-2"><a href="methods.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="st">  # Create between components (random intercepts)</span></span>
 <span id="cb24-3"><a href="methods.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="st">  RIx =~ 1*x1 + 1*x2 + 1*x3 + 1*x4 + 1*x5 + 1*x6 + 1*x7 + 1*x8 + 1*x9 + 1*x10 + 1*x11</span></span>
@@ -11281,8 +11801,8 @@ partner-effect
 #&gt;     dif4              0.001    0.000    5.018    0.000</code></pre>
 <hr />
 </div>
-<div id="summary-results-hypo2" class="section level3" number="3.9.5">
-<h3><span class="header-section-number">3.9.5</span> Summary results Hypo2</h3>
+<div id="summary-results-hypo2" class="section level3" number="3.10.5">
+<h3><span class="header-section-number">3.10.5</span> Summary results Hypo2</h3>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="methods.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;addfiles/results.Rdata&quot;</span>)</span>
 <span id="cb27-2"><a href="methods.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="methods.html#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -11477,7 +11997,7 @@ partner-effect
 <span id="cb27-192"><a href="methods.html#cb27-192" aria-hidden="true" tabindex="-1"></a>hypo2</span></code></pre></div>
 <table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-33">Table 3.2: </span>Results Hypo2
+<span id="tab:unnamed-chunk-33">Table 3.4: </span>Results Hypo2
 </caption>
 <thead>
 <tr>
@@ -11553,7 +12073,7 @@ pvalue
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Men:stability
 </td>
 <td style="text-align:center;">
@@ -11594,7 +12114,7 @@ Men:stability
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Women:stability
 </td>
 <td style="text-align:center;">
@@ -11635,7 +12155,7 @@ Women:stability
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Men:partner-effect
 </td>
 <td style="text-align:center;">
@@ -11676,7 +12196,7 @@ Men:partner-effect
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Women:partner-effect
 </td>
 <td style="text-align:center;">
@@ -11722,7 +12242,7 @@ Women:partner-effect
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Men:stability
 </td>
 <td style="text-align:center;">
@@ -11763,7 +12283,7 @@ Men:stability
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Women:stability
 </td>
 <td style="text-align:center;">
@@ -11804,7 +12324,7 @@ Women:stability
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Men:partner-effect
 </td>
 <td style="text-align:center;">
@@ -11845,7 +12365,7 @@ Men:partner-effect
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Women:partner-effect
 </td>
 <td style="text-align:center;">
@@ -11891,7 +12411,7 @@ Women:partner-effect
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Men:stability
 </td>
 <td style="text-align:center;">
@@ -11932,7 +12452,7 @@ Men:stability
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Women:stability
 </td>
 <td style="text-align:center;">
@@ -11973,7 +12493,7 @@ Women:stability
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Men:partner-effect
 </td>
 <td style="text-align:center;">
@@ -12014,7 +12534,7 @@ Men:partner-effect
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Women:partner-effect
 </td>
 <td style="text-align:center;">
@@ -12060,7 +12580,7 @@ Women:partner-effect
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Men:stability
 </td>
 <td style="text-align:center;">
@@ -12101,7 +12621,7 @@ Men:stability
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Women:stability
 </td>
 <td style="text-align:center;">
@@ -12142,7 +12662,7 @@ Women:stability
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Men:partner-effect
 </td>
 <td style="text-align:center;">
@@ -12183,7 +12703,7 @@ Men:partner-effect
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 Women:partner-effect
 </td>
 <td style="text-align:center;">
@@ -12227,11 +12747,20 @@ Women:partner-effect
 </table>
 <hr />
 </div>
-<div id="conclusion-hypo2" class="section level3" number="3.9.6">
-<h3><span class="header-section-number">3.9.6</span> Conclusion Hypo2</h3>
+<div id="conclusion-hypo2" class="section level3" number="3.10.6">
+<h3><span class="header-section-number">3.10.6</span> Conclusion Hypo2</h3>
 <hr />
 <hr />
 </div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-bartel2017romantic" class="csl-entry">
+Bartel, Sara J, Simon B Sherry, Danielle S Molnar, Aislin R Mushquash, Kenneth E Leonard, Gordon L Flett, and Sherry H Stewart. 2017. <span>“Do Romantic Partners Influence Each Other’s Heavy Episodic Drinking? Support for the Partner Influence Hypothesis in a Three-Year Longitudinal Study.”</span> <em>Addictive Behaviors</em> 69: 55–58.
+</div>
+<div id="ref-mulder2020three" class="csl-entry">
+Mulder, Jeroen D, and Ellen L Hamaker. 2020. <span>“Three Extensions of the Random Intercept Cross-Lagged Panel Model.”</span> <em>Structural Equation Modeling: A Multidisciplinary Journal</em>, 1–11.
 </div>
 </div>
 <div class="footnotes">
@@ -12269,6 +12798,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -12289,6 +12819,10 @@ gitbook.start({
 "text": null
 },
 "download": ["SNA-4-Social-Scientists.pdf", "SNA-4-Social-Scientists.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

@@ -5,27 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Introduction | SNASS</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="Chapter 1 Introduction | SNASS" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Introduction | SNASS" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 1 Introduction | SNASS" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
   
 
-<meta name="author" content="Jochem Tolsma" />
-<meta name="author" content="Bas hofstra" />
 
 
-<meta name="date" content="2021-08-26" />
+<meta name="date" content="2021-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,8 +32,8 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="theory.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -52,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -60,6 +60,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -120,6 +121,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,13 +160,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">SNASS</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About the authors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-authors"><i class="fa fa-check"></i>About the authors</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a>
-<ul>
-<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#definitions"><i class="fa fa-check"></i><b>1.1.1</b> Definitions</a></li>
-</ul></li>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#aim"><i class="fa fa-check"></i><b>1.2</b> Aim</a></li>
 <li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#structure"><i class="fa fa-check"></i><b>1.3</b> Structure</a>
 <ul>
@@ -152,16 +176,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#what-makes-this-course-stand-out"><i class="fa fa-check"></i><b>1.4</b> What makes this course stand out?</a></li>
 </ul></li>
-<li class="part"><span><b>I Part I DYADS</b></span></li>
+<li class="part"><span><b>I DYADS</b></span></li>
 <li class="chapter" data-level="2" data-path="theory.html"><a href="theory.html"><i class="fa fa-check"></i><b>2</b> Theory</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#causes-of-dyads"><i class="fa fa-check"></i><b>2.1</b> Causes of dyads</a>
+<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#network-structures-i"><i class="fa fa-check"></i><b>2.1</b> Network structures I</a></li>
+<li class="chapter" data-level="2.2" data-path="theory.html"><a href="theory.html#causes-of-dyads"><i class="fa fa-check"></i><b>2.2</b> Causes of dyads</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="theory.html"><a href="theory.html#GTF"><i class="fa fa-check"></i><b>2.1.1</b> General Theoretical Framework</a></li>
-<li class="chapter" data-level="2.1.2" data-path="theory.html"><a href="theory.html#causes-of-dyads-methods"><i class="fa fa-check"></i><b>2.1.2</b> Causes of dyads (methods)</a></li>
+<li class="chapter" data-level="2.2.1" data-path="theory.html"><a href="theory.html#GTF"><i class="fa fa-check"></i><b>2.2.1</b> General Theoretical Framework</a></li>
+<li class="chapter" data-level="2.2.2" data-path="theory.html"><a href="theory.html#social-context-effects"><i class="fa fa-check"></i><b>2.2.2</b> Social context effects</a></li>
+<li class="chapter" data-level="2.2.3" data-path="theory.html"><a href="theory.html#the-special-role-of-restrictions"><i class="fa fa-check"></i><b>2.2.3</b> The special role of restrictions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="theory.html"><a href="theory.html#theory-of-action"><i class="fa fa-check"></i><b>2.2.4</b> Theory of Action</a></li>
+<li class="chapter" data-level="2.2.5" data-path="theory.html"><a href="theory.html#transformation-rules"><i class="fa fa-check"></i><b>2.2.5</b> Transformation rules</a></li>
+<li class="chapter" data-level="2.2.6" data-path="theory.html"><a href="theory.html#agent-based-modelling"><i class="fa fa-check"></i><b>2.2.6</b> Agent Based Modelling</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="theory.html"><a href="theory.html#dt"><i class="fa fa-check"></i><b>2.2</b> Consequences of dyads (theory)</a></li>
-<li class="chapter" data-level="2.3" data-path="theory.html"><a href="theory.html#consequences-of-dyads-methods"><i class="fa fa-check"></i><b>2.3</b> Consequences of dyads (methods)</a></li>
+<li class="chapter" data-level="2.3" data-path="theory.html"><a href="theory.html#dt"><i class="fa fa-check"></i><b>2.3</b> Consequences of dyads</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="theory.html"><a href="theory.html#influence-mechanisms"><i class="fa fa-check"></i><b>2.3.1</b> Influence mechanisms</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
@@ -171,41 +202,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="methods.html"><a href="methods.html#LLM"><i class="fa fa-check"></i><b>3.1.2</b> Loglinear Model</a></li>
 <li class="chapter" data-level="3.1.3" data-path="methods.html"><a href="methods.html#LM"><i class="fa fa-check"></i><b>3.1.3</b> Conditional multinomial logit model</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#consequences"><i class="fa fa-check"></i><b>3.2</b> Consequences</a>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#consequences"><i class="fa fa-check"></i><b>3.2</b> Consequences</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#consequences-of-dyads-methods"><i class="fa fa-check"></i><b>3.3</b> Consequences of dyads (methods)</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="methods.html"><a href="methods.html#selection"><i class="fa fa-check"></i><b>3.2.1</b> Selection</a></li>
-<li class="chapter" data-level="3.2.2" data-path="methods.html"><a href="methods.html#common-context"><i class="fa fa-check"></i><b>3.2.2</b> Common context</a></li>
-<li class="chapter" data-level="3.2.3" data-path="methods.html"><a href="methods.html#dyadic-influence"><i class="fa fa-check"></i><b>3.2.3</b> Dyadic Influence</a></li>
+<li class="chapter" data-level="3.3.1" data-path="methods.html"><a href="methods.html#selection"><i class="fa fa-check"></i><b>3.3.1</b> Selection</a></li>
+<li class="chapter" data-level="3.3.2" data-path="methods.html"><a href="methods.html#common-context"><i class="fa fa-check"></i><b>3.3.2</b> Common context</a></li>
+<li class="chapter" data-level="3.3.3" data-path="methods.html"><a href="methods.html#dyadic-influence"><i class="fa fa-check"></i><b>3.3.3</b> Dyadic Influence</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#dyadic-influence-mechanisms"><i class="fa fa-check"></i><b>3.3</b> Dyadic Influence: Mechanisms</a></li>
-<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#expectations"><i class="fa fa-check"></i><b>3.4</b> Expectations</a></li>
-<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#data"><i class="fa fa-check"></i><b>3.5</b> Data</a>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#dyadic-influence-mechanisms"><i class="fa fa-check"></i><b>3.4</b> Dyadic Influence: Mechanisms</a></li>
+<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#expectations"><i class="fa fa-check"></i><b>3.5</b> Expectations</a></li>
+<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#data"><i class="fa fa-check"></i><b>3.6</b> Data</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="methods.html"><a href="methods.html#variables"><i class="fa fa-check"></i><b>3.5.1</b> Variables</a></li>
-<li class="chapter" data-level="3.5.2" data-path="methods.html"><a href="methods.html#descriptives"><i class="fa fa-check"></i><b>3.5.2</b> Descriptives</a></li>
+<li class="chapter" data-level="3.6.1" data-path="methods.html"><a href="methods.html#variables"><i class="fa fa-check"></i><b>3.6.1</b> Variables</a></li>
+<li class="chapter" data-level="3.6.2" data-path="methods.html"><a href="methods.html#descriptives"><i class="fa fa-check"></i><b>3.6.2</b> Descriptives</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#analysis"><i class="fa fa-check"></i><b>3.6</b> Analysis</a></li>
-<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#modelling-strategy"><i class="fa fa-check"></i><b>3.7</b> Modelling strategy</a>
+<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#analysis"><i class="fa fa-check"></i><b>3.7</b> Analysis</a></li>
+<li class="chapter" data-level="3.8" data-path="methods.html"><a href="methods.html#modelling-strategy"><i class="fa fa-check"></i><b>3.8</b> Modelling strategy</a>
 <ul>
-<li class="chapter" data-level="3.7.1" data-path="methods.html"><a href="methods.html#robustness"><i class="fa fa-check"></i><b>3.7.1</b> Robustness</a></li>
+<li class="chapter" data-level="3.8.1" data-path="methods.html"><a href="methods.html#robustness"><i class="fa fa-check"></i><b>3.8.1</b> Robustness</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="methods.html"><a href="methods.html#results-hypo1"><i class="fa fa-check"></i><b>3.8</b> Results Hypo1</a>
+<li class="chapter" data-level="3.9" data-path="methods.html"><a href="methods.html#results-hypo1"><i class="fa fa-check"></i><b>3.9</b> Results Hypo1</a>
 <ul>
-<li class="chapter" data-level="3.8.1" data-path="methods.html"><a href="methods.html#clpm"><i class="fa fa-check"></i><b>3.8.1</b> CLPM</a></li>
-<li class="chapter" data-level="3.8.2" data-path="methods.html"><a href="methods.html#ri-clpm"><i class="fa fa-check"></i><b>3.8.2</b> RI-CLPM</a></li>
-<li class="chapter" data-level="3.8.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm"><i class="fa fa-check"></i><b>3.8.3</b> SC-RI-CLPM</a></li>
-<li class="chapter" data-level="3.8.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm"><i class="fa fa-check"></i><b>3.8.4</b> LT-RI-CLPM</a></li>
-<li class="chapter" data-level="3.8.5" data-path="methods.html"><a href="methods.html#summary-results-hypo1"><i class="fa fa-check"></i><b>3.8.5</b> Summary results hypo1</a></li>
-<li class="chapter" data-level="3.8.6" data-path="methods.html"><a href="methods.html#conclusion-hypo1"><i class="fa fa-check"></i><b>3.8.6</b> Conclusion hypo1</a></li>
+<li class="chapter" data-level="3.9.1" data-path="methods.html"><a href="methods.html#clpm"><i class="fa fa-check"></i><b>3.9.1</b> CLPM</a></li>
+<li class="chapter" data-level="3.9.2" data-path="methods.html"><a href="methods.html#ri-clpm"><i class="fa fa-check"></i><b>3.9.2</b> RI-CLPM</a></li>
+<li class="chapter" data-level="3.9.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm"><i class="fa fa-check"></i><b>3.9.3</b> SC-RI-CLPM</a></li>
+<li class="chapter" data-level="3.9.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm"><i class="fa fa-check"></i><b>3.9.4</b> LT-RI-CLPM</a></li>
+<li class="chapter" data-level="3.9.5" data-path="methods.html"><a href="methods.html#summary-results-hypo1"><i class="fa fa-check"></i><b>3.9.5</b> Summary results hypo1</a></li>
+<li class="chapter" data-level="3.9.6" data-path="methods.html"><a href="methods.html#conclusion-hypo1"><i class="fa fa-check"></i><b>3.9.6</b> Conclusion hypo1</a></li>
 </ul></li>
-<li class="chapter" data-level="3.9" data-path="methods.html"><a href="methods.html#results-hypo2"><i class="fa fa-check"></i><b>3.9</b> Results Hypo2</a>
+<li class="chapter" data-level="3.10" data-path="methods.html"><a href="methods.html#results-hypo2"><i class="fa fa-check"></i><b>3.10</b> Results Hypo2</a>
 <ul>
-<li class="chapter" data-level="3.9.1" data-path="methods.html"><a href="methods.html#clpm-1"><i class="fa fa-check"></i><b>3.9.1</b> CLPM</a></li>
-<li class="chapter" data-level="3.9.2" data-path="methods.html"><a href="methods.html#ri-clpm-1"><i class="fa fa-check"></i><b>3.9.2</b> RI-CLPM</a></li>
-<li class="chapter" data-level="3.9.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm-1"><i class="fa fa-check"></i><b>3.9.3</b> SC-RI-CLPM</a></li>
-<li class="chapter" data-level="3.9.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm-1"><i class="fa fa-check"></i><b>3.9.4</b> LT-RI-CLPM</a></li>
-<li class="chapter" data-level="3.9.5" data-path="methods.html"><a href="methods.html#summary-results-hypo2"><i class="fa fa-check"></i><b>3.9.5</b> Summary results Hypo2</a></li>
-<li class="chapter" data-level="3.9.6" data-path="methods.html"><a href="methods.html#conclusion-hypo2"><i class="fa fa-check"></i><b>3.9.6</b> Conclusion Hypo2</a></li>
+<li class="chapter" data-level="3.10.1" data-path="methods.html"><a href="methods.html#clpm-1"><i class="fa fa-check"></i><b>3.10.1</b> CLPM</a></li>
+<li class="chapter" data-level="3.10.2" data-path="methods.html"><a href="methods.html#ri-clpm-1"><i class="fa fa-check"></i><b>3.10.2</b> RI-CLPM</a></li>
+<li class="chapter" data-level="3.10.3" data-path="methods.html"><a href="methods.html#sc-ri-clpm-1"><i class="fa fa-check"></i><b>3.10.3</b> SC-RI-CLPM</a></li>
+<li class="chapter" data-level="3.10.4" data-path="methods.html"><a href="methods.html#lt-ri-clpm-1"><i class="fa fa-check"></i><b>3.10.4</b> LT-RI-CLPM</a></li>
+<li class="chapter" data-level="3.10.5" data-path="methods.html"><a href="methods.html#summary-results-hypo2"><i class="fa fa-check"></i><b>3.10.5</b> Summary results Hypo2</a></li>
+<li class="chapter" data-level="3.10.6" data-path="methods.html"><a href="methods.html#conclusion-hypo2"><i class="fa fa-check"></i><b>3.10.6</b> Conclusion Hypo2</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i><b>4</b> Data</a>
@@ -263,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="11.1" data-path="webintro.html"><a href="webintro.html#chapter-overview"><i class="fa fa-check"></i><b>11.1</b> Chapter overview</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="webintro.html"><a href="webintro.html#definitions-1"><i class="fa fa-check"></i><b>11.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="11.1.1" data-path="webintro.html"><a href="webintro.html#definitions"><i class="fa fa-check"></i><b>11.1.1</b> Definitions</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="webintro.html"><a href="webintro.html#promises-and-pitfalls"><i class="fa fa-check"></i><b>11.2</b> Promises and pitfalls</a>
 <ul>
@@ -355,12 +387,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.1</span> Overview</h2>
 <p>Sociologists study how societies affect the lives of their members and, vice versa, how individuals shape the societies in which they live. Within societies people make and break relations with specific others and thereby form <strong>social networks</strong>.<br />
 Individuals are embedded in many different social networks (e.g. based on friendships, bullying, family relations). Within these social networks individuals influence each others’ attitudes, behaviors and relations via complex dynamic processes. The attitudes, behaviors and relations of individuals shape, in turn, the societies they live in. They give rise to <strong>social phenomena</strong> such as inequality, segregation, polarization and cohesion. It is not possible to explain many macro-level social phenomena, let alone to solve many urgent <strong>social problems</strong>, without taking into account social networks. For example, researchers may be able to deduce hypotheses from an established theory on political opinions of individuals but the same theory is not able to explain when and where <strong>political polarization</strong> occurs. For this, a social network perspective is necessary. It can thus be no surprise that the study of the causes and consequences of social networks lies at the core of sociology.</p>
-<div id="definitions" class="section level3" number="1.1.1">
-<h3><span class="header-section-number">1.1.1</span> Definitions</h3>
 <blockquote>
 <dl>
 <dt><strong>Social Networks</strong></dt>
-<dd><p>A social network is an finite set of actors and the relation(s) defined on this set. The actors are social entities (people, organizations, countries, etc.) whose specific ties (friendship, competition, collaboration, etc.), constitute the network <span class="citation">(<a href="references.html#ref-Wasserman1994" role="doc-biblioref">Wasserman, Faust, and others 1994</a> : 20)</span>.<br />
+<dd><p>A social network is an finite set of actors and the relation(s) defined on this set. The actors are social entities (people, organizations, countries, etc.) whose specific ties (friendship, competition, collaboration, etc.), constitute the network <span class="citation">(<a href="#ref-Wasserman1994" role="doc-biblioref">Wasserman, Faust, and others 1994</a> : 20)</span>.<br />
 Networks are also called: graphs or sociograms<br />
 Actors are also called: points, nodes, agents or vertices.<br />
 Relations are also called: ties, edges or connections.</p>
@@ -399,7 +429,6 @@ Data consequences: To apply a Social Network Perspective, we need data on social
 </dd>
 </dl>
 </blockquote>
-</div>
 </div>
 <div id="aim" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Aim</h2>
@@ -447,7 +476,6 @@ Data consequences: To apply a Social Network Perspective, we need data on social
 <th>Type of Social Network</th>
 <th>Causes or Consequences</th>
 <th>Implications</th>
-<th>Book section</th>
 </tr>
 </thead>
 <tbody>
@@ -455,96 +483,82 @@ Data consequences: To apply a Social Network Perspective, we need data on social
 <td>Dyads</td>
 <td>Causes</td>
 <td>Theory</td>
-<td></td>
 </tr>
 <tr class="even">
 <td>Dyads</td>
 <td>Causes</td>
 <td>Method</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>Dyads</td>
 <td>Consequences</td>
 <td>Theory</td>
-<td></td>
 </tr>
 <tr class="even">
 <td>Dyads</td>
 <td>Consequences</td>
 <td>Method</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>Dyads</td>
 <td>NA</td>
 <td>Data</td>
-<td></td>
 </tr>
 <tr class="even">
 <td>Egonets</td>
 <td>Causes</td>
 <td>Theory</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>Egonets</td>
 <td>Causes</td>
 <td>Method</td>
-<td></td>
 </tr>
 <tr class="even">
 <td>Egonets</td>
 <td>Consequences</td>
 <td>Theory</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>Egonets</td>
 <td>Consequences</td>
 <td>Method</td>
-<td></td>
 </tr>
 <tr class="even">
 <td>Egonets</td>
 <td>NA</td>
 <td>Data</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>Socionet</td>
 <td>Causes</td>
 <td>Theory</td>
-<td></td>
 </tr>
 <tr class="even">
 <td>Socionet</td>
 <td>Causes</td>
 <td>Method</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>Socionet</td>
 <td>Consequences</td>
 <td>Theory</td>
-<td></td>
 </tr>
 <tr class="even">
 <td>Socionet</td>
 <td>Consequences</td>
 <td>Method</td>
-<td></td>
 </tr>
 <tr class="odd">
 <td>Socionet</td>
 <td>NA</td>
 <td>Data</td>
-<td></td>
 </tr>
 </tbody>
 </table>
-<p><span style="color: red;"><strong>Feel free to jump to the section you are most interested in. But there is a clear order in the sections. The best way to accumulate theoretical and methodological knowledge, and to gain the necessary R-skills to successfully apply a social network perspective to your own research is by going through the sections one by.</strong></span></p>
-<div id="type-of-social-network" class="section level3 tabset" number="1.3.1">
+<p><span style="color: red;"><strong>Feel free to use the menu on the left and to jump to the section you are most interested in. But there is a clear order in the sections. The best way to accumulate theoretical and methodological knowledge, and to gain the necessary R-skills to successfully apply a social network perspective to your own research is by going through the sections one by.</strong></span></p>
+<p>Below I will discuss three dimensions in a little bit more detail.</p>
+<div id="type-of-social-network" class="section level3" number="1.3.1">
 <h3><span class="header-section-number">1.3.1</span> Type of Social Network</h3>
 <div id="dyads" class="section level4 unnumbered">
 <h4><strong>Dyads</strong></h4>
@@ -570,7 +584,7 @@ Data consequences: To apply a Social Network Perspective, we need data on social
 </div>
 <div id="egonets" class="section level4 unnumbered">
 <h4><strong>Egonets</strong></h4>
-<p>We could define an egocentric social network as a set of actors that all have relationships with ego. This definition is quite similar to Marsden’s <span class="citation">(<a href="references.html#ref-marsden1990" role="doc-biblioref">Marsden 1990</a>)</span> definition: “Sets of ties surrounding sampled individual units.” To illustrate what is meant by these definitions, let us us consider the following ‘world.’ And visualize the best-friend-forever relationships in this world.</p>
+<p>We could define an egocentric social network as a set of actors that all have relationships with ego. This definition is quite similar to Marsden’s <span class="citation">(<a href="#ref-marsden1990" role="doc-biblioref">Marsden 1990</a>)</span> definition: “Sets of ties surrounding sampled individual units.” To illustrate what is meant by these definitions, let us us consider the following ‘world.’ And visualize the best-friend-forever relationships in this world.</p>
 <p><img src="01-intro_files/figure-html/unnamed-chunk-2-1.png" width="672" /><br />
 And now sample a random person. The person we sampled, ego, is made red and square in our network.</p>
 <p><img src="01-intro_files/figure-html/unnamed-chunk-3-1.png" width="672" /><br />
@@ -667,75 +681,28 @@ Network data also has a specific format (e.g. an adjacency matrix) and can beco
 <div id="what-makes-this-course-stand-out" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> What makes this course stand out?</h2>
 <p>This course is not an introduction to Sociology, Social Networks or Social Network Analysis. It is also not a course in R. I assume you have some intuitive understanding of what social networks are and have opened R or RStudio at one point in your life but both are not necessary prerequisites to follow this course. There are very good (online) introductions to the study of Social Networks, see for example <a href="https://bookdown.org/markhoff/social_network_analysis/">here</a> and <a href="https://eehh-stanford.github.io/SNA-workshop/">here</a>. A good short introduction to R for this course can be found in Chapter <a href="tutorial.html#tutorial">A</a> or have a look <a href="https://rafalab.github.io/dsbook/">here</a> for a more thorough introduction to Data Science with R.<br />
-This course is tailored for research master and PhD students. I will assume that you are interested in and have studied social problems in your academic career and that your research interests fits one of the following broad themes: <strong>inequality</strong>, <strong>cohesion</strong> and <strong>diversity</strong>. For an excellent introduction into sociology see <span class="citation">(<a href="references.html#ref-Tubergen2020" role="doc-biblioref">Van Tubergen 2020</a>)</span>. However, up to this point, when you deduced hypotheses from existing theories you did not explicitly acknowledge that individuals are interconnected in social networks. You were neither aware that this may have theoretical consequences for existing hypotheses nor that this gives rise to new research questions. Up to this point, when you tested your hypotheses you assumed that your observations were independent (e.g. OLS) or, at most, that the nonindependence was relatively easy to take into account (e.g. multi-level analysis).<br />
+This course is tailored for research master and PhD students. I will assume that you are interested in and have studied social problems in your academic career and that your research interests fits one of the following broad themes: <strong>inequality</strong>, <strong>cohesion</strong> and <strong>diversity</strong>. For an excellent introduction into sociology see <span class="citation">(<a href="#ref-Tubergen2020" role="doc-biblioref">Van Tubergen 2020</a>)</span>. However, up to this point, when you deduced hypotheses from existing theories you did not explicitly acknowledge that individuals are interconnected in social networks. You were neither aware that this may have theoretical consequences for existing hypotheses nor that this gives rise to new research questions. Up to this point, when you tested your hypotheses you assumed that your observations were independent (e.g. OLS) or, at most, that the nonindependence was relatively easy to take into account (e.g. multi-level analysis).<br />
 In this course you will learn to apply a social network perspective in the study of inequality, cohesion and diversity. You will become able to deduce more precise and new hypotheses. You will become able to test these hypotheses with social network techniques that take into account and explain complex interdependencies.</p>
 <p>Enjoy!!</p>
 <hr />
-<!---
-
-To: Update R tutorial 
-
-
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
-
-Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
-
-
-```r
-par(mar = c(4, 4, 0.1, 0.1))
-plot(pressure, type = "b", pch = 19)
-```
-
-<div class="figure" style="text-align: center">
-<img src="01-intro_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
-<p class="caption">(\#fig:nice-fig)Here is a nice figure!</p>
-</div>
-
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
-
-
-```r
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
-
-
-
-Table: (\#tab:nice-tab)Here is a nice table!
-
-| Sepal.Length| Sepal.Width| Petal.Length| Petal.Width|Species |
-|------------:|-----------:|------------:|-----------:|:-------|
-|          5.1|         3.5|          1.4|         0.2|setosa  |
-|          4.9|         3.0|          1.4|         0.2|setosa  |
-|          4.7|         3.2|          1.3|         0.2|setosa  |
-|          4.6|         3.1|          1.5|         0.2|setosa  |
-|          5.0|         3.6|          1.4|         0.2|setosa  |
-|          5.4|         3.9|          1.7|         0.4|setosa  |
-|          4.6|         3.4|          1.4|         0.3|setosa  |
-|          5.0|         3.4|          1.5|         0.2|setosa  |
-|          4.4|         2.9|          1.4|         0.2|setosa  |
-|          4.9|         3.1|          1.5|         0.1|setosa  |
-|          5.4|         3.7|          1.5|         0.2|setosa  |
-|          4.8|         3.4|          1.6|         0.2|setosa  |
-|          4.8|         3.0|          1.4|         0.1|setosa  |
-|          4.3|         3.0|          1.1|         0.1|setosa  |
-|          5.8|         4.0|          1.2|         0.2|setosa  |
-|          5.7|         4.4|          1.5|         0.4|setosa  |
-|          5.4|         3.9|          1.3|         0.4|setosa  |
-|          5.1|         3.5|          1.4|         0.3|setosa  |
-|          5.7|         3.8|          1.7|         0.3|setosa  |
-|          5.1|         3.8|          1.5|         0.3|setosa  |
-
-You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
---->
 
 </div>
 </div>
 
 
 
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-marsden1990" class="csl-entry">
+Marsden, Peter V. 1990. <span>“Network Data and Measurement.”</span> <em>Annual Review of Sociology</em> 16 (1): 435–63.
+</div>
+<div id="ref-Tubergen2020" class="csl-entry">
+Van Tubergen, Frank. 2020. <em>Introduction to Sociology</em>. Routledge.
+</div>
+<div id="ref-Wasserman1994" class="csl-entry">
+Wasserman, Stanley, Katherine Faust, and others. 1994. <span>“Social Network Analysis: Methods and Applications.”</span>
+</div>
+</div>
             </section>
 
           </div>
@@ -765,6 +732,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -785,6 +753,10 @@ gitbook.start({
 "text": null
 },
 "download": ["SNA-4-Social-Scientists.pdf", "SNA-4-Social-Scientists.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
