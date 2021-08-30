@@ -27,7 +27,7 @@ methodological-implications
 data-implications
 what-makes-this-course-stand-out
 theory
-network-structures-i
+network-structures
 causes-of-dyads
 GTF
 social-context-effects
@@ -151,11 +151,12 @@ step4-check-1
 step3b-merge-1
 aggregate-data
 r-base-4
-tidy-4
+agtidy
 missing-values
 r-base-5
 option-1-listwise-deletion
 option-2-replacing-missing-values.
 option-3-impute-missing-values
-tidy-5
+mistidy
+assignment
 variance

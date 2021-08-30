@@ -27,13 +27,13 @@ After having watched the video you should be able to:
 - be familiar with al the synonyms for networks, agents and relations.\
 - provide examples of dyads, and the relations between ego and alter.\
 
-## Network structures I  
+## Network structures  
 
 Dyads are the smallest possible networks. For undirected relations there are two possible dyad configurations. See Figure \@ref(fig:ud).
 
 
 <div class="figure">
-<img src="slide3.PNG" alt="undirected dyad configurations" width="70%" />
+<img src="slide3.PNG" alt="undirected dyad configurations" width="50%" />
 <p class="caption">(\#fig:ud)undirected dyad configurations</p>
 </div>
 
@@ -47,7 +47,7 @@ There are four options for directed dayds. See Figure \@ref(fig:dd). However, tw
 
 When there is a tie from *i* to *j* and vice versa, we call this a reciprocated dyad. I hope you see that the reasons for me to start or break a relation with you if you don't have relation with me, may be different from the reasons for me to start or break a relation with you if you have relation with me. 
 
-If we consider two types of undirected relations simultaneously, we have three distinct configurations. See Figure \@ref{fig:mud}.
+If we consider two types of undirected relations simultaneously, we have three distinct configurations. See Figure \@ref(fig:mud).
 
 <div class="figure">
 <img src="slide5.PNG" alt="multiplex, undirected dyad configurations" width="100%" />

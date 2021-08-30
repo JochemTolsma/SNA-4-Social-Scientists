@@ -1,6 +1,6 @@
 ---
 title: "Social Network Analysis for Social Scientists"
-date: "2021-08-27"
+date: "2021-08-30"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -15,14 +15,18 @@ description: ""
 
 # Welcome {.unnumbered}
 
+
+<img src="cover.png" width="50%" style="float:right; padding:10px" />
+
+
 This course is not an introduction to Sociology, Social Networks or Social Network Analysis. It is also not a course in R. This course will teach you how to apply **'a social network perspective'** to your own research on topics like **inequality**, **cohesion** and **diversity**.\
-Individuals (or social agents more generally) are interconnected in social networks. This has theoretical consequences, methodological consequences and consequences for data collection. There are many different **type** of networks. Networks may be very small and very large (e.g. citation networks), they may be centered around a specific person (an egonet) or be bounded to a specific context (a socionet). You may wish to understand how networks come about (i.e. the upstream **causes**) or want to understand their impact on individuals, groups and society (i.e. the dowstream **consequences**). This is why I tried to structure this course along three different dimensions:
+Individuals (or social agents more generally) are interconnected in social networks. This has theoretical consequences, methodological consequences and consequences for data collection and data wrangling. There are many different **type** of networks. Networks may be very small (e.g. couples) and very large (e.g. citation networks), they may be centered around a specific person (an egonet) or be bounded to a specific context (a socionet). You may wish to understand how networks come about (i.e. the upstream **causes**) or want to understand their impact on individuals, groups and society (i.e. the dowstream **consequences**). This is why I tried to structure this course along three different dimensions:
 
 1.  **Type** of Social Network: dyad, egonet, socionet
 2.  **Causes or Consequences** of social networks
 3.  **Implications** of applying a social network perspective: Theoretical, Data and Methodological
 
-What will you learn in this course? You will learn (how) to learn more about social network theories, methods and datacollection.
+What will you learn in this course? You will learn that many problems of the social sciences (ranging from research questions of anthropology, communication science, development studies,  organisation science, political science and sociology) can *and should* be studied from a social network perspective. Most importantly, you will learn (how) to learn more about social network theories, methods and data issues.
 
 Enjoy!!
 

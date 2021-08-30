@@ -2,10 +2,17 @@
 
 # Introduction to R for SNA {#tutorial}
 
-```{r, globalsettings, echo=FALSE, warning=FALSE, results='hide'}
+```{r globalsettings, echo=FALSE, warning=FALSE}
 library(knitr)
-opts_chunk$set(attr.source = ".numberLines", cache=TRUE)
+opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE, warning = FALSE, message = FALSE,comment = "#>", cache=TRUE)
+opts_chunk$set(attr.source = ".numberLines")
 options(width = 100)
+source("util.r")
+
+```
+
+
+```{r, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
 require(xfun)
 require(foreign)
 require(tidyverse)
@@ -13,9 +20,8 @@ require(mice)
 require(labelled)
 ```
 
-Latest Version: `r format(Sys.Date(), "%d-%m-%Y")`
 
-Please email any comments to: [j.tolsma\@ru.nl](mailto:j.tolsma@ru.nl){.email}
+Please email any comments to: [jochem.tolsma\@ru.nl](mailto:j.tolsma@ru.nl){.email}
 
 ## Preliminary notes
 
@@ -37,7 +43,7 @@ Do you Want more information, or are you looking for a different (tidyverse) tut
 -   [R for Data Science](http://r4ds.had.co.nz/)
 -   [Statistical Inference via Data Science: A Modern Dive into R and the tidyverse](https://www.moderndive.com/)
 
-Are you a Research Master Social and Cultural Science student? Or, a social science student/scientists with some statistical background in descriptive and explanatory statistics (e.g. regression analysis) who wants to make a switch from SPSS to R? Please read on.
+Are you a Research Master Social and Cultural Science student? Or, a social science student/scientist with some statistical background in descriptive and explanatory statistics (e.g. regression analysis) who wants to make a switch from SPSS to R? Please read on.
 
 Open RStudio. Your screen will look something like this:
 
@@ -74,7 +80,7 @@ require(installr) #then you will need to load them. This package is used to simp
 install.packages("foreign")
 require(foreign) #used to read in spss data files
 require(tidyverse)
-#update if necessarry
+#update if necessarry. Best to run this command in RGui, not in RStudio.
 updateR()
 
 #define workdirectory, note the double backslashes
@@ -131,7 +137,7 @@ How am I to remember all that code/syntax??!!
 
 -   By using them.
 -   You don't need to, you just need to remember in which script you used them before.
--   By using the existing cheat sheets:
+-   By using [existing cheat sheets]("https://www.rstudio.com/resources/cheatsheets/")
 -   By making your own cheat sheets.
 
 > You being the ideal student, you started your own cheat sheet. What should be on it by know?
@@ -165,7 +171,7 @@ Please download the files to your working directory.
 [Cultural_Changes_2008.sav](%22addfiles\Cultural_Changes_2008.sav%22)\
 [Cultural_Changes_2010.sav](%22addfiles\Cultural_Changes_2008.sav%22)  
 
-There are different packages to read in data. Generally, I would recommend to use the `haven` package. In the past I used to `foreign` package. The advantage of using `haven::read_spss` is that more information is stored in the dataset and in the variables (variable/value labels!!). A disadvantage is that not all other functions/packages of R are capable of dealing with the dataobject that haven produces.
+There are different packages to read in data. Generally, I would recommend to use the `haven` package. In the past I used the `foreign` package. The advantage of using `haven::read_spss` is that more information is stored in the dataset and in the variables (variable/value labels!!). A disadvantage is that not all other functions/packages of R are capable of dealing with the data object that haven produces.
 
 > below I will use `package_name::function_name` notation, to make explicit from which package the function belongs.
 
@@ -191,17 +197,13 @@ So you see I read in the data by using the function `read.spss()` of the package
 
 Now we can inspect our datasets and look for some differences:
 
--   Find the *Environment* tab in the upper right window (\@ref(fig:screenshot) **Arrow 5**).
-
-    -   Find the little arrow and decollapse.
-    -   What do we see?\
-
--   Double click on the three versions of the cv08 datasets.
-
-    -   What happens?
-    -   Go to the new windows and have a look at the data. What are the differences?
-    -   Close this window when finished.\
-
+-   Find the *Environment* tab in the upper right window (\@ref(fig:screenshot) **Arrow 5**).  
+    -   Find the little arrow and decollapse.  
+    -   What do we see?  
+-   Double click on the three versions of the cv08 datasets.  
+    -   What happens?  
+    -   Go to the new windows and have a look at the data. What are the differences?  
+    -   Close this window when finished.  
 -   Lets use some build-in functions to get more information of our dataset.
 
 ```{r datastr}
@@ -212,9 +214,9 @@ str(cv08_haven)
 
 The function `str()` asks for the structure of an object in your environment. You will see that the original data is stored differently in the three datasets. The different objects (cv08, cv08_nolab and cv08_haven) have a different structure. cv08 and cv08_nolab are 'data.frame' objects, the `haven::read_spss` function produces a 'tibble'.
 
-Let us have quick look at the structure of some variables.
+Let us have quick look at the structure of some variables. The take home message is that information is stored differently and that different information is stored,depending on the package used to read the data. 
 
-> To access a variable in a dataset use `datasetname$variablename` .
+> To access a variable in a dataset use `datasetname$variablename`.
 >
 > Add to your cheat sheet under operators/symbols: `$`
 
@@ -238,7 +240,9 @@ summary(cv08_haven$lftop)
 table(cv08_haven$lftop, useNA = "always")
 ```
 
-```{r inspectdata}
+You can also have a look at your data. Try out the following commands. 
+
+```{r inspectdata, eval=FALSE}
 names(cv08_haven)
 summary(cv08_haven)
 head(cv08_haven)
@@ -273,7 +277,7 @@ but:
 cv08$lftop_new <-  cv08$lftop
 ```
 
-You probably already noticed that to assign values to a new object we use `<-` What we now want to do is to replace those values of our new variable `cv08$lftop_new` which have the values **Onbekend**.
+You probably already noticed that to assign values to a new object we use `<-`. What we now want to do is to replace those values of our new variable `cv08$lftop_new` which have the values **Onbekend**. We thus have to use **subsetting**. 
 
 ```{r}
 cv08$lftop_new[cv08$lftop_new=="Onbekend"] <-  NA
@@ -379,7 +383,7 @@ table(cv08$educ3, useNA="always")
 
 ### Tidy
 
-And now the fun starts. Tidyverse includes a `dplyr::recode` function, but this function does not work on labeled variables imported via the haven package. Luckily, there is a package that extends the original function, `labelled`.
+And now the fun starts. Tidyverse includes a `dplyr::recode` function, but this function does not work on labelled variables imported via the haven package. Luckily, there is a package that extends the original function, `labelled`.
 
 ```{r}
 #install.packages("labelled")
@@ -407,7 +411,7 @@ table(cv08_haven$educ3, useNA="always")
 
 Personally, I think this is all quite complicated. But I guess this is a matter of taste.
 
-And advantage of the Tidy way is that you could use the `%>%`, piping, operator. Now, your code does not read from the inside out but from left to right. For many people this is more intuitive. The output of the function on the left is transported to the (first argument of the) function on the right. Thus, in the example below, you see that in the second and third call to mutate I don't have to tell the function which dataset I am using.
+And advantage of the Tidy way is that you could use the `%>%`, the **piping operator**. Now, your code does not read from the inside out but from left to right. For many people this is more intuitive. The output of the function on the left is transported to the (first argument of the) function on the right. Thus, in the example below, you see that in the second and third call to mutate I don't have to tell the function which dataset I am using.
 
 ```{r}
 cv08_haven <- mutate(cv08_haven, educ3=recode(var006n, '-3'=-9, '-1'=1, '1'=1, '2'= 2 , '3'= 2, '4'= 2, '5'= 2, '6'= 3, '7'= 3, '8'= 3, '10'= -9), .keep_value_labels = FALSE) %>%  
@@ -441,30 +445,35 @@ cv08_haven <- cv08_haven %>%
 
 Next step. Lets calculate a mean. We will use three questions in CV on polarization. This does not make any theoretical sense of course.
 
-```{r }
-
-#Step 1: have a look at the vars
+Step 1: have a look at the vars
+```{r, results='hold'}
 summary(cv08$int055)
 summary(cv08$int056)
 summary(cv08$int057)
+```
 
-#Step 2: make numeric
+Step 2: make numeric
+```{r, results='hold' }
 cv08$int055n <- as.numeric(cv08$int055)
 table(cv08$int055n, useNA="always")
 cv08$int056n <- as.numeric(cv08$int056)
 table(cv08$int056n, useNA="always")
 cv08$int057n <- as.numeric(cv08$int057)
 table(cv08$int057n, useNA="always")
+```
 
-#Step 3: define missings and recode
+Step 3: define missings and recode
+```{r, results='hold' }
 cv08$int055n[cv08$int055n<5] <- NA
 cv08$int055n <- cv08$int055n  - 4
 cv08$int056n[cv08$int056n<5] <- NA
 cv08$int056n <- cv08$int056n  - 4
 cv08$int057n[cv08$int057n<5] <- NA
 cv08$int057n <- cv08$int057n  - 4
+```
 
-#Step 4: calculate means. 
+Step 4: calculate means. 
+```{r, results='hold' }
 #How does the function mean work in R?
 mean(cv08$int055n)
 mean(cv08$int055n, na.rm=TRUE)
@@ -494,7 +503,7 @@ cv08$int_mean <- testmeans
 
 #Bonus: count specific values
 #so now we have this, it is easy to find how many times respondents answered 'zeer groot', that is '1'
-timesZG <- rowSums(cbind(cv08$int055n, cv08$int056n, cv08$int057n)==1, na.rm=T)
+#timesZG <- rowSums(cbind(cv08$int055n, cv08$int056n, cv08$int057n)==1, na.rm=T)
 ```
 
 > You need to add a lot of very powerful functions to your cheat sheet: `mean()`, `rowMeans()`, `rowSums`, `cbind()`, `is.na()`, `ifelse().`
@@ -503,7 +512,8 @@ timesZG <- rowSums(cbind(cv08$int055n, cv08$int056n, cv08$int057n)==1, na.rm=T)
 
 ### Tidy
 
-```{r }
+Here it goes in one big code chunck. 
+```{r, results='hold' }
 
 #Step 1: have a look at the vars
 str(cv08_haven$int055)
@@ -841,7 +851,7 @@ head(age_region_test)
 
 ```
 
-### Tidy  
+### Tidy  {#agtidy}
 
 ** TO DO ** 
 
@@ -866,7 +876,8 @@ table(cv_total$healthn, useNA = "always")
 ```
 
 Of course we have several options:  
-* listwise deletion. Only use when very few missings
+
+* listwise deletion. Only use when very few missings  
 * replace missing values with intuitive values or add missing as a separate category.  
 * impute missing values. A bit complicated but the best option. 
 
@@ -963,9 +974,19 @@ pool_model_imp <- pool(model_imp)
 summary(pool_model_imp)
 ```
 
-### Tidy  
+### Tidy {#mistidy}  
 
 ** TO DO ** 
+
+## Assignment  
+
+Time to practice. 
+
+* Go back to your latest paper, assignment or theses in which you used a software package other than R to wrangle, describe, visualize and/or analyze the data. Translate your syntax into R. Be as consistent as possible with respect to using Base and Tidy.  
+* But that is way too difficult!! Okay, okay, well try to do exactly the same as in this tutorial (without copy pasting the code chunks) but on a different dataset.  
+* O, you are already a fluent R Base user? Well, translate your latest R Base script into Tidy. 
+* You say, you are already a Tidy person? Mmmm,... I've got it. Please fill in the gaps of this tutorial ([Appendix A.11.2](#agtidy) and [Appendix A.12.2](#mistidy)) for me and earn an acknowledgment in this book.  
+* Not challenging enough? Start working with [Rmarkdown]("https://bookdown.org/yihui/rmarkdown/") and [Git]("https://happygitwithr.com/"). Fork this repository. Make this tutorial better. Submit a pull request to me.
 
 ---  
 

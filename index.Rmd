@@ -19,6 +19,7 @@ knitr::write_bib(c(
 ```{r globalsettings, echo=FALSE, warning=FALSE}
 library(knitr)
 opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE, warning = FALSE, message = FALSE,comment = "#>", cache=TRUE)
+opts_chunk$set(attr.source = ".numberLines")
 options(width = 100)
 source("util.r")
 
@@ -26,14 +27,20 @@ source("util.r")
 
 # Welcome {.unnumbered}
 
+
+```{r chunkname, echo=FALSE, out.width= "50%", out.extra='style="float:right; padding:10px"'} 
+knitr::include_graphics("cover.png")
+```
+
+
 This course is not an introduction to Sociology, Social Networks or Social Network Analysis. It is also not a course in R. This course will teach you how to apply **'a social network perspective'** to your own research on topics like **inequality**, **cohesion** and **diversity**.\
-Individuals (or social agents more generally) are interconnected in social networks. This has theoretical consequences, methodological consequences and consequences for data collection. There are many different **type** of networks. Networks may be very small and very large (e.g. citation networks), they may be centered around a specific person (an egonet) or be bounded to a specific context (a socionet). You may wish to understand how networks come about (i.e. the upstream **causes**) or want to understand their impact on individuals, groups and society (i.e. the dowstream **consequences**). This is why I tried to structure this course along three different dimensions:
+Individuals (or social agents more generally) are interconnected in social networks. This has theoretical consequences, methodological consequences and consequences for data collection and data wrangling. There are many different **type** of networks. Networks may be very small (e.g. couples) and very large (e.g. citation networks), they may be centered around a specific person (an egonet) or be bounded to a specific context (a socionet). You may wish to understand how networks come about (i.e. the upstream **causes**) or want to understand their impact on individuals, groups and society (i.e. the dowstream **consequences**). This is why I tried to structure this course along three different dimensions:
 
 1.  **Type** of Social Network: dyad, egonet, socionet
 2.  **Causes or Consequences** of social networks
 3.  **Implications** of applying a social network perspective: Theoretical, Data and Methodological
 
-What will you learn in this course? You will learn (how) to learn more about social network theories, methods and datacollection.
+What will you learn in this course? You will learn that many problems of the social sciences (ranging from research questions of anthropology, communication science, development studies,  organisation science, political science and sociology) can *and should* be studied from a social network perspective. Most importantly, you will learn (how) to learn more about social network theories, methods and data issues.
 
 Enjoy!!
 
