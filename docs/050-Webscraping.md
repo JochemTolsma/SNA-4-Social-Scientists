@@ -4,7 +4,7 @@
 
 # Webscraping for Sociologists {#webintro}
 
-Latest Version: 30-08-2021
+Latest Version: 31-08-2021
 
 Please email any comments to: bas.hofstra@ru.nl	
 

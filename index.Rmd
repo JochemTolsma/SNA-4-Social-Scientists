@@ -9,6 +9,10 @@ link-citations: yes
 description: ""
 ---
 
+<!---
+https://jochemtolsma.github.io/SNA-4-Social-Scientists/
+--->
+
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(

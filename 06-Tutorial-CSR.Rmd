@@ -978,6 +978,11 @@ summary(pool_model_imp)
 
 ** TO DO ** 
 
+
+**Thank you for reading this tutorial!!** 
+
+---  
+
 ## Assignment  
 
 Time to practice. 
@@ -991,14 +996,9 @@ Time to practice.
 ---  
 
 
-**Thank you for reading this tutorial!!**
+# Interdependencies {#variance}
 
----  
-
-
-  
-
-# Covariance and Correlation {#variance}
+## Variance and covariance
 
 Social scientists try to explain variance and covariance. It is therefore a good idea to learn by heart the formula for variance and covariance. The sample variance of a random continuous variable X, VAR(X), is as follows: 
 
@@ -1021,6 +1021,289 @@ with $\mu$ the population mean.
 And the correlation within the population is: 
 
 $$\rho_{xy} = \frac{\sigma_{xy}^2}{\sigma_x \sigma_y}$$
+
+## Intraclass correlation
+
+### Dyadic data 
+
+Let us suppose we have dyadic data. For example on the political opinion of two marriage partners. We want to know if these data are interdependent. 
+
+Run the code chunck below to simulate some data. 
+
+```{r }
+require(MASS)
+set.seed(9864) #We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
+
+#let us start with simulating the opinion of both partners.
+Sigma <- matrix(c(10,4,4,5),2,2)
+opinions <- mvrnorm(n = 1000, mu=c(4,5), Sigma)
+opinion_W <- opinions[,1]
+opinion_M <- opinions[,2]
+dyad_id <- 1:1000
+
+#and let's put everything together
+data <- data.frame(dyad_id, opinion_W, opinion_M)
+#add some description to the data  
+attr(data, "description") <- "This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with \"_W\" refer to women,\"_M\" refer to men." 
+
+#I don't think the variables need any further description.
+```
+
+
+#### Describe data
+
+Lets have a look at our data. 
+
+```{r, results="hold"}
+require(psych)
+head(data)
+str(data)
+summary(data)
+attr(data, "description")
+describe(data)
+
+```
+
+#### Interdependencies: correlation 
+
+There are different (naive and less naive) ways to check for interdependence. 
+
+For more background information see [this page](http://davidakenny.net/dyad.htm) by David A. Kenny.  
+Also check out paragraph 3.3 of the book by [@snijders1999]. 
+
+
+Lets us start with something that pops up in your mind immediately...a correlation. 
+
+```{r icc_correlation}
+cov(data$opinion_M, data$opinion_W) #the covariance between the two variables. Have a look at the simulation. This is indeed what we have put into the data. 
+cov(scale(data$opinion_M), scale(data$opinion_W)) #the covariance between the two standardized variables. That is the correlation. 
+cor.test(data$opinion_M, data$opinion_W) #See, same value. Now also with significance. 
+```
+
+This would indicate a strong and significant correlation. 
+Remember that our data is in wide format. A better way is to calculate the correlation on a long dataset. This method is called the double entry method. Why is this a better way? It takes into account that the variance and mean of the opinions of men and women may be different. The endresult will more closely resemble the ICC we will encounter later. 
+
+```{r ICC_doublyentrymethod}
+var1 <- c(data$opinion_M, data$opinion_W)
+var2 <- c(data$opinion_W, data$opinion_M)
+cor.test(var1, var2)
+```
+Lower, but still significant. 
+
+It is even possible that to now see a negative (and significant) correlation. For example try to repeat the above with a dataset we would get after running the following simulation. 
+
+```{r , eval=FALSE}
+require(MASS)
+set.seed(9864) #We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
+
+#let us start with simulating the opinion of both partners.
+Sigma <- matrix(c(10,4,4,5),2,2)
+opinions <- mvrnorm(n = 1000, mu=c(20,25), Sigma)
+opinion_W <- opinions[,1]
+opinion_M <- opinions[,2]
+dyad_id <- 1:1000
+
+#and let's put everything together
+data <- data.frame(dyad_id, opinion_W, opinion_M)
+#add some description to the data  
+attr(data, "description") <- "This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with \"_W\" refer to women,\"_M\" refer to men." 
+
+#I don't think the variables need any further description.
+```
+
+
+#### ICC 
+
+The intraclass correlation is the correlation between two random subjects of the same cluster. There are many mathematical definitions of the ICC. Let us start with a definition from the ANOVA tradition: 
+
+$$ ICC = \frac{(MS_B - MS_W)}{(MS_B + MS_W)} $$
+where, 
+
+$$ MS_B = VAR(\bar{X}_{dyad}) * 2 $$  
+
+  
+and  
+
+$$ MS_W = \sum(X_{ego} - X_{alter})^2 / (2* N_{dyads}) $$  
+
+Let's have a go! 
+```{r ICC_anova}
+MSB <- var((data$opinion_M + data$opinion_W)/2)*2
+MSW <- (sum((data$opinion_M - data$opinion_W)^2))/(2*length(data$opinion_W))
+ICC_anova <- (MSB - MSW)/(MSB + MSW)
+ICC_anova
+
+```
+Do you see that the ICC is very close to the correlation based on a dataset in long format (double entry method)? Thus in practice, the double entry method is very convenient to check for interdependencies if you are working on dyadic data. 
+
+Most of you are probably more familiar with definitions of the ICC as provided within textbooks on multi-level analysis. Where the intraclass correlation - at least for continuous dependent variables - is defined as the between variance (i.e. the variance in dyad means) divided by the total variance (i.e. the sum of the between and within variance). There is only one problem, we need these variances present in the 'real population'. In our data we only observe the variances present in our sample. The observed between variance needs to be corrected. Below I will show you how to do that. 
+  
+First make a dataset in longformat.
+```{r}
+#first make a dataset in longformat. 
+dyadmean <- (data$opinion_M + data$opinion_W)/2
+data_long <- rbind(data,data)
+data_long$partner_id <- rep(1:2, each=1000)
+data_long$dyad_id <- rep(1:1000, times=2)
+data_long$dyadmean <- c(dyadmean, dyadmean)
+
+#lets the first dyad entry refer to the women and the second to the men
+data_long$opinion <- ifelse(data_long$partner_id==1, data_long$opinion_W, data_long$opinion_M)
+
+#also define the opinion of the partner
+data_long$opinion_P <- ifelse(data_long$partner_id==2, data_long$opinion_W, data_long$opinion_M)
+
+head(data_long)
+
+```
+\
+With this dataset in longformat we can calculate the ICC. 
+
+```{r ICC_ML , results="hold"}
+#first calculate the between variance of our sample. Note that this we only need observations of the dyads once (thus N_dyads=1000)
+S_B <- var(data_long$dyadmean[1:1000])
+#within variance
+SW <- sum((data_long$opinion - data_long$dyadmean)^2)/1000 #we divide by the number of dyads
+#We now need to correct the observed between variance to reflect the population between variance. 
+S_B_E <- S_B - SW/2
+ICC_ML <- S_B_E / (S_B_E + SW)
+ICC_ML
+```
+Of course exactly similar to the ICC_anova. 
+But this procedure is of course quite cumbersome. It may be a lot easier to estimate an empty multi-level model which also spits out the ICC (after some tweaking). 
+See below. 
+
+```{r , results="hold"}
+require(nlme)
+#estimate empty model with ML
+mlme <- lme(opinion ~ 1,  data=data_long, random = list(~ 1| dyad_id),)
+summary(mlme)
+#Standard deviations are reported instead of variances. 
+#extract the variances.
+VarCorr(mlme)
+#the intercept variance is at the between-level.
+#the residual variances are at the observation / within-level. 
+#thus based on these numbers we may calculate the ICC ourselves. 
+varests <- as.numeric(VarCorr(mlme)[1:2])
+varests
+ICC_MLb <- varests[1]/sum(varests)
+ICC_MLb
+```
+
+In this course we will rely heavily on the Lavaan package. We can also calculate the ICC with Lavaan. 
+
+
+```{r}
+require("lavaan")
+model <- '
+    level: 1
+        opinion ~ 1 #regression model
+        opinion ~~ opinion #variance
+    level: 2
+        opinion ~ 1
+        opinion ~~ opinion
+'
+fit <- lavaan(model = model, data = data_long, cluster = "dyad_id")
+summary(fit)
+lavInspect(fit, "icc")
+```
+
+The take home message is that the two observations for each dyad are indeed interrelated. Is this a lot? Is this significant? 
+
+### Egonet / Socionet data  
+
+The above procedure to calculate the ICC correlation can also be used for egonet data. 
+
+
+Let us suppose we have egonet data. For example on the political opinions of you and your friends. We want to know if these data are interdependent. 
+
+Run the code chunck below to simulate some data. 
+
+```{r }
+require(MASS)
+set.seed(9864) #We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
+
+#let us start with simulating the opinion of ego and its alters.
+Sigma <- matrix(sample(c(1,2,3), 36, replace=T),6,6)
+Sigma[lower.tri(Sigma)] = t(Sigma)[lower.tri(Sigma)]
+diag(Sigma) <- c(5,4,6,3,7,6)
+#Sigma
+
+opinions <- mvrnorm(n = 1000, mu=c(4,4,4,4,4,4), Sigma)
+opinion_ego <- opinions[,1]
+opinion_alter1 <- opinions[,2]
+opinion_alter2 <- opinions[,3]
+opinion_alter3 <- opinions[,4]
+opinion_alter4 <- opinions[,5]
+opinion_alter5 <- opinions[,6]
+
+egonet_id <- 1:1000
+
+#and let's put everything together
+data <- data.frame(egonet_id, opinion_alter1, opinion_alter2, opinion_alter3, opinion_alter4, opinion_alter5)
+
+#I don't think the variables need any further description.
+```
+
+
+#### Describe data
+
+Lets have a look at our data. 
+
+```{r, results="hold"}
+require(psych)
+head(data)
+str(data)
+summary(data)
+attr(data, "description")
+describe(data)
+
+```
+
+Reshape into long format. 
+```{r}
+require("tidyverse")
+
+data_long <- tidyr::pivot_longer(data=data, cols=everything()[-1], names_to="alter", values_to="opinion")
+
+head(data_long)
+```
+
+#### ICC via ML
+
+```{r , results="hold"}
+require(nlme)
+#estimate empty model with ML
+mlme <- lme(opinion ~ 1,  data=data_long, random = list(~ 1| egonet_id),)
+summary(mlme)
+#Standard deviations are reported instead of variances. 
+#extract the variances.
+VarCorr(mlme)
+#the intercept variance is at the between-level.
+#the residual variances are at the observation / within-level. 
+#thus based on these numbers we may calculate the ICC ourselves. 
+varests <- as.numeric(VarCorr(mlme)[1:2])
+varests
+ICC_MLb <- varests[1]/sum(varests)
+ICC_MLb
+```
+#### ICC via SEM/lavaan
+
+```{r}
+require("lavaan")
+model <- '
+    level: 1
+        opinion ~ 1 #regression model
+        opinion ~~ opinion #variance
+    level: 2
+        opinion ~ 1
+        opinion ~~ opinion
+'
+fit <- lavaan(model = model, data = data_long, cluster = "egonet_id")
+summary(fit)
+lavInspect(fit, "icc")
+```
+
 
 ---  
 

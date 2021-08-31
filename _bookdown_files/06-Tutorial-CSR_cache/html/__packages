@@ -13,3 +13,7 @@ stringr
 forcats
 mice
 labelled
+MASS
+psych
+nlme
+lavaan

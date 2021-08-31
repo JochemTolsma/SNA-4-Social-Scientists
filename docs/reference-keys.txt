@@ -1,3 +1,4 @@
+tab:topics
 fig:ud
 fig:dd
 fig:mud
@@ -17,6 +18,7 @@ fig:inspecttd
 fig:screenshot
 intro
 overview
+social-network-perspective
 aim
 structure
 type-of-social-network
@@ -26,6 +28,7 @@ theoretical-implications
 methodological-implications
 data-implications
 what-makes-this-course-stand-out
+assignment
 theory
 network-structures
 causes-of-dyads
@@ -158,5 +161,15 @@ option-1-listwise-deletion
 option-2-replacing-missing-values.
 option-3-impute-missing-values
 mistidy
-assignment
+assignment-1
 variance
+variance-and-covariance
+intraclass-correlation
+dyadic-data
+describe-data
+interdependencies-correlation
+icc
+egonet-socionet-data
+describe-data-1
+icc-via-ml
+icc-via-semlavaan

@@ -230,7 +230,7 @@ Thus, once again, homophily within couples may be the result of:
 But what do we mean with 'influence'? Let's read the following quote. 
 
 <p class= "quote"> 
-People influence one another, and as the importance and immediacy of a group or individual increases, this influence becomes stronger (Latané, 1981). Forces of influence are especially strong within romantic relationships because these relationships are important, are predicated on mutual acceptance, and involve frequent exposure to the habits of one's partner." @bartel2017romantic  
+People influence one another, and as the importance and immediacy of a group or individual increases, this influence becomes stronger (Latané, 1981). Forces of influence are especially strong within romantic relationships because these relationships are important, are predicated on mutual acceptance, and involve frequent exposure to the habits of one's partner." [@bartel2017romantic]  
 </p> 
 
 It would say this a quite naive conceptualisation of **influence**. It is implicitly assumed that partners will match their opinions/behaviors. Thus influence here is convergence. But why should partners' characteristics converge over time, why would homophily increase? And, it still does not become clear what the 'forces of influence' are. 

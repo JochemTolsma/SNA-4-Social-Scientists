@@ -18,48 +18,41 @@ source("util.r")
 ## Overview
 
 Sociologists study how societies affect the lives of their members and, vice versa, how individuals shape the societies in which they live. Within societies people make and break relations with specific others and thereby form **social networks**.\
-Individuals are embedded in many different social networks (e.g. based on friendships, bullying, family relations). Within these social networks individuals influence each others' attitudes, behaviors and relations via complex dynamic processes. The attitudes, behaviors and relations of individuals shape, in turn, the societies they live in. They give rise to **social phenomena** such as inequality, segregation, polarization and cohesion. It is not possible to explain many macro-level social phenomena, let alone to solve many urgent **social problems**, without taking into account social networks. For example, researchers may be able to deduce hypotheses from an established theory on political opinions of individuals but the same theory is not able to explain when and where **political polarization** occurs. For this, a social network perspective is necessary. It can thus be no surprise that the study of the causes and consequences of social networks lies at the core of sociology.
+Individuals are embedded in many different social networks (e.g. based on friendships, bullying, family relations). Within these social networks individuals influence each others' attitudes, behaviors and relations via complex dynamic processes. The attitudes, behaviors and relations of individuals shape, in turn, the societies they live in. They give rise to social phenomena, collective human behavior such as inequality, segregation, polarization and cohesion. It is not possible to explain many macro-level social phenomena, let alone to solve many urgent social problems, without taking into account social networks. For example, researchers may be able to deduce hypotheses from an established theory on political opinions of individuals but the same theory is not able to explain when and where political polarization occurs.^[Polarization is a social problem - a social phenomenon which people consider undesired - and a society is said to be polarized when (sizeable) (and clearly distinguishable) groups in society hold (ever more) opposing, extreme (political) attitudes.] For this, a social network perspective is necessary. It can thus be no surprise that the study of the causes and consequences of social networks lies at the core of sociology.
+
+<p class= "quote"> 
+A **social network** is an finite set of actors and the relation(s) defined on this set. The actors are social entities (people, organizations, countries, etc.) whose specific ties (friendship, competition, collaboration, etc.), constitute the network. [@wasserman1994 : 20].\
+</p> 
 
 
-> **Social Networks**
->
-> :   A social network is an finite set of actors and the relation(s) defined on this set. The actors are social entities (people, organizations, countries, etc.) whose specific ties (friendship, competition, collaboration, etc.), constitute the network [@Wasserman1994 : 20].\
->     Networks are also called: graphs or sociograms\
->     Actors are also called: points, nodes, agents or vertices.\
->     Relations are also called: ties, edges or connections.
->
-> `r colorize("**Social Networks is/are no theory nor a method.**", "red")` Social networks are social phenomena with causes and consequences. The size, composition, structure, and evolution of social networks can be explained. Social networks have an impact on individuals (e.g. attitudes and behavior), dyads (e.g. relations), institutions (e.g. efficiency) and societies (e.g. segregation, opinion polarization).
+> Networks are also called: graphs or sociograms.  
+> Actors are also called: points, nodes, agents or vertices.  
+> Relations are also called: ties, edges or connections.
 
-> **Social Network Perspective**
->
-> :   It is the acknowledgment that individuals are embedded within social networks - no man is an island - and that this has theoretical, data, and methodological consequences.\
->     Theoretical consequences: A social network perspective may force to a rethinking of existing hypotheses and may lead to new research questions on the causes and consequences of social networks.\
->     Data consequences: To apply a Social Network Perspective, we need data on social networks. Social network data is special in that we need not only information on the social agents (e.g. people, organizations) but also on the ties (or relations) between them. As a consequence, there are many unique practical and ethical aspects related to the collection of network data. Methodological consequences: A social network perspective will make explicit that empirical observations of individuals are not always independent and that the (complex) interdependencies between observations that result from social networks have consequences for many of our traditional research methods which assume independence of observations. It may lead to the development and adoption of new social network analysis techniques.
->
-> Applying a social network perspective leads to theoretical, data collection, and methodological advancements.
+`r colorize("**Social Networks is/are no theory nor a method.**", "red")` Social networks are social phenomena with causes and consequences. The size, composition, structure, and evolution of social networks can be explained. Social networks have an impact on individuals (e.g. attitudes and behavior), dyads (e.g. relations), institutions (e.g. efficiency) and societies (e.g. inequality, segregation, polarization).
 
-> **Social phenomenon**
->
-> :   collective human behavior
+## Social Network Perspective
 
-> **Social problem**
->
-> :   a social phenomenon which people consider undesired.
+**Social Network Perspective**
 
-> **Polarization**
->
-> :   Polarization is a social problem and a society is said to be polarized when (sizeable) (and clearly distinguishable) groups in society hold (ever more) opposing, extreme (political) attitudes.
+ :   It is the acknowledgment that individuals are embedded within social networks - no man is an island - and that this has theoretical, data, and methodological consequences.\
+ 
+*   Theoretical consequences: A social network perspective may force to a rethinking of existing hypotheses and may lead to new research questions on the causes and consequences of social networks.  
+*   Data consequences: To apply a Social Network Perspective, we need data on social networks. Social network data is special in that we need not only information on the social agents (e.g. people, organizations) but also on the ties (or relations) between them. As a consequence, there are many unique practical and ethical aspects related to the collection of network data. The structure of social network data is also different (e.g. adjacency matrices) and require special data wrangling skills.   
+*   Methodological consequences: A social network perspective will make explicit that empirical observations of individuals are not always independent and that the (complex) interdependencies between observations that result from social networks have consequences for many of our traditional research methods which assume independence of observations. It may lead to the development and adoption of new social network analysis techniques.
+
+Taking a social network perspective leads to theoretical, data collection, and methodological advancements.
 
 ## Aim
 
 The intended learning outcomes of the course are:
 
-1.  Theoretical knowledge and insight:
+1.  Theoretical **knowledge** and insight:
     -   you will be able to define core concepts related to a social network perspective.\
     -   You will be able to summarize what a social network perspective in social science research entails.\
-2.  Academic attitude:\
+2.  Academic **attitude**:\
     -   you develop a positive attitude towards applying a social network perspective in social science research.\
-3.  Research skills: you will be able to apply a social network perspective in social science research. This encompasses that:\
+3.  Research **skills**: you will be able to apply a social network perspective in social science research. This encompasses that:\
     -   you will be able to deduce relevant and new social network hypotheses from existing theories.\
     -   you will be able able to collect and wrangle social network data.\
     -   you will be able to test these hypotheses with different social network analysis techniques.\
@@ -74,25 +67,28 @@ This course is structured along three different dimensions:
 
 <!--- perhaps put in a table and use knitr:kable so we have nicer layout and can use table caps! --->
 
-**Table. 1.1 ** Topics discussed within the course
+```{r topics, echo=FALSE}
 
-| Type of Social Network           | Causes or Consequences | Implications | 
-|----------------------------------|------------------------|------------------|
-| Dyads                            | Causes                 | Theory           |
-| Dyads                            | Causes                 | Method           |
-| Dyads                            | Consequences           | Theory           |
-| Dyads                            | Consequences           | Method           |
-| Dyads                            | NA                     | Data             |
-| Egonets                          | Causes                 | Theory           |
-| Egonets                          | Causes                 | Method           |
-| Egonets                          | Consequences           | Theory           |
-| Egonets                          | Consequences           | Method           |
-| Egonets                          | NA                     | Data             |
-| Socionet                         | Causes                 | Theory           |
-| Socionet                         | Causes                 | Method           |
-| Socionet                         | Consequences           | Theory           |
-| Socionet                         | Consequences           | Method           |
-| Socionet                         | NA                     | Data             |
+#install.packages("kableExtra", repos='http://cran.us.r-project.org')
+require(kableExtra)
+v1 <- c("Dyads", "Dyads","Dyads","Dyads", "Dyads", "Egonets", "Egonets","Egonets","Egonets","Egonets", "Socionet", "Socionet","Socionet","Socionet","Socionet")
+v2 <- c("Causes", "Causes", "Consequences", "Consequences", "NA", "Causes", "Causes", "Consequences", "Consequences", "NA","Causes", "Causes", "Consequences", "Consequences", "NA")
+v3 <- c("Theory", "Method", "Theory", "Method", "Data","Theory", "Method", "Theory", "Method", "Data","Theory", "Method", "Theory", "Method", "Data")
+df <- data.frame(v1,v2, v3)
+colnames(df)<- c("Type of Social Network", "Causes or Consequences", "Implications")
+
+
+#kable(df, caption="Assortative Mating", align="l")
+
+kbl(df, booktabs=TRUE, digits=2, caption="Topics discussed within the course", align = "c") %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  column_spec(1, bold=T) %>%
+  row_spec(0, bold=TRUE)
+  
+
+```
+
 
 
 `r colorize("**Feel free to use the menu on the left and to jump to the section you are most interested in. But there is a clear order in the sections. The best way to accumulate theoretical and methodological knowledge, and to gain the necessary R-skills to successfully apply a social network perspective to your own research is by going through the sections one by.**", "red")`
@@ -228,7 +224,7 @@ V(g6)$shape <- V(g4)$shape[subnet]
 plot(g6,layout=l5[subnet,], rescale=F)
 ```
 \
-In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this [section](https://www.jochemtolsma.nl/courses/complete-networks/socio2/#triad-level).  <!---insert correct link ---> 
+In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this [section](https://www.jochemtolsma.nl/courses/complete-networks/socio2/#triad-level).  <!---insert correct link later---> 
 
 
 ##### 2.0 degree network {-}
@@ -397,12 +393,30 @@ Network data also has a specific format (e.g. an adjacency matrix) and can becom
 
 ## What makes this course stand out?
 
-This course is not an introduction to Sociology, Social Networks or Social Network Analysis. It is also not a course in R. I assume you have some intuitive understanding of what social networks are and have opened R or RStudio at one point in your life but both are not necessary prerequisites to follow this course. There are very good (online) introductions to the study of Social Networks, see for example [here](https://bookdown.org/markhoff/social_network_analysis/) and [here](https://eehh-stanford.github.io/SNA-workshop/). A good short introduction to R for this course can be found in Chapter \@ref(tutorial) or have a look [here](https://rafalab.github.io/dsbook/) for a more thorough introduction to Data Science with R.\
+This course is not an introduction to Sociology, Social Networks or Social Network Analysis. It is also not a course in R. I assume you have some intuitive understanding of what social networks are and have opened R or RStudio at one point in your life but both are not necessary prerequisites to follow this course. There are very good (online) introductions to the study of Social Networks, see for example [here](https://bookdown.org/markhoff/social_network_analysis/) and [here](https://eehh-stanford.github.io/SNA-workshop/). A good short introduction to R for this course can be found in Appendix \@ref(tutorial) or have a look [here](https://rafalab.github.io/dsbook/) for a more thorough introduction to Data Science with R.\
 This course is tailored for research master and PhD students. I will assume that you are interested in and have studied social problems in your academic career and that your research interests fits one of the following broad themes: **inequality**, **cohesion** and **diversity**. For an excellent introduction into sociology see [@Tubergen2020]. However, up to this point, when you deduced hypotheses from existing theories you did not explicitly acknowledge that individuals are interconnected in social networks. You were neither aware that this may have theoretical consequences for existing hypotheses nor that this gives rise to new research questions. Up to this point, when you tested your hypotheses you assumed that your observations were independent (e.g. OLS) or, at most, that the nonindependence was relatively easy to take into account (e.g. multi-level analysis).\
 In this course you will learn to apply a social network perspective in the study of inequality, cohesion and diversity. You will become able to deduce more precise and new hypotheses. You will become able to test these hypotheses with social network techniques that take into account and explain complex interdependencies.
 
 
-Enjoy!!
+**Enjoy!!**
 
 ---   
+
+## Assignment  
+
+Time to practice.  
+
+You will make this assignment twice. The first time at the very beginning of the course and the second time at the very end. 
+
+* Go back to your latest paper, assignment or theses in which you investigated a research topic fitting the broad research themes of inequality, cohesion and diversity. You could also take one of your current projects you are working on if you like. Identify the social problem.  
+* Please describe what a naive approach would be to take on this social problem. Thus, being oblivious of a social network perspective.  
+* Please try to identify how your project could be improved by taking a social network perspective. Make sure to discuss the theoretical, data, and methodological consequences.  
+*  Can you discover a trend in the existing literature with respect to taking a social network perspective. 
+
+Prepare a short presentation (5-10 minutes) for the next class. 
+
+But dear sir, I have not worked on any social problems in my academic career so far. Well, are you sure you want to follow this course? Yes, really? Okay. Start from scratch then. Formulate a research question related to a social problem and start from there.  
+
+
+---  
 

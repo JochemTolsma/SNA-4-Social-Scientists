@@ -2923,6 +2923,11 @@ summary(pool_model_imp)
 
 ** TO DO ** 
 
+
+**Thank you for reading this tutorial!!** 
+
+---  
+
 ## Assignment  
 
 Time to practice. 
@@ -2936,14 +2941,9 @@ Time to practice.
 ---  
 
 
-**Thank you for reading this tutorial!!**
+# Interdependencies {#variance}
 
----  
-
-
-  
-
-# Covariance and Correlation {#variance}
+## Variance and covariance
 
 Social scientists try to explain variance and covariance. It is therefore a good idea to learn by heart the formula for variance and covariance. The sample variance of a random continuous variable X, VAR(X), is as follows: 
 
@@ -2966,6 +2966,605 @@ with $\mu$ the population mean.
 And the correlation within the population is: 
 
 $$\rho_{xy} = \frac{\sigma_{xy}^2}{\sigma_x \sigma_y}$$
+
+## Intraclass correlation
+
+### Dyadic data 
+
+Let us suppose we have dyadic data. For example on the political opinion of two marriage partners. We want to know if these data are interdependent. 
+
+Run the code chunck below to simulate some data. 
+
+
+```{.r .numberLines}
+require(MASS)
+set.seed(9864)  #We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
+
+# let us start with simulating the opinion of both partners.
+Sigma <- matrix(c(10, 4, 4, 5), 2, 2)
+opinions <- mvrnorm(n = 1000, mu = c(4, 5), Sigma)
+opinion_W <- opinions[, 1]
+opinion_M <- opinions[, 2]
+dyad_id <- 1:1000
+
+# and let's put everything together
+data <- data.frame(dyad_id, opinion_W, opinion_M)
+# add some description to the data
+attr(data, "description") <- "This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with \"_W\" refer to women,\"_M\" refer to men."
+
+# I don't think the variables need any further description.
+```
+
+
+#### Describe data
+
+Lets have a look at our data. 
+
+
+```{.r .numberLines}
+require(psych)
+head(data)
+str(data)
+summary(data)
+attr(data, "description")
+describe(data)
+```
+
+```
+#>   dyad_id opinion_W opinion_M
+#> 1       1  1.180285  3.651525
+#> 2       2  9.930618  7.117465
+#> 3       3  4.022491  2.205877
+#> 4       4  2.990720  7.485650
+#> 5       5  3.024059  8.292194
+#> 6       6  8.408048  4.720610
+#> 'data.frame':	1000 obs. of  3 variables:
+#>  $ dyad_id  : int  1 2 3 4 5 6 7 8 9 10 ...
+#>  $ opinion_W: num  1.18 9.93 4.02 2.99 3.02 ...
+#>  $ opinion_M: num  3.65 7.12 2.21 7.49 8.29 ...
+#>  - attr(*, "description")= chr "This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual cou"| __truncated__
+#>     dyad_id         opinion_W        opinion_M     
+#>  Min.   :   1.0   Min.   :-5.337   Min.   :-2.992  
+#>  1st Qu.: 250.8   1st Qu.: 2.141   1st Qu.: 3.517  
+#>  Median : 500.5   Median : 4.222   Median : 5.013  
+#>  Mean   : 500.5   Mean   : 4.201   Mean   : 5.006  
+#>  3rd Qu.: 750.2   3rd Qu.: 6.170   3rd Qu.: 6.545  
+#>  Max.   :1000.0   Max.   :14.476   Max.   :11.670  
+#> [1] "This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with \"_W\" refer to women,\"_M\" refer to men."
+#>           vars    n   mean     sd median trimmed    mad   min     max  range  skew kurtosis   se
+#> dyad_id      1 1000 500.50 288.82 500.50  500.50 370.65  1.00 1000.00 999.00  0.00    -1.20 9.13
+#> opinion_W    2 1000   4.20   3.18   4.22    4.19   3.01 -5.34   14.48  19.81  0.05     0.01 0.10
+#> opinion_M    3 1000   5.01   2.27   5.01    5.02   2.25 -2.99   11.67  14.66 -0.06    -0.03 0.07
+```
+
+#### Interdependencies: correlation 
+
+There are different (naive and less naive) ways to check for interdependence. 
+
+For more background information see [this page](http://davidakenny.net/dyad.htm) by David A. Kenny.  
+Also check out paragraph 3.3 of the book by [@snijders1999]. 
+
+
+Lets us start with something that pops up in your mind immediately...a correlation. 
+
+
+```{.r .numberLines}
+cov(data$opinion_M, data$opinion_W)  #the covariance between the two variables. Have a look at the simulation. This is indeed what we have put into the data. 
+```
+
+```
+#> [1] 4.154203
+```
+
+```{.r .numberLines}
+cov(scale(data$opinion_M), scale(data$opinion_W))  #the covariance between the two standardized variables. That is the correlation. 
+```
+
+```
+#>           [,1]
+#> [1,] 0.5741921
+```
+
+```{.r .numberLines}
+cor.test(data$opinion_M, data$opinion_W)  #See, same value. Now also with significance. 
+```
+
+```
+#> 
+#> 	Pearson's product-moment correlation
+#> 
+#> data:  data$opinion_M and data$opinion_W
+#> t = 22.156, df = 998, p-value < 2.2e-16
+#> alternative hypothesis: true correlation is not equal to 0
+#> 95 percent confidence interval:
+#>  0.5311041 0.6143179
+#> sample estimates:
+#>       cor 
+#> 0.5741921
+```
+
+This would indicate a strong and significant correlation. 
+Remember that our data is in wide format. A better way is to calculate the correlation on a long dataset. This method is called the double entry method. Why is this a better way? It takes into account that the variance and mean of the opinions of men and women may be different. The endresult will more closely resemble the ICC we will encounter later. 
+
+
+```{.r .numberLines}
+var1 <- c(data$opinion_M, data$opinion_W)
+var2 <- c(data$opinion_W, data$opinion_M)
+cor.test(var1, var2)
+```
+
+```
+#> 
+#> 	Pearson's product-moment correlation
+#> 
+#> data:  var1 and var2
+#> t = 26.576, df = 1998, p-value < 2.2e-16
+#> alternative hypothesis: true correlation is not equal to 0
+#> 95 percent confidence interval:
+#>  0.4779248 0.5427243
+#> sample estimates:
+#>       cor 
+#> 0.5110503
+```
+Lower, but still significant. 
+
+It is even possible that to now see a negative (and significant) correlation. For example try to repeat the above with a dataset we would get after running the following simulation. 
+
+
+```{.r .numberLines}
+require(MASS)
+set.seed(9864)  #We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
+
+# let us start with simulating the opinion of both partners.
+Sigma <- matrix(c(10, 4, 4, 5), 2, 2)
+opinions <- mvrnorm(n = 1000, mu = c(20, 25), Sigma)
+opinion_W <- opinions[, 1]
+opinion_M <- opinions[, 2]
+dyad_id <- 1:1000
+
+# and let's put everything together
+data <- data.frame(dyad_id, opinion_W, opinion_M)
+# add some description to the data
+attr(data, "description") <- "This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with \"_W\" refer to women,\"_M\" refer to men."
+
+# I don't think the variables need any further description.
+```
+
+
+#### ICC 
+
+The intraclass correlation is the correlation between two random subjects of the same cluster. There are many mathematical definitions of the ICC. Let us start with a definition from the ANOVA tradition: 
+
+$$ ICC = \frac{(MS_B - MS_W)}{(MS_B + MS_W)} $$
+where, 
+
+$$ MS_B = VAR(\bar{X}_{dyad}) * 2 $$  
+
+  
+and  
+
+$$ MS_W = \sum(X_{ego} - X_{alter})^2 / (2* N_{dyads}) $$  
+
+Let's have a go! 
+
+```{.r .numberLines}
+MSB <- var((data$opinion_M + data$opinion_W)/2) * 2
+MSW <- (sum((data$opinion_M - data$opinion_W)^2))/(2 * length(data$opinion_W))
+ICC_anova <- (MSB - MSW)/(MSB + MSW)
+ICC_anova
+```
+
+```
+#> [1] 0.5114198
+```
+Do you see that the ICC is very close to the correlation based on a dataset in long format (double entry method)? Thus in practice, the double entry method is very convenient to check for interdependencies if you are working on dyadic data. 
+
+Most of you are probably more familiar with definitions of the ICC as provided within textbooks on multi-level analysis. Where the intraclass correlation - at least for continuous dependent variables - is defined as the between variance (i.e. the variance in dyad means) divided by the total variance (i.e. the sum of the between and within variance). There is only one problem, we need these variances present in the 'real population'. In our data we only observe the variances present in our sample. The observed between variance needs to be corrected. Below I will show you how to do that. 
+  
+First make a dataset in longformat.
+
+```{.r .numberLines}
+# first make a dataset in longformat.
+dyadmean <- (data$opinion_M + data$opinion_W)/2
+data_long <- rbind(data, data)
+data_long$partner_id <- rep(1:2, each = 1000)
+data_long$dyad_id <- rep(1:1000, times = 2)
+data_long$dyadmean <- c(dyadmean, dyadmean)
+
+# lets the first dyad entry refer to the women and the second to the men
+data_long$opinion <- ifelse(data_long$partner_id == 1, data_long$opinion_W, data_long$opinion_M)
+
+# also define the opinion of the partner
+data_long$opinion_P <- ifelse(data_long$partner_id == 2, data_long$opinion_W, data_long$opinion_M)
+
+head(data_long)
+```
+
+```
+#>   dyad_id opinion_W opinion_M partner_id dyadmean  opinion opinion_P
+#> 1       1  1.180285  3.651525          1 2.415905 1.180285  3.651525
+#> 2       2  9.930618  7.117465          1 8.524041 9.930618  7.117465
+#> 3       3  4.022491  2.205877          1 3.114184 4.022491  2.205877
+#> 4       4  2.990720  7.485650          1 5.238185 2.990720  7.485650
+#> 5       5  3.024059  8.292194          1 5.658127 3.024059  8.292194
+#> 6       6  8.408048  4.720610          1 6.564329 8.408048  4.720610
+```
+\
+With this dataset in longformat we can calculate the ICC. 
+
+
+```{.r .numberLines}
+# first calculate the between variance of our sample. Note that this we only need observations of
+# the dyads once (thus N_dyads=1000)
+S_B <- var(data_long$dyadmean[1:1000])
+# within variance
+SW <- sum((data_long$opinion - data_long$dyadmean)^2)/1000  #we divide by the number of dyads
+# We now need to correct the observed between variance to reflect the population between variance.
+S_B_E <- S_B - SW/2
+ICC_ML <- S_B_E/(S_B_E + SW)
+ICC_ML
+```
+
+```
+#> [1] 0.5114198
+```
+Of course exactly similar to the ICC_anova. 
+But this procedure is of course quite cumbersome. It may be a lot easier to estimate an empty multi-level model which also spits out the ICC (after some tweaking). 
+See below. 
+
+
+```{.r .numberLines}
+require(nlme)
+# estimate empty model with ML
+mlme <- lme(opinion ~ 1, data = data_long, random = list(~1 | dyad_id), )
+summary(mlme)
+# Standard deviations are reported instead of variances.  extract the variances.
+VarCorr(mlme)
+# the intercept variance is at the between-level. the residual variances are at the observation /
+# within-level.  thus based on these numbers we may calculate the ICC ourselves.
+varests <- as.numeric(VarCorr(mlme)[1:2])
+varests
+ICC_MLb <- varests[1]/sum(varests)
+ICC_MLb
+```
+
+```
+#> Linear mixed-effects model fit by REML
+#>   Data: data_long 
+#>        AIC      BIC    logLik
+#>   9491.554 9508.355 -4742.777
+#> 
+#> Random effects:
+#>  Formula: ~1 | dyad_id
+#>         (Intercept) Residual
+#> StdDev:    1.998493 1.953361
+#> 
+#> Fixed effects:  opinion ~ 1 
+#>                Value  Std.Error   DF  t-value p-value
+#> (Intercept) 4.603242 0.07682307 1000 59.92004       0
+#> 
+#> Standardized Within-Group Residuals:
+#>         Min          Q1         Med          Q3         Max 
+#> -3.28830881 -0.51102249  0.01645221  0.57161594  2.75065667 
+#> 
+#> Number of Observations: 2000
+#> Number of Groups: 1000 
+#> dyad_id = pdLogChol(1) 
+#>             Variance StdDev  
+#> (Intercept) 3.993974 1.998493
+#> Residual    3.815620 1.953361
+#> [1] 3.993974 3.815620
+#> [1] 0.5114189
+```
+
+In this course we will rely heavily on the Lavaan package. We can also calculate the ICC with Lavaan. 
+
+
+
+```{.r .numberLines}
+require("lavaan")
+model <- "
+    level: 1
+        opinion ~ 1 #regression model
+        opinion ~~ opinion #variance
+    level: 2
+        opinion ~ 1
+        opinion ~~ opinion
+"
+fit <- lavaan(model = model, data = data_long, cluster = "dyad_id")
+summary(fit)
+```
+
+```
+#> lavaan 0.6-9 ended normally after 7 iterations
+#> 
+#>   Estimator                                         ML
+#>   Optimization method                           NLMINB
+#>   Number of model parameters                         3
+#>                                                       
+#>   Number of observations                          2000
+#>   Number of clusters [dyad_id]                    1000
+#>                                                       
+#> Model Test User Model:
+#>                                                       
+#>   Test statistic                                 0.000
+#>   Degrees of freedom                                 0
+#> 
+#> Parameter Estimates:
+#> 
+#>   Standard errors                             Standard
+#>   Information                                 Observed
+#>   Observed information based on                Hessian
+#> 
+#> 
+#> Level 1 [within]:
+#> 
+#> Intercepts:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>     opinion           0.000                           
+#> 
+#> Variances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>     opinion           3.816    0.171   22.361    0.000
+#> 
+#> 
+#> Level 2 [dyad_id]:
+#> 
+#> Intercepts:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>     opinion           4.603    0.077   59.950    0.000
+#> 
+#> Variances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>     opinion           3.988    0.277   14.391    0.000
+```
+
+```{.r .numberLines}
+lavInspect(fit, "icc")
+```
+
+```
+#> opinion 
+#>   0.511
+```
+
+The take home message is that the two observations for each dyad are indeed interrelated. Is this a lot? Is this significant? 
+
+### Egonet / Socionet data  
+
+The above procedure to calculate the ICC correlation can also be used for egonet data. 
+
+
+Let us suppose we have egonet data. For example on the political opinions of you and your friends. We want to know if these data are interdependent. 
+
+Run the code chunck below to simulate some data. 
+
+
+```{.r .numberLines}
+require(MASS)
+set.seed(9864)  #We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
+
+# let us start with simulating the opinion of ego and its alters.
+Sigma <- matrix(sample(c(1, 2, 3), 36, replace = T), 6, 6)
+Sigma[lower.tri(Sigma)] = t(Sigma)[lower.tri(Sigma)]
+diag(Sigma) <- c(5, 4, 6, 3, 7, 6)
+# Sigma
+
+opinions <- mvrnorm(n = 1000, mu = c(4, 4, 4, 4, 4, 4), Sigma)
+opinion_ego <- opinions[, 1]
+opinion_alter1 <- opinions[, 2]
+opinion_alter2 <- opinions[, 3]
+opinion_alter3 <- opinions[, 4]
+opinion_alter4 <- opinions[, 5]
+opinion_alter5 <- opinions[, 6]
+
+egonet_id <- 1:1000
+
+# and let's put everything together
+data <- data.frame(egonet_id, opinion_alter1, opinion_alter2, opinion_alter3, opinion_alter4, opinion_alter5)
+
+# I don't think the variables need any further description.
+```
+
+
+#### Describe data
+
+Lets have a look at our data. 
+
+
+```{.r .numberLines}
+require(psych)
+head(data)
+str(data)
+summary(data)
+attr(data, "description")
+describe(data)
+```
+
+```
+#>   egonet_id opinion_alter1 opinion_alter2 opinion_alter3 opinion_alter4 opinion_alter5
+#> 1         1     -0.1024247       2.473552       2.993974      0.1604888      1.7443645
+#> 2         2      6.4712148       2.689709       6.052834      5.7392350      7.1487502
+#> 3         3      4.0474525       1.715663       2.469049      2.7659637      0.8816233
+#> 4         4      1.4692597       4.354919       4.253400      0.3809896      4.0698368
+#> 5         5      1.8042561       3.262400       4.754952      0.4194922      4.5527566
+#> 6         6      5.4410875       6.103960       3.432771      3.7275621      2.0488686
+#> 'data.frame':	1000 obs. of  6 variables:
+#>  $ egonet_id     : int  1 2 3 4 5 6 7 8 9 10 ...
+#>  $ opinion_alter1: num  -0.102 6.471 4.047 1.469 1.804 ...
+#>  $ opinion_alter2: num  2.47 2.69 1.72 4.35 3.26 ...
+#>  $ opinion_alter3: num  2.99 6.05 2.47 4.25 4.75 ...
+#>  $ opinion_alter4: num  0.16 5.739 2.766 0.381 0.419 ...
+#>  $ opinion_alter5: num  1.744 7.149 0.882 4.07 4.553 ...
+#>    egonet_id      opinion_alter1   opinion_alter2   opinion_alter3   opinion_alter4  
+#>  Min.   :   1.0   Min.   :-1.855   Min.   :-5.919   Min.   :-1.443   Min.   :-4.722  
+#>  1st Qu.: 250.8   1st Qu.: 2.713   1st Qu.: 2.515   1st Qu.: 3.014   1st Qu.: 2.179  
+#>  Median : 500.5   Median : 4.027   Median : 4.146   Median : 4.132   Median : 4.014  
+#>  Mean   : 500.5   Mean   : 4.058   Mean   : 4.118   Mean   : 4.131   Mean   : 3.943  
+#>  3rd Qu.: 750.2   3rd Qu.: 5.426   3rd Qu.: 5.765   3rd Qu.: 5.318   3rd Qu.: 5.732  
+#>  Max.   :1000.0   Max.   :10.244   Max.   :12.382   Max.   :10.869   Max.   :11.874  
+#>  opinion_alter5  
+#>  Min.   :-3.280  
+#>  1st Qu.: 2.528  
+#>  Median : 4.044  
+#>  Mean   : 4.100  
+#>  3rd Qu.: 5.764  
+#>  Max.   :13.241  
+#> NULL
+#>                vars    n   mean     sd median trimmed    mad   min     max  range  skew kurtosis
+#> egonet_id         1 1000 500.50 288.82 500.50  500.50 370.65  1.00 1000.00 999.00  0.00    -1.20
+#> opinion_alter1    2 1000   4.06   1.98   4.03    4.06   2.00 -1.86   10.24  12.10  0.03    -0.21
+#> opinion_alter2    3 1000   4.12   2.46   4.15    4.11   2.41 -5.92   12.38  18.30 -0.03     0.26
+#> opinion_alter3    4 1000   4.13   1.75   4.13    4.14   1.71 -1.44   10.87  12.31 -0.04     0.26
+#> opinion_alter4    5 1000   3.94   2.64   4.01    3.97   2.66 -4.72   11.87  16.60 -0.09    -0.09
+#> opinion_alter5    6 1000   4.10   2.44   4.04    4.09   2.43 -3.28   13.24  16.52  0.03     0.00
+#>                  se
+#> egonet_id      9.13
+#> opinion_alter1 0.06
+#> opinion_alter2 0.08
+#> opinion_alter3 0.06
+#> opinion_alter4 0.08
+#> opinion_alter5 0.08
+```
+
+Reshape into long format. 
+
+```{.r .numberLines}
+require("tidyverse")
+
+data_long <- tidyr::pivot_longer(data = data, cols = everything()[-1], names_to = "alter", values_to = "opinion")
+
+head(data_long)
+```
+
+```
+#> # A tibble: 6 x 3
+#>   egonet_id alter          opinion
+#>       <int> <chr>            <dbl>
+#> 1         1 opinion_alter1  -0.102
+#> 2         1 opinion_alter2   2.47 
+#> 3         1 opinion_alter3   2.99 
+#> 4         1 opinion_alter4   0.160
+#> 5         1 opinion_alter5   1.74 
+#> 6         2 opinion_alter1   6.47
+```
+
+#### ICC via ML
+
+
+```{.r .numberLines}
+require(nlme)
+# estimate empty model with ML
+mlme <- lme(opinion ~ 1, data = data_long, random = list(~1 | egonet_id), )
+summary(mlme)
+# Standard deviations are reported instead of variances.  extract the variances.
+VarCorr(mlme)
+# the intercept variance is at the between-level. the residual variances are at the observation /
+# within-level.  thus based on these numbers we may calculate the ICC ourselves.
+varests <- as.numeric(VarCorr(mlme)[1:2])
+varests
+ICC_MLb <- varests[1]/sum(varests)
+ICC_MLb
+```
+
+```
+#> Linear mixed-effects model fit by REML
+#>   Data: data_long 
+#>        AIC     BIC    logLik
+#>   21837.85 21857.4 -10915.93
+#> 
+#> Random effects:
+#>  Formula: ~1 | egonet_id
+#>         (Intercept) Residual
+#> StdDev:     1.22191 1.921997
+#> 
+#> Fixed effects:  opinion ~ 1 
+#>                Value  Std.Error   DF  t-value p-value
+#> (Intercept) 4.069793 0.04724277 4000 86.14638       0
+#> 
+#> Standardized Within-Group Residuals:
+#>         Min          Q1         Med          Q3         Max 
+#> -3.77787873 -0.59863578  0.01410604  0.59669184  4.14533775 
+#> 
+#> Number of Observations: 5000
+#> Number of Groups: 1000 
+#> egonet_id = pdLogChol(1) 
+#>             Variance StdDev  
+#> (Intercept) 1.493065 1.221910
+#> Residual    3.694073 1.921997
+#> [1] 1.493065 3.694073
+#> [1] 0.2878398
+```
+#### ICC via SEM/lavaan
+
+
+```{.r .numberLines}
+require("lavaan")
+model <- "
+    level: 1
+        opinion ~ 1 #regression model
+        opinion ~~ opinion #variance
+    level: 2
+        opinion ~ 1
+        opinion ~~ opinion
+"
+fit <- lavaan(model = model, data = data_long, cluster = "egonet_id")
+summary(fit)
+```
+
+```
+#> lavaan 0.6-9 ended normally after 11 iterations
+#> 
+#>   Estimator                                         ML
+#>   Optimization method                           NLMINB
+#>   Number of model parameters                         3
+#>                                                       
+#>   Number of observations                          5000
+#>   Number of clusters [egonet_id]                  1000
+#>                                                       
+#> Model Test User Model:
+#>                                                       
+#>   Test statistic                                 0.000
+#>   Degrees of freedom                                 0
+#> 
+#> Parameter Estimates:
+#> 
+#>   Standard errors                             Standard
+#>   Information                                 Observed
+#>   Observed information based on                Hessian
+#> 
+#> 
+#> Level 1 [within]:
+#> 
+#> Intercepts:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>     opinion           0.000                           
+#> 
+#> Variances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>     opinion           3.694    0.083   44.721    0.000
+#> 
+#> 
+#> Level 2 [egonet_id]:
+#> 
+#> Intercepts:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>     opinion           4.070    0.047   86.190    0.000
+#> 
+#> Variances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>     opinion           1.491    0.101   14.750    0.000
+```
+
+```{.r .numberLines}
+lavInspect(fit, "icc")
+```
+
+```
+#> opinion 
+#>   0.288
+```
+
 
 ---  
 
