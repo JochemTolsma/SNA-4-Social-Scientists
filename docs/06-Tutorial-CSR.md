@@ -2967,6 +2967,12 @@ And the correlation within the population is:
 
 $$\rho_{xy} = \frac{\sigma_{xy}^2}{\sigma_x \sigma_y}$$
 
+I strongly recommend you to read the online book on probability by [@pishro2016](https://www.probabilitycourse.com/)!
+
+<a href="https://www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#">
+  <img src="book_probability.jpg">
+  </a>
+
 ## Intraclass correlation
 
 ### Dyadic data 
