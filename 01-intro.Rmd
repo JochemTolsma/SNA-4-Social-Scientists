@@ -43,6 +43,8 @@ A **social network** is an finite set of actors and the relation(s) defined on t
 
 Taking a social network perspective leads to theoretical, data collection, and methodological advancements.
 
+
+
 ## Aim
 
 The intended learning outcomes of the course are:

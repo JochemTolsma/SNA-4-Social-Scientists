@@ -25,6 +25,39 @@ options(width = 100)
 ```
 
 
+
+```{r packages, echo=FALSE}
+#install if necessary 
+if (!require("dplyr", character.only = TRUE)) {install.packages("dplyr", dependencies=TRUE)}
+if (!require("haven", character.only = TRUE)) {install.packages("haven", dependencies=TRUE)}
+#if (!require("purr", character.only = TRUE)) {install.packages("purr", dependencies=TRUE)}
+if (!require("lavaan", character.only = TRUE)) {install.packages("lavaan", dependencies=TRUE)}
+if (!require("ggplot2", character.only = TRUE)) {install.packages("ggplot2", dependencies=TRUE)}
+if (!require("hrbrthemes", character.only = TRUE)) {install.packages("hrbrthemes", dependencies=TRUE)}
+if (!require("patchwork", character.only = TRUE)) {install.packages("patchwork", dependencies=TRUE)}
+if (!require("mvtnorm", character.only = TRUE)) {install.packages("mvtnorm", dependencies=TRUE)}
+if (!require("plotly", character.only = TRUE)) {install.packages("plotyly", dependencies=TRUE)}
+if (!require("plotly", character.only = TRUE)) {install.packages("plotyly", dependencies=TRUE)}
+if (!require("future.apply", character.only = TRUE)) {install.packages("future.apply", dependencies=TRUE)}
+
+#load packages.
+library(dplyr)
+library(haven)
+library(purrr)
+library(tidyr)
+library(lavaan)
+library(ggplot2)
+library(plotly)
+library(ggplot2)
+library(hrbrthemes)
+hrbrthemes::import_roboto_condensed() 
+#loadfonts(device = "win", quiet = TRUE) 
+library(patchwork)
+library(mvtnorm)
+library(future.apply)
+
+```
+
 The smallest possible social network is a network between two persons (or, more precisely, between two social agents). A network between two persons is also called a dyad. In the clip below I will introduce you to the the main concepts involved in a dyad. Naturally, the same concepts also play a role in larger social networks. 
 
 
@@ -74,9 +107,14 @@ knitr::include_graphics("slide6.PNG")
 ```
 Can you come up with an explanation for each configuration? Well you should if you study multiple type of relations between (two) social agents! But let us start with a single undirected tie: marriage. 
 
-## Causes of dyads
+## Causes of dyads {#marriage_market}
 
-An important research topic within sociology is assortative mating (or intermarriage) (see: [@kalmijn1998; @schwartz2013; @blossfeld2009]). Scholars in this field try to explain why two people in an exclusive relationship like marriage (or cohabition or best friends) are more similar to one another with respect to defining characteristics (e.g. social class, ethnicity) than two random persons. Assortative mating is a special case of **homophily**. Assortative mating is an important topic within sociology because it is, next to social mobility, an important indicator of the **openness of society**.\  
+An important research topic within sociology is assortative mating (or intermarriage) [see: @kalmijn1998; @schwartz2013; @blossfeld2009]. Scholars in this field try to explain two things:  
+
+1. At the meso-level (i.e. the couple): why two people in an exclusive relationship like marriage (or cohabition or best friends) are more similar to one another with respect to defining characteristics (e.g. social class, ethnicity) than two random persons.  
+2. At the macro-level (i.e. society): why societies differ in the degree of assortative mating.  
+\
+Assortative mating is a special case of **homophily**. Assortative mating is an important topic within sociology because it is, next to social mobility, an important indicator of the **openness of society**.\  
 
 **Selection** and **influence** processes are important reasons why partners (ego and alter) within a dyad are more similar than two random persons. We may prefer to marry someone who is similar to us on key social dimensions, share our attitudes and opinions and show similar behavior. Once married we may influence each other and assimilate to one another. A third reason why we observe homophily within couples is that partners are likely to have shared and will share the **same social context**. With shared social context we mean the shared social and physical environment and shared life experiences. The environment pre-marriage may in part determine characteristics of the pool of potential marriage partners (i.e. the choice set). For example when neighborhoods and schools are segregated along ethnic and educational division lines, the potential marriage partners we meet are likely to be more similar to us than a random person in society at large. The shared social environment post-marriage may exert a similar influence on both partners, consider for example economic recession's effects on different geographic regions. This may impact the job opportunities for both partners similarly (assuming they live in the same house). An example of shared life experiences, would be having children. 
 
@@ -166,7 +204,7 @@ Hypo1: persons with more economic resources are more likely to marry a partner t
 We would like to apply the GTF to explain the emergence of social networks. The networks we observe are the result of people making and breaking social relations. Consequently, a theory of action to explain decision about social relations should explain not only decisions about making new relations (i.e. **selection**) but also about decision whether or not to maintain or break existing relations (i.e. **deselection**). When we talk about selection processess, we implicitly mean both selection and deselection.\   
 Concretely, if we want to explain the degree of intermarriage within society, we need to take into account both who is marrying whom *and* who is divorcing whom! Consider the following example. For some people the saying 'opposite attracts' may hold true and they may be unaware of or ignore the social norm not to intermarry. But once married the couple may face unanticipated sanctions of violating the social norm, they may be ostracized. Being faced with this unanticipated consequence of their marriage decision, the couple may subsequently decide to divorce. In this example, the social norm thus not influences the selection process (more precisely, does not moderate the impact of preferences on marriage decisions) but it does influence the deselection process.\  
 
->Our Theory of Action assumes a cost benefit evaluation of some sort, in line with Rational Action Theory. However, social scientists' view on human's rationality is different than the view of classical economists. Social scientists speak of restricted or bounded rationality (i.e. a weak rationality assumption); people are not always able to have or process all relevant information to make accurate and correct cost-benefit evaluations. We make questimates about the costs involved in our decision and about the likelihood that our behavior will yield the desired goal. Within sociology, actor's goals are not only economic, monatory goals. Actor's goals can be physical and social goals (i.e. health, happiness, avoidance of downwards mobility). For a nice paper on Rational Action Theory for Sociologists, see [@goldthorpe1998].     
+>Our Theory of Action assumes a cost benefit evaluation of some sort, in line with Rational Action Theory. However, social scientists' view on human's rationality is different than the view of classical economists. Social scientists speak of restricted or bounded rationality (i.e. a weak rationality assumption); people are not always able to have or process all relevant information to make accurate and correct cost-benefit evaluations. We make questimates about the costs involved in our decision and about the likelihood that our behavior will yield the desired goal. Within sociology, actor's goals are not only economic, monatory goals. Actor's goals can be physical and social goals (i.e. health, happiness, avoidance of downwards mobility). For a nice paper on Rational Action Theory for Sociologists, see @goldthorpe1998.     
 
 ### Transformation rules  
 
@@ -197,7 +235,7 @@ Given the market model above, can you predict who will marry whom?
 
 ### Agent Based Modelling  
 
-Well, I can not. You may be a mathematical wizard and able to find a closed solution by some algebra. Another option could be to to make a simplified model and try to simulate the macro-level outcome based purely on our micro-level theory of action and the rules of the marriage market. We call this Agent-Based-Modelling (see e.g. @macal2016). I programmed a simply ABM based on the above. There are some parameters in the model which you can change. 
+Well, I can not. You may be a mathematical wizard and able to find a closed solution by some algebra. Another option could be to to make a simplified model and try to simulate the macro-level outcome based purely on our micro-level theory of action and the rules of the marriage market. We call this Agent-Based-Modelling [see e.g. @macal2016]. I programmed a simply ABM based on the above. There are some parameters in the model which you can change. 
 
 Suppose...  
 
@@ -219,21 +257,25 @@ Go to app [here](https://jtolsma.shinyapps.io/marriagemarket/)
 
 ## Consequences of dyads {#dt}
 
-Assortative mating, or more generally mating, has consequences for both partners. Just to mention a few: relationship quality; time spend together on culture consumption; divorce rates; number of children; household income; working hours. I hope you see that these concepts all refer to the dyad-level but that you may group these concepts by how they are measured, namely at the dyad-level itself (yes/no divorce, number of children) or at the ego/alter-level and aggregated to the dyad-level (e.g. total working hours of the couple is the sum of the working hours of both individual partners, culture consumption is the consumed culture of both partners (alone and together)). But with both type of concepts, it should be clear that they are the consequence of interdependent actions of both partners (e.g. commonly both partners decide on whether to have and make children). 
+Assortative mating, or more generally mating, has consequences at different levels. At the individual- or spouse-level, it may impact, for example, political opinions, happiness and working hours, and not necessarily in a similar way for both spouses. At the meso- or dyad-level we may think of time spend together on culture consumption; divorce rates; number of children; household income; total working hours. I hope you see that these dyadic-characteristics may be grouped by how they are measured, namely at the dyad-level itself (yes/no divorce, number of children) or at the ego/alter-level and aggregated to the dyad-level (e.g. total working hours of the couple is the sum of the working hours of both individual partners, culture consumption is the consumed culture of both partners (alone and together)). But with both type of concepts, it should be clear that they are the consequence of interdependent actions of both partners (e.g. commonly both partners decide on whether to have and make children). At the macro- or society-level, we can think of the degree of assortative mating in society. But assortative mating may also have other macro-level consequences, such as inequality, segregation and polarization.  
 
-Thus, once again, homophily within couples may be the result of: 
+### Homophily  
+
+Let us focus on how assortative mating may impact homophily, or more precisely similarity between spouses. Thus how time-varying charactersitics of the spouses (e.g. political opinions or behaviors) become more or less similar over time as a result of the marriage. 
+
+Just a quick recap, homophily within couples may be the result of: 
 
 - **selection**  
 - **shared context** 
 - **(dyadic) influence**  
 
-But what do we mean with 'influence'? Let's read the following quote. 
+Hopefully it is clear that it is now time to focus on the role of influence. But what do we mean with 'influence'? Let's read the following quote. 
 
 <p class= "quote"> 
 People influence one another, and as the importance and immediacy of a group or individual increases, this influence becomes stronger (Latané, 1981). Forces of influence are especially strong within romantic relationships because these relationships are important, are predicated on mutual acceptance, and involve frequent exposure to the habits of one's partner." [@bartel2017romantic]  
 </p> 
 
-It would say this a quite naive conceptualisation of **influence**. It is implicitly assumed that partners will match their opinions/behaviors. Thus influence here is convergence. But why should partners' characteristics converge over time, why would homophily increase? And, it still does not become clear what the 'forces of influence' are. 
+It would say this a quite naive conceptualisation of **influence**. It is implicitly assumed that partners will match their opinions/behaviors. Thus influence here is convergence. But why should partners' characteristics converge over time, why would homophily (i.e. similarity) increase? And, it still does not become clear what the 'forces of influence' are. 
 
 Let us make a distinction between:  
 
@@ -241,7 +283,7 @@ Let us make a distinction between:
 - negative influence: alters become more distinct to each other over time  
 - positive feedback influence: characteristics develop in same direction over time  
   
-Now suppose these influence processes are the only reasons why alters change (i.e. the *ceteris paribus* condition). How could dyad similarity develop over time. 
+Now suppose these influence processes are the only reasons why alters change (i.e. the *ceteris paribus* condition). How could dyad similarity develop over time? 
 
 ```{r pi, echo=FALSE, fig.cap="Positive influence"}
 library(ggplot2)
@@ -308,7 +350,7 @@ ggplot(df, aes(x = time, y = opinion, colour = couple)) +
 With positive feedback (Figure \@ref(fig:pfi)) actors will develop in the same direction. 
 Naturally, we need to be aware that other mechanisms may also explain these trends. For example, with respect the figure above \@ref(fig:pfi), a shared environment may also explain a shared trend. More concretely, when a couple gets children, both spouses may become happier over time. 
 
-### Influence mechanisms  
+### Influence mechanisms  {#influence}
 
 There are several 'forces of positive influence mechanisms': 
 
@@ -330,11 +372,347 @@ There are several 'forces of positive feedback influence mechanisms':
 - confirmation: information and arguments are repeated and existing opinions and behaviors of both alters reinforced.  
 - competition: we may have a psychological need to be better/higher/more than our alter.  
 
-  
-
 The crucial difference between the positive feedback mechanisms and the positive influence mechanisms are that as a result of the former homophily between the alters does not necessarily change. Note that positive feedback could entail increasing and decreasing the opinion or behavior.    
 
+You could also think of influence as being either **active** or **passive**. Thus is ego trying to actively convince alter or 'passively' leading by example? The alter could then either **accept** or **reject** the influence push of ego. We do not always listen to our partner. 
+
+
+<html>
+<body>
+</iframe>
+<a id='LuHtIfAxRu5Ma_5cwLSW1g' class='gie-single' href='http://www.gettyimages.nl/detail/153360657' target='_blank' style='color:#a7a7a7;text-decoration:none;font-weight:normal !important;border:none;display:inline-block;'>Embed from Getty Images</a><script>window.gie=window.gie||function(c){(gie.q=gie.q||[]).push(c)};gie(function(){gie.widgets.load({id:'LuHtIfAxRu5Ma_5cwLSW1g',sig:'1lfLuUoX5Pth1-d8wRyeRSQhCC9Ov2SK_l9qlSdR5X8=',w:'507px',h:'338px',items:'153360657',caption: true ,tld:'nl',is360: false })});</script><script src='//embed-cdn.gettyimages.com/widgets.js' charset='utf-8' async></script>
+</body>
+</html>
+
+
+### Polarisation  
+
+Influence processes that take place within couples may not only explain (in part) homophily or similarity within couples but as a consequence of this also polarization within society.  
+
+Let us define polarization. 
+
+> **Polarization** {#polarisation}
+>
+> :   Polarization is a social problem and a society is said to be polarized when (sizeable) (and clearly distinguishable) groups in society hold (ever more) opposing, extreme (political) attitudes.
+
+We thus observe polarization in society when (sizeable) (and clearly distinguishable) opinion groups hold (ever more) opposing, extreme (political) opinions. A nice paper in which the many 'senses of polarization' are discussed in more detailed is @Bramson2017.  
   
+Polarization in society will be larger when:  
+- similarity within each group increases (higher level of within group homogeneity)  
+- dissimilarity between groups increases (higher level of between group heterogeneity)  
+- when the relative sizes of opposing groups in society increases;  
+- when group sizes of the (most) opposing groups are more a like; 
+- when the opinion group identity becomes a more important part of one's social identity;  
+- when ingroup love and/or outgroup hate increases. 
+
+Opinion group membership may overlap with memberships of groups based on other key social dimensions (e.g. sex, ethnicity, educational level, etc.). When this is the case, we could speak of alignment, and as a result of this, opinion groups become more clearly distinguishable in society. Subsequently, the stronger the alignment the more likely it is that  opinion group identity becomes salient and that ingroup love and outgroup hate increases.  
+
+Let us take as example political polarization and start with a situation in which some political opinion (ranging from -10 to 10) is distributed as follows within society.  
+
+<!--- need to improve use opinion from 1 completely disagree to 10 completely agree. thus limited set of ordered categories ---> 
+
+```{r, echo=FALSE}
+
+require(MASS)
+set.seed(98712)
+data2 <- rmvnorm(n = 1000, mean=c(2,3), sigma=matrix(c(4,3,3,3.5),ncol=2))
+pol1 <- var1 <- c(data2[,1],data2[,2])
+data <- data.frame(var1)
+data2 <-  data.frame(data2)
+
+# Chart
+#individuals
+p1 <- ggplot(data, aes(x=x) ) +
+  # Top
+  geom_density( aes(x = var1, y = ..density..), fill="#69b3a2" , alpha=.4) +
+  geom_label( aes(x=1, y=-0.05, label="individuals"), color="#69b3a2") +
+  theme_ipsum() +
+  xlab("some political opinion") + 
+  xlim(-6,8) + 
+  ylim(-0.05,.3)
+#p1
+#p1 <- p1 + labs(title=bquote(bold("Figure 1.")~"Distribution of opinions within population"))
+```
+
+
+```{r, echo=FALSE, fig.cap="Distribution of opinions within population"}
+p1
+```
+
+Is this society polarized?  There are many operationalizations of polarization [for pointers see: @esteban1994; @R-agrmt]. Since we are focusing on the consequences of homophily (or similarity) within couples in this chapter and you are already familiar with \@ref(variance) we will define polarization as the variance in the distribution of the pairwise opinion differences ($d_{ij}$) across all possible dyads ($N(N-1)$) [@flache2011]: 
+
+$$P=\frac{1}{N(N-1)} \Sigma_{ij \in N,i \neq j} (d_{ij} - \bar{d_{ij}} )^2 $$ 
+or, 
+
+$$ P=VAR(d_{ij})$$
+
+Polarization scores will lie within the range [0, 1), where $P=0$
+corresponds with full consensus in the population and the maximum when P approaches 1 will be observed in a population that is divided equally between the extreme opinions.
+
+Let us calculate the degree of polarization. First we need to define a function which does that for us.[^: Please note that you can either input a theoretical maximum dissimilarity score or that this score is based on the observed range of the opinion in question (default).] 
+
+```{r}
+fpol <- function(opinions, maxdif=NULL) {
+  #opinions <- scale(opinions)
+  N <- length(opinions)
+  egos <- matrix(opinions, nrow=N, ncol=N, byrow=TRUE)
+  alters <- t(egos)
+  difference <- if (is.null(maxdif)) { abs(egos - alters) / (range(opinions)[2] - range(opinions)[1])  } else { abs(egos-alters)/maxdif } 
+  diag(difference) <- NA
+  pol <- var(as.numeric(difference), na.rm=T)
+  return(pol)
+}
+```
+
+It turns out the polarization score of the above society is `fpol(pol1, 20)` `r fpol(pol1, 20)`. 
+
+But these individuals want to get married. Who do they pick? Well, we discussed the marriage market here \@ref(marriage_market). 
+
+
+Let us assume that the opinion did not yet change but that bachelors prefer, to some extent, a partner with a similar political opinion. What does the political opinion distribution look like for the mean political opinion of the couples. 
+
+
+```{r, echo=FALSE}
+set.seed(98712)
+pol2 <- data2$mean <- rowMeans(data2)
+
+#selective marriage: couples
+p2 <- ggplot(data2, aes(x=x) ) +
+  # Top
+  geom_density( aes(x = mean, y = ..density..), fill="#404080" , alpha=.4) +
+  geom_label( aes(x=2, y=-0.05, label="couples"), color="#404080") +
+  theme_ipsum() +
+  xlab("some political opinion") + 
+  xlim(-6,8) + 
+  ylim(-0.05,.3)
+# p1 + p2 
+
+p2 <- p2 + labs(title=bquote(bold("Figure 2.")~"Distribution of opinions within couples"), subtitle = "After selective marriage")  
+```
+
+
+
+```{r , echo=FALSE}
+p2
+```
+
+Well, the preference for a partner with similar political opinions was definitely not strong enough to substantially change the opinion distribution.[^sim] The level of polarization (between couples) is: `r fpol(pol2, 20)` 
+
+[^sim]: naturally this will depend on how strong we simulate this preference to be. 
+
+What happens with these couples? They share a common context. What is a 'common context'?  
+
+Some examples:  
+
+- Shared life experiences:  
+  - having kids  
+  - poverty  
+- Shared environment:
+  - pollution
+  - housing
+  - poverty 
+
+Suppose these life events are more likely for some couples than others. More specifically, assume that the occurrence of life events is associated with the mean political opinion of the couple (at time T). The life event consequently influences the mean political opinion of the couple (at time T+1). 
+
+
+
+```{r, echo=FALSE}
+set.seed(98712)
+#common influence
+pol3 <- data2$mean2 <- ifelse(data2$mean > mean(data2$mean), data2$mean + abs(rnorm(1,0.4,.3)), data2$mean - abs(rnorm(1,0.4,.3)))
+
+#data2$mean2 <- (data2$mean2 / sd(data2$mean2)) * sd(data2$mean)
+
+p3 <- ggplot(data2, aes(x=x) ) +
+  # Top
+  geom_density( aes(x = mean2, y = ..density..), fill="#404080" , alpha=.4) +
+  geom_label( aes(x=2, y=-0.05, label="couples"), color="#404080") +
+  theme_ipsum() +
+  xlab("some political opinion") + 
+  xlim(-6,8)  + 
+  ylim(-0.05,.3)
+# p2 + p3
+
+
+p3 <- p3 + labs(title=bquote(bold("Figure 3.")~"Distribution of opinions within couples"), subtitle = "After selective marriage and shared life events")  
+
+```
+
+
+
+```{r, echo=FALSE }
+p3
+```
+
+We now clearly observe emerging polarization between couples. But this is not yet reflected in our measure of polarization: `r fpol(pol3, 20)`. Probably because the opposing opinions are not close to the extremes (set at -10 and 10). Take home message: don't always 'trust' your numbers but really 'look' at your data as well.   
+Note that if we go back to the individual-level again, we do not (clearly) observe emerging polarization between individuals. 
+
+
+```{r, echo=FALSE}
+
+set.seed(98712)
+
+#within couple positive influence
+data2$X1b <- data2$X1 + (data2$mean2 - data2$X1)
+data2$X2b <- data2$X2 + (data2$mean2 - data2$X2)
+
+pol4 <- var1 <- c(data2$X1b,data2$X2b)
+data <- data.frame(var1)
+
+p4 <- ggplot(data, aes(x=x) ) +
+  # Top
+  geom_density( aes(x = var1, y = ..density..), fill="#69b3a2" , alpha=.4) +
+  geom_label( aes(x=1, y=-0.05, label="individuals"), color="#69b3a2") +
+  theme_ipsum() +
+  xlab("some political opinion") + 
+  xlim(-6,8) + 
+  ylim(-0.05,.3)
+# p3 + p4
+
+p4 <- p4 + labs(title=bquote(bold("Figure 4.")~"Distribution of opinions within population"), subtitle = "After selective marriage and shared life events")  
+
+
+```
+
+
+
+
+```{r, echo=FALSE}
+p4
+```
+
+In order to also observe polarization between individuals, there needs to be some influence between partners
+
+Why would partners influence each other? Well, we discussed influence here \@ref(influence). So what happens after positive influence? 
+
+```{r, echo=FALSE}
+
+set.seed(98712)
+
+#within couple positive influence
+data2$X1b <- data2$X1 + .75*(data2$mean2 - data2$X1)
+data2$X2b <- data2$X2 + .75*(data2$mean2 - data2$X2)
+
+pol4 <- var1 <- c(data2$X1b,data2$X2b)
+data <- data.frame(var1)
+
+p4 <- ggplot(data, aes(x=x) ) +
+  # Top
+  geom_density( aes(x = var1, y = ..density..), fill="#69b3a2" , alpha=.4) +
+  geom_label( aes(x=1, y=-0.05, label="individuals"), color="#69b3a2") +
+  theme_ipsum() +
+  xlab("some political opinion") + 
+  xlim(-6,8) + 
+  ylim(-0.05,.3)
+# p3 + p4
+
+p4 <- p4 + labs(title=bquote(bold("Figure 4.")~"Distribution of opinions within population"), subtitle = "After selective marriage and shared life events")  
+
+
+```
+
+
+```{r, echo=FALSE}
+
+require(MASS)
+set.seed(98712)
+data2 <- rmvnorm(n = 1000, mean=c(2,3), sigma=matrix(c(4,3,3,3.5),ncol=2))
+pol1 <- var1 <- c(data2[,1],data2[,2])
+data <- data.frame(var1)
+data2 <-  data.frame(data2)
+pol2 <- data2$mean <- rowMeans(data2)
+
+# Chart
+#individuals
+p1 <- ggplot(data, aes(x=x) ) +
+  # Top
+  geom_density( aes(x = var1, y = ..density..), fill="#69b3a2" , alpha=.4) +
+  geom_label( aes(x=1, y=-0.05, label="individuals"), color="#69b3a2") +
+  theme_ipsum() +
+  xlab("some political opinion") + 
+  xlim(-6,8) + 
+  ylim(-0.05,.3)
+#p1
+#p1 <- p1 + labs(title=bquote(bold("Figure 1.")~"Distribution of opinions within population"))
+
+#selective marriage: couples
+p2 <- ggplot(data2, aes(x=x) ) +
+  # Top
+  geom_density( aes(x = mean, y = ..density..), fill="#404080" , alpha=.4) +
+  geom_label( aes(x=2, y=-0.05, label="couples"), color="#404080") +
+  theme_ipsum() +
+  xlab("some political opinion") + 
+  xlim(-6,8) + 
+  ylim(-0.05,.3)
+# p1 + p2 
+
+p2 <- p2 + labs(title=bquote(bold("Figure 2.")~"Distribution of opinions within couples"), subtitle = "After selective marriage")  
+
+#common influence
+pol3 <- data2$mean2 <- ifelse(data2$mean > mean(data2$mean), data2$mean + abs(rnorm(1,0,.2)), data2$mean - abs(rnorm(1,0,.2)))
+
+#data2$mean2 <- (data2$mean2 / sd(data2$mean2)) * sd(data2$mean)
+
+p3 <- ggplot(data2, aes(x=x) ) +
+  # Top
+  geom_density( aes(x = mean2, y = ..density..), fill="#404080" , alpha=.4) +
+  geom_label( aes(x=2, y=-0.05, label="couples"), color="#404080") +
+  theme_ipsum() +
+  xlab("some political opinion") + 
+  xlim(-6,8)  + 
+  ylim(-0.05,.3)
+# p2 + p3
+
+
+p3 <- p3 + labs(title=bquote(bold("Figure 3.")~"Distribution of opinions within couples"), subtitle = "After selective marriage and shared life events")  
+
+
+#within couple influence
+data2$X1b <- data2$X1 + .75*(data2$mean2 - data2$X1)
+data2$X2b <- data2$X2 + .75*(data2$mean2 - data2$X2)
+
+pol4 <- var1 <- c(data2$X1b,data2$X2b)
+data <- data.frame(var1)
+
+p4 <- ggplot(data, aes(x=x) ) +
+  # Top
+  geom_density( aes(x = var1, y = ..density..), fill="#69b3a2" , alpha=.4) +
+  geom_label( aes(x=1, y=-0.05, label="individuals"), color="#69b3a2") +
+  theme_ipsum() +
+  xlab("some political opinion") + 
+  xlim(-6,8) + 
+  ylim(-0.05,.3)
+# p3 + p4
+
+p4 <- p4 + labs(title=bquote(bold("Figure 4.")~"Distribution of opinions within population"), subtitle = "After selective marriage and shared life events")  
+
+
+var1 <- c(data2$mean2,data2$mean2)
+data <- data.frame(var1)
+
+p5 <- ggplot(data, aes(x=x) ) +
+  # Top
+  geom_density( aes(x = var1, y = ..density..), fill="#69b3a2" , alpha=.4) +
+  geom_label( aes(x=1, y=-0.05, label="individuals"), color="#69b3a2") +
+  theme_ipsum() +
+  xlab("some political opinion") + 
+  xlim(-6,8) + 
+  ylim(-0.05,.3)
+ #p4 + p5
+ 
+p5 <- p5 + labs(title=bquote(bold("Figure 5.")~"Distribution of opinions within population"), subtitle = "After selective marriage, shared life events and dyadic influence")  
+```
+
+
+
+```{r , echo=FALSE}
+p5
+```
+
+---   
+
+
+
 
 <!--
 **Part 2: Consequences**  
@@ -428,13 +806,11 @@ Which methodology is preferred should depend on your hypotheses and on the data 
 
 ### Conditional multinomial logit model {#LM}  
 
-## Consequences  {.tabset .tabset-fade}  
+## Consequences 
 
-## Consequences of dyads (methods)
+The method used to explain consequences of dyads depends on our Unit of Analysis. If it is the dyad itself (e.g. mean relationship quality) methods are relatively straightforward, because we may assume that the observations at the dyad-level are independent. If, on the other hand, the unit of analysis are the partners themselves who make up the dyad, we need to acknowledge that the observations between the partners of the same couple are not independent. In part exactly because partners select and influence each other and share a social context. One solution could be to simply randomly select one partner of each couple or, if partners can be clearly distinguished - for example men and women in heterosexual couples - the different partners could be analyzed separately. A disadvantage of the latter two approaches is, however, that the covariance between the partners cannot be explained anymore, although this may exactly be the focus of our research questions. A more elegant solution, is to take the interdependencies into account and model these explicitly. This can be done within a multi-level framework and within a structural-equation modelling framework. 
 
-The method used to explain consequences of dyads depends on our Unit of Analysis. If it is the dyad itself (e.g. mean relationship quality) methods are relatively straightforward, because we may assume that the observations at the dyad-level are independent. If, on the other hand, the unit of analysis are the partners themselves that make up the dyad, we need to acknowledge that the observations between the partners of the same couple are not independent. In part exactly because partners select and influence each other and share a social context. One solution could be to simply randomly select one partner of each couple or, if partners can be clearly distinguished - for example men and women in heterosexual couples - the different partners could be analyzed separately. A disadvantage of the latter two approaches is, however, that the covariance between the partners cannot be explained anymore, although this may exactly be the focus of our research questions.  A more elegant solution, is to take the interdependencies into account and model these explicitly. This can be done within a multi-level framework and within a structural-equation modelling framework. 
-
-When we discussed the methods to analyze causes of homogamy, we were interested in homophily within couples at one point in time and focused on selection as explanans. Now, when we discuss the consequences of dyads, we are interested in explaining trends in homophily within couples and focus on shared context and influence processes as explanans. 
+When we discussed the methods to analyze causes of homogamy, we were interested in homophily within couples at one point in time and focused on selection as explanans. Now, when we discuss the consequences of dyads, we are interested in explaining trends in homophily within couples - thus homophily as a consequence of assortative mating - and focus on shared context and influence processes as explanans. 
 
 
 
@@ -476,130 +852,11 @@ library(future.apply)
 
 **PARTNERS AND POLITICS - When do we listen to our partner**'s political opinion? 
 
-<html>
-<body>
-</iframe>
-<a id='LuHtIfAxRu5Ma_5cwLSW1g' class='gie-single' href='http://www.gettyimages.nl/detail/153360657' target='_blank' style='color:#a7a7a7;text-decoration:none;font-weight:normal !important;border:none;display:inline-block;'>Embed from Getty Images</a><script>window.gie=window.gie||function(c){(gie.q=gie.q||[]).push(c)};gie(function(){gie.widgets.load({id:'LuHtIfAxRu5Ma_5cwLSW1g',sig:'1lfLuUoX5Pth1-d8wRyeRSQhCC9Ov2SK_l9qlSdR5X8=',w:'507px',h:'338px',items:'153360657',caption: true ,tld:'nl',is360: false })});</script><script src='//embed-cdn.gettyimages.com/widgets.js' charset='utf-8' async></script>
-</body>
-</html>
-
 In this part of the book, we will demonstrate the Cross-Lagged Panel Model (CLPM) and how to apply it to assess whether partners influence each other opinions. 
 
 ---   
 
 **Relevance**
-
-Why would influence processes between couples be relevant. Well, for many reasons. But influence processes that take place within couples may explain (in part):  
-
-1. Political polarization within society. 
-2. Opinion homophily within couples. 
-
-Political polarization between groups (e.g. couples) may be the result of: 
-
-- **selection**  
-- **common context** 
-- **influence**  
-
-
-Homophily within couples may be the result of: 
-
-- **selection**  
-- **common context** 
-- **dyadic influence**  
-
-Let us briefly discuss these three common causes and demonstrate how the resulting homophily within couples could contribute to polarization at the society level. 
-
-
-```{r, echo=FALSE}
-
-
-set.seed(98712)
-data2 <- rmvnorm(n = 1000, mean=c(2,3), sigma=matrix(c(4,3,3,3.5),ncol=2))
-var1 <- c(data2[,1],data2[,2])
-data <- data.frame(var1)
-data2 <-  data.frame(data2)
-data2$mean <- rowMeans(data2)
-
-# Chart
-#individuals
-p1 <- ggplot(data, aes(x=x) ) +
-  # Top
-  geom_density( aes(x = var1, y = ..density..), fill="#69b3a2" , alpha=.4) +
-  geom_label( aes(x=1, y=-0.05, label="individuals"), color="#69b3a2") +
-  theme_ipsum() +
-  xlab("some political opinion") + 
-  xlim(-6,8) + 
-  ylim(-0.05,.3)
-#p1
-#p1 <- p1 + labs(title=bquote(bold("Figure 1.")~"Distribution of opinions within population"))
-
-#selective marriage: couples
-p2 <- ggplot(data2, aes(x=x) ) +
-  # Top
-  geom_density( aes(x = mean, y = ..density..), fill="#404080" , alpha=.4) +
-  geom_label( aes(x=2, y=-0.05, label="couples"), color="#404080") +
-  theme_ipsum() +
-  xlab("some political opinion") + 
-  xlim(-6,8) + 
-  ylim(-0.05,.3)
-# p1 + p2 
-
-p2 <- p2 + labs(title=bquote(bold("Figure 2.")~"Distribution of opinions within couples"), subtitle = "After selective marriage")  
-
-#common influence
-data2$mean2 <- ifelse(data2$mean > mean(data2$mean), data2$mean + abs(rnorm(1,0,.2)), data2$mean - abs(rnorm(1,0,.2)))
-
-#data2$mean2 <- (data2$mean2 / sd(data2$mean2)) * sd(data2$mean)
-
-p3 <- ggplot(data2, aes(x=x) ) +
-  # Top
-  geom_density( aes(x = mean2, y = ..density..), fill="#404080" , alpha=.4) +
-  geom_label( aes(x=2, y=-0.05, label="couples"), color="#404080") +
-  theme_ipsum() +
-  xlab("some political opinion") + 
-  xlim(-6,8)  + 
-  ylim(-0.05,.3)
-# p2 + p3
-
-
-p3 <- p3 + labs(title=bquote(bold("Figure 3.")~"Distribution of opinions within couples"), subtitle = "After selective marriage and shared life events")  
-
-
-#within couple influence
-data2$X1b <- data2$X1 + (data2$mean2 - data2$mean)
-data2$X2b <- data2$X2 + (data2$mean2 - data2$mean)
-
-var1 <- c(data2$X1b,data2$X2b)
-data <- data.frame(var1)
-
-p4 <- ggplot(data, aes(x=x) ) +
-  # Top
-  geom_density( aes(x = var1, y = ..density..), fill="#69b3a2" , alpha=.4) +
-  geom_label( aes(x=1, y=-0.05, label="individuals"), color="#69b3a2") +
-  theme_ipsum() +
-  xlab("some political opinion") + 
-  xlim(-6,8) + 
-  ylim(-0.05,.3)
-# p3 + p4
-
-p4 <- p4 + labs(title=bquote(bold("Figure 4.")~"Distribution of opinions within population"), subtitle = "After selective marriage and shared life events")  
-
-
-var1 <- c(data2$mean2,data2$mean2)
-data <- data.frame(var1)
-
-p5 <- ggplot(data, aes(x=x) ) +
-  # Top
-  geom_density( aes(x = var1, y = ..density..), fill="#69b3a2" , alpha=.4) +
-  geom_label( aes(x=1, y=-0.05, label="individuals"), color="#69b3a2") +
-  theme_ipsum() +
-  xlab("some political opinion") + 
-  xlim(-6,8) + 
-  ylim(-0.05,.3)
- #p4 + p5
- 
-p5 <- p5 + labs(title=bquote(bold("Figure 5.")~"Distribution of opinions within population"), subtitle = "After selective marriage, shared life events and dyadic influence")  
-
 
 ```
 
@@ -607,83 +864,6 @@ p5 <- p5 + labs(title=bquote(bold("Figure 5.")~"Distribution of opinions within 
 ---  
 
 ### Selection  
-
-We will start with a fictive population of unmarried persons. Some political opinion is distributed as follows within society. 
-
-```{r, echo=FALSE, fig.cap="Distribution of opinions within population"}
-p1
-```
-But these individuals want to get married. Who do they pick. Well, we discussed the marriage market here. 
-<!--- insert link to marriage market ---> 
-
-Marriage Market: Constrained Decisions with whom to marry (or cohabit). 
-
-Let us assume that the opinion did not yet change but that bachelors prefer, to some extent, a partner with a similar political opinion. What does the political opinion distribution look like for the mean political opinion of the couples. 
-
-```{r , echo=FALSE}
-p2
-```
-
-Well, the preference for a partner with similar political opinions was definitely not strong enough to substantially change the opinion distribution.[^sim]
-
-[^sim]: naturally this will depend on how strong we simulate this preference to be. 
-
-Please go to the common context tab. 
-
-<!---insert link here--->
-
----  
-
-### Common context  
-
-What is a 'common context'?  
-
-Some examples:  
-
-- Shared life experiences:  
-  - having kids  
-  - poverty  
-- Shared environment:
-  - pollution
-  - housing
-  - poverty 
-
-Suppose these life events are more likely for some couples than others. More specifically, assume that the occurrence of life events is associated with the mean political opinion of the couple (at time T). The life event consequently influences the mean political opinion of the couple (at time T+1). 
-
-```{r, echo=FALSE }
-p3
-```
-
-We now clearly observe polarization between couples. 
-However, if we go back to the individual-level again, we do not (clearly) observe polarization between individuals. 
-
-```{r, echo=FALSE}
-p4
-```
-
-In order to also observe (pronounced) polarization between individuals, there needs to be some influence between partners
-
-
-
-
----  
-
-### Dyadic Influence  
-
-Why would partners influence each other? Well, we discussed influence here. <!---insert link---> 
-
-- Dyadic (positive) influence:  
-  - information  
-  - persuasion  
-  - need for similarity  
-
-
-```{r , echo=FALSE}
-p5
-```
-
----   
-
 ## Dyadic Influence: Mechanisms
 
 What happens within the couple? 
