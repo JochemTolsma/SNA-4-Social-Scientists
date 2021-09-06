@@ -16,7 +16,7 @@ https://jochemtolsma.github.io/SNA-4-Social-Scientists/
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown' ,'lavaan'
+  .packages(), 'bookdown', 'knitr', 'rmarkdown' ,'lavaan', 'agrmt'
 ), 'packages.bib')
 ```
 
@@ -59,7 +59,7 @@ In his research he focuses on social divisions between groups; the interplay of 
 
 He enjoys teaching Social Networks to students and finds it highly rewarding to see students applying a social network perspecive in their further academic careers.
 
-So, what did students have to say about previous versions of this course? Students want me to focus more on theory *and* on methods *and* on social network data collection *and* on social netwtork data wrangling skills. Many (research master and PhD) students find the course content simply too difficult to master within a 7-10 weeks lecture series. At the same time, students still miss essential social network topics for social scientists in the course.
+So, what did students have to say about previous versions of this course? Students want me to focus more on theory *and* on methods *and* on social network data collection *and* on social network data wrangling skills. Many (research master and PhD) students find the course content simply too difficult to master within a 7-10 weeks lecture series. At the same time, students still miss essential social network topics for social scientists in the course.
 
 Enter, this book! Together we will decide what we will focus on. You may decide for yourself if and how many background literature you will study. Do you miss a topic? Just make a pull request! ;-)
 

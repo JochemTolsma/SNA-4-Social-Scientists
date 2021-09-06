@@ -1,10 +1,9 @@
 base
 knitr
-kableExtra
-ggplot2
 dplyr
 haven
 lavaan
+ggplot2
 hrbrthemes
 patchwork
 mvtnorm
@@ -13,3 +12,4 @@ future
 future.apply
 purrr
 tidyr
+MASS
