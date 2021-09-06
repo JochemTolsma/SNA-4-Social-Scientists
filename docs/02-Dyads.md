@@ -465,6 +465,6 @@ Now, the society is clearly starting to polarize. Yes! Suprisingly, although the
 
 Suppose instead that the theoretical range of the opinion would have been $[-5,10]$. Then our polarization score would have been a massive: 0.1655218. 
 
-And on that bombshell, thanks for reading! 
+And on that bombshell, thanks for reading!! 
 
 ---  
