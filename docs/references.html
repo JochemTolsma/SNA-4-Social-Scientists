@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>References | SNASS</title>
   <meta name="description" content="References | SNASS" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="References | SNASS" />
   <meta property="og:type" content="book" />
@@ -34,6 +34,7 @@
 
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -466,9 +466,6 @@ Pishro-Nik, Hossein. 2016. <span>“Introduction to Probability, Statistics, and
 Raub, Werner, Vincent Buskens, and Marcel ALM Van Assen. 2011. <span>“Micro-Macro Links and Microfoundations in Sociology.”</span> <em>The Journal of Mathematical Sociology</em> 35 (1-3): 1–25.
 </div>
 <div class="csl-entry">
-Ruedin, Didier. 2021. <em>Agrmt: Calculate Concentration and Dispersion in Ordered Rating Scales</em>. <a href="http://agrmt.r-forge.r-project.org">http://agrmt.r-forge.r-project.org</a>.
-</div>
-<div class="csl-entry">
 Schwartz, Christine R. 2013. <span>“Trends and Variation in Assortative Mating: Causes and Consequences.”</span> <em>Annual Review of Sociology</em> 39: 451–70.
 </div>
 <div class="csl-entry">
@@ -514,7 +511,6 @@ Watts, Duncan J. 2011. <em>Everything Is Obvious:* Once You Know the Answer</em>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -555,7 +551,7 @@ gitbook.start({
 },
 "download": ["SNA-4-Social-Scientists.pdf", "SNA-4-Social-Scientists.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {

@@ -63,6 +63,13 @@ This course is structured along three different dimensions:
 
 <!--- perhaps put in a table and use knitr:kable so we have nicer layout and can use table caps! --->
 
+
+```
+#> 
+#> The downloaded binary packages are in
+#> 	/var/folders/6s/3y5nljy15_s_0f0vhr831ynwv4grpp/T//RtmpeLG4TF/downloaded_packages
+```
+
 <table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>(\#tab:topics)Topics discussed within the course</caption>
  <thead>

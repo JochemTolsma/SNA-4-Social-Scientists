@@ -570,6 +570,7 @@ load("soc_df_collabs.RData")
 ```
 
 ```{r, eval=TRUE}
+#install.packages("kableExtra", repos='http://cran.us.r-project.org')
 require(kableExtra)
 scroll_box(knitr::kable(soc_df_collabs, booktabs = TRUE) , height="300px")
 
