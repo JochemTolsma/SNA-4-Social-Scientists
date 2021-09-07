@@ -542,8 +542,8 @@ Hint 2: You really want to learn R? Never ever copy and paste code. Type the cod
 <h2><span class="header-section-number">A.6</span> Reading in data files</h2>
 <p>We are going to work with two datasets: “Culturele Veranderingen.” For more information on these datasets, see <a href="https://www.scp.nl/Onderzoek/Bronnen/Beknopte_onderzoeksbeschrijvingen/Culturele_veranderingen_in_Nederland_CV">here</a>.</p>
 <p>Please download the files to your working directory.</p>
-<p><a href="%22addfiles\Cultural_Changes_2008.sav%22">Cultural_Changes_2008.sav</a><br />
-<a href="%22addfiles\Cultural_Changes_2008.sav%22">Cultural_Changes_2010.sav</a>  </p>
+<p><a href="addfiles\Cultural_Changes_2008.sav">Cultural_Changes_2008.sav</a><br />
+<a href="addfiles\Cultural_Changes_2008.sav">Cultural_Changes_2010.sav</a>  </p>
 <p>There are different packages to read in data. Generally, I would recommend to use the <code>haven</code> package. In the past I used the <code>foreign</code> package. The advantage of using <code>haven::read_spss</code> is that more information is stored in the dataset and in the variables (variable/value labels!!). A disadvantage is that not all other functions/packages of R are capable of dealing with the data object that haven produces.</p>
 <blockquote>
 <p>below I will use <code>package_name::function_name</code> notation, to make explicit from which package the function belongs.</p>
