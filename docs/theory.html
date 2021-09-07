@@ -759,19 +759,19 @@ Figure 2.9: Distribution of opinions within population
 <p>Polarization scores will lie within the range [0, 1), where <span class="math inline">\(P=0\)</span>
 corresponds with full consensus in the population and the maximum when <span class="math inline">\(P\)</span> approaches 1 will be observed in a population that is divided equally between the extreme opinions.<br />
 Let us calculate the degree of polarization. First we need to define a function which does that for us.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="theory.html#cb2-1" aria-hidden="true" tabindex="-1"></a>fpol <span class="ot">&lt;-</span> <span class="cf">function</span>(opinions, <span class="at">maxdif =</span> <span class="cn">NULL</span>) {</span>
-<span id="cb2-2"><a href="theory.html#cb2-2" aria-hidden="true" tabindex="-1"></a>    N <span class="ot">&lt;-</span> <span class="fu">length</span>(opinions)</span>
-<span id="cb2-3"><a href="theory.html#cb2-3" aria-hidden="true" tabindex="-1"></a>    egos <span class="ot">&lt;-</span> <span class="fu">matrix</span>(opinions, <span class="at">nrow =</span> N, <span class="at">ncol =</span> N, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-4"><a href="theory.html#cb2-4" aria-hidden="true" tabindex="-1"></a>    alters <span class="ot">&lt;-</span> <span class="fu">t</span>(egos)</span>
-<span id="cb2-5"><a href="theory.html#cb2-5" aria-hidden="true" tabindex="-1"></a>    difference <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">is.null</span>(maxdif)) {</span>
-<span id="cb2-6"><a href="theory.html#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">abs</span>(egos <span class="sc">-</span> alters)<span class="sc">/</span>(<span class="fu">range</span>(opinions)[<span class="dv">2</span>] <span class="sc">-</span> <span class="fu">range</span>(opinions)[<span class="dv">1</span>])</span>
-<span id="cb2-7"><a href="theory.html#cb2-7" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb2-8"><a href="theory.html#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">abs</span>(egos <span class="sc">-</span> alters)<span class="sc">/</span>maxdif</span>
-<span id="cb2-9"><a href="theory.html#cb2-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-10"><a href="theory.html#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">diag</span>(difference) <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb2-11"><a href="theory.html#cb2-11" aria-hidden="true" tabindex="-1"></a>    pol <span class="ot">&lt;-</span> <span class="fu">var</span>(<span class="fu">as.numeric</span>(difference), <span class="at">na.rm =</span> T)</span>
-<span id="cb2-12"><a href="theory.html#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(pol)</span>
-<span id="cb2-13"><a href="theory.html#cb2-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="theory.html#cb1-1" aria-hidden="true" tabindex="-1"></a>fpol <span class="ot">&lt;-</span> <span class="cf">function</span>(opinions, <span class="at">maxdif =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb1-2"><a href="theory.html#cb1-2" aria-hidden="true" tabindex="-1"></a>    N <span class="ot">&lt;-</span> <span class="fu">length</span>(opinions)</span>
+<span id="cb1-3"><a href="theory.html#cb1-3" aria-hidden="true" tabindex="-1"></a>    egos <span class="ot">&lt;-</span> <span class="fu">matrix</span>(opinions, <span class="at">nrow =</span> N, <span class="at">ncol =</span> N, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a href="theory.html#cb1-4" aria-hidden="true" tabindex="-1"></a>    alters <span class="ot">&lt;-</span> <span class="fu">t</span>(egos)</span>
+<span id="cb1-5"><a href="theory.html#cb1-5" aria-hidden="true" tabindex="-1"></a>    difference <span class="ot">&lt;-</span> <span class="cf">if</span> (<span class="fu">is.null</span>(maxdif)) {</span>
+<span id="cb1-6"><a href="theory.html#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">abs</span>(egos <span class="sc">-</span> alters)<span class="sc">/</span>(<span class="fu">range</span>(opinions)[<span class="dv">2</span>] <span class="sc">-</span> <span class="fu">range</span>(opinions)[<span class="dv">1</span>])</span>
+<span id="cb1-7"><a href="theory.html#cb1-7" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb1-8"><a href="theory.html#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">abs</span>(egos <span class="sc">-</span> alters)<span class="sc">/</span>maxdif</span>
+<span id="cb1-9"><a href="theory.html#cb1-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-10"><a href="theory.html#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">diag</span>(difference) <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb1-11"><a href="theory.html#cb1-11" aria-hidden="true" tabindex="-1"></a>    pol <span class="ot">&lt;-</span> <span class="fu">var</span>(<span class="fu">as.numeric</span>(difference), <span class="at">na.rm =</span> T)</span>
+<span id="cb1-12"><a href="theory.html#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(pol)</span>
+<span id="cb1-13"><a href="theory.html#cb1-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>It turns out the polarization score of the above society is <code>fpol(opinions, 20)</code> 0.0080761.</p>
 <p>But these individuals want to get married. Who do they pick? Well, we discussed the marriage market here <a href="theory.html#mm">2.2</a>.</p>
 <p>Let us assume that the opinion did not yet change but that bachelors prefer, to some extent, a partner with a similar political opinion. What does the political opinion distribution look like for the mean political opinion of the couples.</p>

@@ -11,8 +11,8 @@ subtitle: "Social Network Analysis for Social Scientists"
 
 ## Overview
 
-Sociologists study how societies affect the lives of their members and, vice versa, how individuals shape the societies in which they live. Within societies people make and break relations with specific others and thereby form **social networks**.\
-Individuals are embedded in many different social networks (e.g. based on friendships, bullying, family relations). Within these social networks individuals influence each others' attitudes, behaviors and relations via complex dynamic processes. The attitudes, behaviors and relations of individuals shape, in turn, the societies they live in. They give rise to social phenomena, collective human behavior such as inequality, segregation, polarization and cohesion. It is not possible to explain many macro-level social phenomena, let alone to solve many urgent social problems, without taking into account social networks. For example, researchers may be able to deduce hypotheses from an established theory on political opinions of individuals but the same theory is not able to explain when and where political polarization occurs.^[Polarization is a social problem - a social phenomenon which people consider undesired - and a society is said to be polarized when (sizeable) (and clearly distinguishable) groups in society hold (ever more) opposing, extreme (political) attitudes.] For this, a social network perspective is necessary. It can thus be no surprise that the study of the causes and consequences of social networks lies at the core of sociology.
+Sociologists study how societies affect the lives of their members and, *vice versa*, how individuals shape the societies in which they live. Within societies people make and break relations with specific others and thereby form **social networks**.\
+Individuals are embedded in many different social networks (e.g. based on friendships, bullying, family relations, coworking, and so forth). Within these social networks individuals influence each others' attitudes, behaviors and relations via complex and dynamic processes. The attitudes, behaviors and relations of individuals shape, in turn, the societies they live in. They give rise to social phenomena, collective human behavior such as inequality, segregation, polarization and cohesion. It is not possible to explain many macro-level social phenomena, let alone to solve many urgent social problems, without taking into account social networks. For example, researchers may be able to deduce hypotheses from an established theory on political opinions of individuals but the same theory is not able to explain when and where political polarization occurs.^[Polarization is a social problem - a social phenomenon which people consider undesired - and a society is said to be polarized when (sizeable) (and clearly distinguishable) groups in society hold (ever more) opposing, extreme (political) attitudes.] For this, a social network perspective is necessary. It can thus be no surprise that the study of the causes and consequences of social networks lies at the core of sociology.
 
 <p class= "quote"> 
 A **social network** is an finite set of actors and the relation(s) defined on this set. The actors are social entities (people, organizations, countries, etc.) whose specific ties (friendship, competition, collaboration, etc.), constitute the network. [@wasserman1994 : 20].\
@@ -62,13 +62,6 @@ This course is structured along three different dimensions:
 3.    **Implications** of applying a social network perspective: Theoretical, Data and  Methodological
 
 <!--- perhaps put in a table and use knitr:kable so we have nicer layout and can use table caps! --->
-
-
-```
-#> 
-#> The downloaded binary packages are in
-#> 	/var/folders/6s/3y5nljy15_s_0f0vhr831ynwv4grpp/T//RtmpeLG4TF/downloaded_packages
-```
 
 <table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>(\#tab:topics)Topics discussed within the course</caption>

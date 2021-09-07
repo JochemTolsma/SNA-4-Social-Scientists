@@ -26,7 +26,7 @@ Watts' already-famous quote predicts a revolution in the social sciences. He and
 
 > **Webscraping**
 >
-> :   The process by which you collect data from the internet. This can entail different routes: manual data collection, automated data collection via code, and so forth.
+> :   The process by which you collect data from the internet. This can entail different routes: manual data collection, automated data collection via code, use of application programming interfaces, and so forth.
 
 > **Digital footprints**
 >
@@ -2226,17 +2226,6 @@ soc_df_collabs <- soc_df_collabs[!is.na(soc_df_collabs$author), ]
 
 
 ```r
-install.packages("kableExtra", repos='http://cran.us.r-project.org')
-```
-
-```
-#> 
-#> The downloaded binary packages are in
-#> 	/var/folders/6s/3y5nljy15_s_0f0vhr831ynwv4grpp/T//RtmpwaTpFy/downloaded_packages
-```
-
-```r
-require(kableExtra)
 scroll_box(knitr::kable(soc_df_collabs, booktabs = TRUE) , height="300px")
 ```
 
