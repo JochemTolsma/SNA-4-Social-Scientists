@@ -978,6 +978,110 @@ summary(pool_model_imp)
 
 ** TO DO ** 
 
+## Very important stuff!!
+
+Below are some important topics you need to be familiar with if you want to enjoy R. The web is full of very good material/tutorials on these subjects, so I see no need to write them myself. However, if I have a strong opinion on something, I will let you know. 
+
+
+### if else 
+
+```{r, eval=FALSE}
+if (condition) {
+  # code executed when condition is TRUE
+} else {
+  # code executed when condition is FALSE
+}
+```
+
+Useful links:  
+- [r4ds](https://r4ds.had.co.nz/functions.html?q=if%20statement#conditional-execution)  
+- [Advanced R](https://adv-r.hadley.nz/control-flow.html?#choices)
+
+
+### loops
+
+- Always define the object in which you are going to save the data beforehand and make sure it has the proper size. If you do not know the size beforehand, make use of a list.  
+- Please use proper indentation. 
+- Use comments.  
+- Be aware of missing values in the input. 
+
+
+Thus not... 
+
+```{r, eval = FALSE, tidy=FALSE}
+x <- c(4,5,6,2,7,897,23, NA, 7)
+y <- c(7,9,6,98,1,NA,3, NA, 7)
+
+output <- NA
+for (i in seq_along(x)) {
+output[i] <- x[i] + y[i] }
+```
+
+...if you want your output to be : `[1]  11  14  12 100   8 897  26  NA  14`.    
+
+But: 
+
+```{r}
+x <- c(4,5,6,2,7,897,23, NA, 7)
+y <- c(7,9,6,98,1,NA,3, NA, 7)
+
+output <- rep(NA, length(x)) #store data here
+for (i in seq_along(x)) {
+  # I want to add x and y if both have valid values and otherwise just have the valid value. 
+  if (!is.na(x[i]) & !is.na(y[i])) {
+    output[i] <- x[i] + y[i] #both have valid values. 
+  } else if (!is.na(x[i]) & is.na(y[i])) {
+    output[i] <- x[i] #only x has valid value
+  } else if (is.na(x[i]) & !is.na(y[i])) {
+    output[i] <- y[i] #only y has valid value
+  } else {
+    output[i] <- NA #no valid values
+  }
+}
+```
+
+
+Useful links:  
+- [r4ds](https://r4ds.had.co.nz/iteration.html?q=lapply#for-loops)  
+- [Advanced R](https://adv-r.hadley.nz/control-flow.html#loops)  
+(Just read the complete chapters please.)
+
+
+### Lists
+
+A very useful object in R. Please try to use them asap.  
+
+Useful links:  
+- The basics: [Quick R](https://www.statmethods.net/input/datatypes.html)  
+- All you need to know (just read the complete chapter please): [r4ds](https://r4ds.had.co.nz/vectors.html?q=lists#lists)  
+- Advanced (just read the complete chapter please): [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#lists)
+
+
+### lapply/map and do.call
+
+Think of the desired output. Should it be a list or a vector? 
+
+- lapply: ?lapply
+- do.call: ?do.call
+- [r4ds](https://r4ds.had.co.nz/iteration.html#the-map-functions)  
+- [Advanced R](https://adv-r.hadley.nz/functionals.html)
+
+### functions  
+
+Some personal opinions:  
+
+- start the name of your new function with an "f" and use "snake_case": `fnew_name`  
+- Always use `return`: `fnew_name(arg1) {output <- arg1 + 1; return(output)}`  
+- Use comments either above the line or at the same line: `fnew_name(arg1) {#what am I doing in the next line; output <- arg + 1; return(output) #what do I do in this line}`  
+- return an informative error if something goes wrong: `if (length(arg1)!=length(arg2)) stop("arguments have a different length")`
+
+Useful links:  
+- The basics: [Quick R](https://www.statmethods.net/management/userfunctions.html)  
+- All you need to know: [r4ds](https://r4ds.had.co.nz/functions.html?q=function#functions)  
+- Advanced: [Advanced R](http://adv-r.had.co.nz/Functions.html)
+
+
+---  
 
 **Thank you for reading this tutorial!!** 
 
@@ -991,7 +1095,12 @@ Time to practice.
 * But that is way too difficult!! Okay, okay, well try to do exactly the same as in this tutorial (without copy pasting the code chunks) but on a different dataset.  
 * O, you are already a fluent R Base user? Well, translate your latest R Base script into Tidy. 
 * You say, you are already a Tidy person? Mmmm,... I've got it. Please fill in the gaps of this tutorial ([Appendix A.11.2](#agtidy) and [Appendix A.12.2](#mistidy)) for me and earn an acknowledgment in this book.  
-* Not challenging enough? Start working with [Rmarkdown]("https://bookdown.org/yihui/rmarkdown/") and [Git]("https://happygitwithr.com/"). Fork this repository. Make this tutorial better. Submit a pull request to me.
+* Not challenging enough? Start working with [Rmarkdown]("https://bookdown.org/yihui/rmarkdown/") and [Git]("https://happygitwithr.com/"). Fork this repository. Make this tutorial better. Submit a pull request to me.  
+* Consider the following list: `annoyinglist <- list(v1=c(2,45,6, NA), v2=c(23536), v3=NA, v4=c(2346))`  
+  - calculate the mean of **all** elements saved in the annoyinglist with a loop  
+  - calculate the mean of each list-element (i.e. `v1 v2 v3`) with a loop  
+  - Please do the two same things but know with using lapply, map and do.call  
+  - Define your own function which does the two same things and just needs as input the list. 
 
 ---  
 
@@ -1021,6 +1130,14 @@ with $\mu$ the population mean.
 And the correlation within the population is: 
 
 $$\rho_{xy} = \frac{\sigma_{xy}^2}{\sigma_x \sigma_y}$$
+
+### Want to learn more?! 
+
+I strongly recommend you to read the [online book on probability](https://www.probabilitycourse.com/ "probabilitycourse") by @pishro2016!
+
+<a href="https://www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#">
+  <img src="book_probability.jpg">
+  </a>
 
 ## Intraclass correlation
 

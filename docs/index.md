@@ -1,6 +1,6 @@
 ---
 title: "Social Network Analysis for Social Scientists"
-date: "2021-08-31"
+date: "2021-09-06"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -40,16 +40,21 @@ Enjoy!!
 
 ------------------------------------------------------------------------
 
-**Jochem Tolsma** ([wwww.jochemtolsma.nl](www.jochemtolsma.nl)) is professor by special appointment of Social Divisions between Groups in the [Department of Sociology at the University of Groningen](https://www.rug.nl/gmw/sociology/), associate professor in the [Sociology Department of Radboud University Nijmegen](https://www.ru.nl/sociology/) and the program director of the [Research Master Social and Cultural Science](https://www.ru.nl/courseguides/socsci/research-master/social-cultural-science/) of Radboud University.\
+**Jochem Tolsma** ([www.jochemtolsma.nl](https://www.jochemtolsma.nl)) is professor by special appointment of Social Divisions between Groups in the [Department of Sociology at the University of Groningen](https://www.rug.nl/gmw/sociology/), associate professor in the [Sociology Department of Radboud University Nijmegen](https://www.ru.nl/sociology/) and the program director of the [Research Master Social and Cultural Science](https://www.ru.nl/courseguides/socsci/research-master/social-cultural-science/) of Radboud University.\
 In his research he focuses on social divisions between groups; the interplay of segregation, inequality and polarization. His particular areas of interest are the causes and consequences of segregation in neighborhoods, schools and friendship networks.
 
 He enjoys teaching Social Networks to students and finds it highly rewarding to see students applying a social network perspecive in their further academic careers.
 
-So, what did students have to say about previous versions of this course? Students want me to focus more on theory *and* on methods *and* on social network data collection *and* on social netwtork data wrangling skills. Many (research master and PdD) students find the course content simply too difficult to master within a 7-10 weeks lecture series. At the same time, students still miss essential social network topics for social scientists in the course.
+So, what did students have to say about previous versions of this course? Students want me to focus more on theory *and* on methods *and* on social network data collection *and* on social network data wrangling skills. Many (research master and PhD) students find the course content simply too difficult to master within a 7-10 weeks lecture series. At the same time, students still miss essential social network topics for social scientists in the course.
 
 Enter, this book! Together we will decide what we will focus on. You may decide for yourself if and how many background literature you will study. Do you miss a topic? Just make a pull request! ;-)
 
-**Bas Hofstra**
+**Bas Hofstra** ([www.bashofstra.com](https://www.bashofstra.com)) is assistant professor at [Radboud University's Department of Sociology](https://www.ru.nl/sociology/). His work orbits the study of diversity, stratification, and innovation. It captures longitudinal systems of social and cultural exchange: from the gestation and birth of networks, careers, ideas, or innovations, to their use, up until their eventual cessation. As such, his work strives for three interrelated goals: (i) answering substantive questions on causes and effects of social networks, while (ii) contributing to social theory, and (iii) using computational methods and big data. You can find his research in (among others) in PNAS, American Sociological Review, Social Forces, Social Networks, and Nature Human Behaviour.
+
+He teaches courses on contemporary sociological theories, analytical sociology, and, of course, social networks. The many advantages and the analytical strength of the social network perspective render it very useful to apply in a range of social science research themes and topics: from studying social exchange of workers between organizations, to the role of mentorship in career outcomes, to a teams’ social structure and creative success. Therefore, Bas finds it both necessary and inspiring to teach social science students about the social network perspective. The book is hands-on and feet-in-the-mud on the key aspects of social networks that social scientists would need to know about: from questions, to theory, to methods. Therefore, anyone should be able to start their own thesis or research project on social networks after they’ve read selected parts or chapters in the book.
+
+
+
 
 ------------------------------------------------------------------------
 

@@ -1,0 +1,15 @@
+base
+knitr
+dplyr
+haven
+lavaan
+ggplot2
+hrbrthemes
+patchwork
+mvtnorm
+plotly
+future
+future.apply
+purrr
+tidyr
+kableExtra
