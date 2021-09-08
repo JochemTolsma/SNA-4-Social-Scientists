@@ -168,8 +168,8 @@ We are going to work with two datasets: "Culturele Veranderingen". For more info
 
 Please download the files to your working directory.
 
-[Cultural_Changes_2008.sav](%22addfiles\Cultural_Changes_2008.sav%22)\
-[Cultural_Changes_2010.sav](%22addfiles\Cultural_Changes_2008.sav%22)  
+[Cultural_Changes_2008.sav](addfiles\Cultural_Changes_2008.sav)\
+[Cultural_Changes_2010.sav](addfiles\Cultural_Changes_2008.sav)  
 
 There are different packages to read in data. Generally, I would recommend to use the `haven` package. In the past I used the `foreign` package. The advantage of using `haven::read_spss` is that more information is stored in the dataset and in the variables (variable/value labels!!). A disadvantage is that not all other functions/packages of R are capable of dealing with the data object that haven produces.
 
