@@ -851,9 +851,21 @@ head(age_region_test)
 
 ```
 
-### Tidy  {#agtidy}
+### Tidy
+```{r, results='hold'}
+#step 1. convert the dataset to an aggregate/grouped version using the "group_by" function from the Dplyr package (part of the tidyverse), which will enable you to perform aggregate-level, or "by group," operations.
+age_region <- group_by(cv_tot, region)
 
-** TO DO ** 
+#step 2. use mutate to create a append the mean age by region to the original data frame (don't forget to remove NA values).
+age_region <- mutate(age_region, mean = mean(age, na.rm = TRUE))
+
+#step 3. you can link both commands using the pipe operator %>% to keep your code concise (and readable if you're writing a script).
+cv_total <- cv_tot  %>%
+  group_by(region) %>% 
+  mutate(age_region = mean(age, na.rm = TRUE)) %>%
+  ungroup()
+#because group_by() returns a grouped tibble (a tibble specific class with a group attribute), it's necessary to close the pipe-chain with ungroup() to avoid an error with the mice function, which takes a data frame or matrix as input (and can't handle tibbles). Note that without ungrouping, the output looks the same, but the data structure is different.
+```
 
 ## Missing values
 
@@ -884,7 +896,7 @@ Of course we have several options:
 #### Option 1: listwise deletion
 
 ```{r, listwise}
-#step1 define all missings
+#step 1. define all missings
 summary(cv_total)
 model2 <- lm(as.numeric(healthn) ~ men + age +  as.factor(educ3) + as.factor(region), data=cv_total)
 summary(model2)
@@ -974,9 +986,106 @@ pool_model_imp <- pool(model_imp)
 summary(pool_model_imp)
 ```
 
-### Tidy {#mistidy}  
+### Tidy
+cv_total <- readRDS("cv_tot.RDS")
+```{r, model1}
+model1 <- cv_total %>%
+  mutate(healthn = as.numeric(health),
+         across(c(educ3, region), as.factor)) %>%
+  lm(formula = healthn ~ men + age + educ3 + region) %>%
+  summary()
+#the across function from the Dplyr package is similar to the apply function (if MARGIN = 2) from base R. it performs the same operation on multiple columns (or, if you have groups, for each combination of columns and groups).
 
-** TO DO ** 
+#lm is not a 'pipe friendly' function because the data is provided in the second argument, while the pipe operator reads the data from the first unnamed(!) argument that follows the %>%. by naming the first argument, the pipe will take data from the second argument, which is (in this case) the correct data argument.
+```
+
+```{r, results="hold"}
+#step 1. define all missings (and save a version of the dataset without replacement of the missings for later.
+cv_orig <- cv_total <- cv_total %>%
+  mutate(health = na_if(health, -2),
+         healthn = as.numeric(health) - 4)
+
+#if you don't know the numeric value of "Weigert" (-2) you can extract it from the object's attributes using attr().
+cv_orig <- cv_total <- cv_total %>%
+  mutate(health = na_if(health, attr(health, "labels")["Weigert"]), 
+         healthn = health - 4)
+```
+
+#### Option 1: listwise deletion
+
+```{r, listwise}
+model2 <- cv_total %>%
+  mutate(healthn = as.numeric(healthn),
+         across(c(educ3, region), as.factor)) %>%
+  lm(formula = healthn ~ men + age + educ3 + region) %>%
+  summary()
+```
+
+#### Option 2: replacing missing values. 
+
+# Besides the `ifelse()` command, you can use `replace_na` from the Tidyr package (part of the tidyverse), which, you might have guessed from the name, enables you to replace NAs with specified values.
+# However, using `replace_na` will return an error if the variable is a factor and requires conversion to numeric-type values. We'll still use `ifelse()` to create the dummy `age_mis`.
+
+```{r replace, results="hold"}
+#example of using ifelse() with mutate.
+cv_total <- cv_total %>%
+  mutate(men2 = ifelse(is.na(men), 2, men))
+
+#with the first mutate argument you avoid repeating as.numeric() for each variable.
+cv_total <- cv_total %>%
+  mutate(across(everything(), as.numeric),
+         men2 = replace_na(men, 2),
+         educ3b = replace_na(educ3, 4),
+         age2 = replace_na(age, mean(age, na.rm = TRUE)),
+         age_mis = ifelse(is.na(age), 1, 0))
+
+#note: the following two commands are equivalents:
+mutate(across(everything(), as.numeric))
+mutate_all(as.numeric)
+
+#pay attention, now use categorical variable men2.
+model3 <- cv_total %>% 
+  mutate_at(c("men2", "educ3b", "region"), as.factor) %>%
+  lm(formula = healthn ~ men2 + age2 + age_mis + educ3b + region) %>%
+  summary()
+
+#note: for model2 we used mutate(across()) which is similar to mutate_at(). The latter is shorter, but less flexibel as the transformation affects every variable.
+#thus, the following two commands return the same output.
+mutate_at(c("men2", "educ3b", "region"), as.factor)
+mutate(across(c(men2, educ3b, region), as.factor))
+```
+
+#### Option 3: impute missing values  
+
+```{r mice, results="hold", error=TRUE }
+#let's start with the original dataset 'cv_orig' (created in the first section).
+#don't forget to remove healthn (last column) because it perfectly correlates with health which will cause an error.
+pred <- cv_orig  %>%
+  select(-last_col()) %>%
+  mutate_all(as.numeric)  %>%
+  mutate_at(c("men", "educ3"), as.factor) %>%
+  mice(method = c("", "", "cart", "logreg", "polr", "cart", "", "")) %>%
+  unclass() %>%
+  pluck("predictorMatrix") %>%
+  as.data.frame() %>%
+  mutate_at(c("id", "id2", "age"), funs(recode(1, 0))) %>%
+  as.matrix()
+#note: the object returned from the mice function is of class 'mids,' which dplyr's functions cannot handle.
+#the unclass() function from base R solve this issue as it removes the class attribute and, in this case, returns a list that dplyr can handle.
+#the pluck() function from the Purrr package (part of the tidyverse) is the user-friendly equivalent of `[[` in base R: `[[`("predictorMatrix"), which
+#enables you to extract a single element from the list we just created using unclass().
+#next, because the mutate function (and its variations) are not build for lists, we need to coerce it a data frame (or Tibble)
+#lastly, to 'remove' the columns id id2 and wave as predictors, we recode all their 1s to 0s using mutate_at() and recode().
+
+#impute missings and fit model on imputed dataset
+model_imp <- cv_total %>%
+  mutate_at(c("men", "educ3"), as.factor) %>%
+  mice(method = c("", "", "cart", "logreg", "polr", "cart", "", ""), pred = pred, seed = 45622) %>%
+  with(lm(as.numeric(health) ~ men + age + educ3 + region)) %>%
+  pool()
+
+summary(model_imp)
+```
 
 ## Very important stuff!!
 
