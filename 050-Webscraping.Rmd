@@ -1,6 +1,6 @@
 # (PART) Part 4 Webscraping  {-} 
 
-<!---put the dataframes in a kable and then use a scrollbox. you can also have captions. works best. see last part of script ---> 
+<!--- put the dataframes in a kable and then use a scrollbox. you can also have captions. works best. see last part of script ---> 
 
 # Webscraping for Sociologists {#webintro}
 

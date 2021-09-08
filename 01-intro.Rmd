@@ -49,7 +49,7 @@ A **social network** is an finite set of actors and the relation(s) defined on t
 
 In sum, taking a social network perspective leads to key theoretical, data collection, and methodological contributions. The combination and integration of these three allows for a better understanding of social phenomena and society.
 
-<!--- have been editing text above, added some substance --->
+<!--- have  been editing text above, added some substance --->
 
 
 
