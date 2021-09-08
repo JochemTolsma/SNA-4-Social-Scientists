@@ -25,7 +25,7 @@ library(knitr)
 opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE, warning = FALSE, message = FALSE,comment = "#>", cache=TRUE, eval=FALSE)
 options(width = 100)
 
-install.packages("kableExtra", repos='http://cran.us.r-project.org')
+#install.packages("kableExtra", repos='http://cran.us.r-project.org')
 require(kableExtra)
 source("util.r")
 

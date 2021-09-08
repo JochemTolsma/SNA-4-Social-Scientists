@@ -10,32 +10,40 @@ subtitle: "Social Network Analysis for Social Scientists"
 # Introduction {#intro}
 
 ## Overview
-
-Sociologists study how societies affect the lives of their members and, *vice versa*, how individuals shape the societies in which they live. Within societies people make and break relations with specific others and thereby form **social networks**.\
-Individuals are embedded in many different social networks (e.g. based on friendships, bullying, family relations, coworking, and so forth). Within these social networks individuals influence each others' attitudes, behaviors and relations via complex and dynamic processes. The attitudes, behaviors and relations of individuals shape, in turn, the societies they live in. They give rise to social phenomena, collective human behavior such as inequality, segregation, polarization and cohesion. It is not possible to explain many macro-level social phenomena, let alone to solve many urgent social problems, without taking into account social networks. For example, researchers may be able to deduce hypotheses from an established theory on political opinions of individuals but the same theory is not able to explain when and where political polarization occurs.^[Polarization is a social problem - a social phenomenon which people consider undesired - and a society is said to be polarized when (sizeable) (and clearly distinguishable) groups in society hold (ever more) opposing, extreme (political) attitudes.] For this, a social network perspective is necessary. It can thus be no surprise that the study of the causes and consequences of social networks lies at the core of sociology.
+<!--- edits throughout, I really try to be tight in writing, we can discard or discuss where you disagree
+- you don't make but form relationships 
+- I don't think inequality is a collective human behavior strictly speaking, I changed to "the collective outcomes caused by human behavior such as" 
+- changed some absolutes (e.g., impossible to difficult), only one counterexample would invalidate such claims
+-  --->
+Sociologists study how societies affect the lives of their members and, *vice versa*, how individuals shape the societies in which they live. Within societies people form and break relations with specific others and thereby form **social networks**.\
+Individuals are embedded in many different social networks (e.g. based on friendships, bullying, family relations, coworking, and so forth). Within these social networks individuals influence each others' attitudes, behaviors and relations via complex and dynamic processes. The attitudes, behaviors and relations of individuals shape, in turn, the societies they live in. They give rise to social phenomena, the collective outcomes caused by human behavior such as inequality, segregation, polarization and cohesion. It is difficult to explain macro-level social phenomena, let alone to solve many of the urgent social problems, without taking into account social networks. For example, researchers may be able to deduce hypotheses from an established theory on political opinions of *individuals* but the same theory is not able to explain when and where political polarization in a society occurs.^[Polarization is a social problem - a social phenomenon which people consider undesired - and a society is said to be polarized when (sizeable) (and clearly distinguishable) groups in society hold (ever more) opposing, extreme (political) attitudes.] To explain when and where political polarization occurs, we need the analytical toolbox of the social network perspective. It is thus unsurprising that the study of the causes and consequences of social networks lies at the core of sociology. Nor is it a surprise that the social network perspective now populates many other disciplines too -- from computer science, to physics, to organization science.
 
 <p class= "quote"> 
 A **social network** is an finite set of actors and the relation(s) defined on this set. The actors are social entities (people, organizations, countries, etc.) whose specific ties (friendship, competition, collaboration, etc.), constitute the network. [@wasserman1994 : 20].\
 </p> 
 
 
-> Networks are also called: graphs or sociograms.  
-> Actors are also called: points, nodes, agents or vertices.  
-> Relations are also called: ties, edges or connections.
+> Networks are also called graphs or sociograms.  
+> Actors are also called points, nodes, agents or vertices.  
+> Relations are also called ties, edges or connections.
 
-<span style='color: red;'>**Social Networks is/are no theory nor a method.**</span> Social networks are social phenomena with causes and consequences. The size, composition, structure, and evolution of social networks can be explained. Social networks have an impact on individuals (e.g. attitudes and behavior), dyads (e.g. relations), institutions (e.g. efficiency) and societies (e.g. inequality, segregation, polarization).
+<span style='color: red;'>**Social Networks is/are no theory nor a method.**</span> Social networks are social phenomena with causes and consequences. The size, composition, structure, and evolution of social networks can be explained. Social networks have an impact on individuals (e.g. attitudes and behavior), dyads (e.g. relations), institutions (e.g. operational efficiency) and societies (e.g. inequality, segregation, or polarization). In other words, acknowledging the dynamics of *social networks* is crucial to correctly explain social phenomena and understand (and solve) social problems. The *social network perspective* is a systematic way of thinking to do so.
+<!--- not entirely happy with these last two sentences yet, but something like this is necessary for the flow to the next section --->
 
 ## Social Network Perspective
 
 **Social Network Perspective**
 
- :   It is the acknowledgment that individuals are embedded within social networks - no man is an island - and that this has theoretical, data, and methodological consequences.\
+ :   It is the acknowledgment that agents are embedded within social networks -- no man is an island -- and that this has theoretical, data, and methodological consequences. It systematically integrates theory, data, and methods according to this acknowledgment -- i.e. wielding the full analytical toolbox pertaining to social networks -- to correctly explain social phenomona and social problems. \
+ <!--- this last sentence I wrote is necessary: otherwise it's only an acknowledgement. --->
  
-*   Theoretical consequences: A social network perspective may force to a rethinking of existing hypotheses and may lead to new research questions on the causes and consequences of social networks.  
-*   Data consequences: To apply a Social Network Perspective, we need data on social networks. Social network data is special in that we need not only information on the social agents (e.g. people, organizations) but also on the ties (or relations) between them. As a consequence, there are many unique practical and ethical aspects related to the collection of network data. The structure of social network data is also different (e.g. adjacency matrices) and require special data wrangling skills.   
-*   Methodological consequences: A social network perspective will make explicit that empirical observations of individuals are not always independent and that the (complex) interdependencies between observations that result from social networks have consequences for many of our traditional research methods which assume independence of observations. It may lead to the development and adoption of new social network analysis techniques.
+*   Theoretical consequences: A social network perspective forces us to rethink existing hypotheses and may lead to new research questions and predictions on the causes and consequences of social networks. And by extension it also forces us to rethink questions and hypotheses about societally relevant phenomena such as segregation or polarization.
+*   Data consequences: To apply a Social Network Perspective, we need social network data. Social network data are special because we need not only information on the social agents (e.g. people, organizations) but also on the ties (or relations) between them. As a consequence, there are many unique practical and ethical aspects related to the collection of network data. The structure of social network data is also different (e.g. adjacency matrices, edge lists) and require distinct data wrangling skills compared to, say, traditional survey data.   
+*   Methodological consequences: A social network perspective will make explicit that empirical observations of individuals are not always independent. The (sometimes complex) interdependencies between observations that result from social networks have consequences for many of our traditional research methods which often assume independence between observations. This has leadto the development and adoption of new social network analyses techniques.
 
-Taking a social network perspective leads to theoretical, data collection, and methodological advancements.
+In sum, taking a social network perspective leads to key theoretical, data collection, and methodological contributions. The combination and integration of these three allows for a better understanding of social phenomena and society.
+
+<!--- have been editing text above, added some substance --->
 
 
 
