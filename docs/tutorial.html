@@ -353,12 +353,12 @@ div.csl-indent {
 <li class="chapter" data-level="A.11" data-path="tutorial.html"><a href="tutorial.html#aggregate-data"><i class="fa fa-check"></i><b>A.11</b> Aggregate data</a>
 <ul>
 <li class="chapter" data-level="A.11.1" data-path="tutorial.html"><a href="tutorial.html#r-base-4"><i class="fa fa-check"></i><b>A.11.1</b> R Base</a></li>
-<li class="chapter" data-level="A.11.2" data-path="tutorial.html"><a href="tutorial.html#agtidy"><i class="fa fa-check"></i><b>A.11.2</b> Tidy</a></li>
+<li class="chapter" data-level="A.11.2" data-path="tutorial.html"><a href="tutorial.html#tidy-4"><i class="fa fa-check"></i><b>A.11.2</b> Tidy</a></li>
 </ul></li>
 <li class="chapter" data-level="A.12" data-path="tutorial.html"><a href="tutorial.html#missing-values"><i class="fa fa-check"></i><b>A.12</b> Missing values</a>
 <ul>
 <li class="chapter" data-level="A.12.1" data-path="tutorial.html"><a href="tutorial.html#r-base-5"><i class="fa fa-check"></i><b>A.12.1</b> R Base</a></li>
-<li class="chapter" data-level="A.12.2" data-path="tutorial.html"><a href="tutorial.html#mistidy"><i class="fa fa-check"></i><b>A.12.2</b> Tidy</a></li>
+<li class="chapter" data-level="A.12.2" data-path="tutorial.html"><a href="tutorial.html#tidy-5"><i class="fa fa-check"></i><b>A.12.2</b> Tidy</a></li>
 </ul></li>
 <li class="chapter" data-level="A.13" data-path="tutorial.html"><a href="tutorial.html#very-important-stuff"><i class="fa fa-check"></i><b>A.13</b> Very important stuff!!</a>
 <ul>
@@ -544,7 +544,7 @@ Hint 2: You really want to learn R? Never ever copy and paste code. Type the cod
 <p>We are going to work with two datasets: “Culturele Veranderingen.” For more information on these datasets, see <a href="https://www.scp.nl/Onderzoek/Bronnen/Beknopte_onderzoeksbeschrijvingen/Culturele_veranderingen_in_Nederland_CV">here</a>.</p>
 <p>Please download the files to your working directory.</p>
 <p><a href="addfiles\Cultural_Changes_2008.sav">Cultural_Changes_2008.sav</a><br />
-<a href="addfiles\Cultural_Changes_2008.sav">Cultural_Changes_2010.sav</a>  </p>
+<a href="addfiles\Cultural_Changes_2010.sav">Cultural_Changes_2010.sav</a>  </p>
 <p>There are different packages to read in data. Generally, I would recommend to use the <code>haven</code> package. In the past I used the <code>foreign</code> package. The advantage of using <code>haven::read_spss</code> is that more information is stored in the dataset and in the variables (variable/value labels!!). A disadvantage is that not all other functions/packages of R are capable of dealing with the data object that haven produces.</p>
 <blockquote>
 <p>below I will use <code>package_name::function_name</code> notation, to make explicit from which package the function belongs.</p>
@@ -1791,7 +1791,7 @@ Add to your cheat sheet <code>as.character()</code> and <code>as.numeric()</code
 <p>Copy the variable<br />
 We will ‘mutate’ the original dataset by adding a variable.</p>
 <div class="sourceCode" id="cb132"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb132-1"><a href="tutorial.html#cb132-1"></a>cv08_haven <span class="ot">&lt;-</span> <span class="fu">mutate</span>(cv08_haven, <span class="at">lftop_new =</span> lftop)</span></code></pre></div>
-<p>Replace missings<br />
+<p>Replace missings.<br />
 Be aware that the value <strong>99</strong> is the “onbekend” category.</p>
 <div class="sourceCode" id="cb133"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb133-1"><a href="tutorial.html#cb133-1"></a>cv08_haven<span class="sc">$</span>lftop_new <span class="ot">&lt;-</span> <span class="fu">na_if</span>(cv08_haven<span class="sc">$</span>lftop_new, <span class="dv">99</span>)</span></code></pre></div>
 <p>Normally you would combine these two steps into one</p>
@@ -2001,15 +2001,15 @@ How do you know it is part of Tidyverse? Well, if you don’t load tidyverse, th
 <span id="cb166-6"><a href="tutorial.html#cb166-6"></a>cv08<span class="sc">$</span>int057n <span class="ot">&lt;-</span> cv08<span class="sc">$</span>int057n <span class="sc">-</span> <span class="dv">4</span></span></code></pre></div>
 <p>Step 4: calculate means.</p>
 <div class="sourceCode" id="cb167"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb167-1"><a href="tutorial.html#cb167-1"></a><span class="co"># How does the function mean work in R?</span></span>
-<span id="cb167-2"><a href="tutorial.html#cb167-2"></a><span class="fu">mean</span>(cv08<span class="sc">$</span>int055n)</span>
-<span id="cb167-3"><a href="tutorial.html#cb167-3"></a><span class="fu">mean</span>(cv08<span class="sc">$</span>int055n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb167-4"><a href="tutorial.html#cb167-4"></a><span class="fu">mean</span>(<span class="fu">c</span>(cv08<span class="sc">$</span>int055n, cv08<span class="sc">$</span>int056n, cv08<span class="sc">$</span>int057n), <span class="at">na.rm =</span> T)</span></code></pre></div>
+<span id="cb167-2"><a href="tutorial.html#cb167-2"></a><span class="fu">mean</span>(cv08<span class="sc">$</span>int055n)  <span class="co">#whoops</span></span>
+<span id="cb167-3"><a href="tutorial.html#cb167-3"></a><span class="fu">mean</span>(cv08<span class="sc">$</span>int055n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co">#works.  but not what we want. </span></span>
+<span id="cb167-4"><a href="tutorial.html#cb167-4"></a><span class="fu">mean</span>(<span class="fu">c</span>(cv08<span class="sc">$</span>int055n, cv08<span class="sc">$</span>int056n, cv08<span class="sc">$</span>int057n), <span class="at">na.rm =</span> T)  <span class="co">#works but not what we want.</span></span></code></pre></div>
 <pre><code>#&gt; [1] NA
 #&gt; [1] 2.676251
 #&gt; [1] 2.410756</code></pre>
 <p>This is not what we want. What we want is to calculate a mean for each row/respondent. This will do the trick:</p>
 <div class="sourceCode" id="cb169"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb169-1"><a href="tutorial.html#cb169-1"></a>testmeans <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(<span class="fu">cbind</span>(cv08<span class="sc">$</span>int055n, cv08<span class="sc">$</span>int056n, cv08<span class="sc">$</span>int057n), <span class="at">na.rm =</span> T)</span>
-<span id="cb169-2"><a href="tutorial.html#cb169-2"></a><span class="fu">head</span>(testmeans)</span></code></pre></div>
+<span id="cb169-2"><a href="tutorial.html#cb169-2"></a><span class="fu">head</span>(testmeans)  <span class="co">#yes!</span></span></code></pre></div>
 <pre><code>#&gt; [1] 2.333333 2.666667 2.666667 2.333333 1.500000 1.333333</code></pre>
 <p>What we really want is a mean but only if there is a maximum of 1 NA in the three variables.</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb171-1"><a href="tutorial.html#cb171-1"></a><span class="co"># lets first count how many missings we have for each respondent</span></span>
@@ -2032,7 +2032,7 @@ How do you know it is part of Tidyverse? Well, if you don’t load tidyverse, th
 </div>
 <div id="tidy-2" class="section level3" number="12.9.2">
 <h3><span class="header-section-number">A.9.2</span> Tidy</h3>
-<p>Here it goes in one big code chunck.</p>
+<p>Here it goes in one big code chunk.</p>
 <div class="sourceCode" id="cb172"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb172-1"><a href="tutorial.html#cb172-1"></a><span class="co"># Step 1: have a look at the vars</span></span>
 <span id="cb172-2"><a href="tutorial.html#cb172-2"></a><span class="fu">str</span>(cv08_haven<span class="sc">$</span>int055)</span>
 <span id="cb172-3"><a href="tutorial.html#cb172-3"></a><span class="fu">attr</span>(cv08_haven<span class="sc">$</span>int055, <span class="st">&quot;labels&quot;</span>)</span>
@@ -2507,9 +2507,23 @@ If you don’t know the difference between long and wide format, check the diffe
 #&gt; 3  West-Nederland 46.88416
 #&gt; 4  Zuid-Nederland 48.52500</code></pre>
 </div>
-<div id="agtidy" class="section level3" number="12.11.2">
+<div id="tidy-4" class="section level3" number="12.11.2">
 <h3><span class="header-section-number">A.11.2</span> Tidy</h3>
-<p>** TO DO **</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb203-1"><a href="tutorial.html#cb203-1"></a><span class="co"># step 1. convert the dataset to an aggregate/grouped version using the &#39;group_by&#39; function from</span></span>
+<span id="cb203-2"><a href="tutorial.html#cb203-2"></a><span class="co"># the Dplyr package (part of the tidyverse), which will enable you to perform aggregate-level, or</span></span>
+<span id="cb203-3"><a href="tutorial.html#cb203-3"></a><span class="co"># &#39;by group,&#39; operations.</span></span>
+<span id="cb203-4"><a href="tutorial.html#cb203-4"></a>age_region <span class="ot">&lt;-</span> <span class="fu">group_by</span>(cv_tot_tidy, region)</span>
+<span id="cb203-5"><a href="tutorial.html#cb203-5"></a></span>
+<span id="cb203-6"><a href="tutorial.html#cb203-6"></a><span class="co"># step 2. use mutate to create and append the mean age by region to the original data frame (don&#39;t</span></span>
+<span id="cb203-7"><a href="tutorial.html#cb203-7"></a><span class="co"># forget to remove NA values).</span></span>
+<span id="cb203-8"><a href="tutorial.html#cb203-8"></a>age_region <span class="ot">&lt;-</span> <span class="fu">mutate</span>(age_region, <span class="at">mean =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb203-9"><a href="tutorial.html#cb203-9"></a></span>
+<span id="cb203-10"><a href="tutorial.html#cb203-10"></a><span class="co"># step 3. you can link both commands using the pipe operator %&gt;% to keep your code concise (and</span></span>
+<span id="cb203-11"><a href="tutorial.html#cb203-11"></a><span class="co"># readable if you&#39;re writing a script).</span></span>
+<span id="cb203-12"><a href="tutorial.html#cb203-12"></a>cv_total_tidy <span class="ot">&lt;-</span> cv_tot_tidy <span class="sc">%&gt;%</span></span>
+<span id="cb203-13"><a href="tutorial.html#cb203-13"></a>    <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span></span>
+<span id="cb203-14"><a href="tutorial.html#cb203-14"></a>    <span class="fu">mutate</span>(<span class="at">age_region =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb203-15"><a href="tutorial.html#cb203-15"></a>    <span class="fu">ungroup</span>()  <span class="co">#because group_by() returns a grouped tibble (a tibble specific class with a group attribute), it&#39;s good practice to close the pipe-chain with ungroup() to avoid an errors down the line. </span></span></code></pre></div>
 </div>
 </div>
 <div id="missing-values" class="section level2" number="12.12">
@@ -2517,8 +2531,8 @@ If you don’t know the difference between long and wide format, check the diffe
 <div id="r-base-5" class="section level3" number="12.12.1">
 <h3><span class="header-section-number">A.12.1</span> R Base</h3>
 <p>Suppose you want to estimate the following model:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb203-1"><a href="tutorial.html#cb203-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.numeric</span>(health) <span class="sc">~</span> men <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">as.factor</span>(educ3) <span class="sc">+</span> <span class="fu">as.factor</span>(region), <span class="at">data =</span> cv_total)</span>
-<span id="cb203-2"><a href="tutorial.html#cb203-2"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb204-1"><a href="tutorial.html#cb204-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.numeric</span>(health) <span class="sc">~</span> men <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">as.factor</span>(educ3) <span class="sc">+</span> <span class="fu">as.factor</span>(region), <span class="at">data =</span> cv_total)</span>
+<span id="cb204-2"><a href="tutorial.html#cb204-2"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
 <pre><code>#&gt; 
 #&gt; Call:
 #&gt; lm(formula = as.numeric(health) ~ men + age + as.factor(educ3) + 
@@ -2546,10 +2560,10 @@ If you don’t know the difference between long and wide format, check the diffe
 #&gt; Multiple R-squared:  0.09928,    Adjusted R-squared:  0.09799 
 #&gt; F-statistic: 76.67 on 7 and 4869 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>You see that 22 cases are deleted due to missingness but what happened with your health variable?</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb205-1"><a href="tutorial.html#cb205-1"></a>cv_total<span class="sc">$</span>health[cv_total<span class="sc">$</span>health <span class="sc">==</span> <span class="st">&quot;Weigert&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb205-2"><a href="tutorial.html#cb205-2"></a>cv_total<span class="sc">$</span>healthn <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(cv_total<span class="sc">$</span>health) <span class="sc">-</span> <span class="dv">4</span></span>
-<span id="cb205-3"><a href="tutorial.html#cb205-3"></a><span class="fu">table</span>(cv_total<span class="sc">$</span>health, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span>
-<span id="cb205-4"><a href="tutorial.html#cb205-4"></a><span class="fu">table</span>(cv_total<span class="sc">$</span>healthn, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb206-1"><a href="tutorial.html#cb206-1"></a>cv_total<span class="sc">$</span>health[cv_total<span class="sc">$</span>health <span class="sc">==</span> <span class="st">&quot;Weigert&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb206-2"><a href="tutorial.html#cb206-2"></a>cv_total<span class="sc">$</span>healthn <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(cv_total<span class="sc">$</span>health) <span class="sc">-</span> <span class="dv">4</span></span>
+<span id="cb206-3"><a href="tutorial.html#cb206-3"></a><span class="fu">table</span>(cv_total<span class="sc">$</span>health, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span>
+<span id="cb206-4"><a href="tutorial.html#cb206-4"></a><span class="fu">table</span>(cv_total<span class="sc">$</span>healthn, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span></code></pre></div>
 <pre><code>#&gt; 
 #&gt;     Geen opgave          N.v.t.       Weet niet         Weigert      zeer goed,           goed, 
 #&gt;               0               0               0               0            1280            2652 
@@ -2568,8 +2582,8 @@ If you don’t know the difference between long and wide format, check the diffe
 </ul>
 <div id="option-1-listwise-deletion" class="section level4" number="12.12.1.1">
 <h4><span class="header-section-number">A.12.1.1</span> Option 1: listwise deletion</h4>
-<div class="sourceCode" id="cb207"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb207-1"><a href="tutorial.html#cb207-1"></a><span class="co"># step1 define all missings</span></span>
-<span id="cb207-2"><a href="tutorial.html#cb207-2"></a><span class="fu">summary</span>(cv_total)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb208-1"><a href="tutorial.html#cb208-1"></a><span class="co"># step 1. define all missings</span></span>
+<span id="cb208-2"><a href="tutorial.html#cb208-2"></a><span class="fu">summary</span>(cv_total)</span></code></pre></div>
 <pre><code>#&gt;                      region           id                id2            age             men       
 #&gt;  Postcode (nog) onbekend:   0   Min.   :20131231   Min.   :   1   Min.   :16.00   Min.   :0.000  
 #&gt;  Noord-Nederland        : 526   1st Qu.:20132456   1st Qu.: 613   1st Qu.:33.00   1st Qu.:0.000  
@@ -2586,8 +2600,8 @@ If you don’t know the difference between long and wide format, check the diffe
 #&gt;  3rd Qu.:3.000   of zeer slecht?:  34   3rd Qu.:2010   3rd Qu.:48.04   3rd Qu.:2.00  
 #&gt;  Max.   :3.000   (Other)        :   0   Max.   :2010   Max.   :48.52   Max.   :5.00  
 #&gt;  NA&#39;s   :8       NA&#39;s           :   1                                  NA&#39;s   :1</code></pre>
-<div class="sourceCode" id="cb209"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb209-1"><a href="tutorial.html#cb209-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.numeric</span>(healthn) <span class="sc">~</span> men <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">as.factor</span>(educ3) <span class="sc">+</span> <span class="fu">as.factor</span>(region), <span class="at">data =</span> cv_total)</span>
-<span id="cb209-2"><a href="tutorial.html#cb209-2"></a><span class="fu">summary</span>(model2)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb210-1"><a href="tutorial.html#cb210-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.numeric</span>(healthn) <span class="sc">~</span> men <span class="sc">+</span> age <span class="sc">+</span> <span class="fu">as.factor</span>(educ3) <span class="sc">+</span> <span class="fu">as.factor</span>(region), <span class="at">data =</span> cv_total)</span>
+<span id="cb210-2"><a href="tutorial.html#cb210-2"></a><span class="fu">summary</span>(model2)</span></code></pre></div>
 <pre><code>#&gt; 
 #&gt; Call:
 #&gt; lm(formula = as.numeric(healthn) ~ men + age + as.factor(educ3) + 
@@ -2621,21 +2635,21 @@ If you don’t know the difference between long and wide format, check the diffe
 <p>Don’t replace missings on dependent variable.<br />
 For categorical variables add category missing.
 For continues/metric variables replace missing with mean value.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb211-1"><a href="tutorial.html#cb211-1"></a>cv_total<span class="sc">$</span>men2 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(cv_total<span class="sc">$</span>men), <span class="dv">2</span>, cv_total<span class="sc">$</span>men)</span>
-<span id="cb211-2"><a href="tutorial.html#cb211-2"></a><span class="fu">summary</span>(cv_total<span class="sc">$</span>men2)</span>
-<span id="cb211-3"><a href="tutorial.html#cb211-3"></a></span>
-<span id="cb211-4"><a href="tutorial.html#cb211-4"></a>cv_total<span class="sc">$</span>educ3b <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(cv_total<span class="sc">$</span>educ3), <span class="dv">4</span>, cv_total<span class="sc">$</span>educ3)</span>
-<span id="cb211-5"><a href="tutorial.html#cb211-5"></a><span class="fu">summary</span>(cv_total<span class="sc">$</span>educ3b)</span>
-<span id="cb211-6"><a href="tutorial.html#cb211-6"></a></span>
-<span id="cb211-7"><a href="tutorial.html#cb211-7"></a>cv_total<span class="sc">$</span>age2 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(cv_total<span class="sc">$</span>age), <span class="fu">mean</span>(cv_total<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), cv_total<span class="sc">$</span>age)</span>
-<span id="cb211-8"><a href="tutorial.html#cb211-8"></a><span class="co"># And lets make a dummy that indicates for whom we replaced missing values.</span></span>
-<span id="cb211-9"><a href="tutorial.html#cb211-9"></a>cv_total<span class="sc">$</span>age_mis <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(cv_total<span class="sc">$</span>age), <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb211-10"><a href="tutorial.html#cb211-10"></a><span class="fu">summary</span>(cv_total<span class="sc">$</span>age2)</span>
-<span id="cb211-11"><a href="tutorial.html#cb211-11"></a><span class="fu">table</span>(cv_total<span class="sc">$</span>age_mis)</span>
-<span id="cb211-12"><a href="tutorial.html#cb211-12"></a></span>
-<span id="cb211-13"><a href="tutorial.html#cb211-13"></a><span class="co"># pay attention, now use categorical variable men2</span></span>
-<span id="cb211-14"><a href="tutorial.html#cb211-14"></a>model3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(healthn <span class="sc">~</span> <span class="fu">as.factor</span>(men2) <span class="sc">+</span> age2 <span class="sc">+</span> age_mis <span class="sc">+</span> <span class="fu">as.factor</span>(educ3b) <span class="sc">+</span> <span class="fu">as.factor</span>(region), <span class="at">data =</span> cv_total)</span>
-<span id="cb211-15"><a href="tutorial.html#cb211-15"></a><span class="fu">summary</span>(model3)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb212-1"><a href="tutorial.html#cb212-1"></a>cv_total<span class="sc">$</span>men2 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(cv_total<span class="sc">$</span>men), <span class="dv">2</span>, cv_total<span class="sc">$</span>men)</span>
+<span id="cb212-2"><a href="tutorial.html#cb212-2"></a><span class="fu">summary</span>(cv_total<span class="sc">$</span>men2)</span>
+<span id="cb212-3"><a href="tutorial.html#cb212-3"></a></span>
+<span id="cb212-4"><a href="tutorial.html#cb212-4"></a>cv_total<span class="sc">$</span>educ3b <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(cv_total<span class="sc">$</span>educ3), <span class="dv">4</span>, cv_total<span class="sc">$</span>educ3)</span>
+<span id="cb212-5"><a href="tutorial.html#cb212-5"></a><span class="fu">summary</span>(cv_total<span class="sc">$</span>educ3b)</span>
+<span id="cb212-6"><a href="tutorial.html#cb212-6"></a></span>
+<span id="cb212-7"><a href="tutorial.html#cb212-7"></a>cv_total<span class="sc">$</span>age2 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(cv_total<span class="sc">$</span>age), <span class="fu">mean</span>(cv_total<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), cv_total<span class="sc">$</span>age)</span>
+<span id="cb212-8"><a href="tutorial.html#cb212-8"></a><span class="co"># And lets make a dummy that indicates for whom we replaced missing values.</span></span>
+<span id="cb212-9"><a href="tutorial.html#cb212-9"></a>cv_total<span class="sc">$</span>age_mis <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(cv_total<span class="sc">$</span>age), <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb212-10"><a href="tutorial.html#cb212-10"></a><span class="fu">summary</span>(cv_total<span class="sc">$</span>age2)</span>
+<span id="cb212-11"><a href="tutorial.html#cb212-11"></a><span class="fu">table</span>(cv_total<span class="sc">$</span>age_mis)</span>
+<span id="cb212-12"><a href="tutorial.html#cb212-12"></a></span>
+<span id="cb212-13"><a href="tutorial.html#cb212-13"></a><span class="co"># pay attention, now use categorical variable men2</span></span>
+<span id="cb212-14"><a href="tutorial.html#cb212-14"></a>model3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(healthn <span class="sc">~</span> <span class="fu">as.factor</span>(men2) <span class="sc">+</span> age2 <span class="sc">+</span> age_mis <span class="sc">+</span> <span class="fu">as.factor</span>(educ3b) <span class="sc">+</span> <span class="fu">as.factor</span>(region), <span class="at">data =</span> cv_total)</span>
+<span id="cb212-15"><a href="tutorial.html#cb212-15"></a><span class="fu">summary</span>(model3)</span></code></pre></div>
 <pre><code>#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 #&gt;  0.0000  0.0000  0.0000  0.4981  1.0000  2.0000 
 #&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -2677,56 +2691,56 @@ For continues/metric variables replace missing with mean value.</p>
 </div>
 <div id="option-3-impute-missing-values" class="section level4" number="12.12.1.3">
 <h4><span class="header-section-number">A.12.1.3</span> Option 3: impute missing values</h4>
-<p>We will use the R package mice (<span class="citation"><a href="#ref-mice" role="doc-biblioref">van Buuren and Groothuis-Oudshoorn</a> (<a href="#ref-mice" role="doc-biblioref">2011</a>)</span>).</p>
+<p>We will use the R package <span class="citation"><a href="#ref-mice" role="doc-biblioref">van Buuren and Groothuis-Oudshoorn</a> (<a href="#ref-mice" role="doc-biblioref">2011</a>)</span>.</p>
 <p>For theory please see:<br />
 * <a href="https://stefvanbuuren.name/Winnipeg">https://stefvanbuuren.name/Winnipeg</a><br />
 * <a href="https://stefvanbuuren.name/Winnipeg/Lectures/Winnipeg.pdf">https://stefvanbuuren.name/Winnipeg/Lectures/Winnipeg.pdf</a><br />
 * For great reading see: <a href="https://bookdown.org/mwheymans/bookmi/">https://bookdown.org/mwheymans/bookmi/</a></p>
 <p>Read the literature, lectures and have a look at all vignettes of the package mice (here). This is not basic stuff!</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb213-1"><a href="tutorial.html#cb213-1"></a><span class="co"># lets start with the original dataset, that is without replacement of the missings</span></span>
-<span id="cb213-2"><a href="tutorial.html#cb213-2"></a>cv_total <span class="ot">&lt;-</span> cv_total[, <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;id2&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;men&quot;</span>, <span class="st">&quot;educ3&quot;</span>, <span class="st">&quot;health&quot;</span>, <span class="st">&quot;region&quot;</span>, <span class="st">&quot;wave&quot;</span>)]</span>
-<span id="cb213-3"><a href="tutorial.html#cb213-3"></a><span class="co"># define all missings only for health needs to be redefined</span></span>
-<span id="cb213-4"><a href="tutorial.html#cb213-4"></a>cv_total<span class="sc">$</span>health[cv_total<span class="sc">$</span>health <span class="sc">==</span> <span class="st">&quot;Weigert&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb213-5"><a href="tutorial.html#cb213-5"></a>cv_total<span class="sc">$</span>health <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(cv_total<span class="sc">$</span>health) <span class="sc">-</span> <span class="dv">4</span></span>
-<span id="cb213-6"><a href="tutorial.html#cb213-6"></a></span>
-<span id="cb213-7"><a href="tutorial.html#cb213-7"></a><span class="co"># multiple imputation take into account measurement level of variables</span></span>
-<span id="cb213-8"><a href="tutorial.html#cb213-8"></a>cv_total<span class="sc">$</span>men <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(cv_total<span class="sc">$</span>men)</span>
-<span id="cb213-9"><a href="tutorial.html#cb213-9"></a>cv_total<span class="sc">$</span>educ3 <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(cv_total<span class="sc">$</span>educ3)</span>
-<span id="cb213-10"><a href="tutorial.html#cb213-10"></a></span>
-<span id="cb213-11"><a href="tutorial.html#cb213-11"></a><span class="co"># check pattern</span></span>
-<span id="cb213-12"><a href="tutorial.html#cb213-12"></a><span class="fu">md.pattern</span>(cv_total)</span></code></pre></div>
-<p><img src="06-Tutorial-CSR_files/figure-html/mice-1.png" width="672" /></p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb214-1"><a href="tutorial.html#cb214-1"></a><span class="co"># we do not have real patterns. thus MCAR. This is only seldom the case!!</span></span>
-<span id="cb214-2"><a href="tutorial.html#cb214-2"></a></span>
-<span id="cb214-3"><a href="tutorial.html#cb214-3"></a><span class="co"># lets impute</span></span>
-<span id="cb214-4"><a href="tutorial.html#cb214-4"></a><span class="fu">names</span>(cv_total)</span>
-<span id="cb214-5"><a href="tutorial.html#cb214-5"></a></span>
-<span id="cb214-6"><a href="tutorial.html#cb214-6"></a><span class="co"># We do not want to use id id2 and wave to predict the other variables thus we need to tell mice in</span></span>
-<span id="cb214-7"><a href="tutorial.html#cb214-7"></a><span class="co"># the predictorMatrix argument. Easiest way is to first estimate and then correct.</span></span>
-<span id="cb214-8"><a href="tutorial.html#cb214-8"></a></span>
-<span id="cb214-9"><a href="tutorial.html#cb214-9"></a>imp <span class="ot">&lt;-</span> <span class="fu">mice</span>(<span class="at">data =</span> cv_total, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;cart&quot;</span>, <span class="st">&quot;logreg&quot;</span>, <span class="st">&quot;polr&quot;</span>, <span class="st">&quot;cart&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>))</span>
-<span id="cb214-10"><a href="tutorial.html#cb214-10"></a><span class="fu">attributes</span>(imp)</span>
-<span id="cb214-11"><a href="tutorial.html#cb214-11"></a>pred <span class="ot">&lt;-</span> imp<span class="sc">$</span>pred</span>
-<span id="cb214-12"><a href="tutorial.html#cb214-12"></a>pred[, <span class="st">&quot;id&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb214-13"><a href="tutorial.html#cb214-13"></a>pred[, <span class="st">&quot;id2&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb214-14"><a href="tutorial.html#cb214-14"></a>pred[, <span class="st">&quot;wave&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb214-15"><a href="tutorial.html#cb214-15"></a>pred</span>
-<span id="cb214-16"><a href="tutorial.html#cb214-16"></a></span>
-<span id="cb214-17"><a href="tutorial.html#cb214-17"></a><span class="co"># let us also use a seed, so we have the same data in class.</span></span>
-<span id="cb214-18"><a href="tutorial.html#cb214-18"></a>imp <span class="ot">&lt;-</span> <span class="fu">mice</span>(<span class="at">data =</span> cv_total, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;cart&quot;</span>, <span class="st">&quot;logreg&quot;</span>, <span class="st">&quot;polr&quot;</span>, <span class="st">&quot;cart&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>), <span class="at">pred =</span> pred,</span>
-<span id="cb214-19"><a href="tutorial.html#cb214-19"></a>    <span class="at">seed =</span> <span class="dv">45622</span>)</span>
-<span id="cb214-20"><a href="tutorial.html#cb214-20"></a></span>
-<span id="cb214-21"><a href="tutorial.html#cb214-21"></a><span class="fu">summary</span>(cv_total)</span>
-<span id="cb214-22"><a href="tutorial.html#cb214-22"></a><span class="fu">summary</span>(<span class="fu">complete</span>(imp))</span>
-<span id="cb214-23"><a href="tutorial.html#cb214-23"></a></span>
-<span id="cb214-24"><a href="tutorial.html#cb214-24"></a><span class="fu">plot</span>(imp)</span></code></pre></div>
-<p><img src="06-Tutorial-CSR_files/figure-html/mice-2.png" width="672" /><img src="06-Tutorial-CSR_files/figure-html/mice-3.png" width="672" /></p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb215-1"><a href="tutorial.html#cb215-1"></a><span class="co"># in real life: check convergence, check plausible values. see vignette 2 of mice package</span></span>
+<div class="sourceCode" id="cb214"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb214-1"><a href="tutorial.html#cb214-1"></a><span class="co"># lets start with the original dataset, that is without replacement of the missings</span></span>
+<span id="cb214-2"><a href="tutorial.html#cb214-2"></a>cv_total <span class="ot">&lt;-</span> cv_total[, <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;id2&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;men&quot;</span>, <span class="st">&quot;educ3&quot;</span>, <span class="st">&quot;health&quot;</span>, <span class="st">&quot;region&quot;</span>, <span class="st">&quot;wave&quot;</span>)]</span>
+<span id="cb214-3"><a href="tutorial.html#cb214-3"></a><span class="co"># define all missings only for health needs to be redefined</span></span>
+<span id="cb214-4"><a href="tutorial.html#cb214-4"></a>cv_total<span class="sc">$</span>health[cv_total<span class="sc">$</span>health <span class="sc">==</span> <span class="st">&quot;Weigert&quot;</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb214-5"><a href="tutorial.html#cb214-5"></a>cv_total<span class="sc">$</span>health <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(cv_total<span class="sc">$</span>health) <span class="sc">-</span> <span class="dv">4</span></span>
+<span id="cb214-6"><a href="tutorial.html#cb214-6"></a></span>
+<span id="cb214-7"><a href="tutorial.html#cb214-7"></a><span class="co"># multiple imputation take into account measurement level of variables</span></span>
+<span id="cb214-8"><a href="tutorial.html#cb214-8"></a>cv_total<span class="sc">$</span>men <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(cv_total<span class="sc">$</span>men)</span>
+<span id="cb214-9"><a href="tutorial.html#cb214-9"></a>cv_total<span class="sc">$</span>educ3 <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(cv_total<span class="sc">$</span>educ3)</span>
+<span id="cb214-10"><a href="tutorial.html#cb214-10"></a></span>
+<span id="cb214-11"><a href="tutorial.html#cb214-11"></a><span class="co"># check pattern</span></span>
+<span id="cb214-12"><a href="tutorial.html#cb214-12"></a><span class="fu">md.pattern</span>(cv_total)</span></code></pre></div>
+<p><img src="06-Tutorial-CSR_files/figure-html/micebase-1.png" width="672" /></p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb215-1"><a href="tutorial.html#cb215-1"></a><span class="co"># we do not have real patterns. thus MCAR. This is only seldom the case!!</span></span>
 <span id="cb215-2"><a href="tutorial.html#cb215-2"></a></span>
-<span id="cb215-3"><a href="tutorial.html#cb215-3"></a><span class="co"># and fit model on imputed dataset</span></span>
-<span id="cb215-4"><a href="tutorial.html#cb215-4"></a>model_imp <span class="ot">&lt;-</span> <span class="fu">with</span>(imp, <span class="fu">lm</span>(<span class="fu">as.numeric</span>(health) <span class="sc">~</span> men <span class="sc">+</span> age <span class="sc">+</span> educ3 <span class="sc">+</span> region))</span>
-<span id="cb215-5"><a href="tutorial.html#cb215-5"></a>pool_model_imp <span class="ot">&lt;-</span> <span class="fu">pool</span>(model_imp)</span>
-<span id="cb215-6"><a href="tutorial.html#cb215-6"></a><span class="fu">summary</span>(pool_model_imp)</span></code></pre></div>
+<span id="cb215-3"><a href="tutorial.html#cb215-3"></a><span class="co"># lets impute</span></span>
+<span id="cb215-4"><a href="tutorial.html#cb215-4"></a><span class="fu">names</span>(cv_total)</span>
+<span id="cb215-5"><a href="tutorial.html#cb215-5"></a></span>
+<span id="cb215-6"><a href="tutorial.html#cb215-6"></a><span class="co"># We do not want to use id id2 and wave to predict the other variables thus we need to tell mice in</span></span>
+<span id="cb215-7"><a href="tutorial.html#cb215-7"></a><span class="co"># the predictorMatrix argument. Easiest way is to first estimate and then correct.</span></span>
+<span id="cb215-8"><a href="tutorial.html#cb215-8"></a></span>
+<span id="cb215-9"><a href="tutorial.html#cb215-9"></a>imp <span class="ot">&lt;-</span> <span class="fu">mice</span>(<span class="at">data =</span> cv_total, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;cart&quot;</span>, <span class="st">&quot;logreg&quot;</span>, <span class="st">&quot;polr&quot;</span>, <span class="st">&quot;cart&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>))</span>
+<span id="cb215-10"><a href="tutorial.html#cb215-10"></a><span class="fu">attributes</span>(imp)</span>
+<span id="cb215-11"><a href="tutorial.html#cb215-11"></a>pred <span class="ot">&lt;-</span> imp<span class="sc">$</span>pred</span>
+<span id="cb215-12"><a href="tutorial.html#cb215-12"></a>pred[, <span class="st">&quot;id&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb215-13"><a href="tutorial.html#cb215-13"></a>pred[, <span class="st">&quot;id2&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb215-14"><a href="tutorial.html#cb215-14"></a>pred[, <span class="st">&quot;wave&quot;</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb215-15"><a href="tutorial.html#cb215-15"></a>pred</span>
+<span id="cb215-16"><a href="tutorial.html#cb215-16"></a></span>
+<span id="cb215-17"><a href="tutorial.html#cb215-17"></a><span class="co"># let us also use a seed, so we have the same data in class.</span></span>
+<span id="cb215-18"><a href="tutorial.html#cb215-18"></a>imp <span class="ot">&lt;-</span> <span class="fu">mice</span>(<span class="at">data =</span> cv_total, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;cart&quot;</span>, <span class="st">&quot;logreg&quot;</span>, <span class="st">&quot;polr&quot;</span>, <span class="st">&quot;cart&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>), <span class="at">pred =</span> pred,</span>
+<span id="cb215-19"><a href="tutorial.html#cb215-19"></a>    <span class="at">seed =</span> <span class="dv">45622</span>)</span>
+<span id="cb215-20"><a href="tutorial.html#cb215-20"></a></span>
+<span id="cb215-21"><a href="tutorial.html#cb215-21"></a><span class="fu">summary</span>(cv_total)</span>
+<span id="cb215-22"><a href="tutorial.html#cb215-22"></a><span class="fu">summary</span>(<span class="fu">complete</span>(imp))</span>
+<span id="cb215-23"><a href="tutorial.html#cb215-23"></a></span>
+<span id="cb215-24"><a href="tutorial.html#cb215-24"></a><span class="fu">plot</span>(imp)</span></code></pre></div>
+<p><img src="06-Tutorial-CSR_files/figure-html/micebase-2.png" width="672" /><img src="06-Tutorial-CSR_files/figure-html/micebase-3.png" width="672" /></p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb216-1"><a href="tutorial.html#cb216-1"></a><span class="co"># in real life: check convergence, check plausible values. see vignette 2 of mice package</span></span>
+<span id="cb216-2"><a href="tutorial.html#cb216-2"></a></span>
+<span id="cb216-3"><a href="tutorial.html#cb216-3"></a><span class="co"># and fit model on imputed dataset</span></span>
+<span id="cb216-4"><a href="tutorial.html#cb216-4"></a>model_imp <span class="ot">&lt;-</span> <span class="fu">with</span>(imp, <span class="fu">lm</span>(<span class="fu">as.numeric</span>(health) <span class="sc">~</span> men <span class="sc">+</span> age <span class="sc">+</span> educ3 <span class="sc">+</span> region))</span>
+<span id="cb216-5"><a href="tutorial.html#cb216-5"></a>pool_model_imp <span class="ot">&lt;-</span> <span class="fu">pool</span>(model_imp)</span>
+<span id="cb216-6"><a href="tutorial.html#cb216-6"></a><span class="fu">summary</span>(pool_model_imp)</span></code></pre></div>
 <pre><code>#&gt;      id id2 region wave health age educ3 men   
 #&gt; 4876  1   1      1    1      1   1     1   1  0
 #&gt; 10    1   1      1    1      1   1     1   0  1
@@ -2849,9 +2863,164 @@ For continues/metric variables replace missing with mean value.</p>
 #&gt; 8 regionZuid-Nederland  0.01582036 0.0387973170  0.4077694 4888.453 6.834609e-01</code></pre>
 </div>
 </div>
-<div id="mistidy" class="section level3" number="12.12.2">
+<div id="tidy-5" class="section level3" number="12.12.2">
 <h3><span class="header-section-number">A.12.2</span> Tidy</h3>
-<p>** TO DO **</p>
+<p>Suppose you want to estimate the following model:</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb218-1"><a href="tutorial.html#cb218-1"></a>model1 <span class="ot">&lt;-</span> cv_total_tidy <span class="sc">%&gt;%</span></span>
+<span id="cb218-2"><a href="tutorial.html#cb218-2"></a>    <span class="fu">mutate</span>(<span class="at">healthn =</span> <span class="fu">as.numeric</span>(health), <span class="fu">across</span>(<span class="fu">c</span>(educ3, region), as.factor)) <span class="sc">%&gt;%</span></span>
+<span id="cb218-3"><a href="tutorial.html#cb218-3"></a>    <span class="fu">lm</span>(<span class="at">formula =</span> healthn <span class="sc">~</span> men <span class="sc">+</span> age <span class="sc">+</span> educ3 <span class="sc">+</span> region) <span class="sc">%&gt;%</span></span>
+<span id="cb218-4"><a href="tutorial.html#cb218-4"></a>    <span class="fu">summary</span>()</span>
+<span id="cb218-5"><a href="tutorial.html#cb218-5"></a><span class="co"># the across function from the Dplyr package is similar to the apply function (if MARGIN = 2) from</span></span>
+<span id="cb218-6"><a href="tutorial.html#cb218-6"></a><span class="co"># base R. it performs the same operation on multiple columns (or, if you have groups, for each</span></span>
+<span id="cb218-7"><a href="tutorial.html#cb218-7"></a><span class="co"># combination of columns and groups).</span></span>
+<span id="cb218-8"><a href="tutorial.html#cb218-8"></a></span>
+<span id="cb218-9"><a href="tutorial.html#cb218-9"></a><span class="co"># lm is not a &#39;pipe friendly&#39; function because the data is provided in the second argument, while</span></span>
+<span id="cb218-10"><a href="tutorial.html#cb218-10"></a><span class="co"># the pipe operator reads the data from the first unnamed(!) argument that follows the %&gt;%. by</span></span>
+<span id="cb218-11"><a href="tutorial.html#cb218-11"></a><span class="co"># naming the first argument, the pipe will take data from the second argument, which is (in this</span></span>
+<span id="cb218-12"><a href="tutorial.html#cb218-12"></a><span class="co"># case) the correct data argument.</span></span>
+<span id="cb218-13"><a href="tutorial.html#cb218-13"></a></span>
+<span id="cb218-14"><a href="tutorial.html#cb218-14"></a>model1</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = healthn ~ men + age + educ3 + region, data = .)
+#&gt; 
+#&gt; Residuals:
+#&gt;     Min      1Q  Median      3Q     Max 
+#&gt; -3.8116 -0.6047  0.0148  0.3307  3.1987 
+#&gt; 
+#&gt; Coefficients:
+#&gt;                  Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)     1.6653869  0.0514844  32.347  &lt; 2e-16 ***
+#&gt; men            -0.0645195  0.0211756  -3.047  0.00232 ** 
+#&gt; age             0.0114940  0.0005866  19.594  &lt; 2e-16 ***
+#&gt; educ3secondary -0.1804942  0.0293612  -6.147 8.51e-10 ***
+#&gt; educ3tertiary  -0.3212901  0.0331382  -9.695  &lt; 2e-16 ***
+#&gt; region2        -0.0513877  0.0392212  -1.310  0.19019    
+#&gt; region3        -0.0138878  0.0360443  -0.385  0.70003    
+#&gt; region4         0.0148341  0.0388569   0.382  0.70265    
+#&gt; ---
+#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+#&gt; 
+#&gt; Residual standard error: 0.738 on 4869 degrees of freedom
+#&gt;   (22 observations deleted due to missingness)
+#&gt; Multiple R-squared:  0.1007, Adjusted R-squared:  0.09939 
+#&gt; F-statistic: 77.87 on 7 and 4869 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Whoops, tidy also includes th “weigert” observation for the <code>health</code> variable. Let us correct.</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb220-1"><a href="tutorial.html#cb220-1"></a><span class="co"># step 1. define all missings</span></span>
+<span id="cb220-2"><a href="tutorial.html#cb220-2"></a></span>
+<span id="cb220-3"><a href="tutorial.html#cb220-3"></a>cv_total_tidy <span class="ot">&lt;-</span> cv_total_tidy <span class="sc">%&gt;%</span></span>
+<span id="cb220-4"><a href="tutorial.html#cb220-4"></a>    <span class="fu">mutate</span>(<span class="at">health =</span> <span class="fu">na_if</span>(health, <span class="sc">-</span><span class="dv">2</span>), <span class="at">healthn =</span> <span class="fu">as.numeric</span>(health) <span class="sc">-</span> <span class="dv">4</span>)</span></code></pre></div>
+<div id="option-1-listwise-deletion-1" class="section level4" number="12.12.2.1">
+<h4><span class="header-section-number">A.12.2.1</span> Option 1: listwise deletion</h4>
+<div class="sourceCode" id="cb221"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb221-1"><a href="tutorial.html#cb221-1"></a>model2 <span class="ot">&lt;-</span> cv_total_tidy <span class="sc">%&gt;%</span></span>
+<span id="cb221-2"><a href="tutorial.html#cb221-2"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(educ3, region), as.factor)) <span class="sc">%&gt;%</span></span>
+<span id="cb221-3"><a href="tutorial.html#cb221-3"></a>    <span class="fu">lm</span>(<span class="at">formula =</span> healthn <span class="sc">~</span> men <span class="sc">+</span> age <span class="sc">+</span> educ3 <span class="sc">+</span> region) <span class="sc">%&gt;%</span></span>
+<span id="cb221-4"><a href="tutorial.html#cb221-4"></a>    <span class="fu">summary</span>()</span>
+<span id="cb221-5"><a href="tutorial.html#cb221-5"></a></span>
+<span id="cb221-6"><a href="tutorial.html#cb221-6"></a>model2</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = healthn ~ men + age + educ3 + region, data = .)
+#&gt; 
+#&gt; Residuals:
+#&gt;     Min      1Q  Median      3Q     Max 
+#&gt; -1.6468 -0.6067  0.0159  0.3293  3.2001 
+#&gt; 
+#&gt; Coefficients:
+#&gt;                 Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept)    -2.335748   0.051349 -45.488  &lt; 2e-16 ***
+#&gt; men            -0.063146   0.021121  -2.990  0.00281 ** 
+#&gt; age             0.011489   0.000585  19.638  &lt; 2e-16 ***
+#&gt; educ3secondary -0.180538   0.029284  -6.165 7.61e-10 ***
+#&gt; educ3tertiary  -0.318222   0.033056  -9.627  &lt; 2e-16 ***
+#&gt; region2        -0.051467   0.039117  -1.316  0.18833    
+#&gt; region3        -0.014097   0.035949  -0.392  0.69497    
+#&gt; region4         0.018132   0.038759   0.468  0.63994    
+#&gt; ---
+#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+#&gt; 
+#&gt; Residual standard error: 0.7361 on 4868 degrees of freedom
+#&gt;   (23 observations deleted due to missingness)
+#&gt; Multiple R-squared:  0.1008, Adjusted R-squared:  0.0995 
+#&gt; F-statistic: 77.95 on 7 and 4868 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="option-2-replacing-missing-values.-1" class="section level4" number="12.12.2.2">
+<h4><span class="header-section-number">A.12.2.2</span> Option 2: replacing missing values.</h4>
+<p>Besides the <code>ifelse()</code> command, you can use <code>replace_na</code> from the Tidyr package (part of the tidyverse), which, you might have guessed from the name, enables you to replace NAs with specified values.<br />
+However, using <code>replace_na</code> will return an error if the variable is a factor and requires conversion to numeric-type values. We’ll still use <code>ifelse()</code> to create the dummy <code>age_mis</code>.</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb223-1"><a href="tutorial.html#cb223-1"></a><span class="co"># with the first mutate argument you avoid repeating as.numeric() for each variable.</span></span>
+<span id="cb223-2"><a href="tutorial.html#cb223-2"></a>cv_total_tidy2 <span class="ot">&lt;-</span> cv_total_tidy <span class="sc">%&gt;%</span></span>
+<span id="cb223-3"><a href="tutorial.html#cb223-3"></a>    <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), as.numeric), <span class="at">men2 =</span> <span class="fu">replace_na</span>(men, <span class="dv">2</span>), <span class="at">educ3b =</span> <span class="fu">replace_na</span>(educ3, <span class="dv">4</span>),</span>
+<span id="cb223-4"><a href="tutorial.html#cb223-4"></a>        <span class="at">age2 =</span> <span class="fu">replace_na</span>(age, <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)), <span class="at">age_mis =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(age), <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb223-5"><a href="tutorial.html#cb223-5"></a></span>
+<span id="cb223-6"><a href="tutorial.html#cb223-6"></a><span class="co"># note: the following two commands are equivalent: mutate(across(everything(), as.numeric))</span></span>
+<span id="cb223-7"><a href="tutorial.html#cb223-7"></a><span class="co"># mutate_all(as.numeric) the next two as well: mutate_at(c(&#39;men2&#39;, &#39;educ3b&#39;, &#39;region&#39;), as.factor)</span></span>
+<span id="cb223-8"><a href="tutorial.html#cb223-8"></a><span class="co"># mutate(across(c(men2, educ3b, region), as.factor))</span></span>
+<span id="cb223-9"><a href="tutorial.html#cb223-9"></a></span>
+<span id="cb223-10"><a href="tutorial.html#cb223-10"></a><span class="co"># pay attention, now use categorical variable men2.</span></span>
+<span id="cb223-11"><a href="tutorial.html#cb223-11"></a>model3 <span class="ot">&lt;-</span> cv_total_tidy2 <span class="sc">%&gt;%</span></span>
+<span id="cb223-12"><a href="tutorial.html#cb223-12"></a>    <span class="fu">mutate_at</span>(<span class="fu">c</span>(<span class="st">&quot;men2&quot;</span>, <span class="st">&quot;educ3b&quot;</span>, <span class="st">&quot;region&quot;</span>), as.factor) <span class="sc">%&gt;%</span></span>
+<span id="cb223-13"><a href="tutorial.html#cb223-13"></a>    <span class="fu">lm</span>(<span class="at">formula =</span> healthn <span class="sc">~</span> men2 <span class="sc">+</span> age2 <span class="sc">+</span> age_mis <span class="sc">+</span> educ3b <span class="sc">+</span> region) <span class="sc">%&gt;%</span></span>
+<span id="cb223-14"><a href="tutorial.html#cb223-14"></a>    <span class="fu">summary</span>()</span>
+<span id="cb223-15"><a href="tutorial.html#cb223-15"></a></span>
+<span id="cb223-16"><a href="tutorial.html#cb223-16"></a>model3</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = healthn ~ men2 + age2 + age_mis + educ3b + region, 
+#&gt;     data = .)
+#&gt; 
+#&gt; Residuals:
+#&gt;     Min      1Q  Median      3Q     Max 
+#&gt; -1.6410 -0.6085  0.0151  0.3288  3.1980 
+#&gt; 
+#&gt; Coefficients:
+#&gt;               Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept) -2.3353427  0.0513786 -45.454  &lt; 2e-16 ***
+#&gt; men21       -0.0663976  0.0211427  -3.140   0.0017 ** 
+#&gt; men22       -0.2774981  0.2339830  -1.186   0.2357    
+#&gt; age2         0.0114325  0.0005846  19.554  &lt; 2e-16 ***
+#&gt; age_mis      0.1075306  0.3695905   0.291   0.7711    
+#&gt; educ3b2     -0.1758631  0.0292885  -6.005 2.06e-09 ***
+#&gt; educ3b3     -0.3139584  0.0330785  -9.491  &lt; 2e-16 ***
+#&gt; educ3b4     -0.3938024  0.2620934  -1.503   0.1330    
+#&gt; region2     -0.0526057  0.0391619  -1.343   0.1792    
+#&gt; region3     -0.0132167  0.0359911  -0.367   0.7135    
+#&gt; region4      0.0183776  0.0388022   0.474   0.6358    
+#&gt; ---
+#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+#&gt; 
+#&gt; Residual standard error: 0.7377 on 4887 degrees of freedom
+#&gt;   (1 observation deleted due to missingness)
+#&gt; Multiple R-squared:  0.09964,    Adjusted R-squared:  0.0978 
+#&gt; F-statistic: 54.08 on 10 and 4887 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="option-3-impute-missing-values-1" class="section level4" number="12.12.2.3">
+<h4><span class="header-section-number">A.12.2.3</span> Option 3: impute missing values</h4>
+<!---something goes wrong with df. chunks work but build fails!--->
+<div class="sourceCode" id="cb225"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb225-1"><a href="tutorial.html#cb225-1"></a>  pred <span class="ot">&lt;-</span> cv_total_tidy  <span class="sc">%&gt;%</span></span>
+<span id="cb225-2"><a href="tutorial.html#cb225-2"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;id2&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;men&quot;</span>, <span class="st">&quot;educ3&quot;</span>, <span class="st">&quot;health&quot;</span>, <span class="st">&quot;region&quot;</span>, <span class="st">&quot;wave&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co">#start with the original variables.</span></span>
+<span id="cb225-3"><a href="tutorial.html#cb225-3"></a>  <span class="fu">mutate_all</span>(as.numeric)  <span class="sc">%&gt;%</span></span>
+<span id="cb225-4"><a href="tutorial.html#cb225-4"></a>  <span class="fu">mutate_at</span>(<span class="fu">c</span>(<span class="st">&quot;men&quot;</span>, <span class="st">&quot;educ3&quot;</span>), as.factor) <span class="sc">%&gt;%</span></span>
+<span id="cb225-5"><a href="tutorial.html#cb225-5"></a>  <span class="fu">mice</span>(<span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;cart&quot;</span>, <span class="st">&quot;logreg&quot;</span>, <span class="st">&quot;polr&quot;</span>, <span class="st">&quot;cart&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb225-6"><a href="tutorial.html#cb225-6"></a>  <span class="fu">unclass</span>() <span class="sc">%&gt;%</span> <span class="co">#The object returned from the mice function is of class &#39;mids,&#39; which dplyr&#39;s functions cannot handle. The unclass() function from base R solve this issue as it removes the class attribute and, in this case, returns a list that dplyr can handle.</span></span>
+<span id="cb225-7"><a href="tutorial.html#cb225-7"></a>  <span class="fu">pluck</span>(<span class="st">&quot;predictorMatrix&quot;</span>) <span class="sc">%&gt;%</span> <span class="co">#the pluck() function from the Purrr package (part of the tidyverse) is the user-friendly equivalent of `[[` in base R: `[[`(&quot;predictorMatrix&quot;), which enables you to extract a single element from the list we just created using unclass().</span></span>
+<span id="cb225-8"><a href="tutorial.html#cb225-8"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="co">#Because the mutate function (and its variations) are not build for lists, we need to coerce into a data frame (or Tibble)</span></span>
+<span id="cb225-9"><a href="tutorial.html#cb225-9"></a>  <span class="fu">mutate_at</span>(<span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;id2&quot;</span>, <span class="st">&quot;age&quot;</span>), <span class="fu">funs</span>(<span class="fu">recode</span>(<span class="dv">1</span>, <span class="dv">0</span>))) <span class="sc">%&gt;%</span> <span class="co">#To &#39;remove&#39; the columns id id2 and wave as predictors, we recode all their 1s to 0s using mutate_at() and recode().</span></span>
+<span id="cb225-10"><a href="tutorial.html#cb225-10"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb225-11"><a href="tutorial.html#cb225-11"></a></span>
+<span id="cb225-12"><a href="tutorial.html#cb225-12"></a></span>
+<span id="cb225-13"><a href="tutorial.html#cb225-13"></a><span class="co">#impute missings (again but now on correct predictors) and fit model on imputed dataset</span></span>
+<span id="cb225-14"><a href="tutorial.html#cb225-14"></a></span>
+<span id="cb225-15"><a href="tutorial.html#cb225-15"></a>model_imp <span class="ot">&lt;-</span> cv_total_tidy <span class="sc">%&gt;%</span></span>
+<span id="cb225-16"><a href="tutorial.html#cb225-16"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;id&quot;</span>,<span class="st">&quot;id2&quot;</span>,<span class="st">&quot;age&quot;</span>,<span class="st">&quot;men&quot;</span>,<span class="st">&quot;educ3&quot;</span>,<span class="st">&quot;health&quot;</span>,<span class="st">&quot;region&quot;</span>,<span class="st">&quot;wave&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb225-17"><a href="tutorial.html#cb225-17"></a>  <span class="fu">mutate_all</span>(as.numeric)  <span class="sc">%&gt;%</span></span>
+<span id="cb225-18"><a href="tutorial.html#cb225-18"></a>  <span class="fu">mutate_at</span>(<span class="fu">c</span>(<span class="st">&quot;men&quot;</span>, <span class="st">&quot;educ3&quot;</span>), as.factor) <span class="sc">%&gt;%</span></span>
+<span id="cb225-19"><a href="tutorial.html#cb225-19"></a>  <span class="fu">mice</span>(<span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;cart&quot;</span>, <span class="st">&quot;logreg&quot;</span>, <span class="st">&quot;polr&quot;</span>, <span class="st">&quot;cart&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>), <span class="at">pred =</span> pred, <span class="at">seed =</span> <span class="dv">45622</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb225-20"><a href="tutorial.html#cb225-20"></a>  <span class="fu">with</span>(<span class="fu">lm</span>(<span class="fu">as.numeric</span>(health) <span class="sc">~</span> men <span class="sc">+</span> age <span class="sc">+</span> educ3 <span class="sc">+</span> region)) <span class="sc">%&gt;%</span></span>
+<span id="cb225-21"><a href="tutorial.html#cb225-21"></a>  <span class="fu">pool</span>()</span>
+<span id="cb225-22"><a href="tutorial.html#cb225-22"></a></span>
+<span id="cb225-23"><a href="tutorial.html#cb225-23"></a><span class="fu">summary</span>(model_imp)</span></code></pre></div>
+</div>
 </div>
 </div>
 <div id="very-important-stuff" class="section level2" number="12.13">
@@ -2859,11 +3028,11 @@ For continues/metric variables replace missing with mean value.</p>
 <p>Below are some important topics you need to be familiar with if you want to enjoy R. The web is full of very good material/tutorials on these subjects, so I see no need to write them myself. However, if I have a strong opinion on something, I will let you know.</p>
 <div id="if-else" class="section level3" number="12.13.1">
 <h3><span class="header-section-number">A.13.1</span> if else</h3>
-<div class="sourceCode" id="cb217"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb217-1"><a href="tutorial.html#cb217-1"></a><span class="cf">if</span> (condition) {</span>
-<span id="cb217-2"><a href="tutorial.html#cb217-2"></a>    <span class="co"># code executed when condition is TRUE</span></span>
-<span id="cb217-3"><a href="tutorial.html#cb217-3"></a>} <span class="cf">else</span> {</span>
-<span id="cb217-4"><a href="tutorial.html#cb217-4"></a>    <span class="co"># code executed when condition is FALSE</span></span>
-<span id="cb217-5"><a href="tutorial.html#cb217-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb226-1"><a href="tutorial.html#cb226-1"></a><span class="cf">if</span> (condition) {</span>
+<span id="cb226-2"><a href="tutorial.html#cb226-2"></a>    <span class="co"># code executed when condition is TRUE</span></span>
+<span id="cb226-3"><a href="tutorial.html#cb226-3"></a>} <span class="cf">else</span> {</span>
+<span id="cb226-4"><a href="tutorial.html#cb226-4"></a>    <span class="co"># code executed when condition is FALSE</span></span>
+<span id="cb226-5"><a href="tutorial.html#cb226-5"></a>}</span></code></pre></div>
 <p>Useful links:<br />
 - <a href="https://r4ds.had.co.nz/functions.html?q=if%20statement#conditional-execution">r4ds</a><br />
 - <a href="https://adv-r.hadley.nz/control-flow.html?#choices">Advanced R</a></p>
@@ -2879,30 +3048,30 @@ For continues/metric variables replace missing with mean value.</p>
 <li>Be aware of missing values in the input.</li>
 </ul>
 <p>Thus not…</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb218-1"><a href="tutorial.html#cb218-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">897</span>,<span class="dv">23</span>, <span class="cn">NA</span>, <span class="dv">7</span>)</span>
-<span id="cb218-2"><a href="tutorial.html#cb218-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">6</span>,<span class="dv">98</span>,<span class="dv">1</span>,<span class="cn">NA</span>,<span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">7</span>)</span>
-<span id="cb218-3"><a href="tutorial.html#cb218-3"></a></span>
-<span id="cb218-4"><a href="tutorial.html#cb218-4"></a>output <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb218-5"><a href="tutorial.html#cb218-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
-<span id="cb218-6"><a href="tutorial.html#cb218-6"></a>output[i] <span class="ot">&lt;-</span> x[i] <span class="sc">+</span> y[i] }</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb227-1"><a href="tutorial.html#cb227-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">897</span>,<span class="dv">23</span>, <span class="cn">NA</span>, <span class="dv">7</span>)</span>
+<span id="cb227-2"><a href="tutorial.html#cb227-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">6</span>,<span class="dv">98</span>,<span class="dv">1</span>,<span class="cn">NA</span>,<span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">7</span>)</span>
+<span id="cb227-3"><a href="tutorial.html#cb227-3"></a></span>
+<span id="cb227-4"><a href="tutorial.html#cb227-4"></a>output <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb227-5"><a href="tutorial.html#cb227-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
+<span id="cb227-6"><a href="tutorial.html#cb227-6"></a>output[i] <span class="ot">&lt;-</span> x[i] <span class="sc">+</span> y[i] }</span></code></pre></div>
 <p>…if you want your output to be : <code>[1]  11  14  12 100   8 897  26  NA  14</code>.</p>
 <p>But:</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb219-1"><a href="tutorial.html#cb219-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">897</span>, <span class="dv">23</span>, <span class="cn">NA</span>, <span class="dv">7</span>)</span>
-<span id="cb219-2"><a href="tutorial.html#cb219-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">6</span>, <span class="dv">98</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">7</span>)</span>
-<span id="cb219-3"><a href="tutorial.html#cb219-3"></a></span>
-<span id="cb219-4"><a href="tutorial.html#cb219-4"></a>output <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="fu">length</span>(x))  <span class="co">#store data here</span></span>
-<span id="cb219-5"><a href="tutorial.html#cb219-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
-<span id="cb219-6"><a href="tutorial.html#cb219-6"></a>    <span class="co"># I want to add x and y if both have valid values and otherwise just have the valid value.</span></span>
-<span id="cb219-7"><a href="tutorial.html#cb219-7"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(x[i]) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(y[i])) {</span>
-<span id="cb219-8"><a href="tutorial.html#cb219-8"></a>        output[i] <span class="ot">&lt;-</span> x[i] <span class="sc">+</span> y[i]  <span class="co">#both have valid values. </span></span>
-<span id="cb219-9"><a href="tutorial.html#cb219-9"></a>    } <span class="cf">else</span> <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(x[i]) <span class="sc">&amp;</span> <span class="fu">is.na</span>(y[i])) {</span>
-<span id="cb219-10"><a href="tutorial.html#cb219-10"></a>        output[i] <span class="ot">&lt;-</span> x[i]  <span class="co">#only x has valid value</span></span>
-<span id="cb219-11"><a href="tutorial.html#cb219-11"></a>    } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">is.na</span>(x[i]) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(y[i])) {</span>
-<span id="cb219-12"><a href="tutorial.html#cb219-12"></a>        output[i] <span class="ot">&lt;-</span> y[i]  <span class="co">#only y has valid value</span></span>
-<span id="cb219-13"><a href="tutorial.html#cb219-13"></a>    } <span class="cf">else</span> {</span>
-<span id="cb219-14"><a href="tutorial.html#cb219-14"></a>        output[i] <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co">#no valid values</span></span>
-<span id="cb219-15"><a href="tutorial.html#cb219-15"></a>    }</span>
-<span id="cb219-16"><a href="tutorial.html#cb219-16"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb228-1"><a href="tutorial.html#cb228-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">897</span>, <span class="dv">23</span>, <span class="cn">NA</span>, <span class="dv">7</span>)</span>
+<span id="cb228-2"><a href="tutorial.html#cb228-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">6</span>, <span class="dv">98</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">7</span>)</span>
+<span id="cb228-3"><a href="tutorial.html#cb228-3"></a></span>
+<span id="cb228-4"><a href="tutorial.html#cb228-4"></a>output <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="fu">length</span>(x))  <span class="co">#store data here</span></span>
+<span id="cb228-5"><a href="tutorial.html#cb228-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(x)) {</span>
+<span id="cb228-6"><a href="tutorial.html#cb228-6"></a>    <span class="co"># I want to add x and y if both have valid values and otherwise just have the valid value.</span></span>
+<span id="cb228-7"><a href="tutorial.html#cb228-7"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(x[i]) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(y[i])) {</span>
+<span id="cb228-8"><a href="tutorial.html#cb228-8"></a>        output[i] <span class="ot">&lt;-</span> x[i] <span class="sc">+</span> y[i]  <span class="co">#both have valid values. </span></span>
+<span id="cb228-9"><a href="tutorial.html#cb228-9"></a>    } <span class="cf">else</span> <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(x[i]) <span class="sc">&amp;</span> <span class="fu">is.na</span>(y[i])) {</span>
+<span id="cb228-10"><a href="tutorial.html#cb228-10"></a>        output[i] <span class="ot">&lt;-</span> x[i]  <span class="co">#only x has valid value</span></span>
+<span id="cb228-11"><a href="tutorial.html#cb228-11"></a>    } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">is.na</span>(x[i]) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(y[i])) {</span>
+<span id="cb228-12"><a href="tutorial.html#cb228-12"></a>        output[i] <span class="ot">&lt;-</span> y[i]  <span class="co">#only y has valid value</span></span>
+<span id="cb228-13"><a href="tutorial.html#cb228-13"></a>    } <span class="cf">else</span> {</span>
+<span id="cb228-14"><a href="tutorial.html#cb228-14"></a>        output[i] <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co">#no valid values</span></span>
+<span id="cb228-15"><a href="tutorial.html#cb228-15"></a>    }</span>
+<span id="cb228-16"><a href="tutorial.html#cb228-16"></a>}</span></code></pre></div>
 <p>Useful links:<br />
 - <a href="https://r4ds.had.co.nz/iteration.html?q=lapply#for-loops">r4ds</a><br />
 - <a href="https://adv-r.hadley.nz/control-flow.html#loops">Advanced R</a><br />
@@ -2957,8 +3126,6 @@ For continues/metric variables replace missing with mean value.</p>
 <li>But that is way too difficult!! Okay, okay, well try to do exactly the same as in this tutorial (without copy pasting the code chunks) but on a different dataset.<br />
 </li>
 <li>O, you are already a fluent R Base user? Well, translate your latest R Base script into Tidy.</li>
-<li>You say, you are already a Tidy person? Mmmm,… I’ve got it. Please fill in the gaps of this tutorial (<a href="tutorial.html#agtidy">Appendix A.11.2</a> and <a href="tutorial.html#mistidy">Appendix A.12.2</a>) for me and earn an acknowledgment in this book.<br />
-</li>
 <li>Not challenging enough? Start working with <a href="%22https://bookdown.org/yihui/rmarkdown/%22">Rmarkdown</a> and <a href="%22https://happygitwithr.com/%22">Git</a>. Fork this repository. Make this tutorial better. Submit a pull request to me.<br />
 </li>
 <li>Consider the following list: <code>annoyinglist &lt;- list(v1=c(2,45,6, NA), v2=c(23536), v3=NA, v4=c(2346))</code>
