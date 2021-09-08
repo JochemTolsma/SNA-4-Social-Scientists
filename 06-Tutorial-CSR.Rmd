@@ -862,7 +862,9 @@ age_region <- mutate(age_region, mean = mean(age, na.rm = TRUE))
 #step 3. you can link both commands using the pipe operator %>% to keep your code concise (and readable if you're writing a script).
 cv_total <- cv_tot  %>%
   group_by(region) %>% 
-  mutate(age_region = mean(age, na.rm = TRUE))
+  mutate(age_region = mean(age, na.rm = TRUE)) %>%
+  ungroup()
+#because group_by() returns a grouped tibble (a tibble specific class with a group attribute), it's necessary to close the pipe-chain with ungroup() to avoid an error with the mice function, which takes a data frame or matrix as input (and can't handle tibbles). Note that without ungrouping, the output looks the same, but the data structure is different.
 ```
 
 ## Missing values
@@ -985,18 +987,16 @@ summary(pool_model_imp)
 ```
 
 ### Tidy
-
+cv_total <- readRDS("cv_tot.RDS")
 ```{r, model1}
 model1 <- cv_total %>%
   mutate(healthn = as.numeric(health),
          across(c(educ3, region), as.factor)) %>%
   lm(formula = healthn ~ men + age + educ3 + region) %>%
   summary()
-#the across fucntion from the Dplyr package is similar to the apply function (if MARGIN = 2) from base R as it performs the same operation on multiple columns (or, if you have groups, for each combination of columns and groups).
+#the across function from the Dplyr package is similar to the apply function (if MARGIN = 2) from base R. it performs the same operation on multiple columns (or, if you have groups, for each combination of columns and groups).
 
-#note on lm: lm is not a 'pipe friendly' function because the data source argument is the function's second argument, while the pipe operator uses the first argument that follows the %>%.
-#you can overwrite this default behavior by specifying the parameter names, so the pipe function knows where (not) to look.
-#in this case, lm's first argument is a formula, which needs explicit mention to avoid an error.
+#lm is not a 'pipe friendly' function because the data is provided in the second argument, while the pipe operator reads the data from the first unnamed(!) argument that follows the %>%. by naming the first argument, the pipe will take data from the second argument, which is (in this case) the correct data argument.
 ```
 
 ```{r, results="hold"}
@@ -1023,7 +1023,7 @@ model2 <- cv_total %>%
 
 #### Option 2: replacing missing values. 
 
-# Besides the `ifelse()` command, you could also use `replace_na` from the Tidyr package (part of the tidyverse), which, you might have guessed from the name, enables you to replace NAs with specified values.
+# Besides the `ifelse()` command, you can use `replace_na` from the Tidyr package (part of the tidyverse), which, you might have guessed from the name, enables you to replace NAs with specified values.
 # However, using `replace_na` will return an error if the variable is a factor and requires conversion to numeric-type values. We'll still use `ifelse()` to create the dummy `age_mis`.
 
 ```{r replace, results="hold"}
@@ -1031,7 +1031,7 @@ model2 <- cv_total %>%
 cv_total <- cv_total %>%
   mutate(men2 = ifelse(is.na(men), 2, men))
 
-#with the first argument of the mutate function, you avoid repeating as.numeric() later on.
+#with the first mutate argument you avoid repeating as.numeric() for each variable.
 cv_total <- cv_total %>%
   mutate(across(everything(), as.numeric),
          men2 = replace_na(men, 2),
@@ -1050,7 +1050,7 @@ model3 <- cv_total %>%
   summary()
 
 #note: for model2 we used mutate(across()) which is similar to mutate_at(). The latter is shorter, but less flexibel as the transformation affects every variable.
-#or, in other words, the following two commands return the same output.
+#thus, the following two commands return the same output.
 mutate_at(c("men2", "educ3b", "region"), as.factor)
 mutate(across(c(men2, educ3b, region), as.factor))
 ```
@@ -1059,7 +1059,7 @@ mutate(across(c(men2, educ3b, region), as.factor))
 
 ```{r mice, results="hold", error=TRUE }
 #let's start with the original dataset 'cv_orig' (created in the first section).
-#don't forget to remove healthn (last column) because it perfectly correlates with health which will cause an error. 
+#don't forget to remove healthn (last column) because it perfectly correlates with health which will cause an error.
 pred <- cv_orig  %>%
   select(-last_col()) %>%
   mutate_all(as.numeric)  %>%
@@ -1068,13 +1068,14 @@ pred <- cv_orig  %>%
   unclass() %>%
   pluck("predictorMatrix") %>%
   as.data.frame() %>%
-  mutate_at(funs({0}), .vars =  c("id", "id2", "age")) %>%
+  mutate_at(c("id", "id2", "age"), funs(recode(1, 0))) %>%
   as.matrix()
 #note: the object returned from the mice function is of class 'mids,' which dplyr's functions cannot handle.
-#the unclass function from base R solve this issue as it removes the class attribute and, in this case, returns a list that dplyr can handle.
-#next, the pluck function from the Purrr package (part of the tidyverse) is the user-friendly equivalent of `[[` in base R: `[[`("predictorMatrix"), which
+#the unclass() function from base R solve this issue as it removes the class attribute and, in this case, returns a list that dplyr can handle.
+#the pluck() function from the Purrr package (part of the tidyverse) is the user-friendly equivalent of `[[` in base R: `[[`("predictorMatrix"), which
 #enables you to extract a single element from the list we just created using unclass().
-#lastly, because the mutate function (and its variations) are not build for lists, we need to coerce it a data frame (or Tibble)
+#next, because the mutate function (and its variations) are not build for lists, we need to coerce it a data frame (or Tibble)
+#lastly, to 'remove' the columns id id2 and wave as predictors, we recode all their 1s to 0s using mutate_at() and recode().
 
 #impute missings and fit model on imputed dataset
 model_imp <- cv_total %>%
