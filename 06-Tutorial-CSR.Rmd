@@ -848,6 +848,7 @@ fmean_narm <- function(x){mean(x,na.rm=T)}
 
 age_region_test <- aggregate(cv_tot$age, by=list(cv_tot$region), FUN=fmean_narm)
 head(age_region_test)
+
 ```
 
 ### Tidy
@@ -855,11 +856,13 @@ head(age_region_test)
 #step 1. convert the dataset to an aggregate/grouped version using the "group_by" function from the Dplyr package (part of the tidyverse), which will enable you to perform aggregate-level, or "by group," operations.
 age_region <- group_by(cv_tot, region)
 
-#step 2. use "summarise" (also from the dplyr package) to create a new data frame containing the mean age per region. Note: summarise() automatically creates a new data frame.
-age_region <- summarise(by_region, mean = mean(age))
+#step 2. use mutate to create a append the mean age by region to the original data frame (don't forget to remove NA values).
+age_region <- mutate(age_region, mean = mean(age, na.rm = TRUE))
 
-#step 3. You can link both commands using the pipe operator %>% to keep your code concise (and readable if you're writing a script).
-age_region <- group_by(cv_tot, region) %>% summarise(mean = mean(age))
+#step 3. you can link both commands using the pipe operator %>% to keep your code concise (and readable if you're writing a script).
+cv_total <- cv_tot  %>%
+  group_by(region) %>% 
+  mutate(age_region = mean(age, na.rm = TRUE))
 ```
 
 ## Missing values
@@ -989,11 +992,15 @@ model1 <- cv_total %>%
          across(c(educ3, region), as.factor)) %>%
   lm(formula = healthn ~ men + age + educ3 + region) %>%
   summary()
-#note: adding lm directly to the pipeline without specifying the parameter's name (formula) will raise an error.
+#the across fucntion from the Dplyr package is similar to the apply function (if MARGIN = 2) from base R as it performs the same operation on multiple columns (or, if you have groups, for each combination of columns and groups).
+
+#note on lm: lm is not a 'pipe friendly' function because the data source argument is the function's second argument, while the pipe operator uses the first argument that follows the %>%.
+#you can overwrite this default behavior by specifying the parameter names, so the pipe function knows where (not) to look.
+#in this case, lm's first argument is a formula, which needs explicit mention to avoid an error.
 ```
 
 ```{r, results="hold"}
-#recode health and save a version of the dataset without replacement of the missings for later.
+#step 1. define all missings (and save a version of the dataset without replacement of the missings for later.
 cv_orig <- cv_total <- cv_total %>%
   mutate(health = na_if(health, -2),
          healthn = as.numeric(health) - 4)
@@ -1007,7 +1014,6 @@ cv_orig <- cv_total <- cv_total %>%
 #### Option 1: listwise deletion
 
 ```{r, listwise}
-#step 1. define all missings
 model2 <- cv_total %>%
   mutate(healthn = as.numeric(healthn),
          across(c(educ3, region), as.factor)) %>%
@@ -1033,14 +1039,18 @@ cv_total <- cv_total %>%
          age2 = replace_na(age, mean(age, na.rm = TRUE)),
          age_mis = ifelse(is.na(age), 1, 0))
 
+#note: the following two commands are equivalents:
+mutate(across(everything(), as.numeric))
+mutate_all(as.numeric)
+
 #pay attention, now use categorical variable men2.
 model3 <- cv_total %>% 
   mutate_at(c("men2", "educ3b", "region"), as.factor) %>%
   lm(formula = healthn ~ men2 + age2 + age_mis + educ3b + region) %>%
   summary()
 
-#note: for model2 we used mutate(across()) which is similar to mutate_at(), which is shorter but less flexibel as the transformation affects every variable.
-#in sum, the two following commands return the same output.
+#note: for model2 we used mutate(across()) which is similar to mutate_at(). The latter is shorter, but less flexibel as the transformation affects every variable.
+#or, in other words, the following two commands return the same output.
 mutate_at(c("men2", "educ3b", "region"), as.factor)
 mutate(across(c(men2, educ3b, region), as.factor))
 ```
@@ -1055,12 +1065,16 @@ pred <- cv_orig  %>%
   mutate_all(as.numeric)  %>%
   mutate_at(c("men", "educ3"), as.factor) %>%
   mice(method = c("", "", "cart", "logreg", "polr", "cart", "", "")) %>%
-  unclass %>%
+  unclass() %>%
   pluck("predictorMatrix") %>%
   as.data.frame() %>%
   mutate_at(funs({0}), .vars =  c("id", "id2", "age")) %>%
   as.matrix()
-#note: the pluck function from the Purrr package (part of the tidyverse) is the user-friendly equivalent of `[[` in base R: `[[`("predictorMatrix")
+#note: the object returned from the mice function is of class 'mids,' which dplyr's functions cannot handle.
+#the unclass function from base R solve this issue as it removes the class attribute and, in this case, returns a list that dplyr can handle.
+#next, the pluck function from the Purrr package (part of the tidyverse) is the user-friendly equivalent of `[[` in base R: `[[`("predictorMatrix"), which
+#enables you to extract a single element from the list we just created using unclass().
+#lastly, because the mutate function (and its variations) are not build for lists, we need to coerce it a data frame (or Tibble)
 
 #impute missings and fit model on imputed dataset
 model_imp <- cv_total %>%
