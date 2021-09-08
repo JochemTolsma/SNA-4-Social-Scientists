@@ -47,6 +47,7 @@ dt
 homophily
 influence
 polarization
+assignment-1
 methods
 causes
 OR
@@ -171,7 +172,7 @@ loops
 lists
 lapplymap-and-do.call
 functions
-assignment-1
+assignment-2
 variance
 variance-and-covariance
 want-to-learn-more
