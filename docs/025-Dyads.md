@@ -24,7 +24,7 @@ https://link.springer.com/chapter/10.1007/978-3-319-93227-9_13
 https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
 ---> 
 
-When testing hypotheses on assortative mating many methodological approaches can be used. We may predict the **frequency of specific dyads** in our population with loglinear models and the data we use is commonly structured in a square table like the one below. Loglinear models are, in essence, nothing more than a nice, parsimonious and fancy way to calculate [odds ratio's](#OR). If we have a small, well filled table of just a few attributes, [loglinear models](#LLM) are considered to be the golden standard. 
+When testing hypotheses on assortative mating many methodological approaches can be used. We may predict the **frequency of specific dyads** in our population with loglinear models and the data we use is commonly structured in a square table like the one below. Loglinear models are, in essence, nothing more than a nice, parsimonious and fancy way to calculate [odds ratio's](\ref(OR)). If we have a small, well filled table of just a few attributes, [loglinear models](\ref(LLM)) are considered to be the golden standard. 
 
 <table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>(\#tab:tabledyads)Assortative Mating (dyad frequency)</caption>
@@ -51,7 +51,7 @@ When testing hypotheses on assortative mating many methodological approaches can
 
 
 
-Another approach is to take the **characteristics of the dyad** (e.g. 1 = intermarriage and 0 = no intermarriage) as the dependent variable. This dependent variable can than be explained by applying (conditional) (multinomial) [logistic regression](#LM) techniques. In this case, the data is commonly structured in long format and looks something like the table below. 
+Another approach is to take the **characteristics of the dyad** (e.g. 1 = intermarriage and 0 = no intermarriage) as the dependent variable. This dependent variable can than be explained by applying (conditional) (multinomial) [logistic regression](\ref(LM)) techniques. In this case, the data is commonly structured in long format and looks something like the table below. 
 
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; "><table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>(\#tab:tabledyads2)Assortative Mating (dyad characteristic)</caption>
@@ -242,100 +242,61 @@ Which methodology is preferred should depend on your hypotheses and on the data 
 
 ## Consequences 
 
-The method used to explain consequences of dyads depends on our Unit of Analysis. If it is the dyad itself (e.g. mean relationship quality) methods are relatively straightforward, because we may assume that the observations at the dyad-level are independent. If, on the other hand, the unit of analysis are the partners themselves who make up the dyad, we need to acknowledge that the observations between the partners of the same couple are not independent. In part exactly because partners select and influence each other and share a social context. One solution could be to simply randomly select one partner of each couple or, if partners can be clearly distinguished - for example men and women in heterosexual couples - the different partners could be analyzed separately. A disadvantage of the latter two approaches is, however, that the covariance between the partners cannot be explained anymore, although this may exactly be the focus of our research questions. A more elegant solution, is to take the interdependencies into account and model these explicitly. This can be done within a multi-level framework and within a structural-equation modelling framework. 
+The method used to explain consequences of dyads depends on our Unit of Analysis. If it is the dyad itself (e.g. mean relationship quality) methods are relatively straightforward, because we may assume that the observations at the dyad-level are independent. We may explain this dyad-characteristic by other characteristics of the dyad (e.g. length of marriage) and by characteristics of each spouse (e.g. working hours men, working hours woman).^[I am assuming that spouses - and egos/alters more generally - can be 'distinguished'. If this is not the case (e.g. homosexual couples), we need different techniques.] That characteristics of the spouses, the covariates, are correlated does not necessarily pose a big problem.^[Except of course if you face issues of multicollinearity.]  
+If, on the other hand, the unit of analysis are the partners themselves who make up the dyad, we need to acknowledge that the observations between the partners of the same couple are not independent. In part exactly because partners select and influence each other and share a social context. One solution could be to simply randomly select one partner of each couple or, if partners can be clearly distinguished - for example men and women in heterosexual couples - the different partners could be analyzed separately. A disadvantage of the latter two approaches is, however, that the covariance between the partners cannot be explained anymore, although this may exactly be the focus of our research questions. A more elegant solution, is to take the interdependencies into account and model these explicitly. This can be done within a multi-level framework and within a structural-equation modelling framework. 
 
-When we discussed the methods to analyze causes of homogamy, we were interested in homophily within couples at one point in time and focused on selection as explanans. Now, when we discuss the consequences of dyads, we are interested in explaining trends in homophily within couples - thus homophily as a consequence of assortative mating - and focus on shared context and influence processes as explanans. 
+## Research questions
 
+When we discussed the methods to analyze causes of homogamy, we were interested in homophily within couples at one point in time and focused on selection as explanans. Now, when we are discussing the consequences of dyads, we are interested in explaining trends in homophily within couples - thus homophily as a consequence of mating - and focus on shared context and influence processes as explanans.  
+Naturally, because we are interested in trends in homophily within couples, we focus on dynamic characteristics of the spouses. Thus not, ethnicity, or educational attainment, but, for example, on their political opinions.  
 
-------------------------------------------------------------------------
+Let us suppose our aim is to write a scientific paper on political opinion homophily within couples. We will formulate the following research questions:
 
+- To what extent can we observe trends in political opinion homophily (or opinion similarity) **within** couples?  
+- To what extent can we explain trends in political opinion homophily by influence processes taking place between spouses?  
+- To what extent can we explain trends in political opinion homophily by the shared (social) context of the couple?  
 
-**PARTNERS AND POLITICS - When do we listen to our partner**'s political opinion? 
+Perhaps, you also want to focus in this paper on the influence process itself and formulate a second set of research questions: 
 
-In this part of the book, we will demonstrate the Cross-Lagged Panel Model (CLPM) and how to apply it to assess whether partners influence each other opinions. 
-
----   
-
-**Relevance**
-
-
-
-
----  
-
-### Selection  
-## Dyadic Influence: Mechanisms
-
-What happens within the couple? 
-Or phrased otherwise, what could dyadic influence look like? 
-
-- No change (no influence)  
-- Common trend (commen context and/or dyadic influence)  
-- Convergence (assimilation)   
-- Mimic change after 'shocks' 
-
-<img src="025-Dyads_files/figure-html/unnamed-chunk-1-1.png" width="672" />
-
-<img src="025-Dyads_files/figure-html/unnamed-chunk-2-1.png" width="672" />
-
-<img src="025-Dyads_files/figure-html/unnamed-chunk-3-1.png" width="672" />
-
-<img src="025-Dyads_files/figure-html/unnamed-chunk-4-1.png" width="672" />
-
-<img src="025-Dyads_files/figure-html/unnamed-chunk-5-1.png" width="672" />
-
-<img src="025-Dyads_files/figure-html/unnamed-chunk-6-1.png" width="672" />
-
-
-
----  
-
-## Expectations 
-
-Now, let us try to formulate several hypotheses on influence processes taking place within couples. Naturally, these hypotheses should be derived from existing (and established) theories. But the aim here is not to teach you how to derive hypotheses but to test hypotheses on dyadic influence.  
-
-<p class= "quote">
-"People influence one another, and as the importance and immediacy of a group or individual increases, this influence becomes stronger (Latané, 1981). Forces of influence are especially strong within romantic relationships because these relationships are important, are predicated on mutual acceptance, and involve frequent exposure to the habits of one's partner." @bartel2017romantic  
-</p>
-
-Naive conceptualisation of **influence**. It is assumed that partners will match their opinions/behaviors. Thus influence here is convergence and reaction to shocks. 
-
-**Hypothesis 1 Partner influence hypothesis**: Partners opinions will become more similar to one another over time.   
+- To what extent are influence process within couples influenced by (or conditional on):  
+  - the shared context?    
+  - characteristics of the couple?    
+  - characteristics of the spouses?  
+  
+<!--- **Hypothesis 1 Partner influence hypothesis**: Partners opinions will become more similar to one another over time.   
 We will introduce the CLPM below. Once you are familiar with this model, you see that we can and should formulate a more precise hypothesis 1.  
 
 **Hypo1 RI-CLPM:** When your partner's opinion is relatively high (compared to your partners average opinion over time) at time T, your own opinion will be relatively high (compared to your own average opinion over time) at time T+1. 
 
-<!---
 Hypo1 SC-RI-CLPM: Even if we control for structural time trends in political opinions, when your partner's opinion is relatively high (compared to your partners average opinion over time) at time T, your own opinion will be relatively high (compared to your own average opinion over time) at time T+1. 
 
 Hypo1 LT-RI-CLPM: Even if we take into account that...: 
   - the general time trend of men and women will be (positively) associated (i.e. positive covariance of the random slopes);  
   - the mean opinion of your spouse will influence your general time trend (i.e. negative covariance of random intercept of men with random slop of women (and vice versa));
   ...when your partner's opinion is relatively high (compared to your partners average opinion over time) at time T, your own opinion will be relatively high (compared to your own average opinion over time) at time T+1. 
---->
+
 
 **Hypothesis 2 Male dominance hypothesis**: Women are more influenced by their (male) spouse than men are influenced by their (female) spouse.** 
 
 **Hypothesis 3 Educational dominance hypothesis:** The spouse with the lowest education is more influenced by their partner than the spouse with the highest education.** 
 
+--->
 
----  
+## Data 
 
-
-## Data {.tabset .tabset-fade}
-
+We will use the data from the LISS panel.  
 
 <a href="https://www.lissdata.nl/">
   <img src="lisslogo_0.png">
   </a>
 
-We will use:  
+More concretely, we will use:  
 
 - 11 waves (2008-2014, 2016-2020)  
-- More than 3000 heterosexual couples (cohabiting and married)
-- Older than 25
+- Filter on heterosexual couples (cohabiting and married)
+- Filter on couples of which both spouses are older than 25. 
 
-We have already constructed a dataset for you guys and gals to work with. 
+We have already constructed a dataset for you guys and gals to work with which contains information on more than 3000 couples. Don't forget it is a panel data set. This means we have more observations for the same couple (and spouses) over time. Also be aware that our spouses can be clearly distinguished from one another (i.e. husband versus wife).   
 
 Please download this data file to your working directory.
 
@@ -346,12 +307,14 @@ Please download this data file to your working directory.
 
 Variables of interest and value labels:
 
--   Education: = highest completed education in years (4-16.5)
+-   education: = highest completed education in years (4-16.5)
 -   sex: = 0 = male / 1 = female
 -   eu_integration: 0 = eu integration has gone too far / 4 = eu integration should go further
 -   immigrants: 0 = immigrants should adjust / 4 immigrants can retain their own culture.
 -   euthanasia: 1 = euthanasia should be forbidden / 5 euthanasia should be permitted
--   income: 1 differences in income should increase / 5 differences in income should decrease
+-   income_diff: 1 differences in income should increase / 5 differences in income should decrease
+
+For the original variables in Dutch see below: 
 
 <p class= "quote"> **opleiding**  
 
@@ -400,13 +363,322 @@ Variables of interest and value labels:
 </p>
 ---  
 
-### Descriptives
+## Descriptives
 
-**TO DO**
+### Preperation 
+
+
+```r
+#### clean the environment ###.
+rm(list = ls())
+
+#### packages ###.
+require(tidyverse)
+
+##### Data input ###.
+load("addfiles/partner_dataprepped.Rdata")
+
+# clean a little bit.
+rm("partner_df_wide")
+
+partner_df_long <- partner_df_long %>%
+    rename(dyad_id = "nohouse_encr") %>%
+    select(-c("hetero", "n", "nomem_encr.m", "positie.m", "nomem_encr.f", "positie.f"))
+
+partner_df_wide <- reshape(partner_df_long, direction = "wide", idvar = "dyad_id", timevar = "time")
+```
+
+
+
+Please note that our time variable indicates survey year. We do not want to describe period trends in opinion homophily within couples but lifecourse trends. We will call the latter the *within-trend*. For people familiar with life course research, hopefully you will see the resemblance to the Age-Period-Cohort conundrum. We therefore need to construct a `time_within` variable and add it to our data set.  
+
+<span style='color: red;'>Before looking at the code below, please try to do this yourself.</span> 
+
+
+```r
+partner_df_long <- partner_df_long %>% 
+  arrange(dyad_id, time) %>% #let us order the data set
+  group_by(dyad_id) %>% #we focus on within dyad-level thus group by dyad
+  mutate(start_time = min(time), #determine first wave of participation
+         within_time = (time - start_time) + 1, #count passing of time within couples
+         n_time = n()) %>% #keep track of number of times couples participated in LISS
+  ungroup()
+```
+
+Now we need to think of how we want to operationalize opinion homophily. 
+
+The stronger the political opinion homophily within couples, the larger the spousal correspondence, the larger the association between the opinions of the partners. We discussed covariance and correlations [here](#variance-and-covariance). Would that be an option?    
+
+A different approach would be to operationalize increasing homophily as decreasing absolute opinion dissimilarity between the spouses [@iyengar2018]. 
+
+### Average opinion distance over *within-time*  
+
+Let's have a go. 
+
+
+```r
+cors <- partner_df_long %>% 
+  group_by(within_time)  %>% #we want to see within couple trends. 
+  group_map(~ cor.test(x=.x$immigrants.m, y=.x$immigrants.f)$estimate ) %>%
+  unlist()
+
+# How to do this in Base R?
+# # we subset the data. 
+# cor.test(partner_df_long$immigrants.m[partner_df_long$within_time==1], partner_df_long$immigrants.f[partner_df_long$within_time==1])
+# 
+# #And we could use a loop. 
+# cors <- list()
+# for (i in 1:11) {
+#  cors[[i]] <-  cor.test(partner_df_long$immigrants.m[partner_df_long$within_time==i], partner_df_long$immigrants.f[partner_df_long$within_time==i])
+# }
+
+
+covs <- partner_df_long %>% 
+  group_by(within_time)  %>% #we want to see within couple trends. 
+  group_map(~ cov(x=.x$immigrants.m, y=.x$immigrants.f, use="complete.obs") ) %>%
+  unlist()
+
+partner_df_long %>% 
+  mutate(distance = abs(immigrants.m - immigrants.f)) %>%
+  group_by(within_time)  %>% #we want to see within couple trends. 
+  summarise(mean_dist = mean(distance, na.rm=T)) %>%
+  add_column(cors) %>%
+  add_column(covs)
+```
+
+```
+#> # A tibble: 11 x 4
+#>    within_time mean_dist  cors  covs
+#>          <dbl>     <dbl> <dbl> <dbl>
+#>  1           1     0.716 0.440 0.422
+#>  2           2     0.711 0.450 0.431
+#>  3           3     0.706 0.438 0.402
+#>  4           4     0.662 0.485 0.446
+#>  5           5     0.657 0.488 0.450
+#>  6           6     0.670 0.483 0.452
+#>  7           7     0.675 0.458 0.416
+#>  8           8     0.681 0.432 0.374
+#>  9           9     0.686 0.442 0.399
+#> 10          10     0.662 0.419 0.328
+#> 11          11     0.650 0.474 0.383
+```
+
+Whow! Please look at the above results for at least **5 minutes** before you move one. What is your interpretation?  
+
+### Distinguishing period trends from lifecourse trends  
+
+A bit more sophisticated:  
+
+- calculate the (euclidean) distance between all four attitudes.  
+- Try to distinguishing period trends from lifecourse trends.  
+- Try to take into account of selective sample attrition.^[One of the reasons couples drop out of our data is because of divorce.] 
+
+
+```r
+trends <- partner_df_long %>%
+  filter(n_time>4) %>% #trying to take selective sample attrition into account. 
+  mutate(distance = sqrt((immigrants.m - immigrants.f)^2 + (euthanasia.m - euthanasia.f)^2 + (income_diff.m - income_diff.f)^2 + (eu_integration.m - eu_integration.f)^2 )) %>% #euclidean distance of four political opinions
+  group_by(start_time, within_time)  %>% #we want to see within couple trends but need to 'control for' period trends 
+  summarise(mean_dist = mean(distance, na.rm=T))
+
+#Put results in a matrix
+#?? how to do this the tidy way? 
+trends_matrix <- matrix(NA, nrow=11, ncol=11)
+for (i in 1:length(trends$start_time)) {
+  trends_matrix[trends$start_time[i],trends$within_time[i]] <- trends$mean_dist[i]
+}
+
+rownames(trends_matrix) <- c(2008:2014, 2016:2019)
+colnames(trends_matrix) <- paste("within_time", 1:11, sep="_")
+
+trends_matrix
+```
+
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; "><table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>(\#tab:unnamed-chunk-6)Trends in spousal correspondance in political attitudes</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">   </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_1 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_2 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_3 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_4 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_5 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_6 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_7 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_8 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_9 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_10 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_11 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 2008 </td>
+   <td style="text-align:center;"> <span style="     color: red !important;">1.929</span> </td>
+   <td style="text-align:center;"> <span style="     color: blue !important;">1.922</span> </td>
+   <td style="text-align:center;"> 1.793 </td>
+   <td style="text-align:center;"> 1.809 </td>
+   <td style="text-align:center;"> 1.793 </td>
+   <td style="text-align:center;"> 1.72 </td>
+   <td style="text-align:center;"> 1.720 </td>
+   <td style="text-align:center;"> 1.777 </td>
+   <td style="text-align:center;"> 1.815 </td>
+   <td style="text-align:center;"> 1.843 </td>
+   <td style="text-align:center;"> 1.816 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2009 </td>
+   <td style="text-align:center;"> 2.009 </td>
+   <td style="text-align:center;"> <span style="     color: red !important;">1.743</span> </td>
+   <td style="text-align:center;"> <span style="     color: blue !important;">1.619</span> </td>
+   <td style="text-align:center;"> 1.842 </td>
+   <td style="text-align:center;"> 1.719 </td>
+   <td style="text-align:center;"> 1.681 </td>
+   <td style="text-align:center;"> 1.636 </td>
+   <td style="text-align:center;"> 1.743 </td>
+   <td style="text-align:center;"> 1.640 </td>
+   <td style="text-align:center;"> 1.874 </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010 </td>
+   <td style="text-align:center;"> 1.823 </td>
+   <td style="text-align:center;"> 1.798 </td>
+   <td style="text-align:center;"> <span style="     color: red !important;">1.827</span> </td>
+   <td style="text-align:center;"> <span style="     color: blue !important;">1.691</span> </td>
+   <td style="text-align:center;"> 1.811 </td>
+   <td style="text-align:center;"> 1.697 </td>
+   <td style="text-align:center;"> 1.699 </td>
+   <td style="text-align:center;"> 1.861 </td>
+   <td style="text-align:center;"> 1.776 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011 </td>
+   <td style="text-align:center;"> 2.072 </td>
+   <td style="text-align:center;"> 1.803 </td>
+   <td style="text-align:center;"> 1.931 </td>
+   <td style="text-align:center;"> <span style="     color: red !important;">1.549</span> </td>
+   <td style="text-align:center;"> <span style="     color: blue !important;">1.829</span> </td>
+   <td style="text-align:center;"> 2.035 </td>
+   <td style="text-align:center;"> 1.466 </td>
+   <td style="text-align:center;"> 1.973 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012 </td>
+   <td style="text-align:center;"> 1.826 </td>
+   <td style="text-align:center;"> 1.721 </td>
+   <td style="text-align:center;"> 1.588 </td>
+   <td style="text-align:center;"> 1.799 </td>
+   <td style="text-align:center;"> <span style="     color: red !important;">1.848</span> </td>
+   <td style="text-align:center;"> <span style="     color: blue !important;">1.581</span> </td>
+   <td style="text-align:center;"> 1.724 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013 </td>
+   <td style="text-align:center;"> 1.908 </td>
+   <td style="text-align:center;"> 1.932 </td>
+   <td style="text-align:center;"> 1.669 </td>
+   <td style="text-align:center;"> 1.98 </td>
+   <td style="text-align:center;"> 1.883 </td>
+   <td style="text-align:center;"> 1.744 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014 </td>
+   <td style="text-align:center;"> 1.945 </td>
+   <td style="text-align:center;"> 1.959 </td>
+   <td style="text-align:center;"> 1.981 </td>
+   <td style="text-align:center;"> 1.693 </td>
+   <td style="text-align:center;"> 1.999 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+</tbody>
+</table></div>
+
+Follow the same couples over time by following the diagonals (e.g. the blue and red). 
+
+What would you conclude? 
 
 ---  
 
 ## Analysis 
+
+### Preperation  
 
 As always, make sure to start properly. See here. <!---insert link---> 
 
@@ -464,8 +736,6 @@ dat$oplgroup <- ifelse(dat$oplxy <= 1 & dat$oplxy >= -1, "equal", dat$oplgroup)
 
 dat_ori <- dat
 datalist_ori[[1]] <- dat_ori
-
-
 
 # dep2: immigrants
 
@@ -603,9 +873,8 @@ dat_ori <- dat
 datalist_ori[[4]] <- dat_ori
 ```
 
-------------------------------------------------------------------------
 
-## Modelling strategy {.tabset .tabset-fade}
+### Modelling strategy 
 
 - Actor effects: stability effects  
 - Partner effects: influence effects  
@@ -620,7 +889,7 @@ Controlling for education.
 </div>
   
 
-Source: [@mulder2020three](https://www.tandfonline.com/doi/full/10.1080/10705511.2020.1784738)
+Source: [@mulder2020three]
 
 
 -   We will compare the results across four different modeling strategies:
@@ -640,19 +909,17 @@ Source: [@mulder2020three](https://www.tandfonline.com/doi/full/10.1080/10705511
     -   euthanasia\
     -   income differences\
 
-Feel free to re-estimate all models yourself. But it will be way quicker to download all results. 
+### Results hypo1  
 
+Feel free to re-estimate all models yourself. But it will be way quicker to download all results. 
 
 [results.Rdata](addfiles\results.Rdata)\
 
-------------------------------------------------------------------------
-
-## Results Hypo1 {.tabset .tabset-fade}
 
 **Hypo1 RI-CLPM: When your partner's opinion is relatively high (compared to your partners average opinion over time) at time T, your own opinion will be relatively high (compared to your own average opinion over time) at time T+1.** 
 
 
-### CLPM  
+#### CLPM  
 
 
 ```r
@@ -1596,9 +1863,7 @@ summary(results[[4]])
 #>    .y11               0.525    0.022   23.738    0.000
 ```
 
-------------------------------------------------------------------------
-
-### RI-CLPM
+#### RI-CLPM
 
 
 ```r
@@ -2868,9 +3133,8 @@ summary(results[[8]])
 #>    .y11               0.000
 ```
 
-------------------------------------------------------------------------
 
-### SC-RI-CLPM
+#### SC-RI-CLPM
 
 
 ```r
@@ -4140,9 +4404,8 @@ summary(results[[12]])
 #>    .y11               0.000
 ```
 
-------------------------------------------------------------------------
 
-### LT-RI-CLPM
+#### LT-RI-CLPM
 
 
 ```r
@@ -5598,8 +5861,6 @@ summary(results[[16]])
 #>    .y11               0.000
 ```
 
-------------------------------------------------------------------------
-
 ### Summary results hypo1
 
 
@@ -5859,18 +6120,15 @@ hypo1
 </tbody>
 </table>
 
-------------------------------------------------------------------------
-
 
 ### Conclusion hypo1
 
-------------------------------------------------------------------------
 
-## Results Hypo2 {.tabset .tabset-fade}
+### Results hypo2 
 
 **Hypo2 RI-CLPM: Women are more influenced by their (male) spouse than men are influenced by their (female) spouse.** 
 
-### CLPM
+#### CLPM
 
 
 ```r
@@ -6838,9 +7096,8 @@ summary(results[[20]])
 #>     dif3             -0.006    0.003   -2.275    0.023
 ```
 
-------------------------------------------------------------------------
 
-### RI-CLPM
+#### RI-CLPM
 
 
 ```r
@@ -8142,9 +8399,8 @@ summary(results[[24]])
 #>     dif3             -0.024    0.002  -10.618    0.000
 ```
 
-------------------------------------------------------------------------
 
-### SC-RI-CLPM
+#### SC-RI-CLPM
 
 
 ```r
@@ -9446,9 +9702,7 @@ summary(results[[28]])
 #>     dif3             -0.025    0.002  -10.223    0.000
 ```
 
-------------------------------------------------------------------------
-
-### LT-RI-CLPM
+#### LT-RI-CLPM
 
 
 ```r
@@ -10935,9 +11189,8 @@ summary(results[[32]])
 #>     dif4              0.001    0.000    5.018    0.000
 ```
 
-------------------------------------------------------------------------
 
-### Summary results Hypo2
+### Summary results hypo2
 
 
 ```r
@@ -11410,12 +11663,16 @@ hypo2
 </tbody>
 </table>
 
-------------------------------------------------------------------------
+### Conclusion hypo2  
 
-### Conclusion Hypo2
+## Assignment
 
-------------------------------------------------------------------------
-
+1. Look in the literature for other measures of opinion homophily. Try to apply this measure to construct a similar table as \@ref(Descriptives).  
+2. You that sections \@ref(Conclusion-hypo1) and \@ref(Conclusion-hypo2) are empty. Please fill in the blanks. Motivate your answer and discuss both selection and influence.  
+3. You could argue that influence is only possible if people differ initially. Please select couples who are dissimilar at *within-time 1* and do the descriptive and analysis part again. Of course, of course, not for all dependent variables and modelling specifications. Pick one dependent and focus on the **RI-CLPM**.  
+4. Please test if influence processes depend on educational attainment:  
+  - formulate a hypothesis  
+  - test this hypothesis
 
 
 ---  
