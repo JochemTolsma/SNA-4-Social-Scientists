@@ -15,9 +15,10 @@ fig:unnamed-chunk-11
 fig:unnamed-chunk-13
 tab:tabledyads
 tab:tabledyads2
-tab:unnamed-chunk-6
-tab:unnamed-chunk-18
-tab:unnamed-chunk-27
+tab:unnamed-chunk-5
+fig:unnamed-chunk-8
+tab:unnamed-chunk-17
+tab:unnamed-chunk-26
 fig:inspect
 fig:inspectbody
 fig:inspecttd
@@ -60,7 +61,7 @@ data
 variables
 descriptives
 preperation
-average-opinion-distance-over-within-time
+opinion-homophily-over-within-time
 distinguishing-period-trends-from-lifecourse-trends
 analysis
 preperation-1

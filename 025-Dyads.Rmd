@@ -1,8 +1,91 @@
 # Methods  
 
+<!--- need to add some css styling for button
+https://www.w3schools.com/csS/css3_buttons.asp
+
+<style>
+
+.button {
+  background-color: #f44336; /* Red */ 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button {border-radius: 12px;}
+
+.button {width: 100%;}
+
+</style>
+
+
+---> 
+
+<style>
+
+.button1 {
+  background-color: #f44336; /* Red */ 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button1 {border-radius: 12px;}
+
+.button1 {width: 100%;}
+</style>
+
+
+<script>
+function myFunction() {
+
+            var btn = document.getElementById("myButton");
+            //to make it fancier
+            if (btn.value == "Click to hide code") {
+                btn.value = "Click to show code";
+                btn.innerHTML = "Click to show code";
+            }
+            else {
+                btn.value = "Click to hide code";
+                btn.innerHTML = "Click to hide code";
+            }
+            //this is what you're looking for
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+</script>
+
+
+
+
 <!---we need to include this somewhere as general r script---> 
 
-```{r colorize, echo=FALSE}
+```{r colorize, echo=FALSE, cache=FALSE}
 colorize <- function(x, color) {
   if (knitr::is_latex_output()) {
     sprintf("\\textcolor{%s}{%s}", color, x)
@@ -257,17 +340,17 @@ For the original variables in Dutch see below:
 ### Preperation 
 
 ```{r, echo=TRUE}
-#### clean the environment ###.
+#### clean the environment ####.
 rm(list=ls())
 
-#### packages ###.
+#### packages ####.
 require(tidyverse)
 
 ##### Data input ###.
 load('addfiles/partner_dataprepped.Rdata')
 
 #clean a little bit. 
-rm("partner_df_wide")
+rm("partner_df_wide") #we will make a wide file later again. 
 
 partner_df_long <- partner_df_long %>%
   rename("dyad_id" = "nohouse_encr") %>%
@@ -299,19 +382,22 @@ fpol <- function(opinions, maxdif=NULL) {
 
 Please note that our time variable indicates survey year. We do not want to describe period trends in opinion homophily within couples but lifecourse trends. We will call the latter the *within-trend*. For people familiar with life course research, hopefully you will see the resemblance to the Age-Period-Cohort conundrum. We therefore need to construct a `time_within` variable and add it to our data set.  
 
-`r colorize("Before looking at the code below, please try to do this yourself.", "red")` 
+`r colorize("Before copying the 'hidden code' below, please try to do this yourself.", "red")` 
 
+
+<button class=button1 onclick="myFunction()" id="myButton" value="Click To Open Instructions">Only click button after 5 minutes!</button>
+
+<div style="display:none;" id="myDIV">
 ```{r}
-partner_df_long <- partner_df_long %>% 
+partner_df_long <- partner_df_long %>%
   arrange(dyad_id, time) %>% #let us order the data set
   group_by(dyad_id) %>% #we focus on within dyad-level thus group by dyad
   mutate(start_time = min(time), #determine first wave of participation
          within_time = (time - start_time) + 1, #count passing of time within couples
          n_time = n()) %>% #keep track of number of times couples participated in LISS
   ungroup()
-
-
 ```
+</div>
 
 Now we need to think of how we want to operationalize opinion homophily. 
 
@@ -319,11 +405,11 @@ The stronger the political opinion homophily within couples, the larger the spou
 
 A different approach would be to operationalize increasing homophily as decreasing absolute opinion dissimilarity between the spouses [@iyengar2018]. 
 
-### Average opinion distance over *within-time*  
+### Opinion homophily over *within-time*  
 
 Let's have a go. 
 
-```{r}
+```{r trends}
 cors <- partner_df_long %>% 
   group_by(within_time)  %>% #we want to see within couple trends. 
   group_map(~ cor.test(x=.x$immigrants.m, y=.x$immigrants.f)$estimate ) %>%
@@ -353,9 +439,11 @@ partner_df_long %>%
   add_column(covs)
 ```
 
-Whow! Please look at the above results for at least **5 minutes** before you move one. What is your interpretation?  
+Whow! Please look at the above results for at least **5 minutes** before you move one. What is your interpretation? Do you observe a (significant) trend? Suppose that the mean distance indeed decreased but that, as a consequence, also the variance in this opinion decreased. What impact would this have for the covariance?    
 
 ### Distinguishing period trends from lifecourse trends  
+
+The above results are hard to interpret. In part because we mix up period trends and and within-trends. And although we are interested in influence and shared context effects, we must not forget about (de)selection effects. The couples who survive to reach within-time 11 are probably a selective subgroup of all couples. 
 
 A bit more sophisticated:  
 
@@ -408,6 +496,7 @@ desc <- df2 %>%
 
 desc
 ```
+\
 
 Follow the same couples over time by following the diagonals (e.g. the blue and red). 
 
@@ -416,6 +505,13 @@ What would you conclude?
 ---  
 
 ## Analysis 
+
+Even tough the above descriptives do not show convincing time trends, we know that partners may still influence each other. Let us try to test for influence processes.  
+
+>Feel free to re-estimate all models yourself. But it will be way quicker to download all results. 
+>
+> [results.Rdata](addfiles\results.Rdata)\
+
 
 ### Preperation  
 
@@ -624,11 +720,19 @@ datalist_ori[[4]] <- dat_ori
 
 ### Modelling strategy 
 
-- Actor effects: stability effects  
-- Partner effects: influence effects  
+1.  takes into account that observations within couples are interdependent;
 
+2.  that can explain the interdependence at the couple level;
 
-Controlling for education.  
+3.  focus on changes taking place within couples, not on changes between couples;
+
+4.  clearly distinguishes between:
+
+    i.  Actor effects: stability effects
+    ii. Partner effects: influence effects
+
+5.  Is flexible, so we can control, for example, for educational effects.
+A model that tickes all the boxes is the Random Intercep Cross-Lagged Panel Model.  
 
 
 ```{r, echo=FALSE, out.width="100%", fig.cap="RI-CLPM"}
@@ -639,24 +743,21 @@ knitr::include_graphics("hsem_a_1784738_f0001_oc.jpg")
 Source: [@mulder2020three]
 
 ### Robustness
-
 We will compare the results across four different modeling strategies:
-    -   Cross-lagged Panel Model (CLPM) (11 waves)\
-    -   **RI-CLPM (11 waves)**\
-    -   RI-CLPM + structural time trends (11 waves)
-    -   RI/RS-CLPM (11 waves)
+
+1.  Cross-lagged Panel Model (CLPM) (11 waves). This model lumps together between couple effects and within couples effects but it may help us to compare results.
+2.  **RI-CLPM (11 waves)**. We will focus on this model!
+3.  RI-CLPM + structural time trends (11 waves). This model takes into account that there may also be general period (or structural) trends in the opinions.
+4.  RI/RS-CLPM (11 waves). Finally, in this model we take into account that spouses may show different (linear) trends in their opinions for reasons we do not know. It is a random-intercept, random-slope growth curve model for the two spouses combined.
 
 We will test our hypotheses for four different dependent variables:
-    -   eu-integration\
-    -   immigration\
-    -   euthanasia\
-    -   income differences\
+
+1.  eu-integration
+2.  immigration
+3.  euthanasia
+4.  income differences\
 
 ### Results hypo1  
-
-Feel free to re-estimate all models yourself. But it will be way quicker to download all results. 
-
-[results.Rdata](addfiles\results.Rdata)\
 
 
 **Hypo1 RI-CLPM: When your partner's opinion is relatively high (compared to your partners average opinion over time) at time T, your own opinion will be relatively high (compared to your own average opinion over time) at time T+1.** 
@@ -1301,7 +1402,7 @@ hypo1 <- kbl(h1, booktabs=TRUE, digits=2, caption="Results Hypo1", align = "lccc
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
   column_spec(5:7, color = "white", background = "green")
 
-hypo1
+scroll_box(hypo1, width="100%", height = "400px")
 
 ```
 
@@ -2010,14 +2111,16 @@ hypo2
 
 ### Conclusion hypo2  
 
+---  
+
 ## Assignment
 
 1. Look in the literature for other measures of opinion homophily. Try to apply this measure to construct a similar table as \@ref(descriptives).  
-2. You that sections \@ref(conclusion-hypo1) and \@ref(conclusion-hypo2) are empty. Please fill in the blanks. Motivate your answer and discuss both selection and influence.  
+2. Have a look at the detailed results of the RI-CLPM estimated for hypothesis 1. Could you conclude, based on the error-covariance and/or error-correlation between the opinions of the spouses that opinion homophily increased? Motivate your answer.  
+3. Have a look at the detailed results of the LT-RI-CLPM and focus on the variance and covariance of the random slopes of the partners. What does this tell you about opinion homophily within partners? Motivate your answer.  
+4. You see that sections \@ref(conclusion-hypo1) and \@ref(conclusion-hypo2) are empty. Please fill in the blanks. Motivate your answer and discuss both selection and influence.  
 3. You could argue that influence is only possible if people differ initially. Please select couples who are dissimilar at *within-time 1* and do the descriptive and analysis part again. Of course, of course, not for all dependent variables and modelling specifications. Pick one dependent and focus on the **RI-CLPM**.  
-4. Please test if influence processes depend on educational attainment:\
-  - formulate a hypothesis  
-  - test this hypothesis
+4. Please test if influence processes depend on educational attainment. Thus, formulate a hypothesis and test this hypothesis. 
 
 
 ---  

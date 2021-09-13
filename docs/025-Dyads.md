@@ -1,5 +1,88 @@
 # Methods  
 
+<!--- need to add some css styling for button
+https://www.w3schools.com/csS/css3_buttons.asp
+
+<style>
+
+.button {
+  background-color: #f44336; /* Red */ 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button {border-radius: 12px;}
+
+.button {width: 100%;}
+
+</style>
+
+
+---> 
+
+<style>
+
+.button1 {
+  background-color: #f44336; /* Red */ 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button1 {border-radius: 12px;}
+
+.button1 {width: 100%;}
+</style>
+
+
+<script>
+function myFunction() {
+
+            var btn = document.getElementById("myButton");
+            //to make it fancier
+            if (btn.value == "Click to hide code") {
+                btn.value = "Click to show code";
+                btn.innerHTML = "Click to show code";
+            }
+            else {
+                btn.value = "Click to hide code";
+                btn.innerHTML = "Click to hide code";
+            }
+            //this is what you're looking for
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+</script>
+
+
+
+
 <!---we need to include this somewhere as general r script---> 
 
 
@@ -369,17 +452,17 @@ For the original variables in Dutch see below:
 
 
 ```r
-#### clean the environment ###.
+#### clean the environment ####.
 rm(list = ls())
 
-#### packages ###.
+#### packages ####.
 require(tidyverse)
 
 ##### Data input ###.
 load("addfiles/partner_dataprepped.Rdata")
 
 # clean a little bit.
-rm("partner_df_wide")
+rm("partner_df_wide")  #we will make a wide file later again. 
 
 partner_df_long <- partner_df_long %>%
     rename(dyad_id = "nohouse_encr") %>%
@@ -392,11 +475,15 @@ partner_df_wide <- reshape(partner_df_long, direction = "wide", idvar = "dyad_id
 
 Please note that our time variable indicates survey year. We do not want to describe period trends in opinion homophily within couples but lifecourse trends. We will call the latter the *within-trend*. For people familiar with life course research, hopefully you will see the resemblance to the Age-Period-Cohort conundrum. We therefore need to construct a `time_within` variable and add it to our data set.  
 
-<span style='color: red;'>Before looking at the code below, please try to do this yourself.</span> 
+<span style='color: red;'>Before copying the 'hidden code' below, please try to do this yourself.</span> 
 
+
+<button class=button1 onclick="myFunction()" id="myButton" value="Click To Open Instructions">Only click button after 5 minutes!</button>
+
+<div style="display:none;" id="myDIV">
 
 ```r
-partner_df_long <- partner_df_long %>% 
+partner_df_long <- partner_df_long %>%
   arrange(dyad_id, time) %>% #let us order the data set
   group_by(dyad_id) %>% #we focus on within dyad-level thus group by dyad
   mutate(start_time = min(time), #determine first wave of participation
@@ -404,6 +491,7 @@ partner_df_long <- partner_df_long %>%
          n_time = n()) %>% #keep track of number of times couples participated in LISS
   ungroup()
 ```
+</div>
 
 Now we need to think of how we want to operationalize opinion homophily. 
 
@@ -411,7 +499,7 @@ The stronger the political opinion homophily within couples, the larger the spou
 
 A different approach would be to operationalize increasing homophily as decreasing absolute opinion dissimilarity between the spouses [@iyengar2018]. 
 
-### Average opinion distance over *within-time*  
+### Opinion homophily over *within-time*  
 
 Let's have a go. 
 
@@ -463,9 +551,11 @@ partner_df_long %>%
 #> 11          11     0.650 0.474 0.383
 ```
 
-Whow! Please look at the above results for at least **5 minutes** before you move one. What is your interpretation?  
+Whow! Please look at the above results for at least **5 minutes** before you move one. What is your interpretation? Do you observe a (significant) trend? Suppose that the mean distance indeed decreased but that, as a consequence, also the variance in this opinion decreased. What impact would this have for the covariance?    
 
 ### Distinguishing period trends from lifecourse trends  
+
+The above results are hard to interpret. In part because we mix up period trends and and within-trends. And although we are interested in influence and shared context effects, we must not forget about (de)selection effects. The couples who survive to reach within-time 11 are probably a selective subgroup of all couples. 
 
 A bit more sophisticated:  
 
@@ -495,7 +585,7 @@ trends_matrix
 ```
 
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; "><table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-6)Trends in spousal correspondance in political attitudes</caption>
+<caption>(\#tab:unnamed-chunk-5)Trends in spousal correspondance in political attitudes</caption>
  <thead>
   <tr>
    <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">   </th>
@@ -669,6 +759,7 @@ trends_matrix
   </tr>
 </tbody>
 </table></div>
+\
 
 Follow the same couples over time by following the diagonals (e.g. the blue and red). 
 
@@ -678,11 +769,16 @@ What would you conclude?
 
 ## Analysis 
 
+Even tough the above descriptives do not show convincing time trends, we know that partners may still influence each other. Let us try to test for influence processes.  
+
+>Feel free to re-estimate all models yourself. But it will be way quicker to download all results. 
+>
+> [results.Rdata](addfiles\results.Rdata)\
+
+
 ### Preperation  
 
-As always, make sure to start properly. See here. <!---insert link---> 
-
-We need to do some additional dataprep. Have a look at the dataset. It is in long format but we will need a wide format. 
+We need to do some additional dataprep. 
 
 
 
@@ -876,44 +972,45 @@ datalist_ori[[4]] <- dat_ori
 
 ### Modelling strategy 
 
-- Actor effects: stability effects  
-- Partner effects: influence effects  
+1.  takes into account that observations within couples are interdependent;
 
+2.  that can explain the interdependence at the couple level;
 
-Controlling for education.  
+3.  focus on changes taking place within couples, not on changes between couples;
+
+4.  clearly distinguishes between:
+
+    i.  Actor effects: stability effects
+    ii. Partner effects: influence effects
+
+5.  Is flexible, so we can control, for example, for educational effects.
+A model that tickes all the boxes is the Random Intercep Cross-Lagged Panel Model.  
 
 
 <div class="figure">
 <img src="hsem_a_1784738_f0001_oc.jpg" alt="RI-CLPM" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-9)RI-CLPM</p>
+<p class="caption">(\#fig:unnamed-chunk-8)RI-CLPM</p>
 </div>
   
 
 Source: [@mulder2020three]
 
-
--   We will compare the results across four different modeling strategies:
-    -   Cross-lagged Panel Model (CLPM) (11 waves)\
-    -   **RI-CLPM (11 waves)**\
-    -   RI-CLPM + structural time trends (11 waves)
-    -   RI/RS-CLPM (11 waves)
-
-
-
 ### Robustness
+We will compare the results across four different modeling strategies:
 
--   We will test our hypotheses for four different dependent variables:
+1.  Cross-lagged Panel Model (CLPM) (11 waves). This model lumps together between couple effects and within couples effects but it may help us to compare results.
+2.  **RI-CLPM (11 waves)**. We will focus on this model!
+3.  RI-CLPM + structural time trends (11 waves). This model takes into account that there may also be general period (or structural) trends in the opinions.
+4.  RI/RS-CLPM (11 waves). Finally, in this model we take into account that spouses may show different (linear) trends in their opinions for reasons we do not know. It is a random-intercept, random-slope growth curve model for the two spouses combined.
 
-    -   eu-integration\
-    -   immigration\
-    -   euthanasia\
-    -   income differences\
+We will test our hypotheses for four different dependent variables:
+
+1.  eu-integration
+2.  immigration
+3.  euthanasia
+4.  income differences\
 
 ### Results hypo1  
-
-Feel free to re-estimate all models yourself. But it will be way quicker to download all results. 
-
-[results.Rdata](addfiles\results.Rdata)\
 
 
 **Hypo1 RI-CLPM: When your partner's opinion is relatively high (compared to your partners average opinion over time) at time T, your own opinion will be relatively high (compared to your own average opinion over time) at time T+1.** 
@@ -5863,133 +5960,30 @@ summary(results[[16]])
 
 ### Summary results hypo1
 
-
-```r
-load("addfiles/results.Rdata")
-
-library(knitr)  #for kable/kables
-library(kableExtra)
-
-
-# retrieving data to show model 1
-a <- parameterEstimates(results[[1]])[parameterEstimates(results[[1]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[1]])[parameterEstimates(results[[1]])$label == "b", ][1, c(5, 6, 8)]
-m1h1y1 <- rbind(a, b)
-
-
-a <- parameterEstimates(results[[2]])[parameterEstimates(results[[2]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[2]])[parameterEstimates(results[[2]])$label == "b", ][1, c(5, 6, 8)]
-m1h1y2 <- rbind(a, b)
-
-a <- parameterEstimates(results[[3]])[parameterEstimates(results[[3]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[3]])[parameterEstimates(results[[3]])$label == "b", ][1, c(5, 6, 8)]
-m1h1y3 <- rbind(a, b)
-
-a <- parameterEstimates(results[[4]])[parameterEstimates(results[[4]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[4]])[parameterEstimates(results[[4]])$label == "b", ][1, c(5, 6, 8)]
-m1h1y4 <- rbind(a, b)
-
-# model 2
-a <- parameterEstimates(results[[5]])[parameterEstimates(results[[5]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[5]])[parameterEstimates(results[[5]])$label == "b", ][1, c(5, 6, 8)]
-m2h1y1 <- rbind(a, b)
-
-a <- parameterEstimates(results[[6]])[parameterEstimates(results[[6]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[6]])[parameterEstimates(results[[6]])$label == "b", ][1, c(5, 6, 8)]
-m2h1y2 <- rbind(a, b)
-
-a <- parameterEstimates(results[[7]])[parameterEstimates(results[[7]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[7]])[parameterEstimates(results[[7]])$label == "b", ][1, c(5, 6, 8)]
-m2h1y3 <- rbind(a, b)
-
-a <- parameterEstimates(results[[8]])[parameterEstimates(results[[8]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[8]])[parameterEstimates(results[[8]])$label == "b", ][1, c(5, 6, 8)]
-m2h1y4 <- rbind(a, b)
-# model 3
-a <- parameterEstimates(results[[9]])[parameterEstimates(results[[9]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[9]])[parameterEstimates(results[[9]])$label == "b", ][1, c(5, 6, 8)]
-m3h1y1 <- rbind(a, b)
-
-a <- parameterEstimates(results[[10]])[parameterEstimates(results[[10]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[10]])[parameterEstimates(results[[10]])$label == "b", ][1, c(5, 6, 8)]
-m3h1y2 <- rbind(a, b)
-
-a <- parameterEstimates(results[[11]])[parameterEstimates(results[[11]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[11]])[parameterEstimates(results[[11]])$label == "b", ][1, c(5, 6, 8)]
-m3h1y3 <- rbind(a, b)
-
-a <- parameterEstimates(results[[12]])[parameterEstimates(results[[12]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[12]])[parameterEstimates(results[[12]])$label == "b", ][1, c(5, 6, 8)]
-m3h1y4 <- rbind(a, b)
-
-# model 4
-a <- parameterEstimates(results[[13]])[parameterEstimates(results[[13]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[13]])[parameterEstimates(results[[13]])$label == "b", ][1, c(5, 6, 8)]
-m4h1y1 <- rbind(a, b)
-
-a <- parameterEstimates(results[[14]])[parameterEstimates(results[[14]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[14]])[parameterEstimates(results[[14]])$label == "b", ][1, c(5, 6, 8)]
-m4h1y2 <- rbind(a, b)
-
-a <- parameterEstimates(results[[15]])[parameterEstimates(results[[15]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[15]])[parameterEstimates(results[[15]])$label == "b", ][1, c(5, 6, 8)]
-m4h1y3 <- rbind(a, b)
-
-a <- parameterEstimates(results[[16]])[parameterEstimates(results[[16]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[16]])[parameterEstimates(results[[16]])$label == "b", ][1, c(5, 6, 8)]
-m4h1y4 <- rbind(a, b)
-
-
-# combine put deps under each other
-m1deps <- rbind(m1h1y1, m1h1y2, m1h1y3, m1h1y4)
-m2deps <- rbind(m2h1y1, m2h1y2, m2h1y3, m2h1y4)
-m3deps <- rbind(m3h1y1, m3h1y2, m3h1y3, m3h1y4)
-m4deps <- rbind(m4h1y1, m4h1y2, m4h1y3, m4h1y4)
-
-
-# put methods next to each other
-h1 <- cbind(m1deps, m2deps, m3deps, m4deps)
-
-row.names(h1) <- NULL
-
-paths <- rep(c("stability", "partner-effect"), 2)
-h1 <- cbind(paths, h1)
-
-
-hypo1 <- kbl(h1, booktabs = TRUE, digits = 2, caption = "Results Hypo1", align = "lcccccccccccc") %>%
-    add_header_above(c(" ", CLPM = 3, `RI-CLPM` = 3, `SC-RI-CLPM` = 3, `LT-RI-CLPM` = 3)) %>%
-    pack_rows(index = c(`eu-integration` = 2, immigrants = 2, euthanasia = 2, income_diff = 2)) %>%
-    kable_classic(full_width = F, html_font = "Cambria") %>%
-    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-    column_spec(5:7, color = "white", background = "green")
-
-hypo1
-```
-
-<table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-18)Results Hypo1</caption>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; "><table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>(\#tab:unnamed-chunk-17)Results Hypo1</caption>
  <thead>
 <tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">CLPM</div></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">RI-CLPM</div></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">SC-RI-CLPM</div></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">LT-RI-CLPM</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;position: sticky; top:0; background-color: #FFFFFF;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">CLPM</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">RI-CLPM</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">SC-RI-CLPM</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">LT-RI-CLPM</div></th>
 </tr>
   <tr>
-   <th style="text-align:left;"> paths </th>
-   <th style="text-align:center;"> est </th>
-   <th style="text-align:center;"> se </th>
-   <th style="text-align:center;"> pvalue </th>
-   <th style="text-align:center;"> est </th>
-   <th style="text-align:center;"> se </th>
-   <th style="text-align:center;"> pvalue </th>
-   <th style="text-align:center;"> est </th>
-   <th style="text-align:center;"> se </th>
-   <th style="text-align:center;"> pvalue </th>
-   <th style="text-align:center;"> est </th>
-   <th style="text-align:center;"> se </th>
-   <th style="text-align:center;"> pvalue </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> paths </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> est </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> se </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> pvalue </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> est </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> se </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> pvalue </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> est </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> se </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> pvalue </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> est </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> se </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> pvalue </th>
   </tr>
  </thead>
 <tbody>
@@ -6118,7 +6112,7 @@ hypo1
    <td style="text-align:center;"> 0.35 </td>
   </tr>
 </tbody>
-</table>
+</table></div>
 
 
 ### Conclusion hypo1
@@ -11192,205 +11186,8 @@ summary(results[[32]])
 
 ### Summary results hypo2
 
-
-```r
-load("addfiles/results.Rdata")
-
-
-library(knitr)  #for kable/kables
-library(kableExtra)
-
-
-# retrieving data to show model 1
-ax <- parameterEstimates(results[[17]])[parameterEstimates(results[[17]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[17]])[parameterEstimates(results[[17]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[17]])[parameterEstimates(results[[17]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[17]])[parameterEstimates(results[[17]])$label == "by", ][1, c(5, 6,
-    8)]
-m1h2y1 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[18]])[parameterEstimates(results[[18]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[18]])[parameterEstimates(results[[18]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[18]])[parameterEstimates(results[[18]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[18]])[parameterEstimates(results[[18]])$label == "by", ][1, c(5, 6,
-    8)]
-m1h2y2 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[19]])[parameterEstimates(results[[19]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[19]])[parameterEstimates(results[[19]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[19]])[parameterEstimates(results[[19]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[19]])[parameterEstimates(results[[19]])$label == "by", ][1, c(5, 6,
-    8)]
-m1h2y3 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[20]])[parameterEstimates(results[[20]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[20]])[parameterEstimates(results[[20]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[20]])[parameterEstimates(results[[20]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[20]])[parameterEstimates(results[[20]])$label == "by", ][1, c(5, 6,
-    8)]
-m1h2y4 <- rbind(ax, ay, bx, by)
-
-# model 2
-ax <- parameterEstimates(results[[21]])[parameterEstimates(results[[21]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[21]])[parameterEstimates(results[[21]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[21]])[parameterEstimates(results[[21]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[21]])[parameterEstimates(results[[21]])$label == "by", ][1, c(5, 6,
-    8)]
-m2h2y1 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[22]])[parameterEstimates(results[[22]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[22]])[parameterEstimates(results[[22]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[22]])[parameterEstimates(results[[22]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[22]])[parameterEstimates(results[[22]])$label == "by", ][1, c(5, 6,
-    8)]
-m2h2y2 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[23]])[parameterEstimates(results[[23]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[23]])[parameterEstimates(results[[23]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[23]])[parameterEstimates(results[[23]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[23]])[parameterEstimates(results[[23]])$label == "by", ][1, c(5, 6,
-    8)]
-m2h2y3 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[24]])[parameterEstimates(results[[24]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[24]])[parameterEstimates(results[[24]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[24]])[parameterEstimates(results[[24]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[24]])[parameterEstimates(results[[24]])$label == "by", ][1, c(5, 6,
-    8)]
-m2h2y4 <- rbind(ax, ay, bx, by)
-
-# model 3
-ax <- parameterEstimates(results[[25]])[parameterEstimates(results[[25]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[25]])[parameterEstimates(results[[25]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[25]])[parameterEstimates(results[[25]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[25]])[parameterEstimates(results[[25]])$label == "by", ][1, c(5, 6,
-    8)]
-m3h2y1 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[26]])[parameterEstimates(results[[26]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[26]])[parameterEstimates(results[[26]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[26]])[parameterEstimates(results[[26]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[26]])[parameterEstimates(results[[26]])$label == "by", ][1, c(5, 6,
-    8)]
-m3h2y2 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[27]])[parameterEstimates(results[[27]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[27]])[parameterEstimates(results[[27]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[27]])[parameterEstimates(results[[27]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[27]])[parameterEstimates(results[[27]])$label == "by", ][1, c(5, 6,
-    8)]
-m3h2y3 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[28]])[parameterEstimates(results[[28]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[28]])[parameterEstimates(results[[28]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[28]])[parameterEstimates(results[[28]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[28]])[parameterEstimates(results[[28]])$label == "by", ][1, c(5, 6,
-    8)]
-m3h2y4 <- rbind(ax, ay, bx, by)
-
-# model 4
-ax <- parameterEstimates(results[[29]])[parameterEstimates(results[[29]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[29]])[parameterEstimates(results[[29]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[29]])[parameterEstimates(results[[29]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[29]])[parameterEstimates(results[[29]])$label == "by", ][1, c(5, 6,
-    8)]
-m4h2y1 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[30]])[parameterEstimates(results[[30]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[30]])[parameterEstimates(results[[30]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[30]])[parameterEstimates(results[[30]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[30]])[parameterEstimates(results[[30]])$label == "by", ][1, c(5, 6,
-    8)]
-m4h2y2 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[31]])[parameterEstimates(results[[31]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[31]])[parameterEstimates(results[[31]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[31]])[parameterEstimates(results[[31]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[31]])[parameterEstimates(results[[31]])$label == "by", ][1, c(5, 6,
-    8)]
-m4h2y3 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[32]])[parameterEstimates(results[[32]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[32]])[parameterEstimates(results[[32]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[32]])[parameterEstimates(results[[32]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[32]])[parameterEstimates(results[[32]])$label == "by", ][1, c(5, 6,
-    8)]
-m4h2y4 <- rbind(ax, ay, bx, by)
-
-# combine put deps under each other
-m1deps <- rbind(m1h2y1, m1h2y2, m1h2y3, m1h2y4)
-m2deps <- rbind(m2h2y1, m2h2y2, m2h2y3, m2h2y4)
-m3deps <- rbind(m3h2y1, m3h2y2, m3h2y3, m3h2y4)
-m4deps <- rbind(m4h2y1, m4h2y2, m4h2y3, m4h2y4)
-
-# put methods next to each other
-h2 <- cbind(m1deps, m2deps, m3deps, m4deps)
-row.names(h2) <- NULL
-
-paths <- rep(c("Men:stability", "Women:stability", "Men:partner-effect", "Women:partner-effect"), 2)
-h2 <- cbind(paths, h2)
-
-
-hypo2 <- kbl(h2, booktabs = TRUE, digits = 2, caption = "Results Hypo2", align = "lcccccccccccc") %>%
-    add_header_above(c(" ", CLPM = 3, `RI-CLPM` = 3, `SC-RI-CLPM` = 3, `LT-RI-CLPM` = 3)) %>%
-    pack_rows(index = c(`eu-integration` = 4, immigrants = 4, euthanasia = 4, income_diff = 4)) %>%
-    kable_classic(full_width = F, html_font = "Cambria") %>%
-    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-    column_spec(5:7, color = "white", background = "green")
-
-hypo2
-```
-
 <table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-27)Results Hypo2</caption>
+<caption>(\#tab:unnamed-chunk-26)Results Hypo2</caption>
  <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
@@ -11665,14 +11462,16 @@ hypo2
 
 ### Conclusion hypo2  
 
+---  
+
 ## Assignment
 
-1. Look in the literature for other measures of opinion homophily. Try to apply this measure to construct a similar table as \@ref(Descriptives).  
-2. You that sections \@ref(Conclusion-hypo1) and \@ref(Conclusion-hypo2) are empty. Please fill in the blanks. Motivate your answer and discuss both selection and influence.  
+1. Look in the literature for other measures of opinion homophily. Try to apply this measure to construct a similar table as \@ref(descriptives).  
+2. Have a look at the detailed results of the RI-CLPM estimated for hypothesis 1. Could you conclude, based on the error-covariance and/or error-correlation between the opinions of the spouses that opinion homophily increased? Motivate your answer.  
+3. Have a look at the detailed results of the LT-RI-CLPM and focus on the variance and covariance of the random slopes of the partners. What does this tell you about opinion homophily within partners? Motivate your answer.  
+4. You see that sections \@ref(conclusion-hypo1) and \@ref(conclusion-hypo2) are empty. Please fill in the blanks. Motivate your answer and discuss both selection and influence.  
 3. You could argue that influence is only possible if people differ initially. Please select couples who are dissimilar at *within-time 1* and do the descriptive and analysis part again. Of course, of course, not for all dependent variables and modelling specifications. Pick one dependent and focus on the **RI-CLPM**.  
-4. Please test if influence processes depend on educational attainment:  
-  - formulate a hypothesis  
-  - test this hypothesis
+4. Please test if influence processes depend on educational attainment. Thus, formulate a hypothesis and test this hypothesis. 
 
 
 ---  

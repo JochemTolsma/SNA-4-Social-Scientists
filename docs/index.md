@@ -1,6 +1,6 @@
 ---
 title: "Social Network Analysis for Social Scientists"
-date: "2021-09-10"
+date: "2021-09-13"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -8,6 +8,8 @@ biblio-style: apalike
 link-citations: yes
 description: ""
 ---
+
+
 
 <!---
 https://jochemtolsma.github.io/SNA-4-Social-Scientists/
