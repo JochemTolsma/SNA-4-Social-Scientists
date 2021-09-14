@@ -169,7 +169,7 @@ We are going to work with two datasets: "Culturele Veranderingen". For more info
 Please download the files to your working directory.
 
 [Cultural_Changes_2008.sav](addfiles\Cultural_Changes_2008.sav)\
-[Cultural_Changes_2010.sav](addfiles\Cultural_Changes_2008.sav)  
+[Cultural_Changes_2010.sav](addfiles\Cultural_Changes_2010.sav)  
 
 There are different packages to read in data. Generally, I would recommend to use the `haven` package. In the past I used the `foreign` package. The advantage of using `haven::read_spss` is that more information is stored in the dataset and in the variables (variable/value labels!!). A disadvantage is that not all other functions/packages of R are capable of dealing with the data object that haven produces.
 
@@ -318,7 +318,7 @@ We will 'mutate' the original dataset by adding a variable.
 cv08_haven <- mutate(cv08_haven, lftop_new=lftop)
 ```
 
-Replace missings\
+Replace missings.\
 Be aware that the value **99** is the "onbekend" category.
 
 ```{r}
@@ -475,16 +475,16 @@ cv08$int057n <- cv08$int057n  - 4
 Step 4: calculate means. 
 ```{r, results='hold' }
 #How does the function mean work in R?
-mean(cv08$int055n)
-mean(cv08$int055n, na.rm=TRUE)
-mean(c(cv08$int055n, cv08$int056n, cv08$int057n), na.rm = T)
+mean(cv08$int055n) #whoops
+mean(cv08$int055n, na.rm=TRUE) #works.  but not what we want. 
+mean(c(cv08$int055n, cv08$int056n, cv08$int057n), na.rm = T) #works but not what we want.
 ```
 
 This is not what we want. What we want is to calculate a mean for each row/respondent. This will do the trick:
 
 ```{r }
 testmeans <- rowMeans(cbind(cv08$int055n, cv08$int056n, cv08$int057n), na.rm = T)
-head(testmeans)
+head(testmeans) #yes!
 ```
 
 What we really want is a mean but only if there is a maximum of 1 NA in the three variables.
@@ -512,7 +512,7 @@ cv08$int_mean <- testmeans
 
 ### Tidy
 
-Here it goes in one big code chunck. 
+Here it goes in one big code chunk. 
 ```{r, results='hold' }
 
 #Step 1: have a look at the vars
@@ -851,9 +851,20 @@ head(age_region_test)
 
 ```
 
-### Tidy  {#agtidy}
+### Tidy
+```{r, results='hold'}
+#step 1. convert the dataset to an aggregate/grouped version using the "group_by" function from the Dplyr package (part of the tidyverse), which will enable you to perform aggregate-level, or "by group," operations.
+age_region <- group_by(cv_tot_tidy, region)
 
-** TO DO ** 
+#step 2. use mutate to create and append the mean age by region to the original data frame (don't forget to remove NA values).
+age_region <- mutate(age_region, mean = mean(age, na.rm = TRUE))
+
+#step 3. you can link both commands using the pipe operator %>% to keep your code concise (and readable if you're writing a script).
+cv_total_tidy <- cv_tot_tidy  %>%
+  group_by(region) %>% 
+  mutate(age_region = mean(age, na.rm = TRUE)) %>%
+  ungroup() #because group_by() returns a grouped tibble (a tibble specific class with a group attribute), it's good practice to close the pipe-chain with ungroup() to avoid an errors down the line. 
+```
 
 ## Missing values
 
@@ -861,7 +872,7 @@ head(age_region_test)
 
 Suppose you want to estimate the following model:
 
-```{r, model1}
+```{r, model1base}
 model1 <- lm(as.numeric(health) ~ men + age +  as.factor(educ3) + as.factor(region), data=cv_total)
 summary(model1)
 ```
@@ -883,8 +894,8 @@ Of course we have several options:
 
 #### Option 1: listwise deletion
 
-```{r, listwise}
-#step1 define all missings
+```{r, listwisebase}
+#step 1. define all missings
 summary(cv_total)
 model2 <- lm(as.numeric(healthn) ~ men + age +  as.factor(educ3) + as.factor(region), data=cv_total)
 summary(model2)
@@ -899,7 +910,7 @@ Don't replace missings on dependent variable.
 For categorical variables add category missing.
 For continues/metric variables replace missing with mean value.
 
-```{r replace, results="hold"}
+```{r replacebase, results="hold"}
 cv_total$men2 <- ifelse(is.na(cv_total$men), 2, cv_total$men)
 summary(cv_total$men2)
 
@@ -919,7 +930,7 @@ summary(model3)
 
 #### Option 3: impute missing values  
 
-We will use the R package mice (@mice).
+We will use the R package @mice.
 
 For theory please see:  
 * [https://stefvanbuuren.name/Winnipeg](https://stefvanbuuren.name/Winnipeg)  
@@ -929,7 +940,7 @@ For theory please see:
 Read the literature, lectures and have a look at all vignettes of the package mice (here). This is not basic stuff!
 
 
-```{r mice, results="hold", error=TRUE }
+```{r micebase, results="hold", error=TRUE }
 #lets start with the original dataset, that is without replacement of the missings
 cv_total <- cv_total[,c("id", "id2", "age", "men", "educ3", "health", "region", "wave")]
 #define all missings
@@ -974,9 +985,106 @@ pool_model_imp <- pool(model_imp)
 summary(pool_model_imp)
 ```
 
-### Tidy {#mistidy}  
+### Tidy
 
-** TO DO ** 
+Suppose you want to estimate the following model:
+
+```{r, model1tidy}
+model1 <- cv_total_tidy %>%
+  mutate(healthn = as.numeric(health),
+         across(c(educ3, region), as.factor)) %>%
+  lm(formula = healthn ~ men + age + educ3 + region) %>%
+  summary()
+#the across function from the Dplyr package is similar to the apply function (if MARGIN = 2) from base R. it performs the same operation on multiple columns (or, if you have groups, for each combination of columns and groups).
+
+#lm is not a 'pipe friendly' function because the data is provided in the second argument, while the pipe operator reads the data from the first unnamed(!) argument that follows the %>%. by naming the first argument, the pipe will take data from the second argument, which is (in this case) the correct data argument.
+
+model1
+```
+
+Whoops, tidy also includes th "weigert" observation for the `health` variable. Let us correct. 
+
+```{r, results="hold"}
+#step 1. define all missings 
+  
+cv_total_tidy <- cv_total_tidy %>%
+  mutate(health = na_if(health, -2),
+         healthn = as.numeric(health) - 4)
+```
+
+
+#### Option 1: listwise deletion
+
+```{r, listwisetidy}
+model2 <- cv_total_tidy %>%
+  mutate(across(c(educ3, region), as.factor)) %>%
+  lm(formula = healthn ~ men + age + educ3 + region) %>%
+  summary()
+
+model2
+```
+
+#### Option 2: replacing missing values. 
+
+Besides the `ifelse()` command, you can use `replace_na` from the Tidyr package (part of the tidyverse), which, you might have guessed from the name, enables you to replace NAs with specified values.  
+However, using `replace_na` will return an error if the variable is a factor and requires conversion to numeric-type values. We'll still use `ifelse()` to create the dummy `age_mis`.
+
+```{r replacetidy, results="hold"}
+#with the first mutate argument you avoid repeating as.numeric() for each variable.
+cv_total_tidy2 <- cv_total_tidy %>%
+  mutate(across(everything(), as.numeric),
+         men2 = replace_na(men, 2),
+         educ3b = replace_na(educ3, 4),
+         age2 = replace_na(age, mean(age, na.rm = TRUE)),
+         age_mis = ifelse(is.na(age), 1, 0))
+
+#note: the following two commands are equivalent:
+#mutate(across(everything(), as.numeric))
+#mutate_all(as.numeric)
+#the next two as well: 
+#mutate_at(c("men2", "educ3b", "region"), as.factor)
+#mutate(across(c(men2, educ3b, region), as.factor))
+
+#pay attention, now use categorical variable men2.
+model3 <- cv_total_tidy2 %>% 
+  mutate_at(c("men2", "educ3b", "region"), as.factor) %>%
+  lm(formula = healthn ~ men2 + age2 + age_mis + educ3b + region) %>%
+  summary()
+
+model3
+```
+
+#### Option 3: impute missing values  
+
+<!---something goes wrong with df. chunks work but build fails!---> 
+
+```{r micetidy, results="hold", error=FALSE, eval=FALSE }
+
+
+  pred <- cv_total_tidy  %>%
+  select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave")) %>% #start with the original variables.
+  mutate_all(as.numeric)  %>%
+  mutate_at(c("men", "educ3"), as.factor) %>%
+  mice(method = c("", "", "cart", "logreg", "polr", "cart", "", "")) %>%
+  unclass() %>% #The object returned from the mice function is of class 'mids,' which dplyr's functions cannot handle. The unclass() function from base R solve this issue as it removes the class attribute and, in this case, returns a list that dplyr can handle.
+  pluck("predictorMatrix") %>% #the pluck() function from the Purrr package (part of the tidyverse) is the user-friendly equivalent of `[[` in base R: `[[`("predictorMatrix"), which enables you to extract a single element from the list we just created using unclass().
+  as.data.frame() %>% #Because the mutate function (and its variations) are not build for lists, we need to coerce into a data frame (or Tibble)
+  mutate_at(c("id", "id2", "age"), funs(recode(1, 0))) %>% #To 'remove' the columns id id2 and wave as predictors, we recode all their 1s to 0s using mutate_at() and recode().
+  as.matrix()
+
+
+#impute missings (again but now on correct predictors) and fit model on imputed dataset
+
+model_imp <- cv_total_tidy %>%
+  select(c("id","id2","age","men","educ3","health","region","wave")) %>%
+  mutate_all(as.numeric)  %>%
+  mutate_at(c("men", "educ3"), as.factor) %>%
+  mice(method = c("", "", "cart", "logreg", "polr", "cart", "", ""), pred = pred, seed = 45622) %>%
+  with(lm(as.numeric(health) ~ men + age + educ3 + region)) %>%
+  pool()
+
+summary(model_imp)
+```
 
 ## Very important stuff!!
 
@@ -1094,7 +1202,6 @@ Time to practice.
 * Go back to your latest paper, assignment or theses in which you used a software package other than R to wrangle, describe, visualize and/or analyze the data. Translate your syntax into R. Be as consistent as possible with respect to using Base and Tidy.  
 * But that is way too difficult!! Okay, okay, well try to do exactly the same as in this tutorial (without copy pasting the code chunks) but on a different dataset.  
 * O, you are already a fluent R Base user? Well, translate your latest R Base script into Tidy. 
-* You say, you are already a Tidy person? Mmmm,... I've got it. Please fill in the gaps of this tutorial ([Appendix A.11.2](#agtidy) and [Appendix A.12.2](#mistidy)) for me and earn an acknowledgment in this book.  
 * Not challenging enough? Start working with [Rmarkdown]("https://bookdown.org/yihui/rmarkdown/") and [Git]("https://happygitwithr.com/"). Fork this repository. Make this tutorial better. Submit a pull request to me.  
 * Consider the following list: `annoyinglist <- list(v1=c(2,45,6, NA), v2=c(23536), v3=NA, v4=c(2346))`  
   - calculate the mean of **all** elements saved in the annoyinglist with a loop  

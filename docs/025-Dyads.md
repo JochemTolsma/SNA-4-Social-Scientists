@@ -1,5 +1,88 @@
 # Methods  
 
+<!--- need to add some css styling for button
+https://www.w3schools.com/csS/css3_buttons.asp
+
+<style>
+
+.button {
+  background-color: #f44336; /* Red */ 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button {border-radius: 12px;}
+
+.button {width: 100%;}
+
+</style>
+
+
+---> 
+
+<style>
+
+.button1 {
+  background-color: #f44336; /* Red */ 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button1 {border-radius: 12px;}
+
+.button1 {width: 100%;}
+</style>
+
+
+<script>
+function myFunction() {
+
+            var btn = document.getElementById("myButton");
+            //to make it fancier
+            if (btn.value == "Click to hide code") {
+                btn.value = "Click to show code";
+                btn.innerHTML = "Click to show code";
+            }
+            else {
+                btn.value = "Click to hide code";
+                btn.innerHTML = "Click to hide code";
+            }
+            //this is what you're looking for
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+</script>
+
+
+
+
 <!---we need to include this somewhere as general r script---> 
 
 
@@ -24,7 +107,7 @@ https://link.springer.com/chapter/10.1007/978-3-319-93227-9_13
 https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
 ---> 
 
-When testing hypotheses on assortative mating many methodological approaches can be used. We may predict the **frequency of specific dyads** in our population with loglinear models and the data we use is commonly structured in a square table like the one below. Loglinear models are, in essence, nothing more than a nice, parsimonious and fancy way to calculate [odds ratio's](#OR). If we have a small, well filled table of just a few attributes, [loglinear models](#LLM) are considered to be the golden standard. 
+When testing hypotheses on assortative mating many methodological approaches can be used. We may predict the **frequency of specific dyads** in our population with loglinear models and the data we use is commonly structured in a square table like the one below. Loglinear models are, in essence, nothing more than a nice, parsimonious and fancy way to calculate [odds ratio's](\ref(OR)). If we have a small, well filled table of just a few attributes, [loglinear models](\ref(LLM)) are considered to be the golden standard. 
 
 <table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>(\#tab:tabledyads)Assortative Mating (dyad frequency)</caption>
@@ -51,7 +134,7 @@ When testing hypotheses on assortative mating many methodological approaches can
 
 
 
-Another approach is to take the **characteristics of the dyad** (e.g. 1 = intermarriage and 0 = no intermarriage) as the dependent variable. This dependent variable can than be explained by applying (conditional) (multinomial) [logistic regression](#LM) techniques. In this case, the data is commonly structured in long format and looks something like the table below. 
+Another approach is to take the **characteristics of the dyad** (e.g. 1 = intermarriage and 0 = no intermarriage) as the dependent variable. This dependent variable can than be explained by applying (conditional) (multinomial) [logistic regression](\ref(LM)) techniques. In this case, the data is commonly structured in long format and looks something like the table below. 
 
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; "><table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>(\#tab:tabledyads2)Assortative Mating (dyad characteristic)</caption>
@@ -242,100 +325,61 @@ Which methodology is preferred should depend on your hypotheses and on the data 
 
 ## Consequences 
 
-The method used to explain consequences of dyads depends on our Unit of Analysis. If it is the dyad itself (e.g. mean relationship quality) methods are relatively straightforward, because we may assume that the observations at the dyad-level are independent. If, on the other hand, the unit of analysis are the partners themselves who make up the dyad, we need to acknowledge that the observations between the partners of the same couple are not independent. In part exactly because partners select and influence each other and share a social context. One solution could be to simply randomly select one partner of each couple or, if partners can be clearly distinguished - for example men and women in heterosexual couples - the different partners could be analyzed separately. A disadvantage of the latter two approaches is, however, that the covariance between the partners cannot be explained anymore, although this may exactly be the focus of our research questions. A more elegant solution, is to take the interdependencies into account and model these explicitly. This can be done within a multi-level framework and within a structural-equation modelling framework. 
+The method used to explain consequences of dyads depends on our Unit of Analysis. If it is the dyad itself (e.g. mean relationship quality) methods are relatively straightforward, because we may assume that the observations at the dyad-level are independent. We may explain this dyad-characteristic by other characteristics of the dyad (e.g. length of marriage) and by characteristics of each spouse (e.g. working hours men, working hours woman).^[I am assuming that spouses - and egos/alters more generally - can be 'distinguished'. If this is not the case (e.g. homosexual couples), we need different techniques.] That characteristics of the spouses, the covariates, are correlated does not necessarily pose a big problem.^[Except of course if you face issues of multicollinearity.]  
+If, on the other hand, the unit of analysis are the partners themselves who make up the dyad, we need to acknowledge that the observations between the partners of the same couple are not independent. In part exactly because partners select and influence each other and share a social context. One solution could be to simply randomly select one partner of each couple or, if partners can be clearly distinguished - for example men and women in heterosexual couples - the different partners could be analyzed separately. A disadvantage of the latter two approaches is, however, that the covariance between the partners cannot be explained anymore, although this may exactly be the focus of our research questions. A more elegant solution, is to take the interdependencies into account and model these explicitly. This can be done within a multi-level framework and within a structural-equation modelling framework. 
 
-When we discussed the methods to analyze causes of homogamy, we were interested in homophily within couples at one point in time and focused on selection as explanans. Now, when we discuss the consequences of dyads, we are interested in explaining trends in homophily within couples - thus homophily as a consequence of assortative mating - and focus on shared context and influence processes as explanans. 
+## Research questions
 
+When we discussed the methods to analyze causes of homogamy, we were interested in homophily within couples at one point in time and focused on selection as explanans. Now, when we are discussing the consequences of dyads, we are interested in explaining trends in homophily within couples - thus homophily as a consequence of mating - and focus on shared context and influence processes as explanans.  
+Naturally, because we are interested in trends in homophily within couples, we focus on dynamic characteristics of the spouses. Thus not, ethnicity, or educational attainment, but, for example, on their political opinions.  
 
-------------------------------------------------------------------------
+Let us suppose our aim is to write a scientific paper on political opinion homophily within couples. We will formulate the following research questions:
 
+- To what extent can we observe trends in political opinion homophily (or opinion similarity) **within** couples?  
+- To what extent can we explain trends in political opinion homophily by influence processes taking place between spouses?  
+- To what extent can we explain trends in political opinion homophily by the shared (social) context of the couple?  
 
-**PARTNERS AND POLITICS - When do we listen to our partner**'s political opinion? 
+Perhaps, you also want to focus in this paper on the influence process itself and formulate a second set of research questions: 
 
-In this part of the book, we will demonstrate the Cross-Lagged Panel Model (CLPM) and how to apply it to assess whether partners influence each other opinions. 
-
----   
-
-**Relevance**
-
-
-
-
----  
-
-### Selection  
-## Dyadic Influence: Mechanisms
-
-What happens within the couple? 
-Or phrased otherwise, what could dyadic influence look like? 
-
-- No change (no influence)  
-- Common trend (commen context and/or dyadic influence)  
-- Convergence (assimilation)   
-- Mimic change after 'shocks' 
-
-<img src="025-Dyads_files/figure-html/unnamed-chunk-1-1.png" width="672" />
-
-<img src="025-Dyads_files/figure-html/unnamed-chunk-2-1.png" width="672" />
-
-<img src="025-Dyads_files/figure-html/unnamed-chunk-3-1.png" width="672" />
-
-<img src="025-Dyads_files/figure-html/unnamed-chunk-4-1.png" width="672" />
-
-<img src="025-Dyads_files/figure-html/unnamed-chunk-5-1.png" width="672" />
-
-<img src="025-Dyads_files/figure-html/unnamed-chunk-6-1.png" width="672" />
-
-
-
----  
-
-## Expectations 
-
-Now, let us try to formulate several hypotheses on influence processes taking place within couples. Naturally, these hypotheses should be derived from existing (and established) theories. But the aim here is not to teach you how to derive hypotheses but to test hypotheses on dyadic influence.  
-
-<p class= "quote">
-"People influence one another, and as the importance and immediacy of a group or individual increases, this influence becomes stronger (Latané, 1981). Forces of influence are especially strong within romantic relationships because these relationships are important, are predicated on mutual acceptance, and involve frequent exposure to the habits of one's partner." @bartel2017romantic  
-</p>
-
-Naive conceptualisation of **influence**. It is assumed that partners will match their opinions/behaviors. Thus influence here is convergence and reaction to shocks. 
-
-**Hypothesis 1 Partner influence hypothesis**: Partners opinions will become more similar to one another over time.   
+- To what extent are influence process within couples influenced by (or conditional on):  
+  - the shared context?    
+  - characteristics of the couple?    
+  - characteristics of the spouses?  
+  
+<!--- **Hypothesis 1 Partner influence hypothesis**: Partners opinions will become more similar to one another over time.   
 We will introduce the CLPM below. Once you are familiar with this model, you see that we can and should formulate a more precise hypothesis 1.  
 
 **Hypo1 RI-CLPM:** When your partner's opinion is relatively high (compared to your partners average opinion over time) at time T, your own opinion will be relatively high (compared to your own average opinion over time) at time T+1. 
 
-<!---
 Hypo1 SC-RI-CLPM: Even if we control for structural time trends in political opinions, when your partner's opinion is relatively high (compared to your partners average opinion over time) at time T, your own opinion will be relatively high (compared to your own average opinion over time) at time T+1. 
 
 Hypo1 LT-RI-CLPM: Even if we take into account that...: 
   - the general time trend of men and women will be (positively) associated (i.e. positive covariance of the random slopes);  
   - the mean opinion of your spouse will influence your general time trend (i.e. negative covariance of random intercept of men with random slop of women (and vice versa));
   ...when your partner's opinion is relatively high (compared to your partners average opinion over time) at time T, your own opinion will be relatively high (compared to your own average opinion over time) at time T+1. 
---->
+
 
 **Hypothesis 2 Male dominance hypothesis**: Women are more influenced by their (male) spouse than men are influenced by their (female) spouse.** 
 
 **Hypothesis 3 Educational dominance hypothesis:** The spouse with the lowest education is more influenced by their partner than the spouse with the highest education.** 
 
+--->
 
----  
+## Data 
 
-
-## Data {.tabset .tabset-fade}
-
+We will use the data from the LISS panel.  
 
 <a href="https://www.lissdata.nl/">
   <img src="lisslogo_0.png">
   </a>
 
-We will use:  
+More concretely, we will use:  
 
 - 11 waves (2008-2014, 2016-2020)  
-- More than 3000 heterosexual couples (cohabiting and married)
-- Older than 25
+- Filter on heterosexual couples (cohabiting and married)
+- Filter on couples of which both spouses are older than 25. 
 
-We have already constructed a dataset for you guys and gals to work with. 
+We have already constructed a dataset for you guys and gals to work with which contains information on more than 3000 couples. Don't forget it is a panel data set. This means we have more observations for the same couple (and spouses) over time. Also be aware that our spouses can be clearly distinguished from one another (i.e. husband versus wife).   
 
 Please download this data file to your working directory.
 
@@ -346,12 +390,14 @@ Please download this data file to your working directory.
 
 Variables of interest and value labels:
 
--   Education: = highest completed education in years (4-16.5)
+-   education: = highest completed education in years (4-16.5)
 -   sex: = 0 = male / 1 = female
 -   eu_integration: 0 = eu integration has gone too far / 4 = eu integration should go further
 -   immigrants: 0 = immigrants should adjust / 4 immigrants can retain their own culture.
 -   euthanasia: 1 = euthanasia should be forbidden / 5 euthanasia should be permitted
--   income: 1 differences in income should increase / 5 differences in income should decrease
+-   income_diff: 1 differences in income should increase / 5 differences in income should decrease
+
+For the original variables in Dutch see below: 
 
 <p class= "quote"> **opleiding**  
 
@@ -400,17 +446,339 @@ Variables of interest and value labels:
 </p>
 ---  
 
-### Descriptives
+## Descriptives
 
-**TO DO**
+### Preperation 
+
+
+```r
+#### clean the environment ####.
+rm(list = ls())
+
+#### packages ####.
+require(tidyverse)
+
+##### Data input ###.
+load("addfiles/partner_dataprepped.Rdata")
+
+# clean a little bit.
+rm("partner_df_wide")  #we will make a wide file later again. 
+
+partner_df_long <- partner_df_long %>%
+    rename(dyad_id = "nohouse_encr") %>%
+    select(-c("hetero", "n", "nomem_encr.m", "positie.m", "nomem_encr.f", "positie.f"))
+
+partner_df_wide <- reshape(partner_df_long, direction = "wide", idvar = "dyad_id", timevar = "time")
+```
+
+
+
+Please note that our time variable indicates survey year. We do not want to describe period trends in opinion homophily within couples but lifecourse trends. We will call the latter the *within-trend*. For people familiar with life course research, hopefully you will see the resemblance to the Age-Period-Cohort conundrum. We therefore need to construct a `time_within` variable and add it to our data set.  
+
+<span style='color: red;'>Before copying the 'hidden code' below, please try to do this yourself.</span> 
+
+
+<button class=button1 onclick="myFunction()" id="myButton" value="Click To Open Instructions">Only click button after 5 minutes!</button>
+
+<div style="display:none;" id="myDIV">
+
+```r
+partner_df_long <- partner_df_long %>%
+  arrange(dyad_id, time) %>% #let us order the data set
+  group_by(dyad_id) %>% #we focus on within dyad-level thus group by dyad
+  mutate(start_time = min(time), #determine first wave of participation
+         within_time = (time - start_time) + 1, #count passing of time within couples
+         n_time = n()) %>% #keep track of number of times couples participated in LISS
+  ungroup()
+```
+</div>
+
+Now we need to think of how we want to operationalize opinion homophily. 
+
+The stronger the political opinion homophily within couples, the larger the spousal correspondence, the larger the association between the opinions of the partners. We discussed covariance and correlations [here](#variance-and-covariance). Would that be an option?    
+
+A different approach would be to operationalize increasing homophily as decreasing absolute opinion dissimilarity between the spouses [@iyengar2018]. 
+
+### Opinion homophily over *within-time*  
+
+Let's have a go. 
+
+
+```r
+cors <- partner_df_long %>% 
+  group_by(within_time)  %>% #we want to see within couple trends. 
+  group_map(~ cor.test(x=.x$immigrants.m, y=.x$immigrants.f)$estimate ) %>%
+  unlist()
+
+# How to do this in Base R?
+# # we subset the data. 
+# cor.test(partner_df_long$immigrants.m[partner_df_long$within_time==1], partner_df_long$immigrants.f[partner_df_long$within_time==1])
+# 
+# #And we could use a loop. 
+# cors <- list()
+# for (i in 1:11) {
+#  cors[[i]] <-  cor.test(partner_df_long$immigrants.m[partner_df_long$within_time==i], partner_df_long$immigrants.f[partner_df_long$within_time==i])
+# }
+
+
+covs <- partner_df_long %>% 
+  group_by(within_time)  %>% #we want to see within couple trends. 
+  group_map(~ cov(x=.x$immigrants.m, y=.x$immigrants.f, use="complete.obs") ) %>%
+  unlist()
+
+partner_df_long %>% 
+  mutate(distance = abs(immigrants.m - immigrants.f)) %>%
+  group_by(within_time)  %>% #we want to see within couple trends. 
+  summarise(mean_dist = mean(distance, na.rm=T)) %>%
+  add_column(cors) %>%
+  add_column(covs)
+```
+
+```
+#> # A tibble: 11 x 4
+#>    within_time mean_dist  cors  covs
+#>          <dbl>     <dbl> <dbl> <dbl>
+#>  1           1     0.716 0.440 0.422
+#>  2           2     0.711 0.450 0.431
+#>  3           3     0.706 0.438 0.402
+#>  4           4     0.662 0.485 0.446
+#>  5           5     0.657 0.488 0.450
+#>  6           6     0.670 0.483 0.452
+#>  7           7     0.675 0.458 0.416
+#>  8           8     0.681 0.432 0.374
+#>  9           9     0.686 0.442 0.399
+#> 10          10     0.662 0.419 0.328
+#> 11          11     0.650 0.474 0.383
+```
+
+Whow! Please look at the above results for at least **5 minutes** before you move one. What is your interpretation? Do you observe a (significant) trend? Suppose that the mean distance indeed decreased but that, as a consequence, also the variance in this opinion decreased. What impact would this have for the covariance?    
+
+### Distinguishing period trends from lifecourse trends  
+
+The above results are hard to interpret. In part because we mix up period trends and and within-trends. And although we are interested in influence and shared context effects, we must not forget about (de)selection effects. The couples who survive to reach within-time 11 are probably a selective subgroup of all couples. 
+
+A bit more sophisticated:  
+
+- calculate the (euclidean) distance between all four attitudes.  
+- Try to distinguishing period trends from lifecourse trends.  
+- Try to take into account of selective sample attrition.^[One of the reasons couples drop out of our data is because of divorce.] 
+
+
+```r
+trends <- partner_df_long %>%
+  filter(n_time>4) %>% #trying to take selective sample attrition into account. 
+  mutate(distance = sqrt((immigrants.m - immigrants.f)^2 + (euthanasia.m - euthanasia.f)^2 + (income_diff.m - income_diff.f)^2 + (eu_integration.m - eu_integration.f)^2 )) %>% #euclidean distance of four political opinions
+  group_by(start_time, within_time)  %>% #we want to see within couple trends but need to 'control for' period trends 
+  summarise(mean_dist = mean(distance, na.rm=T))
+
+#Put results in a matrix
+#?? how to do this the tidy way? 
+trends_matrix <- matrix(NA, nrow=11, ncol=11)
+for (i in 1:length(trends$start_time)) {
+  trends_matrix[trends$start_time[i],trends$within_time[i]] <- trends$mean_dist[i]
+}
+
+rownames(trends_matrix) <- c(2008:2014, 2016:2019)
+colnames(trends_matrix) <- paste("within_time", 1:11, sep="_")
+
+trends_matrix
+```
+
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; "><table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>(\#tab:unnamed-chunk-5)Trends in spousal correspondance in political attitudes</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">   </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_1 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_2 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_3 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_4 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_5 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_6 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_7 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_8 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_9 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_10 </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> within_time_11 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 2008 </td>
+   <td style="text-align:center;"> <span style="     color: red !important;">1.929</span> </td>
+   <td style="text-align:center;"> <span style="     color: blue !important;">1.922</span> </td>
+   <td style="text-align:center;"> 1.793 </td>
+   <td style="text-align:center;"> 1.809 </td>
+   <td style="text-align:center;"> 1.793 </td>
+   <td style="text-align:center;"> 1.72 </td>
+   <td style="text-align:center;"> 1.720 </td>
+   <td style="text-align:center;"> 1.777 </td>
+   <td style="text-align:center;"> 1.815 </td>
+   <td style="text-align:center;"> 1.843 </td>
+   <td style="text-align:center;"> 1.816 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2009 </td>
+   <td style="text-align:center;"> 2.009 </td>
+   <td style="text-align:center;"> <span style="     color: red !important;">1.743</span> </td>
+   <td style="text-align:center;"> <span style="     color: blue !important;">1.619</span> </td>
+   <td style="text-align:center;"> 1.842 </td>
+   <td style="text-align:center;"> 1.719 </td>
+   <td style="text-align:center;"> 1.681 </td>
+   <td style="text-align:center;"> 1.636 </td>
+   <td style="text-align:center;"> 1.743 </td>
+   <td style="text-align:center;"> 1.640 </td>
+   <td style="text-align:center;"> 1.874 </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2010 </td>
+   <td style="text-align:center;"> 1.823 </td>
+   <td style="text-align:center;"> 1.798 </td>
+   <td style="text-align:center;"> <span style="     color: red !important;">1.827</span> </td>
+   <td style="text-align:center;"> <span style="     color: blue !important;">1.691</span> </td>
+   <td style="text-align:center;"> 1.811 </td>
+   <td style="text-align:center;"> 1.697 </td>
+   <td style="text-align:center;"> 1.699 </td>
+   <td style="text-align:center;"> 1.861 </td>
+   <td style="text-align:center;"> 1.776 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2011 </td>
+   <td style="text-align:center;"> 2.072 </td>
+   <td style="text-align:center;"> 1.803 </td>
+   <td style="text-align:center;"> 1.931 </td>
+   <td style="text-align:center;"> <span style="     color: red !important;">1.549</span> </td>
+   <td style="text-align:center;"> <span style="     color: blue !important;">1.829</span> </td>
+   <td style="text-align:center;"> 2.035 </td>
+   <td style="text-align:center;"> 1.466 </td>
+   <td style="text-align:center;"> 1.973 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2012 </td>
+   <td style="text-align:center;"> 1.826 </td>
+   <td style="text-align:center;"> 1.721 </td>
+   <td style="text-align:center;"> 1.588 </td>
+   <td style="text-align:center;"> 1.799 </td>
+   <td style="text-align:center;"> <span style="     color: red !important;">1.848</span> </td>
+   <td style="text-align:center;"> <span style="     color: blue !important;">1.581</span> </td>
+   <td style="text-align:center;"> 1.724 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2013 </td>
+   <td style="text-align:center;"> 1.908 </td>
+   <td style="text-align:center;"> 1.932 </td>
+   <td style="text-align:center;"> 1.669 </td>
+   <td style="text-align:center;"> 1.98 </td>
+   <td style="text-align:center;"> 1.883 </td>
+   <td style="text-align:center;"> 1.744 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2014 </td>
+   <td style="text-align:center;"> 1.945 </td>
+   <td style="text-align:center;"> 1.959 </td>
+   <td style="text-align:center;"> 1.981 </td>
+   <td style="text-align:center;"> 1.693 </td>
+   <td style="text-align:center;"> 1.999 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2016 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2017 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2018 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019 </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+   <td style="text-align:center;"> NA </td>
+  </tr>
+</tbody>
+</table></div>
+\
+
+Follow the same couples over time by following the diagonals (e.g. the blue and red). 
+
+What would you conclude? 
 
 ---  
 
 ## Analysis 
 
-As always, make sure to start properly. See here. <!---insert link---> 
+Even tough the above descriptives do not show convincing time trends, we know that partners may still influence each other. Let us try to test for influence processes.  
 
-We need to do some additional dataprep. Have a look at the dataset. It is in long format but we will need a wide format. 
+>Feel free to re-estimate all models yourself. But it will be way quicker to download all results. 
+>
+> [results.Rdata](addfiles\results.Rdata)\
+
+
+### Preperation  
+
+We need to do some additional dataprep. 
 
 
 
@@ -464,8 +832,6 @@ dat$oplgroup <- ifelse(dat$oplxy <= 1 & dat$oplxy >= -1, "equal", dat$oplgroup)
 
 dat_ori <- dat
 datalist_ori[[1]] <- dat_ori
-
-
 
 # dep2: immigrants
 
@@ -603,56 +969,54 @@ dat_ori <- dat
 datalist_ori[[4]] <- dat_ori
 ```
 
-------------------------------------------------------------------------
 
-## Modelling strategy {.tabset .tabset-fade}
+### Modelling strategy 
 
-- Actor effects: stability effects  
-- Partner effects: influence effects  
+1.  takes into account that observations within couples are interdependent;
 
+2.  that can explain the interdependence at the couple level;
 
-Controlling for education.  
+3.  focus on changes taking place within couples, not on changes between couples;
+
+4.  clearly distinguishes between:
+
+    i.  Actor effects: stability effects
+    ii. Partner effects: influence effects
+
+5.  Is flexible, so we can control, for example, for educational effects.
+A model that tickes all the boxes is the Random Intercep Cross-Lagged Panel Model.  
 
 
 <div class="figure">
 <img src="hsem_a_1784738_f0001_oc.jpg" alt="RI-CLPM" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-9)RI-CLPM</p>
+<p class="caption">(\#fig:unnamed-chunk-8)RI-CLPM</p>
 </div>
   
 
-Source: [@mulder2020three](https://www.tandfonline.com/doi/full/10.1080/10705511.2020.1784738)
-
-
--   We will compare the results across four different modeling strategies:
-    -   Cross-lagged Panel Model (CLPM) (11 waves)\
-    -   **RI-CLPM (11 waves)**\
-    -   RI-CLPM + structural time trends (11 waves)
-    -   RI/RS-CLPM (11 waves)
-
-
+Source: [@mulder2020three]
 
 ### Robustness
+We will compare the results across four different modeling strategies:
 
--   We will test our hypotheses for four different dependent variables:
+1.  Cross-lagged Panel Model (CLPM) (11 waves). This model lumps together between couple effects and within couples effects but it may help us to compare results.
+2.  **RI-CLPM (11 waves)**. We will focus on this model!
+3.  RI-CLPM + structural time trends (11 waves). This model takes into account that there may also be general period (or structural) trends in the opinions.
+4.  RI/RS-CLPM (11 waves). Finally, in this model we take into account that spouses may show different (linear) trends in their opinions for reasons we do not know. It is a random-intercept, random-slope growth curve model for the two spouses combined.
 
-    -   eu-integration\
-    -   immigration\
-    -   euthanasia\
-    -   income differences\
+We will test our hypotheses for four different dependent variables:
 
-Feel free to re-estimate all models yourself. But it will be way quicker to download all results. 
+1.  eu-integration
+2.  immigration
+3.  euthanasia
+4.  income differences\
 
+### Results hypo1  
 
-[results.Rdata](addfiles\results.Rdata)\
-
-------------------------------------------------------------------------
-
-## Results Hypo1 {.tabset .tabset-fade}
 
 **Hypo1 RI-CLPM: When your partner's opinion is relatively high (compared to your partners average opinion over time) at time T, your own opinion will be relatively high (compared to your own average opinion over time) at time T+1.** 
 
 
-### CLPM  
+#### CLPM  
 
 
 ```r
@@ -1596,9 +1960,7 @@ summary(results[[4]])
 #>    .y11               0.525    0.022   23.738    0.000
 ```
 
-------------------------------------------------------------------------
-
-### RI-CLPM
+#### RI-CLPM
 
 
 ```r
@@ -2868,9 +3230,8 @@ summary(results[[8]])
 #>    .y11               0.000
 ```
 
-------------------------------------------------------------------------
 
-### SC-RI-CLPM
+#### SC-RI-CLPM
 
 
 ```r
@@ -4140,9 +4501,8 @@ summary(results[[12]])
 #>    .y11               0.000
 ```
 
-------------------------------------------------------------------------
 
-### LT-RI-CLPM
+#### LT-RI-CLPM
 
 
 ```r
@@ -5598,137 +5958,32 @@ summary(results[[16]])
 #>    .y11               0.000
 ```
 
-------------------------------------------------------------------------
-
 ### Summary results hypo1
 
-
-```r
-load("addfiles/results.Rdata")
-
-library(knitr)  #for kable/kables
-library(kableExtra)
-
-
-# retrieving data to show model 1
-a <- parameterEstimates(results[[1]])[parameterEstimates(results[[1]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[1]])[parameterEstimates(results[[1]])$label == "b", ][1, c(5, 6, 8)]
-m1h1y1 <- rbind(a, b)
-
-
-a <- parameterEstimates(results[[2]])[parameterEstimates(results[[2]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[2]])[parameterEstimates(results[[2]])$label == "b", ][1, c(5, 6, 8)]
-m1h1y2 <- rbind(a, b)
-
-a <- parameterEstimates(results[[3]])[parameterEstimates(results[[3]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[3]])[parameterEstimates(results[[3]])$label == "b", ][1, c(5, 6, 8)]
-m1h1y3 <- rbind(a, b)
-
-a <- parameterEstimates(results[[4]])[parameterEstimates(results[[4]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[4]])[parameterEstimates(results[[4]])$label == "b", ][1, c(5, 6, 8)]
-m1h1y4 <- rbind(a, b)
-
-# model 2
-a <- parameterEstimates(results[[5]])[parameterEstimates(results[[5]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[5]])[parameterEstimates(results[[5]])$label == "b", ][1, c(5, 6, 8)]
-m2h1y1 <- rbind(a, b)
-
-a <- parameterEstimates(results[[6]])[parameterEstimates(results[[6]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[6]])[parameterEstimates(results[[6]])$label == "b", ][1, c(5, 6, 8)]
-m2h1y2 <- rbind(a, b)
-
-a <- parameterEstimates(results[[7]])[parameterEstimates(results[[7]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[7]])[parameterEstimates(results[[7]])$label == "b", ][1, c(5, 6, 8)]
-m2h1y3 <- rbind(a, b)
-
-a <- parameterEstimates(results[[8]])[parameterEstimates(results[[8]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[8]])[parameterEstimates(results[[8]])$label == "b", ][1, c(5, 6, 8)]
-m2h1y4 <- rbind(a, b)
-# model 3
-a <- parameterEstimates(results[[9]])[parameterEstimates(results[[9]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[9]])[parameterEstimates(results[[9]])$label == "b", ][1, c(5, 6, 8)]
-m3h1y1 <- rbind(a, b)
-
-a <- parameterEstimates(results[[10]])[parameterEstimates(results[[10]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[10]])[parameterEstimates(results[[10]])$label == "b", ][1, c(5, 6, 8)]
-m3h1y2 <- rbind(a, b)
-
-a <- parameterEstimates(results[[11]])[parameterEstimates(results[[11]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[11]])[parameterEstimates(results[[11]])$label == "b", ][1, c(5, 6, 8)]
-m3h1y3 <- rbind(a, b)
-
-a <- parameterEstimates(results[[12]])[parameterEstimates(results[[12]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[12]])[parameterEstimates(results[[12]])$label == "b", ][1, c(5, 6, 8)]
-m3h1y4 <- rbind(a, b)
-
-# model 4
-a <- parameterEstimates(results[[13]])[parameterEstimates(results[[13]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[13]])[parameterEstimates(results[[13]])$label == "b", ][1, c(5, 6, 8)]
-m4h1y1 <- rbind(a, b)
-
-a <- parameterEstimates(results[[14]])[parameterEstimates(results[[14]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[14]])[parameterEstimates(results[[14]])$label == "b", ][1, c(5, 6, 8)]
-m4h1y2 <- rbind(a, b)
-
-a <- parameterEstimates(results[[15]])[parameterEstimates(results[[15]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[15]])[parameterEstimates(results[[15]])$label == "b", ][1, c(5, 6, 8)]
-m4h1y3 <- rbind(a, b)
-
-a <- parameterEstimates(results[[16]])[parameterEstimates(results[[16]])$label == "a", ][1, c(5, 6, 8)]
-b <- parameterEstimates(results[[16]])[parameterEstimates(results[[16]])$label == "b", ][1, c(5, 6, 8)]
-m4h1y4 <- rbind(a, b)
-
-
-# combine put deps under each other
-m1deps <- rbind(m1h1y1, m1h1y2, m1h1y3, m1h1y4)
-m2deps <- rbind(m2h1y1, m2h1y2, m2h1y3, m2h1y4)
-m3deps <- rbind(m3h1y1, m3h1y2, m3h1y3, m3h1y4)
-m4deps <- rbind(m4h1y1, m4h1y2, m4h1y3, m4h1y4)
-
-
-# put methods next to each other
-h1 <- cbind(m1deps, m2deps, m3deps, m4deps)
-
-row.names(h1) <- NULL
-
-paths <- rep(c("stability", "partner-effect"), 2)
-h1 <- cbind(paths, h1)
-
-
-hypo1 <- kbl(h1, booktabs = TRUE, digits = 2, caption = "Results Hypo1", align = "lcccccccccccc") %>%
-    add_header_above(c(" ", CLPM = 3, `RI-CLPM` = 3, `SC-RI-CLPM` = 3, `LT-RI-CLPM` = 3)) %>%
-    pack_rows(index = c(`eu-integration` = 2, immigrants = 2, euthanasia = 2, income_diff = 2)) %>%
-    kable_classic(full_width = F, html_font = "Cambria") %>%
-    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-    column_spec(5:7, color = "white", background = "green")
-
-hypo1
-```
-
-<table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-18)Results Hypo1</caption>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; "><table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>(\#tab:unnamed-chunk-17)Results Hypo1</caption>
  <thead>
 <tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">CLPM</div></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">RI-CLPM</div></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">SC-RI-CLPM</div></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">LT-RI-CLPM</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;position: sticky; top:0; background-color: #FFFFFF;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">CLPM</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">RI-CLPM</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">SC-RI-CLPM</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; position: sticky; top:0; background-color: #FFFFFF;" colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">LT-RI-CLPM</div></th>
 </tr>
   <tr>
-   <th style="text-align:left;"> paths </th>
-   <th style="text-align:center;"> est </th>
-   <th style="text-align:center;"> se </th>
-   <th style="text-align:center;"> pvalue </th>
-   <th style="text-align:center;"> est </th>
-   <th style="text-align:center;"> se </th>
-   <th style="text-align:center;"> pvalue </th>
-   <th style="text-align:center;"> est </th>
-   <th style="text-align:center;"> se </th>
-   <th style="text-align:center;"> pvalue </th>
-   <th style="text-align:center;"> est </th>
-   <th style="text-align:center;"> se </th>
-   <th style="text-align:center;"> pvalue </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> paths </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> est </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> se </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> pvalue </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> est </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> se </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> pvalue </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> est </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> se </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> pvalue </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> est </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> se </th>
+   <th style="text-align:center;position: sticky; top:0; background-color: #FFFFFF;"> pvalue </th>
   </tr>
  </thead>
 <tbody>
@@ -5857,20 +6112,17 @@ hypo1
    <td style="text-align:center;"> 0.35 </td>
   </tr>
 </tbody>
-</table>
-
-------------------------------------------------------------------------
+</table></div>
 
 
 ### Conclusion hypo1
 
-------------------------------------------------------------------------
 
-## Results Hypo2 {.tabset .tabset-fade}
+### Results hypo2 
 
 **Hypo2 RI-CLPM: Women are more influenced by their (male) spouse than men are influenced by their (female) spouse.** 
 
-### CLPM
+#### CLPM
 
 
 ```r
@@ -6838,9 +7090,8 @@ summary(results[[20]])
 #>     dif3             -0.006    0.003   -2.275    0.023
 ```
 
-------------------------------------------------------------------------
 
-### RI-CLPM
+#### RI-CLPM
 
 
 ```r
@@ -8142,9 +8393,8 @@ summary(results[[24]])
 #>     dif3             -0.024    0.002  -10.618    0.000
 ```
 
-------------------------------------------------------------------------
 
-### SC-RI-CLPM
+#### SC-RI-CLPM
 
 
 ```r
@@ -9446,9 +9696,7 @@ summary(results[[28]])
 #>     dif3             -0.025    0.002  -10.223    0.000
 ```
 
-------------------------------------------------------------------------
-
-### LT-RI-CLPM
+#### LT-RI-CLPM
 
 
 ```r
@@ -10935,209 +11183,11 @@ summary(results[[32]])
 #>     dif4              0.001    0.000    5.018    0.000
 ```
 
-------------------------------------------------------------------------
 
-### Summary results Hypo2
-
-
-```r
-load("addfiles/results.Rdata")
-
-
-library(knitr)  #for kable/kables
-library(kableExtra)
-
-
-# retrieving data to show model 1
-ax <- parameterEstimates(results[[17]])[parameterEstimates(results[[17]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[17]])[parameterEstimates(results[[17]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[17]])[parameterEstimates(results[[17]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[17]])[parameterEstimates(results[[17]])$label == "by", ][1, c(5, 6,
-    8)]
-m1h2y1 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[18]])[parameterEstimates(results[[18]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[18]])[parameterEstimates(results[[18]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[18]])[parameterEstimates(results[[18]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[18]])[parameterEstimates(results[[18]])$label == "by", ][1, c(5, 6,
-    8)]
-m1h2y2 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[19]])[parameterEstimates(results[[19]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[19]])[parameterEstimates(results[[19]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[19]])[parameterEstimates(results[[19]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[19]])[parameterEstimates(results[[19]])$label == "by", ][1, c(5, 6,
-    8)]
-m1h2y3 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[20]])[parameterEstimates(results[[20]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[20]])[parameterEstimates(results[[20]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[20]])[parameterEstimates(results[[20]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[20]])[parameterEstimates(results[[20]])$label == "by", ][1, c(5, 6,
-    8)]
-m1h2y4 <- rbind(ax, ay, bx, by)
-
-# model 2
-ax <- parameterEstimates(results[[21]])[parameterEstimates(results[[21]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[21]])[parameterEstimates(results[[21]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[21]])[parameterEstimates(results[[21]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[21]])[parameterEstimates(results[[21]])$label == "by", ][1, c(5, 6,
-    8)]
-m2h2y1 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[22]])[parameterEstimates(results[[22]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[22]])[parameterEstimates(results[[22]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[22]])[parameterEstimates(results[[22]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[22]])[parameterEstimates(results[[22]])$label == "by", ][1, c(5, 6,
-    8)]
-m2h2y2 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[23]])[parameterEstimates(results[[23]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[23]])[parameterEstimates(results[[23]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[23]])[parameterEstimates(results[[23]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[23]])[parameterEstimates(results[[23]])$label == "by", ][1, c(5, 6,
-    8)]
-m2h2y3 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[24]])[parameterEstimates(results[[24]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[24]])[parameterEstimates(results[[24]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[24]])[parameterEstimates(results[[24]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[24]])[parameterEstimates(results[[24]])$label == "by", ][1, c(5, 6,
-    8)]
-m2h2y4 <- rbind(ax, ay, bx, by)
-
-# model 3
-ax <- parameterEstimates(results[[25]])[parameterEstimates(results[[25]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[25]])[parameterEstimates(results[[25]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[25]])[parameterEstimates(results[[25]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[25]])[parameterEstimates(results[[25]])$label == "by", ][1, c(5, 6,
-    8)]
-m3h2y1 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[26]])[parameterEstimates(results[[26]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[26]])[parameterEstimates(results[[26]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[26]])[parameterEstimates(results[[26]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[26]])[parameterEstimates(results[[26]])$label == "by", ][1, c(5, 6,
-    8)]
-m3h2y2 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[27]])[parameterEstimates(results[[27]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[27]])[parameterEstimates(results[[27]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[27]])[parameterEstimates(results[[27]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[27]])[parameterEstimates(results[[27]])$label == "by", ][1, c(5, 6,
-    8)]
-m3h2y3 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[28]])[parameterEstimates(results[[28]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[28]])[parameterEstimates(results[[28]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[28]])[parameterEstimates(results[[28]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[28]])[parameterEstimates(results[[28]])$label == "by", ][1, c(5, 6,
-    8)]
-m3h2y4 <- rbind(ax, ay, bx, by)
-
-# model 4
-ax <- parameterEstimates(results[[29]])[parameterEstimates(results[[29]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[29]])[parameterEstimates(results[[29]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[29]])[parameterEstimates(results[[29]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[29]])[parameterEstimates(results[[29]])$label == "by", ][1, c(5, 6,
-    8)]
-m4h2y1 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[30]])[parameterEstimates(results[[30]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[30]])[parameterEstimates(results[[30]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[30]])[parameterEstimates(results[[30]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[30]])[parameterEstimates(results[[30]])$label == "by", ][1, c(5, 6,
-    8)]
-m4h2y2 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[31]])[parameterEstimates(results[[31]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[31]])[parameterEstimates(results[[31]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[31]])[parameterEstimates(results[[31]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[31]])[parameterEstimates(results[[31]])$label == "by", ][1, c(5, 6,
-    8)]
-m4h2y3 <- rbind(ax, ay, bx, by)
-
-ax <- parameterEstimates(results[[32]])[parameterEstimates(results[[32]])$label == "ax", ][1, c(5, 6,
-    8)]
-bx <- parameterEstimates(results[[32]])[parameterEstimates(results[[32]])$label == "bx", ][1, c(5, 6,
-    8)]
-ay <- parameterEstimates(results[[32]])[parameterEstimates(results[[32]])$label == "ay", ][1, c(5, 6,
-    8)]
-by <- parameterEstimates(results[[32]])[parameterEstimates(results[[32]])$label == "by", ][1, c(5, 6,
-    8)]
-m4h2y4 <- rbind(ax, ay, bx, by)
-
-# combine put deps under each other
-m1deps <- rbind(m1h2y1, m1h2y2, m1h2y3, m1h2y4)
-m2deps <- rbind(m2h2y1, m2h2y2, m2h2y3, m2h2y4)
-m3deps <- rbind(m3h2y1, m3h2y2, m3h2y3, m3h2y4)
-m4deps <- rbind(m4h2y1, m4h2y2, m4h2y3, m4h2y4)
-
-# put methods next to each other
-h2 <- cbind(m1deps, m2deps, m3deps, m4deps)
-row.names(h2) <- NULL
-
-paths <- rep(c("Men:stability", "Women:stability", "Men:partner-effect", "Women:partner-effect"), 2)
-h2 <- cbind(paths, h2)
-
-
-hypo2 <- kbl(h2, booktabs = TRUE, digits = 2, caption = "Results Hypo2", align = "lcccccccccccc") %>%
-    add_header_above(c(" ", CLPM = 3, `RI-CLPM` = 3, `SC-RI-CLPM` = 3, `LT-RI-CLPM` = 3)) %>%
-    pack_rows(index = c(`eu-integration` = 4, immigrants = 4, euthanasia = 4, income_diff = 4)) %>%
-    kable_classic(full_width = F, html_font = "Cambria") %>%
-    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-    column_spec(5:7, color = "white", background = "green")
-
-hypo2
-```
+### Summary results hypo2
 
 <table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-27)Results Hypo2</caption>
+<caption>(\#tab:unnamed-chunk-26)Results Hypo2</caption>
  <thead>
 <tr>
 <th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
@@ -11410,12 +11460,18 @@ hypo2
 </tbody>
 </table>
 
-------------------------------------------------------------------------
+### Conclusion hypo2  
 
-### Conclusion Hypo2
+---  
 
-------------------------------------------------------------------------
+## Assignment
 
+1. Look in the literature for other measures of opinion homophily. Try to apply this measure to construct a similar table as \@ref(descriptives).  
+2. Have a look at the detailed results of the RI-CLPM estimated for hypothesis 1. Could you conclude, based on the error-covariance and/or error-correlation between the opinions of the spouses that opinion homophily increased? Motivate your answer.  
+3. Have a look at the detailed results of the LT-RI-CLPM and focus on the variance and covariance of the random slopes of the partners. What does this tell you about opinion homophily within partners? Motivate your answer.  
+4. You see that sections \@ref(conclusion-hypo1) and \@ref(conclusion-hypo2) are empty. Please fill in the blanks. Motivate your answer and discuss both selection and influence.  
+3. You could argue that influence is only possible if people differ initially. Please select couples who are dissimilar at *within-time 1* and do the descriptive and analysis part again. Of course, of course, not for all dependent variables and modelling specifications. Pick one dependent and focus on the **RI-CLPM**.  
+4. Please test if influence processes depend on educational attainment. Thus, formulate a hypothesis and test this hypothesis. 
 
 
 ---  

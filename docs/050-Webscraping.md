@@ -1,10 +1,10 @@
 # (PART) Part 4 Webscraping  {-} 
 
-<!--- put the dataframes in a kable and then use a scrollbox. you can also have captions. works best. see last part of script ---> 
+<!---put the dataframes in a kable and then use a scrollbox. you can also have captions. works best. see last part of script ---> 
 
 # Webscraping for Sociologists {#webintro}
 
-Latest Version: 08-09-2021
+Latest Version: 13-09-2021
 
 Please email any comments to: bas.hofstra@ru.nl	
 
@@ -26,7 +26,7 @@ Watts' already-famous quote predicts a revolution in the social sciences. He and
 
 > **Webscraping**
 >
-> :   The process by which you collect data from the internet. This can entail different routes: manual data collection, automated data collection via code, use of application programming interfaces, and so forth.
+> :   The process by which you collect data from the internet. This can entail different routes: manual data collection, automated data collection via code, and so forth.
 
 > **Digital footprints**
 >
@@ -487,7 +487,7 @@ knitr::kable(soc_df, booktabs = TRUE)  #add scrollbox
 |Scheepers, prof. dr. P.L.H. (Peer)                                                         |Comparative research, social cohesion and diversity                                                            |
 |Spierings, dr. C.H.B.M. (Niels)                                                            |Islam, gender, populism, social media, Middle East and migration                                               |
 |Tolsma, dr. J. (Jochem)                                                                    |Inequality, criminology and ethnic diversity                                                                   |
-|Verbakel, prof. dr. C.M.C. (Ellen)
+|Verbakel, prof. dr. C.M.C. (Ellen)
                                 Head of the department |Health, family and work                                                                                        |
 |Visser, dr. M. (Mark)                                                                      |Older workers, radicalism and social cohesion                                                                  |
 |Wolbers, prof. dr. M.H.J. (Maarten)                                                        |Educational inequality and labour market inequality                                                            |
@@ -553,7 +553,7 @@ knitr::kable(soc_df, booktabs = TRUE)  #add scrollbox
 |17 |Scheepers, prof. dr. P.L.H. (Peer)                                                         |Comparative research, social cohesion and diversity                                                            |
 |18 |Spierings, dr. C.H.B.M. (Niels)                                                            |Islam, gender, populism, social media, Middle East and migration                                               |
 |19 |Tolsma, dr. J. (Jochem)                                                                    |Inequality, criminology and ethnic diversity                                                                   |
-|20 |Verbakel, prof. dr. C.M.C. (Ellen)
+|20 |Verbakel, prof. dr. C.M.C. (Ellen)
                                 Head of the department |Health, family and work                                                                                        |
 |21 |Visser, dr. M. (Mark)                                                                      |Older workers, radicalism and social cohesion                                                                  |
 |22 |Wolbers, prof. dr. M.H.J. (Maarten)                                                        |Educational inequality and labour market inequality                                                            |
@@ -616,7 +616,7 @@ knitr::kable(soc_df, booktabs = TRUE)
 |17 |Scheepers, prof. dr. P.L.H. (Peer)                                                         |Comparative research, social cohesion and diversity                                                            |Scheepers                      |Peer       |
 |18 |Spierings, dr. C.H.B.M. (Niels)                                                            |Islam, gender, populism, social media, Middle East and migration                                               |Spierings                      |Niels      |
 |19 |Tolsma, dr. J. (Jochem)                                                                    |Inequality, criminology and ethnic diversity                                                                   |Tolsma                         |Jochem     |
-|20 |Verbakel, prof. dr. C.M.C. (Ellen)
+|20 |Verbakel, prof. dr. C.M.C. (Ellen)
                                 Head of the department |Health, family and work                                                                                        |Verbakel                       |Ellen      |
 |21 |Visser, dr. M. (Mark)                                                                      |Older workers, radicalism and social cohesion                                                                  |Visser                         |Mark       |
 |22 |Wolbers, prof. dr. M.H.J. (Maarten)                                                        |Educational inequality and labour market inequality                                                            |Wolbers                        |Maarten    |
@@ -702,7 +702,7 @@ knitr::kable(soc_df, booktabs = TRUE)
 |17 |Scheepers, prof. dr. P.L.H. (Peer)                                                         |Comparative research, social cohesion and diversity                                                            |Scheepers   |Peer       |radboud university |
 |18 |Spierings, dr. C.H.B.M. (Niels)                                                            |Islam, gender, populism, social media, Middle East and migration                                               |Spierings   |Niels      |radboud university |
 |19 |Tolsma, dr. J. (Jochem)                                                                    |Inequality, criminology and ethnic diversity                                                                   |Tolsma      |Jochem     |radboud university |
-|20 |Verbakel, prof. dr. C.M.C. (Ellen)
+|20 |Verbakel, prof. dr. C.M.C. (Ellen)
                                 Head of the department |Health, family and work                                                                                        |Verbakel    |Ellen      |radboud university |
 |21 |Visser, dr. M. (Mark)                                                                      |Older workers, radicalism and social cohesion                                                                  |Visser      |Mark       |radboud university |
 |22 |Wolbers, prof. dr. M.H.J. (Maarten)                                                        |Educational inequality and labour market inequality                                                            |Wolbers     |Maarten    |radboud university |
@@ -1667,7 +1667,7 @@ knitr::kable(soc_df, booktabs = TRUE)
 |17 |Scheepers, prof. dr. P.L.H. (Peer)                                                         |Comparative research, social cohesion and diversity                                                            |Scheepers   |Peer       |radboud university |hPeXxvEAAAAJ |
 |18 |Spierings, dr. C.H.B.M. (Niels)                                                            |Islam, gender, populism, social media, Middle East and migration                                               |Spierings   |Niels      |radboud university |cy3Ye6sAAAAJ |
 |19 |Tolsma, dr. J. (Jochem)                                                                    |Inequality, criminology and ethnic diversity                                                                   |Tolsma      |Jochem     |radboud university |Iu23-90AAAAJ |
-|20 |Verbakel, prof. dr. C.M.C. (Ellen)
+|20 |Verbakel, prof. dr. C.M.C. (Ellen)
                                 Head of the department |Health, family and work                                                                                        |Verbakel    |Ellen      |radboud university |w2McVJAAAAAJ |
 |21 |Visser, dr. M. (Mark)                                                                      |Older workers, radicalism and social cohesion                                                                  |Visser      |Mark       |radboud university |ItITloQAAAAJ |
 |22 |Wolbers, prof. dr. M.H.J. (Maarten)                                                        |Educational inequality and labour market inequality                                                            |Wolbers     |Maarten    |radboud university |TqKrXnMAAAAJ |
@@ -1756,7 +1756,7 @@ knitr::kable(soc_df, booktabs = TRUE)
 |Scheepers, prof. dr. P.L.H. (Peer)                                                         |Comparative research, social cohesion and diversity                                                            |Scheepers   |Peer       |radboud university |hPeXxvEAAAAJ |peer scheepers            |hoogleraar methodologie, faculteit der sociale wetenschappen radboud universiteit             |14399       |61      |180       |verified email at maw.ru.nl                     |NA                                                                                                       |
 |Spierings, dr. C.H.B.M. (Niels)                                                            |Islam, gender, populism, social media, Middle East and migration                                               |Spierings   |Niels      |radboud university |cy3Ye6sAAAAJ |Niels Spierings           |Associate Professor of Sociology, Radboud University                                          |1662        |22      |33        |verified email at ru.nl - homepage              |https://www.ru.nl/english/people/spierings-c/                                                            |
 |Tolsma, dr. J. (Jochem)                                                                    |Inequality, criminology and ethnic diversity                                                                   |Tolsma      |Jochem     |radboud university |Iu23-90AAAAJ |Jochem Tolsma             |Professor, Radboud University Nijmegen / University of Groningen                              |2260        |22      |33        |verified email at ru.nl - homepage              |http://www.jochemtolsma.nl/                                                                              |
-|Verbakel, prof. dr. C.M.C. (Ellen)
+|Verbakel, prof. dr. C.M.C. (Ellen)
                                 Head of the department |Health, family and work                                                                                        |Verbakel    |Ellen      |radboud university |w2McVJAAAAAJ |Ellen Verbakel            |Professor of Sociology, Department of Sociology, Radboud University Nijmegen                  |1474        |24      |32        |verified email at maw.ru.nl - homepage          |http://www.ellenverbakel.nl/                                                                             |
 |Visser, dr. M. (Mark)                                                                      |Older workers, radicalism and social cohesion                                                                  |Visser      |Mark       |radboud university |ItITloQAAAAJ |Mark Visser               |Assistant Professor, Radboud University                                                       |381         |9       |8         |verified email at ru.nl - homepage              |https://www.researchgate.net/profile/Mark_Visser                                                         |
 |Wolbers, prof. dr. M.H.J. (Maarten)                                                        |Educational inequality and labour market inequality                                                            |Wolbers     |Maarten    |radboud university |TqKrXnMAAAAJ |Maarten HJ Wolbers        |Professor of Sociology, Radboud University, Nijmegen                                          |3624        |29      |58        |verified email at ru.nl - homepage              |http://www.socsci.ru.nl/maartenw/                                                                        |
@@ -2226,7 +2226,8 @@ soc_df_collabs <- soc_df_collabs[!is.na(soc_df_collabs$author), ]
 
 
 ```r
-scroll_box(knitr::kable(soc_df_collabs, booktabs = TRUE) , height="300px")
+require(kableExtra)
+scroll_box(knitr::kable(soc_df_collabs, booktabs = TRUE), height = "300px")
 ```
 
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; "><table>
@@ -2830,7 +2831,7 @@ scroll_box(knitr::kable(soc_df_collabs, booktabs = TRUE) , height="300px")
   <tr>
    <td style="text-align:left;"> ...101 </td>
    <td style="text-align:left;"> Lieselotte Blommaert </td>
-   <td style="text-align:left;"> Anete Butkēviča </td>
+   <td style="text-align:left;"> Anete Butkevica </td>
    <td style="text-align:left;"> RG54uasAAAAJ </td>
   </tr>
   <tr>
@@ -4666,7 +4667,7 @@ scroll_box(knitr::kable(soc_df_collabs, booktabs = TRUE) , height="300px")
   <tr>
    <td style="text-align:left;"> ...410 </td>
    <td style="text-align:left;"> Rense Corten </td>
-   <td style="text-align:left;"> Michał Bojanowski </td>
+   <td style="text-align:left;"> Michal Bojanowski </td>
    <td style="text-align:left;"> Nx7pDywAAAAJ </td>
   </tr>
   <tr>
@@ -5968,7 +5969,7 @@ scroll_box(knitr::kable(soc_df_collabs, booktabs = TRUE) , height="300px")
   <tr>
    <td style="text-align:left;"> ...627 </td>
    <td style="text-align:left;"> Lieselotte Blommaert </td>
-   <td style="text-align:left;"> Anete Butkēviča </td>
+   <td style="text-align:left;"> Anete Butkevica </td>
    <td style="text-align:left;"> iKs_5WkAAAAJ </td>
   </tr>
   <tr>

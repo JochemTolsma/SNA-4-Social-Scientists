@@ -13,3 +13,8 @@ future.apply
 purrr
 tidyr
 kableExtra
+tidyverse
+tibble
+readr
+stringr
+forcats
