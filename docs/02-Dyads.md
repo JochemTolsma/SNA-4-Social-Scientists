@@ -1,6 +1,5 @@
 # (PART) DYADS {-} 
 
-
 # Theory
 
 <!---we need to include this somewhere as general r script---> 
@@ -30,7 +29,7 @@ After having watched the video you should be able to:
 - be familiar with al the synonyms for networks, agents and relations.\
 - provide examples of dyads, and the relations between ego and alter.\
 
-## Network structures  
+## Network structures (DYAD)  
 
 Dyads are the smallest possible networks. For undirected relations there are two possible dyad configurations. See Figure \@ref(fig:ud).
 
