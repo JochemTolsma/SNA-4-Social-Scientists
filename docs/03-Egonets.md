@@ -53,10 +53,10 @@ These triads all have unique names:
 * second digit: number of dyads with one tie  
 * first digit: number of dyads with two ties (mutual dyads)  
 * specific subtype:  
-  - C:  
-  - D:  
-  - U:  
-  - T: .
+  - C: cyclic
+  - D: downward  
+  - U: upward  
+  - T: transitive
 
 This triad census has been developed by @davis1967 and their original picture in the paper is too cool not to show here:
 

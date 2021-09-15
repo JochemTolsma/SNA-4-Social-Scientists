@@ -19,6 +19,10 @@ tab:unnamed-chunk-5
 fig:unnamed-chunk-8
 tab:unnamed-chunk-17
 tab:unnamed-chunk-26
+fig:unnamed-chunk-1
+fig:ut
+fig:mut
+fig:dt
 fig:inspect
 fig:inspectbody
 fig:inspecttd
@@ -28,7 +32,7 @@ overview
 social-network-perspective
 aim
 structure
-type-of-social-network
+types
 causes-and-consequences
 implications
 theoretical-implications
@@ -37,7 +41,7 @@ data-implications
 what-makes-this-course-stand-out
 assignment
 theory
-network-structures
+network-structures-dyad
 mm
 GTF
 social-context-effects
@@ -87,6 +91,7 @@ sampling
 ethical-considerations
 measurement
 theory-1
+triad
 causes-1
 consequences-1
 methods-1
@@ -193,10 +198,3 @@ egonet-socionet-data
 describe-data-1
 icc-via-ml
 icc-via-semlavaan
-fig:unnamed-chunk-1
-fig:ut
-fig:mut
-fig:dt
-triad
-network-structures-dyad
-types

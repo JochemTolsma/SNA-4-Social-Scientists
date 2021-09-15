@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Data | Social Network Analysis for Social Scientists</title>
-  <meta name="description" content="Chapter 5 Data | Social Network Analysis for Social Scientists" />
+  <title>Chapter 4 Data | SNASS</title>
+  <meta name="description" content="Chapter 4 Data | SNASS" />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Data | Social Network Analysis for Social Scientists" />
+  <meta property="og:title" content="Chapter 4 Data | SNASS" />
   <meta property="og:type" content="book" />
   
   
@@ -16,22 +16,22 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Data | Social Network Analysis for Social Scientists" />
+  <meta name="twitter:title" content="Chapter 4 Data | SNASS" />
   
   
   
 
 
 
-<meta name="date" content="2021-09-13" />
+<meta name="date" content="2021-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="methods-1.html"/>
-
+<link rel="prev" href="methods.html"/>
+<link rel="next" href="theory-1.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -56,6 +56,70 @@
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
@@ -114,186 +178,203 @@ div.csl-indent {
 <li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#what-makes-this-course-stand-out"><i class="fa fa-check"></i><b>1.5</b> What makes this course stand out?</a></li>
 <li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#assignment"><i class="fa fa-check"></i><b>1.6</b> Assignment</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#part-dyads"><i class="fa fa-check"></i>(PART) DYADS</a>
+<li class="part"><span><b>I DYADS</b></span></li>
+<li class="chapter" data-level="2" data-path="theory.html"><a href="theory.html"><i class="fa fa-check"></i><b>2</b> Theory</a>
 <ul>
-<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#network-structures-dyad"><i class="fa fa-check"></i><b>1.7</b> Network structures (DYAD)</a></li>
-<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#mm"><i class="fa fa-check"></i><b>1.8</b> Causes of dyads</a>
+<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#network-structures-dyad"><i class="fa fa-check"></i><b>2.1</b> Network structures (DYAD)</a></li>
+<li class="chapter" data-level="2.2" data-path="theory.html"><a href="theory.html#mm"><i class="fa fa-check"></i><b>2.2</b> Causes of dyads</a>
 <ul>
-<li class="chapter" data-level="1.8.1" data-path="intro.html"><a href="intro.html#GTF"><i class="fa fa-check"></i><b>1.8.1</b> General Theoretical Framework</a></li>
-<li class="chapter" data-level="1.8.2" data-path="intro.html"><a href="intro.html#social-context-effects"><i class="fa fa-check"></i><b>1.8.2</b> Social context effects</a></li>
-<li class="chapter" data-level="1.8.3" data-path="intro.html"><a href="intro.html#the-special-role-of-restrictions"><i class="fa fa-check"></i><b>1.8.3</b> The special role of restrictions</a></li>
-<li class="chapter" data-level="1.8.4" data-path="intro.html"><a href="intro.html#theory-of-action"><i class="fa fa-check"></i><b>1.8.4</b> Theory of Action</a></li>
-<li class="chapter" data-level="1.8.5" data-path="intro.html"><a href="intro.html#transformation-rules"><i class="fa fa-check"></i><b>1.8.5</b> Transformation rules</a></li>
-<li class="chapter" data-level="1.8.6" data-path="intro.html"><a href="intro.html#agent-based-modelling"><i class="fa fa-check"></i><b>1.8.6</b> Agent Based Modelling</a></li>
+<li class="chapter" data-level="2.2.1" data-path="theory.html"><a href="theory.html#GTF"><i class="fa fa-check"></i><b>2.2.1</b> General Theoretical Framework</a></li>
+<li class="chapter" data-level="2.2.2" data-path="theory.html"><a href="theory.html#social-context-effects"><i class="fa fa-check"></i><b>2.2.2</b> Social context effects</a></li>
+<li class="chapter" data-level="2.2.3" data-path="theory.html"><a href="theory.html#the-special-role-of-restrictions"><i class="fa fa-check"></i><b>2.2.3</b> The special role of restrictions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="theory.html"><a href="theory.html#theory-of-action"><i class="fa fa-check"></i><b>2.2.4</b> Theory of Action</a></li>
+<li class="chapter" data-level="2.2.5" data-path="theory.html"><a href="theory.html#transformation-rules"><i class="fa fa-check"></i><b>2.2.5</b> Transformation rules</a></li>
+<li class="chapter" data-level="2.2.6" data-path="theory.html"><a href="theory.html#agent-based-modelling"><i class="fa fa-check"></i><b>2.2.6</b> Agent Based Modelling</a></li>
 </ul></li>
-<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#dt"><i class="fa fa-check"></i><b>1.9</b> Consequences of dyads</a>
+<li class="chapter" data-level="2.3" data-path="theory.html"><a href="theory.html#dt"><i class="fa fa-check"></i><b>2.3</b> Consequences of dyads</a>
 <ul>
-<li class="chapter" data-level="1.9.1" data-path="intro.html"><a href="intro.html#homophily"><i class="fa fa-check"></i><b>1.9.1</b> Homophily</a></li>
-<li class="chapter" data-level="1.9.2" data-path="intro.html"><a href="intro.html#influence"><i class="fa fa-check"></i><b>1.9.2</b> Influence mechanisms</a></li>
-<li class="chapter" data-level="1.9.3" data-path="intro.html"><a href="intro.html#polarization"><i class="fa fa-check"></i><b>1.9.3</b> Polarization</a></li>
+<li class="chapter" data-level="2.3.1" data-path="theory.html"><a href="theory.html#homophily"><i class="fa fa-check"></i><b>2.3.1</b> Homophily</a></li>
+<li class="chapter" data-level="2.3.2" data-path="theory.html"><a href="theory.html#influence"><i class="fa fa-check"></i><b>2.3.2</b> Influence mechanisms</a></li>
+<li class="chapter" data-level="2.3.3" data-path="theory.html"><a href="theory.html#polarization"><i class="fa fa-check"></i><b>2.3.3</b> Polarization</a></li>
 </ul></li>
-<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#assignment-1"><i class="fa fa-check"></i><b>1.10</b> Assignment</a></li>
+<li class="chapter" data-level="2.4" data-path="theory.html"><a href="theory.html#assignment-1"><i class="fa fa-check"></i><b>2.4</b> Assignment</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>2</b> Methods</a>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="methods.html"><a href="methods.html#causes"><i class="fa fa-check"></i><b>2.1</b> Causes</a>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#causes"><i class="fa fa-check"></i><b>3.1</b> Causes</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="methods.html"><a href="methods.html#OR"><i class="fa fa-check"></i><b>2.1.1</b> Odds Ratio</a></li>
-<li class="chapter" data-level="2.1.2" data-path="methods.html"><a href="methods.html#LLM"><i class="fa fa-check"></i><b>2.1.2</b> Loglinear Model</a></li>
-<li class="chapter" data-level="2.1.3" data-path="methods.html"><a href="methods.html#LM"><i class="fa fa-check"></i><b>2.1.3</b> Conditional multinomial logit model</a></li>
+<li class="chapter" data-level="3.1.1" data-path="methods.html"><a href="methods.html#OR"><i class="fa fa-check"></i><b>3.1.1</b> Odds Ratio</a></li>
+<li class="chapter" data-level="3.1.2" data-path="methods.html"><a href="methods.html#LLM"><i class="fa fa-check"></i><b>3.1.2</b> Loglinear Model</a></li>
+<li class="chapter" data-level="3.1.3" data-path="methods.html"><a href="methods.html#LM"><i class="fa fa-check"></i><b>3.1.3</b> Conditional multinomial logit model</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="methods.html"><a href="methods.html#consequences"><i class="fa fa-check"></i><b>2.2</b> Consequences</a></li>
-<li class="chapter" data-level="2.3" data-path="methods.html"><a href="methods.html#research-questions"><i class="fa fa-check"></i><b>2.3</b> Research questions</a></li>
-<li class="chapter" data-level="2.4" data-path="methods.html"><a href="methods.html#data"><i class="fa fa-check"></i><b>2.4</b> Data</a>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#consequences"><i class="fa fa-check"></i><b>3.2</b> Consequences</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#research-questions"><i class="fa fa-check"></i><b>3.3</b> Research questions</a></li>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#data"><i class="fa fa-check"></i><b>3.4</b> Data</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="methods.html"><a href="methods.html#variables"><i class="fa fa-check"></i><b>2.4.1</b> Variables</a></li>
+<li class="chapter" data-level="3.4.1" data-path="methods.html"><a href="methods.html#variables"><i class="fa fa-check"></i><b>3.4.1</b> Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="methods.html"><a href="methods.html#descriptives"><i class="fa fa-check"></i><b>2.5</b> Descriptives</a>
+<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#descriptives"><i class="fa fa-check"></i><b>3.5</b> Descriptives</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="methods.html"><a href="methods.html#preperation"><i class="fa fa-check"></i><b>2.5.1</b> Preperation</a></li>
-<li class="chapter" data-level="2.5.2" data-path="methods.html"><a href="methods.html#opinion-homophily-over-within-time"><i class="fa fa-check"></i><b>2.5.2</b> Opinion homophily over <em>within-time</em></a></li>
-<li class="chapter" data-level="2.5.3" data-path="methods.html"><a href="methods.html#distinguishing-period-trends-from-lifecourse-trends"><i class="fa fa-check"></i><b>2.5.3</b> Distinguishing period trends from lifecourse trends</a></li>
+<li class="chapter" data-level="3.5.1" data-path="methods.html"><a href="methods.html#preperation"><i class="fa fa-check"></i><b>3.5.1</b> Preperation</a></li>
+<li class="chapter" data-level="3.5.2" data-path="methods.html"><a href="methods.html#opinion-homophily-over-within-time"><i class="fa fa-check"></i><b>3.5.2</b> Opinion homophily over <em>within-time</em></a></li>
+<li class="chapter" data-level="3.5.3" data-path="methods.html"><a href="methods.html#distinguishing-period-trends-from-lifecourse-trends"><i class="fa fa-check"></i><b>3.5.3</b> Distinguishing period trends from lifecourse trends</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="methods.html"><a href="methods.html#analysis"><i class="fa fa-check"></i><b>2.6</b> Analysis</a>
+<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#analysis"><i class="fa fa-check"></i><b>3.6</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="2.6.1" data-path="methods.html"><a href="methods.html#preperation-1"><i class="fa fa-check"></i><b>2.6.1</b> Preperation</a></li>
-<li class="chapter" data-level="2.6.2" data-path="methods.html"><a href="methods.html#modelling-strategy"><i class="fa fa-check"></i><b>2.6.2</b> Modelling strategy</a></li>
-<li class="chapter" data-level="2.6.3" data-path="methods.html"><a href="methods.html#robustness"><i class="fa fa-check"></i><b>2.6.3</b> Robustness</a></li>
-<li class="chapter" data-level="2.6.4" data-path="methods.html"><a href="methods.html#results-hypo1"><i class="fa fa-check"></i><b>2.6.4</b> Results hypo1</a></li>
-<li class="chapter" data-level="2.6.5" data-path="methods.html"><a href="methods.html#summary-results-hypo1"><i class="fa fa-check"></i><b>2.6.5</b> Summary results hypo1</a></li>
-<li class="chapter" data-level="2.6.6" data-path="methods.html"><a href="methods.html#conclusion-hypo1"><i class="fa fa-check"></i><b>2.6.6</b> Conclusion hypo1</a></li>
-<li class="chapter" data-level="2.6.7" data-path="methods.html"><a href="methods.html#results-hypo2"><i class="fa fa-check"></i><b>2.6.7</b> Results hypo2</a></li>
-<li class="chapter" data-level="2.6.8" data-path="methods.html"><a href="methods.html#summary-results-hypo2"><i class="fa fa-check"></i><b>2.6.8</b> Summary results hypo2</a></li>
-<li class="chapter" data-level="2.6.9" data-path="methods.html"><a href="methods.html#conclusion-hypo2"><i class="fa fa-check"></i><b>2.6.9</b> Conclusion hypo2</a></li>
+<li class="chapter" data-level="3.6.1" data-path="methods.html"><a href="methods.html#preperation-1"><i class="fa fa-check"></i><b>3.6.1</b> Preperation</a></li>
+<li class="chapter" data-level="3.6.2" data-path="methods.html"><a href="methods.html#modelling-strategy"><i class="fa fa-check"></i><b>3.6.2</b> Modelling strategy</a></li>
+<li class="chapter" data-level="3.6.3" data-path="methods.html"><a href="methods.html#robustness"><i class="fa fa-check"></i><b>3.6.3</b> Robustness</a></li>
+<li class="chapter" data-level="3.6.4" data-path="methods.html"><a href="methods.html#results-hypo1"><i class="fa fa-check"></i><b>3.6.4</b> Results hypo1</a></li>
+<li class="chapter" data-level="3.6.5" data-path="methods.html"><a href="methods.html#summary-results-hypo1"><i class="fa fa-check"></i><b>3.6.5</b> Summary results hypo1</a></li>
+<li class="chapter" data-level="3.6.6" data-path="methods.html"><a href="methods.html#conclusion-hypo1"><i class="fa fa-check"></i><b>3.6.6</b> Conclusion hypo1</a></li>
+<li class="chapter" data-level="3.6.7" data-path="methods.html"><a href="methods.html#results-hypo2"><i class="fa fa-check"></i><b>3.6.7</b> Results hypo2</a></li>
+<li class="chapter" data-level="3.6.8" data-path="methods.html"><a href="methods.html#summary-results-hypo2"><i class="fa fa-check"></i><b>3.6.8</b> Summary results hypo2</a></li>
+<li class="chapter" data-level="3.6.9" data-path="methods.html"><a href="methods.html#conclusion-hypo2"><i class="fa fa-check"></i><b>3.6.9</b> Conclusion hypo2</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="methods.html"><a href="methods.html#assignment-2"><i class="fa fa-check"></i><b>2.7</b> Assignment</a></li>
-<li class="chapter" data-level="2.8" data-path="methods.html"><a href="methods.html#sampling"><i class="fa fa-check"></i><b>2.8</b> Sampling</a></li>
-<li class="chapter" data-level="2.9" data-path="methods.html"><a href="methods.html#ethical-considerations"><i class="fa fa-check"></i><b>2.9</b> Ethical considerations</a></li>
-<li class="chapter" data-level="2.10" data-path="methods.html"><a href="methods.html#measurement"><i class="fa fa-check"></i><b>2.10</b> Measurement</a></li>
+<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#assignment-2"><i class="fa fa-check"></i><b>3.7</b> Assignment</a></li>
 </ul></li>
-<li class="part"><span><b>I Part 2 EGONETS</b></span></li>
-<li class="chapter" data-level="3" data-path="theory.html"><a href="theory.html"><i class="fa fa-check"></i><b>3</b> Theory</a>
+<li class="chapter" data-level="4" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i><b>4</b> Data</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="theory.html"><a href="theory.html#triad"><i class="fa fa-check"></i><b>3.1</b> Network Structures (TRIAD)</a></li>
-<li class="chapter" data-level="3.2" data-path="theory.html"><a href="theory.html#causes-1"><i class="fa fa-check"></i><b>3.2</b> Causes</a></li>
-<li class="chapter" data-level="3.3" data-path="theory.html"><a href="theory.html#consequences-1"><i class="fa fa-check"></i><b>3.3</b> Consequences</a></li>
+<li class="chapter" data-level="4.1" data-path="data-1.html"><a href="data-1.html#sampling"><i class="fa fa-check"></i><b>4.1</b> Sampling</a></li>
+<li class="chapter" data-level="4.2" data-path="data-1.html"><a href="data-1.html#ethical-considerations"><i class="fa fa-check"></i><b>4.2</b> Ethical considerations</a></li>
+<li class="chapter" data-level="4.3" data-path="data-1.html"><a href="data-1.html#measurement"><i class="fa fa-check"></i><b>4.3</b> Measurement</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="methods-1.html"><a href="methods-1.html"><i class="fa fa-check"></i><b>4</b> Methods</a>
+<li class="part"><span><b>II Part 2 EGONETS</b></span></li>
+<li class="chapter" data-level="5" data-path="theory-1.html"><a href="theory-1.html"><i class="fa fa-check"></i><b>5</b> Theory</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="methods-1.html"><a href="methods-1.html#before-you-start"><i class="fa fa-check"></i><b>4.1</b> Before you start</a></li>
-<li class="chapter" data-level="4.2" data-path="methods-1.html"><a href="methods-1.html#causes-2"><i class="fa fa-check"></i><b>4.2</b> Causes</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="methods-1.html"><a href="methods-1.html#aggregation"><i class="fa fa-check"></i><b>4.2.1</b> Aggregation</a></li>
-<li class="chapter" data-level="4.2.2" data-path="methods-1.html"><a href="methods-1.html#disaggregation"><i class="fa fa-check"></i><b>4.2.2</b> Disaggregation</a></li>
-<li class="chapter" data-level="4.2.3" data-path="methods-1.html"><a href="methods-1.html#micro-macro-model"><i class="fa fa-check"></i><b>4.2.3</b> Micro-macro Model</a></li>
+<li class="chapter" data-level="5.1" data-path="theory-1.html"><a href="theory-1.html#triad"><i class="fa fa-check"></i><b>5.1</b> Network Structures (TRIAD)</a></li>
+<li class="chapter" data-level="5.2" data-path="theory-1.html"><a href="theory-1.html#causes-1"><i class="fa fa-check"></i><b>5.2</b> Causes</a></li>
+<li class="chapter" data-level="5.3" data-path="theory-1.html"><a href="theory-1.html#consequences-1"><i class="fa fa-check"></i><b>5.3</b> Consequences</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="methods-1.html"><a href="methods-1.html#consequences-2"><i class="fa fa-check"></i><b>4.3</b> Consequences</a>
+<li class="chapter" data-level="6" data-path="methods-1.html"><a href="methods-1.html"><i class="fa fa-check"></i><b>6</b> Methods</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="methods-1.html"><a href="methods-1.html#macro-micro-model"><i class="fa fa-check"></i><b>4.3.1</b> Macro-micro model</a></li>
-<li class="chapter" data-level="4.3.2" data-path="methods-1.html"><a href="methods-1.html#micro-macro-ri-clpm"><i class="fa fa-check"></i><b>4.3.2</b> Micro-macro-RI-CLPM</a></li>
+<li class="chapter" data-level="6.1" data-path="methods-1.html"><a href="methods-1.html#before-you-start"><i class="fa fa-check"></i><b>6.1</b> Before you start</a></li>
+<li class="chapter" data-level="6.2" data-path="methods-1.html"><a href="methods-1.html#causes-2"><i class="fa fa-check"></i><b>6.2</b> Causes</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="methods-1.html"><a href="methods-1.html#aggregation"><i class="fa fa-check"></i><b>6.2.1</b> Aggregation</a></li>
+<li class="chapter" data-level="6.2.2" data-path="methods-1.html"><a href="methods-1.html#disaggregation"><i class="fa fa-check"></i><b>6.2.2</b> Disaggregation</a></li>
+<li class="chapter" data-level="6.2.3" data-path="methods-1.html"><a href="methods-1.html#micro-macro-model"><i class="fa fa-check"></i><b>6.2.3</b> Micro-macro Model</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i><b>5</b> Data</a>
+<li class="chapter" data-level="6.3" data-path="methods-1.html"><a href="methods-1.html#consequences-2"><i class="fa fa-check"></i><b>6.3</b> Consequences</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="data-1.html"><a href="data-1.html#sampling-1"><i class="fa fa-check"></i><b>5.1</b> Sampling</a></li>
-<li class="chapter" data-level="5.2" data-path="data-1.html"><a href="data-1.html#ethical-considerations-1"><i class="fa fa-check"></i><b>5.2</b> Ethical considerations</a></li>
-<li class="chapter" data-level="5.3" data-path="data-1.html"><a href="data-1.html#measurement-1"><i class="fa fa-check"></i><b>5.3</b> Measurement</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#part-part-3-socionets"><i class="fa fa-check"></i>(PART) Part 3 SOCIONETS</a>
-<ul>
-<li class="chapter" data-level="5.4" data-path="data-1.html"><a href="data-1.html#causes-3"><i class="fa fa-check"></i><b>5.4</b> Causes</a></li>
-<li class="chapter" data-level="5.5" data-path="data-1.html"><a href="data-1.html#consequences-3"><i class="fa fa-check"></i><b>5.5</b> Consequences</a></li>
-<li class="chapter" data-level="5.6" data-path="data-1.html"><a href="data-1.html#causes-4"><i class="fa fa-check"></i><b>5.6</b> Causes</a></li>
-<li class="chapter" data-level="5.7" data-path="data-1.html"><a href="data-1.html#consequences-4"><i class="fa fa-check"></i><b>5.7</b> Consequences</a></li>
-<li class="chapter" data-level="5.8" data-path="data-1.html"><a href="data-1.html#sampling-2"><i class="fa fa-check"></i><b>5.8</b> Sampling</a></li>
-<li class="chapter" data-level="5.9" data-path="data-1.html"><a href="data-1.html#ethical-considerations-2"><i class="fa fa-check"></i><b>5.9</b> Ethical considerations</a></li>
-<li class="chapter" data-level="5.10" data-path="data-1.html"><a href="data-1.html#measurement-2"><i class="fa fa-check"></i><b>5.10</b> Measurement</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path=""><a href="#part-part-4-webscraping"><i class="fa fa-check"></i>(PART) Part 4 Webscraping</a>
-<ul>
-<li class="chapter" data-level="5.11" data-path="data-1.html"><a href="data-1.html#chapter-overview"><i class="fa fa-check"></i><b>5.11</b> Chapter overview</a>
-<ul>
-<li class="chapter" data-level="5.11.1" data-path="data-1.html"><a href="data-1.html#definitions"><i class="fa fa-check"></i><b>5.11.1</b> Definitions</a></li>
-</ul></li>
-<li class="chapter" data-level="5.12" data-path="data-1.html"><a href="data-1.html#promises-and-pitfalls"><i class="fa fa-check"></i><b>5.12</b> Promises and pitfalls</a>
-<ul>
-<li class="chapter" data-level="5.12.1" data-path="data-1.html"><a href="data-1.html#promises"><i class="fa fa-check"></i><b>5.12.1</b> Promises</a></li>
-<li class="chapter" data-level="5.12.2" data-path="data-1.html"><a href="data-1.html#pitfalls"><i class="fa fa-check"></i><b>5.12.2</b> Pitfalls</a></li>
-</ul></li>
-<li class="chapter" data-level="5.13" data-path="data-1.html"><a href="data-1.html#best-of-both-worlds"><i class="fa fa-check"></i><b>5.13</b> Best of both worlds?</a></li>
-<li class="chapter" data-level="5.14" data-path="data-1.html"><a href="data-1.html#where-does-this-lead-us"><i class="fa fa-check"></i><b>5.14</b> Where does this lead us?</a></li>
-<li class="chapter" data-level="5.15" data-path="data-1.html"><a href="data-1.html#ethics"><i class="fa fa-check"></i><b>5.15</b> Ethics</a></li>
-<li class="chapter" data-level="5.16" data-path="data-1.html"><a href="data-1.html#webscraping-techniques"><i class="fa fa-check"></i><b>5.16</b> Webscraping techniques</a>
-<ul>
-<li class="chapter" data-level="5.16.1" data-path="data-1.html"><a href="data-1.html#manual"><i class="fa fa-check"></i><b>5.16.1</b> Manual</a></li>
-<li class="chapter" data-level="5.16.2" data-path="data-1.html"><a href="data-1.html#apis"><i class="fa fa-check"></i><b>5.16.2</b> APIs</a></li>
-<li class="chapter" data-level="5.16.3" data-path="data-1.html"><a href="data-1.html#crawling"><i class="fa fa-check"></i><b>5.16.3</b> Crawling</a></li>
-</ul></li>
-<li class="chapter" data-level="5.17" data-path="data-1.html"><a href="data-1.html#hands-on-webscraping"><i class="fa fa-check"></i><b>5.17</b> Hands-on webscraping</a>
-<ul>
-<li class="chapter" data-level="5.17.1" data-path="data-1.html"><a href="data-1.html#staging-your-script"><i class="fa fa-check"></i><b>5.17.1</b> Staging your script</a></li>
-<li class="chapter" data-level="5.17.2" data-path="data-1.html"><a href="data-1.html#getting-anchor-data"><i class="fa fa-check"></i><b>5.17.2</b> Getting “anchor” data</a></li>
-<li class="chapter" data-level="5.17.3" data-path="data-1.html"><a href="data-1.html#google-scholar-profiles-and-publications"><i class="fa fa-check"></i><b>5.17.3</b> Google Scholar Profiles and Publications</a></li>
+<li class="chapter" data-level="6.3.1" data-path="methods-1.html"><a href="methods-1.html#macro-micro-model"><i class="fa fa-check"></i><b>6.3.1</b> Macro-micro model</a></li>
+<li class="chapter" data-level="6.3.2" data-path="methods-1.html"><a href="methods-1.html#micro-macro-ri-clpm"><i class="fa fa-check"></i><b>6.3.2</b> Micro-macro-RI-CLPM</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>II Part 5 Network Visualisation</b></span></li>
-<li class="chapter" data-level="" data-path=""><a href="#appendix-appendix"><i class="fa fa-check"></i>(APPENDIX) Appendix</a>
+<li class="chapter" data-level="7" data-path="data-2.html"><a href="data-2.html"><i class="fa fa-check"></i><b>7</b> Data</a>
 <ul>
-<li class="chapter" data-level="5.18" data-path="data-1.html"><a href="data-1.html#preliminary-notes"><i class="fa fa-check"></i><b>5.18</b> Preliminary notes</a></li>
-<li class="chapter" data-level="5.19" data-path="data-1.html"><a href="data-1.html#getting-up-and-running"><i class="fa fa-check"></i><b>5.19</b> Getting up and running</a></li>
-<li class="chapter" data-level="5.20" data-path="data-1.html"><a href="data-1.html#working-with-rscript"><i class="fa fa-check"></i><b>5.20</b> Working with RScript</a></li>
-<li class="chapter" data-level="5.21" data-path="data-1.html"><a href="data-1.html#installing-additional-packages"><i class="fa fa-check"></i><b>5.21</b> Installing additional packages</a></li>
-<li class="chapter" data-level="5.22" data-path="data-1.html"><a href="data-1.html#i-dont-understand-the-code"><i class="fa fa-check"></i><b>5.22</b> I don’t understand the code!!</a></li>
-<li class="chapter" data-level="5.23" data-path="data-1.html"><a href="data-1.html#reading-in-data-files"><i class="fa fa-check"></i><b>5.23</b> Reading in data files</a></li>
-<li class="chapter" data-level="5.24" data-path="data-1.html"><a href="data-1.html#define-missings"><i class="fa fa-check"></i><b>5.24</b> Define missings</a>
-<ul>
-<li class="chapter" data-level="5.24.1" data-path="data-1.html"><a href="data-1.html#r-base"><i class="fa fa-check"></i><b>5.24.1</b> R Base</a></li>
-<li class="chapter" data-level="5.24.2" data-path="data-1.html"><a href="data-1.html#tidy"><i class="fa fa-check"></i><b>5.24.2</b> Tidy</a></li>
+<li class="chapter" data-level="7.1" data-path="data-2.html"><a href="data-2.html#sampling-1"><i class="fa fa-check"></i><b>7.1</b> Sampling</a></li>
+<li class="chapter" data-level="7.2" data-path="data-2.html"><a href="data-2.html#ethical-considerations-1"><i class="fa fa-check"></i><b>7.2</b> Ethical considerations</a></li>
+<li class="chapter" data-level="7.3" data-path="data-2.html"><a href="data-2.html#measurement-1"><i class="fa fa-check"></i><b>7.3</b> Measurement</a></li>
 </ul></li>
-<li class="chapter" data-level="5.25" data-path="data-1.html"><a href="data-1.html#recoding-variables"><i class="fa fa-check"></i><b>5.25</b> Recoding variables</a>
+<li class="part"><span><b>III Part 3 SOCIONETS</b></span></li>
+<li class="chapter" data-level="8" data-path="theory-2.html"><a href="theory-2.html"><i class="fa fa-check"></i><b>8</b> Theory</a>
 <ul>
-<li class="chapter" data-level="5.25.1" data-path="data-1.html"><a href="data-1.html#r-base-1"><i class="fa fa-check"></i><b>5.25.1</b> R Base</a></li>
-<li class="chapter" data-level="5.25.2" data-path="data-1.html"><a href="data-1.html#tidy-1"><i class="fa fa-check"></i><b>5.25.2</b> Tidy</a></li>
+<li class="chapter" data-level="8.1" data-path="theory-2.html"><a href="theory-2.html#causes-3"><i class="fa fa-check"></i><b>8.1</b> Causes</a></li>
+<li class="chapter" data-level="8.2" data-path="theory-2.html"><a href="theory-2.html#consequences-3"><i class="fa fa-check"></i><b>8.2</b> Consequences</a></li>
 </ul></li>
-<li class="chapter" data-level="5.26" data-path="data-1.html"><a href="data-1.html#means-and-counting-specific-values"><i class="fa fa-check"></i><b>5.26</b> Means and counting specific values</a>
+<li class="chapter" data-level="9" data-path="methods-2.html"><a href="methods-2.html"><i class="fa fa-check"></i><b>9</b> Methods</a>
 <ul>
-<li class="chapter" data-level="5.26.1" data-path="data-1.html"><a href="data-1.html#r-base-2"><i class="fa fa-check"></i><b>5.26.1</b> R Base</a></li>
-<li class="chapter" data-level="5.26.2" data-path="data-1.html"><a href="data-1.html#tidy-2"><i class="fa fa-check"></i><b>5.26.2</b> Tidy</a></li>
+<li class="chapter" data-level="9.1" data-path="methods-2.html"><a href="methods-2.html#causes-4"><i class="fa fa-check"></i><b>9.1</b> Causes</a></li>
+<li class="chapter" data-level="9.2" data-path="methods-2.html"><a href="methods-2.html#consequences-4"><i class="fa fa-check"></i><b>9.2</b> Consequences</a></li>
 </ul></li>
-<li class="chapter" data-level="5.27" data-path="data-1.html"><a href="data-1.html#merging-data-files"><i class="fa fa-check"></i><b>5.27</b> Merging data files</a>
+<li class="chapter" data-level="10" data-path="data-3.html"><a href="data-3.html"><i class="fa fa-check"></i><b>10</b> Data</a>
 <ul>
-<li class="chapter" data-level="5.27.1" data-path="data-1.html"><a href="data-1.html#r-base-3"><i class="fa fa-check"></i><b>5.27.1</b> R Base</a></li>
-<li class="chapter" data-level="5.27.2" data-path="data-1.html"><a href="data-1.html#tidy-3"><i class="fa fa-check"></i><b>5.27.2</b> Tidy</a></li>
+<li class="chapter" data-level="10.1" data-path="data-3.html"><a href="data-3.html#sampling-2"><i class="fa fa-check"></i><b>10.1</b> Sampling</a></li>
+<li class="chapter" data-level="10.2" data-path="data-3.html"><a href="data-3.html#ethical-considerations-2"><i class="fa fa-check"></i><b>10.2</b> Ethical considerations</a></li>
+<li class="chapter" data-level="10.3" data-path="data-3.html"><a href="data-3.html#measurement-2"><i class="fa fa-check"></i><b>10.3</b> Measurement</a></li>
 </ul></li>
-<li class="chapter" data-level="5.28" data-path="data-1.html"><a href="data-1.html#aggregate-data"><i class="fa fa-check"></i><b>5.28</b> Aggregate data</a>
+<li class="part"><span><b>IV Part 4 Webscraping</b></span></li>
+<li class="chapter" data-level="11" data-path="webintro.html"><a href="webintro.html"><i class="fa fa-check"></i><b>11</b> Webscraping for Sociologists</a>
 <ul>
-<li class="chapter" data-level="5.28.1" data-path="data-1.html"><a href="data-1.html#r-base-4"><i class="fa fa-check"></i><b>5.28.1</b> R Base</a></li>
-<li class="chapter" data-level="5.28.2" data-path="data-1.html"><a href="data-1.html#tidy-4"><i class="fa fa-check"></i><b>5.28.2</b> Tidy</a></li>
+<li class="chapter" data-level="11.1" data-path="webintro.html"><a href="webintro.html#chapter-overview"><i class="fa fa-check"></i><b>11.1</b> Chapter overview</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="webintro.html"><a href="webintro.html#definitions"><i class="fa fa-check"></i><b>11.1.1</b> Definitions</a></li>
 </ul></li>
-<li class="chapter" data-level="5.29" data-path="data-1.html"><a href="data-1.html#missing-values"><i class="fa fa-check"></i><b>5.29</b> Missing values</a>
+<li class="chapter" data-level="11.2" data-path="webintro.html"><a href="webintro.html#promises-and-pitfalls"><i class="fa fa-check"></i><b>11.2</b> Promises and pitfalls</a>
 <ul>
-<li class="chapter" data-level="5.29.1" data-path="data-1.html"><a href="data-1.html#r-base-5"><i class="fa fa-check"></i><b>5.29.1</b> R Base</a></li>
-<li class="chapter" data-level="5.29.2" data-path="data-1.html"><a href="data-1.html#tidy-5"><i class="fa fa-check"></i><b>5.29.2</b> Tidy</a></li>
+<li class="chapter" data-level="11.2.1" data-path="webintro.html"><a href="webintro.html#promises"><i class="fa fa-check"></i><b>11.2.1</b> Promises</a></li>
+<li class="chapter" data-level="11.2.2" data-path="webintro.html"><a href="webintro.html#pitfalls"><i class="fa fa-check"></i><b>11.2.2</b> Pitfalls</a></li>
 </ul></li>
-<li class="chapter" data-level="5.30" data-path="data-1.html"><a href="data-1.html#very-important-stuff"><i class="fa fa-check"></i><b>5.30</b> Very important stuff!!</a>
+<li class="chapter" data-level="11.3" data-path="webintro.html"><a href="webintro.html#best-of-both-worlds"><i class="fa fa-check"></i><b>11.3</b> Best of both worlds?</a></li>
+<li class="chapter" data-level="11.4" data-path="webintro.html"><a href="webintro.html#where-does-this-lead-us"><i class="fa fa-check"></i><b>11.4</b> Where does this lead us?</a></li>
+<li class="chapter" data-level="11.5" data-path="webintro.html"><a href="webintro.html#ethics"><i class="fa fa-check"></i><b>11.5</b> Ethics</a></li>
+<li class="chapter" data-level="11.6" data-path="webintro.html"><a href="webintro.html#webscraping-techniques"><i class="fa fa-check"></i><b>11.6</b> Webscraping techniques</a>
 <ul>
-<li class="chapter" data-level="5.30.1" data-path="data-1.html"><a href="data-1.html#if-else"><i class="fa fa-check"></i><b>5.30.1</b> if else</a></li>
-<li class="chapter" data-level="5.30.2" data-path="data-1.html"><a href="data-1.html#loops"><i class="fa fa-check"></i><b>5.30.2</b> loops</a></li>
-<li class="chapter" data-level="5.30.3" data-path="data-1.html"><a href="data-1.html#lists"><i class="fa fa-check"></i><b>5.30.3</b> Lists</a></li>
-<li class="chapter" data-level="5.30.4" data-path="data-1.html"><a href="data-1.html#lapplymap-and-do.call"><i class="fa fa-check"></i><b>5.30.4</b> lapply/map and do.call</a></li>
-<li class="chapter" data-level="5.30.5" data-path="data-1.html"><a href="data-1.html#functions"><i class="fa fa-check"></i><b>5.30.5</b> functions</a></li>
+<li class="chapter" data-level="11.6.1" data-path="webintro.html"><a href="webintro.html#manual"><i class="fa fa-check"></i><b>11.6.1</b> Manual</a></li>
+<li class="chapter" data-level="11.6.2" data-path="webintro.html"><a href="webintro.html#apis"><i class="fa fa-check"></i><b>11.6.2</b> APIs</a></li>
+<li class="chapter" data-level="11.6.3" data-path="webintro.html"><a href="webintro.html#crawling"><i class="fa fa-check"></i><b>11.6.3</b> Crawling</a></li>
 </ul></li>
-<li class="chapter" data-level="5.31" data-path="data-1.html"><a href="data-1.html#assignment-3"><i class="fa fa-check"></i><b>5.31</b> Assignment</a></li>
-<li class="chapter" data-level="5.32" data-path="data-1.html"><a href="data-1.html#variance-and-covariance"><i class="fa fa-check"></i><b>5.32</b> Variance and covariance</a>
+<li class="chapter" data-level="11.7" data-path="webintro.html"><a href="webintro.html#hands-on-webscraping"><i class="fa fa-check"></i><b>11.7</b> Hands-on webscraping</a>
 <ul>
-<li class="chapter" data-level="5.32.1" data-path="data-1.html"><a href="data-1.html#want-to-learn-more"><i class="fa fa-check"></i><b>5.32.1</b> Want to learn more?!</a></li>
-</ul></li>
-<li class="chapter" data-level="5.33" data-path="data-1.html"><a href="data-1.html#intraclass-correlation"><i class="fa fa-check"></i><b>5.33</b> Intraclass correlation</a>
-<ul>
-<li class="chapter" data-level="5.33.1" data-path="data-1.html"><a href="data-1.html#dyadic-data"><i class="fa fa-check"></i><b>5.33.1</b> Dyadic data</a></li>
-<li class="chapter" data-level="5.33.2" data-path="data-1.html"><a href="data-1.html#egonet-socionet-data"><i class="fa fa-check"></i><b>5.33.2</b> Egonet / Socionet data</a></li>
+<li class="chapter" data-level="11.7.1" data-path="webintro.html"><a href="webintro.html#staging-your-script"><i class="fa fa-check"></i><b>11.7.1</b> Staging your script</a></li>
+<li class="chapter" data-level="11.7.2" data-path="webintro.html"><a href="webintro.html#getting-anchor-data"><i class="fa fa-check"></i><b>11.7.2</b> Getting “anchor” data</a></li>
+<li class="chapter" data-level="11.7.3" data-path="webintro.html"><a href="webintro.html#google-scholar-profiles-and-publications"><i class="fa fa-check"></i><b>11.7.3</b> Google Scholar Profiles and Publications</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>V Part 5 Network Visualisation</b></span></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="tutorial.html"><a href="tutorial.html"><i class="fa fa-check"></i><b>A</b> Introduction to R for SNA</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="tutorial.html"><a href="tutorial.html#preliminary-notes"><i class="fa fa-check"></i><b>A.1</b> Preliminary notes</a></li>
+<li class="chapter" data-level="A.2" data-path="tutorial.html"><a href="tutorial.html#getting-up-and-running"><i class="fa fa-check"></i><b>A.2</b> Getting up and running</a></li>
+<li class="chapter" data-level="A.3" data-path="tutorial.html"><a href="tutorial.html#working-with-rscript"><i class="fa fa-check"></i><b>A.3</b> Working with RScript</a></li>
+<li class="chapter" data-level="A.4" data-path="tutorial.html"><a href="tutorial.html#installing-additional-packages"><i class="fa fa-check"></i><b>A.4</b> Installing additional packages</a></li>
+<li class="chapter" data-level="A.5" data-path="tutorial.html"><a href="tutorial.html#i-dont-understand-the-code"><i class="fa fa-check"></i><b>A.5</b> I don’t understand the code!!</a></li>
+<li class="chapter" data-level="A.6" data-path="tutorial.html"><a href="tutorial.html#reading-in-data-files"><i class="fa fa-check"></i><b>A.6</b> Reading in data files</a></li>
+<li class="chapter" data-level="A.7" data-path="tutorial.html"><a href="tutorial.html#define-missings"><i class="fa fa-check"></i><b>A.7</b> Define missings</a>
+<ul>
+<li class="chapter" data-level="A.7.1" data-path="tutorial.html"><a href="tutorial.html#r-base"><i class="fa fa-check"></i><b>A.7.1</b> R Base</a></li>
+<li class="chapter" data-level="A.7.2" data-path="tutorial.html"><a href="tutorial.html#tidy"><i class="fa fa-check"></i><b>A.7.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.8" data-path="tutorial.html"><a href="tutorial.html#recoding-variables"><i class="fa fa-check"></i><b>A.8</b> Recoding variables</a>
+<ul>
+<li class="chapter" data-level="A.8.1" data-path="tutorial.html"><a href="tutorial.html#r-base-1"><i class="fa fa-check"></i><b>A.8.1</b> R Base</a></li>
+<li class="chapter" data-level="A.8.2" data-path="tutorial.html"><a href="tutorial.html#tidy-1"><i class="fa fa-check"></i><b>A.8.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.9" data-path="tutorial.html"><a href="tutorial.html#means-and-counting-specific-values"><i class="fa fa-check"></i><b>A.9</b> Means and counting specific values</a>
+<ul>
+<li class="chapter" data-level="A.9.1" data-path="tutorial.html"><a href="tutorial.html#r-base-2"><i class="fa fa-check"></i><b>A.9.1</b> R Base</a></li>
+<li class="chapter" data-level="A.9.2" data-path="tutorial.html"><a href="tutorial.html#tidy-2"><i class="fa fa-check"></i><b>A.9.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.10" data-path="tutorial.html"><a href="tutorial.html#merging-data-files"><i class="fa fa-check"></i><b>A.10</b> Merging data files</a>
+<ul>
+<li class="chapter" data-level="A.10.1" data-path="tutorial.html"><a href="tutorial.html#r-base-3"><i class="fa fa-check"></i><b>A.10.1</b> R Base</a></li>
+<li class="chapter" data-level="A.10.2" data-path="tutorial.html"><a href="tutorial.html#tidy-3"><i class="fa fa-check"></i><b>A.10.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.11" data-path="tutorial.html"><a href="tutorial.html#aggregate-data"><i class="fa fa-check"></i><b>A.11</b> Aggregate data</a>
+<ul>
+<li class="chapter" data-level="A.11.1" data-path="tutorial.html"><a href="tutorial.html#r-base-4"><i class="fa fa-check"></i><b>A.11.1</b> R Base</a></li>
+<li class="chapter" data-level="A.11.2" data-path="tutorial.html"><a href="tutorial.html#tidy-4"><i class="fa fa-check"></i><b>A.11.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.12" data-path="tutorial.html"><a href="tutorial.html#missing-values"><i class="fa fa-check"></i><b>A.12</b> Missing values</a>
+<ul>
+<li class="chapter" data-level="A.12.1" data-path="tutorial.html"><a href="tutorial.html#r-base-5"><i class="fa fa-check"></i><b>A.12.1</b> R Base</a></li>
+<li class="chapter" data-level="A.12.2" data-path="tutorial.html"><a href="tutorial.html#tidy-5"><i class="fa fa-check"></i><b>A.12.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.13" data-path="tutorial.html"><a href="tutorial.html#very-important-stuff"><i class="fa fa-check"></i><b>A.13</b> Very important stuff!!</a>
+<ul>
+<li class="chapter" data-level="A.13.1" data-path="tutorial.html"><a href="tutorial.html#if-else"><i class="fa fa-check"></i><b>A.13.1</b> if else</a></li>
+<li class="chapter" data-level="A.13.2" data-path="tutorial.html"><a href="tutorial.html#loops"><i class="fa fa-check"></i><b>A.13.2</b> loops</a></li>
+<li class="chapter" data-level="A.13.3" data-path="tutorial.html"><a href="tutorial.html#lists"><i class="fa fa-check"></i><b>A.13.3</b> Lists</a></li>
+<li class="chapter" data-level="A.13.4" data-path="tutorial.html"><a href="tutorial.html#lapplymap-and-do.call"><i class="fa fa-check"></i><b>A.13.4</b> lapply/map and do.call</a></li>
+<li class="chapter" data-level="A.13.5" data-path="tutorial.html"><a href="tutorial.html#functions"><i class="fa fa-check"></i><b>A.13.5</b> functions</a></li>
+</ul></li>
+<li class="chapter" data-level="A.14" data-path="tutorial.html"><a href="tutorial.html#assignment-3"><i class="fa fa-check"></i><b>A.14</b> Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>B</b> Interdependencies</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="variance.html"><a href="variance.html#variance-and-covariance"><i class="fa fa-check"></i><b>B.1</b> Variance and covariance</a>
+<ul>
+<li class="chapter" data-level="B.1.1" data-path="variance.html"><a href="variance.html#want-to-learn-more"><i class="fa fa-check"></i><b>B.1.1</b> Want to learn more?!</a></li>
+</ul></li>
+<li class="chapter" data-level="B.2" data-path="variance.html"><a href="variance.html#intraclass-correlation"><i class="fa fa-check"></i><b>B.2</b> Intraclass correlation</a>
+<ul>
+<li class="chapter" data-level="B.2.1" data-path="variance.html"><a href="variance.html#dyadic-data"><i class="fa fa-check"></i><b>B.2.1</b> Dyadic data</a></li>
+<li class="chapter" data-level="B.2.2" data-path="variance.html"><a href="variance.html#egonet-socionet-data"><i class="fa fa-check"></i><b>B.2.2</b> Egonet / Socionet data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -306,7 +387,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Social Network Analysis for Social Scientists</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SNASS</a>
           </h1>
         </div>
 
@@ -314,16 +395,16 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-1" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Data</h1>
-<div id="sampling-1" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Sampling</h2>
+<div id="data-1" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Data</h1>
+<div id="sampling" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Sampling</h2>
 </div>
-<div id="ethical-considerations-1" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Ethical considerations</h2>
+<div id="ethical-considerations" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Ethical considerations</h2>
 </div>
-<div id="measurement-1" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Measurement</h2>
+<div id="measurement" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Measurement</h2>
 <hr />
 
 </div>
@@ -331,307 +412,13 @@ div.csl-indent {
 
 
 
-<div id="causes-3" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Causes</h2>
-</div>
-<div id="consequences-3" class="section level2" number="5.5">
-<h2><span class="header-section-number">5.5</span> Consequences</h2>
-</div>
-<div id="causes-4" class="section level2" number="5.6">
-<h2><span class="header-section-number">5.6</span> Causes</h2>
-</div>
-<div id="consequences-4" class="section level2" number="5.7">
-<h2><span class="header-section-number">5.7</span> Consequences</h2>
-</div>
-<div id="sampling-2" class="section level2" number="5.8">
-<h2><span class="header-section-number">5.8</span> Sampling</h2>
-</div>
-<div id="ethical-considerations-2" class="section level2" number="5.9">
-<h2><span class="header-section-number">5.9</span> Ethical considerations</h2>
-</div>
-<div id="measurement-2" class="section level2" number="5.10">
-<h2><span class="header-section-number">5.10</span> Measurement</h2>
-
-</div>
-</div>
-
-
-
-<div id="chapter-overview" class="section level2" number="5.11">
-<h2><span class="header-section-number">5.11</span> Chapter overview</h2>
-<div id="definitions" class="section level3" number="5.11.1">
-<h3><span class="header-section-number">5.11.1</span> Definitions</h3>
-</div>
-</div>
-<div id="promises-and-pitfalls" class="section level2" number="5.12">
-<h2><span class="header-section-number">5.12</span> Promises and pitfalls</h2>
-<div id="promises" class="section level3" number="5.12.1">
-<h3><span class="header-section-number">5.12.1</span> Promises</h3>
-<div id="social-networks" class="section level5 unnumbered">
-<h5><strong>(Social) networks</strong></h5>
-</div>
-<div id="dynamics" class="section level5 unnumbered">
-<h5><strong>Dynamics</strong></h5>
-</div>
-<div id="signals" class="section level5 unnumbered">
-<h5><strong>Signals</strong></h5>
-</div>
-<div id="size" class="section level5 unnumbered">
-<h5><strong>Size</strong></h5>
-</div>
-</div>
-<div id="pitfalls" class="section level3" number="5.12.2">
-<h3><span class="header-section-number">5.12.2</span> Pitfalls</h3>
-<div id="sampling-3" class="section level5 unnumbered">
-<h5><strong>Sampling</strong></h5>
-</div>
-<div id="size-1" class="section level5 unnumbered">
-<h5><strong>Size</strong></h5>
-</div>
-<div id="thin" class="section level5 unnumbered">
-<h5><strong>Thin</strong></h5>
-</div>
-<div id="data-structure" class="section level5 unnumbered">
-<h5><strong>Data structure</strong></h5>
-</div>
-</div>
-</div>
-<div id="best-of-both-worlds" class="section level2" number="5.13">
-<h2><span class="header-section-number">5.13</span> Best of both worlds?</h2>
-</div>
-<div id="where-does-this-lead-us" class="section level2" number="5.14">
-<h2><span class="header-section-number">5.14</span> Where does this lead us?</h2>
-</div>
-<div id="ethics" class="section level2" number="5.15">
-<h2><span class="header-section-number">5.15</span> Ethics</h2>
-</div>
-<div id="webscraping-techniques" class="section level2" number="5.16">
-<h2><span class="header-section-number">5.16</span> Webscraping techniques</h2>
-<div id="manual" class="section level3" number="5.16.1">
-<h3><span class="header-section-number">5.16.1</span> Manual</h3>
-</div>
-<div id="apis" class="section level3" number="5.16.2">
-<h3><span class="header-section-number">5.16.2</span> APIs</h3>
-</div>
-<div id="crawling" class="section level3" number="5.16.3">
-<h3><span class="header-section-number">5.16.3</span> Crawling</h3>
-</div>
-</div>
-<div id="hands-on-webscraping" class="section level2" number="5.17">
-<h2><span class="header-section-number">5.17</span> Hands-on webscraping</h2>
-<div id="staging-your-script" class="section level3" number="5.17.1">
-<h3><span class="header-section-number">5.17.1</span> Staging your script</h3>
-</div>
-<div id="getting-anchor-data" class="section level3" number="5.17.2">
-<h3><span class="header-section-number">5.17.2</span> Getting “anchor” data</h3>
-</div>
-<div id="google-scholar-profiles-and-publications" class="section level3" number="5.17.3">
-<h3><span class="header-section-number">5.17.3</span> Google Scholar Profiles and Publications</h3>
-
-</div>
-</div>
-</div>
-
-
-
-
-</div>
-
-
-
-<div id="preliminary-notes" class="section level2" number="5.18">
-<h2><span class="header-section-number">18</span> Preliminary notes</h2>
-</div>
-<div id="getting-up-and-running" class="section level2" number="5.19">
-<h2><span class="header-section-number">19</span> Getting up and running</h2>
-</div>
-<div id="working-with-rscript" class="section level2" number="5.20">
-<h2><span class="header-section-number">20</span> Working with RScript</h2>
-</div>
-<div id="installing-additional-packages" class="section level2" number="5.21">
-<h2><span class="header-section-number">21</span> Installing additional packages</h2>
-</div>
-<div id="i-dont-understand-the-code" class="section level2" number="5.22">
-<h2><span class="header-section-number">22</span> I don’t understand the code!!</h2>
-</div>
-<div id="reading-in-data-files" class="section level2" number="5.23">
-<h2><span class="header-section-number">23</span> Reading in data files</h2>
-</div>
-<div id="define-missings" class="section level2" number="5.24">
-<h2><span class="header-section-number">24</span> Define missings</h2>
-<div id="r-base" class="section level3" number="5.24.1">
-<h3><span class="header-section-number">24.1</span> R Base</h3>
-</div>
-<div id="tidy" class="section level3" number="5.24.2">
-<h3><span class="header-section-number">24.2</span> Tidy</h3>
-</div>
-</div>
-<div id="recoding-variables" class="section level2" number="5.25">
-<h2><span class="header-section-number">25</span> Recoding variables</h2>
-<div id="r-base-1" class="section level3" number="5.25.1">
-<h3><span class="header-section-number">25.1</span> R Base</h3>
-</div>
-<div id="tidy-1" class="section level3" number="5.25.2">
-<h3><span class="header-section-number">25.2</span> Tidy</h3>
-</div>
-</div>
-<div id="means-and-counting-specific-values" class="section level2" number="5.26">
-<h2><span class="header-section-number">26</span> Means and counting specific values</h2>
-<div id="r-base-2" class="section level3" number="5.26.1">
-<h3><span class="header-section-number">26.1</span> R Base</h3>
-</div>
-<div id="tidy-2" class="section level3" number="5.26.2">
-<h3><span class="header-section-number">26.2</span> Tidy</h3>
-</div>
-</div>
-<div id="merging-data-files" class="section level2" number="5.27">
-<h2><span class="header-section-number">27</span> Merging data files</h2>
-<div id="r-base-3" class="section level3" number="5.27.1">
-<h3><span class="header-section-number">27.1</span> R Base</h3>
-<div id="step1-select-variables" class="section level4" number="5.27.1.1">
-<h4><span class="header-section-number">27.1.1</span> Step1: select variables</h4>
-</div>
-<div id="step2-make-consistent" class="section level4" number="5.27.1.2">
-<h4><span class="header-section-number">27.1.2</span> Step2: make consistent</h4>
-</div>
-<div id="step3-merge" class="section level4" number="5.27.1.3">
-<h4><span class="header-section-number">27.1.3</span> Step3: merge</h4>
-</div>
-<div id="step4-check" class="section level4" number="5.27.1.4">
-<h4><span class="header-section-number">27.1.4</span> Step4: check</h4>
-</div>
-<div id="step3b-merge" class="section level4" number="5.27.1.5">
-<h4><span class="header-section-number">27.1.5</span> Step3b: merge</h4>
-</div>
-</div>
-<div id="tidy-3" class="section level3" number="5.27.2">
-<h3><span class="header-section-number">27.2</span> Tidy</h3>
-<div id="step1-select-variables-1" class="section level4" number="5.27.2.1">
-<h4><span class="header-section-number">27.2.1</span> Step1: select variables</h4>
-</div>
-<div id="step2-make-consistent-1" class="section level4" number="5.27.2.2">
-<h4><span class="header-section-number">27.2.2</span> Step2: make consistent</h4>
-</div>
-<div id="step3-merge-1" class="section level4" number="5.27.2.3">
-<h4><span class="header-section-number">27.2.3</span> Step3: merge</h4>
-</div>
-<div id="step4-check-1" class="section level4" number="5.27.2.4">
-<h4><span class="header-section-number">27.2.4</span> Step4: check</h4>
-</div>
-<div id="step3b-merge-1" class="section level4" number="5.27.2.5">
-<h4><span class="header-section-number">27.2.5</span> Step3b: merge</h4>
-</div>
-</div>
-</div>
-<div id="aggregate-data" class="section level2" number="5.28">
-<h2><span class="header-section-number">28</span> Aggregate data</h2>
-<div id="r-base-4" class="section level3" number="5.28.1">
-<h3><span class="header-section-number">28.1</span> R Base</h3>
-</div>
-<div id="tidy-4" class="section level3" number="5.28.2">
-<h3><span class="header-section-number">28.2</span> Tidy</h3>
-</div>
-</div>
-<div id="missing-values" class="section level2" number="5.29">
-<h2><span class="header-section-number">29</span> Missing values</h2>
-<div id="r-base-5" class="section level3" number="5.29.1">
-<h3><span class="header-section-number">29.1</span> R Base</h3>
-<div id="option-1-listwise-deletion" class="section level4" number="5.29.1.1">
-<h4><span class="header-section-number">29.1.1</span> Option 1: listwise deletion</h4>
-</div>
-<div id="option-2-replacing-missing-values." class="section level4" number="5.29.1.2">
-<h4><span class="header-section-number">29.1.2</span> Option 2: replacing missing values.</h4>
-</div>
-<div id="option-3-impute-missing-values" class="section level4" number="5.29.1.3">
-<h4><span class="header-section-number">29.1.3</span> Option 3: impute missing values</h4>
-</div>
-</div>
-<div id="tidy-5" class="section level3" number="5.29.2">
-<h3><span class="header-section-number">29.2</span> Tidy</h3>
-<div id="option-1-listwise-deletion-1" class="section level4" number="5.29.2.1">
-<h4><span class="header-section-number">29.2.1</span> Option 1: listwise deletion</h4>
-</div>
-<div id="option-2-replacing-missing-values.-1" class="section level4" number="5.29.2.2">
-<h4><span class="header-section-number">29.2.2</span> Option 2: replacing missing values.</h4>
-</div>
-<div id="option-3-impute-missing-values-1" class="section level4" number="5.29.2.3">
-<h4><span class="header-section-number">29.2.3</span> Option 3: impute missing values</h4>
-</div>
-</div>
-</div>
-<div id="very-important-stuff" class="section level2" number="5.30">
-<h2><span class="header-section-number">30</span> Very important stuff!!</h2>
-<div id="if-else" class="section level3" number="5.30.1">
-<h3><span class="header-section-number">30.1</span> if else</h3>
-</div>
-<div id="loops" class="section level3" number="5.30.2">
-<h3><span class="header-section-number">30.2</span> loops</h3>
-</div>
-<div id="lists" class="section level3" number="5.30.3">
-<h3><span class="header-section-number">30.3</span> Lists</h3>
-</div>
-<div id="lapplymap-and-do.call" class="section level3" number="5.30.4">
-<h3><span class="header-section-number">30.4</span> lapply/map and do.call</h3>
-</div>
-<div id="functions" class="section level3" number="5.30.5">
-<h3><span class="header-section-number">30.5</span> functions</h3>
-</div>
-</div>
-<div id="assignment-3" class="section level2" number="5.31">
-<h2><span class="header-section-number">31</span> Assignment</h2>
-</div>
-<div id="variance-and-covariance" class="section level2" number="5.32">
-<h2><span class="header-section-number">32</span> Variance and covariance</h2>
-<div id="want-to-learn-more" class="section level3" number="5.32.1">
-<h3><span class="header-section-number">32.1</span> Want to learn more?!</h3>
-</div>
-</div>
-<div id="intraclass-correlation" class="section level2" number="5.33">
-<h2><span class="header-section-number">33</span> Intraclass correlation</h2>
-<div id="dyadic-data" class="section level3" number="5.33.1">
-<h3><span class="header-section-number">33.1</span> Dyadic data</h3>
-<div id="describe-data" class="section level4" number="5.33.1.1">
-<h4><span class="header-section-number">33.1.1</span> Describe data</h4>
-</div>
-<div id="interdependencies-correlation" class="section level4" number="5.33.1.2">
-<h4><span class="header-section-number">33.1.2</span> Interdependencies: correlation</h4>
-</div>
-<div id="icc" class="section level4" number="5.33.1.3">
-<h4><span class="header-section-number">33.1.3</span> ICC</h4>
-</div>
-</div>
-<div id="egonet-socionet-data" class="section level3" number="5.33.2">
-<h3><span class="header-section-number">33.2</span> Egonet / Socionet data</h3>
-<div id="describe-data-1" class="section level4" number="5.33.2.1">
-<h4><span class="header-section-number">33.2.1</span> Describe data</h4>
-</div>
-<div id="icc-via-ml" class="section level4" number="5.33.2.2">
-<h4><span class="header-section-number">33.2.2</span> ICC via ML</h4>
-</div>
-<div id="icc-via-semlavaan" class="section level4" number="5.33.2.3">
-<h4><span class="header-section-number">33.2.3</span> ICC via SEM/lavaan</h4>
-
-<p># References {-}</p>
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div class="csl-entry">
-Davis, James A, and Samuel Leinhardt. 1967. <span>“The Structure of Positive Interpersonal Relations in Small Groups.”</span>
-</div>
-<div class="csl-entry">
-Marsden, Peter V. 1990. <span>“Network Data and Measurement.”</span> <em>Annual Review of Sociology</em> 16 (1): 435–63.
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="methods-1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="methods.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="theory-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -686,6 +473,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
