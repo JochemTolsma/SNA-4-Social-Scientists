@@ -193,3 +193,10 @@ egonet-socionet-data
 describe-data-1
 icc-via-ml
 icc-via-semlavaan
+fig:unnamed-chunk-1
+fig:ut
+fig:mut
+fig:dt
+triad
+network-structures-dyad
+types
