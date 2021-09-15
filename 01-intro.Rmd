@@ -105,7 +105,7 @@ kbl(df, booktabs=TRUE, digits=2, caption="Topics discussed within the course", a
 
 Below I will discuss three dimensions in a little bit more detail.  
 
-### Type of Social Network
+### Type of Social Network {#types}
 
 #### **Dyads** {-}  
 
@@ -234,7 +234,7 @@ V(g6)$shape <- V(g4)$shape[subnet]
 plot(g6,layout=l5[subnet,], rescale=F)
 ```
 \
-In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this [section](https://www.jochemtolsma.nl/courses/complete-networks/socio2/#triad-level).  <!---insert correct link later---> 
+In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this section @\ref(triad). 
 
 
 ##### 2.0 degree network {-}

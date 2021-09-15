@@ -165,7 +165,7 @@ This course is structured along three different dimensions:
 
 Below I will discuss three dimensions in a little bit more detail.  
 
-### Type of Social Network
+### Type of Social Network {#types}
 
 #### **Dyads** {-}  
 
@@ -225,7 +225,7 @@ It turns out that two alters in ego's BFF-network are also BFFs of each other. I
 
 <img src="01-intro_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 \
-In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this [section](https://www.jochemtolsma.nl/courses/complete-networks/socio2/#triad-level).  <!---insert correct link later---> 
+In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this section @\ref(triad). 
 
 
 ##### 2.0 degree network {-}
