@@ -16,7 +16,7 @@ https://jochemtolsma.github.io/SNA-4-Social-Scientists/
 --->
 
 ```{r include=FALSE}
-# automatically create a bib database for R packages
+#  automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown' ,'lavaan', 'agrmt'
 ), 'packages.bib')
@@ -70,7 +70,7 @@ So, what did students have to say about previous versions of this course? Studen
 
 Enter, this book! Together we will decide what we will focus on. You may decide for yourself if and how many background literature you will study. Do you miss a topic? Just make a pull request! ;-)
 
-**Bas Hofstra**([www.bashofstra.com](https://www.bashofstra.com)) is assistant professor at [Radboud University’s Department of Sociology](https://www.ru.nl/sociology/). His work orbits the study of diversity, stratification, and innovation. It captures longitudinal systems of social and cultural exchange: from the gestation and birth of networks, careers, ideas, or innovations, to their use, up until their eventual cessation. As such, his work strives for three interrelated goals: (i) answering substantive questions on causes and effects of social networks, while (ii) contributing to social theory, and (iii) using computational methods and big data. You can find his research in (among others) in PNAS, American Sociological Review, Social Forces, Social Networks, and Nature Human Behaviour.
+**Bas Hofstra** ([www.bashofstra.com](https://www.bashofstra.com)) is assistant professor at [Radboud University’s Department of Sociology](https://www.ru.nl/sociology/). His work orbits the study of diversity, stratification, and innovation. It captures longitudinal systems of social and cultural exchange: from the gestation and birth of networks, careers, ideas, or innovations, to their use, up until their eventual cessation. As such, his work strives for three interrelated goals: (i) answering substantive questions on causes and effects of social networks, while (ii) contributing to social theory, and (iii) using computational methods and big data. You can find his research in (among others) in PNAS, American Sociological Review, Social Forces, Social Networks, and Nature Human Behaviour.
 
 He teaches courses on contemporary sociological theories, analytical sociology, and, of course, social networks. The many advantages and the analytical strength of the social network perspective render it very useful to apply in a range of social science research themes and topics: from studying social exchange of workers between organizations, to the role of mentorship in career outcomes, to a teams’ social structure and creative success. Therefore, Bas finds it both necessary and inspiring to teach social science students about the social network perspective. The book is hands-on and feet-in-the-mud on the key aspects of social networks that social scientists would need to know about: from questions, to theory, to methods. Therefore, anyone should be able to start their own thesis or research project on social networks after they’ve read selected parts or chapters in the book.
 
