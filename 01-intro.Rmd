@@ -79,7 +79,7 @@ This course is structured along three different dimensions:
 
 ```{r topics, echo=FALSE}
 
-#install.packages("kableExtra", repos='http://cran.us.r-project.org')
+install.packages("kableExtra", repos='http://cran.us.r-project.org')
 require(kableExtra)
 v1 <- c("Dyads", "Dyads","Dyads","Dyads", "Dyads", "Egonets", "Egonets","Egonets","Egonets","Egonets", "Socionet", "Socionet","Socionet","Socionet","Socionet")
 v2 <- c("Causes", "Causes", "Consequences", "Consequences", "NA", "Causes", "Causes", "Consequences", "Consequences", "NA","Causes", "Causes", "Consequences", "Consequences", "NA")
@@ -234,7 +234,7 @@ V(g6)$shape <- V(g4)$shape[subnet]
 plot(g6,layout=l5[subnet,], rescale=F)
 ```
 \
-In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this section @\ref(triad). 
+In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this section \@ref(triad). 
 
 
 ##### 2.0 degree network {-}

@@ -225,7 +225,7 @@ It turns out that two alters in ego's BFF-network are also BFFs of each other. I
 
 <img src="01-intro_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 \
-In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this section @\ref(triad). 
+In the lower-left corner we see a closed *Triad*. For more information on Triads jump to this section \@ref(triad). 
 
 
 ##### 2.0 degree network {-}
