@@ -121,7 +121,7 @@ We observe an *unconnected* triad, a triad with a *connected pair*, an *open tri
 
 >How many isomorphs can you think of for a triad with one *connected pair*?  
 
-We only have three nodes but network structures become complex quite quickly. See Figure @\ref(mut) for the many possible configurations for triads when we consider two different type of undirected ties (i.e. multiplexity). 
+We only have three nodes but network structures become complex quite quickly. See Figure \@ref(fig:mut) for the many possible configurations for triads when we consider two different type of undirected ties (i.e. multiplexity). 
 
 ```{r mut, echo=FALSE, , eval=TRUE, fig.cap="Multiplex, undirected triad configurations", out.width = '100%'}
 knitr::include_graphics("slide8.png")
@@ -147,18 +147,18 @@ These triads all have unique names:
 
 This triad census has been developed by @davis1967 and their original picture in the paper is too cool not to show here:
 
-```{r , echo=FALSE, , eval=TRUE, fig.cap="Original Triad census by Davis and Leinhard (1967)", out.width = '50%'}
+```{r , echo=FALSE, , eval=TRUE, fig.cap="Original Triad census by Davis and Leinhard (1967)", out.width = '100%'}
 knitr::include_graphics("Capture.png")
 ```
 
-Suppose we are trying to come up with an explanation for why we observe transitive triads (030T) in our network. We must realize that a transitive dyad may be the outcome of different evolution processes. See Figure @\ref(evo).
+Suppose we are trying to come up with an explanation for why we observe transitive triads (030T) in our network. We must realize that a transitive dyad may be the outcome of different evolution processes. See Figure \@ref(fig:evo).
 
-```{r evo, echo=FALSE, , eval=TRUE, fig.cap="Different pathways to a transitive triad.", out.width = '100%'}
+```{r evo, echo=FALSE, eval=TRUE, fig.cap="Different pathways to a transitive triad.", out.width = '100%'}
 knitr::include_graphics("slide9.png")
 ```
 That is, if we assume that each tie is made subsequently, thus not two tie are created at the same time.^[Otherwise there would be a third pathway directly from the situation on the left to the end state, the transitive triad, on the right.] The reason why *i* closes the triad, may be very different from the reason why *k* closes the triad. It all depends on the social relation under consideration. The take home message is that we need longitudinal data if we would like to disentangle specific explanations.   
 
-> See Figure @\ref(evo). Do you think both pathways are just as likely for (a) 'friendship relations', (b) 'who kicks whom relations' and (c) 'who explains social network analysis to whom? relations'? 
+> See Figure \@ref(fig:evo). Do you think both pathways are just as likely for (a) 'friendship relations', (b) 'who kicks whom relations' and (c) 'who explains social network analysis to whom? relations'? 
 
 I could not find a nice picture of all possible directed triad configurations for two relations simultaneously. If you have time on your hands, please make one for me! `r emo::ji("grinning")` 
 
@@ -171,12 +171,13 @@ If social scientists seek explanations for why we observe specific social networ
 1. **size**: the number of nodes in the network  
 2. **structure**: the relations in the network
 2. **composition**: characteristics of the nodes in the network
-3. **evolution**: change in size, structure and/or composition
-  a. network growth
-  b. tie evolution: structure --> structure
-  c. node evolution: node attributes --> node attributes
-  d. influence: structure --> node attributes
-  e. selection: node attributes --> structure
+3. **evolution**: change in size, structure and/or composition  
+  - network growth
+  - tie evolution: structure --> structure  
+  - node evolution: node attributes --> node attributes  
+  - influence: structure --> node attributes  
+  - selection: node attributes --> structure
+
 
 Where 1, 2 and 3 belong to the *causes* of social networks, evolution processes belong the the *consequences* of social networks.
 
@@ -194,7 +195,8 @@ From time to time, most people discuss important matters with other people. Look
 
 ...that there are not many people naming more than five persons.^[In many surveys respondents are not even given the opportunity to give more than five persons.] For example, have a look at the table below. Data is from a dataset called CrimeNL [@crimenl]. 
 
-```{r, fig.cap="Number of confidants in CDN (row %)"}
+```{r, echo=FALSE, message=FALSE}
+#install.packages("kableExtra", repos='http://cran.us.r-project.org')
 require(kableExtra)
 
 v1 <- c(17.71, 31.48,23.71,14.45,6.65,6.00,1.79 ,1.39)
@@ -205,7 +207,7 @@ df <- data.frame(rbind(t(v1),t(v2)))
 colnames(df)<- c("Zero" ,"One","Two","Three","Four","Five","Mean","SD")
 rownames(df) <- c("All confidants", "Higher educated confidants")
 
-kbl(df, booktabs=TRUE, digits=2, align = "c", escape=F) %>%
+kbl(df, booktabs=TRUE, digits=2, align = "c", caption="Number of confidants in CDN (row %)", escape=F) %>%
   kable_classic(full_width = F, html_font = "Cambria") %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>% 
   footnote(general = c("Source: CrimeNL", "N=3.834 (own calculations)"))
@@ -216,7 +218,7 @@ The network of our so-called confidants is called the Core-Discussion-Network (C
 
 Our CDN network thus commonly consists of maximum 5 confidants. The same holds true if we would ask about our loved ones. 
 
-#### Dunbar's number
+#### Dunbar's number {#cc}
 
 How would we get to know people with whom you form meaningful relations. That is, the people with whom you form stable social relations with and of whom you know how everyone is connected to one another. Perhaps we could use the following question:   
 
@@ -228,7 +230,6 @@ My answer would definitely depend on whether it was asked to me before or after 
 
 Let try a different question: 
 
-{#cc}
 <p class= "quote">
 Who do you send a Christmas card? 
 </p>
@@ -300,7 +301,7 @@ See the figures below <!--- insert links---> for a graphical summary of the netw
 
 Density is defined as all observed relations divided by all possible relations. Look at the examples below. Are you able to calculate the density of the networks yourself? 
 
-```{r, eval=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 require(igraph)
 
 par(mar = c(0, 0, 0, 0))
@@ -346,11 +347,13 @@ dev.off()
 
 ```
 
-```{r evo, echo=FALSE, , eval=TRUE, fig.cap="Different densities?", out.width = '100%'}
+```{r, echo=FALSE, , eval=TRUE, fig.cap="Different densities?", out.width = '100%'}
 knitr::include_graphics("test.png")
 ``` 
 
-The density in Bas' network turns out to be: <!---`r round(igraph::graph.density(caveman_net_rewired),2)`--->.  
+The density in Bas' network turns out to be: 
+
+<!---`round(igraph::graph.density(caveman_net_rewired),2)`--->.  
 The density in Jochem's network turns out to be:  
 
 For comparison, if we look at friendship networks among pupils in classrooms, we generally observe a density within the range of .2 and .4.
@@ -366,7 +369,7 @@ People in a network with relatively many degree are called more central and (nor
 
 $$ C_D(v_i) = \frac{deg(v_i) - min(deg(v))}  {max(deg(v)) - min(deg(v))}, $$  
 
-where $ C_D(v_i) $ is degree centrality of $ v_i $, vertex *i*, and 'deg' stands for 'degree'. $ max(deg(v)) $ is the maximal observed degree. $ min(deg(v)) $ is the minimal observed degree. A different normalization approach would be to divide the node degree by the maximum degree (either the theoretical maximum, or the maximal observed degree).
+where $C_D(v_i)$ is degree centrality of $v_i$, vertex *i*, and 'deg' stands for 'degree'. $max(deg(v))$ is the maximal observed degree. $min(deg(v))$ is the minimal observed degree. A different normalization approach would be to divide the node degree by the maximum degree (either the theoretical maximum, or the maximal observed degree).
 
 > Suppose you want to compare the degree centrality of all co-authors in Bas' network. Which normalization approach would you take?  
 > Suppose you want to compare the degree centrality of Bas in Bas's network with the degree centrality of Jochem in Jochem's network. Which normalization approach would you take.  
@@ -379,21 +382,21 @@ $$ C_C(v_i) = \frac{N}{\sum_{j}d(v_j, v_i)}, $$
 
 with N the number of nodes and *d* stands for distance.
 
-#### betweenness centrality  
+#### Betweenness centrality  
 
 A final important measure of centrality I would like to discuss is called betweenness. It is defined as:  
 
 $$ C_B(v_i) = \frac{\sigma_{v_j,v_k}(v_i)}{\sum_{j\neq k\neq i}\sigma(v_j,v_k)}, $$ 
 
 
-where $ \sigma(v_j,v_k) $ is the number of shortest paths between vertices *j* and *k*, $ \sigma_{v_j,v_k}(v_i) $, are the number of these shortest paths that pass through vertex $ v_i $ . One way to normalize this measure is as follows:  
+where $\sigma(v_j,v_k)$ is the number of shortest paths between vertices *j* and *k*, $\sigma_{v_j,v_k}(v_i)$, are the number of these shortest paths that pass through vertex $v_i$ . One way to normalize this measure is as follows:  
 
 $$ C_{B_{normalized}}(v_i) =  \frac{C_B(v_i) - min(C_B(v))}{max(C_B(v))-min(C_B(v))} $$  
 
 #### Clustering  
 
 Clustering is an interesting concept. We have immediately an intuitive understanding of it, people lump together in separate groups. But how should we go about defining it more formally? 
-The **clustering coefficient** for $ v_i $ is defined as the observed ties between all direct neighbors of $ v_i $ divided by all possible ties between all direct neighbors of $ v_i $. Direct neighbours are connected to $ v_i $ via an ingoing and/or outgoing relation. For undirected networks, the clustering coefficient is the same as the **transitivity index**: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.  
+The **clustering coefficient** for $v_i$ is defined as the observed ties between all direct neighbors of $v_i$ divided by all possible ties between all direct neighbors of $v_i$. Direct neighbours are connected to $v_i$ via an ingoing and/or outgoing relation. For undirected networks, the clustering coefficient is the same as the **transitivity index**: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.  
 
 
 ## Consequences  

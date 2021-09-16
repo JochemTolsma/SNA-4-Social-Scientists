@@ -1305,6 +1305,7 @@ summary(results[[16]])
 load("addfiles/results.Rdata")
 
 library(knitr) #for kable/kables
+#install.packages("kableExtra", repos='http://cran.us.r-project.org')
 library(kableExtra)
 
 

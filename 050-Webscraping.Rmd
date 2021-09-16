@@ -211,7 +211,7 @@ knitr::include_graphics("inspect_td.PNG")
 
 Something like the code below should do just that:
 
-```{r}
+```{r, eval=FALSE}
 # so we need to find WHERE the table is located in the html
 # "inspect element" in mozilla firefox
 # or "view page source" 
@@ -289,6 +289,7 @@ Now we have a nice relatively clean dataset with all sociology staff and their e
 
 The first name is trickier, we need some more difficult *expressions* to extract first names from this string. It's not necessary for now to exactly know how the expressions below work, but if you want to get into it, here's [a nice resource](https://r4ds.had.co.nz/strings.html). The important part of the code below is that it extracts everything that's in between the brackets.
 
+<!---you need to add a require for str_extract_all--->
 ```{r, eval=TRUE}
 # Last name seems to be everything before the comma
 soc_df$last_name <- gsub(",.*$", "", soc_df$soc_names)
@@ -374,6 +375,7 @@ soc_df$gs_id <- "" # we set an empty identifier
 
 So let's move on with attempting to find Google Scholar profiles. The package `scholar` has a very nice function `get_scholar_id`. It needs a last name, first name, and affiliation. Luckily, we already found those on the Radboud University website! So we can fill in those. Let's try it for one staff member first.
 
+<!---need to make function accessible for students--->
 ```{r, eval=TRUE}
 source("addfiles/function_fix.R") # Put the function_fix.R in your working directory, we need this first line.
 get_scholar_id_fix(last_name="tolsma", first_name="jochem", affiliation="radboud university")
@@ -418,7 +420,7 @@ So let's gather these data, but now for *all* sociology staff simultaneously! Fo
 <!---why did you set eval=FALSE? does not take too long. Don't forget we cache everything---> 
 <!---if you use eval=FALSE. Don't forget to save the objects and load them in next script (with echo=FALSE)--->
 
-```{r}
+```{r, eval=FALSE}
 # Look throught get_scholar_id_fix(last_name, first_name, affiliation) 
 # if we can find google scholar profiles of sociology staff!
 for (i in 1:nrow(soc_df)) {
@@ -450,7 +452,7 @@ knitr::kable(soc_df, booktabs = TRUE)
 
 It works! So what is left to do is simply to get the data we already extracted for Jochem, but for all sociology staff. For that, we need a bunch of for loops. Let's first gather the profiles and publications. We store those in a `list()` which is an object in which you can store multiple data frames, vectors, matrices, and so forth. This is particularly good for for loops because you can store information that is -- at first sight -- not necessarily compatible. For instance, matrices of different length. Note that bind a Google Scholar ID to the publications too. 
 
-```{r}
+```{r, eval=FALSE}
 soc_list_profiles <- list() # first we create an empty list that we then fill up with the for loop
 soc_list_publications <- list()
 
@@ -483,7 +485,7 @@ load("soc_list_profiles.RData")
 
 We need to do some relatively involved data handling to attach the Google Scholar profiles in `soc_list_profiles` to the `soc_df`. That is mostly because profile elements can contain more than one row. For instance, co-authors are stored in long format per profile that do not easily merge to a data frame where each staff member is a row. So we need to get only the profile elements that have a single element per profile element (e.g., total cites). Seems these are the first 8 elements. So we need to get those out of the lists and store those in a new list. We use a couple of functions to first `unlist` the 1 tot 8-th elements in that list, make it a data frame, and *transpose* the data such that each row contains 8 columns. We then use the function `bind_rows()` to simply make a data frame from the list elements. We then merge it to `soc_df`. So what we end up with is a sociology staff data frame with much more information than before: citations, indices, expertise listed on Google Scholar, and so forth.
 
-```{r}
+```{r, eval=FALSE}
 # get the profiles too, just to be sure
 soc_profiles_df <- list()
 for (i in 1:length(soc_list_profiles)) {
@@ -508,7 +510,7 @@ knitr::kable(soc_df, booktabs = TRUE)
 
 So we have papers and profile. Remember how we got Jochem's citation history? We want that for each staff member too. Yet again, we use a for loop. We first store the citation history in a list. But notice the `if` statement! We only continue the for loop for that i-th element if some statement is `TRUE`. Here, we attempt to find out if the i-th element, the citation history of the staff member, has a length than is larger than 0. Some staff members are never cited (which happens all the time if papers are only just published), and so for these staff members that is no list element that contains information. We only attach a Google Scholar ID for those staff members that are cited at least once. We bind the rows again and end up with a data frame in *long format*: three columns with years, cites, and Google Scholar ID. Therefore, there is more than one row per staff member.
 
-```{r}
+```{r, eval=FALSE}
 # get citation history of a scholar
 soc_staff_cit <- list()
 for (i in 1:nrow(soc_df)) {
@@ -523,6 +525,7 @@ for (i in 1:nrow(soc_df)) {
 soc_staff_cit <- bind_rows(soc_staff_cit)
 colnames(soc_staff_cit)[3] <- "gs_id"
 ```
+
 ```{r, echo=FALSE, eval=FALSE}
 save(soc_staff_cit, file="soc_staff_cit.RData")
 ```
@@ -545,7 +548,7 @@ knitr::kable(soc_staff_cit, booktabs = TRUE)
 
 Next, we get the collaborators. For loop should be clear by now. We get collaborators for a given Google Scholar ID, 50 of them, with a distance of at most 1. We then bind_rows again, and remove those staff members that did not list any collaborator.
 
-```{r}
+```{r, eval=FALSE}
 # the first 10 at most! n_deep means the co-authors of my co-authors, 
 # which can blow up fairly quickly, so keep that number low.
 soc_collabs <- list()
@@ -673,7 +676,7 @@ Let's save the data we need in for the next tutorial.
 
 <!---I don't see the data in the addfiles folder yet---> 
 
-```{r}
+```{r, eval=FALSE}
 # save the DFs thus far
 save(soc_df_publications, "addfiles/soc_df_publications.rda"))
 save(soc_df, "addfiles/soc_df.rda"))
