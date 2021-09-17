@@ -20,10 +20,8 @@ require(devtools)
 #devtools::install_github("jkeirstead/scholar")
 require(scholar)
 
-
-#install.packages("kableExtra", repos='http://cran.us.r-project.org')
 library(knitr)
-opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE, warning = FALSE, message = FALSE,comment = "#>", cache=TRUE, eval=FALSE)
+opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE, warning = FALSE, message = FALSE,comment = "#>", cache=FALSE, eval=FALSE)
 options(width = 100)
 
 #install.packages("kableExtra", repos='http://cran.us.r-project.org')
@@ -241,11 +239,12 @@ soc_staff # looks much better!!
 ```
 
 ```{r, echo = FALSE, eval=TRUE}
-knitr::kable(soc_staff, booktabs=TRUE, digits=2, caption="Sociology staff", align = "c") %>%
-  kable_classic(full_width = F, html_font = "Cambria") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-  column_spec(1, bold=T) %>%
-  row_spec(0, bold=TRUE)
+scroll_box(knitr::kable(soc_staff, booktabs = TRUE, caption="Sociology staff") , height="300px")
+# knitr::kable(soc_staff, booktabs=TRUE, digits=2, caption="Sociology staff", align = "c") %>%
+#   kable_classic(full_width = F, html_font = "Cambria") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+#   column_spec(1, bold=T) %>%
+#   row_spec(0, bold=TRUE)
 ```
 
 So it looks much nicer but does not seem to be in the entirely correct order. We have odd rows and even rows: odd rows are names, even rows have the expertise of staff. We need to get a bit creative to put the data in a nicer format. The `%%` operator gives a "remainder" of integers (whole numbers). So 10/2=5 with no remainder, but 11/2=5 with a remainder of 1. This means that we can derive odd or even with a function with that operator. Remember functions from \@ref(tutorial)?
@@ -287,12 +286,13 @@ How does that look?
 soc_df # pretty nice!
 ```
 
-```{r , echo=FALSe, eval=TRUE}
-knitr::kable(soc_df, booktabs=TRUE, digits=2, caption="Sociology staff even cleaner", align = "c") %>%
-  kable_classic(full_width = F, html_font = "Cambria") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-  column_spec(1, bold=T) %>%
-  row_spec(0, bold=TRUE)
+```{r , echo=FALSE, eval=TRUE}
+scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff cleaner") , height="300px")
+# knitr::kable(soc_df, booktabs=TRUE, digits=2, caption="Sociology staff even cleaner", align = "c") %>%
+#   kable_classic(full_width = F, html_font = "Cambria") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+#   column_spec(1, bold=T) %>%
+#   row_spec(0, bold=TRUE)
 ```
 
 That looks much better! Now we only need to remove the redundant rows that state "expertise", "staff," and so forth.
@@ -312,11 +312,12 @@ soc_df # even better
 ```
 
 ```{r, echo=FALSE, eval=TRUE}
-knitr::kable(soc_df, booktabs=TRUE, digits=2, caption="Sociology staff even cleaner", align = "c") %>%
-  kable_classic(full_width = F, html_font = "Cambria") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-  column_spec(1, bold=T) %>%
-  row_spec(0, bold=TRUE)
+scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff even cleaner") , height="300px")
+# knitr::kable(soc_df, booktabs=TRUE, digits=2, caption="Sociology staff even cleaner", align = "c") %>%
+#   kable_classic(full_width = F, html_font = "Cambria") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+#   column_spec(1, bold=T) %>%
+#   row_spec(0, bold=TRUE)
 ```
 
 Now we have a nice relatively clean dataset with all sociology staff and their expterise. But there is yet some work to do before we can move on. We need to do some data cleaning. Ideally, we have staff their first and last names in clean columns. So the last name seems easy, everything before the comma. Do you understand the code below? `gsub` is a function that remove something and replaces it with something else. In the code below it replaces everything that's behind a comma with nothing in the column `soc_names` in the data frame `soc_df`.  
@@ -329,14 +330,16 @@ soc_df$last_name <- gsub(",.*$", "", soc_df$soc_names)
 
 # first name is everything between brackets
 soc_df$first_name <- str_extract_all(soc_df$soc_names, "(?<=\\().+?(?=\\))", simplify = TRUE)
-
-knitr::kable(soc_df, booktabs=TRUE, digits=2, caption="Sociology staff even cleaner", align = "c") %>%
-  kable_classic(full_width = F, html_font = "Cambria") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-  column_spec(1, bold=T) %>%
-  row_spec(0, bold=TRUE)
 ```
 
+```{r, echo=FALSE, eval=TRUE}
+scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff cleaner yet") , height="300px")
+# knitr::kable(soc_df, booktabs=TRUE, digits=2, caption="Sociology staff even cleaner", align = "c") %>%
+#   kable_classic(full_width = F, html_font = "Cambria") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+#   column_spec(1, bold=T) %>%
+#   row_spec(0, bold=TRUE)
+```
 So we need yet to do some manual cleaning, one name seemed to be inconsistent with how the other names were listed on the webpage. As data get bigger, this becomes impossible to do manually and we simply have to accept this as noise. 
 
 ```{r, eval=TRUE}
@@ -368,11 +371,12 @@ soc_df
 ```
 
 ```{r, echo=FALSE, eval=TRUE}
-knitr::kable(soc_df, booktabs=TRUE, digits=2, caption="Sociology staff even cleaner", align = "c") %>%
-  kable_classic(full_width = F, html_font = "Cambria") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-  column_spec(1, bold=T) %>%
-  row_spec(0, bold=TRUE)
+scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff cleanest?") , height="300px")
+# knitr::kable(soc_df, booktabs=TRUE, digits=2, caption="Sociology staff even cleaner", align = "c") %>%
+#   kable_classic(full_width = F, html_font = "Cambria") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+#   column_spec(1, bold=T) %>%
+#   row_spec(0, bold=TRUE)
 ```
 
 <!---do you see it goes wrong for Ellen! ---> 
@@ -443,16 +447,21 @@ get_citation_history("Iu23-90AAAAJ") # Jochem's citation history
 And now most importantly, Jochem's collaborators, and the collaborators of those collaborators (note the `n_deep = 1`, can you find out what that does?). So essentially a "one-step-further-than-Jochem" network. 
 
 ```{r, eval=TRUE}
-get_coauthors("Iu23-90AAAAJ", n_coauthors = 50, n_deep = 1) # Jochem's collaborators and their co-authors!
+jochem_coauthors <- get_coauthors("Iu23-90AAAAJ", n_coauthors = 50, n_deep = 1) # Jochem's collaborators and their co-authors!
 ```
-
+```{r, eval=FALSE}
+jochem_coauthors
+```
+``` {r, echo=FALSE, eval=TRUE}
+scroll_box(knitr::kable(jochem_coauthors, booktabs = TRUE, caption="Sociology staff cleanest?") , height="300px")
+```
 Notice, however, that we could easily plot Jochem's collaboration network already! This is thus a one-deeper network where we plot the co-authors of Jochem and who they collaborate with, there is some overlap, but not always.
 
 <!---this one bugs. have set eval=FALSE---> 
 <!---works for me!---> 
 
 ```{r, eval=TRUE}
-plot_coauthors(get_coauthors("Iu23-90AAAAJ", n_coauthors = 50, n_deep = 1), size_labels = 2) # Doesn't look like much yet, but we'll make it prettier later.
+plot_coauthors(get_coauthors("Iu23-90AAAAJ", n_coauthors = 20, n_deep = 1), size_labels = 2) # Doesn't look like much yet, but we'll make it prettier later.
 ```
 
 So let's gather these data, but now for *all* sociology staff simultaneously! For this, we use the for loop again. The for loop I make below is a bit more complicated, but follows the same logic as before. For each row (i) in `soc_df`, we attempt to query Google Scholar on the basis of the first name, last name, and affiliation listed in that row in the data frame. We use some handy subsetting, e.g., `soc_df[i, 3]` means we input `last_name=` with the last name (which is the third column) found in the i-th row in the data frame. The same goes for first name and affiliation. We fill up `gs_id` in the data frame with the Google Scholar IDs we'll hopefully find. The `for (i in nrow(soc_df))` simply means we let i run for however many rows the data frame has. Finally, the `tryCatch({})` function makes that we can continue the loop even though we may encounter errors for a given row. Here, that probably means that not every row (i.e., sociology staff member) can be found on Google Scholar. We print the error, but continue the for loop with the `tryCatch({})` function. In the final rows of the code below. We simply drop those rows that we cannot identify on Google Scholar.
@@ -493,6 +502,7 @@ for (i in 1:nrow(soc_df)) {
 # remove those without pubs from the df
 # seems we're left with about 34 sociology staff members!
 soc_df <- soc_df[!soc_df$gs_id == "", ]
+soc_df
 ```
 
 ```{r, echo=FALSE, eval=FALSE}
@@ -503,15 +513,16 @@ save(soc_df, file="soc_dfv2.RData")
 load("soc_dfv2.RData")
 ```
 
-```{r, eval=TRUE}
-knitr::kable(soc_df, booktabs=TRUE, digits=2, caption="Sociology staff even cleaner", align = "c") %>%
-  kable_classic(full_width = F, html_font = "Cambria") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-  column_spec(1, bold=T) %>%
-  row_spec(0, bold=TRUE)
+```{r, echo=FALSE, eval=TRUE}
+scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff with Scholar IDs") , height="300px")
+# knitr::kable(soc_df, booktabs=TRUE, digits=2, caption="Sociology staff even cleaner", align = "c") %>%
+#   kable_classic(full_width = F, html_font = "Cambria") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+#   column_spec(1, bold=T) %>%
+#   row_spec(0, bold=TRUE)
 ```
 
-It works! So what is left to do is to get the data we already extracted for Jochem (citation, publications, and so forth), but now for all sociology staff. For that, we need a bunch of for loops. Let's first gather the profiles and publications. We store those in a `list()` which is an object in which you can store multiple data frames, vectors, matrices, and so forth. This is particularly good for for loops because you can store information that is -- at first sight -- not necessarily compatible. For instance, matrices of different length. Note that bind a Google Scholar ID to the publications too. 
+It works! So what is left to do is to get the data we already extracted for Jochem (citation, publications, and so forth), but now for all sociology staff. For that, we need a bunch of for loops. Let's first gather the profiles and publications. We store those in a `list()` which is an object in which you can store multiple data frames, vectors, matrices, and so forth. This is particularly good for for loops because you can store information that is -- at first sight -- not necessarily compatible. For instance, matrices of different length. Note that we bind a Google Scholar ID to the publications too which is important to be able match to the `soc_df` later on. 
 
 ```{r, eval = FALSE}
 soc_list_profiles <- list() # first we create an empty list that we then fill up with the for loop
@@ -533,7 +544,7 @@ for (i in 1:nrow(soc_df)) {
 soc_df_publications <- bind_rows(soc_list_publications)
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 save(soc_df_publications, file="soc_df_publications.RData")
 save(soc_list_profiles, file="soc_list_profiles.RData")
 ```
@@ -550,11 +561,13 @@ load("soc_list_profiles.RData")
 Note how `soc_list_profiles` contains all Google Scholar profile information in a list of 34 elements. We need to do some relatively involved data handling to attach the Google Scholar profiles in `soc_list_profiles` to the `soc_df`. That is, we want some information from `soc_list_profiles` to be attached to `soc_df`. Specifically, we want several things we want from the profiles: `id`, `name` (as reported on Scholar), `affiliation`, `tot_cites`, `h_index`, `i10index`, `fields`, and `homepage`.
 
 Some profile elements can contain more than one row. For instance, co-authors are stored in long format per profile that do not easily merge to a data frame where each staff member is a row. For instance, say Bas has two co-authors; one needs to first concatonate those co-authors before you can merge them in one row for Bas. So we need to get only the profile elements that have a single element per profile element (e.g., `total_cites`). Seems these are the first 8 elements in a list element. So we need to get those out of the lists and store those in a new dataframe. This involves several steps:
-* We first `unlist` the 1 tot 8-th elements in a list element
-* We then make it a data frame
-* Then *transpose* the data such that each row contains 8 columns. 
-* We then use the function `bind_rows()` to simply make a data frame from the list elements. 
-* We then merge it to `soc_df`. So what we end up with is a sociology staff data frame with much more information than before: citations, indices, expertise listed on Google Scholar, and so forth.
+
+*     We first `unlist` the 1 tot 8-th elements in a list element
+*     We then make it a data frame
+*     Then *transpose* the data such that each row contains 8 columns. 
+*     We then use the function `bind_rows()` to simply make a data frame from the list elements. 
+*     We then merge it to `soc_df`. So what we end up with is a sociology staff data frame with much more information than before: citations, indices, expertise listed on Google Scholar, and so forth.
+
 Note how we can do this at once, or all separately (I commented out the code that does the same as the next three rows). Which has your preference?
 
 ```{r}
@@ -568,6 +581,7 @@ for (i in 1:length(soc_list_profiles)) {
 }
 soc_profiles_df <- bind_rows(soc_profiles_df)
 soc_df <- left_join(soc_df, soc_profiles_df, by = c("gs_id" = "id")) # merge data with soc_df
+soc_df # notice all the new information we were able to get from the scholar profiles!
 ```
 
 ```{r, echo=FALSE, eval=FALSE}
@@ -578,12 +592,15 @@ save(soc_df, file="soc_dfv3.RData")
 load("soc_dfv3.RData")
 ```
 
+Let's see whether we 
+
 ```{r, echo=FALSE, eval=TRUE}
-knitr::kable(soc_df, booktabs=TRUE, digits=2, caption="Sociology staff with more info", align = "c") %>%
-  kable_classic(full_width = F, html_font = "Cambria") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-  column_spec(1, bold=T) %>%
-  row_spec(0, bold=TRUE)
+scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff with Scholar info") , height="300px")
+# knitr::kable(soc_df, booktabs=TRUE, digits=2, caption="Sociology staff with more info", align = "c") %>%
+#   kable_classic(full_width = F, html_font = "Cambria") %>%
+#   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+#   column_spec(1, bold=T) %>%
+#   row_spec(0, bold=TRUE)
 ```
 
 So we have papers and profiles. Remember how we got Jochem's citation history? We want that for each staff member too. Yet again, we use a for loop. We first store the citation history in a list. But notice the `if` statement! We only continue the for loop for that i-th element if some statement is `TRUE`. Here, we attempt to find out if the i-th element, the citation history of the staff member, has a length than is larger than 0. Some staff members are never cited (which happens all the time if papers are only just published), and so for these staff members that is no list element that contains information. We only attach a Google Scholar ID for those staff members that are cited at least once. We bind the rows again and end up with a data frame in *long format*: three columns with years, cites, and Google Scholar ID. Therefore, there is more than one row per staff member.
@@ -612,21 +629,15 @@ load("soc_staff_cit.RData")
 ```
 
 ```{r, echo=TRUE, eval=TRUE}
-# Note how we use some complicated code to make a nice table, you could just write "soc_staff_cit" in your code
-# Also, no names yet! Can you merge the names of scholars to gs_id here? 
-knitr::kable(soc_staff_cit, booktabs=TRUE, digits=2, caption="Sociology staff with more info", align = "c") %>%
-  kable_classic(full_width = F, html_font = "Cambria") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-  column_spec(1, bold=T) %>%
-  row_spec(0, bold=TRUE)
+# Note how we use some complicated code to make a nice table you can scroll through in this book, you could just write "soc_staff_cit" in your own code
+# Also, no names yet! You could merge the names of scholars to gs_id here. 
+scroll_box(knitr::kable(soc_staff_cit, booktabs = TRUE, caption="Sociology staff citation by time") , height="300px")
 ```
 
 <!--- hier morgen verder --->
-<!---should you not explain somewhere that in google scholar you have to add you coauthors manually---> 
-<!---why only 10? And which 10. should you not ... --->
 <!---I think this goes wrong, you end up looking for some coauthors multiple times. A clumsy way to clean would be to select only first 10 appearences of name in first column. But much better to check during collection. see if authors are already in a unique author vector and if so skip. ---> 
 
-Next, we get the collaborators. Note that on Google Scholar, people add co-authors manually. Unfortunately, we can only scrape the first twenty with the `scholar` package. Some scholars have more co-authors listed, but for that you would need to "click" on "VIEW ALL" on Google Scholar. The `scholar` package does not do that for us. However, you could take a look at the underlying code of `get_coathors` and attempts to do it yourself. Because scholars add their own co-authors, it is a directed tie. For instance, I could list Albert Einstein as my co-author, but he probably doesn't reciprocate that tie. The for loop should be clear by now. We get collaborators for a given Google Scholar ID, 20 of them, with a distance of at most 1. We then bind_rows again, and remove those staff members that did not list any collaborator.
+Next, we get the collaborators. Note that on Google Scholar, people add co-authors manually. Unfortunately, we can only scrape the first *twenty* with the `scholar` package. Some scholars have more co-authors listed, but for that you would need to "click" on "VIEW ALL" on Google Scholar. The `scholar` package does not do that for us. However, you could take a look at the underlying code of `get_coathors` and attempts to do that yourself. Because scholars add their own co-authors, it is a directed tie. For instance, I could list Albert Einstein as my co-author, but Albert probably doesn't reciprocate that tie. The for loop should be clear by now. We get collaborators for a given Google Scholar ID, 20 of them, with a depth of at most 1. We then `bind_rows` again, and remove those staff members that did not list any collaborator.
 
 ```{r}
 # n_deep means the co-authors of my co-authors, 
@@ -661,7 +672,7 @@ load("soc_df_collabs.RData")
 
 ```{r, eval=TRUE}
 
-scroll_box(knitr::kable(soc_df_collabs, booktabs = TRUE) , height="300px")
+#scroll_box(knitr::kable(soc_df_collabs, booktabs = TRUE) , height="300px")
 
            
 ```
@@ -758,6 +769,10 @@ save(soc_staff_cit, "addfiles/soc_staff_cit.rda")
 ```
 
 <!---if students did not succeed, give the links to the data in our repository --->
+
+
+By just eyeballing the data there are two suspicous outliers: Muller and Firat and Franken have suspiciously many citations for PhD candidates. By looking up their Google Scholar profiles, we find that both have the wrong Google Scholar ID attached to them (common names error). So we deleted them from the data. The rest seems to have worked fine: less than 5% data corruption in this webscraping effort as there were 45 records in sociology staff directory.
+
 
 
 Nicely done, this was the webscraping tutorial for bibliometric data. We gathered useful information about sociology staff: \
