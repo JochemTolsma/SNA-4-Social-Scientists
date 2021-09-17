@@ -23,6 +23,9 @@ fig:unnamed-chunk-1
 fig:ut
 fig:mut
 fig:dt
+fig:evo
+tab:unnamed-chunk-3
+fig:unnamed-chunk-6
 fig:inspect
 fig:inspectbody
 fig:inspecttd
@@ -92,8 +95,21 @@ ethical-considerations
 measurement
 theory-1
 triad
+type-of-explanations
 causes-1
+size
+cc
+online-friends
+weak-ties
+composition
+structure-1
+density
+degree-centrality
+closeness-centrality
+betweenness-centrality
+clustering
 consequences-1
+assignment-3
 methods-1
 before-you-start
 causes-2
@@ -111,6 +127,7 @@ data-2
 sampling-1
 ethical-considerations-1
 measurement-1
+su
 theory-2
 causes-3
 consequences-3
@@ -127,7 +144,6 @@ definitions
 promises-and-pitfalls
 promises
 pitfalls
-best-of-both-worlds
 where-does-this-lead-us
 ethics
 webscraping-techniques
@@ -185,7 +201,7 @@ loops
 lists
 lapplymap-and-do.call
 functions
-assignment-3
+assignment-4
 variance
 variance-and-covariance
 want-to-learn-more

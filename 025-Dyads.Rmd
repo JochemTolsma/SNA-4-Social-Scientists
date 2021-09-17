@@ -154,7 +154,7 @@ https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
 When testing hypotheses on assortative mating many methodological approaches can be used. We may predict the **frequency of specific dyads** in our population with loglinear models and the data we use is commonly structured in a square table like the one below. Loglinear models are, in essence, nothing more than a nice, parsimonious and fancy way to calculate [odds ratio's](\ref(OR)). If we have a small, well filled table of just a few attributes, [loglinear models](\ref(LLM)) are considered to be the golden standard. 
 
 ```{r tabledyads, echo=FALSE}
-#install.packages("kableExtra", repos='http://cran.us.r-project.org')
+install.packages("kableExtra", repos='http://cran.us.r-project.org')
 require(kableExtra)
 r1 <- c("", "Wife educ-high", "Wife educ-low")
 c1 <- c(350, 200)
@@ -1305,6 +1305,7 @@ summary(results[[16]])
 load("addfiles/results.Rdata")
 
 library(knitr) #for kable/kables
+#install.packages("kableExtra", repos='http://cran.us.r-project.org')
 library(kableExtra)
 
 
