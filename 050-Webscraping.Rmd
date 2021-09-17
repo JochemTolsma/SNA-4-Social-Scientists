@@ -634,33 +634,70 @@ load("soc_staff_cit.RData")
 scroll_box(knitr::kable(soc_staff_cit, booktabs = TRUE, caption="Sociology staff citation by time") , height="300px")
 ```
 
-<!--- hier morgen verder --->
-<!---I think this goes wrong, you end up looking for some coauthors multiple times. A clumsy way to clean would be to select only first 10 appearences of name in first column. But much better to check during collection. see if authors are already in a unique author vector and if so skip. ---> 
+
 
 Next, we get the collaborators. Note that on Google Scholar, people add co-authors manually. Unfortunately, we can only scrape the first *twenty* with the `scholar` package. Some scholars have more co-authors listed, but for that you would need to "click" on "VIEW ALL" on Google Scholar. The `scholar` package does not do that for us. However, you could take a look at the underlying code of `get_coathors` and attempts to do that yourself. Because scholars add their own co-authors, it is a directed tie. For instance, I could list Albert Einstein as my co-author, but Albert probably doesn't reciprocate that tie. The for loop should be clear by now. We get collaborators for a given Google Scholar ID, 20 of them, with a depth of at most 1. We then `bind_rows` again, and remove those staff members that did not list any collaborator.
 
+```{r, eval=TRUE}
+source("addfiles/fcollabs.R") # Put the function_fix.R in your working directory, we need this first line.
+```
+<!--- fixed the overlap issue, hier verder --->
+
 ```{r}
-# n_deep means the co-authors of my co-authors, 
-# which can blow up fairly quickly, so keep that number low.
+# first the soc collaborators
+# note how we already build a function (fcollabs()) for you
+# you need to input a google scholar id and a 1 (if you want to find collabs) or 0 (only extracting names)
+# fcollabs --> you can check it out if you're interested
 soc_collabs <- list()
 for (i in 1:nrow(soc_df)) {
-  
+
   time <- runif(1, 0, 5)
   Sys.sleep(time)
-  
-  
-  # one deep
-  soc_collabs[[i]] <- get_coauthors(soc_df[i, c("gs_id")], n_coauthors = 20, n_deep = 1) # note again the gs_id that I use
-  
-  # if already in soc_collabs, don't look further
-  soc_collabs[[i]][,c("gs_id")] <- soc_df[i, c("gs_id")]
-  
+
+  soc_collabs[[i]] <- fcollabs(soc_df[i, c("gs_id")], 1)
+
 }
+soc_collabs <- bind_rows(soc_collabs) # bind rows, get the unique ones!
+soc_collabs_unique <- unique(soc_collabs[, 3]) # so 149 unique collaborators for RU staff?
+soc_collabs_unique <- soc_collabs_unique[!is.na(soc_collabs_unique)]
 
-soc_df_collabs <- data.frame(bind_rows(soc_collabs))
+#------------------------------------------------------------------------
 
-soc_df_collabs <- soc_df_collabs[!is.na(soc_df_collabs$author),]
+# then the names of those collaborators plus THEIR collaborators
+# understand that we don't have names of them yet from the code above?
+collabs_1deep <- list()
+for (i in 1:length(soc_collabs_unique)) {
+
+  time <- runif(1, 0, 3)
+  Sys.sleep(time)
+
+  if(!soc_collabs_unique[i] %in% soc_df$gs_id) {
+    collabs_1deep[[i]] <- fcollabs(soc_collabs_unique[i], 1)
+
+  }
+}
+collabs_1deep <- bind_rows(collabs_1deep)
+collabs_1deep_unique <- unique(collabs_1deep[,1])
+collabs_1deep_unique <- collabs_1deep_unique[!is.na(collabs_1deep_unique)]
+
+#------------------------------------------------------------------------
+
+# names of the collaborators of collaborators
+collabs_1deep_names <- list()
+for (i in 1:length(collabs_1deep_unique)) {
+
+  if (!collabs_1deep_unique[i]  %in%  unique(collabs_1deep[,2]) & !collabs_1deep_unique[i] %in% soc_df$gs_id) { # note the if not in...and in...
+
+    time <- runif(1, 0, 3)
+    Sys.sleep(time)
+
+    collabs_1deep_names[[i]] <- fcollabs(collabs_1deep_unique[i], 0)
+
+  }
+}
+collabs_1deep_names <- bind_rows(collabs_1deep_names)
 ```
+
 
 ```{r, echo=FALSE, eval=FALSE}
 save(soc_df_collabs, file="soc_df_collabs.RData")
