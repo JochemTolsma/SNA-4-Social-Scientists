@@ -1,12 +1,8 @@
-# (PART) Part 4 Webscraping  {-} 
+# (PART) Webscraping  {-} 
 
 <!--- put the dataframes in a kable and then use a scrollbox. you can also have captions. works best. see last part of script ---> 
 
 # Webscraping for Social Scientists {#webintro}
-
-Latest Version: `r format(Sys.Date(), "%d-%m-%Y")`
-
-Please email any comments to: bas.hofstra@ru.nl	
 
 <!---I think I have run into the rate limit. to be able to build the book, I have set eval=FALSE globally--->
 
@@ -822,10 +818,4 @@ Nicely done, this was the webscraping tutorial for bibliometric data. We gathere
 
 **With this, you can move on to some potentially very cool network visualization!**
 
----
-
-
-
-
-
-
+---  

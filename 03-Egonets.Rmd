@@ -1,4 +1,4 @@
-# (PART) Part 2 EGONETS {-} 
+# (PART) EGONETS {-} 
 
 # Theory  
 
@@ -37,7 +37,7 @@ How close are these people to each other?
 In this situation we also have information on ties between ego's alters and, subsequently, we may observe triads between our alters. In the figure below I have made the `r colorize("triad green", rgb(0, 1, 0))`.   
 
 
-```{r, echo=FALSE, fig.cap="A Triad within an egonet", message=FALSE}
+```{r triads, echo=FALSE, fig.cap="A Triad within an egonet", message=FALSE}
 require(igraph)
 set.seed(34676)
 degs <- sample(1:5, 100, replace=TRUE)
@@ -146,7 +146,7 @@ These triads all have unique names:
 
 This triad census has been developed by @davis1967 and their original picture in the paper is too cool not to show here:
 
-```{r , echo=FALSE, , eval=TRUE, fig.cap="Original Triad census by Davis and Leinhard (1967)", out.width = '100%'}
+```{r triadold, echo=FALSE, , eval=TRUE, fig.cap="Original Triad census by Davis and Leinhard (1967)", out.width = '100%'}
 knitr::include_graphics("Capture.png")
 ```
 
@@ -277,13 +277,14 @@ To illustrate some different ways how we could describe egonets we will use egon
 - Bas Hofstra  
 - Jochem Tolsma  
 
-From these two sampled social scientists we will use the webscraping techniques described in Chapter \@ref(webintro) to collect 1.5 degree co-author egonetwork^[To be a bit more precise, we only collect the first 20 co-authors listed on the google scholar page of each ego. I assume these are the 'most important'.]. 
+From these two sampled social scientists we will use the webscraping techniques described in Chapter \@ref(webintro) to collect 1.5 degree co-author egonetwork.^[To be a bit more precise, we only collect the first 20 co-authors listed on the google scholar page of each ego. I assume these are the 'most important'.] 
 
-See the figures below <!--- insert links---> for a graphical summary of the networks.  
+See the figures \@ref(fig:jt) and \@ref(fig:bh ) below for a graphical summary of the networks.  
 
 ```{r, echo=FALSE, eval=FALSE}
 require(scholar)
 require(igraph)
+require(tidyverse)
 source("addfiles/function_fix.R") # Put the function_fix.R in your working directory, we need this first line.
 
 JTid <- get_scholar_id_fix(last_name="tolsma", first_name="jochem", affiliation="radboud university")
@@ -297,7 +298,7 @@ save(BHaut, file="BHaut.Rdata")
 ```
 
 
-```{r, echo=FALSE, fig.cap="1.5 degree co-author egonetwork of JOCHEM TOLSMA"}
+```{r jt, echo=FALSE, fig.cap="1.5 degree co-author egonetwork of JOCHEM TOLSMA"}
 load(file="JTaut.Rdata")
 load(file="BHaut.Rdata")
 
@@ -312,7 +313,7 @@ G1c <- simplify(G1b)
 plot(G1c) #still uggly of course
 ```
 
-```{r, echo=FALSE, fig.cap="1.5 degree co-author egonetwork of BAS HOFSTRA"}
+```{r bh, echo=FALSE, fig.cap="1.5 degree co-author egonetwork of BAS HOFSTRA"}
 #make igraph object
 G2 <- igraph::graph_from_edgelist(as.matrix(BHaut), directed=FALSE)
 test2 <- distances(G2)
@@ -326,7 +327,7 @@ plot(G2c) #still uggly of course
 
 ```
 
-#### density 
+#### density {-}
 
 
 Density is defined as all observed relations divided by all possible relations. Look at the examples below. Are you able to calculate the density of the networks yourself? 
@@ -377,7 +378,7 @@ dev.off()
 
 ```
 
-```{r, echo=FALSE, , eval=TRUE, fig.cap="Different densities?", out.width = '100%'}
+```{r densities, echo=FALSE, , eval=TRUE, fig.cap="Different densities?", out.width = '100%'}
 knitr::include_graphics("test.png")
 ``` 
 
@@ -387,7 +388,7 @@ The density in Jochem's network turns out to be: `r round(igraph::graph.density(
 
 For comparison, if we look at friendship networks among pupils in classrooms, we generally observe a density within the range of .2 and .4.
 
-#### Degree centrality 
+#### Degree centrality {-}
 
 Closely related to density is the concept of degree. The number of ingoing (indegree), outgoing (outdegree) or undirected (degree) relations from each node. In real social networks, we generally observe a right-skewed degree distribution (most people have some friends, few people have many friends). 
 
@@ -410,7 +411,7 @@ degreecentrality_BH <- (degree_BH[1] - min(degree_BH)) / (max(degree_BH) - min(d
 centr_degree(G2c, loops = FALSE, normalized = TRUE)
 ```
 
-#### Closeness centrality
+#### Closeness centrality {-}
 
 Closely related to degree centrality is (normalized) 'closeness centrality':  
 
@@ -418,7 +419,7 @@ $$ C_C(v_i) = \frac{N}{\sum_{j}d(v_j, v_i)}, $$
 
 with N the number of nodes and *d* stands for distance.
 
-#### Betweenness centrality  
+#### Betweenness centrality {-}  
 
 A final important measure of centrality I would like to discuss is called betweenness. It is defined as:  
 
@@ -429,7 +430,7 @@ where $\sigma(v_j,v_k)$ is the number of shortest paths between vertices *j* and
 
 $$ C_{B_{normalized}}(v_i) =  \frac{C_B(v_i) - min(C_B(v))}{max(C_B(v))-min(C_B(v))} $$  
 
-#### Clustering  
+#### Clustering {-}  
 
 Clustering is an interesting concept. We have immediately an intuitive understanding of it, people lump together in separate groups. But how should we go about defining it more formally? 
 The **clustering coefficient** for $v_i$ is defined as the observed ties between all direct neighbors of $v_i$ divided by all possible ties between all direct neighbors of $v_i$. Direct neighbours are connected to $v_i$ via an ingoing and/or outgoing relation. For undirected networks, the clustering coefficient is the same as the **transitivity index**: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.  
@@ -447,24 +448,51 @@ transitivity(G1c, type = c("localundirected"), vids = "Jochem Tolsma",
   weights = NULL, isolates = c("NaN", "zero"))
 
 ```
+### Stability  
 
+**TO DO: upload lecture**
 
 ## Consequences  
 
- - brush off knowledge on dyadic influence processes. 
- - what is the added complexity of egonets?
- 
- surprisingly, literature is either on dyadic influence of on influence processes in socionets. 
+Please brush off your knowledge on dyadic influence processes (see section \@ref(influence)). 
+What is the added complexity of egonets? Phrased otherwise, why would some egonets exert more influence than other egonets?   
+
+1. The size of egonets may differ (i.e. node set).   
+2. The structure of egonets may differ (i.e. tie set).  
+3. The composition of egonetes may differ (i.e. attribute set).  
+4. The evolution (stability) of egonets may differ. 
+
+Surprisingly, there is relatively little literature on influence processes going on in egonets. The literature is mainly concerned with dyadic influence process or on influence processes going on in socionets. We also need to be aware that the debate on the consequences of egonets is dominated by researchers interest in the topic of social capital. 
+
+My definition of social capital is...: 
+
+<p class= "quote">
+**Social capital** is the extent to which our egocentric networks gives us access to different forms of 'capital' or resources which we may use to our own benefit. 
+</p>
+
+Please compare my definition with Nan Lin's definition: 
+
+<p class= "quote">
+The resources embedded in a social structure that are accessed and/or mobilized in purposive actions. [@lin2002social].
+</p>
+
+Social capital is one of the most heavily disputed concepts in the social sciences. For more definitions see [socialcapitalresearch.com](https://www.socialcapitalresearch.com/literature/definition/). 
+
+The literature on how egonets may influence our opinions and attitudes is sparse. We will discuss egonet influence processes during class and I will upload a lecture with my take on this asap.  
+
+**TO DO: upload lecture**
+
  <!---  [nice paper](https://www.sciencedirect.com/science/article/pii/S2095809917308056#s0070) with good refs. --->
 
 ## Assignment  
 
-- duos. 5-10 min presentation on recent developments in the literature on:  
-a. egonets and size  
-b. egonets and structure  
-c. egonets and composition  
-d. egonets and evoluation / stability.   
-give for each topic a starting point article. 
+Please prepare a short (5-10 min.) presentation on recent developments in the literature that deals with causes for egonets. More specifically pick one topic:  
+
+a. egonets and size (i.e. node set). Start with @paik2013social.   
+b. egonets and structure (i.e. tie set). Start with @adamic2003friends.    
+c. egonets and composition (i.e. attribute set)  Start with @hofstra2017sources.  
+d. egonets and evolution / stability. Start with @small2015stable.     
+
 
 ---  
 

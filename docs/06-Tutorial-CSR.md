@@ -8,8 +8,6 @@
 
 
 
-Please email any comments to: [jochem.tolsma\@ru.nl](mailto:j.tolsma@ru.nl){.email}
-
 ## Preliminary notes
 
 This very short R tutorial is for students who already have some experience with R who want to make the switch from stata/spss to R.

@@ -1,4 +1,4 @@
-# (PART) Part 2 EGONETS {-} 
+# (PART) EGONETS {-} 
 
 # Theory  
 
@@ -22,8 +22,8 @@ In this situation we also have information on ties between ego's alters and, sub
 
 
 <div class="figure">
-<img src="03-Egonets_files/figure-html/unnamed-chunk-1-1.png" alt="A Triad within an egonet" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-1)A Triad within an egonet</p>
+<img src="03-Egonets_files/figure-html/triads-1.png" alt="A Triad within an egonet" width="672" />
+<p class="caption">(\#fig:triads)A Triad within an egonet</p>
 </div>
 Let us discuss TRIADS in some more detail first, before we move on with our discussion on Egonets. 
 
@@ -73,7 +73,7 @@ This triad census has been developed by @davis1967 and their original picture in
 
 <div class="figure">
 <img src="Capture.png" alt="Original Triad census by Davis and Leinhard (1967)" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-2)Original Triad census by Davis and Leinhard (1967)</p>
+<p class="caption">(\#fig:triadold)Original Triad census by Davis and Leinhard (1967)</p>
 </div>
 
 Suppose we are trying to come up with an explanation for why we observe transitive triads (030T) in our network. We must realize that a transitive dyad may be the outcome of different evolution processes. See Figure \@ref(fig:evo).
@@ -121,7 +121,7 @@ From time to time, most people discuss important matters with other people. Look
 ...that there are not many people naming more than five persons.^[In many surveys respondents are not even given the opportunity to give more than five persons.] For example, have a look at the table below. Data is from a dataset called CrimeNL [@crimenl]. 
 
 <table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-3)Number of confidants in CDN (row %)</caption>
+<caption>(\#tab:unnamed-chunk-1)Number of confidants in CDN (row %)</caption>
  <thead>
   <tr>
    <th style="text-align:left;">   </th>
@@ -225,24 +225,24 @@ To illustrate some different ways how we could describe egonets we will use egon
 - Bas Hofstra  
 - Jochem Tolsma  
 
-From these two sampled social scientists we will use the webscraping techniques described in Chapter \@ref(webintro) to collect 1.5 degree co-author egonetwork^[To be a bit more precise, we only collect the first 20 co-authors listed on the google scholar page of each ego. I assume these are the 'most important'.]. 
+From these two sampled social scientists we will use the webscraping techniques described in Chapter \@ref(webintro) to collect 1.5 degree co-author egonetwork.^[To be a bit more precise, we only collect the first 20 co-authors listed on the google scholar page of each ego. I assume these are the 'most important'.] 
 
-See the figures below <!--- insert links---> for a graphical summary of the networks.  
+See the figures \@ref(fig:jt) and \@ref(fig:bh ) below for a graphical summary of the networks.  
 
 
 
 
 <div class="figure">
-<img src="03-Egonets_files/figure-html/unnamed-chunk-5-1.png" alt="1.5 degree co-author egonetwork of JOCHEM TOLSMA" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)1.5 degree co-author egonetwork of JOCHEM TOLSMA</p>
+<img src="03-Egonets_files/figure-html/jt-1.png" alt="1.5 degree co-author egonetwork of JOCHEM TOLSMA" width="672" />
+<p class="caption">(\#fig:jt)1.5 degree co-author egonetwork of JOCHEM TOLSMA</p>
 </div>
 
 <div class="figure">
-<img src="03-Egonets_files/figure-html/unnamed-chunk-6-1.png" alt="1.5 degree co-author egonetwork of BAS HOFSTRA" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-6)1.5 degree co-author egonetwork of BAS HOFSTRA</p>
+<img src="03-Egonets_files/figure-html/bh-1.png" alt="1.5 degree co-author egonetwork of BAS HOFSTRA" width="672" />
+<p class="caption">(\#fig:bh)1.5 degree co-author egonetwork of BAS HOFSTRA</p>
 </div>
 
-#### density 
+#### density {-}
 
 
 Density is defined as all observed relations divided by all possible relations. Look at the examples below. Are you able to calculate the density of the networks yourself? 
@@ -251,7 +251,7 @@ Density is defined as all observed relations divided by all possible relations. 
 
 <div class="figure">
 <img src="test.png" alt="Different densities?" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-8)Different densities?</p>
+<p class="caption">(\#fig:densities)Different densities?</p>
 </div>
 
 The density in Bas' network turns out to be: 0.24. 
@@ -260,7 +260,7 @@ The density in Jochem's network turns out to be: 0.23.
 
 For comparison, if we look at friendship networks among pupils in classrooms, we generally observe a density within the range of .2 and .4.
 
-#### Degree centrality 
+#### Degree centrality {-}
 
 Closely related to density is the concept of degree. The number of ingoing (indegree), outgoing (outdegree) or undirected (degree) relations from each node. In real social networks, we generally observe a right-skewed degree distribution (most people have some friends, few people have many friends). 
 
@@ -278,7 +278,7 @@ where $C_D(v_i)$ is degree centrality of $v_i$, vertex *i*, and 'deg' stands for
 
 
 
-#### Closeness centrality
+#### Closeness centrality {-}
 
 Closely related to degree centrality is (normalized) 'closeness centrality':  
 
@@ -286,7 +286,7 @@ $$ C_C(v_i) = \frac{N}{\sum_{j}d(v_j, v_i)}, $$
 
 with N the number of nodes and *d* stands for distance.
 
-#### Betweenness centrality  
+#### Betweenness centrality {-}  
 
 A final important measure of centrality I would like to discuss is called betweenness. It is defined as:  
 
@@ -297,7 +297,7 @@ where $\sigma(v_j,v_k)$ is the number of shortest paths between vertices *j* and
 
 $$ C_{B_{normalized}}(v_i) =  \frac{C_B(v_i) - min(C_B(v))}{max(C_B(v))-min(C_B(v))} $$  
 
-#### Clustering  
+#### Clustering {-}  
 
 Clustering is an interesting concept. We have immediately an intuitive understanding of it, people lump together in separate groups. But how should we go about defining it more formally? 
 The **clustering coefficient** for $v_i$ is defined as the observed ties between all direct neighbors of $v_i$ divided by all possible ties between all direct neighbors of $v_i$. Direct neighbours are connected to $v_i$ via an ingoing and/or outgoing relation. For undirected networks, the clustering coefficient is the same as the **transitivity index**: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.  
@@ -308,24 +308,51 @@ Bas' transitivity network in his network turns out to be: 0.13.
 Jochem's transitivity in his network turns out to be: 0.15.   
 
 
+### Stability  
 
+**TO DO: upload lecture**
 
 ## Consequences  
 
- - brush off knowledge on dyadic influence processes. 
- - what is the added complexity of egonets?
- 
- surprisingly, literature is either on dyadic influence of on influence processes in socionets. 
+Please brush off your knowledge on dyadic influence processes (see section \@ref(influence)). 
+What is the added complexity of egonets? Phrased otherwise, why would some egonets exert more influence than other egonets?   
+
+1. The size of egonets may differ (i.e. node set).   
+2. The structure of egonets may differ (i.e. tie set).  
+3. The composition of egonetes may differ (i.e. attribute set).  
+4. The evolution (stability) of egonets may differ. 
+
+Surprisingly, there is relatively little literature on influence processes going on in egonets. The literature is mainly concerned with dyadic influence process or on influence processes going on in socionets. We also need to be aware that the debate on the consequences of egonets is dominated by researchers interest in the topic of social capital. 
+
+My definition of social capital is...: 
+
+<p class= "quote">
+**Social capital** is the extent to which our egocentric networks gives us access to different forms of 'capital' or resources which we may use to our own benefit. 
+</p>
+
+Please compare my definition with Nan Lin's definition: 
+
+<p class= "quote">
+The resources embedded in a social structure that are accessed and/or mobilized in purposive actions. [@lin2002social].
+</p>
+
+Social capital is one of the most heavily disputed concepts in the social sciences. For more definitions see [socialcapitalresearch.com](https://www.socialcapitalresearch.com/literature/definition/). 
+
+The literature on how egonets may influence our opinions and attitudes is sparse. We will discuss egonet influence processes during class and I will upload a lecture with my take on this asap.  
+
+**TO DO: upload lecture**
+
  <!---  [nice paper](https://www.sciencedirect.com/science/article/pii/S2095809917308056#s0070) with good refs. --->
 
 ## Assignment  
 
-- duos. 5-10 min presentation on recent developments in the literature on:  
-a. egonets and size  
-b. egonets and structure  
-c. egonets and composition  
-d. egonets and evoluation / stability.   
-give for each topic a starting point article. 
+Please prepare a short (5-10 min.) presentation on recent developments in the literature that deals with causes for egonets. More specifically pick one topic:  
+
+a. egonets and size (i.e. node set). Start with @paik2013social.   
+b. egonets and structure (i.e. tie set). Start with @adamic2003friends.    
+c. egonets and composition (i.e. attribute set)  Start with @hofstra2017sources.  
+d. egonets and evolution / stability. Start with @small2015stable.     
+
 
 ---  
 
