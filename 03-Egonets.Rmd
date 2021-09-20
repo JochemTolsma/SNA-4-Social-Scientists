@@ -505,6 +505,8 @@ Take as starting point material of [last year](https://www.jochemtolsma.nl/cours
 
 ## Causes  
 
+see @duijn1999multilevel
+
 ### Aggregation  
 
 ### Disaggregation  
@@ -517,6 +519,198 @@ Take as starting point material of [last year](https://www.jochemtolsma.nl/cours
 
 
 ## Consequences  
+
+<style>
+
+.button1 {
+  background-color: #f44336; /* Red */ 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button1 {border-radius: 12px;}
+
+.button1 {width: 100%;}
+</style>
+
+
+<script>
+function myFunction() {
+
+            var btn = document.getElementById("myButton");
+            //to make it fancier
+            if (btn.value == "Click to hide code") {
+                btn.value = "Click to show code";
+                btn.innerHTML = "Click to show code";
+            }
+            else {
+                btn.value = "Click to hide code";
+                btn.innerHTML = "Click to hide code";
+            }
+            //this is what you're looking for
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+</script>
+
+```{r colorize, echo=FALSE, cache=FALSE}
+colorize <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", color,
+      x)
+  } else x
+}
+```
+
+
+In chapter \@ref(methods) we investigated how spouses influence each other's political opinion. In this chapter we continue our discussion but now with respect to our confidants. Suppose we want to investigate how our confidants influence our political opinions. Unfortunately, not many surveys that map the Core Discussion Network include name interpreter questions on the political opinions of the named confidants. However, one of the most important determinant for someone's political opinion is his/her educational attainment.  
+There are several theoretical reasons why the educational attainment of our confidants would impact our own opinons. To mention just a few:  
+
+- education of alter is 'a proxy' of alter's opinions and alter's opinions may influence our opinions.  
+- alters with different educational levels have different life experiences and the life experiences of our alters may influence our opinions.  
+- alters with different educational levels have different knowledge on topics, sharing knowledge on these topics may influence our opinions.  
+
+## Research questions
+
+This leads to the following main research question:  
+
+* To what extent does the educational level of our confidants influence our political opinions?  
+
+* To what extent does the impact of the educational level of our confidants on our political opinion depend on:  
+  - ego characteristics?  
+  - characteristics of our the Core Discussion Network as a whole?  
+  - charactersitics of our confidants?  
+
+Naturally, we need to be aware that our own educational-level (and political opinion) will influence with whom we discuss important matters. Thus, we need to take into account selection effects.  
+
+## Data 
+
+We will use the data from the LISS panel.  
+
+<a href="https://www.lissdata.nl/">
+  <img src="lisslogo_0.png">
+  </a>
+
+More concretely, we will use:  
+
+- 11 waves (2008-2014, 2016-2020)  
+- Filter on heterosexual couples (cohabiting and married)
+- Filter on couples of which both spouses are older than 25. 
+
+We have already constructed a dataset for you guys and gals to work with which contains information on more than 3000 couples. Don't forget it is a panel data set. This means we have more observations for the same couple (and spouses) over time. Also be aware that our spouses can be clearly distinguished from one another (i.e. husband versus wife).   
+
+Please download this data file to your working directory.
+
+```{r}
+load("C:/Users/Jochem/surfdrive/rmarkdown/thijmen/lisscd_mlsem_panel_data_v7.Rdata")
+
+data_long <- lisscdn_long
+
+data_clean <- data_long %>%
+  select(c("nomem_encr", "survey_wave", "euthanasia", "income_diff","immigrants", "eu_integration",
+           "geslacht", "leeftijd", "oplmet",
+           "educ_alter1", "gender_alter1", "age_alter1",
+           "educ_alter2", "gender_alter2", "age_alter2",
+           "educ_alter3", "gender_alter3", "age_alter3",
+           "educ_alter4", "gender_alter4", "age_alter4",
+           "educ_alter5", "gender_alter5", "age_alter5")) %>%
+  rename(ego_id = "nomem_encr") %>%
+  arrange(ego_id, survey_wave)
+
+
+data_clean_wide <- reshape(data_clean, direction = "wide", idvar = "ego_id", timevar = "survey_wave", v.names=c("euthanasia", "income_diff","immigrants", "eu_integration","educ_alter1", "gender_alter1", "age_alter1",
+                                                                                                                "educ_alter2", "gender_alter2", "age_alter2",
+                                                                                                                "educ_alter3", "gender_alter3", "age_alter3",
+                        
+```
+
+
+
+[partner_dataprepped.Rdata](addfiles\liss_cdn.Rdata)\
+
+### Variables  
+
+Variables of interest and value labels:
+
+-   nomen_encr: ego id  
+-   eu: opinion of ego on eu_integration: 0 = eu integration has gone too far / 4 = eu integration should go further
+-   educego: educuational level of ego = highest completed education in years (4-16.5)  
+-   educalter: educuational level of alter = highest completed education in years (4-16.5)
+
+For the original variables in Dutch see below: 
+
+<p class= "quote"> 
+**EU integratie** 
+
+> De Europese integratie is te ver gegaan.  
+>  
+>  1 Helemaal oneens  
+>  2 Oneens   
+>  3 Niet eens, niet oneens  
+>  4 Eens  
+>  5 Helemaal eens  
+
+</p>
+
+
+<p class= "quote"> **opleiding**  
+
+> Hoogste opleiding met diploma  
+> 1 basisonderwijs  
+> 2 vmbo  
+> 3 havo/vwo  
+> 4 mbo  
+> 5 hbo  
+> 6 wo  
+> 7 anders  
+> 8 (Nog) geen onderwijs afgerond  
+> 9 Volgt nog geen onderwijs  
+> Hierbij hebben wij opleiding gecategoriseerd in drie groepen:  
+> 1. Laag: basisonderwijs en vmbo  
+> 2. Midden: havo/vwo en mbo  
+> 3. Hoog: hbo en wo  
+> We nemen enkel mensen van 25 jaar en ouder mee. Van hen verwachten we dat ze klaar zijn met hun onderwijscarriere. 
+
+</p>
+
+
+### Preperation 
+
+```{r, echo=TRUE}
+#### clean the environment ####.
+rm(list=ls())
+
+#### packages ####.
+require(tidyverse)
+require(lavaan)
+
+##### Data input ###.
+load('addfiles/liss_cdn.Rdata')
+
+#clean a little bit. 
+rm("partner_df_wide") #we will make a wide file later again. 
+
+
+
+```
 
 ### Macro-micro model  
 
