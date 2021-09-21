@@ -164,10 +164,10 @@ head(soc_staff)
 
 ```
 #> $node
-#> <pointer: 0x0000000019a3fd40>
+#> <pointer: 0x00000000272540b0>
 #> 
 #> $doc
-#> <pointer: 0x0000000019a23530>
+#> <pointer: 0x0000000019576850>
 ```
 
 That looks kinda weird. What type of object did we store it by putting the html into `soc_staff`?
@@ -1806,7 +1806,7 @@ get_profile("Iu23-90AAAAJ")  # Jochem's profile
 #> [1] "Professor, Radboud University Nijmegen / University of Groningen"
 #> 
 #> $total_cites
-#> [1] 2284
+#> [1] 2285
 #> 
 #> $h_index
 #> [1] 22
@@ -2128,7 +2128,7 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 3                                                                 44 (3)   268 2009
 #> 4                                                        27 (3), 291-306   120 2011
 #> 5                                                        24 (2), 215-230   120 2008
-#> 6                                                          35 (1), 51-61   106 2013
+#> 6                                                          35 (1), 51-61   107 2013
 #> 7                                                         8 (2), 117-134    75 2012
 #> 8                                                        38 (5), 793-813    70 2012
 #> 9                                                        23 (3), 325-339    68 2007
@@ -2333,8 +2333,8 @@ get_citation_history("Iu23-90AAAAJ")  # Jochem's citation history
 #> 10 2017   223
 #> 11 2018   268
 #> 12 2019   297
-#> 13 2020   305
-#> 14 2021   250
+#> 13 2020   303
+#> 14 2021   253
 ```
 
 And now most importantly, Jochem's collaborators, and the collaborators of those collaborators (note the `n_deep = 1`, can you find out what that does?). So essentially a "one-step-further-than-Jochem" network. 
@@ -6732,6 +6732,6 @@ Nicely done, this was the webscraping tutorial for bibliometric data. We gathere
 - 4 publication citation history (cites per year) \
 - 5 citation history of scholars themselves (cites per year) \
 
-**With this, you can move on to some potentially very cool network visualization!**
+**With this, you can move on to some potentially very cool network visualization!**  
 
----  
+

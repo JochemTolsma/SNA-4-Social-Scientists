@@ -375,7 +375,7 @@ We will use the data from the LISS panel.
 
 More concretely, we will use:  
 
-- 11 waves (2008-2014, 2016-2020)  
+- 11 waves (2008-2014, 2016-2029)  
 - Filter on heterosexual couples (cohabiting and married)
 - Filter on couples of which both spouses are older than 25. 
 

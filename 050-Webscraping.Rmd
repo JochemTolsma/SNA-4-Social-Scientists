@@ -816,6 +816,6 @@ Nicely done, this was the webscraping tutorial for bibliometric data. We gathere
 - 4 publication citation history (cites per year) \
 - 5 citation history of scholars themselves (cites per year) \
 
-**With this, you can move on to some potentially very cool network visualization!**
+**With this, you can move on to some potentially very cool network visualization!**  
 
----  
+
