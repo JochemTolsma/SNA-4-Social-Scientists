@@ -242,6 +242,39 @@ See the figures \@ref(fig:jt) and \@ref(fig:bh ) below for a graphical summary o
 <p class="caption">(\#fig:bh)1.5 degree co-author egonetwork of BAS HOFSTRA</p>
 </div>
 
+
+
+
+```r
+require(rvest)
+page <- read_html("https://scholar.google.com/citations?view_op=list_colleagues&hl=en&user=K51iiIAAAAAJ")
+
+Coauthors <-  page %>% html_nodes(css="a") %>% html_text()
+affiliation <-  page %>% html_nodes(css=".gs_ai_aff") %>% html_text()
+
+
+get_scholar_id_fix(last_name="van%der%Brug", first_name="Wouter")
+get_scholar_id(last_name="van der Brug", first_name="Wouter")
+
+%>% html_attr("id")
+
+id <-  page %>% html_nodes(css="div.gsc_ucoar.gs_scl") %>% html_attr("id")
+
+affiliation <- gsub(pattern="gsc_ucoar-", replacement="", x=affiliation )
+
+https://scholar.google.com/citations?view_op=list_colleagues&hl=en&user=gHuTzXcAAAAAJ"
+
+
+
+%>% html_text()
+affiliation <-  page %>% html_nodes(css="div") %>% html_text()
+
+Coauthors <-  as.data.frame(Coauthors)
+Coauthors
+```
+
+
+
 #### Density {-}
 
 
@@ -1445,7 +1478,7 @@ summary(fit6, standardized = T)
 1. Please give an interpretation of the most important parameter estimates of the micro-macro models (including the RI-CLP-MM).  
     a. Does the educational level of our confidants influence our opinion towards euthanasia?  
     b. Do you observe selection effects and how can they be explained?  
-2. Try to answer the formulated [research questions](\@ref(rq))
+2. Try to answer the formulated research questions \@ref(rq)
     - you could try to combine the different opinions of ego in one latent variable to increase power.  
     - try to see if the influence of the educational level of the CDN depends on the size of the CDN (I would recommend taking a multi-group perspective) or on ego's educational level in years (I would recommend introducing an interaction effect)  
     - to check whether influence processes depend on other characteristics of the alters is definitely not easy. The method is described in @bennink2016micro but this is too difficult and not feasible in lavaan (perhaps in a two-step approach). You have to try to be creative. 

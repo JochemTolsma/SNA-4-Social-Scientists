@@ -164,10 +164,10 @@ head(soc_staff)
 
 ```
 #> $node
-#> <pointer: 0x00000000272540b0>
+#> <pointer: 0x00000000272dee00>
 #> 
 #> $doc
-#> <pointer: 0x0000000019576850>
+#> <pointer: 0x00000000106beae0>
 ```
 
 That looks kinda weird. What type of object did we store it by putting the html into `soc_staff`?
@@ -6732,6 +6732,6 @@ Nicely done, this was the webscraping tutorial for bibliometric data. We gathere
 - 4 publication citation history (cites per year) \
 - 5 citation history of scholars themselves (cites per year) \
 
-**With this, you can move on to some potentially very cool network visualization!**  
+**With this, you can move on to some potentially very cool network visualization!**
 
-
+---  

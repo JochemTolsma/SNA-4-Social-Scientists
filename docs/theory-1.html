@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-21" />
+<meta name="date" content="2021-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -690,6 +690,31 @@ Figure 5.7: 1.5 degree co-author egonetwork of JOCHEM TOLSMA
 Figure 5.8: 1.5 degree co-author egonetwork of BAS HOFSTRA
 </p>
 </div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="theory-1.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rvest)</span>
+<span id="cb32-2"><a href="theory-1.html#cb32-2" aria-hidden="true" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://scholar.google.com/citations?view_op=list_colleagues&amp;hl=en&amp;user=K51iiIAAAAAJ&quot;</span>)</span>
+<span id="cb32-3"><a href="theory-1.html#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="theory-1.html#cb32-4" aria-hidden="true" tabindex="-1"></a>Coauthors <span class="ot">&lt;-</span>  page <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">css=</span><span class="st">&quot;a&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">html_text</span>()</span>
+<span id="cb32-5"><a href="theory-1.html#cb32-5" aria-hidden="true" tabindex="-1"></a>affiliation <span class="ot">&lt;-</span>  page <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">css=</span><span class="st">&quot;.gs_ai_aff&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">html_text</span>()</span>
+<span id="cb32-6"><a href="theory-1.html#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="theory-1.html#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="theory-1.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">get_scholar_id_fix</span>(<span class="at">last_name=</span><span class="st">&quot;van%der%Brug&quot;</span>, <span class="at">first_name=</span><span class="st">&quot;Wouter&quot;</span>)</span>
+<span id="cb32-9"><a href="theory-1.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">get_scholar_id</span>(<span class="at">last_name=</span><span class="st">&quot;van der Brug&quot;</span>, <span class="at">first_name=</span><span class="st">&quot;Wouter&quot;</span>)</span>
+<span id="cb32-10"><a href="theory-1.html#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="theory-1.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="sc">%&gt;%</span> <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>)</span>
+<span id="cb32-12"><a href="theory-1.html#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="theory-1.html#cb32-13" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span>  page <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">css=</span><span class="st">&quot;div.gsc_ucoar.gs_scl&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>)</span>
+<span id="cb32-14"><a href="theory-1.html#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-15"><a href="theory-1.html#cb32-15" aria-hidden="true" tabindex="-1"></a>affiliation <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">pattern=</span><span class="st">&quot;gsc_ucoar-&quot;</span>, <span class="at">replacement=</span><span class="st">&quot;&quot;</span>, <span class="at">x=</span>affiliation )</span>
+<span id="cb32-16"><a href="theory-1.html#cb32-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="theory-1.html#cb32-17" aria-hidden="true" tabindex="-1"></a>https<span class="sc">:</span><span class="er">//</span>scholar.google.com<span class="sc">/</span>citations?view_op<span class="ot">=</span>list_colleagues<span class="sc">&amp;</span>hl<span class="ot">=</span>en<span class="sc">&amp;</span>user<span class="ot">=</span>gHuTzXcAAAAAJ<span class="st">&quot;</span></span>
+<span id="cb32-18"><a href="theory-1.html#cb32-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-19"><a href="theory-1.html#cb32-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-20"><a href="theory-1.html#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="theory-1.html#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="st">%&gt;% html_text()</span></span>
+<span id="cb32-22"><a href="theory-1.html#cb32-22" aria-hidden="true" tabindex="-1"></a><span class="st">affiliation &lt;-  page %&gt;% html_nodes(css=&quot;</span>div<span class="st">&quot;) %&gt;% html_text()</span></span>
+<span id="cb32-23"><a href="theory-1.html#cb32-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-24"><a href="theory-1.html#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="st">Coauthors &lt;-  as.data.frame(Coauthors)</span></span>
+<span id="cb32-25"><a href="theory-1.html#cb32-25" aria-hidden="true" tabindex="-1"></a><span class="st">Coauthors</span></span></code></pre></div>
 <div id="density" class="section level4 unnumbered">
 <h4>Density</h4>
 <p>Density is defined as all observed relations divided by all possible relations. Look at the examples below. Are you able to calculate the density of the networks yourself?</p>

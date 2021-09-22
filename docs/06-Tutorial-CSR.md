@@ -18,7 +18,7 @@ This very short R tutorial is for students who already have some experience with
 ## Getting up and running
 
 -   install the latest version of R: [R](https://cran.r-project.org/)
--   install the latest version of RStudio: [RStudio](www.rstudio.com)
+-   install the latest version of RStudio: [RStudio](https://www.rstudio.com/)
 -   open RStudio and follow a brief tour/tutorial [brief tour of Gulzar](https://web.cs.ucla.edu/~gulzar/rstudio/basic-tutorial.html)
 
 Do you Want more information, or are you looking for a different (tidyverse) tutorial?

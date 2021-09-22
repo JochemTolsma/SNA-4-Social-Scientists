@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-21" />
+<meta name="date" content="2021-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -530,43 +530,43 @@ div.csl-indent {
 <li>Before you start scraping and analyzing, take all the precautionary steps noted in <a href="tutorial.html#tutorial">A</a></li>
 </ul>
 <p>So for this tutorial, your starting script will look something like this:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="webintro.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="do">######################################### Title: Webscraping in R Author: Bas Hofstra Version:</span></span>
-<span id="cb48-2"><a href="webintro.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="do">######################################### 29-07-2021</span></span>
-<span id="cb48-3"><a href="webintro.html#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-4"><a href="webintro.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># start with clean workspace</span></span>
-<span id="cb48-5"><a href="webintro.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb48-6"><a href="webintro.html#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-7"><a href="webintro.html#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># I assume you already installed this one!</span></span>
-<span id="cb48-8"><a href="webintro.html#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;httr&quot;</span>)</span>
-<span id="cb48-9"><a href="webintro.html#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(httr)</span>
-<span id="cb48-10"><a href="webintro.html#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;xml2&quot;</span>)</span>
-<span id="cb48-11"><a href="webintro.html#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(xml2)</span>
-<span id="cb48-12"><a href="webintro.html#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rvest&quot;</span>)</span>
-<span id="cb48-13"><a href="webintro.html#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rvest)</span>
-<span id="cb48-14"><a href="webintro.html#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
-<span id="cb48-15"><a href="webintro.html#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(devtools)</span>
-<span id="cb48-16"><a href="webintro.html#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Note we&#39;re doing something different here. We&#39;re installing a *latest* version directly from</span></span>
-<span id="cb48-17"><a href="webintro.html#cb48-17" aria-hidden="true" tabindex="-1"></a><span class="co"># GitHub This is because the released version of this packages contains some errors!</span></span>
-<span id="cb48-18"><a href="webintro.html#cb48-18" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;jkeirstead/scholar&quot;</span>)</span>
-<span id="cb48-19"><a href="webintro.html#cb48-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-20"><a href="webintro.html#cb48-20" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(scholar)</span>
-<span id="cb48-21"><a href="webintro.html#cb48-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-22"><a href="webintro.html#cb48-22" aria-hidden="true" tabindex="-1"></a><span class="co"># define workdirectory, note the double backslashes if you&#39;re on windows setwd(&#39;/yourpathhere)&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="webintro.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="do">######################################### Title: Webscraping in R Author: Bas Hofstra Version:</span></span>
+<span id="cb49-2"><a href="webintro.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="do">######################################### 29-07-2021</span></span>
+<span id="cb49-3"><a href="webintro.html#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="webintro.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># start with clean workspace</span></span>
+<span id="cb49-5"><a href="webintro.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb49-6"><a href="webintro.html#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="webintro.html#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># I assume you already installed this one!</span></span>
+<span id="cb49-8"><a href="webintro.html#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;httr&quot;</span>)</span>
+<span id="cb49-9"><a href="webintro.html#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(httr)</span>
+<span id="cb49-10"><a href="webintro.html#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;xml2&quot;</span>)</span>
+<span id="cb49-11"><a href="webintro.html#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(xml2)</span>
+<span id="cb49-12"><a href="webintro.html#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rvest&quot;</span>)</span>
+<span id="cb49-13"><a href="webintro.html#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rvest)</span>
+<span id="cb49-14"><a href="webintro.html#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb49-15"><a href="webintro.html#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(devtools)</span>
+<span id="cb49-16"><a href="webintro.html#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Note we&#39;re doing something different here. We&#39;re installing a *latest* version directly from</span></span>
+<span id="cb49-17"><a href="webintro.html#cb49-17" aria-hidden="true" tabindex="-1"></a><span class="co"># GitHub This is because the released version of this packages contains some errors!</span></span>
+<span id="cb49-18"><a href="webintro.html#cb49-18" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;jkeirstead/scholar&quot;</span>)</span>
+<span id="cb49-19"><a href="webintro.html#cb49-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-20"><a href="webintro.html#cb49-20" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(scholar)</span>
+<span id="cb49-21"><a href="webintro.html#cb49-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-22"><a href="webintro.html#cb49-22" aria-hidden="true" tabindex="-1"></a><span class="co"># define workdirectory, note the double backslashes if you&#39;re on windows setwd(&#39;/yourpathhere)&#39;</span></span></code></pre></div>
 </div>
 <div id="getting-anchor-data" class="section level3" number="11.6.2">
 <h3><span class="header-section-number">11.6.2</span> Getting “anchor” data</h3>
 <p>A first step is to get the “anchor” data. The anchor data are the first data we scrape with which we then link to further data sources. Our goal is to get to know (i) who the Radboud University Department of Sociology staff is, (ii) what they publish with respect to scientific work, and (iii) who they collaborate with. So that means at least three data sources we need to collect from somewhere. What would be a nice starting (read: anchor) point be? First, we have to know who is on the sociology staff. Let’s check out <a href="https://www.ru.nl/sociology/">the Radboud sociology website</a>. There is lots of intriguing information, but not on who is who. There is, however, a specific link to the <a href="https://www.ru.nl/sociology/research/staff/">research staff</a>. Here we do see a nice list on who is on the sociology staff! How do we get that data? It is actually quite simple, the package <code>xml2</code> has a very nice function <code>html_read()</code> which simply extracts the source html of a webpage:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="webintro.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s first get the staff page read_html is a function that simply extracts html webpages and</span></span>
-<span id="cb49-2"><a href="webintro.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># puts them in xml format</span></span>
-<span id="cb49-3"><a href="webintro.html#cb49-3" aria-hidden="true" tabindex="-1"></a>soc_staff <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://www.ru.nl/sociology/research/staff/&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="webintro.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soc_staff)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="webintro.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s first get the staff page read_html is a function that simply extracts html webpages and</span></span>
+<span id="cb50-2"><a href="webintro.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># puts them in xml format</span></span>
+<span id="cb50-3"><a href="webintro.html#cb50-3" aria-hidden="true" tabindex="-1"></a>soc_staff <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://www.ru.nl/sociology/research/staff/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="webintro.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soc_staff)</span></code></pre></div>
 <pre><code>#&gt; $node
-#&gt; &lt;pointer: 0x00000000272540b0&gt;
+#&gt; &lt;pointer: 0x00000000272dee00&gt;
 #&gt; 
 #&gt; $doc
-#&gt; &lt;pointer: 0x0000000019576850&gt;</code></pre>
+#&gt; &lt;pointer: 0x00000000106beae0&gt;</code></pre>
 <p>That looks kinda weird. What type of object did we store it by putting the html into <code>soc_staff</code>?</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="webintro.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(soc_staff)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="webintro.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(soc_staff)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;xml_document&quot; &quot;xml_node&quot;</code></pre>
 <p>So it is is stored in something that R calls an XML object. Remember when we talked about that in the text above? Extensible Markup Language, XML, is a nested data structure where in each next sublayer of that structure new information is stored. Not important for now what that means specifically. But it is important to extract the relevant table that we saw on the sociology staff website. How do we do that? Go to the <a href="%22googlechromes://www.ru.nl/sociology/research/staff/%22">https://www.ru.nl/sociology/research/staff/</a> in Google Chrome and then press “Inspect” on the webpage (right click–&gt;Inspect). You should see something like the screenshot below, right?</p>
 <div class="figure"><span style="display:block;" id="fig:inspect"></span>
@@ -590,18 +590,18 @@ Figure 11.3: Element ‘td’ on website
 </p>
 </div>
 <p>Something like the code below should do just that:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="webintro.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># so we need to find WHERE the table is located in the html &#39;inspect element&#39; in mozilla firefox or</span></span>
-<span id="cb54-2"><a href="webintro.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;view page source&#39; and you see that everything AFTER /td in the &#39;body&#39; of the page seems to be</span></span>
-<span id="cb54-3"><a href="webintro.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the table we do need</span></span>
-<span id="cb54-4"><a href="webintro.html#cb54-4" aria-hidden="true" tabindex="-1"></a>soc_staff <span class="ot">&lt;-</span> soc_staff <span class="sc">%&gt;%</span></span>
-<span id="cb54-5"><a href="webintro.html#cb54-5" aria-hidden="true" tabindex="-1"></a>    rvest<span class="sc">::</span><span class="fu">html_nodes</span>(<span class="st">&quot;body&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb54-6"><a href="webintro.html#cb54-6" aria-hidden="true" tabindex="-1"></a>    xml2<span class="sc">::</span><span class="fu">xml_find_all</span>(<span class="st">&quot;//td&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb54-7"><a href="webintro.html#cb54-7" aria-hidden="true" tabindex="-1"></a>    rvest<span class="sc">::</span><span class="fu">html_text</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="webintro.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># so we need to find WHERE the table is located in the html &#39;inspect element&#39; in mozilla firefox or</span></span>
+<span id="cb55-2"><a href="webintro.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;view page source&#39; and you see that everything AFTER /td in the &#39;body&#39; of the page seems to be</span></span>
+<span id="cb55-3"><a href="webintro.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the table we do need</span></span>
+<span id="cb55-4"><a href="webintro.html#cb55-4" aria-hidden="true" tabindex="-1"></a>soc_staff <span class="ot">&lt;-</span> soc_staff <span class="sc">%&gt;%</span></span>
+<span id="cb55-5"><a href="webintro.html#cb55-5" aria-hidden="true" tabindex="-1"></a>    rvest<span class="sc">::</span><span class="fu">html_nodes</span>(<span class="st">&quot;body&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb55-6"><a href="webintro.html#cb55-6" aria-hidden="true" tabindex="-1"></a>    xml2<span class="sc">::</span><span class="fu">xml_find_all</span>(<span class="st">&quot;//td&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb55-7"><a href="webintro.html#cb55-7" aria-hidden="true" tabindex="-1"></a>    rvest<span class="sc">::</span><span class="fu">html_text</span>()</span></code></pre></div>
 <blockquote>
 <p>Question: What happens in the code above? Why do we specify search for ‘body’ and ‘//td?’</p>
 </blockquote>
 <p>Let us check out what happened to the soc_staff object now:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="webintro.html#cb55-1" aria-hidden="true" tabindex="-1"></a>soc_staff  <span class="co"># looks much better!!</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="webintro.html#cb56-1" aria-hidden="true" tabindex="-1"></a>soc_staff  <span class="co"># looks much better!!</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
 <table>
 <caption>
@@ -1080,25 +1080,25 @@ Socialization processes, secularisation, religion and the philosophy of life
 </table>
 </div>
 <p>So it looks much nicer but does not seem to be in the entirely correct order. We have odd rows and even rows: odd rows are names, even rows have the expertise of staff. We need to get a bit creative to put the data in a nicer format. The <code>%%</code> operator gives a “remainder” of integers (whole numbers). So 10/2=5 with no remainder, but 11/2=5 with a remainder of 1. This means that we can derive odd or even with a function with that operator. Remember functions from <a href="tutorial.html#tutorial">A</a>?</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="webintro.html#cb56-1" aria-hidden="true" tabindex="-1"></a>fodd <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">%%</span><span class="dv">2</span> <span class="sc">!=</span> <span class="dv">0</span></span>
-<span id="cb56-2"><a href="webintro.html#cb56-2" aria-hidden="true" tabindex="-1"></a>feven <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">%%</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="webintro.html#cb57-1" aria-hidden="true" tabindex="-1"></a>fodd <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">%%</span><span class="dv">2</span> <span class="sc">!=</span> <span class="dv">0</span></span>
+<span id="cb57-2"><a href="webintro.html#cb57-2" aria-hidden="true" tabindex="-1"></a>feven <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">%%</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span></span></code></pre></div>
 <blockquote>
 <p>Question: Do you understand what this function does?</p>
 </blockquote>
 <p>How long are the data?</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="webintro.html#cb57-1" aria-hidden="true" tabindex="-1"></a>nstaf <span class="ot">&lt;-</span> <span class="fu">length</span>(soc_staff)</span>
-<span id="cb57-2"><a href="webintro.html#cb57-2" aria-hidden="true" tabindex="-1"></a>nstaf</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="webintro.html#cb58-1" aria-hidden="true" tabindex="-1"></a>nstaf <span class="ot">&lt;-</span> <span class="fu">length</span>(soc_staff)</span>
+<span id="cb58-2"><a href="webintro.html#cb58-2" aria-hidden="true" tabindex="-1"></a>nstaf</span></code></pre></div>
 <pre><code>#&gt; [1] 92</code></pre>
 <p>Alright, can we get the odd rows out of there?</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="webintro.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do you understand why we need the nstaf? What it does?</span></span>
-<span id="cb59-2"><a href="webintro.html#cb59-2" aria-hidden="true" tabindex="-1"></a>soc_names <span class="ot">&lt;-</span> soc_staff[<span class="fu">fodd</span>(<span class="dv">1</span><span class="sc">:</span>nstaf)]  <span class="co"># in the 1 until 94st number, get the odd elements</span></span>
-<span id="cb59-3"><a href="webintro.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soc_names)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="webintro.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do you understand why we need the nstaf? What it does?</span></span>
+<span id="cb60-2"><a href="webintro.html#cb60-2" aria-hidden="true" tabindex="-1"></a>soc_names <span class="ot">&lt;-</span> soc_staff[<span class="fu">fodd</span>(<span class="dv">1</span><span class="sc">:</span>nstaf)]  <span class="co"># in the 1 until 94st number, get the odd elements</span></span>
+<span id="cb60-3"><a href="webintro.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soc_names)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;Staff:&quot;                           &quot;Batenburg, prof. dr. R. (Ronald)&quot;
 #&gt; [3] &quot;Begall, dr. K.H. (Katia)&quot;         &quot;Bekhuis, dr. H. (Hidde)&quot;         
 #&gt; [5] &quot;Berg, dr. L. van den (Lonneke)&quot;   &quot;Blommaert, dr. L. (Lieselotte)&quot;</code></pre>
 <p>And how about people’s expertise?</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="webintro.html#cb61-1" aria-hidden="true" tabindex="-1"></a>soc_experts <span class="ot">&lt;-</span> soc_staff[<span class="fu">feven</span>(<span class="dv">1</span><span class="sc">:</span>nstaf)]  <span class="co"># in the 1 until 94st number, get the even elements</span></span>
-<span id="cb61-2"><a href="webintro.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soc_experts)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="webintro.html#cb62-1" aria-hidden="true" tabindex="-1"></a>soc_experts <span class="ot">&lt;-</span> soc_staff[<span class="fu">feven</span>(<span class="dv">1</span><span class="sc">:</span>nstaf)]  <span class="co"># in the 1 until 94st number, get the even elements</span></span>
+<span id="cb62-2"><a href="webintro.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soc_experts)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;Expertise:&quot;                                                                                    
 #&gt; [2] &quot;Healthcare, labour market and healthcare professions and training&quot;                             
 #&gt; [3] &quot;Family, life course, labour market participation, division of household tasks and gender norms&quot;
@@ -1106,9 +1106,9 @@ Socialization processes, secularisation, religion and the philosophy of life
 #&gt; [5] &quot;Family, life course and transition to adulthood&quot;                                               
 #&gt; [6] &quot;Discrimination and inequality on the labour market&quot;</code></pre>
 <p>Finally, can we merge those two vectors?</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="webintro.html#cb63-1" aria-hidden="true" tabindex="-1"></a>soc_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(soc_names, soc_experts))  <span class="co"># columnbind those and we have a DF for soc staff!</span></span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="webintro.html#cb64-1" aria-hidden="true" tabindex="-1"></a>soc_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(soc_names, soc_experts))  <span class="co"># columnbind those and we have a DF for soc staff!</span></span></code></pre></div>
 <p>How does that look?</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="webintro.html#cb64-1" aria-hidden="true" tabindex="-1"></a>soc_df  <span class="co"># pretty nice!</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="webintro.html#cb65-1" aria-hidden="true" tabindex="-1"></a>soc_df  <span class="co"># pretty nice!</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
 <table>
 <caption>
@@ -1498,14 +1498,14 @@ Socialization processes, secularisation, religion and the philosophy of life
 </table>
 </div>
 <p>That looks much better! Now we only need to remove the redundant rows that state “expertise,” “staff,” and so forth.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="webintro.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect again, and remove the rows we don&#39;t need (check for yourself to be certain!)</span></span>
-<span id="cb65-2"><a href="webintro.html#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-3"><a href="webintro.html#cb65-3" aria-hidden="true" tabindex="-1"></a>delrows <span class="ot">&lt;-</span> <span class="fu">which</span>(soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;Staff:&quot;</span> <span class="sc">|</span> soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;PhD:&quot;</span> <span class="sc">|</span> soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;External PhD:&quot;</span> <span class="sc">|</span></span>
-<span id="cb65-4"><a href="webintro.html#cb65-4" aria-hidden="true" tabindex="-1"></a>    soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;Guest researchers:&quot;</span> <span class="sc">|</span> soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;Other researchers:&quot;</span>)</span>
-<span id="cb65-5"><a href="webintro.html#cb65-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-6"><a href="webintro.html#cb65-6" aria-hidden="true" tabindex="-1"></a>soc_df <span class="ot">&lt;-</span> soc_df[<span class="sc">-</span>delrows, ]</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="webintro.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect again, and remove the rows we don&#39;t need (check for yourself to be certain!)</span></span>
+<span id="cb66-2"><a href="webintro.html#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-3"><a href="webintro.html#cb66-3" aria-hidden="true" tabindex="-1"></a>delrows <span class="ot">&lt;-</span> <span class="fu">which</span>(soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;Staff:&quot;</span> <span class="sc">|</span> soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;PhD:&quot;</span> <span class="sc">|</span> soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;External PhD:&quot;</span> <span class="sc">|</span></span>
+<span id="cb66-4"><a href="webintro.html#cb66-4" aria-hidden="true" tabindex="-1"></a>    soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;Guest researchers:&quot;</span> <span class="sc">|</span> soc_df<span class="sc">$</span>soc_names <span class="sc">==</span> <span class="st">&quot;Other researchers:&quot;</span>)</span>
+<span id="cb66-5"><a href="webintro.html#cb66-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-6"><a href="webintro.html#cb66-6" aria-hidden="true" tabindex="-1"></a>soc_df <span class="ot">&lt;-</span> soc_df[<span class="sc">-</span>delrows, ]</span></code></pre></div>
 <p>Let’s check it out</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="webintro.html#cb66-1" aria-hidden="true" tabindex="-1"></a>soc_df  <span class="co"># even better</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="webintro.html#cb67-1" aria-hidden="true" tabindex="-1"></a>soc_df  <span class="co"># even better</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
 <table>
 <caption>
@@ -1992,11 +1992,11 @@ Socialization processes, secularisation, religion and the philosophy of life
 </div>
 <p>Now we have a nice relatively clean dataset with all sociology staff and their expterise. But there is yet some work to do before we can move on. We need to do some data cleaning. Ideally, we have staff their first and last names in clean columns. So the last name seems easy, everything before the comma. Do you understand the code below? <code>gsub</code> is a function that remove something and replaces it with something else. In the code below it replaces everything that’s behind a comma with nothing in the column <code>soc_names</code> in the data frame <code>soc_df</code>.</p>
 <p>The first name is trickier, we need some more difficult <em>expressions</em> to extract first names from this string. It’s not necessary for now to exactly know how the expressions below work, but if you want to get into it, here’s <a href="https://r4ds.had.co.nz/strings.html">a nice resource</a>. The important part of the code below is that it extracts everything that’s in between the brackets.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="webintro.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Last name seems to be everything before the comma</span></span>
-<span id="cb67-2"><a href="webintro.html#cb67-2" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>last_name <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;,.*$&quot;</span>, <span class="st">&quot;&quot;</span>, soc_df<span class="sc">$</span>soc_names)</span>
-<span id="cb67-3"><a href="webintro.html#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-4"><a href="webintro.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first name is everything between brackets</span></span>
-<span id="cb67-5"><a href="webintro.html#cb67-5" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>first_name <span class="ot">&lt;-</span> <span class="fu">str_extract_all</span>(soc_df<span class="sc">$</span>soc_names, <span class="st">&quot;(?&lt;=</span><span class="sc">\\</span><span class="st">().+?(?=</span><span class="sc">\\</span><span class="st">))&quot;</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="webintro.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Last name seems to be everything before the comma</span></span>
+<span id="cb68-2"><a href="webintro.html#cb68-2" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>last_name <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;,.*$&quot;</span>, <span class="st">&quot;&quot;</span>, soc_df<span class="sc">$</span>soc_names)</span>
+<span id="cb68-3"><a href="webintro.html#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="webintro.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first name is everything between brackets</span></span>
+<span id="cb68-5"><a href="webintro.html#cb68-5" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>first_name <span class="ot">&lt;-</span> <span class="fu">str_extract_all</span>(soc_df<span class="sc">$</span>soc_names, <span class="st">&quot;(?&lt;=</span><span class="sc">\\</span><span class="st">().+?(?=</span><span class="sc">\\</span><span class="st">))&quot;</span>, <span class="at">simplify =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
 <table>
 <caption>
@@ -2740,20 +2740,20 @@ Paul
 </table>
 </div>
 <p>So we need yet to do some manual cleaning, one name seemed to be inconsistent with how the other names were listed on the webpage. As data get bigger, this becomes impossible to do manually and we simply have to accept this as noise.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="webintro.html#cb68-1" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>last_name <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; J. </span><span class="sc">\\</span><span class="st">(Jansje</span><span class="sc">\\</span><span class="st">) van MSc&quot;</span>, <span class="st">&quot;&quot;</span>, soc_df<span class="sc">$</span>last_name)</span>
-<span id="cb68-2"><a href="webintro.html#cb68-2" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>first_name <span class="ot">&lt;-</span> <span class="fu">tolower</span>(soc_df<span class="sc">$</span>first_name)  <span class="co"># everything to lower!</span></span>
-<span id="cb68-3"><a href="webintro.html#cb68-3" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>last_name <span class="ot">&lt;-</span> <span class="fu">tolower</span>(soc_df<span class="sc">$</span>last_name)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="webintro.html#cb69-1" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>last_name <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot; J. </span><span class="sc">\\</span><span class="st">(Jansje</span><span class="sc">\\</span><span class="st">) van MSc&quot;</span>, <span class="st">&quot;&quot;</span>, soc_df<span class="sc">$</span>last_name)</span>
+<span id="cb69-2"><a href="webintro.html#cb69-2" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>first_name <span class="ot">&lt;-</span> <span class="fu">tolower</span>(soc_df<span class="sc">$</span>first_name)  <span class="co"># everything to lower!</span></span>
+<span id="cb69-3"><a href="webintro.html#cb69-3" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>last_name <span class="ot">&lt;-</span> <span class="fu">tolower</span>(soc_df<span class="sc">$</span>last_name)</span></code></pre></div>
 <p>Not quite there yet. To be sure, we’ll trim some white space in the variables we know created. This means we remove spaces before and after strings. Usually, with a much larger dataset which you cannot immediately observe, you can further clean the data by removing weird characters.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="webintro.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># trimws looses all spacing before and after (if you specify &#39;both&#39;) a character string</span></span>
-<span id="cb69-2"><a href="webintro.html#cb69-2" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>last_name <span class="ot">&lt;-</span> <span class="fu">trimws</span>(soc_df<span class="sc">$</span>last_name, <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;both&quot;</span>), <span class="at">whitespace =</span> <span class="st">&quot;[ </span><span class="sc">\t\r\n</span><span class="st">]&quot;</span>)</span>
-<span id="cb69-3"><a href="webintro.html#cb69-3" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>first_name <span class="ot">&lt;-</span> <span class="fu">trimws</span>(soc_df<span class="sc">$</span>first_name, <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;both&quot;</span>), <span class="at">whitespace =</span> <span class="st">&quot;[ </span><span class="sc">\t\r\n</span><span class="st">]&quot;</span>)</span>
-<span id="cb69-4"><a href="webintro.html#cb69-4" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>soc_experts <span class="ot">&lt;-</span> <span class="fu">trimws</span>(soc_df<span class="sc">$</span>soc_experts, <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;both&quot;</span>), <span class="at">whitespace =</span> <span class="st">&quot;[ </span><span class="sc">\t\r\n</span><span class="st">]&quot;</span>)</span>
-<span id="cb69-5"><a href="webintro.html#cb69-5" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>soc_names <span class="ot">&lt;-</span> <span class="fu">trimws</span>(soc_df<span class="sc">$</span>soc_names, <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;both&quot;</span>), <span class="at">whitespace =</span> <span class="st">&quot;[ </span><span class="sc">\t\r\n</span><span class="st">]&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="webintro.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># trimws looses all spacing before and after (if you specify &#39;both&#39;) a character string</span></span>
+<span id="cb70-2"><a href="webintro.html#cb70-2" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>last_name <span class="ot">&lt;-</span> <span class="fu">trimws</span>(soc_df<span class="sc">$</span>last_name, <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;both&quot;</span>), <span class="at">whitespace =</span> <span class="st">&quot;[ </span><span class="sc">\t\r\n</span><span class="st">]&quot;</span>)</span>
+<span id="cb70-3"><a href="webintro.html#cb70-3" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>first_name <span class="ot">&lt;-</span> <span class="fu">trimws</span>(soc_df<span class="sc">$</span>first_name, <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;both&quot;</span>), <span class="at">whitespace =</span> <span class="st">&quot;[ </span><span class="sc">\t\r\n</span><span class="st">]&quot;</span>)</span>
+<span id="cb70-4"><a href="webintro.html#cb70-4" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>soc_experts <span class="ot">&lt;-</span> <span class="fu">trimws</span>(soc_df<span class="sc">$</span>soc_experts, <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;both&quot;</span>), <span class="at">whitespace =</span> <span class="st">&quot;[ </span><span class="sc">\t\r\n</span><span class="st">]&quot;</span>)</span>
+<span id="cb70-5"><a href="webintro.html#cb70-5" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>soc_names <span class="ot">&lt;-</span> <span class="fu">trimws</span>(soc_df<span class="sc">$</span>soc_names, <span class="at">which =</span> <span class="fu">c</span>(<span class="st">&quot;both&quot;</span>), <span class="at">whitespace =</span> <span class="st">&quot;[ </span><span class="sc">\t\r\n</span><span class="st">]&quot;</span>)</span></code></pre></div>
 <p>Finally, because we’re quite sure that all these staff are in some way affiliated with Radboud University (why would they otherwise be on the Radboud website?), we simply create a variable that contains a character string “radboud university” for all.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="webintro.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set affiliation to radboud, comes in handy for querying google scholar</span></span>
-<span id="cb70-2"><a href="webintro.html#cb70-2" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>affiliation <span class="ot">&lt;-</span> <span class="st">&quot;radboud university&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="webintro.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set affiliation to radboud, comes in handy for querying google scholar</span></span>
+<span id="cb71-2"><a href="webintro.html#cb71-2" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>affiliation <span class="ot">&lt;-</span> <span class="st">&quot;radboud university&quot;</span></span></code></pre></div>
 <p>How do the data look?</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="webintro.html#cb71-1" aria-hidden="true" tabindex="-1"></a>soc_df</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="webintro.html#cb72-1" aria-hidden="true" tabindex="-1"></a>soc_df</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
 <table>
 <caption>
@@ -3632,11 +3632,11 @@ radboud university
 <div id="google-scholar-profiles-and-publications" class="section level3" number="11.6.3">
 <h3><span class="header-section-number">11.6.3</span> Google Scholar Profiles and Publications</h3>
 <p>What we now have is a data frame of sociology staff members. So we successfully gathered the anchor data set we can move on with. Next, we need to find out whether these staff have a Google Scholar profile. I imagine you have accessed <a href="www.scholar.google.com">Google Scholar</a> many times during your studies for finding scientists or publications. The nice thing about Google Scholar is that it lists collaborators, publications, and citations on profiles. So what we first need to do is look for Google Scholar profiles among sociology staff. Luckily, we cleaned first and last names and have their affiliation. That makes looking them up much easier. So we need to do this for every person in our data frame. Before we query Google Scholar, we first need to go back to the neat trick of <em>for loops</em> (remember them from the <a href="tutorial.html#tutorial">A</a>?). Can you follow the code below? We can thus do all kinds of things automatically in a for loop.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="webintro.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The &#39;for loop&#39;: for every i in a vector (can be numbers, strings, etc.), say 1 to 10, you can do</span></span>
-<span id="cb72-2"><a href="webintro.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;something&#39;</span></span>
-<span id="cb72-3"><a href="webintro.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb72-4"><a href="webintro.html#cb72-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(i)  <span class="co"># So for every i from 1 to 10, we print i, see what happens!</span></span>
-<span id="cb72-5"><a href="webintro.html#cb72-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="webintro.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The &#39;for loop&#39;: for every i in a vector (can be numbers, strings, etc.), say 1 to 10, you can do</span></span>
+<span id="cb73-2"><a href="webintro.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;something&#39;</span></span>
+<span id="cb73-3"><a href="webintro.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb73-4"><a href="webintro.html#cb73-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(i)  <span class="co"># So for every i from 1 to 10, we print i, see what happens!</span></span>
+<span id="cb73-5"><a href="webintro.html#cb73-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>#&gt; [1] 1
 #&gt; [1] 2
 #&gt; [1] 3
@@ -3647,18 +3647,18 @@ radboud university
 #&gt; [1] 8
 #&gt; [1] 9
 #&gt; [1] 10</code></pre>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="webintro.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # or do something more complicated p &lt;- rnorm(10, 0, 1) # draw 10 normally distributed numbers</span></span>
-<span id="cb74-2"><a href="webintro.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># with mean 0 and SD 1 (so z-scores, essentially) plot(density(p)) # relatively, normal, right?  u</span></span>
-<span id="cb74-3"><a href="webintro.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="co"># &lt;- 0 # make an element we can fill up in the loop below for (i in 1:10) { u[i] &lt;- p[i]*p[i] # get</span></span>
-<span id="cb74-4"><a href="webintro.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="co"># p-squared for every i-th element in vector p print(u[i]) # and print that squared element }</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="webintro.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # or do something more complicated p &lt;- rnorm(10, 0, 1) # draw 10 normally distributed numbers</span></span>
+<span id="cb75-2"><a href="webintro.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="co"># with mean 0 and SD 1 (so z-scores, essentially) plot(density(p)) # relatively, normal, right?  u</span></span>
+<span id="cb75-3"><a href="webintro.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co"># &lt;- 0 # make an element we can fill up in the loop below for (i in 1:10) { u[i] &lt;- p[i]*p[i] # get</span></span>
+<span id="cb75-4"><a href="webintro.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="co"># p-squared for every i-th element in vector p print(u[i]) # and print that squared element }</span></span></code></pre></div>
 <p>Now that we know how to implement for loops in our workflow, we can utilize them to do slightly more complicated stuff. We want to know the identifying <em>link</em> on Google Scholar for each sociology staff member. We first set an empty identifier in our data frame so that we can “fill up” that data column later.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="webintro.html#cb75-1" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>gs_id <span class="ot">&lt;-</span> <span class="st">&quot;&quot;</span>  <span class="co"># we set an empty identifier</span></span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="webintro.html#cb76-1" aria-hidden="true" tabindex="-1"></a>soc_df<span class="sc">$</span>gs_id <span class="ot">&lt;-</span> <span class="st">&quot;&quot;</span>  <span class="co"># we set an empty identifier</span></span></code></pre></div>
 <p>So let’s move on with attempting to find Google Scholar profiles. The package <code>scholar</code> has a range of very nice functions! What type of functions does <code>scholar</code> have? Take a look by <code>?scholar</code> or <code>??scholar</code>. It includes all kinds of interesting functions like comparing scholars’ careers, getting scholar citations, getting profiles, and so forth. Using <code>get_scholar_id</code> seems appropriate to find out what the profile ID is of Jochem’s Google Scholar page. If you write <code>get_scholar_id</code> and then click <code>ctrl</code> or <code>cmd</code> together with your right mouse button, you can actually see precisely what the function does (it’s quite complicated!). Note that this package does not use an API, but simple wrote code to extract Google Scholar pages from the internet. They then wrapped the code in much simpler functions for you to use. The function <code>get_scholar_id</code> needs a last name, first name, and affiliation. Luckily, we already found those on the Radboud University website! So we can fill in those. Let’s try it for one staff member first.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="webintro.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;addfiles/function_fix.R&quot;</span>)  <span class="co"># Put the function_fix.R in your working directory, we need this first line.</span></span>
-<span id="cb76-2"><a href="webintro.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_scholar_id_fix</span>(<span class="at">last_name =</span> <span class="st">&quot;tolsma&quot;</span>, <span class="at">first_name =</span> <span class="st">&quot;jochem&quot;</span>, <span class="at">affiliation =</span> <span class="st">&quot;radboud university&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="webintro.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;addfiles/function_fix.R&quot;</span>)  <span class="co"># Put the function_fix.R in your working directory, we need this first line.</span></span>
+<span id="cb77-2"><a href="webintro.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_scholar_id_fix</span>(<span class="at">last_name =</span> <span class="st">&quot;tolsma&quot;</span>, <span class="at">first_name =</span> <span class="st">&quot;jochem&quot;</span>, <span class="at">affiliation =</span> <span class="st">&quot;radboud university&quot;</span>)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;Iu23-90AAAAJ&quot;</code></pre>
 <p>We now know that Jochem’s Scholar ID is “Iu23-90AAAAJ.” That’s very convenient, because now we can use the package <code>scholar</code> again to extract a range of useful other information from his Google Scholar profile. Let’s try it out on his profile first. Notice the nice function <code>get_profiles</code>. We simply have to input his Google Scholar ID and it shows everything on the profile.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="webintro.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_profile</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>)  <span class="co"># Jochem&#39;s profile</span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="webintro.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_profile</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>)  <span class="co"># Jochem&#39;s profile</span></span></code></pre></div>
 <pre><code>#&gt; $id
 #&gt; [1] &quot;Iu23-90AAAAJ&quot;
 #&gt; 
@@ -3694,7 +3694,7 @@ radboud university
 #&gt; [13] &quot;Christiaan Monden&quot;  &quot;Matthijs Kalmijn&quot;   &quot;Lincoln Quillian&quot;   &quot;Marloes de Lange&quot;  
 #&gt; [17] &quot;Thomas Feliciani&quot;   &quot;Andreas Flache&quot;     &quot;Ariana Need&quot;        &quot;René Veenstra&quot;</code></pre>
 <p>A lot of useful information! Next up, Jochem’s publications. Notice how not everything is in a nice data frame format yet, we’ll get to that later.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="webintro.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_publications</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>)  <span class="co"># Jochem&#39;s pubs</span></span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="webintro.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_publications</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>)  <span class="co"># Jochem&#39;s pubs</span></span></code></pre></div>
 <pre><code>#&gt;                                                                                                                                                                                 title
 #&gt; 1                                                                                                                                 Ethnic diversity and its effects on social cohesion
 #&gt; 2                                    Anti-Muslim attitudes in the Netherlands: Tests of contradictory hypotheses derived from ethnic competition theory and intergroup contact theory
@@ -4166,7 +4166,7 @@ radboud university
 #&gt; 92                                                           &lt;NA&gt; M05iB0D1s5AC
 #&gt; 93                                                           &lt;NA&gt; 70eg2SAEIzsC</code></pre>
 <p>When and how often was Jochem cited? Seems like an increasing trend line!</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="webintro.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_citation_history</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>)  <span class="co"># Jochem&#39;s citation history</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="webintro.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_citation_history</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>)  <span class="co"># Jochem&#39;s citation history</span></span></code></pre></div>
 <pre><code>#&gt;    year cites
 #&gt; 1  2008    12
 #&gt; 2  2009    21
@@ -4183,8 +4183,8 @@ radboud university
 #&gt; 13 2020   303
 #&gt; 14 2021   253</code></pre>
 <p>And now most importantly, Jochem’s collaborators, and the collaborators of those collaborators (note the <code>n_deep = 1</code>, can you find out what that does?). So essentially a “one-step-further-than-Jochem” network.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="webintro.html#cb84-1" aria-hidden="true" tabindex="-1"></a>jochem_coauthors <span class="ot">&lt;-</span> <span class="fu">get_coauthors</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>, <span class="at">n_coauthors =</span> <span class="dv">50</span>, <span class="at">n_deep =</span> <span class="dv">1</span>)  <span class="co"># Jochem&#39;s collaborators and their co-authors!</span></span></code></pre></div>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="webintro.html#cb85-1" aria-hidden="true" tabindex="-1"></a>jochem_coauthors</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="webintro.html#cb85-1" aria-hidden="true" tabindex="-1"></a>jochem_coauthors <span class="ot">&lt;-</span> <span class="fu">get_coauthors</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>, <span class="at">n_coauthors =</span> <span class="dv">50</span>, <span class="at">n_deep =</span> <span class="dv">1</span>)  <span class="co"># Jochem&#39;s collaborators and their co-authors!</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="webintro.html#cb86-1" aria-hidden="true" tabindex="-1"></a>jochem_coauthors</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
 <table>
 <caption>
@@ -7003,39 +7003,39 @@ Antonius Cillessen
 <p>Notice, however, that we could easily plot Jochem’s collaboration network already! This is thus a one-deeper network where we plot the co-authors of Jochem and who they collaborate with, there is some overlap, but not always.</p>
 <!---this one bugs. have set eval=FALSE--->
 <!---works for me!--->
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="webintro.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_coauthors</span>(<span class="fu">get_coauthors</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>, <span class="at">n_coauthors =</span> <span class="dv">20</span>, <span class="at">n_deep =</span> <span class="dv">1</span>), <span class="at">size_labels =</span> <span class="dv">2</span>)  <span class="co"># Doesn&#39;t look like much yet, but we&#39;ll make it prettier later.</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="webintro.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_coauthors</span>(<span class="fu">get_coauthors</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>, <span class="at">n_coauthors =</span> <span class="dv">20</span>, <span class="at">n_deep =</span> <span class="dv">1</span>), <span class="at">size_labels =</span> <span class="dv">2</span>)  <span class="co"># Doesn&#39;t look like much yet, but we&#39;ll make it prettier later.</span></span></code></pre></div>
 <p><img src="050-Webscraping_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <p>So let’s gather these data, but now for <em>all</em> sociology staff simultaneously! For this, we use the for loop again. The for loop I make below is a bit more complicated, but follows the same logic as before. For each row (i) in <code>soc_df</code>, we attempt to query Google Scholar on the basis of the first name, last name, and affiliation listed in that row in the data frame. We use some handy subsetting, e.g., <code>soc_df[i, 3]</code> means we input <code>last_name=</code> with the last name (which is the third column) found in the i-th row in the data frame. The same goes for first name and affiliation. We fill up <code>gs_id</code> in the data frame with the Google Scholar IDs we’ll hopefully find. The <code>for (i in nrow(soc_df))</code> simply means we let i run for however many rows the data frame has. Finally, the <code>tryCatch({})</code> function makes that we can continue the loop even though we may encounter errors for a given row. Here, that probably means that not every row (i.e., sociology staff member) can be found on Google Scholar. We print the error, but continue the for loop with the <code>tryCatch({})</code> function. In the final rows of the code below. We simply drop those rows that we cannot identify on Google Scholar.</p>
 <!---why did you set eval=FALSE? does not take too long. Don't forget we cache everything--->
 <!---if you use eval=FALSE. Don't forget to save the objects and load them in next script (with echo=FALSE)--->
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="webintro.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># because we don&#39;t wanna &#39;Rate limit&#39; google scholar, they throw you out if you make to many</span></span>
-<span id="cb87-2"><a href="webintro.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="co"># requests, we randomize request time do you understand the code below?</span></span>
-<span id="cb87-3"><a href="webintro.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb87-4"><a href="webintro.html#cb87-4" aria-hidden="true" tabindex="-1"></a>    time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
-<span id="cb87-5"><a href="webintro.html#cb87-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(time)</span>
-<span id="cb87-6"><a href="webintro.html#cb87-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;: R slept for&quot;</span>, <span class="fu">round</span>(time, <span class="dv">1</span>), <span class="st">&quot;seconds&quot;</span>))</span>
-<span id="cb87-7"><a href="webintro.html#cb87-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb87-8"><a href="webintro.html#cb87-8" aria-hidden="true" tabindex="-1"></a><span class="co"># for every number from 1 to 10 we draw one number from 0 to 5 from a uniform distribution we put</span></span>
-<span id="cb87-9"><a href="webintro.html#cb87-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the wrapper sys.sleep around it that we put R to sleep for the drawn number</span></span></code></pre></div>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="webintro.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look throught get_scholar_id_fix(last_name, first_name, affiliation) </span></span>
-<span id="cb88-2"><a href="webintro.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="co"># if we can find google scholar profiles of sociology staff!</span></span>
-<span id="cb88-3"><a href="webintro.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df)) {</span>
-<span id="cb88-4"><a href="webintro.html#cb88-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb88-5"><a href="webintro.html#cb88-5" aria-hidden="true" tabindex="-1"></a>  time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
-<span id="cb88-6"><a href="webintro.html#cb88-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(time)</span>
-<span id="cb88-7"><a href="webintro.html#cb88-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb88-8"><a href="webintro.html#cb88-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>({</span>
-<span id="cb88-9"><a href="webintro.html#cb88-9" aria-hidden="true" tabindex="-1"></a>     soc_df[i,<span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)] <span class="ot">&lt;-</span> <span class="fu">get_scholar_id_fix</span>(<span class="at">last_name =</span> soc_df[i, <span class="dv">3</span>], <span class="co"># so search on last_name of staff (third column)</span></span>
-<span id="cb88-10"><a href="webintro.html#cb88-10" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">first_name =</span> soc_df[i,<span class="dv">4</span>],  <span class="co"># search on first_name of staff (fourth column)</span></span>
-<span id="cb88-11"><a href="webintro.html#cb88-11" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">affiliation =</span> soc_df[i,<span class="dv">5</span>]) <span class="co"># search on affiliation of each staff (fifth column)</span></span>
-<span id="cb88-12"><a href="webintro.html#cb88-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-13"><a href="webintro.html#cb88-13" aria-hidden="true" tabindex="-1"></a>    }, <span class="at">error=</span><span class="cf">function</span>(e){<span class="fu">cat</span>(<span class="st">&quot;ERROR :&quot;</span>, <span class="fu">conditionMessage</span>(e), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)}) <span class="co"># continue on error, but print the error</span></span>
-<span id="cb88-14"><a href="webintro.html#cb88-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb88-15"><a href="webintro.html#cb88-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb88-16"><a href="webintro.html#cb88-16" aria-hidden="true" tabindex="-1"></a><span class="co"># remove those without pubs from the df</span></span>
-<span id="cb88-17"><a href="webintro.html#cb88-17" aria-hidden="true" tabindex="-1"></a><span class="co"># seems we&#39;re left with about 34 sociology staff members!</span></span>
-<span id="cb88-18"><a href="webintro.html#cb88-18" aria-hidden="true" tabindex="-1"></a>soc_df <span class="ot">&lt;-</span> soc_df[<span class="sc">!</span>soc_df<span class="sc">$</span>gs_id <span class="sc">==</span> <span class="st">&quot;&quot;</span>, ]</span>
-<span id="cb88-19"><a href="webintro.html#cb88-19" aria-hidden="true" tabindex="-1"></a>soc_df</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="webintro.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># because we don&#39;t wanna &#39;Rate limit&#39; google scholar, they throw you out if you make to many</span></span>
+<span id="cb88-2"><a href="webintro.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="co"># requests, we randomize request time do you understand the code below?</span></span>
+<span id="cb88-3"><a href="webintro.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb88-4"><a href="webintro.html#cb88-4" aria-hidden="true" tabindex="-1"></a>    time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb88-5"><a href="webintro.html#cb88-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(time)</span>
+<span id="cb88-6"><a href="webintro.html#cb88-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(i, <span class="st">&quot;: R slept for&quot;</span>, <span class="fu">round</span>(time, <span class="dv">1</span>), <span class="st">&quot;seconds&quot;</span>))</span>
+<span id="cb88-7"><a href="webintro.html#cb88-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb88-8"><a href="webintro.html#cb88-8" aria-hidden="true" tabindex="-1"></a><span class="co"># for every number from 1 to 10 we draw one number from 0 to 5 from a uniform distribution we put</span></span>
+<span id="cb88-9"><a href="webintro.html#cb88-9" aria-hidden="true" tabindex="-1"></a><span class="co"># the wrapper sys.sleep around it that we put R to sleep for the drawn number</span></span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="webintro.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look throught get_scholar_id_fix(last_name, first_name, affiliation) </span></span>
+<span id="cb89-2"><a href="webintro.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="co"># if we can find google scholar profiles of sociology staff!</span></span>
+<span id="cb89-3"><a href="webintro.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df)) {</span>
+<span id="cb89-4"><a href="webintro.html#cb89-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb89-5"><a href="webintro.html#cb89-5" aria-hidden="true" tabindex="-1"></a>  time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb89-6"><a href="webintro.html#cb89-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(time)</span>
+<span id="cb89-7"><a href="webintro.html#cb89-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb89-8"><a href="webintro.html#cb89-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>({</span>
+<span id="cb89-9"><a href="webintro.html#cb89-9" aria-hidden="true" tabindex="-1"></a>     soc_df[i,<span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)] <span class="ot">&lt;-</span> <span class="fu">get_scholar_id_fix</span>(<span class="at">last_name =</span> soc_df[i, <span class="dv">3</span>], <span class="co"># so search on last_name of staff (third column)</span></span>
+<span id="cb89-10"><a href="webintro.html#cb89-10" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">first_name =</span> soc_df[i,<span class="dv">4</span>],  <span class="co"># search on first_name of staff (fourth column)</span></span>
+<span id="cb89-11"><a href="webintro.html#cb89-11" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">affiliation =</span> soc_df[i,<span class="dv">5</span>]) <span class="co"># search on affiliation of each staff (fifth column)</span></span>
+<span id="cb89-12"><a href="webintro.html#cb89-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-13"><a href="webintro.html#cb89-13" aria-hidden="true" tabindex="-1"></a>    }, <span class="at">error=</span><span class="cf">function</span>(e){<span class="fu">cat</span>(<span class="st">&quot;ERROR :&quot;</span>, <span class="fu">conditionMessage</span>(e), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)}) <span class="co"># continue on error, but print the error</span></span>
+<span id="cb89-14"><a href="webintro.html#cb89-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb89-15"><a href="webintro.html#cb89-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-16"><a href="webintro.html#cb89-16" aria-hidden="true" tabindex="-1"></a><span class="co"># remove those without pubs from the df</span></span>
+<span id="cb89-17"><a href="webintro.html#cb89-17" aria-hidden="true" tabindex="-1"></a><span class="co"># seems we&#39;re left with about 34 sociology staff members!</span></span>
+<span id="cb89-18"><a href="webintro.html#cb89-18" aria-hidden="true" tabindex="-1"></a>soc_df <span class="ot">&lt;-</span> soc_df[<span class="sc">!</span>soc_df<span class="sc">$</span>gs_id <span class="sc">==</span> <span class="st">&quot;&quot;</span>, ]</span>
+<span id="cb89-19"><a href="webintro.html#cb89-19" aria-hidden="true" tabindex="-1"></a>soc_df</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
 <table>
 <caption>
@@ -7853,24 +7853,24 @@ KfLALRIAAAAJ
 </table>
 </div>
 <p>It works! So what is left to do is to get the data we already extracted for Jochem (citation, publications, and so forth), but now for all sociology staff. For that, we need a bunch of for loops. Let’s first gather the profiles and publications. We store those in a <code>list()</code> which is an object in which you can store multiple data frames, vectors, matrices, and so forth. This is particularly good for for loops because you can store information that is – at first sight – not necessarily compatible. For instance, matrices of different length. Note that we bind a Google Scholar ID to the publications too which is important to be able match to the <code>soc_df</code> later on.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="webintro.html#cb89-1" aria-hidden="true" tabindex="-1"></a>soc_list_profiles <span class="ot">&lt;-</span> <span class="fu">list</span>()  <span class="co"># first we create an empty list that we then fill up with the for loop</span></span>
-<span id="cb89-2"><a href="webintro.html#cb89-2" aria-hidden="true" tabindex="-1"></a>soc_list_publications <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb89-3"><a href="webintro.html#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-4"><a href="webintro.html#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df)) {</span>
-<span id="cb89-5"><a href="webintro.html#cb89-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-6"><a href="webintro.html#cb89-6" aria-hidden="true" tabindex="-1"></a>    time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
-<span id="cb89-7"><a href="webintro.html#cb89-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(time)</span>
-<span id="cb89-8"><a href="webintro.html#cb89-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-9"><a href="webintro.html#cb89-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># note how you call different elements in a list &#39;[[]]&#39;, fill in the i-th element</span></span>
-<span id="cb89-10"><a href="webintro.html#cb89-10" aria-hidden="true" tabindex="-1"></a>    soc_list_profiles[[i]] <span class="ot">&lt;-</span> <span class="fu">get_profile</span>(soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)])  <span class="co"># Note how we call row i (remember how to call rows in a DF/Matrix) and then the associated scholar id</span></span>
-<span id="cb89-11"><a href="webintro.html#cb89-11" aria-hidden="true" tabindex="-1"></a>    soc_list_publications[[i]] <span class="ot">&lt;-</span> <span class="fu">get_publications</span>(soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)])</span>
-<span id="cb89-12"><a href="webintro.html#cb89-12" aria-hidden="true" tabindex="-1"></a>    soc_list_publications[[i]][, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)] <span class="ot">&lt;-</span> soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)]  <span class="co"># note that we again attach an id</span></span>
-<span id="cb89-13"><a href="webintro.html#cb89-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># so both functions here call the entire profile and pubs for an author, based on google</span></span>
-<span id="cb89-14"><a href="webintro.html#cb89-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># scholar ids</span></span>
-<span id="cb89-15"><a href="webintro.html#cb89-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-16"><a href="webintro.html#cb89-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb89-17"><a href="webintro.html#cb89-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice how fast the data blow up! The 34 RU sociology scholars publish ~3000 papers</span></span>
-<span id="cb89-18"><a href="webintro.html#cb89-18" aria-hidden="true" tabindex="-1"></a>soc_df_publications <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(soc_list_publications)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="webintro.html#cb90-1" aria-hidden="true" tabindex="-1"></a>soc_list_profiles <span class="ot">&lt;-</span> <span class="fu">list</span>()  <span class="co"># first we create an empty list that we then fill up with the for loop</span></span>
+<span id="cb90-2"><a href="webintro.html#cb90-2" aria-hidden="true" tabindex="-1"></a>soc_list_publications <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb90-3"><a href="webintro.html#cb90-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-4"><a href="webintro.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df)) {</span>
+<span id="cb90-5"><a href="webintro.html#cb90-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-6"><a href="webintro.html#cb90-6" aria-hidden="true" tabindex="-1"></a>    time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb90-7"><a href="webintro.html#cb90-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(time)</span>
+<span id="cb90-8"><a href="webintro.html#cb90-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-9"><a href="webintro.html#cb90-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># note how you call different elements in a list &#39;[[]]&#39;, fill in the i-th element</span></span>
+<span id="cb90-10"><a href="webintro.html#cb90-10" aria-hidden="true" tabindex="-1"></a>    soc_list_profiles[[i]] <span class="ot">&lt;-</span> <span class="fu">get_profile</span>(soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)])  <span class="co"># Note how we call row i (remember how to call rows in a DF/Matrix) and then the associated scholar id</span></span>
+<span id="cb90-11"><a href="webintro.html#cb90-11" aria-hidden="true" tabindex="-1"></a>    soc_list_publications[[i]] <span class="ot">&lt;-</span> <span class="fu">get_publications</span>(soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)])</span>
+<span id="cb90-12"><a href="webintro.html#cb90-12" aria-hidden="true" tabindex="-1"></a>    soc_list_publications[[i]][, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)] <span class="ot">&lt;-</span> soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)]  <span class="co"># note that we again attach an id</span></span>
+<span id="cb90-13"><a href="webintro.html#cb90-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># so both functions here call the entire profile and pubs for an author, based on google</span></span>
+<span id="cb90-14"><a href="webintro.html#cb90-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># scholar ids</span></span>
+<span id="cb90-15"><a href="webintro.html#cb90-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-16"><a href="webintro.html#cb90-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb90-17"><a href="webintro.html#cb90-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice how fast the data blow up! The 34 RU sociology scholars publish ~3000 papers</span></span>
+<span id="cb90-18"><a href="webintro.html#cb90-18" aria-hidden="true" tabindex="-1"></a>soc_df_publications <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(soc_list_publications)</span></code></pre></div>
 <!---this really goes too fast for students--->
 <!--- this better? -->
 <p>Note how <code>soc_list_profiles</code> contains all Google Scholar profile information in a list of 34 elements. We need to do some relatively involved data handling to attach the Google Scholar profiles in <code>soc_list_profiles</code> to the <code>soc_df</code>. That is, we want some information from <code>soc_list_profiles</code> to be attached to <code>soc_df</code>. Specifically, we want several things we want from the profiles: <code>id</code>, <code>name</code> (as reported on Scholar), <code>affiliation</code>, <code>tot_cites</code>, <code>h_index</code>, <code>i10index</code>, <code>fields</code>, and <code>homepage</code>.</p>
@@ -7883,18 +7883,18 @@ KfLALRIAAAAJ
 <li><pre><code>We then merge it to `soc_df`. So what we end up with is a sociology staff data frame with much more information than before: citations, indices, expertise listed on Google Scholar, and so forth.</code></pre></li>
 </ul>
 <p>Note how we can do this at once, or all separately (I commented out the code that does the same as the next three rows). Which has your preference?</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="webintro.html#cb95-1" aria-hidden="true" tabindex="-1"></a>soc_profiles_df <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb95-2"><a href="webintro.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(soc_list_profiles)) {</span>
-<span id="cb95-3"><a href="webintro.html#cb95-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># soc_profiles_df[[i]] &lt;- data.frame(t(unlist(soc_list_profiles[[i]][1:8]))) #some annyoing</span></span>
-<span id="cb95-4"><a href="webintro.html#cb95-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># data handling</span></span>
-<span id="cb95-5"><a href="webintro.html#cb95-5" aria-hidden="true" tabindex="-1"></a>    soc_profiles_df[[i]] <span class="ot">&lt;-</span> <span class="fu">unlist</span>(soc_list_profiles[[i]][<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span>
-<span id="cb95-6"><a href="webintro.html#cb95-6" aria-hidden="true" tabindex="-1"></a>    soc_profiles_df[[i]] <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(soc_profiles_df[[i]])</span>
-<span id="cb95-7"><a href="webintro.html#cb95-7" aria-hidden="true" tabindex="-1"></a>    soc_profiles_df[[i]] <span class="ot">&lt;-</span> <span class="fu">t</span>(soc_profiles_df[[i]])</span>
-<span id="cb95-8"><a href="webintro.html#cb95-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-9"><a href="webintro.html#cb95-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb95-10"><a href="webintro.html#cb95-10" aria-hidden="true" tabindex="-1"></a>soc_profiles_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(soc_profiles_df)</span>
-<span id="cb95-11"><a href="webintro.html#cb95-11" aria-hidden="true" tabindex="-1"></a>soc_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(soc_df, soc_profiles_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="at">gs_id =</span> <span class="st">&quot;id&quot;</span>))  <span class="co"># merge data with soc_df</span></span>
-<span id="cb95-12"><a href="webintro.html#cb95-12" aria-hidden="true" tabindex="-1"></a>soc_df  <span class="co"># notice all the new information we were able to get from the scholar profiles!</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="webintro.html#cb96-1" aria-hidden="true" tabindex="-1"></a>soc_profiles_df <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb96-2"><a href="webintro.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(soc_list_profiles)) {</span>
+<span id="cb96-3"><a href="webintro.html#cb96-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># soc_profiles_df[[i]] &lt;- data.frame(t(unlist(soc_list_profiles[[i]][1:8]))) #some annyoing</span></span>
+<span id="cb96-4"><a href="webintro.html#cb96-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># data handling</span></span>
+<span id="cb96-5"><a href="webintro.html#cb96-5" aria-hidden="true" tabindex="-1"></a>    soc_profiles_df[[i]] <span class="ot">&lt;-</span> <span class="fu">unlist</span>(soc_list_profiles[[i]][<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span>
+<span id="cb96-6"><a href="webintro.html#cb96-6" aria-hidden="true" tabindex="-1"></a>    soc_profiles_df[[i]] <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(soc_profiles_df[[i]])</span>
+<span id="cb96-7"><a href="webintro.html#cb96-7" aria-hidden="true" tabindex="-1"></a>    soc_profiles_df[[i]] <span class="ot">&lt;-</span> <span class="fu">t</span>(soc_profiles_df[[i]])</span>
+<span id="cb96-8"><a href="webintro.html#cb96-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-9"><a href="webintro.html#cb96-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb96-10"><a href="webintro.html#cb96-10" aria-hidden="true" tabindex="-1"></a>soc_profiles_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(soc_profiles_df)</span>
+<span id="cb96-11"><a href="webintro.html#cb96-11" aria-hidden="true" tabindex="-1"></a>soc_df <span class="ot">&lt;-</span> <span class="fu">left_join</span>(soc_df, soc_profiles_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="at">gs_id =</span> <span class="st">&quot;id&quot;</span>))  <span class="co"># merge data with soc_df</span></span>
+<span id="cb96-12"><a href="webintro.html#cb96-12" aria-hidden="true" tabindex="-1"></a>soc_df  <span class="co"># notice all the new information we were able to get from the scholar profiles!</span></span></code></pre></div>
 <p>Let’s see whether we</p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
 <table>
@@ -9344,23 +9344,23 @@ NA
 </table>
 </div>
 <p>So we have papers and profiles. Remember how we got Jochem’s citation history? We want that for each staff member too. Yet again, we use a for loop. We first store the citation history in a list. But notice the <code>if</code> statement! We only continue the for loop for that i-th element if some statement is <code>TRUE</code>. Here, we attempt to find out if the i-th element, the citation history of the staff member, has a length than is larger than 0. Some staff members are never cited (which happens all the time if papers are only just published), and so for these staff members that is no list element that contains information. We only attach a Google Scholar ID for those staff members that are cited at least once. We bind the rows again and end up with a data frame in <em>long format</em>: three columns with years, cites, and Google Scholar ID. Therefore, there is more than one row per staff member.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="webintro.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get citation history of a scholar</span></span>
-<span id="cb96-2"><a href="webintro.html#cb96-2" aria-hidden="true" tabindex="-1"></a>soc_staff_cit <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb96-3"><a href="webintro.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df)) {</span>
-<span id="cb96-4"><a href="webintro.html#cb96-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-5"><a href="webintro.html#cb96-5" aria-hidden="true" tabindex="-1"></a>    soc_staff_cit[[i]] <span class="ot">&lt;-</span> <span class="fu">get_citation_history</span>(soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)])</span>
-<span id="cb96-6"><a href="webintro.html#cb96-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-7"><a href="webintro.html#cb96-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">nrow</span>(soc_staff_cit[[i]]) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb96-8"><a href="webintro.html#cb96-8" aria-hidden="true" tabindex="-1"></a>        soc_staff_cit[[i]][, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)] <span class="ot">&lt;-</span> soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)]  <span class="co"># again attach the gs_id as third column</span></span>
-<span id="cb96-9"><a href="webintro.html#cb96-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb96-10"><a href="webintro.html#cb96-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb96-11"><a href="webintro.html#cb96-11" aria-hidden="true" tabindex="-1"></a>soc_staff_cit <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(soc_staff_cit)</span>
-<span id="cb96-12"><a href="webintro.html#cb96-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(soc_staff_cit)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;gs_id&quot;</span></span></code></pre></div>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="webintro.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note how we use some complicated code to make a nice table you can scroll through in this book,</span></span>
-<span id="cb97-2"><a href="webintro.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="co"># you could just write &#39;soc_staff_cit&#39; in your own code Also, no names yet! You could merge the</span></span>
-<span id="cb97-3"><a href="webintro.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co"># names of scholars to gs_id here.</span></span>
-<span id="cb97-4"><a href="webintro.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scroll_box</span>(knitr<span class="sc">::</span><span class="fu">kable</span>(soc_staff_cit, <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">caption =</span> <span class="st">&quot;Sociology staff citation by time&quot;</span>),</span>
-<span id="cb97-5"><a href="webintro.html#cb97-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="st">&quot;300px&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="webintro.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get citation history of a scholar</span></span>
+<span id="cb97-2"><a href="webintro.html#cb97-2" aria-hidden="true" tabindex="-1"></a>soc_staff_cit <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb97-3"><a href="webintro.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df)) {</span>
+<span id="cb97-4"><a href="webintro.html#cb97-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-5"><a href="webintro.html#cb97-5" aria-hidden="true" tabindex="-1"></a>    soc_staff_cit[[i]] <span class="ot">&lt;-</span> <span class="fu">get_citation_history</span>(soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)])</span>
+<span id="cb97-6"><a href="webintro.html#cb97-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-7"><a href="webintro.html#cb97-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">nrow</span>(soc_staff_cit[[i]]) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb97-8"><a href="webintro.html#cb97-8" aria-hidden="true" tabindex="-1"></a>        soc_staff_cit[[i]][, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)] <span class="ot">&lt;-</span> soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)]  <span class="co"># again attach the gs_id as third column</span></span>
+<span id="cb97-9"><a href="webintro.html#cb97-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb97-10"><a href="webintro.html#cb97-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb97-11"><a href="webintro.html#cb97-11" aria-hidden="true" tabindex="-1"></a>soc_staff_cit <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(soc_staff_cit)</span>
+<span id="cb97-12"><a href="webintro.html#cb97-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(soc_staff_cit)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">&quot;gs_id&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="webintro.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note how we use some complicated code to make a nice table you can scroll through in this book,</span></span>
+<span id="cb98-2"><a href="webintro.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="co"># you could just write &#39;soc_staff_cit&#39; in your own code Also, no names yet! You could merge the</span></span>
+<span id="cb98-3"><a href="webintro.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="co"># names of scholars to gs_id here.</span></span>
+<span id="cb98-4"><a href="webintro.html#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scroll_box</span>(knitr<span class="sc">::</span><span class="fu">kable</span>(soc_staff_cit, <span class="at">booktabs =</span> <span class="cn">TRUE</span>, <span class="at">caption =</span> <span class="st">&quot;Sociology staff citation by time&quot;</span>),</span>
+<span id="cb98-5"><a href="webintro.html#cb98-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">height =</span> <span class="st">&quot;300px&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
 <table>
 <caption>
@@ -13641,61 +13641,61 @@ KfLALRIAAAAJ
 </table>
 </div>
 <p>Next, we get the collaborators. Note that on Google Scholar, people add co-authors manually. Unfortunately, we can only scrape the first <em>twenty</em> with the <code>scholar</code> package. Some scholars have more co-authors listed, but for that you would need to “click” on “VIEW ALL” on Google Scholar. The <code>scholar</code> package does not do that for us. However, you could take a look at the underlying code of <code>get_coathors</code> and attempts to do that yourself. Because scholars add their own co-authors, it is a directed tie. For instance, I could list Albert Einstein as my co-author, but Albert probably doesn’t reciprocate that tie. The for loop should be clear by now. We get collaborators for a given Google Scholar ID, 20 of them, with a depth of at most 1. We then <code>bind_rows</code> again, and remove those staff members that did not list any collaborator.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="webintro.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;addfiles/fcollabs.R&quot;</span>)  <span class="co"># Put the function_fix.R in your working directory, we need this first line.</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="webintro.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;addfiles/fcollabs.R&quot;</span>)  <span class="co"># Put the function_fix.R in your working directory, we need this first line.</span></span></code></pre></div>
 <!--- fixed the overlap issue, hier verder --->
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="webintro.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first the soc collaborators note how we already build a function (fcollabs()) for you you need to</span></span>
-<span id="cb99-2"><a href="webintro.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="co"># input a google scholar id and a 1 (if you want to find collabs) or 0 (only extracting names)</span></span>
-<span id="cb99-3"><a href="webintro.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fcollabs --&gt; you can check it out if you&#39;re interested</span></span>
-<span id="cb99-4"><a href="webintro.html#cb99-4" aria-hidden="true" tabindex="-1"></a>soc_collabs <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb99-5"><a href="webintro.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df)) {</span>
-<span id="cb99-6"><a href="webintro.html#cb99-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-7"><a href="webintro.html#cb99-7" aria-hidden="true" tabindex="-1"></a>    time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
-<span id="cb99-8"><a href="webintro.html#cb99-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(time)</span>
-<span id="cb99-9"><a href="webintro.html#cb99-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-10"><a href="webintro.html#cb99-10" aria-hidden="true" tabindex="-1"></a>    soc_collabs[[i]] <span class="ot">&lt;-</span> <span class="fu">fcollabs</span>(soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)], <span class="dv">1</span>)</span>
-<span id="cb99-11"><a href="webintro.html#cb99-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-12"><a href="webintro.html#cb99-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb99-13"><a href="webintro.html#cb99-13" aria-hidden="true" tabindex="-1"></a>soc_collabs <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(soc_collabs)  <span class="co"># bind rows, get the unique ones!</span></span>
-<span id="cb99-14"><a href="webintro.html#cb99-14" aria-hidden="true" tabindex="-1"></a>soc_collabs_unique <span class="ot">&lt;-</span> <span class="fu">unique</span>(soc_collabs[, <span class="dv">3</span>])  <span class="co"># so 149 unique collaborators for RU staff?</span></span>
-<span id="cb99-15"><a href="webintro.html#cb99-15" aria-hidden="true" tabindex="-1"></a>soc_collabs_unique <span class="ot">&lt;-</span> soc_collabs_unique[<span class="sc">!</span><span class="fu">is.na</span>(soc_collabs_unique)]</span>
-<span id="cb99-16"><a href="webintro.html#cb99-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-17"><a href="webintro.html#cb99-17" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------</span></span>
-<span id="cb99-18"><a href="webintro.html#cb99-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-19"><a href="webintro.html#cb99-19" aria-hidden="true" tabindex="-1"></a><span class="co"># then the names of those collaborators plus THEIR collaborators understand that we don&#39;t have</span></span>
-<span id="cb99-20"><a href="webintro.html#cb99-20" aria-hidden="true" tabindex="-1"></a><span class="co"># names of them yet from the code above?</span></span>
-<span id="cb99-21"><a href="webintro.html#cb99-21" aria-hidden="true" tabindex="-1"></a>collabs_1deep <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb99-22"><a href="webintro.html#cb99-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(soc_collabs_unique)) {</span>
-<span id="cb99-23"><a href="webintro.html#cb99-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-24"><a href="webintro.html#cb99-24" aria-hidden="true" tabindex="-1"></a>    time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
-<span id="cb99-25"><a href="webintro.html#cb99-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(time)</span>
-<span id="cb99-26"><a href="webintro.html#cb99-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-27"><a href="webintro.html#cb99-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span>soc_collabs_unique[i] <span class="sc">%in%</span> soc_df<span class="sc">$</span>gs_id) {</span>
-<span id="cb99-28"><a href="webintro.html#cb99-28" aria-hidden="true" tabindex="-1"></a>        collabs_1deep[[i]] <span class="ot">&lt;-</span> <span class="fu">fcollabs</span>(soc_collabs_unique[i], <span class="dv">1</span>)</span>
-<span id="cb99-29"><a href="webintro.html#cb99-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-30"><a href="webintro.html#cb99-30" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb99-31"><a href="webintro.html#cb99-31" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb99-32"><a href="webintro.html#cb99-32" aria-hidden="true" tabindex="-1"></a>collabs_1deep <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(collabs_1deep)</span>
-<span id="cb99-33"><a href="webintro.html#cb99-33" aria-hidden="true" tabindex="-1"></a>collabs_1deep_unique <span class="ot">&lt;-</span> <span class="fu">unique</span>(collabs_1deep[, <span class="dv">1</span>])</span>
-<span id="cb99-34"><a href="webintro.html#cb99-34" aria-hidden="true" tabindex="-1"></a>collabs_1deep_unique <span class="ot">&lt;-</span> collabs_1deep_unique[<span class="sc">!</span><span class="fu">is.na</span>(collabs_1deep_unique)]</span>
-<span id="cb99-35"><a href="webintro.html#cb99-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-36"><a href="webintro.html#cb99-36" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------</span></span>
-<span id="cb99-37"><a href="webintro.html#cb99-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-38"><a href="webintro.html#cb99-38" aria-hidden="true" tabindex="-1"></a><span class="co"># names of the collaborators of collaborators</span></span>
-<span id="cb99-39"><a href="webintro.html#cb99-39" aria-hidden="true" tabindex="-1"></a>collabs_1deep_names <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb99-40"><a href="webintro.html#cb99-40" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(collabs_1deep_unique)) {</span>
-<span id="cb99-41"><a href="webintro.html#cb99-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-42"><a href="webintro.html#cb99-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span>collabs_1deep_unique[i] <span class="sc">%in%</span> <span class="fu">unique</span>(collabs_1deep[, <span class="dv">2</span>]) <span class="sc">&amp;</span> <span class="sc">!</span>collabs_1deep_unique[i] <span class="sc">%in%</span> soc_df<span class="sc">$</span>gs_id) {</span>
-<span id="cb99-43"><a href="webintro.html#cb99-43" aria-hidden="true" tabindex="-1"></a>        <span class="co"># note the if not in...and in...</span></span>
-<span id="cb99-44"><a href="webintro.html#cb99-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-45"><a href="webintro.html#cb99-45" aria-hidden="true" tabindex="-1"></a>        time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
-<span id="cb99-46"><a href="webintro.html#cb99-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">Sys.sleep</span>(time)</span>
-<span id="cb99-47"><a href="webintro.html#cb99-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-48"><a href="webintro.html#cb99-48" aria-hidden="true" tabindex="-1"></a>        collabs_1deep_names[[i]] <span class="ot">&lt;-</span> <span class="fu">fcollabs</span>(collabs_1deep_unique[i], <span class="dv">0</span>)</span>
-<span id="cb99-49"><a href="webintro.html#cb99-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-50"><a href="webintro.html#cb99-50" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb99-51"><a href="webintro.html#cb99-51" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb99-52"><a href="webintro.html#cb99-52" aria-hidden="true" tabindex="-1"></a>collabs_1deep_names <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(collabs_1deep_names)</span></code></pre></div>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="webintro.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scroll_box(knitr::kable(soc_df_collabs, booktabs = TRUE) , height=&#39;300px&#39;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="webintro.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first the soc collaborators note how we already build a function (fcollabs()) for you you need to</span></span>
+<span id="cb100-2"><a href="webintro.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="co"># input a google scholar id and a 1 (if you want to find collabs) or 0 (only extracting names)</span></span>
+<span id="cb100-3"><a href="webintro.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fcollabs --&gt; you can check it out if you&#39;re interested</span></span>
+<span id="cb100-4"><a href="webintro.html#cb100-4" aria-hidden="true" tabindex="-1"></a>soc_collabs <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb100-5"><a href="webintro.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(soc_df)) {</span>
+<span id="cb100-6"><a href="webintro.html#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-7"><a href="webintro.html#cb100-7" aria-hidden="true" tabindex="-1"></a>    time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb100-8"><a href="webintro.html#cb100-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(time)</span>
+<span id="cb100-9"><a href="webintro.html#cb100-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-10"><a href="webintro.html#cb100-10" aria-hidden="true" tabindex="-1"></a>    soc_collabs[[i]] <span class="ot">&lt;-</span> <span class="fu">fcollabs</span>(soc_df[i, <span class="fu">c</span>(<span class="st">&quot;gs_id&quot;</span>)], <span class="dv">1</span>)</span>
+<span id="cb100-11"><a href="webintro.html#cb100-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-12"><a href="webintro.html#cb100-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb100-13"><a href="webintro.html#cb100-13" aria-hidden="true" tabindex="-1"></a>soc_collabs <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(soc_collabs)  <span class="co"># bind rows, get the unique ones!</span></span>
+<span id="cb100-14"><a href="webintro.html#cb100-14" aria-hidden="true" tabindex="-1"></a>soc_collabs_unique <span class="ot">&lt;-</span> <span class="fu">unique</span>(soc_collabs[, <span class="dv">3</span>])  <span class="co"># so 149 unique collaborators for RU staff?</span></span>
+<span id="cb100-15"><a href="webintro.html#cb100-15" aria-hidden="true" tabindex="-1"></a>soc_collabs_unique <span class="ot">&lt;-</span> soc_collabs_unique[<span class="sc">!</span><span class="fu">is.na</span>(soc_collabs_unique)]</span>
+<span id="cb100-16"><a href="webintro.html#cb100-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-17"><a href="webintro.html#cb100-17" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------</span></span>
+<span id="cb100-18"><a href="webintro.html#cb100-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-19"><a href="webintro.html#cb100-19" aria-hidden="true" tabindex="-1"></a><span class="co"># then the names of those collaborators plus THEIR collaborators understand that we don&#39;t have</span></span>
+<span id="cb100-20"><a href="webintro.html#cb100-20" aria-hidden="true" tabindex="-1"></a><span class="co"># names of them yet from the code above?</span></span>
+<span id="cb100-21"><a href="webintro.html#cb100-21" aria-hidden="true" tabindex="-1"></a>collabs_1deep <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb100-22"><a href="webintro.html#cb100-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(soc_collabs_unique)) {</span>
+<span id="cb100-23"><a href="webintro.html#cb100-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-24"><a href="webintro.html#cb100-24" aria-hidden="true" tabindex="-1"></a>    time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb100-25"><a href="webintro.html#cb100-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(time)</span>
+<span id="cb100-26"><a href="webintro.html#cb100-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-27"><a href="webintro.html#cb100-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span>soc_collabs_unique[i] <span class="sc">%in%</span> soc_df<span class="sc">$</span>gs_id) {</span>
+<span id="cb100-28"><a href="webintro.html#cb100-28" aria-hidden="true" tabindex="-1"></a>        collabs_1deep[[i]] <span class="ot">&lt;-</span> <span class="fu">fcollabs</span>(soc_collabs_unique[i], <span class="dv">1</span>)</span>
+<span id="cb100-29"><a href="webintro.html#cb100-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-30"><a href="webintro.html#cb100-30" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb100-31"><a href="webintro.html#cb100-31" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb100-32"><a href="webintro.html#cb100-32" aria-hidden="true" tabindex="-1"></a>collabs_1deep <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(collabs_1deep)</span>
+<span id="cb100-33"><a href="webintro.html#cb100-33" aria-hidden="true" tabindex="-1"></a>collabs_1deep_unique <span class="ot">&lt;-</span> <span class="fu">unique</span>(collabs_1deep[, <span class="dv">1</span>])</span>
+<span id="cb100-34"><a href="webintro.html#cb100-34" aria-hidden="true" tabindex="-1"></a>collabs_1deep_unique <span class="ot">&lt;-</span> collabs_1deep_unique[<span class="sc">!</span><span class="fu">is.na</span>(collabs_1deep_unique)]</span>
+<span id="cb100-35"><a href="webintro.html#cb100-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-36"><a href="webintro.html#cb100-36" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------------------------------------------------</span></span>
+<span id="cb100-37"><a href="webintro.html#cb100-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-38"><a href="webintro.html#cb100-38" aria-hidden="true" tabindex="-1"></a><span class="co"># names of the collaborators of collaborators</span></span>
+<span id="cb100-39"><a href="webintro.html#cb100-39" aria-hidden="true" tabindex="-1"></a>collabs_1deep_names <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb100-40"><a href="webintro.html#cb100-40" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(collabs_1deep_unique)) {</span>
+<span id="cb100-41"><a href="webintro.html#cb100-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-42"><a href="webintro.html#cb100-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span>collabs_1deep_unique[i] <span class="sc">%in%</span> <span class="fu">unique</span>(collabs_1deep[, <span class="dv">2</span>]) <span class="sc">&amp;</span> <span class="sc">!</span>collabs_1deep_unique[i] <span class="sc">%in%</span> soc_df<span class="sc">$</span>gs_id) {</span>
+<span id="cb100-43"><a href="webintro.html#cb100-43" aria-hidden="true" tabindex="-1"></a>        <span class="co"># note the if not in...and in...</span></span>
+<span id="cb100-44"><a href="webintro.html#cb100-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-45"><a href="webintro.html#cb100-45" aria-hidden="true" tabindex="-1"></a>        time <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb100-46"><a href="webintro.html#cb100-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">Sys.sleep</span>(time)</span>
+<span id="cb100-47"><a href="webintro.html#cb100-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-48"><a href="webintro.html#cb100-48" aria-hidden="true" tabindex="-1"></a>        collabs_1deep_names[[i]] <span class="ot">&lt;-</span> <span class="fu">fcollabs</span>(collabs_1deep_unique[i], <span class="dv">0</span>)</span>
+<span id="cb100-49"><a href="webintro.html#cb100-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-50"><a href="webintro.html#cb100-50" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb100-51"><a href="webintro.html#cb100-51" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb100-52"><a href="webintro.html#cb100-52" aria-hidden="true" tabindex="-1"></a>collabs_1deep_names <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(collabs_1deep_names)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="webintro.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scroll_box(knitr::kable(soc_df_collabs, booktabs = TRUE) , height=&#39;300px&#39;)</span></span></code></pre></div>
 <!---
 Finally, we want to get the *article* citation history! Notice how we got like ~3K articles? For all of those articles we need in each year how often they were cited. That means a lot of queries to Google Scholar. We need to prevent that we hit the so-called *rate-limit*. This means that our IP will be blocked for requesting access to a webpage because we did it too often too quickly. Luckily, we can randomize our calls by time in a for loop! Do you understand the code below? (Hint: the code annotation kinda gives it away.)
 
@@ -13737,12 +13737,12 @@ soc_art_cit <- bind_rows(soc_art_cit)
 --->
 <p>Let’s save the data we may use in for the next tutorial.</p>
 <!---I don't see the data in the addfiles folder yet--->
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="webintro.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save the DFs thus far</span></span>
-<span id="cb101-2"><a href="webintro.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(soc_df_publications, <span class="st">&quot;addfiles/soc_df_publications.rda&quot;</span>)</span>
-<span id="cb101-3"><a href="webintro.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(soc_df, <span class="st">&quot;addfiles/soc_df.rda&quot;</span>)</span>
-<span id="cb101-4"><a href="webintro.html#cb101-4" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(soc_df_collabs, <span class="st">&quot;addfiles/soc_df_collabs.rda&quot;</span>)</span>
-<span id="cb101-5"><a href="webintro.html#cb101-5" aria-hidden="true" tabindex="-1"></a><span class="co"># save(soc_art_cit, &#39;addfiles/soc_art_cit.rda&#39;)) Notice how we did this one for you.</span></span>
-<span id="cb101-6"><a href="webintro.html#cb101-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(soc_staff_cit, <span class="st">&quot;addfiles/soc_staff_cit.rda&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="webintro.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save the DFs thus far</span></span>
+<span id="cb102-2"><a href="webintro.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(soc_df_publications, <span class="st">&quot;addfiles/soc_df_publications.rda&quot;</span>)</span>
+<span id="cb102-3"><a href="webintro.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(soc_df, <span class="st">&quot;addfiles/soc_df.rda&quot;</span>)</span>
+<span id="cb102-4"><a href="webintro.html#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(soc_df_collabs, <span class="st">&quot;addfiles/soc_df_collabs.rda&quot;</span>)</span>
+<span id="cb102-5"><a href="webintro.html#cb102-5" aria-hidden="true" tabindex="-1"></a><span class="co"># save(soc_art_cit, &#39;addfiles/soc_art_cit.rda&#39;)) Notice how we did this one for you.</span></span>
+<span id="cb102-6"><a href="webintro.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(soc_staff_cit, <span class="st">&quot;addfiles/soc_staff_cit.rda&quot;</span>)</span></code></pre></div>
 <!---if students did not succeed, give the links to the data in our repository --->
 <p>By just eyeballing the data there are two suspicous outliers: Muller and Firat and Franken have suspiciously many citations for PhD candidates. By looking up their Google Scholar profiles, we find that both have the wrong Google Scholar ID attached to them (common names error). So we deleted them from the data. The rest seems to have worked fine: less than 5% data corruption in this webscraping effort as there were 45 records in sociology staff directory.</p>
 <p>Nicely done, this was the webscraping tutorial for bibliometric data. We gathered useful information about sociology staff:<br />
@@ -13754,6 +13754,7 @@ soc_art_cit <- bind_rows(soc_art_cit)
 - 5 citation history of scholars themselves (cites per year)<br />
 </p>
 <p><strong>With this, you can move on to some potentially very cool network visualization!</strong></p>
+<hr />
 
 </div>
 </div>
