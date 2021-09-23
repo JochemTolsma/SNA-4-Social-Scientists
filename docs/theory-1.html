@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Theory | SNASS</title>
+  <meta name="description" content="Chapter 5 Theory | SNASS" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Theory | SNASS" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Theory | SNASS" />
+  
+  
+  
+
+
+
+<meta name="date" content="2021-09-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-1.html"/>
+<link rel="next" href="methods-1.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SNASS</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-authors"><i class="fa fa-check"></i>About the authors</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#social-network-perspective"><i class="fa fa-check"></i><b>1.2</b> Social Network Perspective</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#aim"><i class="fa fa-check"></i><b>1.3</b> Aim</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#structure"><i class="fa fa-check"></i><b>1.4</b> Structure</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#types"><i class="fa fa-check"></i><b>1.4.1</b> Type of Social Network</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#causes-and-consequences"><i class="fa fa-check"></i><b>1.4.2</b> Causes and Consequences</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#implications"><i class="fa fa-check"></i><b>1.4.3</b> Implications</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#what-makes-this-course-stand-out"><i class="fa fa-check"></i><b>1.5</b> What makes this course stand out?</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#assignment"><i class="fa fa-check"></i><b>1.6</b> Assignment</a></li>
+</ul></li>
+<li class="part"><span><b>I DYADS</b></span></li>
+<li class="chapter" data-level="2" data-path="theory.html"><a href="theory.html"><i class="fa fa-check"></i><b>2</b> Theory</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#network-structures-dyad"><i class="fa fa-check"></i><b>2.1</b> Network structures (DYAD)</a></li>
+<li class="chapter" data-level="2.2" data-path="theory.html"><a href="theory.html#mm"><i class="fa fa-check"></i><b>2.2</b> Causes of dyads</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="theory.html"><a href="theory.html#GTF"><i class="fa fa-check"></i><b>2.2.1</b> General Theoretical Framework</a></li>
+<li class="chapter" data-level="2.2.2" data-path="theory.html"><a href="theory.html#social-context-effects"><i class="fa fa-check"></i><b>2.2.2</b> Social context effects</a></li>
+<li class="chapter" data-level="2.2.3" data-path="theory.html"><a href="theory.html#the-special-role-of-restrictions"><i class="fa fa-check"></i><b>2.2.3</b> The special role of restrictions</a></li>
+<li class="chapter" data-level="2.2.4" data-path="theory.html"><a href="theory.html#theory-of-action"><i class="fa fa-check"></i><b>2.2.4</b> Theory of Action</a></li>
+<li class="chapter" data-level="2.2.5" data-path="theory.html"><a href="theory.html#transformation-rules"><i class="fa fa-check"></i><b>2.2.5</b> Transformation rules</a></li>
+<li class="chapter" data-level="2.2.6" data-path="theory.html"><a href="theory.html#agent-based-modelling"><i class="fa fa-check"></i><b>2.2.6</b> Agent Based Modelling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="theory.html"><a href="theory.html#dt"><i class="fa fa-check"></i><b>2.3</b> Consequences of dyads</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="theory.html"><a href="theory.html#homophily"><i class="fa fa-check"></i><b>2.3.1</b> Homophily</a></li>
+<li class="chapter" data-level="2.3.2" data-path="theory.html"><a href="theory.html#influence"><i class="fa fa-check"></i><b>2.3.2</b> Influence mechanisms</a></li>
+<li class="chapter" data-level="2.3.3" data-path="theory.html"><a href="theory.html#polarization"><i class="fa fa-check"></i><b>2.3.3</b> Polarization</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="theory.html"><a href="theory.html#assignment-1"><i class="fa fa-check"></i><b>2.4</b> Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#causes"><i class="fa fa-check"></i><b>3.1</b> Causes</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="methods.html"><a href="methods.html#OR"><i class="fa fa-check"></i><b>3.1.1</b> Odds Ratio</a></li>
+<li class="chapter" data-level="3.1.2" data-path="methods.html"><a href="methods.html#LLM"><i class="fa fa-check"></i><b>3.1.2</b> Loglinear Model</a></li>
+<li class="chapter" data-level="3.1.3" data-path="methods.html"><a href="methods.html#LM"><i class="fa fa-check"></i><b>3.1.3</b> Conditional multinomial logit model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#consequences"><i class="fa fa-check"></i><b>3.2</b> Consequences</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#research-questions"><i class="fa fa-check"></i><b>3.3</b> Research questions</a></li>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#data"><i class="fa fa-check"></i><b>3.4</b> Data</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="methods.html"><a href="methods.html#variables"><i class="fa fa-check"></i><b>3.4.1</b> Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#descriptives"><i class="fa fa-check"></i><b>3.5</b> Descriptives</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="methods.html"><a href="methods.html#preperation"><i class="fa fa-check"></i><b>3.5.1</b> Preperation</a></li>
+<li class="chapter" data-level="3.5.2" data-path="methods.html"><a href="methods.html#opinion-homophily-over-within-time"><i class="fa fa-check"></i><b>3.5.2</b> Opinion homophily over <em>within-time</em></a></li>
+<li class="chapter" data-level="3.5.3" data-path="methods.html"><a href="methods.html#distinguishing-period-trends-from-lifecourse-trends"><i class="fa fa-check"></i><b>3.5.3</b> Distinguishing period trends from lifecourse trends</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#analysis"><i class="fa fa-check"></i><b>3.6</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="methods.html"><a href="methods.html#preperation-1"><i class="fa fa-check"></i><b>3.6.1</b> Preperation</a></li>
+<li class="chapter" data-level="3.6.2" data-path="methods.html"><a href="methods.html#modelling-strategy"><i class="fa fa-check"></i><b>3.6.2</b> Modelling strategy</a></li>
+<li class="chapter" data-level="3.6.3" data-path="methods.html"><a href="methods.html#robustness"><i class="fa fa-check"></i><b>3.6.3</b> Robustness</a></li>
+<li class="chapter" data-level="3.6.4" data-path="methods.html"><a href="methods.html#results-hypo1"><i class="fa fa-check"></i><b>3.6.4</b> Results hypo1</a></li>
+<li class="chapter" data-level="3.6.5" data-path="methods.html"><a href="methods.html#summary-results-hypo1"><i class="fa fa-check"></i><b>3.6.5</b> Summary results hypo1</a></li>
+<li class="chapter" data-level="3.6.6" data-path="methods.html"><a href="methods.html#conclusion-hypo1"><i class="fa fa-check"></i><b>3.6.6</b> Conclusion hypo1</a></li>
+<li class="chapter" data-level="3.6.7" data-path="methods.html"><a href="methods.html#results-hypo2"><i class="fa fa-check"></i><b>3.6.7</b> Results hypo2</a></li>
+<li class="chapter" data-level="3.6.8" data-path="methods.html"><a href="methods.html#summary-results-hypo2"><i class="fa fa-check"></i><b>3.6.8</b> Summary results hypo2</a></li>
+<li class="chapter" data-level="3.6.9" data-path="methods.html"><a href="methods.html#conclusion-hypo2"><i class="fa fa-check"></i><b>3.6.9</b> Conclusion hypo2</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#assignment-2"><i class="fa fa-check"></i><b>3.7</b> Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i><b>4</b> Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-1.html"><a href="data-1.html#sampling"><i class="fa fa-check"></i><b>4.1</b> Sampling</a></li>
+<li class="chapter" data-level="4.2" data-path="data-1.html"><a href="data-1.html#ethical-considerations"><i class="fa fa-check"></i><b>4.2</b> Ethical considerations</a></li>
+<li class="chapter" data-level="4.3" data-path="data-1.html"><a href="data-1.html#measurement"><i class="fa fa-check"></i><b>4.3</b> Measurement</a></li>
+</ul></li>
+<li class="part"><span><b>II EGONETS</b></span></li>
+<li class="chapter" data-level="5" data-path="theory-1.html"><a href="theory-1.html"><i class="fa fa-check"></i><b>5</b> Theory</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="theory-1.html"><a href="theory-1.html#triad"><i class="fa fa-check"></i><b>5.1</b> Network Structures (TRIAD)</a></li>
+<li class="chapter" data-level="5.2" data-path="theory-1.html"><a href="theory-1.html#type-of-explanations"><i class="fa fa-check"></i><b>5.2</b> Type of explanations</a></li>
+<li class="chapter" data-level="5.3" data-path="theory-1.html"><a href="theory-1.html#causes-1"><i class="fa fa-check"></i><b>5.3</b> Causes</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="theory-1.html"><a href="theory-1.html#size"><i class="fa fa-check"></i><b>5.3.1</b> Size</a></li>
+<li class="chapter" data-level="5.3.2" data-path="theory-1.html"><a href="theory-1.html#composition"><i class="fa fa-check"></i><b>5.3.2</b> Composition</a></li>
+<li class="chapter" data-level="5.3.3" data-path="theory-1.html"><a href="theory-1.html#structure-1"><i class="fa fa-check"></i><b>5.3.3</b> Structure</a></li>
+<li class="chapter" data-level="5.3.4" data-path="theory-1.html"><a href="theory-1.html#stability"><i class="fa fa-check"></i><b>5.3.4</b> Stability</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="theory-1.html"><a href="theory-1.html#consequences-1"><i class="fa fa-check"></i><b>5.4</b> Consequences</a></li>
+<li class="chapter" data-level="5.5" data-path="theory-1.html"><a href="theory-1.html#assignment-3"><i class="fa fa-check"></i><b>5.5</b> Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="methods-1.html"><a href="methods-1.html"><i class="fa fa-check"></i><b>6</b> Methods</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="methods-1.html"><a href="methods-1.html#causes-2"><i class="fa fa-check"></i><b>6.1</b> Causes</a></li>
+<li class="chapter" data-level="6.2" data-path="methods-1.html"><a href="methods-1.html#consequences-2"><i class="fa fa-check"></i><b>6.2</b> Consequences</a></li>
+<li class="chapter" data-level="6.3" data-path="methods-1.html"><a href="methods-1.html#rq"><i class="fa fa-check"></i><b>6.3</b> Research questions</a></li>
+<li class="chapter" data-level="6.4" data-path="methods-1.html"><a href="methods-1.html#data-2"><i class="fa fa-check"></i><b>6.4</b> Data</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="methods-1.html"><a href="methods-1.html#variables-1"><i class="fa fa-check"></i><b>6.4.1</b> Variables</a></li>
+<li class="chapter" data-level="6.4.2" data-path="methods-1.html"><a href="methods-1.html#preperation-2"><i class="fa fa-check"></i><b>6.4.2</b> Preperation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="methods-1.html"><a href="methods-1.html#disaggregation-method"><i class="fa fa-check"></i><b>6.5</b> Disaggregation method</a></li>
+<li class="chapter" data-level="6.6" data-path="methods-1.html"><a href="methods-1.html#aggregation-method"><i class="fa fa-check"></i><b>6.6</b> Aggregation method</a></li>
+<li class="chapter" data-level="6.7" data-path="methods-1.html"><a href="methods-1.html#micro-macro-model"><i class="fa fa-check"></i><b>6.7</b> Micro-macro model</a></li>
+<li class="chapter" data-level="6.8" data-path="methods-1.html"><a href="methods-1.html#random-intercept-cross-lagged-micro-macro-model-ri-clp-mm"><i class="fa fa-check"></i><b>6.8</b> Random Intercept Cross-Lagged Micro-Macro Model RI-CLP-MM</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="methods-1.html"><a href="methods-1.html#measurement-model"><i class="fa fa-check"></i><b>6.8.1</b> Measurement model</a></li>
+<li class="chapter" data-level="6.8.2" data-path="methods-1.html"><a href="methods-1.html#the-structural-model"><i class="fa fa-check"></i><b>6.8.2</b> The structural model</a></li>
+<li class="chapter" data-level="6.8.3" data-path="methods-1.html"><a href="methods-1.html#include-egos-educational-level"><i class="fa fa-check"></i><b>6.8.3</b> Include ego’s educational level</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="methods-1.html"><a href="methods-1.html#assignment-4"><i class="fa fa-check"></i><b>6.9</b> Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-3.html"><a href="data-3.html"><i class="fa fa-check"></i><b>7</b> Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="data-3.html"><a href="data-3.html#sampling-1"><i class="fa fa-check"></i><b>7.1</b> Sampling</a></li>
+<li class="chapter" data-level="7.2" data-path="data-3.html"><a href="data-3.html#ethical-considerations-1"><i class="fa fa-check"></i><b>7.2</b> Ethical considerations</a></li>
+<li class="chapter" data-level="7.3" data-path="data-3.html"><a href="data-3.html#measurement-1"><i class="fa fa-check"></i><b>7.3</b> Measurement</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="data-3.html"><a href="data-3.html#su"><i class="fa fa-check"></i><b>7.3.1</b> Scaling up</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Part 3 SOCIONETS</b></span></li>
+<li class="chapter" data-level="8" data-path="theory-2.html"><a href="theory-2.html"><i class="fa fa-check"></i><b>8</b> Theory</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="theory-2.html"><a href="theory-2.html#causes-3"><i class="fa fa-check"></i><b>8.1</b> Causes</a></li>
+<li class="chapter" data-level="8.2" data-path="theory-2.html"><a href="theory-2.html#consequences-3"><i class="fa fa-check"></i><b>8.2</b> Consequences</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="methods-2.html"><a href="methods-2.html"><i class="fa fa-check"></i><b>9</b> Methods</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="methods-2.html"><a href="methods-2.html#causes-4"><i class="fa fa-check"></i><b>9.1</b> Causes</a></li>
+<li class="chapter" data-level="9.2" data-path="methods-2.html"><a href="methods-2.html#consequences-4"><i class="fa fa-check"></i><b>9.2</b> Consequences</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="data-4.html"><a href="data-4.html"><i class="fa fa-check"></i><b>10</b> Data</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="data-4.html"><a href="data-4.html#sampling-2"><i class="fa fa-check"></i><b>10.1</b> Sampling</a></li>
+<li class="chapter" data-level="10.2" data-path="data-4.html"><a href="data-4.html#ethical-considerations-2"><i class="fa fa-check"></i><b>10.2</b> Ethical considerations</a></li>
+<li class="chapter" data-level="10.3" data-path="data-4.html"><a href="data-4.html#measurement-2"><i class="fa fa-check"></i><b>10.3</b> Measurement</a></li>
+</ul></li>
+<li class="part"><span><b>IV Webscraping</b></span></li>
+<li class="chapter" data-level="11" data-path="webintro.html"><a href="webintro.html"><i class="fa fa-check"></i><b>11</b> Webscraping for Social Scientists</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="webintro.html"><a href="webintro.html#chapter-overview"><i class="fa fa-check"></i><b>11.1</b> Chapter overview</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="webintro.html"><a href="webintro.html#definitions"><i class="fa fa-check"></i><b>11.1.1</b> Definitions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="webintro.html"><a href="webintro.html#promises-and-pitfalls"><i class="fa fa-check"></i><b>11.2</b> Promises and pitfalls</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="webintro.html"><a href="webintro.html#promises"><i class="fa fa-check"></i><b>11.2.1</b> Promises</a></li>
+<li class="chapter" data-level="11.2.2" data-path="webintro.html"><a href="webintro.html#pitfalls"><i class="fa fa-check"></i><b>11.2.2</b> Pitfalls</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="webintro.html"><a href="webintro.html#where-does-this-lead-us"><i class="fa fa-check"></i><b>11.3</b> Where does this lead us?</a></li>
+<li class="chapter" data-level="11.4" data-path="webintro.html"><a href="webintro.html#ethics"><i class="fa fa-check"></i><b>11.4</b> Ethics</a></li>
+<li class="chapter" data-level="11.5" data-path="webintro.html"><a href="webintro.html#webscraping-techniques"><i class="fa fa-check"></i><b>11.5</b> Webscraping techniques</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="webintro.html"><a href="webintro.html#manual"><i class="fa fa-check"></i><b>11.5.1</b> Manual</a></li>
+<li class="chapter" data-level="11.5.2" data-path="webintro.html"><a href="webintro.html#apis"><i class="fa fa-check"></i><b>11.5.2</b> APIs</a></li>
+<li class="chapter" data-level="11.5.3" data-path="webintro.html"><a href="webintro.html#crawling"><i class="fa fa-check"></i><b>11.5.3</b> Crawling</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="webintro.html"><a href="webintro.html#hands-on-webscraping"><i class="fa fa-check"></i><b>11.6</b> Hands-on webscraping</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="webintro.html"><a href="webintro.html#staging-your-script"><i class="fa fa-check"></i><b>11.6.1</b> Staging your script</a></li>
+<li class="chapter" data-level="11.6.2" data-path="webintro.html"><a href="webintro.html#getting-anchor-data"><i class="fa fa-check"></i><b>11.6.2</b> Getting “anchor” data</a></li>
+<li class="chapter" data-level="11.6.3" data-path="webintro.html"><a href="webintro.html#google-scholar-profiles-and-publications"><i class="fa fa-check"></i><b>11.6.3</b> Google Scholar Profiles and Publications</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Network Visualization</b></span></li>
+<li class="chapter" data-level="12" data-path="network-visualization.html"><a href="network-visualization.html"><i class="fa fa-check"></i><b>12</b> Network Visualization</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="network-visualization.html"><a href="network-visualization.html#zacharys-karate-club"><i class="fa fa-check"></i><b>12.1</b> Zachary’s karate club</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="network-visualization.html"><a href="network-visualization.html#descriptive-statistics"><i class="fa fa-check"></i><b>12.1.1</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="12.1.2" data-path="network-visualization.html"><a href="network-visualization.html#dyad-census"><i class="fa fa-check"></i><b>12.1.2</b> dyad-census</a></li>
+<li class="chapter" data-level="12.1.3" data-path="network-visualization.html"><a href="network-visualization.html#triad-census"><i class="fa fa-check"></i><b>12.1.3</b> triad-census</a></li>
+<li class="chapter" data-level="12.1.4" data-path="network-visualization.html"><a href="network-visualization.html#network-visualisation"><i class="fa fa-check"></i><b>12.1.4</b> Network visualisation</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="network-visualization.html"><a href="network-visualization.html#smallworld"><i class="fa fa-check"></i><b>12.2</b> Smallworld</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="network-visualization.html"><a href="network-visualization.html#descriptive-statistics-1"><i class="fa fa-check"></i><b>12.2.1</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="12.2.2" data-path="network-visualization.html"><a href="network-visualization.html#network-visualisation-1"><i class="fa fa-check"></i><b>12.2.2</b> Network visualisation</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="network-visualization.html"><a href="network-visualization.html#twittersphere-in-the-dutch-hop"><i class="fa fa-check"></i><b>12.3</b> Twittersphere in the Dutch HoP</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="tutorial.html"><a href="tutorial.html"><i class="fa fa-check"></i><b>A</b> Introduction to R for SNA</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="tutorial.html"><a href="tutorial.html#preliminary-notes"><i class="fa fa-check"></i><b>A.1</b> Preliminary notes</a></li>
+<li class="chapter" data-level="A.2" data-path="tutorial.html"><a href="tutorial.html#getting-up-and-running"><i class="fa fa-check"></i><b>A.2</b> Getting up and running</a></li>
+<li class="chapter" data-level="A.3" data-path="tutorial.html"><a href="tutorial.html#working-with-rscript"><i class="fa fa-check"></i><b>A.3</b> Working with RScript</a></li>
+<li class="chapter" data-level="A.4" data-path="tutorial.html"><a href="tutorial.html#installing-additional-packages"><i class="fa fa-check"></i><b>A.4</b> Installing additional packages</a></li>
+<li class="chapter" data-level="A.5" data-path="tutorial.html"><a href="tutorial.html#i-dont-understand-the-code"><i class="fa fa-check"></i><b>A.5</b> I don’t understand the code!!</a></li>
+<li class="chapter" data-level="A.6" data-path="tutorial.html"><a href="tutorial.html#reading-in-data-files"><i class="fa fa-check"></i><b>A.6</b> Reading in data files</a></li>
+<li class="chapter" data-level="A.7" data-path="tutorial.html"><a href="tutorial.html#define-missings"><i class="fa fa-check"></i><b>A.7</b> Define missings</a>
+<ul>
+<li class="chapter" data-level="A.7.1" data-path="tutorial.html"><a href="tutorial.html#r-base"><i class="fa fa-check"></i><b>A.7.1</b> R Base</a></li>
+<li class="chapter" data-level="A.7.2" data-path="tutorial.html"><a href="tutorial.html#tidy"><i class="fa fa-check"></i><b>A.7.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.8" data-path="tutorial.html"><a href="tutorial.html#recoding-variables"><i class="fa fa-check"></i><b>A.8</b> Recoding variables</a>
+<ul>
+<li class="chapter" data-level="A.8.1" data-path="tutorial.html"><a href="tutorial.html#r-base-1"><i class="fa fa-check"></i><b>A.8.1</b> R Base</a></li>
+<li class="chapter" data-level="A.8.2" data-path="tutorial.html"><a href="tutorial.html#tidy-1"><i class="fa fa-check"></i><b>A.8.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.9" data-path="tutorial.html"><a href="tutorial.html#means-and-counting-specific-values"><i class="fa fa-check"></i><b>A.9</b> Means and counting specific values</a>
+<ul>
+<li class="chapter" data-level="A.9.1" data-path="tutorial.html"><a href="tutorial.html#r-base-2"><i class="fa fa-check"></i><b>A.9.1</b> R Base</a></li>
+<li class="chapter" data-level="A.9.2" data-path="tutorial.html"><a href="tutorial.html#tidy-2"><i class="fa fa-check"></i><b>A.9.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.10" data-path="tutorial.html"><a href="tutorial.html#merging-data-files"><i class="fa fa-check"></i><b>A.10</b> Merging data files</a>
+<ul>
+<li class="chapter" data-level="A.10.1" data-path="tutorial.html"><a href="tutorial.html#r-base-3"><i class="fa fa-check"></i><b>A.10.1</b> R Base</a></li>
+<li class="chapter" data-level="A.10.2" data-path="tutorial.html"><a href="tutorial.html#tidy-3"><i class="fa fa-check"></i><b>A.10.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.11" data-path="tutorial.html"><a href="tutorial.html#aggregate-data"><i class="fa fa-check"></i><b>A.11</b> Aggregate data</a>
+<ul>
+<li class="chapter" data-level="A.11.1" data-path="tutorial.html"><a href="tutorial.html#r-base-4"><i class="fa fa-check"></i><b>A.11.1</b> R Base</a></li>
+<li class="chapter" data-level="A.11.2" data-path="tutorial.html"><a href="tutorial.html#tidy-4"><i class="fa fa-check"></i><b>A.11.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.12" data-path="tutorial.html"><a href="tutorial.html#missing-values"><i class="fa fa-check"></i><b>A.12</b> Missing values</a>
+<ul>
+<li class="chapter" data-level="A.12.1" data-path="tutorial.html"><a href="tutorial.html#r-base-5"><i class="fa fa-check"></i><b>A.12.1</b> R Base</a></li>
+<li class="chapter" data-level="A.12.2" data-path="tutorial.html"><a href="tutorial.html#tidy-5"><i class="fa fa-check"></i><b>A.12.2</b> Tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="A.13" data-path="tutorial.html"><a href="tutorial.html#very-important-stuff"><i class="fa fa-check"></i><b>A.13</b> Very important stuff!!</a>
+<ul>
+<li class="chapter" data-level="A.13.1" data-path="tutorial.html"><a href="tutorial.html#if-else"><i class="fa fa-check"></i><b>A.13.1</b> if else</a></li>
+<li class="chapter" data-level="A.13.2" data-path="tutorial.html"><a href="tutorial.html#loops"><i class="fa fa-check"></i><b>A.13.2</b> loops</a></li>
+<li class="chapter" data-level="A.13.3" data-path="tutorial.html"><a href="tutorial.html#lists"><i class="fa fa-check"></i><b>A.13.3</b> Lists</a></li>
+<li class="chapter" data-level="A.13.4" data-path="tutorial.html"><a href="tutorial.html#lapplymap-and-do.call"><i class="fa fa-check"></i><b>A.13.4</b> lapply/map and do.call</a></li>
+<li class="chapter" data-level="A.13.5" data-path="tutorial.html"><a href="tutorial.html#functions"><i class="fa fa-check"></i><b>A.13.5</b> functions</a></li>
+</ul></li>
+<li class="chapter" data-level="A.14" data-path="tutorial.html"><a href="tutorial.html#assignment-5"><i class="fa fa-check"></i><b>A.14</b> Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>B</b> Interdependencies</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="variance.html"><a href="variance.html#variance-and-covariance"><i class="fa fa-check"></i><b>B.1</b> Variance and covariance</a>
+<ul>
+<li class="chapter" data-level="B.1.1" data-path="variance.html"><a href="variance.html#want-to-learn-more"><i class="fa fa-check"></i><b>B.1.1</b> Want to learn more?!</a></li>
+</ul></li>
+<li class="chapter" data-level="B.2" data-path="variance.html"><a href="variance.html#intraclass-correlation"><i class="fa fa-check"></i><b>B.2</b> Intraclass correlation</a>
+<ul>
+<li class="chapter" data-level="B.2.1" data-path="variance.html"><a href="variance.html#dyadic-data"><i class="fa fa-check"></i><b>B.2.1</b> Dyadic data</a></li>
+<li class="chapter" data-level="B.2.2" data-path="variance.html"><a href="variance.html#egonet-socionet-data"><i class="fa fa-check"></i><b>B.2.2</b> Egonet / Socionet data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SNASS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="theory-1" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Theory</h1>
+<p>We already introduced egonets in section <a href="intro.html#types">1.4.1</a>. We defined an egonet as the <strong>set of ties surrounding sampled individual units.</strong> <span class="citation">(cf. <a href="#ref-marsden1990" role="doc-biblioref">Marsden 1990</a>)</span>. Thus we have an ego with ties to one or more alters. Suppose that after we have identified the alters of ego, we asked ego the following follow-up question:</p>
+<p class="quote">
+How close are these people to each other?<br />
+1.very close<br />
+2.not close, but not total strangers to each other either<br />
+3.total strangers to each other<br />
+4.I don’t know
+</p>
+<p>In this situation we also have information on ties between ego’s alters and, subsequently, we may observe triads between our alters. In the figure below I have made the <span style="color: #00FF00;">triad green</span>.</p>
+<div class="figure"><span style="display:block;" id="fig:triads"></span>
+<img src="03-Egonets_files/figure-html/triads-1.png" alt="A Triad within an egonet" width="672" />
+<p class="caption">
+Figure 5.1: A Triad within an egonet
+</p>
+</div>
+<p>Let us discuss TRIADS in some more detail first, before we move on with our discussion on Egonets.</p>
+<div id="triad" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Network Structures (TRIAD)</h2>
+<p>Let us start with all possible triad configurations if we have a (binary) undirected tie. See Figure <a href="theory-1.html#fig:ut">5.2</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:ut"></span>
+<img src="Slide7.PNG" alt="undirected triad configurations" width="30%" />
+<p class="caption">
+Figure 5.2: undirected triad configurations
+</p>
+</div>
+<p>We observe an <em>unconnected</em> triad, a triad with a <em>connected pair</em>, an <em>open triad</em> and a <em>closed triad</em>. The open triad is also called a ‘forbidden triad’ and actor <em>i</em> in such a triad is said to hold a ‘brokerage position.’</p>
+<blockquote>
+<p>How many isomorphs can you think of for a triad with one <em>connected pair</em>?</p>
+</blockquote>
+<p>We only have three nodes but network structures become complex quite quickly. See Figure <a href="theory-1.html#fig:mut">5.3</a> for the many possible configurations for triads when we consider two different type of undirected ties (i.e. multiplexity).</p>
+<div class="figure"><span style="display:block;" id="fig:mut"></span>
+<img src="Slide8.PNG" alt="Multiplex, undirected triad configurations" width="100%" />
+<p class="caption">
+Figure 5.3: Multiplex, undirected triad configurations
+</p>
+</div>
+<p>By now, I am a bit tired of drawing all these nodes and relations. Luckily, the net is full of pictures of the possible directed triad configurations. I stole this one from an online workshop on Social Network Analysis for Anthropologists <a href="https://eehh-stanford.github.io/SNA-workshop/">here</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:dt"></span>
+<img src="new-triad-census.png" alt="Directed triad configurations" width="100%" />
+<p class="caption">
+Figure 5.4: Directed triad configurations
+</p>
+</div>
+<p>These triads all have unique names:</p>
+<ul>
+<li>last digit: number of dyads without ties<br />
+</li>
+<li>second digit: number of dyads with one tie<br />
+</li>
+<li>first digit: number of dyads with two ties (mutual dyads)<br />
+</li>
+<li>specific subtype:
+<ul>
+<li>C: cyclic</li>
+<li>D: downward<br />
+</li>
+<li>U: upward<br />
+</li>
+<li>T: transitive</li>
+</ul></li>
+</ul>
+<p>This triad census has been developed by <span class="citation"><a href="#ref-davis1967" role="doc-biblioref">Davis and Leinhardt</a> (<a href="#ref-davis1967" role="doc-biblioref">1967</a>)</span> and their original picture in the paper is too cool not to show here:</p>
+<div class="figure"><span style="display:block;" id="fig:triadold"></span>
+<img src="Capture.PNG" alt="Original Triad census by Davis and Leinhard (1967)" width="100%" />
+<p class="caption">
+Figure 5.5: Original Triad census by Davis and Leinhard (1967)
+</p>
+</div>
+<p>Suppose we are trying to come up with an explanation for why we observe transitive triads (030T) in our network. We must realize that a transitive dyad may be the outcome of different evolution processes. See Figure <a href="theory-1.html#fig:evo">5.6</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:evo"></span>
+<img src="Slide9.PNG" alt="Different pathways to a transitive triad." width="100%" />
+<p class="caption">
+Figure 5.6: Different pathways to a transitive triad.
+</p>
+</div>
+<p>That is, if we assume that each tie is made subsequently, thus not two tie are created at the same time.<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> The reason why <em>i</em> closes the triad, may be very different from the reason why <em>k</em> closes the triad. It all depends on the social relation under consideration. The take home message is that we need longitudinal data if we would like to disentangle specific explanations.</p>
+<blockquote>
+<p>See Figure <a href="theory-1.html#fig:evo">5.6</a>. Do you think both pathways are just as likely for (a) ‘friendship relations,’ (b) ‘who kicks whom relations’ and (c) ‘who explains social network analysis to whom? relations?’</p>
+</blockquote>
+<p>I could not find a nice picture of all possible directed triad configurations for two relations simultaneously. If you have time on your hands, please make one for me! 😀</p>
+<p>So, let us go back to egonets.</p>
+</div>
+<div id="type-of-explanations" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Type of explanations</h2>
+<p>If social scientists seek explanations for why we observe specific social networks the explanations generally refer to four aspects, or ‘theoretical dimensions,’ of social networks, namely:</p>
+<ol style="list-style-type: decimal">
+<li><strong>size</strong>: the number of nodes in the network</li>
+<li><strong>structure</strong>: the relations in the network</li>
+<li><strong>composition</strong>: characteristics of the nodes in the network</li>
+<li><strong>evolution</strong>: change in size, structure and/or composition
+<ol style="list-style-type: lower-roman">
+<li>network growth</li>
+<li>tie evolution: structure –&gt; structure</li>
+<li>node evolution: node attributes –&gt; node attributes</li>
+<li>influence: structure –&gt; node attributes</li>
+<li>selection: node attributes –&gt; structure</li>
+</ol></li>
+</ol>
+<p>Where 1, 2 and 3 belong to the <em>causes</em> of social networks, evolution processes belong the the <em>consequences</em> of social networks.</p>
+</div>
+<div id="causes-1" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Causes</h2>
+<div id="size" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Size</h3>
+<p>A dyad is by definition constituted by just two nodes. The size of an egonet may vary.</p>
+<p>In section <a href="intro.html#types">1.4.1</a> we introduced the egonet formed by our ‘Best Friend Forevers’ (BFF). Naturally, we don’t have many BFFs. Perhaps it is even a bad example because don’t you have at most only one BFF by definition? That said, my daughter (6 years old) claims that all her classmates are BFFs. Anyways. It turns out that if we ask a random sample of adults the following question…</p>
+<p class="quote">
+From time to time, most people discuss important matters with other people. Looking back over the last six months—who are the people with whom you discussed matters important to you?
+</p>
+<p>…that there are not many people naming more than five persons.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> For example, have a look at the table below. Data is from a dataset called CrimeNL <span class="citation">(<a href="#ref-crimenl" role="doc-biblioref">Tolsma et al. 2015</a>)</span>.</p>
+<table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-1">Table 5.1: </span>Number of confidants in CDN (row %)
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Zero
+</th>
+<th style="text-align:center;">
+One
+</th>
+<th style="text-align:center;">
+Two
+</th>
+<th style="text-align:center;">
+Three
+</th>
+<th style="text-align:center;">
+Four
+</th>
+<th style="text-align:center;">
+Five
+</th>
+<th style="text-align:center;">
+Mean
+</th>
+<th style="text-align:center;">
+SD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+All confidants
+</td>
+<td style="text-align:center;">
+17.71
+</td>
+<td style="text-align:center;">
+31.48
+</td>
+<td style="text-align:center;">
+23.71
+</td>
+<td style="text-align:center;">
+14.45
+</td>
+<td style="text-align:center;">
+6.65
+</td>
+<td style="text-align:center;">
+6.00
+</td>
+<td style="text-align:center;">
+1.79
+</td>
+<td style="text-align:center;">
+1.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Higher educated confidants
+</td>
+<td style="text-align:center;">
+39.91
+</td>
+<td style="text-align:center;">
+31.53
+</td>
+<td style="text-align:center;">
+15.26
+</td>
+<td style="text-align:center;">
+7.69
+</td>
+<td style="text-align:center;">
+3.50
+</td>
+<td style="text-align:center;">
+2.11
+</td>
+<td style="text-align:center;">
+1.10
+</td>
+<td style="text-align:center;">
+1.23
+</td>
+</tr>
+</tbody>
+</table>
+<p><em>Source: CrimeNL</em><br />
+N=3.834 (own calculations)</p>
+<p>The network of our so-called confidants is called the Core-Discussion-Network (CDN).</p>
+<p>Our CDN network thus commonly consists of maximum 5 confidants. The same holds true if we would ask about our loved ones.</p>
+<div id="cc" class="section level4" number="5.3.1.1">
+<h4><span class="header-section-number">5.3.1.1</span> Dunbar’s number</h4>
+<p>How would we get to know people with whom you form meaningful relations. That is, the people with whom you form stable social relations with and of whom you know how everyone is connected to one another. Perhaps we could use the following question:</p>
+<p class="quote">
+Who would you not feel embarrassed about joining uninvited for a drink if you happened to bump into them in a bar?
+</p>
+<p>My answer would definitely depend on whether it was asked to me before or after corona. 😉</p>
+<p>Let try a different question:</p>
+<p class="quote">
+Who do you send a Christmas card?
+</p>
+<p>Mind you, this question to tap into your meaningful relations was constructed before e-cards existed.</p>
+<p>According to Robin Dunbar most people are able to maintain stable social relations with approximately 100-200 people, with 150 being a typical number and it is hence known as Dunbar’s number <span class="citation">(<a href="#ref-dunbar2010many" role="doc-biblioref">Dunbar 2010</a>; <a href="#ref-dunbar2015structure" role="doc-biblioref">Dunbar et al. 2015</a>)</span>.</p>
+<p>According to Dunbar each <em>layer</em> of our social network has a typical size, where the size of each layer increasing as emotional closeness decreases:</p>
+<ul>
+<li>loved ones: 5<br />
+</li>
+<li>good friends: 15</li>
+<li>friends: 50</li>
+<li>meaningful contacts: 150</li>
+<li>acquaintances: 500</li>
+<li>people you can recognize: 1500</li>
+</ul>
+</div>
+<div id="online-friends" class="section level4" number="5.3.1.2">
+<h4><span class="header-section-number">5.3.1.2</span> online ‘friends’</h4>
+<p>Many people are active on online social networks like FaceBook, Instagram, Strava or what have you. According to this <a href="www.statista.com">site</a>, approximately 40% of U.S Facebook users in the United States (in 2016) had between 0-200 friends, 38% 200-500 friends and 21% 500+ friends.
+There are several crucial differences between the connections we have online versus offline. First of all, it does not cost many resources to make and maintain an online friendship. It may require some social media skills though, which I found out the hard way. After having joined FB at a time when youngster were already moving on to other online communities, it annoyed me to see all kind of uninteresting stories of distant relatives about their cats. I consequently decided to unfriend these persons. This was not appreciated by some other relatives. It turned out I should simply have hidden their content from my timeline. There apparently is a social norm not to unfriend people on FB.<br />
+We already discussed that selection processes should be seen as distinct from deselection processes. I would argue that especially with respect to online social relations within the selection part we need to distinguish processes explaining sending friendship invitations and accepting/declining friendship invitations.
+But notwithstanding these differences, online social networks consist of a series of embedded layers just as offline personal social networks.</p>
+</div>
+<div id="weak-ties" class="section level4" number="5.3.1.3">
+<h4><span class="header-section-number">5.3.1.3</span> weak ties</h4>
+<p>Social network analysts have struggled how to measure weaker social network relationships, and, by extension, extended social network size for quite a while. We discuss the scaling-up method in more detail here <a href="data-3.html#su">7.3.1</a>.</p>
+</div>
+</div>
+<div id="composition" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Composition</h3>
+<p><strong>to do</strong></p>
+<ul>
+<li>Homophily<br />
+</li>
+<li>relation to social capital literature</li>
+</ul>
+</div>
+<div id="structure-1" class="section level3" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Structure</h3>
+<p>In this section we will discuss several network measures. In this chapter we focus on egonets but many measures are also relevant for complete networks!</p>
+<p>To illustrate some different ways how we could describe egonets we will use egonets based on co-authorships. We start with randomly sampling two social scientists from the total pool of all social scientists. Currently rolling a dice…and who did we sample…:</p>
+<ul>
+<li>Bas Hofstra<br />
+</li>
+<li>Jochem Tolsma</li>
+</ul>
+<p>From these two sampled social scientists we will use the webscraping techniques described in Chapter <a href="webintro.html#webintro">11</a> to collect 1.5 degree co-author egonetwork.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
+<p>See the figures <a href="theory-1.html#fig:jt">5.7</a> and @ref(fig:bh ) below for a graphical summary of the networks.</p>
+<div class="figure"><span style="display:block;" id="fig:jt"></span>
+<img src="03-Egonets_files/figure-html/jt-1.png" alt="1.5 degree co-author egonetwork of JOCHEM TOLSMA" width="672" />
+<p class="caption">
+Figure 5.7: 1.5 degree co-author egonetwork of JOCHEM TOLSMA
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:bh"></span>
+<img src="03-Egonets_files/figure-html/bh-1.png" alt="1.5 degree co-author egonetwork of BAS HOFSTRA" width="672" />
+<p class="caption">
+Figure 5.8: 1.5 degree co-author egonetwork of BAS HOFSTRA
+</p>
+</div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="theory-1.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rvest)</span>
+<span id="cb32-2"><a href="theory-1.html#cb32-2" aria-hidden="true" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://scholar.google.com/citations?view_op=list_colleagues&amp;hl=en&amp;user=K51iiIAAAAAJ&quot;</span>)</span>
+<span id="cb32-3"><a href="theory-1.html#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="theory-1.html#cb32-4" aria-hidden="true" tabindex="-1"></a>Coauthors <span class="ot">&lt;-</span>  page <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">css=</span><span class="st">&quot;a&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">html_text</span>()</span>
+<span id="cb32-5"><a href="theory-1.html#cb32-5" aria-hidden="true" tabindex="-1"></a>affiliation <span class="ot">&lt;-</span>  page <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">css=</span><span class="st">&quot;.gs_ai_aff&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">html_text</span>()</span>
+<span id="cb32-6"><a href="theory-1.html#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="theory-1.html#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="theory-1.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">get_scholar_id_fix</span>(<span class="at">last_name=</span><span class="st">&quot;van%der%Brug&quot;</span>, <span class="at">first_name=</span><span class="st">&quot;Wouter&quot;</span>)</span>
+<span id="cb32-9"><a href="theory-1.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">get_scholar_id</span>(<span class="at">last_name=</span><span class="st">&quot;van der Brug&quot;</span>, <span class="at">first_name=</span><span class="st">&quot;Wouter&quot;</span>)</span>
+<span id="cb32-10"><a href="theory-1.html#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="theory-1.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="sc">%&gt;%</span> <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>)</span>
+<span id="cb32-12"><a href="theory-1.html#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="theory-1.html#cb32-13" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span>  page <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">css=</span><span class="st">&quot;div.gsc_ucoar.gs_scl&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>)</span>
+<span id="cb32-14"><a href="theory-1.html#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-15"><a href="theory-1.html#cb32-15" aria-hidden="true" tabindex="-1"></a>affiliation <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">pattern=</span><span class="st">&quot;gsc_ucoar-&quot;</span>, <span class="at">replacement=</span><span class="st">&quot;&quot;</span>, <span class="at">x=</span>affiliation )</span>
+<span id="cb32-16"><a href="theory-1.html#cb32-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="theory-1.html#cb32-17" aria-hidden="true" tabindex="-1"></a>https<span class="sc">:</span><span class="er">//</span>scholar.google.com<span class="sc">/</span>citations?view_op<span class="ot">=</span>list_colleagues<span class="sc">&amp;</span>hl<span class="ot">=</span>en<span class="sc">&amp;</span>user<span class="ot">=</span>gHuTzXcAAAAAJ<span class="st">&quot;</span></span>
+<span id="cb32-18"><a href="theory-1.html#cb32-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-19"><a href="theory-1.html#cb32-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-20"><a href="theory-1.html#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="theory-1.html#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="st">%&gt;% html_text()</span></span>
+<span id="cb32-22"><a href="theory-1.html#cb32-22" aria-hidden="true" tabindex="-1"></a><span class="st">affiliation &lt;-  page %&gt;% html_nodes(css=&quot;</span>div<span class="st">&quot;) %&gt;% html_text()</span></span>
+<span id="cb32-23"><a href="theory-1.html#cb32-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-24"><a href="theory-1.html#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="st">Coauthors &lt;-  as.data.frame(Coauthors)</span></span>
+<span id="cb32-25"><a href="theory-1.html#cb32-25" aria-hidden="true" tabindex="-1"></a><span class="st">Coauthors</span></span></code></pre></div>
+<div id="density" class="section level4 unnumbered">
+<h4>Density</h4>
+<p>Density is defined as all observed relations divided by all possible relations. Look at the examples below. Are you able to calculate the density of the networks yourself?</p>
+<div class="figure"><span style="display:block;" id="fig:densities"></span>
+<img src="test.png" alt="Different densities?" width="100%" />
+<p class="caption">
+Figure 5.9: Different densities?
+</p>
+</div>
+<p>The density in Bas’ network turns out to be: 0.24.</p>
+<p>The density in Jochem’s network turns out to be: 0.23.</p>
+<p>For comparison, if we look at friendship networks among pupils in classrooms, we generally observe a density within the range of .2 and .4.</p>
+</div>
+<div id="degree-centrality" class="section level4 unnumbered">
+<h4>Degree centrality</h4>
+<p>Closely related to density is the concept of degree. The number of ingoing (indegree), outgoing (outdegree) or undirected (degree) relations from each node. In real social networks, we generally observe a right-skewed degree distribution (most people have some friends, few people have many friends).</p>
+<blockquote>
+<p>Centrality measures, like degree, can be measured at the <strong>node-level</strong>. For the graph as a whole, we may calculate the <strong>average centrality score</strong> but every node-level centrality measure also has its specific <strong>graph-level</strong> analogue. In what follows we focus on node-level centrality scores.<br />
+At the node-level we may calculate the <strong>raw measure</strong> but to facilitate interpretation we will use <strong>normalized measures</strong>. There may be more than one way by which the raw scores can be normalized. If you use an R package to calculate normalized centrality scores (e.g. <code>igraph</code>), please be aware of the applied normalization.</p>
+</blockquote>
+<p>People in a network with relatively many degree are called more central and (normalized) degree centrality is formally defined as:</p>
+<p><span class="math display">\[ C_D(v_i) = \frac{deg(v_i) - min(deg(v))}  {max(deg(v)) - min(deg(v))}, \]</span></p>
+<p>where <span class="math inline">\(C_D(v_i)\)</span> is degree centrality of <span class="math inline">\(v_i\)</span>, vertex <em>i</em>, and ‘deg’ stands for ‘degree.’ <span class="math inline">\(max(deg(v))\)</span> is the maximal observed degree. <span class="math inline">\(min(deg(v))\)</span> is the minimal observed degree. A different normalization approach would be to divide the node degree by the maximum degree (either the theoretical maximum, or the maximal observed degree).</p>
+<blockquote>
+<p>Suppose you want to compare the degree centrality of all co-authors in Bas’ network. Which normalization approach would you take?<br />
+Suppose you want to compare the degree centrality of Bas in Bas’s network with the degree centrality of Jochem in Jochem’s network. Which normalization approach would you take.</p>
+</blockquote>
+</div>
+<div id="closeness-centrality" class="section level4 unnumbered">
+<h4>Closeness centrality</h4>
+<p>Closely related to degree centrality is (normalized) ‘closeness centrality’:</p>
+<p><span class="math display">\[ C_C(v_i) = \frac{N}{\sum_{j}d(v_j, v_i)}, \]</span></p>
+<p>with N the number of nodes and <em>d</em> stands for distance.</p>
+</div>
+<div id="betweenness-centrality" class="section level4 unnumbered">
+<h4>Betweenness centrality</h4>
+<p>A final important measure of centrality I would like to discuss is called betweenness. It is defined as:</p>
+<p><span class="math display">\[ C_B(v_i) = \frac{\sigma_{v_j,v_k}(v_i)}{\sum_{j\neq k\neq i}\sigma(v_j,v_k)}, \]</span></p>
+<p>where <span class="math inline">\(\sigma(v_j,v_k)\)</span> is the number of shortest paths between vertices <em>j</em> and <em>k</em>, <span class="math inline">\(\sigma_{v_j,v_k}(v_i)\)</span>, are the number of these shortest paths that pass through vertex <span class="math inline">\(v_i\)</span> . One way to normalize this measure is as follows:</p>
+<p><span class="math display">\[ C_{B_{normalized}}(v_i) =  \frac{C_B(v_i) - min(C_B(v))}{max(C_B(v))-min(C_B(v))} \]</span></p>
+</div>
+<div id="clustering" class="section level4 unnumbered">
+<h4>Clustering</h4>
+<p>Clustering is an interesting concept. We have immediately an intuitive understanding of it, people lump together in separate groups. But how should we go about defining it more formally?
+The <strong>clustering coefficient</strong> for <span class="math inline">\(v_i\)</span> is defined as the observed ties between all direct neighbors of <span class="math inline">\(v_i\)</span> divided by all possible ties between all direct neighbors of <span class="math inline">\(v_i\)</span>. Direct neighbours are connected to <span class="math inline">\(v_i\)</span> via an ingoing and/or outgoing relation. For undirected networks, the clustering coefficient is the same as the <strong>transitivity index</strong>: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.</p>
+<p>Bas’ transitivity network in his network turns out to be: 0.13.</p>
+<p>Jochem’s transitivity in his network turns out to be: 0.15.</p>
+</div>
+</div>
+<div id="stability" class="section level3" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> Stability</h3>
+<p><strong>TO DO: upload lecture</strong></p>
+</div>
+</div>
+<div id="consequences-1" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Consequences</h2>
+<p>Please brush off your knowledge on dyadic influence processes (see section <a href="theory.html#influence">2.3.2</a>).
+What is the added complexity of egonets? Phrased otherwise, why would some egonets exert more influence than other egonets?</p>
+<ol style="list-style-type: decimal">
+<li>The size of egonets may differ (i.e. node set).<br />
+</li>
+<li>The structure of egonets may differ (i.e. tie set).<br />
+</li>
+<li>The composition of egonetes may differ (i.e. attribute set).<br />
+</li>
+<li>The evolution (stability) of egonets may differ.</li>
+</ol>
+<p>Surprisingly, there is relatively little literature on influence processes going on in egonets. The literature is mainly concerned with dyadic influence process or on influence processes going on in socionets. We also need to be aware that the debate on the consequences of egonets is dominated by researchers interest in the topic of social capital.</p>
+<p>My definition of social capital is…:</p>
+<p class="quote">
+<strong>Social capital</strong> is the extent to which our egocentric networks gives us access to different forms of ‘capital’ or resources which we may use to our own benefit.
+</p>
+<p>Please compare my definition with Nan Lin’s definition:</p>
+<p class="quote">
+The resources embedded in a social structure that are accessed and/or mobilized in purposive actions. <span class="citation">(<a href="#ref-lin2002social" role="doc-biblioref">Lin 2002</a>)</span>.
+</p>
+<p>Social capital is one of the most heavily disputed concepts in the social sciences. For more definitions see <a href="https://www.socialcapitalresearch.com/literature/definition/">socialcapitalresearch.com</a>.</p>
+<p>The literature on how egonets may influence our opinions and attitudes is sparse. We will discuss egonet influence processes during class and I will upload a lecture with my take on this asap.</p>
+<p><strong>TO DO: upload lecture</strong></p>
+<p><!---  [nice paper](https://www.sciencedirect.com/science/article/pii/S2095809917308056#s0070) with good refs. ---></p>
+</div>
+<div id="assignment-3" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Assignment</h2>
+<p>Please prepare a short (5-10 min.) presentation on recent developments in the literature that deals with causes for egonets. More specifically pick one topic:</p>
+<ol style="list-style-type: lower-alpha">
+<li>egonets and size (i.e. node set). Start with <span class="citation"><a href="#ref-paik2013social" role="doc-biblioref">Paik and Sanchagrin</a> (<a href="#ref-paik2013social" role="doc-biblioref">2013</a>)</span>.<br />
+</li>
+<li>egonets and structure (i.e. tie set). Start with <span class="citation"><a href="#ref-adamic2003friends" role="doc-biblioref">Adamic and Adar</a> (<a href="#ref-adamic2003friends" role="doc-biblioref">2003</a>)</span>.<br />
+</li>
+<li>egonets and composition (i.e. attribute set) Start with <span class="citation"><a href="#ref-hofstra2017sources" role="doc-biblioref">Hofstra et al.</a> (<a href="#ref-hofstra2017sources" role="doc-biblioref">2017</a>)</span>.<br />
+</li>
+<li>egonets and evolution / stability. Start with <span class="citation"><a href="#ref-small2015stable" role="doc-biblioref">Small, Pamphile, and McMahan</a> (<a href="#ref-small2015stable" role="doc-biblioref">2015</a>)</span>.</li>
+</ol>
+<hr />
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-adamic2003friends" class="csl-entry">
+Adamic, Lada A, and Eytan Adar. 2003. <span>“Friends and Neighbors on the Web.”</span> <em>Social Networks</em> 25 (3): 211–30.
+</div>
+<div id="ref-davis1967" class="csl-entry">
+Davis, James A, and Samuel Leinhardt. 1967. <span>“The Structure of Positive Interpersonal Relations in Small Groups.”</span>
+</div>
+<div id="ref-dunbar2010many" class="csl-entry">
+Dunbar, Robin IM. 2010. <em>How Many Friends Does One Person Need?: Dunbar’s Number and Other Evolutionary Quirks</em>. Faber &amp; Faber.
+</div>
+<div id="ref-dunbar2015structure" class="csl-entry">
+Dunbar, Robin IM, Valerio Arnaboldi, Marco Conti, and Andrea Passarella. 2015. <span>“The Structure of Online Social Networks Mirrors Those in the Offline World.”</span> <em>Social Networks</em> 43: 39–47.
+</div>
+<div id="ref-hofstra2017sources" class="csl-entry">
+Hofstra, Bas, Rense Corten, Frank Van Tubergen, and Nicole B Ellison. 2017. <span>“Sources of Segregation in Social Networks: A Novel Approach Using Facebook.”</span> <em>American Sociological Review</em> 82 (3): 625–56.
+</div>
+<div id="ref-lin2002social" class="csl-entry">
+Lin, Nan. 2002. <em>Social Capital: A Theory of Social Structure and Action</em>. Vol. 19. Cambridge university press.
+</div>
+<div id="ref-marsden1990" class="csl-entry">
+Marsden, Peter V. 1990. <span>“Network Data and Measurement.”</span> <em>Annual Review of Sociology</em> 16 (1): 435–63.
+</div>
+<div id="ref-paik2013social" class="csl-entry">
+Paik, Anthony, and Kenneth Sanchagrin. 2013. <span>“Social Isolation in America: An Artifact.”</span> <em>American Sociological Review</em> 78 (3): 339–60.
+</div>
+<div id="ref-small2015stable" class="csl-entry">
+Small, Mario Luis, Vontrese Deeds Pamphile, and Peter McMahan. 2015. <span>“How Stable Is the Core Discussion Network?”</span> <em>Social Networks</em> 40: 90–102.
+</div>
+<div id="ref-crimenl" class="csl-entry">
+Tolsma, J., J. Rokven, Gouweleeuw Groenestijn P. van, and H. Goudriaan. 2015. <span>“CrimeNL Wave 4: Experiences with Crime of the Dutch Population in the Ten Largest Communities. (Dataset).”</span> Radboud University Nijmegen: Sociology.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="7">
+<li id="fn7"><p>Otherwise there would be a third pathway directly from the situation on the left to the end state, the transitive triad, on the right.<a href="theory-1.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>In many surveys respondents are not even given the opportunity to give more than five persons.<a href="theory-1.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>To be a bit more precise, we only collect the first 20 co-authors listed on the google scholar page of each ego. I assume these are the ‘most important.’<a href="theory-1.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methods-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SNA-4-Social-Scientists.pdf", "SNA-4-Social-Scientists.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
