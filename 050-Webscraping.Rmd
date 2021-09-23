@@ -207,7 +207,7 @@ knitr::include_graphics("inspect_td.PNG")
 
 Something like the code below should do just that:
 
-```{r}
+```{r, eval=FALSE}
 # so we need to find WHERE the table is located in the html
 # "inspect element" in mozilla firefox
 # or "view page source" 
@@ -792,7 +792,7 @@ Let's save the data we may use in for the next tutorial.
 
 <!---I don't see the data in the addfiles folder yet---> 
 
-```{r}
+```{r, eval=FALSE}
 # save the DFs thus far
 save(soc_df_publications, "addfiles/soc_df_publications.rda")
 save(soc_df, "addfiles/soc_df.rda")
@@ -816,6 +816,6 @@ Nicely done, this was the webscraping tutorial for bibliometric data. We gathere
 - 4 publication citation history (cites per year) \
 - 5 citation history of scholars themselves (cites per year) \
 
-**With this, you can move on to some potentially very cool network visualization!**  
+**With this, you can move on to some potentially very cool network visualization!**
 
-
+---  

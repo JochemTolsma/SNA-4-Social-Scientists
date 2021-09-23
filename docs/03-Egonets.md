@@ -242,6 +242,39 @@ See the figures \@ref(fig:jt) and \@ref(fig:bh ) below for a graphical summary o
 <p class="caption">(\#fig:bh)1.5 degree co-author egonetwork of BAS HOFSTRA</p>
 </div>
 
+
+
+
+```r
+require(rvest)
+page <- read_html("https://scholar.google.com/citations?view_op=list_colleagues&hl=en&user=K51iiIAAAAAJ")
+
+Coauthors <-  page %>% html_nodes(css="a") %>% html_text()
+affiliation <-  page %>% html_nodes(css=".gs_ai_aff") %>% html_text()
+
+
+get_scholar_id_fix(last_name="van%der%Brug", first_name="Wouter")
+get_scholar_id(last_name="van der Brug", first_name="Wouter")
+
+%>% html_attr("id")
+
+id <-  page %>% html_nodes(css="div.gsc_ucoar.gs_scl") %>% html_attr("id")
+
+affiliation <- gsub(pattern="gsc_ucoar-", replacement="", x=affiliation )
+
+https://scholar.google.com/citations?view_op=list_colleagues&hl=en&user=gHuTzXcAAAAAJ"
+
+
+
+%>% html_text()
+affiliation <-  page %>% html_nodes(css="div") %>% html_text()
+
+Coauthors <-  as.data.frame(Coauthors)
+Coauthors
+```
+
+
+
 #### Density {-}
 
 
