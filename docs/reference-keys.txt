@@ -49,6 +49,7 @@ social-network-perspective
 aim
 structure
 types
+sn
 causes-and-consequences
 implications
 theoretical-implications
@@ -165,6 +166,19 @@ hands-on-webscraping
 staging-your-script
 getting-anchor-data
 google-scholar-profiles-and-publications
+network-visualization
+where-for-our-analyses-we-heavily-relay-on-the-r-package-lavaan2012-and-r-rsiena-for-network-description-and-visualisation-we-will-mainly-use-r-igraph
+zacharys-karate-club
+descriptive-statistics
+size-3
+node-level
+dyad-census
+triad-census
+network-visualisation
+smallworld
+descriptive-statistics-1
+network-visualisation-1
+twittersphere-in-the-dutch-hop
 tutorial
 preliminary-notes
 getting-up-and-running

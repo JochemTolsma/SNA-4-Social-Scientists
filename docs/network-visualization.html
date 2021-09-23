@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | SNASS</title>
-  <meta name="description" content="Page not found | SNASS" />
+  <title>Chapter 12 Network Visualization | SNASS</title>
+  <meta name="description" content="Chapter 12 Network Visualization | SNASS" />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | SNASS" />
+  <meta property="og:title" content="Chapter 12 Network Visualization | SNASS" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | SNASS" />
+  <meta name="twitter:title" content="Chapter 12 Network Visualization | SNASS" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="webintro.html"/>
+<link rel="next" href="tutorial.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -428,19 +428,274 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="network-visualization" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Network Visualization</h1>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="network-visualization.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb102-2"><a href="network-visualization.html#cb102-2" aria-hidden="true" tabindex="-1"></a>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">tidy.opts=</span><span class="fu">list</span>(<span class="at">width.cutoff=</span><span class="dv">100</span>),<span class="at">tidy=</span><span class="cn">TRUE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>,<span class="at">comment =</span> <span class="st">&quot;#&gt;&quot;</span> , <span class="at">attr.source =</span> <span class="st">&quot;.numberLines&quot;</span>) </span>
+<span id="cb102-3"><a href="network-visualization.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">100</span>)</span></code></pre></div>
+<style>
+
+.button1 {
+  background-color: #f44336; /* Red */ 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button1 {border-radius: 12px;}
+
+.button1 {width: 100%;}
+</style>
+<script>
+function myFunction() {
+
+            var btn = document.getElementById("myButton");
+            //to make it fancier
+            if (btn.value == "Click to hide code") {
+                btn.value = "Click to show code";
+                btn.innerHTML = "Click to show code";
+            }
+            else {
+                btn.value = "Click to hide code";
+                btn.innerHTML = "Click to hide code";
+            }
+            //this is what you're looking for
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+</script>
+<p>Visualizations of social networks are cool. I am often impressed if I see them in papers. They seem to signal that the authors are technically savvy.<br />
+If you know me a little bit you will also know that I think that the importance of a good description of your data cannot be downplayed: describing before (and over) explanation; simplicity (e.g. univariate or bivatiate statistics) trumps complexity. What is a better ‘description’ of your network data than a graphical summary of your network? What could I possibly have against network visualizations?</p>
+<p>Unfortunately, more often than not the story behind the (cool, dynamic, interactive) network picture is not clear. I do not see selection and influence processes. We have have to guess what the node and tie attributes are. And, importantly, typical network structures remain elusive.</p>
+<p>A good example of a bad network visualization is Smallworld, introduced in section @(sn).</p>
+<iframe src="smallworld.html" width="500" height="500" style="border: none;">
+</iframe>
+<p>Paradoxically, one of the reasons why oftentimes it is not worth the time to look at network visualisations is because scholars did not think it was worth the time to look at the data.</p>
+<p>The take home message of this chapter is that before you can make a successful network visualization you need to answer the following question:</p>
+<ul>
+<li><strong>What story do I want my network visualization to tell? </strong></li>
+</ul>
+<p>The answer to this question depends on:<br />
+- your research question<br />
+- descriptive statistics of your data<br />
+- how preliminary network plots are able to convey your message.</p>
+<p>In this chapter we will take on three case studies:<br />
+1. Smallworld: Should tell the story that a typical smallworld network has a relatively low density, high level of clustering and low average path length.<br />
+2. Twittersphere in the Dutch House of Parliament: should tell the story that twitter networks are segregated along party affiliation.<br />
+3. Co-author networks among sociology staff of Radboud University Nijmegen:</p>
+<p>But before we take on these case studies, we will start with a classical example: Zachary’s karate club <span class="citation">(<a href="#ref-zachary1977information" role="doc-biblioref">Zachary 1977</a>;, also discussed in <a href="#ref-kadushin2012understanding" role="doc-biblioref">Kadushin 2012</a>)</span>.</p>
+<div id="where-for-our-analyses-we-heavily-relay-on-the-r-package-lavaan2012-and-r-rsiena-for-network-description-and-visualisation-we-will-mainly-use-r-igraph" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> &gt; Where for our analyses we heavily relay on the R package <span class="citation"><a href="#ref-lavaan2012" role="doc-biblioref">Rosseel</a> (<a href="#ref-lavaan2012" role="doc-biblioref">2012</a>)</span> and <span class="citation"><a href="#ref-R-RSiena" role="doc-biblioref">T. A. B. Snijders et al.</a> (<a href="#ref-R-RSiena" role="doc-biblioref">2021</a>)</span>, for network description and visualisation we will mainly use <span class="citation"><a href="#ref-R-igraph" role="doc-biblioref">file.</a> (<a href="#ref-R-igraph" role="doc-biblioref">2020</a>)</span></h2>
+</div>
+<div id="zacharys-karate-club" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Zachary’s karate club</h2>
+<p>As stated above, we will mainly rely on the <code>igraph</code> package. This means we have to make an igraph graph object before we can start doing anything. Luckily <code>igraph</code> comes with Zachary’s network build-in. But don’t worry, we will start from scratch later on. Let us have a first look at the data.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb103-1"><a href="network-visualization.html#cb103-1"></a><span class="fu">require</span>(igraph)</span>
+<span id="cb103-2"><a href="network-visualization.html#cb103-2"></a>g <span class="ot">&lt;-</span> <span class="fu">make_graph</span>(<span class="st">&quot;Zachary&quot;</span>)</span>
+<span id="cb103-3"><a href="network-visualization.html#cb103-3"></a><span class="fu">plot</span>(g)</span></code></pre></div>
+<p><img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb104-1"><a href="network-visualization.html#cb104-1"></a>gmat <span class="ot">&lt;-</span> <span class="fu">as_adjacency_matrix</span>(g, <span class="at">type =</span> <span class="st">&quot;both&quot;</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div id="descriptive-statistics" class="section level3" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Descriptive statistics</h3>
+<div id="size-3" class="section level4" number="12.2.1.1">
+<h4><span class="header-section-number">12.2.1.1</span> Size</h4>
+<div class="sourceCode" id="cb105"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb105-1"><a href="network-visualization.html#cb105-1"></a><span class="co"># number of nodes</span></span>
+<span id="cb105-2"><a href="network-visualization.html#cb105-2"></a><span class="fu">vcount</span>(g)</span></code></pre></div>
+<pre><code>#&gt; [1] 34</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb107-1"><a href="network-visualization.html#cb107-1"></a><span class="co"># number of edges</span></span>
+<span id="cb107-2"><a href="network-visualization.html#cb107-2"></a><span class="fu">ecount</span>(g)</span></code></pre></div>
+<pre><code>#&gt; [1] 78</code></pre>
+</div>
+<div id="node-level" class="section level4" number="12.2.1.2">
+<h4><span class="header-section-number">12.2.1.2</span> node-level</h4>
+<p>We discussed several network structure in section <a href="theory-1.html#structure-1">5.3.3</a>. Decide for yourself at which structures you want to look at. I give three examples below.</p>
+</div>
+<div id="degree-1" class="section level4 unnumbered">
+<h4>degree</h4>
+<div class="sourceCode" id="cb109"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb109-1"><a href="network-visualization.html#cb109-1"></a><span class="fu">degree</span>(g)</span></code></pre></div>
+<pre><code>#&gt;  [1] 16  9 10  6  3  4  4  4  5  2  3  1  2  5  2  2  2  2  2  3  2  2  2  5  3  3  2  4  3  4  4  6
+#&gt; [33] 12 17</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb111-1"><a href="network-visualization.html#cb111-1"></a><span class="co"># hist(table(degree(g)), xlab=&#39;indegree&#39;, main= &#39;Histogram of indegree&#39;)</span></span></code></pre></div>
+</div>
+<div id="transitivity" class="section level4 unnumbered">
+<h4>transitivity</h4>
+<div class="sourceCode" id="cb112"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb112-1"><a href="network-visualization.html#cb112-1"></a><span class="co"># be aware that directed graphs are considered as undirected. but g is undirected.</span></span>
+<span id="cb112-2"><a href="network-visualization.html#cb112-2"></a><span class="fu">transitivity</span>(g, <span class="at">type =</span> <span class="fu">c</span>(<span class="st">&quot;localundirected&quot;</span>), <span class="at">isolates =</span> <span class="fu">c</span>(<span class="st">&quot;NaN&quot;</span>, <span class="st">&quot;zero&quot;</span>))</span></code></pre></div>
+<pre><code>#&gt;  [1] 0.1500000 0.3333333 0.2444444 0.6666667 0.6666667 0.5000000 0.5000000 1.0000000 0.5000000
+#&gt; [10] 0.0000000 0.6666667       NaN 1.0000000 0.6000000 1.0000000 1.0000000 1.0000000 1.0000000
+#&gt; [19] 1.0000000 0.3333333 1.0000000 1.0000000 1.0000000 0.4000000 0.3333333 0.3333333 1.0000000
+#&gt; [28] 0.1666667 0.3333333 0.6666667 0.5000000 0.2000000 0.1969697 0.1102941</code></pre>
+</div>
+<div id="betweenness" class="section level4 unnumbered">
+<h4>betweenness</h4>
+<div class="sourceCode" id="cb114"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb114-1"><a href="network-visualization.html#cb114-1"></a>igraph<span class="sc">::</span><span class="fu">betweenness</span>(g, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>#&gt;  [1] 231.0714286  28.4785714  75.8507937   6.2880952   0.3333333  15.8333333  15.8333333   0.0000000
+#&gt;  [9]  29.5293651   0.4476190   0.3333333   0.0000000   0.0000000  24.2158730   0.0000000   0.0000000
+#&gt; [17]   0.0000000   0.0000000   0.0000000  17.1468254   0.0000000   0.0000000   0.0000000   9.3000000
+#&gt; [25]   1.1666667   2.0277778   0.0000000  11.7920635   0.9476190   1.5428571   7.6095238  73.0095238
+#&gt; [33]  76.6904762 160.5515873</code></pre>
+</div>
+</div>
+<div id="dyad-census" class="section level3" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> dyad-census</h3>
+<div class="sourceCode" id="cb116"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb116-1"><a href="network-visualization.html#cb116-1"></a><span class="fu">dyad.census</span>(g)</span></code></pre></div>
+<pre><code>#&gt; $mut
+#&gt; [1] 78
+#&gt; 
+#&gt; $asym
+#&gt; [1] 0
+#&gt; 
+#&gt; $null
+#&gt; [1] 483</code></pre>
+</div>
+<div id="triad-census" class="section level3" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> triad-census</h3>
+<div class="sourceCode" id="cb118"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb118-1"><a href="network-visualization.html#cb118-1"></a>igraph<span class="sc">::</span><span class="fu">triad.census</span>(g)</span></code></pre></div>
+<pre><code>#&gt;  [1] 3971    0 1575    0    0    0    0    0    0    0  393    0    0    0    0   45</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb120-1"><a href="network-visualization.html#cb120-1"></a>sna<span class="sc">::</span><span class="fu">triad.census</span>(gmat)</span></code></pre></div>
+<pre><code>#&gt;       003 012  102 021D 021U 021C 111D 111U 030T 030C 201 120D 120U 120C 210 300
+#&gt; [1,] 3971   0 1575    0    0    0    0    0    0    0 393    0    0    0   0  45</code></pre>
+<p>Based on the above triad.census, please calculate the global transitivity of the network and check your answer with <code>igraph</code> or <code>sna</code>.</p>
+<button class="button1" onclick="myFunction()" id="myButton" value="Click To Open Instructions">
+Only click button after 5 minutes!
+</button>
+<div id="myDIV" style="display:none;">
+<div class="sourceCode" id="cb122"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb122-1"><a href="network-visualization.html#cb122-1"></a>igraph<span class="sc">::</span><span class="fu">transitivity</span>(g, <span class="at">type =</span> <span class="st">&quot;global&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; [1] 0.2556818</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb124-1"><a href="network-visualization.html#cb124-1"></a>sna<span class="sc">::</span><span class="fu">gtrans</span>(gmat)</span></code></pre></div>
+<pre><code>#&gt; [1] 0.2556818</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb126-1"><a href="network-visualization.html#cb126-1"></a>triad_g <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(sna<span class="sc">::</span><span class="fu">triad.census</span>(gmat))</span>
+<span id="cb126-2"><a href="network-visualization.html#cb126-2"></a></span>
+<span id="cb126-3"><a href="network-visualization.html#cb126-3"></a>transitivity_g <span class="ot">&lt;-</span> (<span class="dv">3</span> <span class="sc">*</span> triad_g<span class="sc">$</span>X300)<span class="sc">/</span>(triad_g<span class="sc">$</span>X201 <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> triad_g<span class="sc">$</span>X300)</span>
+<span id="cb126-4"><a href="network-visualization.html#cb126-4"></a>transitivity_g</span></code></pre></div>
+<pre><code>#&gt; [1] 0.2556818</code></pre>
+</div>
+<p>Even if you did not read-up on Zachary’s Karate club <span class="citation">(<a href="#ref-zachary1977information" role="doc-biblioref">Zachary 1977</a>; <a href="#ref-girvan2002community" role="doc-biblioref">Girvan and Newman 2002</a>)</span> our initial plot and the above descriptive network statistics start to tell a story. There are two very central nodes (based on degree and betweenness) but their local transitivity index is relatively low (compared to other nodes). Are these two nodes connected? Well <code>gmat[1,34]</code> returns: 0. Thus NO!</p>
+</div>
+<div id="network-visualisation" class="section level3" number="12.2.4">
+<h3><span class="header-section-number">12.2.4</span> Network visualisation</h3>
+<p>Let’s make size proportional to betweenness score:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb128-1"><a href="network-visualization.html#cb128-1"></a><span class="fu">plot</span>(g)</span></code></pre></div>
+<p><img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb129-1"><a href="network-visualization.html#cb129-1"></a><span class="co"># let&#39;s make size proportional to betweenness score: changing V</span></span>
+<span id="cb129-2"><a href="network-visualization.html#cb129-2"></a><span class="fu">V</span>(g)<span class="sc">$</span>size <span class="ot">=</span> <span class="fu">betweenness</span>(g, <span class="at">normalized =</span> T, <span class="at">directed =</span> <span class="cn">FALSE</span>) <span class="sc">*</span> <span class="dv">60</span> <span class="sc">+</span> <span class="dv">10</span>  <span class="co">#after some trial and error</span></span>
+<span id="cb129-3"><a href="network-visualization.html#cb129-3"></a><span class="fu">plot</span>(g, <span class="at">mode =</span> <span class="st">&quot;undirected&quot;</span>)</span></code></pre></div>
+<p><img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<p>It would be nice if we could place the nodes 1 and 34 further apart.
+Preferably based on some nice algoritm. After some browsing in the igraph manual, I came up with this.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb130-1"><a href="network-visualization.html#cb130-1"></a><span class="fu">set.seed</span>(<span class="dv">2345</span>)</span>
+<span id="cb130-2"><a href="network-visualization.html#cb130-2"></a>l <span class="ot">&lt;-</span> <span class="fu">layout_with_mds</span>(g)  <span class="co">#https://igraph.org/r/doc/layout_with_mds.html</span></span>
+<span id="cb130-3"><a href="network-visualization.html#cb130-3"></a><span class="fu">plot</span>(g, <span class="at">layout =</span> l)</span></code></pre></div>
+<p><img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>It does more or less what we want, but it would be great to place nodes 1 and 34 even further apart.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb131-1"><a href="network-visualization.html#cb131-1"></a>l</span>
+<span id="cb131-2"><a href="network-visualization.html#cb131-2"></a>l[<span class="dv">1</span>, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb131-3"><a href="network-visualization.html#cb131-3"></a>l[<span class="dv">34</span>, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">3.5</span></span>
+<span id="cb131-4"><a href="network-visualization.html#cb131-4"></a><span class="fu">plot</span>(g, <span class="at">layout =</span> l)</span></code></pre></div>
+<p><img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre><code>#&gt;               [,1]         [,2]
+#&gt;  [1,]  1.070931935 -0.172458113
+#&gt;  [2,]  0.732844464  0.754023309
+#&gt;  [3,]  0.100582299  0.397693607
+#&gt;  [4,]  0.708246655  0.570205545
+#&gt;  [5,]  1.816293170 -0.120778206
+#&gt;  [6,]  1.881329566 -0.135518854
+#&gt;  [7,]  1.881329566 -0.135518854
+#&gt;  [8,]  0.812606714  0.472619437
+#&gt;  [9,] -0.003769996  0.615513628
+#&gt; [10,] -0.685680315  0.621065149
+#&gt; [11,]  1.816293170 -0.120778206
+#&gt; [12,]  1.621247830 -0.065820692
+#&gt; [13,]  1.637845123  0.001789972
+#&gt; [14,]  0.067317230  0.681421148
+#&gt; [15,] -1.796316404  0.351417630
+#&gt; [16,] -1.796316404  0.351417630
+#&gt; [17,]  2.775260452 -0.124317652
+#&gt; [18,]  1.616210024  0.182510197
+#&gt; [19,] -1.796316404  0.351417630
+#&gt; [20,]  0.048362858  0.566654982
+#&gt; [21,] -1.796316404  0.351417630
+#&gt; [22,]  1.616210024  0.182510197
+#&gt; [23,] -1.796316404  0.351417630
+#&gt; [24,] -1.891240567 -0.799574907
+#&gt; [25,] -0.258345165 -2.006346563
+#&gt; [26,] -0.360530857 -2.131642875
+#&gt; [27,] -1.865177401  0.128596564
+#&gt; [28,] -0.760226022 -0.529392331
+#&gt; [29,] -0.710979936 -0.299960128
+#&gt; [30,] -1.898426916 -0.149398746
+#&gt; [31,] -0.568691923  0.804189411
+#&gt; [32,] -0.048136037 -0.870967614
+#&gt; [33,] -1.023681000 -0.035802363
+#&gt; [34,] -1.146442924 -0.037605192</code></pre>
+<p><br />
+</p>
+<p>It now more or less looks like nodes 1 and 34 are ripping the network in two. Hey, that is a funny coincidence, let that now be exactly what the original paper was all about.</p>
+<hr />
+</div>
+</div>
+<div id="smallworld" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Smallworld</h2>
+<div id="descriptive-statistics-1" class="section level3" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> Descriptive statistics</h3>
+</div>
+<div id="network-visualisation-1" class="section level3" number="12.3.2">
+<h3><span class="header-section-number">12.3.2</span> Network visualisation</h3>
+<hr />
+</div>
+</div>
+<div id="twittersphere-in-the-dutch-hop" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> Twittersphere in the Dutch HoP</h2>
+<p>have a look <a href="https://www.jochemtolsma.nl/courses/plotting-social-networks/">here</a></p>
+
+</div>
+</div>
+
+
+
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-igraph" class="csl-entry">
+file., See AUTHORS. 2020. <em>Igraph: Network Analysis and Visualization</em>. <a href="https://igraph.org">https://igraph.org</a>.
+</div>
+<div id="ref-girvan2002community" class="csl-entry">
+Girvan, Michelle, and Mark EJ Newman. 2002. <span>“Community Structure in Social and Biological Networks.”</span> <em>Proceedings of the National Academy of Sciences</em> 99 (12): 7821–26.
+</div>
+<div id="ref-kadushin2012understanding" class="csl-entry">
+Kadushin, Charles. 2012. <em>Understanding Social Networks: Theories, Concepts, and Findings</em>. Oup Usa.
+</div>
+<div id="ref-lavaan2012" class="csl-entry">
+Rosseel, Yves. 2012. <span>“<span class="nocase">lavaan</span>: An <span>R</span> Package for Structural Equation Modeling.”</span> <em>Journal of Statistical Software</em> 48 (2): 1–36. <a href="https://www.jstatsoft.org/v48/i02/">https://www.jstatsoft.org/v48/i02/</a>.
+</div>
+<div id="ref-R-RSiena" class="csl-entry">
+Snijders, Tom A. B., Ruth Ripley, Christian Steglich, Johan Koskinen, Nynke Niezink, and Viviana Amati. 2021. <em>RSiena: Siena - Simulation Investigation for Empirical Network Analysis</em>. <a href="http://www.stats.ox.ac.uk/~snijders/siena/">http://www.stats.ox.ac.uk/~snijders/siena/</a>.
+</div>
+<div id="ref-zachary1977information" class="csl-entry">
+Zachary, Wayne W. 1977. <span>“An Information Flow Model for Conflict and Fission in Small Groups.”</span> <em>Journal of Anthropological Research</em> 33 (4): 452–73.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="webintro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tutorial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

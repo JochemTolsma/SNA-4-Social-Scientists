@@ -268,7 +268,7 @@ Social network analysts have struggled how to measure weaker social network rela
 - Homophily  
 - relation to social capital literature
 
-### Structure  
+### Structure   
 
 In this section we will discuss several network measures. In this chapter we focus on egonets but many measures are also relevant for complete networks!  
 

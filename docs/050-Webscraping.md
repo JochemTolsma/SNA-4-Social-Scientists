@@ -164,10 +164,10 @@ head(soc_staff)
 
 ```
 #> $node
-#> <pointer: 0x00000000272540b0>
+#> <pointer: 0x000000002725f1d0>
 #> 
 #> $doc
-#> <pointer: 0x0000000019576850>
+#> <pointer: 0x000000001400cd70>
 ```
 
 That looks kinda weird. What type of object did we store it by putting the html into `soc_staff`?
@@ -1806,7 +1806,7 @@ get_profile("Iu23-90AAAAJ")  # Jochem's profile
 #> [1] "Professor, Radboud University Nijmegen / University of Groningen"
 #> 
 #> $total_cites
-#> [1] 2285
+#> [1] 2286
 #> 
 #> $h_index
 #> [1] 22
@@ -2129,7 +2129,7 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 4                                                        27 (3), 291-306   120 2011
 #> 5                                                        24 (2), 215-230   120 2008
 #> 6                                                          35 (1), 51-61   107 2013
-#> 7                                                         8 (2), 117-134    75 2012
+#> 7                                                         8 (2), 117-134    76 2012
 #> 8                                                        38 (5), 793-813    70 2012
 #> 9                                                        23 (3), 325-339    68 2007
 #> 10                                                       60 (2), 257-277    63 2009
@@ -2334,7 +2334,7 @@ get_citation_history("Iu23-90AAAAJ")  # Jochem's citation history
 #> 11 2018   268
 #> 12 2019   297
 #> 13 2020   303
-#> 14 2021   253
+#> 14 2021   254
 ```
 
 And now most importantly, Jochem's collaborators, and the collaborators of those collaborators (note the `n_deep = 1`, can you find out what that does?). So essentially a "one-step-further-than-Jochem" network. 

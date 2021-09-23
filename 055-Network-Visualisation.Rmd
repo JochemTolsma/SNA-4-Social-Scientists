@@ -1,10 +1,244 @@
-# (PART) Part 5 Network Visualisation  {-} 
+# (PART) Network Visualization  {-} 
 
+# Network Visualization     
+
+```{r, echo=FALSE}
+library(knitr)
+opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE, warning = FALSE, message = FALSE,comment = "#>" , attr.source = ".numberLines") 
+options(width = 100)
+
+```
+
+
+```{r colorize, echo=FALSE}
+colorize <- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", color,
+      x)
+  } else x
+}
+```
+
+
+<style>
+
+.button1 {
+  background-color: #f44336; /* Red */ 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button1 {border-radius: 12px;}
+
+.button1 {width: 100%;}
+</style>
+
+
+<script>
+function myFunction() {
+
+            var btn = document.getElementById("myButton");
+            //to make it fancier
+            if (btn.value == "Click to hide code") {
+                btn.value = "Click to show code";
+                btn.innerHTML = "Click to show code";
+            }
+            else {
+                btn.value = "Click to hide code";
+                btn.innerHTML = "Click to hide code";
+            }
+            //this is what you're looking for
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+</script>
+
+
+
+Visualizations of social networks are cool. I am often impressed if I see them in papers. They seem to signal that the authors are technically savvy.  
+If you know me a little bit you will also know that I think that the importance of a good description of your data cannot be downplayed: describing before (and over) explanation; simplicity (e.g. univariate or bivatiate statistics) trumps complexity. What is a better 'description' of your network data than a graphical summary of your network? What could I possibly have against network visualizations?    
+
+Unfortunately, more often than not the story behind the (cool, dynamic, interactive) network picture is not clear. I do not see selection and influence processes. We have have to guess what the node and tie attributes are. And, importantly, typical network structures remain elusive. 
+
+A good example of a bad network visualization is Smallworld, introduced in section \@ref(sn). 
+
+<iframe src="smallworld.html" width="500" height="500" style="border: none;"></iframe>
+
+Paradoxically, one of the reasons why oftentimes it is not worth the time to look at network visualisations is because scholars did not think it was worth the time to look at the data. 
+
+The take home message of this chapter is that before you can make a successful network visualization you need to answer the following question: 
+
+* **What story do I want my network visualization to tell? **
+
+The answer to this question depends on:  
+  - your research question  
+  - descriptive statistics of your data  
+  - how preliminary network plots are able to convey your message. 
+
+In this chapter we will take on three case studies:  
+
+1. **Smallworld**: Should tell the story that a typical smallworld network has a relatively low density, high level of clustering and low average path length.  
+2. **Twittersphere** in the Dutch House of Parliament: should tell the story that twitter networks are segregated along party affiliation.  
+3. **Co-author** network of sociology staff of Radboud University Nijmegen: 
+
+But before we take on these case studies, we will start with a classical example: Zachary's karate club [@zachary1977information].
+
+> Where for our analyses we heavily relay on the R package `lavaan` [@lavaan2012] and `RSiena` [@R-RSiena], for network description and visualisation we will mainly use `igraph` [@R-igraph]. 
 
 
 ---  
 
 
+## Zachary's karate club
+
+As stated above, we will mainly rely on the `igraph` package. This means we have to make an igraph graph object before we can start doing anything. Luckily `igraph` comes with Zachary's network build-in. But don't worry, we will start from scratch later on. Let us have a first look at the data. 
+
+```{r, message=FALSE, warning=FALSE}
+require(igraph)
+g <- make_graph("Zachary")
+plot(g)
+gmat <- as_adjacency_matrix(g, type="both", sparse=FALSE)
+gmat
+
+```
+
+### Descriptive statistics
+
+#### Size
+```{r}
+#number of nodes
+vcount(g)
+#number of edges
+ecount(g)
+
+```
+
+#### node-level
+
+We discussed several network structure in section \@ref(structure-1). Decide for yourself at which structures you want to look at. I give three examples below. 
+
+#### degree {-}
+```{r}
+degree(g)
+#hist(table(degree(g)), xlab="indegree", main= "Histogram of indegree")
+```
+
+#### transitivity {-}
+```{r}
+#be aware that directed graphs are considered as undirected. but g is undirected. 
+transitivity(g, type = c("localundirected"), isolates = c("NaN", "zero"))
 
 
+```
+
+#### betweenness {-}
+
+```{r}
+igraph::betweenness(g, directed = FALSE)
+```
+
+### dyad-census
+```{r}
+dyad.census(g)
+```
+
+### triad-census
+
+```{r}
+igraph::triad.census(g)
+
+sna::triad.census(gmat)
+```
+
+Based on the above triad.census, please calculate the global transitivity of the network and check your answer with `igraph` or `sna`.  
+
+
+<button class=button1 onclick="myFunction()" id="myButton" value="Click To Open Instructions">Only click button after 5 minutes!</button>
+
+<div style="display:none;" id="myDIV">
+
+
+```{r}
+
+igraph::transitivity(g, type = "global")
+sna::gtrans(gmat)
+
+triad_g <- data.frame(sna::triad.census(gmat))
+
+transitivity_g <- (3*triad_g$X300) / (triad_g$X201 + 3*triad_g$X300)
+transitivity_g 
+```
+
+</div>
+<br> 
+\ 
+
+Even if you did not read-up on Zachary's Karate club [@zachary1977information; @girvan2002community; @kadushin2012understanding] our initial plot and the above descriptive network statistics start to tell a story. There are two very central nodes (based on degree and betweenness) but their local transitivity index is relatively low (compared to other nodes). Are these two nodes connected? Well `gmat[1,34]` returns: `r gmat[1,34]`. Thus NO! 
+
+### Network visualisation
+
+Let's make size proportional to betweenness score:
+
+```{r}
+# changing V
+V(g)$size = betweenness(g, normalized=T, directed = FALSE) * 60 + 10 #after some trial and error
+plot(g, mode = "undirected")
+```
+
+It would be nice if we could place the nodes 1 and 34 further apart. 
+Preferably based on some nice algoritm. After some browsing in the igraph manual, I came up with this. 
+```{r}
+set.seed(2345)
+l <- layout_with_mds(g) #https://igraph.org/r/doc/layout_with_mds.html
+plot(g, layout=l)
+
+```
+
+It does more or less what we want, but it would be great to place nodes 1 and 34 even further apart. 
+
+```{r, results='hold'}
+l
+l[1,1] <- 4
+l[34,1] <- -3.5 
+plot(g, layout=l)
+
+```
+\
+
+It now more or less looks like nodes 1 and 34 are ripping the network in two. Hey, that is a funny coincidence, let that now be exactly what the original paper was all about.  
+
+
+---  
+
+## Smallworld  
+
+### Descriptive statistics  
+
+### Network visualisation
+
+---  
+
+## Twittersphere in the Dutch HoP
+
+have a look [here](https://www.jochemtolsma.nl/courses/plotting-social-networks/)
+
+---  
 

@@ -216,7 +216,7 @@ Social network analysts have struggled how to measure weaker social network rela
 - Homophily  
 - relation to social capital literature
 
-### Structure  
+### Structure   
 
 In this section we will discuss several network measures. In this chapter we focus on egonets but many measures are also relevant for complete networks!  
 
@@ -1445,7 +1445,7 @@ summary(fit6, standardized = T)
 1. Please give an interpretation of the most important parameter estimates of the micro-macro models (including the RI-CLP-MM).  
     a. Does the educational level of our confidants influence our opinion towards euthanasia?  
     b. Do you observe selection effects and how can they be explained?  
-2. Try to answer the formulated [research questions](\@ref(rq))
+2. Try to answer the formulated research questions \@ref(rq)
     - you could try to combine the different opinions of ego in one latent variable to increase power.  
     - try to see if the influence of the educational level of the CDN depends on the size of the CDN (I would recommend taking a multi-group perspective) or on ego's educational level in years (I would recommend introducing an interaction effect)  
     - to check whether influence processes depend on other characteristics of the alters is definitely not easy. The method is described in @bennink2016micro but this is too difficult and not feasible in lavaan (perhaps in a two-step approach). You have to try to be creative. 
