@@ -2,6 +2,12 @@
 
 # Theory  
 
+```{r, echo=FALSE}
+library(knitr)
+opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE, warning = FALSE, message = FALSE,comment = "#>" , attr.source = ".numberLines", cache=TRUE) 
+options(width = 100)
+
+```
 
 ```{r colorize, echo=FALSE}
 colorize <- function(x, color) {

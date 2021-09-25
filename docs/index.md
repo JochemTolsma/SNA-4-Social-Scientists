@@ -1,6 +1,6 @@
 ---
 title: "Social Network Analysis for Social Scientists"
-date: "`r Sys.Date()`"
+date: "2021-09-25"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -15,28 +15,14 @@ description: ""
 https://jochemtolsma.github.io/SNA-4-Social-Scientists/
 --->
 
-```{r include=FALSE}
-#  automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown' ,'lavaan', 'agrmt', 'RSiena', 'igraph'
-), 'packages.bib')
-```
 
-```{r globalsettings, echo=FALSE, warning=FALSE}
-library(knitr)
-opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE, warning = FALSE, message = FALSE,comment = "#>", cache=TRUE)
-opts_chunk$set(attr.source = ".numberLines")
-options(width = 100)
-source("util.r")
 
-```
+
 
 # Welcome {.unnumbered}
 
 
-```{r chunkname, echo=FALSE, out.width= "50%", out.extra='style="float:right; padding:10px"'} 
-knitr::include_graphics("cover.jpg")
-```
+<img src="cover.jpg" width="50%" style="float:right; padding:10px" />
 
 <!--- I  wonder whether starting with a negative ("This book is *not*...") is something we want. Perhaps the next iteration we can start with the USP: "This book is about THE social network perspective. That makes it way more important than either the x, the y, or the z. Here, we integrate all that stuff. And so this course is not specifically on either x, y, or z, but instead we relate and integrate these three things into..." Something like that. --->
 
