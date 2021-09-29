@@ -344,6 +344,7 @@ V(caveman_net_rewired)$color <- "red"
 #graph.density(caveman_net_rewired)
 
 smallworld <- caveman_net_rewired
+save(smallworld, file="smallworld.Rdata")
 # net.js <- caveman_net_rewired
 # graph_attr(net.js, "layout") <- NULL 
 # library(threejs)

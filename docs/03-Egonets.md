@@ -7,6 +7,7 @@
 
 
 
+
 We already introduced egonets in section \@ref(types). We defined an egonet as the **set of ties surrounding sampled individual units.** [cf. @marsden1990]. Thus we have an ego with ties to one or more alters. Suppose that after we have identified the alters of ego, we asked ego the following follow-up question: 
 
 
@@ -121,7 +122,7 @@ From time to time, most people discuss important matters with other people. Look
 ...that there are not many people naming more than five persons.^[In many surveys respondents are not even given the opportunity to give more than five persons.] For example, have a look at the table below. Data is from a dataset called CrimeNL [@crimenl]. 
 
 <table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-1)Number of confidants in CDN (row %)</caption>
+<caption>(\#tab:unnamed-chunk-2)Number of confidants in CDN (row %)</caption>
  <thead>
   <tr>
    <th style="text-align:left;">   </th>
@@ -245,7 +246,7 @@ See the figures \@ref(fig:jt) and \@ref(fig:bh ) below for a graphical summary o
 
 
 
-```r
+```{.r .numberLines}
 require(rvest)
 page <- read_html("https://scholar.google.com/citations?view_op=list_colleagues&hl=en&user=K51iiIAAAAAJ")
 
@@ -571,16 +572,16 @@ For the original variables in Dutch see below:
 ### Preperation 
 
 
-```r
+```{.r .numberLines}
 #### clean the environment ####.
-rm(list=ls())
+rm(list = ls())
 
 #### packages ####.
 require(tidyverse)
 require(lavaan)
 
 ##### Data input ###.
-load('addfiles/liss_cdn.Rdata')
+load("addfiles/liss_cdn.Rdata")
 
 liss_l <- liss_cdn[[1]]
 liss_w <- liss_cdn[[2]]
@@ -595,10 +596,10 @@ In the literature two approaches are discussed to estimate a micro-macro model, 
 But first let us estimate the wrong models. We will start with a disaggregation approach. We need to disaggregate our data so that each row refers to a specific combination of ego, survey_wave and alter. 
 
 
-```r
-#we need to disaggregate our data. thus each ego, wave, alter per row. 
-liss_ll <- rbind(liss_l,liss_l,liss_l,liss_l,liss_l)
-liss_ll$index_alter <- rep(1:5, each=length(liss_l[,1]))
+```{.r .numberLines}
+# we need to disaggregate our data. thus each ego, wave, alter per row.
+liss_ll <- rbind(liss_l, liss_l, liss_l, liss_l, liss_l)
+liss_ll$index_alter <- rep(1:5, each = length(liss_l[, 1]))
 liss_ll$educ_alter <- NA
 
 liss_ll$educ_alter <- ifelse(liss_ll$index_alter == 1, liss_ll$educ_alter1, liss_ll$educ_alter)
@@ -607,13 +608,14 @@ liss_ll$educ_alter <- ifelse(liss_ll$index_alter == 3, liss_ll$educ_alter3, liss
 liss_ll$educ_alter <- ifelse(liss_ll$index_alter == 4, liss_ll$educ_alter4, liss_ll$educ_alter)
 liss_ll$educ_alter <- ifelse(liss_ll$index_alter == 5, liss_ll$educ_alter5, liss_ll$educ_alter)
 
-liss_ll_sel <- liss_ll %>% filter(survey_wave==11)
+liss_ll_sel <- liss_ll %>%
+    filter(survey_wave == 11)
 
-model1 <- '
+model1 <- "
   euthanasia ~ educ_alter
   euthanasia ~ 1
   euthanasia ~~ euthanasia
-  '
+  "
 
 
 
@@ -622,38 +624,38 @@ summary(fit1)
 ```
 
 ```
-## lavaan 0.6-9 ended normally after 9 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of model parameters                         3
-##                                                       
-##                                                   Used       Total
-##   Number of observations                         10923       29925
-##                                                                   
-## Model Test User Model:
-##                                                       
-##   Test statistic                                 0.000
-##   Degrees of freedom                                 0
-## 
-## Parameter Estimates:
-## 
-##   Standard errors                             Standard
-##   Information                                 Expected
-##   Information saturated (h1) model          Structured
-## 
-## Regressions:
-##                    Estimate  Std.Err  z-value  P(>|z|)
-##   euthanasia ~                                        
-##     educ_alter        0.009    0.003    2.726    0.006
-## 
-## Intercepts:
-##                    Estimate  Std.Err  z-value  P(>|z|)
-##    .euthanasia        4.335    0.042  102.363    0.000
-## 
-## Variances:
-##                    Estimate  Std.Err  z-value  P(>|z|)
-##    .euthanasia        0.921    0.012   73.902    0.000
+#> lavaan 0.6-9 ended normally after 9 iterations
+#> 
+#>   Estimator                                         ML
+#>   Optimization method                           NLMINB
+#>   Number of model parameters                         3
+#>                                                       
+#>                                                   Used       Total
+#>   Number of observations                         10923       29925
+#>                                                                   
+#> Model Test User Model:
+#>                                                       
+#>   Test statistic                                 0.000
+#>   Degrees of freedom                                 0
+#> 
+#> Parameter Estimates:
+#> 
+#>   Standard errors                             Standard
+#>   Information                                 Expected
+#>   Information saturated (h1) model          Structured
+#> 
+#> Regressions:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>   euthanasia ~                                        
+#>     educ_alter        0.009    0.003    2.726    0.006
+#> 
+#> Intercepts:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>    .euthanasia        4.335    0.042  102.363    0.000
+#> 
+#> Variances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>    .euthanasia        0.921    0.012   73.902    0.000
 ```
 
 ## Aggregation method
@@ -661,55 +663,58 @@ summary(fit1)
 We could also try to aggregate our confidant data. This means we calculate the mean educational level of our confidants solely based on the available data in the observed scores. 
 
 
-```r
-liss_l <- liss_l %>% mutate(educ_alter_mean = rowMeans(cbind(educ_alter1, educ_alter2, educ_alter3, educ_alter4,educ_alter5), na.rm = TRUE)) #calculate the mean educational level of the alters. 
+```{.r .numberLines}
+liss_l <- liss_l %>%
+    mutate(educ_alter_mean = rowMeans(cbind(educ_alter1, educ_alter2, educ_alter3, educ_alter4, educ_alter5),
+        na.rm = TRUE))  #calculate the mean educational level of the alters. 
 
-liss_l_sel <- liss_l %>% filter(survey_wave==11)
+liss_l_sel <- liss_l %>%
+    filter(survey_wave == 11)
 
-model1 <- '
+model1 <- "
   euthanasia ~ educ_alter_mean
   euthanasia ~ 1
   euthanasia ~~ euthanasia
-  '
+  "
 
 fit2 <- lavaan(model1, data = liss_l_sel, missing = "fiml")
 summary(fit2)
 ```
 
 ```
-## lavaan 0.6-9 ended normally after 12 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of model parameters                         3
-##                                                       
-##                                                   Used       Total
-##   Number of observations                          3743        5985
-##   Number of missing patterns                         2            
-##                                                                   
-## Model Test User Model:
-##                                                       
-##   Test statistic                                 0.000
-##   Degrees of freedom                                 0
-## 
-## Parameter Estimates:
-## 
-##   Standard errors                             Standard
-##   Information                                 Observed
-##   Observed information based on                Hessian
-## 
-## Regressions:
-##                    Estimate  Std.Err  z-value  P(>|z|)
-##   euthanasia ~                                        
-##     educ_alter_men    0.016    0.008    2.020    0.043
-## 
-## Intercepts:
-##                    Estimate  Std.Err  z-value  P(>|z|)
-##    .euthanasia        4.244    0.098   43.513    0.000
-## 
-## Variances:
-##                    Estimate  Std.Err  z-value  P(>|z|)
-##    .euthanasia        0.934    0.023   41.207    0.000
+#> lavaan 0.6-9 ended normally after 12 iterations
+#> 
+#>   Estimator                                         ML
+#>   Optimization method                           NLMINB
+#>   Number of model parameters                         3
+#>                                                       
+#>                                                   Used       Total
+#>   Number of observations                          3743        5985
+#>   Number of missing patterns                         2            
+#>                                                                   
+#> Model Test User Model:
+#>                                                       
+#>   Test statistic                                 0.000
+#>   Degrees of freedom                                 0
+#> 
+#> Parameter Estimates:
+#> 
+#>   Standard errors                             Standard
+#>   Information                                 Observed
+#>   Observed information based on                Hessian
+#> 
+#> Regressions:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>   euthanasia ~                                        
+#>     educ_alter_men    0.016    0.008    2.020    0.043
+#> 
+#> Intercepts:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>    .euthanasia        4.244    0.098   43.513    0.000
+#> 
+#> Variances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>    .euthanasia        0.934    0.023   41.207    0.000
 ```
 
 ## Micro-macro model  
@@ -717,8 +722,9 @@ summary(fit2)
 Finally, let us estimate a better model. We will not use the observed mean value of the educational levels of the confidants for each ego but will calculate a bias corrected mean. 
 
 
-```r
-liss_l_sel <- liss_l %>% filter(survey_wave==11)
+```{.r .numberLines}
+liss_l_sel <- liss_l %>%
+    filter(survey_wave == 11)
 
 model <- "
   #latent variable
@@ -757,62 +763,62 @@ summary(fit3)
 ```
 
 ```
-## lavaan 0.6-9 ended normally after 22 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of model parameters                        14
-##   Number of equality constraints                     8
-##                                                       
-##                                                   Used       Total
-##   Number of observations                          4922        5985
-##   Number of missing patterns                        50            
-##                                                                   
-## Model Test User Model:
-##                                                       
-##   Test statistic                                46.488
-##   Degrees of freedom                                21
-##   P-value (Chi-square)                           0.001
-## 
-## Parameter Estimates:
-## 
-##   Standard errors                             Standard
-##   Information                                 Observed
-##   Observed information based on                Hessian
-## 
-## Latent Variables:
-##                    Estimate  Std.Err  z-value  P(>|z|)
-##   FX =~                                               
-##     educ_alter1       1.000                           
-##     educ_alter2       1.000                           
-##     educ_alter3       1.000                           
-##     educ_alter4       1.000                           
-##     educ_alter5       1.000                           
-## 
-## Regressions:
-##                    Estimate  Std.Err  z-value  P(>|z|)
-##   euthanasia ~                                        
-##     FX                0.032    0.015    2.083    0.037
-## 
-## Intercepts:
-##                    Estimate  Std.Err  z-value  P(>|z|)
-##    .euthanasia        4.423    0.015  303.122    0.000
-##    .educ_altr1 (e)   12.487    0.034  370.005    0.000
-##    .educ_altr2 (e)   12.487    0.034  370.005    0.000
-##    .educ_altr3 (e)   12.487    0.034  370.005    0.000
-##    .educ_altr4 (e)   12.487    0.034  370.005    0.000
-##    .educ_altr5 (e)   12.487    0.034  370.005    0.000
-##     FX                0.000                           
-## 
-## Variances:
-##                    Estimate  Std.Err  z-value  P(>|z|)
-##    .educ_altr1 (b)    5.438    0.083   65.318    0.000
-##    .educ_altr2 (b)    5.438    0.083   65.318    0.000
-##    .educ_altr3 (b)    5.438    0.083   65.318    0.000
-##    .educ_altr4 (b)    5.438    0.083   65.318    0.000
-##    .educ_altr5 (b)    5.438    0.083   65.318    0.000
-##     FX                2.322    0.099   23.418    0.000
-##    .euthanasia        0.972    0.020   47.642    0.000
+#> lavaan 0.6-9 ended normally after 22 iterations
+#> 
+#>   Estimator                                         ML
+#>   Optimization method                           NLMINB
+#>   Number of model parameters                        14
+#>   Number of equality constraints                     8
+#>                                                       
+#>                                                   Used       Total
+#>   Number of observations                          4922        5985
+#>   Number of missing patterns                        50            
+#>                                                                   
+#> Model Test User Model:
+#>                                                       
+#>   Test statistic                                46.488
+#>   Degrees of freedom                                21
+#>   P-value (Chi-square)                           0.001
+#> 
+#> Parameter Estimates:
+#> 
+#>   Standard errors                             Standard
+#>   Information                                 Observed
+#>   Observed information based on                Hessian
+#> 
+#> Latent Variables:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>   FX =~                                               
+#>     educ_alter1       1.000                           
+#>     educ_alter2       1.000                           
+#>     educ_alter3       1.000                           
+#>     educ_alter4       1.000                           
+#>     educ_alter5       1.000                           
+#> 
+#> Regressions:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>   euthanasia ~                                        
+#>     FX                0.032    0.015    2.083    0.037
+#> 
+#> Intercepts:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>    .euthanasia        4.423    0.015  303.122    0.000
+#>    .educ_altr1 (e)   12.487    0.034  370.005    0.000
+#>    .educ_altr2 (e)   12.487    0.034  370.005    0.000
+#>    .educ_altr3 (e)   12.487    0.034  370.005    0.000
+#>    .educ_altr4 (e)   12.487    0.034  370.005    0.000
+#>    .educ_altr5 (e)   12.487    0.034  370.005    0.000
+#>     FX                0.000                           
+#> 
+#> Variances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)
+#>    .educ_altr1 (b)    5.438    0.083   65.318    0.000
+#>    .educ_altr2 (b)    5.438    0.083   65.318    0.000
+#>    .educ_altr3 (b)    5.438    0.083   65.318    0.000
+#>    .educ_altr4 (b)    5.438    0.083   65.318    0.000
+#>    .educ_altr5 (b)    5.438    0.083   65.318    0.000
+#>     FX                2.322    0.099   23.418    0.000
+#>    .euthanasia        0.972    0.020   47.642    0.000
 ```
 
 
@@ -827,7 +833,7 @@ To illustrate I only use four waves: 6-9.
 We need to calculate the bias corrected means for each wave. I prefer to do that in a two-step procedure. 
 
 
-```r
+```{.r .numberLines}
 myModel <- '
 
 FX6 =~ 1*educ_alter1.6 + 1*educ_alter2.6 + 1*educ_alter3.6 + 1*educ_alter4.6 + 1*educ_alter5.6   
@@ -907,139 +913,139 @@ summary(fit, standardized = T)
 ```
 
 ```
-## lavaan 0.6-9 ended normally after 38 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of model parameters                        47
-##   Number of equality constraints                    35
-##                                                       
-##                                                   Used       Total
-##   Number of observations                          6582       13018
-##   Number of missing patterns                      1740            
-##                                                                   
-## Model Test User Model:
-##                                                        
-##   Test statistic                              13075.965
-##   Degrees of freedom                                218
-##   P-value (Chi-square)                            0.000
-## 
-## Parameter Estimates:
-## 
-##   Standard errors                             Standard
-##   Information                                 Observed
-##   Observed information based on                Hessian
-## 
-## Latent Variables:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##   FX6 =~                                                                
-##     educ_alter1.6     1.000                               1.482    0.538
-##     educ_alter2.6     1.000                               1.482    0.538
-##     educ_alter3.6     1.000                               1.482    0.538
-##     educ_alter4.6     1.000                               1.482    0.538
-##     educ_alter5.6     1.000                               1.482    0.538
-##   FX7 =~                                                                
-##     educ_alter1.7     1.000                               1.508    0.543
-##     educ_alter2.7     1.000                               1.508    0.543
-##     educ_alter3.7     1.000                               1.508    0.543
-##     educ_alter4.7     1.000                               1.508    0.543
-##     educ_alter5.7     1.000                               1.508    0.543
-##   FX8 =~                                                                
-##     educ_alter1.8     1.000                               1.546    0.557
-##     educ_alter2.8     1.000                               1.546    0.557
-##     educ_alter3.8     1.000                               1.546    0.557
-##     educ_alter4.8     1.000                               1.546    0.557
-##     educ_alter5.8     1.000                               1.546    0.557
-##   FX9 =~                                                                
-##     educ_alter1.9     1.000                               1.538    0.557
-##     educ_alter2.9     1.000                               1.538    0.557
-##     educ_alter3.9     1.000                               1.538    0.557
-##     educ_alter4.9     1.000                               1.538    0.557
-##     educ_alter5.9     1.000                               1.538    0.557
-## 
-## Intercepts:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##    .edc_ltr1.6 (e)   12.167    0.031  393.604    0.000   12.167    4.421
-##    .edc_ltr2.6 (e)   12.167    0.031  393.604    0.000   12.167    4.421
-##    .edc_ltr3.6 (e)   12.167    0.031  393.604    0.000   12.167    4.421
-##    .edc_ltr4.6 (e)   12.167    0.031  393.604    0.000   12.167    4.421
-##    .edc_ltr5.6 (e)   12.167    0.031  393.604    0.000   12.167    4.421
-##    .edc_ltr1.7 (e)   12.167    0.031  393.604    0.000   12.167    4.386
-##    .edc_ltr2.7 (e)   12.167    0.031  393.604    0.000   12.167    4.386
-##    .edc_ltr3.7 (e)   12.167    0.031  393.604    0.000   12.167    4.386
-##    .edc_ltr4.7 (e)   12.167    0.031  393.604    0.000   12.167    4.386
-##    .edc_ltr5.7 (e)   12.167    0.031  393.604    0.000   12.167    4.386
-##    .edc_ltr1.8 (e)   12.167    0.031  393.604    0.000   12.167    4.381
-##    .edc_ltr2.8 (e)   12.167    0.031  393.604    0.000   12.167    4.381
-##    .edc_ltr3.8 (e)   12.167    0.031  393.604    0.000   12.167    4.381
-##    .edc_ltr4.8 (e)   12.167    0.031  393.604    0.000   12.167    4.381
-##    .edc_ltr5.8 (e)   12.167    0.031  393.604    0.000   12.167    4.381
-##    .edc_ltr1.9 (e)   12.167    0.031  393.604    0.000   12.167    4.406
-##    .edc_ltr2.9 (e)   12.167    0.031  393.604    0.000   12.167    4.406
-##    .edc_ltr3.9 (e)   12.167    0.031  393.604    0.000   12.167    4.406
-##    .edc_ltr4.9 (e)   12.167    0.031  393.604    0.000   12.167    4.406
-##    .edc_ltr5.9 (e)   12.167    0.031  393.604    0.000   12.167    4.406
-##     FX7               0.057    0.043    1.343    0.179    0.038    0.038
-##     FX8               0.199    0.044    4.472    0.000    0.129    0.129
-##     FX9               0.248    0.045    5.520    0.000    0.161    0.161
-##     FX6               0.000                               0.000    0.000
-## 
-## Variances:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##     FX6               2.195    0.089   24.725    0.000    1.000    1.000
-##     FX7               2.273    0.085   26.832    0.000    1.000    1.000
-##     FX8               2.390    0.093   25.606    0.000    1.000    1.000
-##     FX9               2.366    0.095   24.867    0.000    1.000    1.000
-##    .edc_ltr1.6 (a)    5.378    0.077   70.264    0.000    5.378    0.710
-##    .edc_ltr2.6 (a)    5.378    0.077   70.264    0.000    5.378    0.710
-##    .edc_ltr3.6 (a)    5.378    0.077   70.264    0.000    5.378    0.710
-##    .edc_ltr4.6 (a)    5.378    0.077   70.264    0.000    5.378    0.710
-##    .edc_ltr5.6 (a)    5.378    0.077   70.264    0.000    5.378    0.710
-##    .edc_ltr1.7 (b)    5.423    0.072   75.373    0.000    5.423    0.705
-##    .edc_ltr2.7 (b)    5.423    0.072   75.373    0.000    5.423    0.705
-##    .edc_ltr3.7 (b)    5.423    0.072   75.373    0.000    5.423    0.705
-##    .edc_ltr4.7 (b)    5.423    0.072   75.373    0.000    5.423    0.705
-##    .edc_ltr5.7 (b)    5.423    0.072   75.373    0.000    5.423    0.705
-##    .edc_ltr1.8 (c)    5.325    0.076   69.669    0.000    5.325    0.690
-##    .edc_ltr2.8 (c)    5.325    0.076   69.669    0.000    5.325    0.690
-##    .edc_ltr3.8 (c)    5.325    0.076   69.669    0.000    5.325    0.690
-##    .edc_ltr4.8 (c)    5.325    0.076   69.669    0.000    5.325    0.690
-##    .edc_ltr5.8 (c)    5.325    0.076   69.669    0.000    5.325    0.690
-##    .edc_ltr1.9 (d)    5.259    0.078   67.621    0.000    5.259    0.690
-##    .edc_ltr2.9 (d)    5.259    0.078   67.621    0.000    5.259    0.690
-##    .edc_ltr3.9 (d)    5.259    0.078   67.621    0.000    5.259    0.690
-##    .edc_ltr4.9 (d)    5.259    0.078   67.621    0.000    5.259    0.690
-##    .edc_ltr5.9 (d)    5.259    0.078   67.621    0.000    5.259    0.690
+#> lavaan 0.6-9 ended normally after 38 iterations
+#> 
+#>   Estimator                                         ML
+#>   Optimization method                           NLMINB
+#>   Number of model parameters                        47
+#>   Number of equality constraints                    35
+#>                                                       
+#>                                                   Used       Total
+#>   Number of observations                          6582       13018
+#>   Number of missing patterns                      1740            
+#>                                                                   
+#> Model Test User Model:
+#>                                                        
+#>   Test statistic                              13075.965
+#>   Degrees of freedom                                218
+#>   P-value (Chi-square)                            0.000
+#> 
+#> Parameter Estimates:
+#> 
+#>   Standard errors                             Standard
+#>   Information                                 Observed
+#>   Observed information based on                Hessian
+#> 
+#> Latent Variables:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>   FX6 =~                                                                
+#>     educ_alter1.6     1.000                               1.482    0.538
+#>     educ_alter2.6     1.000                               1.482    0.538
+#>     educ_alter3.6     1.000                               1.482    0.538
+#>     educ_alter4.6     1.000                               1.482    0.538
+#>     educ_alter5.6     1.000                               1.482    0.538
+#>   FX7 =~                                                                
+#>     educ_alter1.7     1.000                               1.508    0.543
+#>     educ_alter2.7     1.000                               1.508    0.543
+#>     educ_alter3.7     1.000                               1.508    0.543
+#>     educ_alter4.7     1.000                               1.508    0.543
+#>     educ_alter5.7     1.000                               1.508    0.543
+#>   FX8 =~                                                                
+#>     educ_alter1.8     1.000                               1.546    0.557
+#>     educ_alter2.8     1.000                               1.546    0.557
+#>     educ_alter3.8     1.000                               1.546    0.557
+#>     educ_alter4.8     1.000                               1.546    0.557
+#>     educ_alter5.8     1.000                               1.546    0.557
+#>   FX9 =~                                                                
+#>     educ_alter1.9     1.000                               1.538    0.557
+#>     educ_alter2.9     1.000                               1.538    0.557
+#>     educ_alter3.9     1.000                               1.538    0.557
+#>     educ_alter4.9     1.000                               1.538    0.557
+#>     educ_alter5.9     1.000                               1.538    0.557
+#> 
+#> Intercepts:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>    .edc_ltr1.6 (e)   12.167    0.031  393.604    0.000   12.167    4.421
+#>    .edc_ltr2.6 (e)   12.167    0.031  393.604    0.000   12.167    4.421
+#>    .edc_ltr3.6 (e)   12.167    0.031  393.604    0.000   12.167    4.421
+#>    .edc_ltr4.6 (e)   12.167    0.031  393.604    0.000   12.167    4.421
+#>    .edc_ltr5.6 (e)   12.167    0.031  393.604    0.000   12.167    4.421
+#>    .edc_ltr1.7 (e)   12.167    0.031  393.604    0.000   12.167    4.386
+#>    .edc_ltr2.7 (e)   12.167    0.031  393.604    0.000   12.167    4.386
+#>    .edc_ltr3.7 (e)   12.167    0.031  393.604    0.000   12.167    4.386
+#>    .edc_ltr4.7 (e)   12.167    0.031  393.604    0.000   12.167    4.386
+#>    .edc_ltr5.7 (e)   12.167    0.031  393.604    0.000   12.167    4.386
+#>    .edc_ltr1.8 (e)   12.167    0.031  393.604    0.000   12.167    4.381
+#>    .edc_ltr2.8 (e)   12.167    0.031  393.604    0.000   12.167    4.381
+#>    .edc_ltr3.8 (e)   12.167    0.031  393.604    0.000   12.167    4.381
+#>    .edc_ltr4.8 (e)   12.167    0.031  393.604    0.000   12.167    4.381
+#>    .edc_ltr5.8 (e)   12.167    0.031  393.604    0.000   12.167    4.381
+#>    .edc_ltr1.9 (e)   12.167    0.031  393.604    0.000   12.167    4.406
+#>    .edc_ltr2.9 (e)   12.167    0.031  393.604    0.000   12.167    4.406
+#>    .edc_ltr3.9 (e)   12.167    0.031  393.604    0.000   12.167    4.406
+#>    .edc_ltr4.9 (e)   12.167    0.031  393.604    0.000   12.167    4.406
+#>    .edc_ltr5.9 (e)   12.167    0.031  393.604    0.000   12.167    4.406
+#>     FX7               0.057    0.043    1.343    0.179    0.038    0.038
+#>     FX8               0.199    0.044    4.472    0.000    0.129    0.129
+#>     FX9               0.248    0.045    5.520    0.000    0.161    0.161
+#>     FX6               0.000                               0.000    0.000
+#> 
+#> Variances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>     FX6               2.195    0.089   24.725    0.000    1.000    1.000
+#>     FX7               2.273    0.085   26.832    0.000    1.000    1.000
+#>     FX8               2.390    0.093   25.606    0.000    1.000    1.000
+#>     FX9               2.366    0.095   24.867    0.000    1.000    1.000
+#>    .edc_ltr1.6 (a)    5.378    0.077   70.264    0.000    5.378    0.710
+#>    .edc_ltr2.6 (a)    5.378    0.077   70.264    0.000    5.378    0.710
+#>    .edc_ltr3.6 (a)    5.378    0.077   70.264    0.000    5.378    0.710
+#>    .edc_ltr4.6 (a)    5.378    0.077   70.264    0.000    5.378    0.710
+#>    .edc_ltr5.6 (a)    5.378    0.077   70.264    0.000    5.378    0.710
+#>    .edc_ltr1.7 (b)    5.423    0.072   75.373    0.000    5.423    0.705
+#>    .edc_ltr2.7 (b)    5.423    0.072   75.373    0.000    5.423    0.705
+#>    .edc_ltr3.7 (b)    5.423    0.072   75.373    0.000    5.423    0.705
+#>    .edc_ltr4.7 (b)    5.423    0.072   75.373    0.000    5.423    0.705
+#>    .edc_ltr5.7 (b)    5.423    0.072   75.373    0.000    5.423    0.705
+#>    .edc_ltr1.8 (c)    5.325    0.076   69.669    0.000    5.325    0.690
+#>    .edc_ltr2.8 (c)    5.325    0.076   69.669    0.000    5.325    0.690
+#>    .edc_ltr3.8 (c)    5.325    0.076   69.669    0.000    5.325    0.690
+#>    .edc_ltr4.8 (c)    5.325    0.076   69.669    0.000    5.325    0.690
+#>    .edc_ltr5.8 (c)    5.325    0.076   69.669    0.000    5.325    0.690
+#>    .edc_ltr1.9 (d)    5.259    0.078   67.621    0.000    5.259    0.690
+#>    .edc_ltr2.9 (d)    5.259    0.078   67.621    0.000    5.259    0.690
+#>    .edc_ltr3.9 (d)    5.259    0.078   67.621    0.000    5.259    0.690
+#>    .edc_ltr4.9 (d)    5.259    0.078   67.621    0.000    5.259    0.690
+#>    .edc_ltr5.9 (d)    5.259    0.078   67.621    0.000    5.259    0.690
 ```
 We will extract the predicted values of the CFA and add them to our dataset `liss_w`. 
 Let's have a look at the constructed variables. 
 
 
-```r
+```{.r .numberLines}
 liss_w <- data.frame(liss_w, predict(fit))
 summary(liss_w$FX6)
 summary(liss_w$FX7)
 summary(liss_w$FX8)
 summary(liss_w$FX9)
-var(liss_w$FX6, na.rm=T)
-var(liss_w$FX7, na.rm=T)
-var(liss_w$FX8, na.rm=T)
-var(liss_w$FX9, na.rm=T)
+var(liss_w$FX6, na.rm = T)
+var(liss_w$FX7, na.rm = T)
+var(liss_w$FX8, na.rm = T)
+var(liss_w$FX9, na.rm = T)
 ```
 
 ```
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-##  -4.139  -0.483   0.000   0.000   0.262   2.573    6436 
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-##  -4.156  -0.600   0.057   0.057   0.583   2.613    6436 
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-##  -4.601  -0.331   0.199   0.199   0.499   2.713    6436 
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-##  -4.196  -0.099   0.248   0.248   0.446   2.730    6436 
-## [1] 0.7675647
-## [1] 0.9217957
-## [1] 0.8511977
-## [1] 0.795766
+#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#>  -4.139  -0.483   0.000   0.000   0.262   2.573    6436 
+#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#>  -4.156  -0.600   0.057   0.057   0.583   2.613    6436 
+#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#>  -4.601  -0.331   0.199   0.199   0.499   2.713    6436 
+#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#>  -4.196  -0.099   0.248   0.248   0.446   2.730    6436 
+#> [1] 0.7675647
+#> [1] 0.9217957
+#> [1] 0.8511977
+#> [1] 0.795766
 ```
 
 We thus observe an upward trend in the educational-level of the confidants of ego in subsequent waves. This could either be due to egos replacing lower educated confidants with higher educated confidants, due to the same confidants obtaining higher educational degrees over time or due to sample selection and that in subsequent waves more egos participate who happen to have higher educated confidants.^[The trends in the reported mean values are between-ego trends not within-ego trends!]  
@@ -1047,7 +1053,7 @@ We thus observe an upward trend in the educational-level of the confidants of eg
 ### The structural model 
 
 
-```r
+```{.r .numberLines}
 RICLPM <- '
   # Create between components (random intercepts)
   RIx =~ 1*FX6 + 1*FX7 + 1*FX8 + 1*FX9 
@@ -1112,133 +1118,133 @@ summary(fit5, standardized = T)
 ```
 
 ```
-## lavaan 0.6-9 ended normally after 43 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of model parameters                        35
-##   Number of equality constraints                     8
-##                                                       
-##                                                   Used       Total
-##   Number of observations                          7199       13018
-##   Number of missing patterns                        31            
-##                                                                   
-## Model Test User Model:
-##                                                       
-##   Test statistic                               118.791
-##   Degrees of freedom                                17
-##   P-value (Chi-square)                           0.000
-## 
-## Parameter Estimates:
-## 
-##   Standard errors                             Standard
-##   Information                                 Observed
-##   Observed information based on                Hessian
-## 
-## Latent Variables:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##   RIx =~                                                                
-##     FX6               1.000                               0.616    0.691
-##     FX7               1.000                               0.616    0.649
-##     FX8               1.000                               0.616    0.667
-##     FX9               1.000                               0.616    0.699
-##   RIy =~                                                                
-##     euthanasia.6      1.000                               0.863    0.888
-##     euthanasia.7      1.000                               0.863    0.883
-##     euthanasia.8      1.000                               0.863    0.885
-##     euthanasia.9      1.000                               0.863    0.873
-##   wx6 =~                                                                
-##     FX6               1.000                               0.645    0.723
-##   wx7 =~                                                                
-##     FX7               1.000                               0.721    0.760
-##   wx8 =~                                                                
-##     FX8               1.000                               0.688    0.745
-##   wx9 =~                                                                
-##     FX9               1.000                               0.630    0.715
-##   wy6 =~                                                                
-##     euthanasia.6      1.000                               0.446    0.459
-##   wy7 =~                                                                
-##     euthanasia.7      1.000                               0.458    0.469
-##   wy8 =~                                                                
-##     euthanasia.8      1.000                               0.455    0.466
-##   wy9 =~                                                                
-##     euthanasia.9      1.000                               0.482    0.487
-## 
-## Regressions:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##   wx7 ~                                                                 
-##     wx6        (a)    0.209    0.013   15.988    0.000    0.187    0.187
-##     wy6        (b)   -0.006    0.020   -0.292    0.770   -0.004   -0.004
-##   wx8 ~                                                                 
-##     wx7        (a)    0.209    0.013   15.988    0.000    0.219    0.219
-##     wy7        (b)   -0.006    0.020   -0.292    0.770   -0.004   -0.004
-##   wx9 ~                                                                 
-##     wx8        (a)    0.209    0.013   15.988    0.000    0.228    0.228
-##     wy8        (b)   -0.006    0.020   -0.292    0.770   -0.004   -0.004
-##   wy7 ~                                                                 
-##     wx6        (c)    0.006    0.010    0.614    0.539    0.009    0.009
-##     wy6        (d)    0.075    0.017    4.324    0.000    0.073    0.073
-##   wy8 ~                                                                 
-##     wx7        (c)    0.006    0.010    0.614    0.539    0.010    0.010
-##     wy7        (d)    0.075    0.017    4.324    0.000    0.076    0.076
-##   wy9 ~                                                                 
-##     wx8        (c)    0.006    0.010    0.614    0.539    0.009    0.009
-##     wy8        (d)    0.075    0.017    4.324    0.000    0.071    0.071
-## 
-## Covariances:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##   wx6 ~~                                                                
-##     wy6              -0.005    0.006   -0.825    0.409   -0.018   -0.018
-##  .wx7 ~~                                                                
-##    .wy7              -0.011    0.007   -1.581    0.114   -0.035   -0.035
-##  .wx8 ~~                                                                
-##    .wy8              -0.005    0.007   -0.728    0.467   -0.016   -0.016
-##  .wx9 ~~                                                                
-##    .wy9               0.002    0.006    0.335    0.738    0.006    0.006
-##   RIx ~~                                                                
-##     RIy               0.033    0.009    3.766    0.000    0.062    0.062
-## 
-## Intercepts:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##    .FX6              -0.000    0.011   -0.003    0.997   -0.000   -0.000
-##    .FX7               0.057    0.012    4.868    0.000    0.057    0.060
-##    .FX8               0.199    0.011   17.451    0.000    0.199    0.215
-##    .FX9               0.248    0.011   22.852    0.000    0.248    0.282
-##    .euthanasia.6      4.411    0.013  350.507    0.000    4.411    4.542
-##    .euthanasia.7      4.431    0.013  349.557    0.000    4.431    4.536
-##    .euthanasia.8      4.444    0.013  354.901    0.000    4.444    4.556
-##    .euthanasia.9      4.411    0.013  341.314    0.000    4.411    4.464
-##     RIx               0.000                               0.000    0.000
-##     RIy               0.000                               0.000    0.000
-##     wx6               0.000                               0.000    0.000
-##    .wx7               0.000                               0.000    0.000
-##    .wx8               0.000                               0.000    0.000
-##    .wx9               0.000                               0.000    0.000
-##     wy6               0.000                               0.000    0.000
-##    .wy7               0.000                               0.000    0.000
-##    .wy8               0.000                               0.000    0.000
-##    .wy9               0.000                               0.000    0.000
-## 
-## Variances:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##     RIx               0.380    0.010   36.770    0.000    1.000    1.000
-##     RIy               0.744    0.015   50.581    0.000    1.000    1.000
-##     wx6               0.416    0.010   41.960    0.000    1.000    1.000
-##     wy6               0.199    0.006   31.333    0.000    1.000    1.000
-##    .wx7               0.502    0.011   44.278    0.000    0.965    0.965
-##    .wy7               0.209    0.007   30.909    0.000    0.995    0.995
-##    .wx8               0.451    0.011   42.848    0.000    0.952    0.952
-##    .wy8               0.206    0.007   30.201    0.000    0.994    0.994
-##    .wx9               0.377    0.008   45.519    0.000    0.948    0.948
-##    .wy9               0.231    0.007   35.362    0.000    0.995    0.995
-##    .FX6               0.000                               0.000    0.000
-##    .FX7               0.000                               0.000    0.000
-##    .FX8               0.000                               0.000    0.000
-##    .FX9               0.000                               0.000    0.000
-##    .euthanasia.6      0.000                               0.000    0.000
-##    .euthanasia.7      0.000                               0.000    0.000
-##    .euthanasia.8      0.000                               0.000    0.000
-##    .euthanasia.9      0.000                               0.000    0.000
+#> lavaan 0.6-9 ended normally after 43 iterations
+#> 
+#>   Estimator                                         ML
+#>   Optimization method                           NLMINB
+#>   Number of model parameters                        35
+#>   Number of equality constraints                     8
+#>                                                       
+#>                                                   Used       Total
+#>   Number of observations                          7199       13018
+#>   Number of missing patterns                        31            
+#>                                                                   
+#> Model Test User Model:
+#>                                                       
+#>   Test statistic                               118.791
+#>   Degrees of freedom                                17
+#>   P-value (Chi-square)                           0.000
+#> 
+#> Parameter Estimates:
+#> 
+#>   Standard errors                             Standard
+#>   Information                                 Observed
+#>   Observed information based on                Hessian
+#> 
+#> Latent Variables:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>   RIx =~                                                                
+#>     FX6               1.000                               0.616    0.691
+#>     FX7               1.000                               0.616    0.649
+#>     FX8               1.000                               0.616    0.667
+#>     FX9               1.000                               0.616    0.699
+#>   RIy =~                                                                
+#>     euthanasia.6      1.000                               0.863    0.888
+#>     euthanasia.7      1.000                               0.863    0.883
+#>     euthanasia.8      1.000                               0.863    0.885
+#>     euthanasia.9      1.000                               0.863    0.873
+#>   wx6 =~                                                                
+#>     FX6               1.000                               0.645    0.723
+#>   wx7 =~                                                                
+#>     FX7               1.000                               0.721    0.760
+#>   wx8 =~                                                                
+#>     FX8               1.000                               0.688    0.745
+#>   wx9 =~                                                                
+#>     FX9               1.000                               0.630    0.715
+#>   wy6 =~                                                                
+#>     euthanasia.6      1.000                               0.446    0.459
+#>   wy7 =~                                                                
+#>     euthanasia.7      1.000                               0.458    0.469
+#>   wy8 =~                                                                
+#>     euthanasia.8      1.000                               0.455    0.466
+#>   wy9 =~                                                                
+#>     euthanasia.9      1.000                               0.482    0.487
+#> 
+#> Regressions:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>   wx7 ~                                                                 
+#>     wx6        (a)    0.209    0.013   15.988    0.000    0.187    0.187
+#>     wy6        (b)   -0.006    0.020   -0.292    0.770   -0.004   -0.004
+#>   wx8 ~                                                                 
+#>     wx7        (a)    0.209    0.013   15.988    0.000    0.219    0.219
+#>     wy7        (b)   -0.006    0.020   -0.292    0.770   -0.004   -0.004
+#>   wx9 ~                                                                 
+#>     wx8        (a)    0.209    0.013   15.988    0.000    0.228    0.228
+#>     wy8        (b)   -0.006    0.020   -0.292    0.770   -0.004   -0.004
+#>   wy7 ~                                                                 
+#>     wx6        (c)    0.006    0.010    0.614    0.539    0.009    0.009
+#>     wy6        (d)    0.075    0.017    4.324    0.000    0.073    0.073
+#>   wy8 ~                                                                 
+#>     wx7        (c)    0.006    0.010    0.614    0.539    0.010    0.010
+#>     wy7        (d)    0.075    0.017    4.324    0.000    0.076    0.076
+#>   wy9 ~                                                                 
+#>     wx8        (c)    0.006    0.010    0.614    0.539    0.009    0.009
+#>     wy8        (d)    0.075    0.017    4.324    0.000    0.071    0.071
+#> 
+#> Covariances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>   wx6 ~~                                                                
+#>     wy6              -0.005    0.006   -0.825    0.409   -0.018   -0.018
+#>  .wx7 ~~                                                                
+#>    .wy7              -0.011    0.007   -1.581    0.114   -0.035   -0.035
+#>  .wx8 ~~                                                                
+#>    .wy8              -0.005    0.007   -0.728    0.467   -0.016   -0.016
+#>  .wx9 ~~                                                                
+#>    .wy9               0.002    0.006    0.335    0.738    0.006    0.006
+#>   RIx ~~                                                                
+#>     RIy               0.033    0.009    3.766    0.000    0.062    0.062
+#> 
+#> Intercepts:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>    .FX6              -0.000    0.011   -0.003    0.997   -0.000   -0.000
+#>    .FX7               0.057    0.012    4.868    0.000    0.057    0.060
+#>    .FX8               0.199    0.011   17.451    0.000    0.199    0.215
+#>    .FX9               0.248    0.011   22.852    0.000    0.248    0.282
+#>    .euthanasia.6      4.411    0.013  350.507    0.000    4.411    4.542
+#>    .euthanasia.7      4.431    0.013  349.557    0.000    4.431    4.536
+#>    .euthanasia.8      4.444    0.013  354.901    0.000    4.444    4.556
+#>    .euthanasia.9      4.411    0.013  341.314    0.000    4.411    4.464
+#>     RIx               0.000                               0.000    0.000
+#>     RIy               0.000                               0.000    0.000
+#>     wx6               0.000                               0.000    0.000
+#>    .wx7               0.000                               0.000    0.000
+#>    .wx8               0.000                               0.000    0.000
+#>    .wx9               0.000                               0.000    0.000
+#>     wy6               0.000                               0.000    0.000
+#>    .wy7               0.000                               0.000    0.000
+#>    .wy8               0.000                               0.000    0.000
+#>    .wy9               0.000                               0.000    0.000
+#> 
+#> Variances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>     RIx               0.380    0.010   36.770    0.000    1.000    1.000
+#>     RIy               0.744    0.015   50.581    0.000    1.000    1.000
+#>     wx6               0.416    0.010   41.960    0.000    1.000    1.000
+#>     wy6               0.199    0.006   31.333    0.000    1.000    1.000
+#>    .wx7               0.502    0.011   44.278    0.000    0.965    0.965
+#>    .wy7               0.209    0.007   30.909    0.000    0.995    0.995
+#>    .wx8               0.451    0.011   42.848    0.000    0.952    0.952
+#>    .wy8               0.206    0.007   30.201    0.000    0.994    0.994
+#>    .wx9               0.377    0.008   45.519    0.000    0.948    0.948
+#>    .wy9               0.231    0.007   35.362    0.000    0.995    0.995
+#>    .FX6               0.000                               0.000    0.000
+#>    .FX7               0.000                               0.000    0.000
+#>    .FX8               0.000                               0.000    0.000
+#>    .FX9               0.000                               0.000    0.000
+#>    .euthanasia.6      0.000                               0.000    0.000
+#>    .euthanasia.7      0.000                               0.000    0.000
+#>    .euthanasia.8      0.000                               0.000    0.000
+#>    .euthanasia.9      0.000                               0.000    0.000
 ```
 
 ### Include ego's educational level
@@ -1259,18 +1265,15 @@ Before looking at the 'hidden code' please try to:
 <div style="display:none;" id="myDIV">
 
 
-```r
+```{.r .numberLines}
 liss_w <- liss_w %>%
-  mutate(educ = educ.6, 
-         educ = ifelse(is.na(educ), educ.7, educ),
-         educ = ifelse(is.na(educ), educ.8, educ),
-         educ = ifelse(is.na(educ), educ.9, educ),
-         )
+    mutate(educ = educ.6, educ = ifelse(is.na(educ), educ.7, educ), educ = ifelse(is.na(educ), educ.8,
+        educ), educ = ifelse(is.na(educ), educ.9, educ), )
 ```
 
 
 
-```r
+```{.r .numberLines}
 RICLPM <- '
   # Create between components (random intercepts)
   RIx =~ 1*FX6 + 1*FX7 + 1*FX8 + 1*FX9 
@@ -1338,137 +1341,137 @@ summary(fit6, standardized = T)
 ```
 
 ```
-## lavaan 0.6-9 ended normally after 56 iterations
-## 
-##   Estimator                                         ML
-##   Optimization method                           NLMINB
-##   Number of model parameters                        37
-##   Number of equality constraints                     8
-##                                                       
-##                                                   Used       Total
-##   Number of observations                          8167       13018
-##   Number of missing patterns                        55            
-##                                                                   
-## Model Test User Model:
-##                                                       
-##   Test statistic                               168.715
-##   Degrees of freedom                                23
-##   P-value (Chi-square)                           0.000
-## 
-## Parameter Estimates:
-## 
-##   Standard errors                             Standard
-##   Information                                 Observed
-##   Observed information based on                Hessian
-## 
-## Latent Variables:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##   RIx =~                                                                
-##     FX6               1.000                               0.622    0.695
-##     FX7               1.000                               0.622    0.659
-##     FX8               1.000                               0.622    0.673
-##     FX9               1.000                               0.622    0.700
-##   RIy =~                                                                
-##     euthanasia.6      1.000                               0.863    0.889
-##     euthanasia.7      1.000                               0.863    0.883
-##     euthanasia.8      1.000                               0.863    0.885
-##     euthanasia.9      1.000                               0.863    0.873
-##   wx6 =~                                                                
-##     FX6               1.000                               0.643    0.719
-##   wx7 =~                                                                
-##     FX7               1.000                               0.710    0.752
-##   wx8 =~                                                                
-##     FX8               1.000                               0.683    0.739
-##   wx9 =~                                                                
-##     FX9               1.000                               0.634    0.714
-##   wy6 =~                                                                
-##     euthanasia.6      1.000                               0.446    0.459
-##   wy7 =~                                                                
-##     euthanasia.7      1.000                               0.459    0.469
-##   wy8 =~                                                                
-##     euthanasia.8      1.000                               0.455    0.466
-##   wy9 =~                                                                
-##     euthanasia.9      1.000                               0.482    0.487
-## 
-## Regressions:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##   RIx ~                                                                 
-##     educ              0.132    0.003   44.336    0.000    0.213    0.571
-##   RIy ~                                                                 
-##     educ              0.016    0.004    3.676    0.000    0.018    0.049
-##   wx7 ~                                                                 
-##     wx6        (a)    0.196    0.013   15.606    0.000    0.178    0.178
-##     wy6        (b)   -0.007    0.020   -0.372    0.710   -0.005   -0.005
-##   wx8 ~                                                                 
-##     wx7        (a)    0.196    0.013   15.606    0.000    0.204    0.204
-##     wy7        (b)   -0.007    0.020   -0.372    0.710   -0.005   -0.005
-##   wx9 ~                                                                 
-##     wx8        (a)    0.196    0.013   15.606    0.000    0.211    0.211
-##     wy8        (b)   -0.007    0.020   -0.372    0.710   -0.005   -0.005
-##   wy7 ~                                                                 
-##     wx6        (c)    0.005    0.010    0.560    0.575    0.008    0.008
-##     wy6        (d)    0.075    0.017    4.335    0.000    0.073    0.073
-##   wy8 ~                                                                 
-##     wx7        (c)    0.005    0.010    0.560    0.575    0.009    0.009
-##     wy7        (d)    0.075    0.017    4.335    0.000    0.076    0.076
-##   wy9 ~                                                                 
-##     wx8        (c)    0.005    0.010    0.560    0.575    0.008    0.008
-##     wy8        (d)    0.075    0.017    4.335    0.000    0.071    0.071
-## 
-## Covariances:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##   wx6 ~~                                                                
-##     wy6              -0.006    0.006   -0.922    0.357   -0.020   -0.020
-##  .wx7 ~~                                                                
-##    .wy7              -0.011    0.007   -1.551    0.121   -0.034   -0.034
-##  .wx8 ~~                                                                
-##    .wy8              -0.006    0.007   -0.863    0.388   -0.019   -0.019
-##  .wx9 ~~                                                                
-##    .wy9               0.002    0.006    0.284    0.777    0.005    0.005
-##  .RIx ~~                                                                
-##    .RIy               0.021    0.008    2.722    0.006    0.048    0.048
-## 
-## Intercepts:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##    .FX6              -1.631    0.038  -42.753    0.000   -1.631   -1.823
-##    .FX7              -1.574    0.038  -41.068    0.000   -1.574   -1.668
-##    .FX8              -1.432    0.038  -37.441    0.000   -1.432   -1.551
-##    .FX9              -1.382    0.038  -36.266    0.000   -1.382   -1.557
-##    .euthanasia.6      4.221    0.053   79.084    0.000    4.221    4.346
-##    .euthanasia.7      4.240    0.053   79.339    0.000    4.240    4.339
-##    .euthanasia.8      4.253    0.054   79.473    0.000    4.253    4.359
-##    .euthanasia.9      4.220    0.054   78.666    0.000    4.220    4.270
-##    .RIx               0.000                               0.000    0.000
-##    .RIy               0.000                               0.000    0.000
-##     wx6               0.000                               0.000    0.000
-##    .wx7               0.000                               0.000    0.000
-##    .wx8               0.000                               0.000    0.000
-##    .wx9               0.000                               0.000    0.000
-##     wy6               0.000                               0.000    0.000
-##    .wy7               0.000                               0.000    0.000
-##    .wy8               0.000                               0.000    0.000
-##    .wy9               0.000                               0.000    0.000
-## 
-## Variances:
-##                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
-##    .RIx               0.260    0.008   31.467    0.000    0.674    0.674
-##    .RIy               0.743    0.015   50.574    0.000    0.998    0.998
-##     wx6               0.414    0.009   43.574    0.000    1.000    1.000
-##     wy6               0.199    0.006   31.334    0.000    1.000    1.000
-##    .wx7               0.488    0.011   45.412    0.000    0.968    0.968
-##    .wy7               0.209    0.007   30.914    0.000    0.995    0.995
-##    .wx8               0.447    0.010   44.045    0.000    0.958    0.958
-##    .wy8               0.206    0.007   30.208    0.000    0.994    0.994
-##    .wx9               0.384    0.008   46.782    0.000    0.955    0.955
-##    .wy9               0.231    0.007   35.361    0.000    0.995    0.995
-##    .FX6               0.000                               0.000    0.000
-##    .FX7               0.000                               0.000    0.000
-##    .FX8               0.000                               0.000    0.000
-##    .FX9               0.000                               0.000    0.000
-##    .euthanasia.6      0.000                               0.000    0.000
-##    .euthanasia.7      0.000                               0.000    0.000
-##    .euthanasia.8      0.000                               0.000    0.000
-##    .euthanasia.9      0.000                               0.000    0.000
+#> lavaan 0.6-9 ended normally after 56 iterations
+#> 
+#>   Estimator                                         ML
+#>   Optimization method                           NLMINB
+#>   Number of model parameters                        37
+#>   Number of equality constraints                     8
+#>                                                       
+#>                                                   Used       Total
+#>   Number of observations                          8167       13018
+#>   Number of missing patterns                        55            
+#>                                                                   
+#> Model Test User Model:
+#>                                                       
+#>   Test statistic                               168.715
+#>   Degrees of freedom                                23
+#>   P-value (Chi-square)                           0.000
+#> 
+#> Parameter Estimates:
+#> 
+#>   Standard errors                             Standard
+#>   Information                                 Observed
+#>   Observed information based on                Hessian
+#> 
+#> Latent Variables:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>   RIx =~                                                                
+#>     FX6               1.000                               0.622    0.695
+#>     FX7               1.000                               0.622    0.659
+#>     FX8               1.000                               0.622    0.673
+#>     FX9               1.000                               0.622    0.700
+#>   RIy =~                                                                
+#>     euthanasia.6      1.000                               0.863    0.889
+#>     euthanasia.7      1.000                               0.863    0.883
+#>     euthanasia.8      1.000                               0.863    0.885
+#>     euthanasia.9      1.000                               0.863    0.873
+#>   wx6 =~                                                                
+#>     FX6               1.000                               0.643    0.719
+#>   wx7 =~                                                                
+#>     FX7               1.000                               0.710    0.752
+#>   wx8 =~                                                                
+#>     FX8               1.000                               0.683    0.739
+#>   wx9 =~                                                                
+#>     FX9               1.000                               0.634    0.714
+#>   wy6 =~                                                                
+#>     euthanasia.6      1.000                               0.446    0.459
+#>   wy7 =~                                                                
+#>     euthanasia.7      1.000                               0.459    0.469
+#>   wy8 =~                                                                
+#>     euthanasia.8      1.000                               0.455    0.466
+#>   wy9 =~                                                                
+#>     euthanasia.9      1.000                               0.482    0.487
+#> 
+#> Regressions:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>   RIx ~                                                                 
+#>     educ              0.132    0.003   44.336    0.000    0.213    0.571
+#>   RIy ~                                                                 
+#>     educ              0.016    0.004    3.676    0.000    0.018    0.049
+#>   wx7 ~                                                                 
+#>     wx6        (a)    0.196    0.013   15.606    0.000    0.178    0.178
+#>     wy6        (b)   -0.007    0.020   -0.372    0.710   -0.005   -0.005
+#>   wx8 ~                                                                 
+#>     wx7        (a)    0.196    0.013   15.606    0.000    0.204    0.204
+#>     wy7        (b)   -0.007    0.020   -0.372    0.710   -0.005   -0.005
+#>   wx9 ~                                                                 
+#>     wx8        (a)    0.196    0.013   15.606    0.000    0.211    0.211
+#>     wy8        (b)   -0.007    0.020   -0.372    0.710   -0.005   -0.005
+#>   wy7 ~                                                                 
+#>     wx6        (c)    0.005    0.010    0.560    0.575    0.008    0.008
+#>     wy6        (d)    0.075    0.017    4.335    0.000    0.073    0.073
+#>   wy8 ~                                                                 
+#>     wx7        (c)    0.005    0.010    0.560    0.575    0.009    0.009
+#>     wy7        (d)    0.075    0.017    4.335    0.000    0.076    0.076
+#>   wy9 ~                                                                 
+#>     wx8        (c)    0.005    0.010    0.560    0.575    0.008    0.008
+#>     wy8        (d)    0.075    0.017    4.335    0.000    0.071    0.071
+#> 
+#> Covariances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>   wx6 ~~                                                                
+#>     wy6              -0.006    0.006   -0.922    0.357   -0.020   -0.020
+#>  .wx7 ~~                                                                
+#>    .wy7              -0.011    0.007   -1.551    0.121   -0.034   -0.034
+#>  .wx8 ~~                                                                
+#>    .wy8              -0.006    0.007   -0.863    0.388   -0.019   -0.019
+#>  .wx9 ~~                                                                
+#>    .wy9               0.002    0.006    0.284    0.777    0.005    0.005
+#>  .RIx ~~                                                                
+#>    .RIy               0.021    0.008    2.722    0.006    0.048    0.048
+#> 
+#> Intercepts:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>    .FX6              -1.631    0.038  -42.753    0.000   -1.631   -1.823
+#>    .FX7              -1.574    0.038  -41.068    0.000   -1.574   -1.668
+#>    .FX8              -1.432    0.038  -37.441    0.000   -1.432   -1.551
+#>    .FX9              -1.382    0.038  -36.266    0.000   -1.382   -1.557
+#>    .euthanasia.6      4.221    0.053   79.084    0.000    4.221    4.346
+#>    .euthanasia.7      4.240    0.053   79.339    0.000    4.240    4.339
+#>    .euthanasia.8      4.253    0.054   79.473    0.000    4.253    4.359
+#>    .euthanasia.9      4.220    0.054   78.666    0.000    4.220    4.270
+#>    .RIx               0.000                               0.000    0.000
+#>    .RIy               0.000                               0.000    0.000
+#>     wx6               0.000                               0.000    0.000
+#>    .wx7               0.000                               0.000    0.000
+#>    .wx8               0.000                               0.000    0.000
+#>    .wx9               0.000                               0.000    0.000
+#>     wy6               0.000                               0.000    0.000
+#>    .wy7               0.000                               0.000    0.000
+#>    .wy8               0.000                               0.000    0.000
+#>    .wy9               0.000                               0.000    0.000
+#> 
+#> Variances:
+#>                    Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+#>    .RIx               0.260    0.008   31.467    0.000    0.674    0.674
+#>    .RIy               0.743    0.015   50.574    0.000    0.998    0.998
+#>     wx6               0.414    0.009   43.574    0.000    1.000    1.000
+#>     wy6               0.199    0.006   31.334    0.000    1.000    1.000
+#>    .wx7               0.488    0.011   45.412    0.000    0.968    0.968
+#>    .wy7               0.209    0.007   30.914    0.000    0.995    0.995
+#>    .wx8               0.447    0.010   44.045    0.000    0.958    0.958
+#>    .wy8               0.206    0.007   30.208    0.000    0.994    0.994
+#>    .wx9               0.384    0.008   46.782    0.000    0.955    0.955
+#>    .wy9               0.231    0.007   35.361    0.000    0.995    0.995
+#>    .FX6               0.000                               0.000    0.000
+#>    .FX7               0.000                               0.000    0.000
+#>    .FX8               0.000                               0.000    0.000
+#>    .FX9               0.000                               0.000    0.000
+#>    .euthanasia.6      0.000                               0.000    0.000
+#>    .euthanasia.7      0.000                               0.000    0.000
+#>    .euthanasia.8      0.000                               0.000    0.000
+#>    .euthanasia.9      0.000                               0.000    0.000
 ```
 
 </div>

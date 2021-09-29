@@ -25,7 +25,7 @@ fig:mut
 fig:dt
 fig:triadold
 fig:evo
-tab:unnamed-chunk-1
+tab:unnamed-chunk-2
 fig:jt
 fig:bh
 fig:densities
@@ -42,6 +42,8 @@ tab:unnamed-chunk-34
 tab:unnamed-chunk-40
 tab:unnamed-chunk-47
 tab:unnamed-chunk-51
+tab:densities
+fig:unnamed-chunk-37
 fig:screenshot
 intro
 overview
@@ -140,10 +142,10 @@ sampling-1
 ethical-considerations-1
 measurement-1
 su
-theory-2
+socionetst
 causes-3
 consequences-3
-methods-2
+socionetsm
 causes-4
 consequences-4
 data-4
@@ -169,8 +171,6 @@ google-scholar-profiles-and-publications
 network-visualization
 zacharys-karate-club
 descriptive-statistics
-size-3
-node-level
 dyad-census
 triad-census
 network-visualisation
@@ -178,6 +178,16 @@ smallworld
 descriptive-statistics-1
 network-visualisation-1
 twittersphere-in-the-dutch-hop
+descriptive-statistics-2
+first-plots
+from-directed-to-reciprocated-ties
+select-nodes-to-plot
+changing-vertices
+changing-edges-i
+add-a-legend
+coordinates
+changing-edges-ii
+asplots
 tutorial
 preliminary-notes
 getting-up-and-running

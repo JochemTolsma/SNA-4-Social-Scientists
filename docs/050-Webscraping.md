@@ -164,10 +164,10 @@ head(soc_staff)
 
 ```
 #> $node
-#> <pointer: 0x0000000026a70fb0>
+#> <pointer: 0x0000000026a943b0>
 #> 
 #> $doc
-#> <pointer: 0x000000001400cd70>
+#> <pointer: 0x0000000018fdc720>
 ```
 
 That looks kinda weird. What type of object did we store it by putting the html into `soc_staff`?
@@ -1806,7 +1806,7 @@ get_profile("Iu23-90AAAAJ")  # Jochem's profile
 #> [1] "Professor, Radboud University Nijmegen / University of Groningen"
 #> 
 #> $total_cites
-#> [1] 2294
+#> [1] 2297
 #> 
 #> $h_index
 #> [1] 22
@@ -1825,7 +1825,7 @@ get_profile("Iu23-90AAAAJ")  # Jochem's profile
 #> [3] "inequality"                     
 #> 
 #> $coauthors
-#>  [1] "Tom van der Meer"   "Maarten HJ Wolbers" "Gerbert Kraaykamp"  "peer scheepers"    
+#>  [1] "Tom van der Meer"   "Gerbert Kraaykamp"  "Maarten HJ Wolbers" "peer scheepers"    
 #>  [5] "Michael Savelkoul"  "Stijn Ruiter"       "Marcel Lubbers"     "Maurice Gesthuizen"
 #>  [9] "Marcel Coenders"    "Nan Dirk de Graaf"  "Tobias H. Stark"    "Sara Kinsbergen"   
 #> [13] "Christiaan Monden"  "Matthijs Kalmijn"   "Lincoln Quillian"   "Thomas Feliciani"  
@@ -2127,9 +2127,9 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 94                                                                                 
 #>                                                                   number cites year
 #> 1                                                        40 (1), 459-478   435 2014
-#> 2                                                        27 (6), 741-758   289 2011
-#> 3                                                                 44 (3)   269 2009
-#> 4                                                        27 (3), 291-306   121 2011
+#> 2                                                        27 (6), 741-758   290 2011
+#> 3                                                                 44 (3)   270 2009
+#> 4                                                        27 (3), 291-306   122 2011
 #> 5                                                        24 (2), 215-230   120 2008
 #> 6                                                          35 (1), 51-61   107 2013
 #> 7                                                         8 (2), 117-134    76 2012
@@ -2332,14 +2332,14 @@ get_citation_history("Iu23-90AAAAJ")  # Jochem's citation history
 #> 4  2011    79
 #> 5  2012    78
 #> 6  2013   116
-#> 7  2014   151
+#> 7  2014   152
 #> 8  2015   204
 #> 9  2016   228
 #> 10 2017   223
 #> 11 2018   268
 #> 12 2019   297
-#> 13 2020   304
-#> 14 2021   261
+#> 13 2020   305
+#> 14 2021   262
 ```
 
 And now most importantly, Jochem's collaborators, and the collaborators of those collaborators (note the `n_deep = 1`, can you find out what that does?). So essentially a "one-step-further-than-Jochem" network. 
@@ -2370,12 +2370,12 @@ jochem_coauthors
   <tr>
    <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> Jochem Tolsma </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Gerbert Kraaykamp </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
    <td style="text-align:left;"> Jochem Tolsma </td>
-   <td style="text-align:left;"> Gerbert Kraaykamp </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
@@ -2564,203 +2564,203 @@ jochem_coauthors
   </tr>
   <tr>
    <td style="text-align:left;"> 44 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Maurice Gesthuizen </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 45 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Marloes De Lange </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 46 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Gerbert Kraaykamp </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 47 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Wout Ultee </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 48 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Jochem Tolsma </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 49 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Paul M. De Graaf </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 50 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Mark Visser </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 51 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Jaap Dronkers </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 52 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Emer Smyth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 53 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Ruud Luijkx </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 54 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Walter Müller </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 55 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Renze Kolster </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 56 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Tanja Traag </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 57 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Don Westerheijden </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 58 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Muja Ardita </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 59 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Nicole Tieben </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 60 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Andries De Grip </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 61 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Lieselotte Blommaert </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 62 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Richard Layte </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 63 </td>
-   <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Selina Mccoy </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 67 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Nan Dirk De Graaf </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 68 </td>
+   <td style="text-align:left;"> 45 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Paul M. De Graaf </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 69 </td>
+   <td style="text-align:left;"> 46 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Matthijs Kalmijn </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 70 </td>
+   <td style="text-align:left;"> 47 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Tim Huijts </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 71 </td>
+   <td style="text-align:left;"> 48 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Maarten Hj Wolbers </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 72 </td>
+   <td style="text-align:left;"> 49 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Christiaan Monden </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 73 </td>
+   <td style="text-align:left;"> 50 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Maurice Gesthuizen </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 74 </td>
+   <td style="text-align:left;"> 51 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Mark Levels </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:left;"> 52 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Jochem Tolsma </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 76 </td>
+   <td style="text-align:left;"> 53 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Wout Ultee </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 77 </td>
+   <td style="text-align:left;"> 54 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Herman G. Van De Werfhorst </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 78 </td>
+   <td style="text-align:left;"> 55 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Roza Meuleman </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 79 </td>
+   <td style="text-align:left;"> 56 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Mark Visser </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 80 </td>
+   <td style="text-align:left;"> 57 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Koen Van Eijck </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 81 </td>
+   <td style="text-align:left;"> 58 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Margriet Van Hek </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 82 </td>
+   <td style="text-align:left;"> 59 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Ellen Verbakel </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 83 </td>
+   <td style="text-align:left;"> 60 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Stéfanie André </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 84 </td>
+   <td style="text-align:left;"> 61 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Jesper Jelle Rözer </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 85 </td>
+   <td style="text-align:left;"> 62 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Niels Blom </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 86 </td>
+   <td style="text-align:left;"> 63 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
    <td style="text-align:left;"> Marcel Lubbers </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 67 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Maurice Gesthuizen </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 68 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Marloes De Lange </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 69 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Gerbert Kraaykamp </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 70 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Wout Ultee </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 71 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Jochem Tolsma </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 72 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Paul M. De Graaf </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 73 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Mark Visser </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 74 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Jaap Dronkers </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Emer Smyth </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 76 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Ruud Luijkx </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 77 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Walter Müller </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 78 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Renze Kolster </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 79 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Tanja Traag </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 80 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Don Westerheijden </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 81 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Muja Ardita </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 82 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Nicole Tieben </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 83 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Andries De Grip </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 84 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Lieselotte Blommaert </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 85 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Richard Layte </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 86 </td>
+   <td style="text-align:left;"> Maarten Hj Wolbers </td>
+   <td style="text-align:left;"> Selina Mccoy </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 90 </td>
@@ -3080,12 +3080,12 @@ jochem_coauthors
   <tr>
    <td style="text-align:left;"> 162 </td>
    <td style="text-align:left;"> Marcel Lubbers </td>
-   <td style="text-align:left;"> Nella Geurts </td>
+   <td style="text-align:left;"> Jeanette A.j. Renema </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 163 </td>
    <td style="text-align:left;"> Marcel Lubbers </td>
-   <td style="text-align:left;"> Jeanette A.j. Renema </td>
+   <td style="text-align:left;"> Nella Geurts </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 164 </td>

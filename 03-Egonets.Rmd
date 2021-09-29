@@ -24,6 +24,7 @@ colorize <- function(x, color) {
 # install.packages("devtools")
 #devtools::install_github("hadley/emo")
 require(emo)
+require(igraph)
 #emo::ji_find("affection")
 #emo::ji("beaming face with smiling eyes")
 #jis
