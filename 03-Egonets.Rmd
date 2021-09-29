@@ -475,9 +475,9 @@ Clustering is an interesting concept. We have immediately an intuitive understan
 The **clustering coefficient** for $v_i$ is defined as the observed ties between all direct neighbors of $v_i$ divided by all possible ties between all direct neighbors of $v_i$. Direct neighbours are connected to $v_i$ via an ingoing and/or outgoing relation. For undirected networks, the clustering coefficient is the same as the **transitivity index**: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.  
 
 
-Bas' transitivity network in his network turns out to be: `r round(transitivity(G2c, type = c("localundirected"), vids = "Bas Hofstra", weights = NULL, isolates = c("NaN", "zero")),2)`. 
+Bas' transitivity network in his network turns out to be: `r round(igraph::transitivity(G2c, type = c("localundirected"), vids = "Bas Hofstra", weights = NULL, isolates = c("NaN", "zero")),2)`. 
 
-Jochem's transitivity in his network turns out to be: `r round(transitivity(G1c, type = c("localundirected"), vids = "Jochem Tolsma",  weights = NULL, isolates = c("NaN", "zero")) ,2)`.   
+Jochem's transitivity in his network turns out to be: `r round(igraph::transitivity(G1c, type = c("localundirected"), vids = "Jochem Tolsma",  weights = NULL, isolates = c("NaN", "zero")) ,2)`.   
 
 ```{r, echo=FALSE, eval=FALSE}
 transitivity(G2c, type = c("localundirected"), vids = "Bas Hofstra",

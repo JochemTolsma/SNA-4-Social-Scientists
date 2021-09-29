@@ -174,11 +174,8 @@ descriptive-statistics
 dyad-census
 triad-census
 network-visualisation
-smallworld
-descriptive-statistics-1
-network-visualisation-1
 twittersphere-in-the-dutch-hop
-descriptive-statistics-2
+descriptive-statistics-1
 first-plots
 from-directed-to-reciprocated-ties
 select-nodes-to-plot
@@ -187,6 +184,7 @@ changing-edges-i
 add-a-legend
 coordinates
 changing-edges-ii
+co-author-networks
 asplots
 tutorial
 preliminary-notes

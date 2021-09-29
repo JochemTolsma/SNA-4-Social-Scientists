@@ -81,7 +81,6 @@ The answer to this question depends on:
 In this chapter we will take on three case studies:  
 
 1. **Zachary's karate club**: We will first look for the story within the data. 
-1. **Smallworld**: The visualization of Smallworld should tell the story that a typical smallworld network has a relatively low density, high level of clustering and low average path length.  
 2. **Twittersphere**: The visualization of the three-layer twitter network in the Dutch House of Parliament should tell the story that twitter networks are segregated along party affiliations.  
 3. **Co-author**: 
 
@@ -451,14 +450,6 @@ legend(x = -2, y = -1.5, c("Note: the position of nodes 1 and 34 have been set b
 
 ---  
 
-## Smallworld  
-
-### Descriptive statistics  
-
-### Network visualisation
-
----  
-
 ## Twittersphere in the Dutch HoP
 
 
@@ -610,11 +601,8 @@ atmnet3[atmnet3 == 10] <- 0
 
 ### Descriptive statistics  
 
-We describe this dataset in quite some detail in Chapter \@ref(socionets). But I think it is good to show an important observation here as well: 
+We describe this dataset in quite some detail in Chapter \@ref(socionetsm). But I think it is good to show an important observation here as well: 
 
-<!---
-add scrollbox
----> 
 
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; "><table class=" lightable-classic table table-striped table-hover table-condensed table-responsive" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>(\#tab:densities)Intra- and inter-group densities of Twittershere within the Dutch House of Parliament</caption>
@@ -755,6 +743,7 @@ add scrollbox
   </tr>
 </tbody>
 </table></div>
+\
 
 From Table \@ref(tab:densities) we learn that intra-party densities are much higher than inter-party densities. This is an indication of segregation of Twittersphere along party division lines. This is the message we want our plots to get across. 
 
@@ -2391,6 +2380,12 @@ Party_cols <- Party_cols[c(7, 3, 9, 10, 12, 11, 5, 4, 6, 2, 8, 1, 13)]
 <p class="caption">(\#fig:unnamed-chunk-37)Reciprocated at-mention relations between Dutch MPs (2017)</p>
 </div>
 
+---
+
+## Co-author networks
+
+TO DO!
+
 ---  
 
 ## Assignment {#asplots}
@@ -2403,7 +2398,7 @@ Party_cols <- Party_cols[c(7, 3, 9, 10, 12, 11, 5, 4, 6, 2, 8, 1, 13)]
 2. Improve the plot of Twittersphere in the Dutch House of Parliament:  
     - Perhaps change the size of nodes based on ties that cross party boundaries?  
     - Try to make a plot where information on the different layers of twitter (friendships, atmentions and retweets) are combined. Thus combine in one plot, or plot three networks next to each other. 
-3. A good example of a bad network visualization is Smallworld \@ref(sn). Make a good example of a good network visualization of Smallworld. Please download the igraph object [here]("smallworld.Rdata").  
+3. A good example of a bad network visualization is Smallworld \@ref(sn). The visualization of Smallworld should tell the story that a typical smallworld network has a relatively low density, high level of clustering and low average path length, see Chapter \@ref(socionetst). Make a good example of a good network visualization of Smallworld. Please download the igraph object of Smalworld [here](smallworld.Rdata).  
     
 ---  
 
