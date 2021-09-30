@@ -1,7 +1,7 @@
 # (PART) Part 3 SOCIONETS  {-} 
 
 
-# Theory  
+# Theory  {#socionetst}
 
 ## Causes  
 
@@ -10,7 +10,7 @@
 ---  
 
 
-# Methods  
+# Methods  {#socionetsm}
 
 ## Causes  
 
