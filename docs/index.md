@@ -1,6 +1,6 @@
 ---
 title: "Social Network Analysis for Social Scientists"
-date: "2021-09-21"
+date: "2021-09-29"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -22,7 +22,7 @@ https://jochemtolsma.github.io/SNA-4-Social-Scientists/
 # Welcome {.unnumbered}
 
 
-<img src="cover.png" width="50%" style="float:right; padding:10px" />
+<img src="cover.jpg" width="50%" style="float:right; padding:10px" />
 
 <!--- I  wonder whether starting with a negative ("This book is *not*...") is something we want. Perhaps the next iteration we can start with the USP: "This book is about THE social network perspective. That makes it way more important than either the x, the y, or the z. Here, we integrate all that stuff. And so this course is not specifically on either x, y, or z, but instead we relate and integrate these three things into..." Something like that. --->
 
