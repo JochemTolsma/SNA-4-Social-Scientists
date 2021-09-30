@@ -42,6 +42,9 @@ tab:unnamed-chunk-34
 tab:unnamed-chunk-40
 tab:unnamed-chunk-47
 tab:unnamed-chunk-51
+tab:unnamed-chunk-55
+tab:unnamed-chunk-58
+tab:unnamed-chunk-72
 tab:densities
 fig:unnamed-chunk-37
 fig:screenshot
@@ -164,10 +167,16 @@ webscraping-techniques
 manual
 apis
 crawling
+industry-science-collaboration
 hands-on-webscraping
 staging-your-script
 getting-anchor-data
 google-scholar-profiles-and-publications
+getting-collaborators
+data-exploration
+assignments
+assignment-1---theoretical
+assignment-2---practical
 network-visualization
 zacharys-karate-club
 descriptive-statistics

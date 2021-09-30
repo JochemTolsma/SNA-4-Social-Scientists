@@ -292,7 +292,8 @@ See the figures \@ref(fig:jt) and \@ref(fig:bh ) below for a graphical summary o
 require(scholar)
 require(igraph)
 require(tidyverse)
-source("addfiles/function_fix.R") # Put the function_fix.R in your working directory, we need this first line.
+source("addfiles/function_fix.R") 
+source("addfiles/fcollabs.R")
 
 JTid <- get_scholar_id_fix(last_name="tolsma", first_name="jochem", affiliation="radboud university")
 BHid <- get_scholar_id_fix(last_name="hofstra", first_name="bas", affiliation="radboud university")
@@ -300,6 +301,13 @@ BHid <- get_scholar_id_fix(last_name="hofstra", first_name="bas", affiliation="r
 #note only 20 most important coauthors are listed on page of scholar. So not all my coauthors are listed
 JTaut <- get_coauthors(JTid, n_coauthors = 100, n_deep = 1)
 BHaut <- get_coauthors(BHid, n_coauthors = 100, n_deep = 1)
+
+#source the _JT version
+#JTaut2 <- fcollabs(JTid) #fcollabs need to save scholar ids as well
+#get_scholar_id_fix("Tom van der Meer")
+#fcollabs("l8aM4jAAAAAJ")
+#K51iiIAAAAAJ
+
 save(JTaut, file="JTaut.Rdata")
 save(BHaut, file="BHaut.Rdata")
 ```

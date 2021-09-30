@@ -86,7 +86,7 @@ In this chapter we will take on three case studies:
 
 
 
-> Where for our analyses we heavily relay on the R package `lavaan` [@lavaan2012] and `RSiena` [@R-RSiena], for network description and visualisation we will mainly use `igraph` [@R-igraph]. 
+> Where for our analyses we heavily relay on the R package `lavaan` [@lavaan2012] and `RSiena` [@R-RSiena], for network description and visualisation we will mainly use `igraph` [@R-igraph2]. 
 
 In this tutorial you will learn how to:  
 
@@ -2384,7 +2384,151 @@ Party_cols <- Party_cols[c(7, 3, 9, 10, 12, 11, 5, 4, 6, 2, 8, 1, 13)]
 
 ## Co-author networks
 
-TO DO!
+Remember the sociology staff at Radboud University? Let's plot the 1.5 degree co-authorship network of the sociology staff! Perhaps we can even mark those staff members that are actually at Radboud University's department of sociology? Or perhaps we can draw nodes proportional to some ego information? Do you remember that we went "one deep" in the collaboration networks? Well, that automatically means that those who do not work at RU sociology are also included in these data. And because we look at directed ties, it may mean that there are some isolated clusters. For instance, Hofstra lists McFarland as co-author, but not vice versa: this means that looking through Hofstra at his co-authors, McFarland is put into the data as well as his co-authors. What we first want is to look whether he lists any co-authors Bas his collaborators as well. If we succeed in that, we have the 1.5 degree network.
+
+
+```{.r .numberLines}
+# load the necessary datasets
+load("addfiles/soc_df.RData")
+load("addfiles/soc_collabs1.RData")
+load("addfiles/soc_collabs2.RData")
+```
+
+
+```{.r .numberLines}
+# get unique collaborators of soc staff first
+soc_collabs_unique <- unique(soc_collabs[, 4])  # so 229 unique collaborators for RU staff?
+soc_collabs_unique <- c(soc_collabs_unique, soc_df$gs_id)  # add the soc staff themselves.
+soc_collabs_unique <- data.frame(soc_collabs_unique)
+soc_collabs_unique$v1 <- 1  # convenient to select on after the merge
+soc_collabs_unique <- unique(soc_collabs_unique)
+
+# so this is a very important step, we join the unique soc collaborators to the collaborators of
+# collaborators
+require(tidyverse)
+onefivedegree <- left_join(collabs_1deep, soc_collabs_unique, by = c(coauth_id = "soc_collabs_unique"))
+
+# Then, we drop those that are not among sociology collaborators and who don't lsit coauthors
+# regardless
+onefivedegree <- onefivedegree[!is.na(onefivedegree$v1), ]
+onefivedegree <- onefivedegree[!is.na(onefivedegree$coauth), ]
+
+# we pick those columns and have an edgelist of soc collaborators and whether they collaborate with
+# those same collaborators the 1.5 degree network
+onefivedegree <- onefivedegree[, c("name", "coauth")]
+names(onefivedegree) <- c("from", "to")
+
+# we get soc collaborators and add those to the data above and end up with a nice edgelist!
+socc <- soc_collabs[!is.na(soc_collabs$coauth), ]
+socc <- socc[, c("name", "coauth")]
+names(socc) <- c("from", "to")
+onefivedegree <- rbind(socc, onefivedegree)
+save(onefivedegree, file = "addfiles/soc_onefivedegree.RData")
+```
+
+
+
+
+
+So let's try to plot this now.
+
+
+```{.r .numberLines}
+onefivedegree <- as.matrix(onefivedegree)  # matrix because igraph wants that
+library(igraph)  # Notice that we call igraph here, in anticipation of the viz tutorial.
+net1 <- graph_from_edgelist(onefivedegree, directed = TRUE)  # Notice the igraph function here!
+
+plot(net1)  # pretty ugly!
+```
+
+<img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-42-1.png" width="768" />
+
+Ouch, that looks pretty rough... Can we make that prettier? With some simple steps?
+
+
+```{.r .numberLines}
+plot(net1 ,
+     vertex.color = "gold", # nice color for the vertices
+     vertex.size = 4,  # we'll vertices a bit smaller
+     vertex.frame.color = "gray",  # we'll put a gray frame around vertices
+     vertex.label.color = "black",  # not that ugly blue color for the labels (names)
+     vertex.label.family = "Helvetica", # not a fan of times new roman in figures
+     vertex.label.cex = 0.4,  # make the label a bit smaller too
+     vertex.label.dist = 0.5,  # we'll pull the labels a bit away from the vertices
+     edge.curved = 0.2, # curved edges is always a nice touch
+     edge.arrow.size = 0.1) # make arrow size (direction of edge) smaller
+```
+
+<img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-43-1.png" width="768" />
+
+Now, let's try to extract the names in this network and see whether we can single out the staff members. First we gather the vertices in the network object as data frame through a nice function in `iGraph`, namely `as_ids(V(net1))`. And then we will label the column with a nice variable name. We'll collect the Radboud sociology nodes from the `soc_df` data frame. We then join with the `in_network` dataset and put some different color label on those nodes who were in the `soc_df` and those who were not. Do you understand the code below on extracting and attaching node attributes?
+
+
+```{.r .numberLines}
+in_network <- data.frame(as_ids(V(net1)))
+names(in_network)[1] <- "name"
+
+#soc_df$total_cites <- soc_df$total_cites.x
+ru_nodes <- soc_df[, c("name", "total_cites")]
+in_network <- left_join(in_network, ru_nodes, by = c("name" = "name"))
+in_network$vcol <- ifelse(is.na(in_network$total_cites), "#E69F00", "#56B4E9")
+
+plot(net1,
+     vertex.color = in_network$vcol, #THIS WAS WHAT WE DID THE LAST CODEBLOCK FOR!
+     vertex.size = 4,  # we'll make them a bit smaller
+     vertex.frame.color = "gray",  # we'll put a frame around it
+     vertex.label.color = "black",  # not that ugly blue color for the names
+     vertex.label.family = "Helvetica", # not a fan of times in figures
+     vertex.label.cex = 0.4,  # a bit smaller too
+     vertex.label.dist = 0.5,  # we'll pull the labels a bit away from the vertices
+     edge.curved = 0.2,  # curved edges is always a nice tough
+     edge.arrow.size = 0.1) # arrow size smaller
+```
+
+<img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-44-1.png" width="768" />
+
+We can redo this trick for other things as well. Show only the labels of RU sociology staff perhaps?
+
+
+```{.r .numberLines}
+plot(net1,
+     vertex.color = in_network$vcol, 
+     #NOTICE THESE CONDITIONAL STATEMENTS BELOW
+     vertex.label = ifelse(!is.na(in_network$total_cites), in_network$name, NA),
+     vertex.size = 4,  # we'll make them a bit smaller
+     vertex.frame.color = "gray",  # we'll put a frame around it
+     vertex.label.color = "black",  # not that ugly blue color for the names
+     vertex.label.family = "Helvetica", # not a fan of times in figures
+     vertex.label.cex = 0.65,  # a bit smaller too
+     vertex.label.dist = 0.5,  # we'll pull the labels a bit away from the vertices
+     edge.curved = 0.2, # curved edges is always a nice tough
+     edge.arrow.size = 0.1) # arrow size smaller
+```
+
+<img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-45-1.png" width="768" />
+
+Vertex size adjusted for citation? We can go on and on and on!
+  
+
+```{.r .numberLines}
+plot(net1,
+     vertex.color = in_network$vcol, 
+     vertex.label = ifelse(!is.na(in_network$total_cites), in_network$name, NA),
+     # SAME HERE, TRY TO SMOOTH THE TOTAL_CITES A BIT WITH LOGSCALE
+     vertex.size = ifelse(!is.na(in_network$total_cites), log(in_network$total_cites), 2),
+     vertex.frame.color = "gray",  # we'll put a frame around it
+     vertex.label.color = "black",  # not that ugly blue color for the names
+     vertex.label.family = "Helvetica", # not a fan of times in figures
+     vertex.label.cex = 0.65,  # a bit smaller too
+     vertex.label.dist = 0.5,  # we'll pull the labels a bit away from the vertices
+     edge.curved = 0.2, # curved edges is always a nice tough
+     edge.arrow.size = 0.1) # arrow size smaller
+```
+
+<img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-46-1.png" width="768" />
+
+And so on and so forth! You can play around with different algorithms that put these nodes on the grid differently too.
+
 
 ---  
 
