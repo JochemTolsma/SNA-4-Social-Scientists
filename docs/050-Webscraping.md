@@ -176,10 +176,10 @@ head(soc_staff)
 
 ```
 #> $node
-#> <pointer: 0x0000000026afec00>
+#> <pointer: 0x0000000026b0f500>
 #> 
 #> $doc
-#> <pointer: 0x0000000026ba1060>
+#> <pointer: 0x0000000026bb15a0>
 ```
 
 That looks kinda weird. What type of object did we store it by putting the html into `soc_staff`?

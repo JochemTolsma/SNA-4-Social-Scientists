@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="turtle-favicon.ico" type="image/x-icon" />
 <link rel="prev" href="data-4.html"/>
 <link rel="next" href="network-visualization.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
@@ -611,10 +611,10 @@ div.csl-indent {
 <span id="cb49-3"><a href="webintro.html#cb49-3" aria-hidden="true" tabindex="-1"></a>soc_staff <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://www.ru.nl/sociology/research/staff/&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="webintro.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soc_staff)</span></code></pre></div>
 <pre><code>#&gt; $node
-#&gt; &lt;pointer: 0x0000000026afec00&gt;
+#&gt; &lt;pointer: 0x0000000026b0f500&gt;
 #&gt; 
 #&gt; $doc
-#&gt; &lt;pointer: 0x0000000026ba1060&gt;</code></pre>
+#&gt; &lt;pointer: 0x0000000026bb15a0&gt;</code></pre>
 <p>That looks kinda weird. What type of object did we store it by putting the html into <code>soc_staff</code>?</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="webintro.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(soc_staff)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;xml_document&quot; &quot;xml_node&quot;</code></pre>

@@ -10,7 +10,7 @@ description: "Social Network Analysis for Social Scientists (SNASS): A theoretic
 cover-image: "cover.jpg"
 url: 'https://jochemtolsma.github.io/SNA-4-Social-Scientists/'
 github-repo:  "JochemTolsma/SNA-4-Social-Scientists"
-favicon: "favicon.ico"
+favicon: "turtle-favicon.ico"
 ---
 
 
