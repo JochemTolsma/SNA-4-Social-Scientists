@@ -8,11 +8,7 @@ bookdown::gitbook:
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
       collapse: section
     download: false
-    description: "Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks."
-    cover-image: "cover.jpg"
-    url: 'https://jochemtolsma.github.io/SNA-4-Social-Scientists/'
-    github-repo:  "JochemTolsma/SNA-4-Social-Scientists"
-    favicon: "favicon.ico"
+
 
 bookdown::pdf_book:
   includes:

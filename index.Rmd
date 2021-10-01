@@ -6,8 +6,11 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: ""
-
+description: "Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks."
+cover-image: "cover.jpg"
+url: 'https://jochemtolsma.github.io/SNA-4-Social-Scientists/'
+github-repo:  "JochemTolsma/SNA-4-Social-Scientists"
+favicon: "favicon.ico"
 ---
 
 

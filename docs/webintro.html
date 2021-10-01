@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 Webscraping for Social Scientists | SNASS</title>
-  <meta name="description" content="Chapter 11 Webscraping for Social Scientists | SNASS" />
+  <meta name="description" content="Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks." />
   <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 Webscraping for Social Scientists | SNASS" />
   <meta property="og:type" content="book" />
-  
-  
-  
-  
+  <meta property="og:url" content="https://jochemtolsma.github.io/SNA-4-Social-Scientists/" />
+  <meta property="og:image" content="https://jochemtolsma.github.io/SNA-4-Social-Scientists/cover.jpg" />
+  <meta property="og:description" content="Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks." />
+  <meta name="github-repo" content="JochemTolsma/SNA-4-Social-Scientists" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 11 Webscraping for Social Scientists | SNASS" />
   
-  
-  
+  <meta name="twitter:description" content="Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks." />
+  <meta name="twitter:image" content="https://jochemtolsma.github.io/SNA-4-Social-Scientists/cover.jpg" />
 
 
 
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="data-4.html"/>
 <link rel="next" href="network-visualization.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
@@ -611,10 +611,10 @@ div.csl-indent {
 <span id="cb49-3"><a href="webintro.html#cb49-3" aria-hidden="true" tabindex="-1"></a>soc_staff <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://www.ru.nl/sociology/research/staff/&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="webintro.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soc_staff)</span></code></pre></div>
 <pre><code>#&gt; $node
-#&gt; &lt;pointer: 0x0000000026b2ea00&gt;
+#&gt; &lt;pointer: 0x0000000026afec00&gt;
 #&gt; 
 #&gt; $doc
-#&gt; &lt;pointer: 0x0000000026bd1720&gt;</code></pre>
+#&gt; &lt;pointer: 0x0000000026ba1060&gt;</code></pre>
 <p>That looks kinda weird. What type of object did we store it by putting the html into <code>soc_staff</code>?</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="webintro.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(soc_staff)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;xml_document&quot; &quot;xml_node&quot;</code></pre>
@@ -66855,12 +66855,7 @@ gitbook.start({
 },
 "toc": {
 "collapse": "section"
-},
-"description": "Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks.",
-"cover-image": "cover.jpg",
-"url": "https://jochemtolsma.github.io/SNA-4-Social-Scientists/",
-"github-repo": "JochemTolsma/SNA-4-Social-Scientists",
-"favicon": "favicon.ico"
+}
 });
 });
 </script>
