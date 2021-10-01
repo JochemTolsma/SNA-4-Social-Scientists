@@ -499,7 +499,7 @@ So, what do we have?
 We are going to focus on the atmentions of politicians. This is most closely related to political discussion. Thus who is having discussions with whom on Twitter? 
 
 
-Let us go fishing for some data. At this point it is not very important you understand what is going on. You will learn more about RSiena data objects in Chapter \@ref(socionets). For now, simply do as you are told! 😉   
+Let us go fishing for some data. At this point it is not very important you understand what is going on. You will learn more about RSiena data objects in Chapter \@ref(socionetsm). For now, simply do as you are told! 😉   
 
 
 ```{.r .numberLines}

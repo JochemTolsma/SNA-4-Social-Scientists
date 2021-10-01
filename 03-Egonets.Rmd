@@ -284,16 +284,16 @@ To illustrate some different ways how we could describe egonets we will use egon
 - Bas Hofstra  
 - Jochem Tolsma  
 
-From these two sampled social scientists we will use the webscraping techniques described in Chapter \@ref(webintro) to collect 1.5 degree co-author egonetwork.^[To be a bit more precise, we only collect the first 20 co-authors listed on the google scholar page of each ego. I assume these are the 'most important'.] 
+From these two sampled social scientists we will use the webscraping techniques described in Chapter \@ref(webintro) to collect 1.5 degree co-author egonetwork. 
 
-See the figures \@ref(fig:jt) and \@ref(fig:bh ) below for a graphical summary of the networks.  
+See the figures \@ref(fig:jt) and \@ref(fig:bh) below for a quick-and-dirty graphical summary of the networks.  
 
 ```{r, echo=FALSE, eval=FALSE}
 require(scholar)
 require(igraph)
 require(tidyverse)
 source("addfiles/function_fix.R") 
-source("addfiles/fcollabs.R")
+source("addfiles/fcollabs_JT.R")
 
 JTid <- get_scholar_id_fix(last_name="tolsma", first_name="jochem", affiliation="radboud university")
 BHid <- get_scholar_id_fix(last_name="hofstra", first_name="bas", affiliation="radboud university")
@@ -302,11 +302,86 @@ BHid <- get_scholar_id_fix(last_name="hofstra", first_name="bas", affiliation="r
 JTaut <- get_coauthors(JTid, n_coauthors = 100, n_deep = 1)
 BHaut <- get_coauthors(BHid, n_coauthors = 100, n_deep = 1)
 
+####egonet Jochem Tolsma
 #source the _JT version
-#JTaut2 <- fcollabs(JTid) #fcollabs need to save scholar ids as well
-#get_scholar_id_fix("Tom van der Meer")
-#fcollabs("l8aM4jAAAAAJ")
-#K51iiIAAAAAJ
+JTid <- get_scholar_id_fix(last_name="tolsma", first_name="jochem", affiliation="radboud university")
+JTaut2 <- fcollabs(JTid) #fcollabs need to save scholar ids as well
+coaut <- list()
+for (i in 1:length(JTaut2$ids)) {
+  tryCatch({
+    coaut[[i]] <- fcollabs(JTaut2$ids[i])
+  }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
+}
+
+coaut2 <- c(coaut, list(JTaut2))
+coaut2[[33]]
+
+install.packages("reshape")
+require(reshape)
+library(purrr)
+coaut3 <- compact(coaut2)
+coaut3 <- reshape::merge_all(coaut3)
+table(coaut3$name)
+#make edgelist
+network <- coaut3[, c("name", "profilecollabs")]
+colnames(network) <- c("from", "to")
+network <- na.omit(network)
+G1 <- igraph::graph_from_edgelist(as.matrix(network), directed=TRUE)
+#plot(G1)
+test <- distances(G1)
+#test
+selection <- rownames(test)[test["Jochem Tolsma",]<2] #I only want to plot my direct coauthors. 
+selection
+G1b <- induced_subgraph(G1,vids=selection)
+V(G1b)$label.cex = .71
+V(G1b)$size = .5
+E(G1b)$width = 0.5
+E(G1b)$arrow.size = 0.2
+plot(G1b) #still uggly of course
+G1b <- simplify(G1b)
+l <- layout_with_kk(G1b)
+plot(G1b, margin=c(0,0,0,0), layout=l) #still uggly of course
+save(G1b, file="G1b.Rdata")
+
+
+####egonet Bas Hofstra
+#source the _JT version
+JTid <- get_scholar_id_fix(last_name="hofstra", first_name="bas", affiliation="radboud university")
+JTaut2 <- fcollabs(JTid) #fcollabs need to save scholar ids as well
+coaut <- list()
+for (i in 1:length(JTaut2$ids)) {
+  tryCatch({
+    coaut[[i]] <- fcollabs(JTaut2$ids[i])
+  }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
+}
+
+coaut2 <- c(coaut, list(JTaut2))
+coaut3 <- compact(coaut2)
+coaut3 <- reshape::merge_all(coaut3)
+table(coaut3$name)
+#make edgelist
+network <- coaut3[, c("name", "profilecollabs")]
+colnames(network) <- c("from", "to")
+network <- na.omit(network)
+G1 <- igraph::graph_from_edgelist(as.matrix(network), directed=TRUE)
+#plot(G1)
+test <- distances(G1)
+#test
+selection <- rownames(test)[test["Bas Hofstra",]<2] #I only want to plot my direct coauthors. 
+selection
+G1b <- induced_subgraph(G1,vids=selection)
+V(G1b)$label.cex = .71
+V(G1b)$size = .5
+E(G1b)$width = 0.5
+E(G1b)$arrow.size = 0.2
+plot(G1b) #still uggly of course
+G1b <- simplify(G1b)
+l <- layout_with_kk(G1b)
+plot(G1b, margin=c(0,0,0,0), layout=l) #still uggly of course
+G1BH <- G1b
+save(G1BH, file="G1BH.Rdata")
+
+
 
 save(JTaut, file="JTaut.Rdata")
 save(BHaut, file="BHaut.Rdata")
@@ -314,64 +389,61 @@ save(BHaut, file="BHaut.Rdata")
 
 
 ```{r jt, echo=FALSE, fig.cap="1.5 degree co-author egonetwork of JOCHEM TOLSMA"}
-load(file="JTaut.Rdata")
-load(file="BHaut.Rdata")
+load(file="G1b.Rdata")
 
-#make igraph object
-G1 <- igraph::graph_from_edgelist(as.matrix(JTaut), directed=FALSE)
-test <- distances(G1)
-selection <- rownames(test)[test[1,]<2] #I only want to plot my direct coauthors. 
-G1b <- induced_subgraph(G1,vids=selection)
-V(G1b)$label.cex = .71
-#plot(G1b) #still uggly of course
-G1c <- simplify(G1b)
-plot(G1c) #still uggly of course
+V(G1b)$label.cex = .6
+l <- layout_with_kk(G1b)
+plot(G1b, margin=c(0,0,0,0), layout=l,vertex.label.cex = 0.55, vertex.label.degree = -pi/2)
+
+# #make igraph object
+# G1 <- igraph::graph_from_edgelist(as.matrix(JTaut), directed=FALSE)
+# test <- distances(G1)
+# selection <- rownames(test)[test[1,]<2] #I only want to plot my direct coauthors. 
+# G1b <- induced_subgraph(G1,vids=selection)
+# V(G1b)$label.cex = .71
+# #plot(G1b) #still uggly of course
+# G1c <- simplify(G1b)
+# plot(G1c) #still uggly of course
+# 
+# # 
+# load("addfiles/soc_collabs1.RData")
+# #make edgelist
+# network <- soc_collabs[, c("name", "coauth")]
+# colnames(network) <- c("from", "to")
+# network <- na.omit(network)
+# G1 <- igraph::graph_from_edgelist(as.matrix(network), directed=TRUE)
+# plot(G1)
+# test <- distances(G1)
+# test
+# selection <- rownames(test)[test["Jochem Tolsma",]<2] #I only want to plot my direct coauthors. 
+# selection
+# G1b <- induced_subgraph(G1,vids=selection)
+# V(G1b)$label.cex = .71
+# #plot(G1b) #still uggly of course
+# G1c <- simplify(G1b)
+# plot(G1c) #still uggly of course
+
 ```
 
 ```{r bh, echo=FALSE, fig.cap="1.5 degree co-author egonetwork of BAS HOFSTRA"}
-#make igraph object
-G2 <- igraph::graph_from_edgelist(as.matrix(BHaut), directed=FALSE)
-test2 <- distances(G2)
-selection2 <- rownames(test2)[test2[1,]<2] #I only want to plot my direct coauthors. 
-G2b <- induced_subgraph(G2,vids=selection2)
-V(G2b)$label.cex = .71
-#V(G2b)$color[1] <- "red"
-#plot(G2b) #still uggly of course
-G2c <- simplify(G2b) #remove multiples
-plot(G2c) #still uggly of course
+load(file="G1BH.Rdata")
+
+l <- layout_with_kk(G1BH)
+plot(G1BH, margin=c(0,0,0,0), layout=l)
+
+
+# #make igraph object
+# G2 <- igraph::graph_from_edgelist(as.matrix(BHaut), directed=FALSE)
+# test2 <- distances(G2)
+# selection2 <- rownames(test2)[test2[1,]<2] #I only want to plot my direct coauthors. 
+# G2b <- induced_subgraph(G2,vids=selection2)
+# V(G2b)$label.cex = .71
+# #V(G2b)$color[1] <- "red"
+# #plot(G2b) #still uggly of course
+# G2c <- simplify(G2b) #remove multiples
+# plot(G2c) #still uggly of course
 
 ```
-
-
-
-```{r, eval=FALSE}
-require(rvest)
-page <- read_html("https://scholar.google.com/citations?view_op=list_colleagues&hl=en&user=K51iiIAAAAAJ")
-
-Coauthors <-  page %>% html_nodes(css="a") %>% html_text()
-affiliation <-  page %>% html_nodes(css=".gs_ai_aff") %>% html_text()
-
-
-get_scholar_id_fix(last_name="van%der%Brug", first_name="Wouter")
-get_scholar_id(last_name="van der Brug", first_name="Wouter")
-
-%>% html_attr("id")
-
-id <-  page %>% html_nodes(css="div.gsc_ucoar.gs_scl") %>% html_attr("id")
-
-affiliation <- gsub(pattern="gsc_ucoar-", replacement="", x=affiliation )
-
-https://scholar.google.com/citations?view_op=list_colleagues&hl=en&user=gHuTzXcAAAAAJ"
-
-
-
-%>% html_text()
-affiliation <-  page %>% html_nodes(css="div") %>% html_text()
-
-Coauthors <-  as.data.frame(Coauthors)
-Coauthors
-```
-
 
 
 #### Density {-}
@@ -429,9 +501,9 @@ dev.off()
 knitr::include_graphics("test.png")
 ``` 
 
-The density in Bas' network turns out to be: `r round(igraph::graph.density(G2c),2)`. 
+The density in Bas' network turns out to be: `r round(igraph::graph.density(G1BH),2)`. 
 
-The density in Jochem's network turns out to be: `r round(igraph::graph.density(G1c),2)`.   
+The density in Jochem's network turns out to be: `r round(igraph::graph.density(G1b),2)`.   
 
 For comparison, if we look at friendship networks among pupils in classrooms, we generally observe a density within the range of .2 and .4.
 
@@ -452,10 +524,11 @@ where $C_D(v_i)$ is degree centrality of $v_i$, vertex *i*, and 'deg' stands for
 > Suppose you want to compare the degree centrality of Bas in Bas's network with the degree centrality of Jochem in Jochem's network. Which normalization approach would you take.  
 
 ```{r, echo=FALSE, eval=FALSE}
-degree_BH <- degree(G2c, loops = FALSE, normalized = FALSE)
+degree_BH <- degree(G1BH, loops = FALSE, normalized = FALSE)
 degreecentrality_BH <- (degree_BH[1] - min(degree_BH)) / (max(degree_BH) - min(degree_BH))
 
-centr_degree(G2c, loops = FALSE, normalized = TRUE)
+V(G1BH)$name
+centr_degree(G1BH, loops = FALSE, normalized = TRUE)
 ```
 
 #### Closeness centrality {-}
@@ -483,15 +556,15 @@ Clustering is an interesting concept. We have immediately an intuitive understan
 The **clustering coefficient** for $v_i$ is defined as the observed ties between all direct neighbors of $v_i$ divided by all possible ties between all direct neighbors of $v_i$. Direct neighbours are connected to $v_i$ via an ingoing and/or outgoing relation. For undirected networks, the clustering coefficient is the same as the **transitivity index**: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.  
 
 
-Bas' transitivity network in his network turns out to be: `r round(igraph::transitivity(G2c, type = c("localundirected"), vids = "Bas Hofstra", weights = NULL, isolates = c("NaN", "zero")),2)`. 
+Bas' transitivity network in his network turns out to be: `r round(igraph::transitivity(G1BH, type = c("localundirected"), vids = "Bas Hofstra", weights = NULL, isolates = c("NaN", "zero")),2)`. 
 
-Jochem's transitivity in his network turns out to be: `r round(igraph::transitivity(G1c, type = c("localundirected"), vids = "Jochem Tolsma",  weights = NULL, isolates = c("NaN", "zero")) ,2)`.   
+Jochem's transitivity in his network turns out to be: `r round(igraph::transitivity(G1b, type = c("localundirected"), vids = "Jochem Tolsma",  weights = NULL, isolates = c("NaN", "zero")) ,2)`.   
 
 ```{r, echo=FALSE, eval=FALSE}
-transitivity(G2c, type = c("localundirected"), vids = "Bas Hofstra",
+transitivity(G1BH, type = c("localundirected"), vids = "Bas Hofstra",
   weights = NULL, isolates = c("NaN", "zero"))
 
-transitivity(G1c, type = c("localundirected"), vids = "Jochem Tolsma",
+transitivity(G1b, type = c("localundirected"), vids = "Jochem Tolsma",
   weights = NULL, isolates = c("NaN", "zero"))
 
 ```

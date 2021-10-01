@@ -176,10 +176,10 @@ head(soc_staff)
 
 ```
 #> $node
-#> <pointer: 0x0000000026a7f740>
+#> <pointer: 0x0000000026b2ea00>
 #> 
 #> $doc
-#> <pointer: 0x00000000192a7e20>
+#> <pointer: 0x0000000026bd1720>
 ```
 
 That looks kinda weird. What type of object did we store it by putting the html into `soc_staff`?
@@ -1935,34 +1935,33 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 64                                                                                                                                    ICS Alumni revisited [Brochure tbv Lustrum ICS]
 #> 65                                                                                                                                               ICS Alumni Survey 2016 [Databestand]
 #> 66                                      Modeling opinion dynamics in a simulated city. Realistic spatial patterns of demographic attributes and the emergence of opinion polarization
-#> 67                                                                                                               De invloed van grootouders op het opleidingsniveau van kleinkinderen
-#> 68                                                                                                                                 Opleiding als sociale scheidslijn: Een tegengeluid
-#> 69                                                                                  Opleiding als sociale scheidslijn: aanleiding, probleemstelling, bestaande inzichten en werkwijze
-#> 70                                                                                                                   De samenhang in het opleidingsniveau tussen (huwelijks) partners
-#> 71                                                                                                Sociale herkomst en ongelijkheid in de opbrengsten van diploma's op de arbeidsmarkt
-#> 72                                                                                                  De rol van het opleidingsniveau voor het starten en stoppen met vrijwilligerswerk
-#> 73                                                                                                            Trends in de opleidingskloof op verschillende maatschappelijke domeinen
-#> 74                                                                                 Was, is of wordt opleiding de sociale scheidslijn? Een terugblik, stand van zaken en toekomstvisie
-#> 75                                                                                                                                                                          DANS EASY
-#> 76                                                                                               Klein en vrijwillig of groot en ervaren? Een analyse van de voorkeuren van donateurs
-#> 77                                                                    De burger als rechter, onderzoek naar geprefereerde sancties voor misdrijven in Nederland (projectnummer 1933B)
-#> 78                                                                          Aangiftebereidheid: Welke overwegingen spelen een rol bij de beslissing om wel of niet aangifte te doen?|
-#> 79                                                                                                                                  Onderwijsexpansie veroorzaakt nieuwe ongelijkheid
-#> 80                                                                                                                 Sociale daling schaadt vertrouwen: Effecten van sociale mobiliteit
-#> 81                                                                                                                                       Toenemende gelijkheid is nog geen verheffing
-#> 82                   Over ouders, televisiekijken en (over) gewicht: Een studie naar de langetermijneffecten van ouderlijke televisiesocialisatie op het lichaamsgewicht van kinderen
-#> 83                                                                      Onderwijsexpansie en opleidingsrichting: Trends in de intergenerationele overdracht van onderwijsongelijkheid
-#> 84                                                                                     Does Intergenerational Social Mobility affect Antagonistic Attitudes towards Ethnic Minorities
-#> 85                                                            De invloed van lands-, gemeente-en buurtkenmerken op sociaal kapitaal: Putnam's hypothese getest in Europa en Nederland
-#> 86                                                                                                                                                           Causes of dyads (theory)
-#> 87                                                                                                                                                                Egocentric Networks
-#> 88                                                                                                                                                       Onbeperkte mogelijkheden 122
-#> 89                                                 De invloed van lands-, gemeente-en buurtkenmerken op sociaal kapitaal Gesthuizen, M.; Scheepers, P.; Tolsma, J.; Meer, TWG van der
-#> 90                                                                                            The Role of Recent Migrants’ Country of Origin Engagement in Dutch Language Proficiency
-#> 91 Notes on Contributors Female Education and Marriage Dissolution: Is it a Selection Effect? Fabrizio Bernardi and Juan-Ignacio Martinez-Pastor 693 Age, Inequality, and Reactions …
-#> 92   Notes on Contributors The Effects of Parental Reading Socialization and Early School Involvement on Children’s Academic Performance: A Panel Study of Primary School Pupils in …
-#> 93                                                                                                                                                M1-102: Social capital and networks
-#> 94                                                                                                   Social origin and occupational success at labour market entry in the Netherlands
+#> 67                                                                                                                                 Opleiding als sociale scheidslijn: Een tegengeluid
+#> 68                                                                                  Opleiding als sociale scheidslijn: aanleiding, probleemstelling, bestaande inzichten en werkwijze
+#> 69                                                                                                                   De samenhang in het opleidingsniveau tussen (huwelijks) partners
+#> 70                                                                                                Sociale herkomst en ongelijkheid in de opbrengsten van diploma's op de arbeidsmarkt
+#> 71                                                                                                  De rol van het opleidingsniveau voor het starten en stoppen met vrijwilligerswerk
+#> 72                                                                                                            Trends in de opleidingskloof op verschillende maatschappelijke domeinen
+#> 73                                                                                 Was, is of wordt opleiding de sociale scheidslijn? Een terugblik, stand van zaken en toekomstvisie
+#> 74                                                                                                                                                                          DANS EASY
+#> 75                                                                                               Klein en vrijwillig of groot en ervaren? Een analyse van de voorkeuren van donateurs
+#> 76                                                                    De burger als rechter, onderzoek naar geprefereerde sancties voor misdrijven in Nederland (projectnummer 1933B)
+#> 77                                                                          Aangiftebereidheid: Welke overwegingen spelen een rol bij de beslissing om wel of niet aangifte te doen?|
+#> 78                                                                                                                                  Onderwijsexpansie veroorzaakt nieuwe ongelijkheid
+#> 79                                                                                                                 Sociale daling schaadt vertrouwen: Effecten van sociale mobiliteit
+#> 80                                                                                                                                       Toenemende gelijkheid is nog geen verheffing
+#> 81                   Over ouders, televisiekijken en (over) gewicht: Een studie naar de langetermijneffecten van ouderlijke televisiesocialisatie op het lichaamsgewicht van kinderen
+#> 82                                                                      Onderwijsexpansie en opleidingsrichting: Trends in de intergenerationele overdracht van onderwijsongelijkheid
+#> 83                                                                                     Does Intergenerational Social Mobility affect Antagonistic Attitudes towards Ethnic Minorities
+#> 84                                                            De invloed van lands-, gemeente-en buurtkenmerken op sociaal kapitaal: Putnam's hypothese getest in Europa en Nederland
+#> 85                                                                                                                                                           Causes of dyads (theory)
+#> 86                                                                                                                                                                Egocentric Networks
+#> 87                                                                                                                                                       Onbeperkte mogelijkheden 122
+#> 88                                                 De invloed van lands-, gemeente-en buurtkenmerken op sociaal kapitaal Gesthuizen, M.; Scheepers, P.; Tolsma, J.; Meer, TWG van der
+#> 89                                                                                            The Role of Recent Migrants’ Country of Origin Engagement in Dutch Language Proficiency
+#> 90 Notes on Contributors Female Education and Marriage Dissolution: Is it a Selection Effect? Fabrizio Bernardi and Juan-Ignacio Martinez-Pastor 693 Age, Inequality, and Reactions …
+#> 91   Notes on Contributors The Effects of Parental Reading Socialization and Early School Involvement on Children’s Academic Performance: A Panel Study of Primary School Pupils in …
+#> 92                                                                                                                                                M1-102: Social capital and networks
+#> 93                                                                                                   Social origin and occupational success at labour market entry in the Netherlands
 #>                                                                        author
 #> 1                                                    T Van der Meer, J Tolsma
 #> 2                            M Savelkoul, P Scheepers, J Tolsma, L Hagendoorn
@@ -2030,34 +2029,33 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 64                               PE Thijs, GLM Kraaykamp, M Scholte, J Tolsma
 #> 65                               GLM Kraaykamp, M Scholte, PE Thijs, J Tolsma
 #> 66                                    T Feliciani, A Flache, J Tolsma, M Maes
-#> 67                                                      MHJ Wolbers, WC Ultee
-#> 68                                                                   J Tolsma
-#> 69                                          M de Lange, J Tolsma, MHJ Wolbers
-#> 70                                                      J Tolsma, ND de Graaf
-#> 71                                                      J Tolsma, MHJ Wolbers
-#> 72                                            D Wiertz, J Tolsma, ND de Graaf
-#> 73                                                          M Lange, J Tolsma
-#> 74                                                      J Tolsma, MHJ Wolbers
-#> 75                  J Tolsma, GLM Kraaykamp, DM de Graaf, M Kalmijn, C Monden
-#> 76                                                     S Kinsbergen, J Tolsma
-#> 77                              S Ruiter, J Tolsma, M Hoon, H Elffers, D Laan
-#> 78                                                                   J Tolsma
-#> 79                                       GLM Kraaykamp, MHJ Wolbers, J Tolsma
-#> 80                                                      J Tolsma, MHJ Wolbers
-#> 81                                                      MHJ Wolbers, J Tolsma
-#> 82                                          N Notten, GLM Kraaykamp, J Tolsma
-#> 83                                       GLM Kraaykamp, J Tolsma, MHJ Wolbers
-#> 84                                         NDG de Graaf, J Tolsma, L Quillian
-#> 85                  MJW Gesthuizen, PLH Scheepers, J Tolsma, TWG van der Meer
+#> 67                                                                   J Tolsma
+#> 68                                          M de Lange, J Tolsma, MHJ Wolbers
+#> 69                                                      J Tolsma, ND de Graaf
+#> 70                                                      J Tolsma, MHJ Wolbers
+#> 71                                            D Wiertz, J Tolsma, ND de Graaf
+#> 72                                                          M Lange, J Tolsma
+#> 73                                                      J Tolsma, MHJ Wolbers
+#> 74                  J Tolsma, GLM Kraaykamp, DM de Graaf, M Kalmijn, C Monden
+#> 75                                                     S Kinsbergen, J Tolsma
+#> 76                              S Ruiter, J Tolsma, M Hoon, H Elffers, D Laan
+#> 77                                                                   J Tolsma
+#> 78                                       GLM Kraaykamp, MHJ Wolbers, J Tolsma
+#> 79                                                      J Tolsma, MHJ Wolbers
+#> 80                                                      MHJ Wolbers, J Tolsma
+#> 81                                          N Notten, GLM Kraaykamp, J Tolsma
+#> 82                                       GLM Kraaykamp, J Tolsma, MHJ Wolbers
+#> 83                                         NDG de Graaf, J Tolsma, L Quillian
+#> 84                  MJW Gesthuizen, PLH Scheepers, J Tolsma, TWG van der Meer
+#> 85                                                                   J Tolsma
 #> 86                                                                   J Tolsma
-#> 87                                                                   J Tolsma
-#> 88 T Fischer, J Winkels, M Visser, M Gesthuizen, P Scheepers, A ten Cate, ...
-#> 89                                                               M Gesthuizen
-#> 90                                                         N Geurts, J Tolsma
-#> 91       P Horvat, G Evans, G Rohwer, M Savelkoul, P Scheepers, J Tolsma, ...
-#> 92             R Kloosterman, N Notten, J Tolsma, G Kraaykamp, J Hansson, ...
-#> 93                                                J Laméris, J Tolsma, J Hipp
-#> 94                                                      J Tolsma, MHJ Wolbers
+#> 87 T Fischer, J Winkels, M Visser, M Gesthuizen, P Scheepers, A ten Cate, ...
+#> 88                                                               M Gesthuizen
+#> 89                                                         N Geurts, J Tolsma
+#> 90       P Horvat, G Evans, G Rohwer, M Savelkoul, P Scheepers, J Tolsma, ...
+#> 91             R Kloosterman, N Notten, J Tolsma, G Kraaykamp, J Hansson, ...
+#> 92                                                J Laméris, J Tolsma, J Hipp
+#> 93                                                      J Tolsma, MHJ Wolbers
 #>                                                                             journal
 #> 1                                                        Annual Review of Sociology
 #> 2                                                      European sociological review
@@ -2125,34 +2123,33 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 64 Nijmegen: Interuniversity Center for Social Science Theory and Methodology (ICS)
 #> 65 Nijmegen: Interuniversity Center for Social Science Theory and Methodology (ICS)
 #> 66                                                     Social Simulation Conference
-#> 67            Lange, M. de; Tolsma, J.; Wolbers, MHJ (ed.), Opleiding als sociale …
-#> 68                                          Sociologos: Tijdschrift voor Sociologie
-#> 69       Opleiding als sociale scheidslijn. Een nieuw perspectief op een oude kloof
+#> 67                                          Sociologos: Tijdschrift voor Sociologie
+#> 68       Opleiding als sociale scheidslijn. Een nieuw perspectief op een oude kloof
+#> 69                                                      Antwerpen/Apeldoorn: Garant
 #> 70                                                      Antwerpen/Apeldoorn: Garant
-#> 71                                                      Antwerpen/Apeldoorn: Garant
-#> 72            Lange, M. de; Tolsma, J.; Wolbers, MHJ (ed.), Opleiding als sociale …
-#> 73                                                      Antwerpen/Apeldoorn: Garant
-#> 74            Lange, M. de; Tolsma, J.; Wolbers, MHJ (ed.), Opleiding als sociale …
-#> 75                                                                        DANS EASY
-#> 76                                                                  Amsterdam: NCDO
-#> 77                                                                        DANS EASY
-#> 78                                                           Cahiers Politiestudies
-#> 79                                                       [Sl]: Sociale Vraagstukken
+#> 71            Lange, M. de; Tolsma, J.; Wolbers, MHJ (ed.), Opleiding als sociale …
+#> 72                                                      Antwerpen/Apeldoorn: Garant
+#> 73            Lange, M. de; Tolsma, J.; Wolbers, MHJ (ed.), Opleiding als sociale …
+#> 74                                                                        DANS EASY
+#> 75                                                                  Amsterdam: NCDO
+#> 76                                                                        DANS EASY
+#> 77                                                           Cahiers Politiestudies
+#> 78                                                       [Sl]: Sociale Vraagstukken
+#> 79                                                                                 
 #> 80                                                                                 
-#> 81                                                                                 
-#> 82                                                                Assen: Van Gorcum
-#> 83                                                                   Amsterdam: AUP
-#> 84                                                                  Wiley Blackwell
-#> 85                                                       Den Haag/Nijmegen: SCP-NSV
+#> 81                                                                Assen: Van Gorcum
+#> 82                                                                   Amsterdam: AUP
+#> 83                                                                  Wiley Blackwell
+#> 84                                                       Den Haag/Nijmegen: SCP-NSV
+#> 85                                                                                 
 #> 86                                                                                 
 #> 87                                                                                 
 #> 88                                                                                 
 #> 89                                                                                 
 #> 90                                                                                 
 #> 91                                                                                 
-#> 92                                                                                 
-#> 93                                                                Book of Abstracts
-#> 94                                                                                 
+#> 92                                                                Book of Abstracts
+#> 93                                                                                 
 #>                                                                   number cites year
 #> 1                                                        40 (1), 459-478   435 2014
 #> 2                                                        27 (6), 741-758   290 2011
@@ -2220,34 +2217,33 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 64                                                                           0 2016
 #> 65                                                                           0 2016
 #> 66                                                                  2016     0 2016
-#> 67                                                                           0 2015
-#> 68                                                           36, 276-285     0 2015
-#> 69                                                                  9-32     0 2015
+#> 67                                                           36, 276-285     0 2015
+#> 68                                                                  9-32     0 2015
+#> 69                                                                           0 2015
 #> 70                                                                           0 2015
 #> 71                                                                           0 2015
 #> 72                                                                           0 2015
 #> 73                                                                           0 2015
-#> 74                                                                           0 2015
+#> 74                                                                           0 2014
 #> 75                                                                           0 2014
-#> 76                                                                           0 2014
-#> 77                                                                           0 2013
-#> 78                                                             2 (4), 11     0 2012
+#> 76                                                                           0 2013
+#> 77                                                             2 (4), 11     0 2012
+#> 78                                                                           0 2011
 #> 79                                                                           0 2011
 #> 80                                                                           0 2011
 #> 81                                                                           0 2011
 #> 82                                                                           0 2011
-#> 83                                                                           0 2011
+#> 83                                                                           0 2009
 #> 84                                                                           0 2009
-#> 85                                                                           0 2009
+#> 85                                                                           0   NA
 #> 86                                                                           0   NA
 #> 87                                                                           0   NA
 #> 88                                                                           0   NA
 #> 89                                                                           0   NA
 #> 90                                                                           0   NA
 #> 91                                                                           0   NA
-#> 92                                                                           0   NA
-#> 93                                                                     1     0   NA
-#> 94                                                                           0   NA
+#> 92                                                                     1     0   NA
+#> 93                                                                           0   NA
 #>                                                               cid        pubid
 #> 1     17240473400423700490,461159763596233481,1315542974843119305 UxriW0iASnsC
 #> 2                                             9140218593636983243 9yKSN-GCB0IC
@@ -2261,7 +2257,7 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 10                                           10446633547221929964 2osOgNQ5qMEC
 #> 11 18143881066769803140,18233438384904663264,12975380653095517868 Tyk-4Ss8FVUC
 #> 12                                           18309594979069207516 maZDTaKrznsC
-#> 13                       4894344398065441656,17805961515959316077 ldfaerwXgEUC
+#> 13                                            4894344398065441656 ldfaerwXgEUC
 #> 14                                            2251620908592189324 BqipwSGYUEgC
 #> 15                                            7670225499012303854 e5wmG9Sq2KIC
 #> 16                                            2401615506068930127 7PzlFSSx8tAC
@@ -2315,34 +2311,33 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 64                                                           <NA> lSLTfruPkqcC
 #> 65                                                           <NA> RYcK_YlVTxYC
 #> 66                                                           <NA> NaGl4SEjCO4C
-#> 67                                                           <NA> nb7KW1ujOQ8C
-#> 68                                                           <NA> NMxIlDl6LWMC
-#> 69                                                           <NA> TFP_iSt0sucC
-#> 70                                                           <NA> bEWYMUwI8FkC
-#> 71                                                           <NA> iH-uZ7U-co4C
-#> 72                                                           <NA> r0BpntZqJG4C
-#> 73                                                           <NA> j3f4tGmQtD8C
-#> 74                                                           <NA> 4JMBOYKVnBMC
-#> 75                                                           <NA> XiSMed-E-HIC
-#> 76                                                           <NA> yD5IFk8b50cC
-#> 77                                                           <NA> 738O_yMBCRsC
-#> 78                                                           <NA> P5F9QuxV20EC
-#> 79                                                           <NA> _kc_bZDykSQC
-#> 80                                                           <NA> ULOm3_A8WrAC
-#> 81                                                           <NA> Zph67rFs4hoC
-#> 82                                                           <NA> 3fE2CSJIrl8C
-#> 83                                                           <NA> 5nxA0vEk-isC
-#> 84                                                           <NA> dshw04ExmUIC
-#> 85                                                           <NA> YOwf2qJgpHMC
-#> 86                                                           <NA> WbkHhVStYXYC
-#> 87                                                           <NA> Tiz5es2fbqcC
-#> 88                                                           <NA> 1sJd4Hv_s6UC
-#> 89                                                           <NA> cFHS6HbyZ2cC
-#> 90                                                           <NA> 4OULZ7Gr8RgC
-#> 91                                                           <NA> rO6llkc54NcC
-#> 92                                                           <NA> 3s1wT3WcHBgC
-#> 93                                                           <NA> M05iB0D1s5AC
-#> 94                                                           <NA> 70eg2SAEIzsC
+#> 67                                                           <NA> NMxIlDl6LWMC
+#> 68                                                           <NA> TFP_iSt0sucC
+#> 69                                                           <NA> bEWYMUwI8FkC
+#> 70                                                           <NA> iH-uZ7U-co4C
+#> 71                                                           <NA> r0BpntZqJG4C
+#> 72                                                           <NA> j3f4tGmQtD8C
+#> 73                                                           <NA> 4JMBOYKVnBMC
+#> 74                                                           <NA> XiSMed-E-HIC
+#> 75                                                           <NA> yD5IFk8b50cC
+#> 76                                                           <NA> 738O_yMBCRsC
+#> 77                                                           <NA> P5F9QuxV20EC
+#> 78                                                           <NA> _kc_bZDykSQC
+#> 79                                                           <NA> ULOm3_A8WrAC
+#> 80                                                           <NA> Zph67rFs4hoC
+#> 81                                                           <NA> 3fE2CSJIrl8C
+#> 82                                                           <NA> 5nxA0vEk-isC
+#> 83                                                           <NA> dshw04ExmUIC
+#> 84                                                           <NA> YOwf2qJgpHMC
+#> 85                                                           <NA> WbkHhVStYXYC
+#> 86                                                           <NA> Tiz5es2fbqcC
+#> 87                                                           <NA> 1sJd4Hv_s6UC
+#> 88                                                           <NA> cFHS6HbyZ2cC
+#> 89                                                           <NA> 4OULZ7Gr8RgC
+#> 90                                                           <NA> rO6llkc54NcC
+#> 91                                                           <NA> 3s1wT3WcHBgC
+#> 92                                                           <NA> M05iB0D1s5AC
+#> 93                                                           <NA> 70eg2SAEIzsC
 ```
 
 When and how often was Jochem cited? Seems like an increasing trend line!

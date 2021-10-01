@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-09-30" />
+<meta name="date" content="2021-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -708,8 +708,8 @@ But notwithstanding these differences, online social networks consist of a serie
 </li>
 <li>Jochem Tolsma</li>
 </ul>
-<p>From these two sampled social scientists we will use the webscraping techniques described in Chapter <a href="webintro.html#webintro">11</a> to collect 1.5 degree co-author egonetwork.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
-<p>See the figures <a href="theory-1.html#fig:jt">5.7</a> and @ref(fig:bh ) below for a graphical summary of the networks.</p>
+<p>From these two sampled social scientists we will use the webscraping techniques described in Chapter <a href="webintro.html#webintro">11</a> to collect 1.5 degree co-author egonetwork.</p>
+<p>See the figures <a href="theory-1.html#fig:jt">5.7</a> and <a href="theory-1.html#fig:bh">5.8</a> below for a quick-and-dirty graphical summary of the networks.</p>
 <div class="figure"><span style="display:block;" id="fig:jt"></span>
 <img src="03-Egonets_files/figure-html/jt-1.png" alt="1.5 degree co-author egonetwork of JOCHEM TOLSMA" width="672" />
 <p class="caption">
@@ -722,31 +722,6 @@ Figure 5.7: 1.5 degree co-author egonetwork of JOCHEM TOLSMA
 Figure 5.8: 1.5 degree co-author egonetwork of BAS HOFSTRA
 </p>
 </div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb32-1"><a href="theory-1.html#cb32-1"></a><span class="fu">require</span>(rvest)</span>
-<span id="cb32-2"><a href="theory-1.html#cb32-2"></a>page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://scholar.google.com/citations?view_op=list_colleagues&amp;hl=en&amp;user=K51iiIAAAAAJ&quot;</span>)</span>
-<span id="cb32-3"><a href="theory-1.html#cb32-3"></a></span>
-<span id="cb32-4"><a href="theory-1.html#cb32-4"></a>Coauthors <span class="ot">&lt;-</span>  page <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">css=</span><span class="st">&quot;a&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">html_text</span>()</span>
-<span id="cb32-5"><a href="theory-1.html#cb32-5"></a>affiliation <span class="ot">&lt;-</span>  page <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">css=</span><span class="st">&quot;.gs_ai_aff&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">html_text</span>()</span>
-<span id="cb32-6"><a href="theory-1.html#cb32-6"></a></span>
-<span id="cb32-7"><a href="theory-1.html#cb32-7"></a></span>
-<span id="cb32-8"><a href="theory-1.html#cb32-8"></a><span class="fu">get_scholar_id_fix</span>(<span class="at">last_name=</span><span class="st">&quot;van%der%Brug&quot;</span>, <span class="at">first_name=</span><span class="st">&quot;Wouter&quot;</span>)</span>
-<span id="cb32-9"><a href="theory-1.html#cb32-9"></a><span class="fu">get_scholar_id</span>(<span class="at">last_name=</span><span class="st">&quot;van der Brug&quot;</span>, <span class="at">first_name=</span><span class="st">&quot;Wouter&quot;</span>)</span>
-<span id="cb32-10"><a href="theory-1.html#cb32-10"></a></span>
-<span id="cb32-11"><a href="theory-1.html#cb32-11"></a><span class="sc">%&gt;%</span> <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>)</span>
-<span id="cb32-12"><a href="theory-1.html#cb32-12"></a></span>
-<span id="cb32-13"><a href="theory-1.html#cb32-13"></a>id <span class="ot">&lt;-</span>  page <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">css=</span><span class="st">&quot;div.gsc_ucoar.gs_scl&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">html_attr</span>(<span class="st">&quot;id&quot;</span>)</span>
-<span id="cb32-14"><a href="theory-1.html#cb32-14"></a></span>
-<span id="cb32-15"><a href="theory-1.html#cb32-15"></a>affiliation <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">pattern=</span><span class="st">&quot;gsc_ucoar-&quot;</span>, <span class="at">replacement=</span><span class="st">&quot;&quot;</span>, <span class="at">x=</span>affiliation )</span>
-<span id="cb32-16"><a href="theory-1.html#cb32-16"></a></span>
-<span id="cb32-17"><a href="theory-1.html#cb32-17"></a>https<span class="sc">:</span><span class="er">//</span>scholar.google.com<span class="sc">/</span>citations?view_op<span class="ot">=</span>list_colleagues<span class="sc">&amp;</span>hl<span class="ot">=</span>en<span class="sc">&amp;</span>user<span class="ot">=</span>gHuTzXcAAAAAJ<span class="st">&quot;</span></span>
-<span id="cb32-18"><a href="theory-1.html#cb32-18"></a></span>
-<span id="cb32-19"><a href="theory-1.html#cb32-19"></a></span>
-<span id="cb32-20"><a href="theory-1.html#cb32-20"></a></span>
-<span id="cb32-21"><a href="theory-1.html#cb32-21"></a><span class="st">%&gt;% html_text()</span></span>
-<span id="cb32-22"><a href="theory-1.html#cb32-22"></a><span class="st">affiliation &lt;-  page %&gt;% html_nodes(css=&quot;</span>div<span class="st">&quot;) %&gt;% html_text()</span></span>
-<span id="cb32-23"><a href="theory-1.html#cb32-23"></a></span>
-<span id="cb32-24"><a href="theory-1.html#cb32-24"></a><span class="st">Coauthors &lt;-  as.data.frame(Coauthors)</span></span>
-<span id="cb32-25"><a href="theory-1.html#cb32-25"></a><span class="st">Coauthors</span></span></code></pre></div>
 <div id="density" class="section level4 unnumbered">
 <h4>Density</h4>
 <p>Density is defined as all observed relations divided by all possible relations. Look at the examples below. Are you able to calculate the density of the networks yourself?</p>
@@ -756,8 +731,8 @@ Figure 5.8: 1.5 degree co-author egonetwork of BAS HOFSTRA
 Figure 5.9: Different densities?
 </p>
 </div>
-<p>The density in Bas’ network turns out to be: 0.24.</p>
-<p>The density in Jochem’s network turns out to be: 0.23.</p>
+<p>The density in Bas’ network turns out to be: 0.22.</p>
+<p>The density in Jochem’s network turns out to be: 0.15.</p>
 <p>For comparison, if we look at friendship networks among pupils in classrooms, we generally observe a density within the range of .2 and .4.</p>
 </div>
 <div id="degree-centrality" class="section level4 unnumbered">
@@ -792,7 +767,7 @@ Suppose you want to compare the degree centrality of Bas in Bas’s network with
 <h4>Clustering</h4>
 <p>Clustering is an interesting concept. We have immediately an intuitive understanding of it, people lump together in separate groups. But how should we go about defining it more formally?
 The <strong>clustering coefficient</strong> for <span class="math inline">\(v_i\)</span> is defined as the observed ties between all direct neighbors of <span class="math inline">\(v_i\)</span> divided by all possible ties between all direct neighbors of <span class="math inline">\(v_i\)</span>. Direct neighbours are connected to <span class="math inline">\(v_i\)</span> via an ingoing and/or outgoing relation. For undirected networks, the clustering coefficient is the same as the <strong>transitivity index</strong>: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.</p>
-<p>Bas’ transitivity network in his network turns out to be: 0.13.</p>
+<p>Bas’ transitivity network in his network turns out to be: 0.18.</p>
 <p>Jochem’s transitivity in his network turns out to be: 0.15.</p>
 </div>
 </div>
@@ -881,7 +856,6 @@ Tolsma, J., J. Rokven, Gouweleeuw Groenestijn P. van, and H. Goudriaan. 2015. <s
 <ol start="7">
 <li id="fn7"><p>Otherwise there would be a third pathway directly from the situation on the left to the end state, the transitive triad, on the right.<a href="theory-1.html#fnref7" class="footnote-back">↩︎</a></p></li>
 <li id="fn8"><p>In many surveys respondents are not even given the opportunity to give more than five persons.<a href="theory-1.html#fnref8" class="footnote-back">↩︎</a></p></li>
-<li id="fn9"><p>To be a bit more precise, we only collect the first 20 co-authors listed on the google scholar page of each ego. I assume these are the ‘most important.’<a href="theory-1.html#fnref9" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -933,14 +907,19 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["SNA-4-Social-Scientists.pdf", "SNA-4-Social-Scientists.epub"],
+"download": null,
 "search": {
 "engine": "lunr",
 "options": null
 },
 "toc": {
-"collapse": "subsection"
-}
+"collapse": "section"
+},
+"description": "Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks.",
+"cover-image": "cover.jpg",
+"url": "https://jochemtolsma.github.io/SNA-4-Social-Scientists/",
+"github-repo": "JochemTolsma/SNA-4-Social-Scientists",
+"favicon": "favicon.ico"
 });
 });
 </script>

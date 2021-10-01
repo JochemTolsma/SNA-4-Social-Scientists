@@ -33,7 +33,8 @@ fcollabs <- function(gsid, lookforcollabs=1) {
     ids <- str_split(string=ids, pattern= "user=", n = 2, simplify = TRUE)[,2]
 
 
-    profilecollabs <-  as.data.frame(profilecollabs, ids)
+    profilecollabs <-  as.data.frame(profilecollabs)
+    profilecollabs$ids <- ids
     #profilecollabs <-  as.data.frame(profilecollabs[,2]) # that returns two elements, of which second element is the cleanest
 
   }
