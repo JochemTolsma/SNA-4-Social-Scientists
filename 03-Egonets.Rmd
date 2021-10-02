@@ -386,14 +386,24 @@ save(G1BH, file="G1BH.Rdata")
 save(JTaut, file="JTaut.Rdata")
 save(BHaut, file="BHaut.Rdata")
 ```
+<!---
+The different methods for finding communities, they all return a communities object: cluster_edge_betweenness, cluster_fast_greedy, cluster_label_prop, cluster_leading_eigen, cluster_louvain, cluster_optimal, cluster_spinglass, cluster_walktrap. 
+--->
 
 
 ```{r jt, echo=FALSE, fig.cap="1.5 degree co-author egonetwork of JOCHEM TOLSMA"}
 load(file="G1b.Rdata")
 
+par(mfrow=c(1,2))
 V(G1b)$label.cex = .6
 l <- layout_with_kk(G1b)
 plot(G1b, margin=c(0,0,0,0), layout=l,vertex.label.cex = 0.55, vertex.label.degree = -pi/2)
+
+#clp$membership <- ifelse(clp$membership==4, NA, clp$membership) 
+#clp$names 2363422
+set.seed(2363418)
+clp <- cluster_optimal(G1b)
+plot(clp, G1b)
 
 # #make igraph object
 # G1 <- igraph::graph_from_edgelist(as.matrix(JTaut), directed=FALSE)
@@ -428,9 +438,12 @@ plot(G1b, margin=c(0,0,0,0), layout=l,vertex.label.cex = 0.55, vertex.label.degr
 ```{r bh, echo=FALSE, fig.cap="1.5 degree co-author egonetwork of BAS HOFSTRA"}
 load(file="G1BH.Rdata")
 
+par(mfrow=c(1,2))
 l <- layout_with_kk(G1BH)
 plot(G1BH, margin=c(0,0,0,0), layout=l)
 
+clp <- cluster_optimal(G1BH)
+plot(clp, G1BH)
 
 # #make igraph object
 # G2 <- igraph::graph_from_edgelist(as.matrix(BHaut), directed=FALSE)
