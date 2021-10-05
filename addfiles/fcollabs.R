@@ -1,47 +1,44 @@
-
 require(rvest)
 require(xml2)
 require(tidyverse)
-#devtools::install_github("jkeirstead/scholar")
-require(scholar)
-
-fodd <- function(x) x%%2 != 0
-feven <- function(x) x%%2 == 0
 
 # function to get collaborators and names from GS profiles
-# change to true/false
-fcollabs <- function(gsid, lookforcollabs=1) {
+fcollabs <- function(gsid, lookforcollabs) {
 
   htmlpage1 <- read_html(paste0("https://scholar.google.nl/citations?user=", gsid, "&hl=en")) # so we paste the google scholar id
   profilename <- htmlpage1 %>% html_nodes(xpath = "//*/div[@id='gsc_prf_in']") %>% html_text() # we extract the profile name of that google scholar page
-  profilecollabs <- as.data.frame(0) # empty df necessary for later
+  profilecollabs1 <- as.data.frame(0) # empty df necessary for later
+  profilecollabs2 <- as.data.frame(0) # empty df necessary for later
 
   if (lookforcollabs == 1) { # so if you want to look for collabs, set function to 1
 
     htmlpage2 <- read_html(paste0("https://scholar.google.com/citations?view_op=list_colleagues&hl=en&user=", gsid)) # so we paste the google scholar id
-    profilecollabs <-  htmlpage2 %>% html_nodes(css="a") %>% html_text()
+    profilecollabs1 <-  htmlpage2 %>% html_nodes(css="h3") %>% html_text() # get names
+    profilecollabs1 <-  as.data.frame(profilecollabs1)
 
-    #profilecollabs <- htmlpage %>% html_nodes(xpath = "//*/div[@class='gsc_rsb_aa']") %>% html_text() # extract the line with the GS id
-    #profilecollabs <- str_match(profilecollabs , "gsc_rsb-\\s*(.*?)\\s*-img") # then get the ID inbtween specific substrings
-    #does not work for JT mac/windows issue? don't think so. old version of function? BH please check.
-    profilecollabs <- profilecollabs[feven(1:length(profilecollabs))]
-
-    profilecollabs <-  as.data.frame(profilecollabs)
-    #profilecollabs <-  as.data.frame(profilecollabs[,2]) # that returns two elements, of which second element is the cleanest
+    profilecollabs2 <- htmlpage2 %>% html_nodes("a") %>% html_attr("href") # get the link
+    profilecollabs2 <- profilecollabs2[seq_along(profilecollabs2) %% 2 > 0]
+    profilecollabs2 <- substring(profilecollabs2, 23)
 
   }
-  if (nrow(profilecollabs)>1) { # if there ARE collabs
-    profilecollabs <- as.data.frame(profilecollabs) # we want to...
-    profilecollabs[,c("gs_id")] <- gsid #... add gs_ids of focal GS profile
-    profilecollabs[,c("name")] <- profilename #...and the the profile name of GS profile attached
+  if (nrow(profilecollabs1)>1) { # if there ARE collabs
+
+    profilecollabs1 <- as.data.frame(profilecollabs1) # we want to...
+    profilecollabs2 <-  as.data.frame(profilecollabs2)
+    profilecollabs1[,c("coauth_id")] <- profilecollabs2[,1]
+
+    profilecollabs1[,c("gs_id")] <- gsid #... add gs_ids of focal GS profile
+    profilecollabs1[,c("name")] <- profilename #...and the the profile name of GS profile attached
+
+    names(profilecollabs1)[1] <- "coauth"
 
   } else {
-    profilecollabs <- as.data.frame(cbind(gsid, profilename)) # if NOT looking for collabs...
-    names(profilecollabs) <- c("gs_id", "name") #...we only attach gs_id and profilename
+    profilecollabs1 <- as.data.frame(cbind(gsid, profilename)) # if NOT looking for collabs...
+    names(profilecollabs1) <- c("gs_id", "name") #...we only attach gs_id and profilename
 
   }
+  return(profilecollabs1)
 
-  return(profilecollabs)
 }
 
 
