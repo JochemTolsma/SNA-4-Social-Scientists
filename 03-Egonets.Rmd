@@ -452,7 +452,7 @@ plot(clp, G1BH)
 # G2b <- induced_subgraph(G2,vids=selection2)
 # V(G2b)$label.cex = .71
 # #V(G2b)$color[1] <- "red"
-# #plot(G2b) #still uggly of course
+# #plot(G2b) #still uggly of course 
 # G2c <- simplify(G2b) #remove multiples
 # plot(G2c) #still uggly of course
 
