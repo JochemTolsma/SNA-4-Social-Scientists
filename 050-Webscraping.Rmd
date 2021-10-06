@@ -98,7 +98,8 @@ Finally, webscraped digital trace data often do not contain the detailed demogra
 So if we sum up what we have learned thus far, what are the overarching benefits of webscraped digital trace data compared to more-traditional data sources? We can think of at least three of those:  
 \
 1. New tests of old social science hypotheses made possible by the availability of digital footprint data.  
-2. Tests of newly derived social science hypotheses made possible by the availability of digital footprint data.  3. Tests of new theories about "the internet" as social phenomenon by itself.  
+2. Tests of newly derived social science hypotheses made possible by the availability of digital footprint data.  
+3. Tests of new theories about "the internet" as social phenomenon by itself.  
 
 
 Note that these three points are not mutually exclusive: a newly derived social science hypothesis might just as well be about the internet as social phenomenon by itself. Yet, for analytic purposes it is convenient to list these three as separate. An interesting example related to point (1) is the question whether social networks are "small-worlds" -- i.e., highly clustered yet having a short average path length. A popular adage derives from this feature of social networks: individuals are all separated by approximately six degrees. This was traditionally studied by considering letter chains. Now one could study this with the entire Facebook network, and so one could actually test this hypothesis at much larger and complete scale than before. With respect to point (2): you could derive new hypotheses about the conversational nature of massive collaborative projects by scraping and then studying all Wikipedia edits (something that was hard to study before). More recently, a lot of studies emerged on the role of fake news and echo chambers with respect to individual attitudes and polarization, which relates to point (3): how the internet as social phenomenon by itself can influence behavior/attitudes. The strongest computational social science papers leverage the strengths of digital trace data but simultaneously account for (or at the very least acknowledge) some of its weaknesses as we list above.
@@ -1017,6 +1018,63 @@ Nicely done, this was the webscraping tutorial for bibliometric science data. We
 1. Redo the tutorial -- really should go much quicker now that you've got the hang of it! -- but with the sociology staff of the University of Groningen.  
     - All of it?! Yes, the goal is to get to the regression of citations on number of publications, career age, gender, and number of co-authors.  
     - Upload the associated code (with a summary of the regression results in comment blocks in the code) for that exercise. 
+
+```{r, echo=FALSE, eval=FALSE}
+
+library(data.table)
+library(tidyverse) 
+require(xml2)
+require(rvest)
+require(scholar)
+require(stringr)
+
+
+#save page
+soc_staff_rug <- read_html("https://www.rug.nl/gmw/sociology/organisation/staff/")
+
+#find links to personal names
+links <- soc_staff_rug %>% 
+  html_nodes("a") %>% 
+  html_attr("href") %>%
+  str_subset("/staff/")
+
+links <- links[-c(1:5, 92)]
+
+websites <- NA
+for (i in 1:length(links)) {
+  websites[i] <- paste("https://www.rug.nl", links[i], sep="") 
+}
+websites
+#save names
+
+names_staff <- list()
+ 
+for (i in 1:length(websites)) {
+  soc_staff_ind <- read_html(websites[i])
+  names <- soc_staff_ind  %>% html_nodes(".rug-mb-0") %>% html_text
+  names_staff[[i]] <- names[3]
+  print(i)
+}
+
+names_staff
+
+<!---there is a very nice sheet cheat for stringr---> 
+  
+res <- str_split(unlist(names_staff), "\\(")
+res2 <- sapply(res, function(x) x[2])
+res3 <- str_split(res2, "\\)")
+res3
+firstname <- sapply(res3, function(x) x[1])
+lastname <- sapply(res3, function(x) x[2])
+lastname <- res3 <- str_split(lastname, "\\,")
+lastname <- sapply(lastname, function(x) x[1])
+
+soc_staff_rug <- na.omit(data.frame(firstname, lastname))
+
+save(soc_staff_rug, file="addfiles\\soc_staff_rug.Rdata")
+```
+
+
 
 If all else fails, you can find the necessary files to work with here: \
 [soc_df](addfiles/soc_df.RData) \
