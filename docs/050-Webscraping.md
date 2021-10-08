@@ -78,7 +78,8 @@ Finally, webscraped digital trace data often do not contain the detailed demogra
 So if we sum up what we have learned thus far, what are the overarching benefits of webscraped digital trace data compared to more-traditional data sources? We can think of at least three of those:  
 \
 1. New tests of old social science hypotheses made possible by the availability of digital footprint data.  
-2. Tests of newly derived social science hypotheses made possible by the availability of digital footprint data.  3. Tests of new theories about "the internet" as social phenomenon by itself.  
+2. Tests of newly derived social science hypotheses made possible by the availability of digital footprint data.  
+3. Tests of new theories about "the internet" as social phenomenon by itself.  
 
 
 Note that these three points are not mutually exclusive: a newly derived social science hypothesis might just as well be about the internet as social phenomenon by itself. Yet, for analytic purposes it is convenient to list these three as separate. An interesting example related to point (1) is the question whether social networks are "small-worlds" -- i.e., highly clustered yet having a short average path length. A popular adage derives from this feature of social networks: individuals are all separated by approximately six degrees. This was traditionally studied by considering letter chains. Now one could study this with the entire Facebook network, and so one could actually test this hypothesis at much larger and complete scale than before. With respect to point (2): you could derive new hypotheses about the conversational nature of massive collaborative projects by scraping and then studying all Wikipedia edits (something that was hard to study before). More recently, a lot of studies emerged on the role of fake news and echo chambers with respect to individual attitudes and polarization, which relates to point (3): how the internet as social phenomenon by itself can influence behavior/attitudes. The strongest computational social science papers leverage the strengths of digital trace data but simultaneously account for (or at the very least acknowledge) some of its weaknesses as we list above.
@@ -176,10 +177,10 @@ head(soc_staff)
 
 ```
 #> $node
-#> <pointer: 0x0000000026b0f500>
+#> <pointer: 0x000000002727fa10>
 #> 
 #> $doc
-#> <pointer: 0x0000000026bb15a0>
+#> <pointer: 0x0000000011de10f0>
 ```
 
 That looks kinda weird. What type of object did we store it by putting the html into `soc_staff`?
@@ -1834,7 +1835,7 @@ get_profile("Iu23-90AAAAJ")  # Jochem's profile
 #> [1] "Professor, Radboud University Nijmegen / University of Groningen"
 #> 
 #> $total_cites
-#> [1] 2298
+#> [1] 2304
 #> 
 #> $h_index
 #> [1] 22
@@ -1878,8 +1879,8 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 7                                                                          When do people report crime to the police? Results from a factorial survey design in the Netherlands, 2010
 #> 8                                                        Education and cultural integration among ethnic minorities and natives in the Netherlands: A test of the integration paradox
 #> 9                                                                                                       Trends in ethnic educational inequalities in the Netherlands: a cohort design
-#> 10                                                                                    Does intergenerational social mobility affect antagonistic attitudes towards ethnic minorities?
-#> 11                                  Explaining participation differentials in Dutch higher education: the impact of subjective success probabilities on level choice and field choice
+#> 10                                  Explaining participation differentials in Dutch higher education: the impact of subjective success probabilities on level choice and field choice
+#> 11                                                                                    Does intergenerational social mobility affect antagonistic attitudes towards ethnic minorities?
 #> 12                                                      The impact of adolescents' classroom and neighborhood ethnic diversity on same-and cross-ethnic friendships within classrooms
 #> 13             Neighbourhood ethnic composition and voting for the radical right in The Netherlands. The role of perceived neighbourhood threat and interethnic neighbourhood contact
 #> 14        Losing Wallets, Retaining Trust? The Relationship Between Ethnic Heterogeneity and Trusting Coethnic and Non-coethnic Neighbours and Non-neighbours to Return a Lost Wallet
@@ -1972,8 +1973,8 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 7                                         J Tolsma, J Blaauw, M Te Grotenhuis
 #> 8                                            J Tolsma, M Lubbers, M Gijsberts
 #> 9                                             J Tolsma, M Coenders, M Lubbers
-#> 10                                          J Tolsma, ND De Graaf, L Quillian
-#> 11                                                J Tolsma, A Need, U De Jong
+#> 10                                                J Tolsma, A Need, U De Jong
+#> 11                                          J Tolsma, ND De Graaf, L Quillian
 #> 12                               A Munniksma, P Scheepers, TH Stark, J Tolsma
 #> 13                                           M Savelkoul, J Laméris, J Tolsma
 #> 14                                                 J Tolsma, TWG van der Meer
@@ -2040,7 +2041,7 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 75                                                     S Kinsbergen, J Tolsma
 #> 76                              S Ruiter, J Tolsma, M Hoon, H Elffers, D Laan
 #> 77                                                                   J Tolsma
-#> 78                                       GLM Kraaykamp, MHJ Wolbers, J Tolsma
+#> 78                                                      MHJ Wolbers, J Tolsma
 #> 79                                                      J Tolsma, MHJ Wolbers
 #> 80                                                      MHJ Wolbers, J Tolsma
 #> 81                                          N Notten, GLM Kraaykamp, J Tolsma
@@ -2066,8 +2067,8 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 7                                               Journal of experimental criminology
 #> 8                                           Journal of Ethnic and Migration Studies
 #> 9                                                      European Sociological Review
-#> 10                                                 The British Journal of Sociology
-#> 11                                                     European Sociological Review
+#> 10                                                     European Sociological Review
+#> 11                                                 The British Journal of Sociology
 #> 12                                               Journal of Research on Adolescence
 #> 13                                                     European Sociological Review
 #> 14                                                       Social Indicators Research
@@ -2134,7 +2135,7 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 75                                                                  Amsterdam: NCDO
 #> 76                                                                        DANS EASY
 #> 77                                                           Cahiers Politiestudies
-#> 78                                                       [Sl]: Sociale Vraagstukken
+#> 78                                                                                 
 #> 79                                                                                 
 #> 80                                                                                 
 #> 81                                                                Assen: Van Gorcum
@@ -2151,17 +2152,17 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 92                                                                Book of Abstracts
 #> 93                                                                                 
 #>                                                                   number cites year
-#> 1                                                        40 (1), 459-478   435 2014
+#> 1                                                        40 (1), 459-478   436 2014
 #> 2                                                        27 (6), 741-758   290 2011
-#> 3                                                                 44 (3)   270 2009
+#> 3                                                                 44 (3)   271 2009
 #> 4                                                        27 (3), 291-306   122 2011
-#> 5                                                        24 (2), 215-230   120 2008
-#> 6                                                          35 (1), 51-61   107 2013
+#> 5                                                        24 (2), 215-230   121 2008
+#> 6                                                          35 (1), 51-61   108 2013
 #> 7                                                         8 (2), 117-134    77 2012
 #> 8                                                        38 (5), 793-813    70 2012
 #> 9                                                        23 (3), 325-339    68 2007
-#> 10                                                       60 (2), 257-277    63 2009
-#> 11                                                       26 (2), 235-252    62 2010
+#> 10                                                       26 (2), 235-252    63 2010
+#> 11                                                       60 (2), 257-277    63 2009
 #> 12                                                         27 (1), 20-33    43 2017
 #> 13                                                       33 (2), 209-224    38 2017
 #> 14                                                                          35 2016
@@ -2186,7 +2187,7 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 33                                                             63, 80-94    12 2018
 #> 34                                                       13 (2), 231-256     9 2016
 #> 35                                                                    11     9 2011
-#> 36                                                            98, 104185     7 2019
+#> 36                                                            98, 104185     8 2019
 #> 37                                                                           7 2016
 #> 38                                                        7 (2), 235-252     7 2013
 #> 39                                                                           7 2010
@@ -2254,8 +2255,8 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 7                                             3147100585201897138 UebtZRa9Y70C
 #> 8                                            16121967639591190378 eQOLeE2rZwMC
 #> 9                                             5904489841843560927 d1gkVwhDpl0C
-#> 10                                           10446633547221929964 2osOgNQ5qMEC
-#> 11 18143881066769803140,18233438384904663264,12975380653095517868 Tyk-4Ss8FVUC
+#> 10 18143881066769803140,18233438384904663264,12975380653095517868 Tyk-4Ss8FVUC
+#> 11                                           10446633547221929964 2osOgNQ5qMEC
 #> 12                                           18309594979069207516 maZDTaKrznsC
 #> 13                                            4894344398065441656 ldfaerwXgEUC
 #> 14                                            2251620908592189324 BqipwSGYUEgC
@@ -2361,8 +2362,8 @@ get_citation_history("Iu23-90AAAAJ")  # Jochem's citation history
 #> 10 2017   223
 #> 11 2018   268
 #> 12 2019   297
-#> 13 2020   305
-#> 14 2021   263
+#> 13 2020   307
+#> 14 2021   267
 ```
 
 And now most importantly, Jochem's collaborators, and the collaborators of those collaborators (note the `n_deep = 1`, can you find out what that does?). So essentially a "one-step-further-than-Jochem" network. 
@@ -2675,12 +2676,12 @@ jochem_coauthors
   <tr>
    <td style="text-align:left;"> 61 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
-   <td style="text-align:left;"> Jesper Jelle Rözer </td>
+   <td style="text-align:left;"> Niels Blom </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 62 </td>
    <td style="text-align:left;"> Gerbert Kraaykamp </td>
-   <td style="text-align:left;"> Niels Blom </td>
+   <td style="text-align:left;"> Jesper Jelle Rözer </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 63 </td>
@@ -2770,22 +2771,22 @@ jochem_coauthors
   <tr>
    <td style="text-align:left;"> 83 </td>
    <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Andries De Grip </td>
+   <td style="text-align:left;"> Lieselotte Blommaert </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 84 </td>
    <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Lieselotte Blommaert </td>
+   <td style="text-align:left;"> Andries De Grip </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 85 </td>
    <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Richard Layte </td>
+   <td style="text-align:left;"> Selina Mccoy </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 86 </td>
    <td style="text-align:left;"> Maarten Hj Wolbers </td>
-   <td style="text-align:left;"> Selina Mccoy </td>
+   <td style="text-align:left;"> Richard Layte </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 90 </td>
@@ -3050,27 +3051,27 @@ jochem_coauthors
   <tr>
    <td style="text-align:left;"> 151 </td>
    <td style="text-align:left;"> Marcel Lubbers </td>
-   <td style="text-align:left;"> Rob Eisinga </td>
+   <td style="text-align:left;"> Maykel Verkuyten </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 152 </td>
    <td style="text-align:left;"> Marcel Lubbers </td>
-   <td style="text-align:left;"> Maykel Verkuyten </td>
+   <td style="text-align:left;"> Hidde Bekhuis </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 153 </td>
    <td style="text-align:left;"> Marcel Lubbers </td>
-   <td style="text-align:left;"> Hidde Bekhuis </td>
+   <td style="text-align:left;"> Nan Dirk De Graaf </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 154 </td>
    <td style="text-align:left;"> Marcel Lubbers </td>
-   <td style="text-align:left;"> Nan Dirk De Graaf </td>
+   <td style="text-align:left;"> Tim Immerzeel </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 155 </td>
    <td style="text-align:left;"> Marcel Lubbers </td>
-   <td style="text-align:left;"> Tim Immerzeel </td>
+   <td style="text-align:left;"> Rob Eisinga </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 156 </td>
@@ -3375,12 +3376,12 @@ jochem_coauthors
   <tr>
    <td style="text-align:left;"> 237 </td>
    <td style="text-align:left;"> Matthijs Kalmijn </td>
-   <td style="text-align:left;"> Gerbert Kraaykamp </td>
+   <td style="text-align:left;"> Aart C. Liefbroer </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 238 </td>
    <td style="text-align:left;"> Matthijs Kalmijn </td>
-   <td style="text-align:left;"> Aart C. Liefbroer </td>
+   <td style="text-align:left;"> Gerbert Kraaykamp </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 239 </td>
@@ -3395,12 +3396,12 @@ jochem_coauthors
   <tr>
    <td style="text-align:left;"> 241 </td>
    <td style="text-align:left;"> Matthijs Kalmijn </td>
-   <td style="text-align:left;"> Marleen Damman </td>
+   <td style="text-align:left;"> Katya Ivanova </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 242 </td>
    <td style="text-align:left;"> Matthijs Kalmijn </td>
-   <td style="text-align:left;"> Katya Ivanova </td>
+   <td style="text-align:left;"> Marleen Damman </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 243 </td>
@@ -29528,6 +29529,10 @@ Nicely done, this was the webscraping tutorial for bibliometric science data. We
 1. Redo the tutorial -- really should go much quicker now that you've got the hang of it! -- but with the sociology staff of the University of Groningen.  
     - All of it?! Yes, the goal is to get to the regression of citations on number of publications, career age, gender, and number of co-authors.  
     - Upload the associated code (with a summary of the regression results in comment blocks in the code) for that exercise. 
+
+
+
+
 
 If all else fails, you can find the necessary files to work with here: \
 [soc_df](addfiles/soc_df.RData) \

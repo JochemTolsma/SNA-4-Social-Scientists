@@ -1,6 +1,6 @@
 ---
 title: "Social Network Analysis for Social Scientists"
-date: "2021-10-01"
+date: "2021-10-08"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]

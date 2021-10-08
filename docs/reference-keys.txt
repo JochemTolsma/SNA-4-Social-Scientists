@@ -30,6 +30,8 @@ fig:jt
 fig:bh
 fig:densities
 fig:mm
+fig:pl
+fig:rgraphs
 fig:inspect
 fig:inspectbody
 fig:inspecttd
@@ -122,6 +124,10 @@ online-friends
 weak-ties
 composition
 structure-1
+degreecentrality
+closenesscentrality
+betweennesscentrality
+clustering
 stability
 consequences-1
 assignment-3
@@ -146,6 +152,11 @@ ethical-considerations-1
 measurement-1
 su
 socionetst
+network-structures
+path-length
+cliques-and-communities
+segregation
+random-graphs
 causes-3
 consequences-3
 socionetsm
