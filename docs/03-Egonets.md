@@ -1,5 +1,5 @@
 # (PART) EGONETS {-} 
-
+ 
 # Theory  
 
 
@@ -226,11 +226,14 @@ To illustrate some different ways how we could describe egonets we will use egon
 - Bas Hofstra  
 - Jochem Tolsma  
 
-From these two sampled social scientists we will use the webscraping techniques described in Chapter \@ref(webintro) to collect 1.5 degree co-author egonetwork.^[To be a bit more precise, we only collect the first 20 co-authors listed on the google scholar page of each ego. I assume these are the 'most important'.] 
+From these two sampled social scientists we will use the webscraping techniques described in Chapter \@ref(webintro) to collect 1.5 degree co-author egonetwork. 
 
-See the figures \@ref(fig:jt) and \@ref(fig:bh ) below for a graphical summary of the networks.  
+See the figures \@ref(fig:jt) and \@ref(fig:bh) below for a quick-and-dirty graphical summary of the networks.  
 
 
+<!---
+The different methods for finding communities, they all return a communities object: cluster_edge_betweenness, cluster_fast_greedy, cluster_label_prop, cluster_leading_eigen, cluster_louvain, cluster_optimal, cluster_spinglass, cluster_walktrap. 
+--->
 
 
 <div class="figure">
@@ -242,38 +245,6 @@ See the figures \@ref(fig:jt) and \@ref(fig:bh ) below for a graphical summary o
 <img src="03-Egonets_files/figure-html/bh-1.png" alt="1.5 degree co-author egonetwork of BAS HOFSTRA" width="672" />
 <p class="caption">(\#fig:bh)1.5 degree co-author egonetwork of BAS HOFSTRA</p>
 </div>
-
-
-
-
-```{.r .numberLines}
-require(rvest)
-page <- read_html("https://scholar.google.com/citations?view_op=list_colleagues&hl=en&user=K51iiIAAAAAJ")
-
-Coauthors <-  page %>% html_nodes(css="a") %>% html_text()
-affiliation <-  page %>% html_nodes(css=".gs_ai_aff") %>% html_text()
-
-
-get_scholar_id_fix(last_name="van%der%Brug", first_name="Wouter")
-get_scholar_id(last_name="van der Brug", first_name="Wouter")
-
-%>% html_attr("id")
-
-id <-  page %>% html_nodes(css="div.gsc_ucoar.gs_scl") %>% html_attr("id")
-
-affiliation <- gsub(pattern="gsc_ucoar-", replacement="", x=affiliation )
-
-https://scholar.google.com/citations?view_op=list_colleagues&hl=en&user=gHuTzXcAAAAAJ"
-
-
-
-%>% html_text()
-affiliation <-  page %>% html_nodes(css="div") %>% html_text()
-
-Coauthors <-  as.data.frame(Coauthors)
-Coauthors
-```
-
 
 
 #### Density {-}
@@ -288,13 +259,13 @@ Density is defined as all observed relations divided by all possible relations. 
 <p class="caption">(\#fig:densities)Different densities?</p>
 </div>
 
-The density in Bas' network turns out to be: 0.24. 
+The density in Bas' network turns out to be: 0.22. 
 
-The density in Jochem's network turns out to be: 0.23.   
+The density in Jochem's network turns out to be: 0.15.   
 
 For comparison, if we look at friendship networks among pupils in classrooms, we generally observe a density within the range of .2 and .4.
 
-#### Degree centrality {-}
+#### Degree centrality {-} {#degreecentrality}
 
 Closely related to density is the concept of degree. The number of ingoing (indegree), outgoing (outdegree) or undirected (degree) relations from each node. In real social networks, we generally observe a right-skewed degree distribution (most people have some friends, few people have many friends). 
 
@@ -312,7 +283,7 @@ where $C_D(v_i)$ is degree centrality of $v_i$, vertex *i*, and 'deg' stands for
 
 
 
-#### Closeness centrality {-}
+#### Closeness centrality {-}  {#closenesscentrality}
 
 Closely related to degree centrality is (normalized) 'closeness centrality':  
 
@@ -320,7 +291,7 @@ $$ C_C(v_i) = \frac{N}{\sum_{j}d(v_j, v_i)}, $$
 
 with N the number of nodes and *d* stands for distance.
 
-#### Betweenness centrality {-}  
+#### Betweenness centrality {-} {#betweennesscentrality} 
 
 A final important measure of centrality I would like to discuss is called betweenness. It is defined as:  
 
@@ -331,13 +302,13 @@ where $\sigma(v_j,v_k)$ is the number of shortest paths between vertices *j* and
 
 $$ C_{B_{normalized}}(v_i) =  \frac{C_B(v_i) - min(C_B(v))}{max(C_B(v))-min(C_B(v))} $$  
 
-#### Clustering {-}  
+#### Clustering {-}  {#clustering}
 
 Clustering is an interesting concept. We have immediately an intuitive understanding of it, people lump together in separate groups. But how should we go about defining it more formally? 
 The **clustering coefficient** for $v_i$ is defined as the observed ties between all direct neighbors of $v_i$ divided by all possible ties between all direct neighbors of $v_i$. Direct neighbours are connected to $v_i$ via an ingoing and/or outgoing relation. For undirected networks, the clustering coefficient is the same as the **transitivity index**: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.  
 
 
-Bas' transitivity network in his network turns out to be: 0.13. 
+Bas' transitivity network in his network turns out to be: 0.18. 
 
 Jochem's transitivity in his network turns out to be: 0.15.   
 

@@ -1,12 +1,16 @@
 ---
 title: "Social Network Analysis for Social Scientists"
-date: "2021-09-29"
+date: "2021-10-08"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: ""
+description: "Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks."
+cover-image: "cover.jpg"
+url: 'https://jochemtolsma.github.io/SNA-4-Social-Scientists/'
+github-repo:  "JochemTolsma/SNA-4-Social-Scientists"
+favicon: "turtle-favicon.ico"
 ---
 
 

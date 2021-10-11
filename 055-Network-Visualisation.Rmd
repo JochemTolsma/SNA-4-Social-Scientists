@@ -290,7 +290,7 @@ So, what do we have?
 We are going to focus on the atmentions of politicians. This is most closely related to political discussion. Thus who is having discussions with whom on Twitter? 
 
 
-Let us go fishing for some data. At this point it is not very important you understand what is going on. You will learn more about RSiena data objects in Chapter \@ref(socionets). For now, simply do as you are told! `r emo::ji("wink")`   
+Let us go fishing for some data. At this point it is not very important you understand what is going on. You will learn more about RSiena data objects in Chapter \@ref(socionetsm). For now, simply do as you are told! `r emo::ji("wink")`   
 
 ```{r}
 fnet <- mydata$depvars$fnet
@@ -705,9 +705,9 @@ Remember the sociology staff at Radboud University? Let's plot the 1.5 degree co
 
 ```{r, eval = TRUE}
 # load the necessary datasets
-load("addfiles/soc_df.rda")
-load("addfiles/soc_collabs1.rda")
-load("addfiles/soc_collabs2.rda")
+load("addfiles/soc_df.RData")
+load("addfiles/soc_collabs1.RData")
+load("addfiles/soc_collabs2.RData")
 ```
 
 ```{r, eval = TRUE}
@@ -720,6 +720,7 @@ soc_collabs_unique$v1 <- 1 # convenient to select on after the merge
 soc_collabs_unique <- unique(soc_collabs_unique)
 
 # so this is a very important step, we join the unique soc collaborators to the collaborators of collaborators
+require(tidyverse)
 onefivedegree <- left_join(collabs_1deep, soc_collabs_unique, by = c("coauth_id" = "soc_collabs_unique"))
 
 # Then, we drop those that are not among sociology collaborators and who don't lsit coauthors regardless

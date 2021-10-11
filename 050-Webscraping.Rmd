@@ -95,10 +95,12 @@ Finally, webscraped digital trace data often do not contain the detailed demogra
 
 ## Where does this lead us?
 
-So if we sum up what we have learned thus far, what are the overarching benefits of webscraped digital trace data compared to more-traditional data sources? We can think of at least three of those: \
--   New tests of old social science hypotheses made possible by the availability of digital footprint data (1) \
--   Tests of newly derived social science hypotheses made possible by the availability of digital footprint data (2) \
--   Tests of new theories about "the internet" as social phenomenon by itself (3) \
+So if we sum up what we have learned thus far, what are the overarching benefits of webscraped digital trace data compared to more-traditional data sources? We can think of at least three of those:  
+\
+1. New tests of old social science hypotheses made possible by the availability of digital footprint data.  
+2. Tests of newly derived social science hypotheses made possible by the availability of digital footprint data.  
+3. Tests of new theories about "the internet" as social phenomenon by itself.  
+
 
 Note that these three points are not mutually exclusive: a newly derived social science hypothesis might just as well be about the internet as social phenomenon by itself. Yet, for analytic purposes it is convenient to list these three as separate. An interesting example related to point (1) is the question whether social networks are "small-worlds" -- i.e., highly clustered yet having a short average path length. A popular adage derives from this feature of social networks: individuals are all separated by approximately six degrees. This was traditionally studied by considering letter chains. Now one could study this with the entire Facebook network, and so one could actually test this hypothesis at much larger and complete scale than before. With respect to point (2): you could derive new hypotheses about the conversational nature of massive collaborative projects by scraping and then studying all Wikipedia edits (something that was hard to study before). More recently, a lot of studies emerged on the role of fake news and echo chambers with respect to individual attitudes and polarization, which relates to point (3): how the internet as social phenomenon by itself can influence behavior/attitudes. The strongest computational social science papers leverage the strengths of digital trace data but simultaneously account for (or at the very least acknowledge) some of its weaknesses as we list above.
 
@@ -140,7 +142,7 @@ In the remainder of this chapter, we thus provide a tutorial in which we explain
 ### Staging your script
 
 * Open a new R-script (via file --\> new --\> RScript (or simply hit *Ctrl+Shift+N* or *Cmd+Shift+N* if you work on Mac)
-* Before you start scraping and analyzing, take all the precautionary steps noted in \@ref(tutorial)
+* Before you start scraping and analyzing, take all the precautionary steps noted in Appendix \@ref(tutorial).
 
 So for this tutorial, your starting script will look something like this:
 
@@ -175,7 +177,7 @@ require(scholar)
 # setwd("/yourpathhere)"
 ```
 
-So what are these different packages? You already know the `tidyverse` from the \@ref(tutorial) earlier in this book. The packages `xml2`, `rvest`, `devtools`, and `scholar` are probably new to you. We introduce the `scholar` package later, and `devtools` is shortly explained in the annotated code above. What do the two other packages we use do?
+So what are these different packages? You already know the `tidyverse` from Appendix \@ref(tutorial). The packages `xml2`, `rvest`, `devtools`, and `scholar` are probably new to you. We introduce the `scholar` package later, and `devtools` is shortly explained in the annotated code above. What do the two other packages we use do?
 
 * `rvest`: This is the explanation the writers of the package give: "`rvest` is new package that makes it easy to scrape (or harvest) data from html web pages." Seems like something we need, a package that stores information from webpages into relatively structured data that we can then query/manipulate.
 * `xml2`: This is what the writers of the package say about it: "Work with XML files using a simple, consistent interface." So we can manipulate the data scraped with `rvest`, using the `xml2` package functions. 
@@ -200,19 +202,23 @@ That looks kinda weird. What type of object did we store it by putting the html 
 class(soc_staff)
 ```
 
-So it is is stored in something that R calls an XML object. Remember when we talked about that in the text above? Extensible Markup Language, XML, is a nested data structure where in each next sublayer of that structure new information is stored. Not important for now what that means specifically. But it is important to extract the relevant table that we saw on the sociology staff website. How do we do that? Go to the [https://www.ru.nl/sociology/research/staff/]("https://www.ru.nl/sociology/research/staff/") in Google Chrome and then press "Inspect" on the webpage (right click--\>Inspect). You should see something like the screenshot below, right?
+So it is is stored in something that R calls an XML object. Remember when we talked about that in the text above? Extensible Markup Language, XML, is a nested data structure where in each next sublayer of that structure new information is stored. Not important for now what that means specifically. But it is important to extract the relevant table that we saw on the sociology staff website. How do we do that? Go to the [https://www.ru.nl/sociology/research/staff/]("https://www.ru.nl/sociology/research/staff/") in Google Chrome and then press "Inspect" on the webpage (right click--\>Inspect). You should see something like the screenshot below (Figure \@ref(fig:inspect)), right?
 
 ```{r inspect, echo=FALSE, , eval=TRUE, fig.cap="Inspect element", out.width = '100%'}
 knitr::include_graphics("inspect.JPEG")
 ```
 
-Look at the screenshot below, you should be able to see something like this. In the html code we extracted from the Radboud website, we need to go to one of the nodes first. If you move your cursor over "body" in the html code on the right-hand side of your screen, the entire "body" of the page should become some shade of blue. This means that the elements encapsulated in the "body" node captures everything that turned blue. This is essentially the nested data structure we mentioned above.
+Look at the screenshot below (Figure \@ref(fig:inspectbody)), you should be able to see something like this. In the html code we extracted from the Radboud website, we need to go to one of the nodes first. If you move your cursor over "body" in the html code on the right-hand side of your screen, the entire "body" of the page should become some shade of blue. This means that the elements encapsulated in the "body" node captures everything that turned blue. This is essentially the nested data structure we mentioned above.
 
 ```{r inspectbody, echo=FALSE, eval=TRUE, fig.cap="Website 'body' node", out.width = '100%'}
 knitr::include_graphics("inspect_body.JPEG")
 ```
 
-Next, we need to look at the specific elements on the page that we need to extract. Somewhat by informed trial and error, looking for the correct code, we can select the elements we want. In the screenshot below, you see that the "td" elements actually are the ones we need. So we need code that looks for the node "body" and the "td" elements in the xml object and then extract those elements in it. Note that you can click on the arrows once you are in the "Inspect" mode in the web browser to trial-and-error to get at the correct elements. (Note that you can do this visually with extensions for browsers like [selectorgadget](https://selectorgadget.com/) for Google Chrome: if you activate the extension you can move your cursor over the webpage elements and see the "div" path.)
+Next, we need to look at the specific elements on the page that we need to extract. Somewhat by informed trial and error, looking for the correct code, we can select the elements we want. In the screenshot below (Figure \@ref(fig:inspecttd)), you see that the "td" elements actually are the ones we need. So we need code that looks for the node "body" and the "td" elements in the xml object and then extract those elements in it. Note that you can click on the arrows once you are in the "Inspect" mode in the web browser to trial-and-error to get at the correct elements. 
+
+> Note that you can identify elements visually with extensions for browsers like [selectorgadget](https://selectorgadget.com/) for Google Chrome: if you activate the extension you can move your cursor over the webpage elements and see the "div" path.)  
+
+\
 
 ```{r inspecttd, echo=FALSE, , eval=TRUE, fig.cap="Element 'td' on website", out.width = '100%'}
 knitr::include_graphics("inspect_td.JPEG")
@@ -256,7 +262,8 @@ scroll_box(knitr::kable(soc_staff, booktabs = TRUE, caption="Sociology staff") ,
 #   row_spec(0, bold=TRUE)
 ```
 
-So it looks much nicer but does not seem to be in the entirely correct order. We have odd rows and even rows: odd rows are names, even rows have the expertise of staff. We need to get a bit creative to put the data in a nicer format. The `%%` operator gives a "remainder" of integers (whole numbers). So 10/2=5 with no remainder, but 11/2=5 with a remainder of 1. This means that we can derive odd or even with a function with that operator. Remember functions from \@ref(tutorial)?
+\
+So it looks much nicer but does not seem to be in the entirely correct order. We have odd rows and even rows: odd rows are names, even rows have the expertise of staff. We need to get a bit creative to put the data in a nicer format. The `%%` operator gives a "remainder" of integers (whole numbers). So 10/2=5 with no remainder, but 11/2=5 with a remainder of 1. This means that we can derive odd or even with a function with that operator. Remember functions from Appendix \@ref(functions)?
 ```{r, eval=TRUE}
 fodd <- function(x) x%%2 != 0
 feven <- function(x) x%%2 == 0
@@ -304,6 +311,7 @@ scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff cleane
 #   row_spec(0, bold=TRUE)
 ```
 
+\
 That looks much better! Now we only need to remove the redundant rows that state "expertise", "staff," and so forth.
 
 ```{r, eval=TRUE}
@@ -328,6 +336,7 @@ scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff even c
 #   column_spec(1, bold=T) %>%
 #   row_spec(0, bold=TRUE)
 ```
+\
 
 Now we have a nice relatively clean dataset with all sociology staff and their expterise. But there is yet some work to do before we can move on. We need to do some data cleaning. Ideally, we have staff their first and last names in clean columns. So the last name seems easy, everything before the comma. Do you understand the code below? `gsub` is a function that remove something and replaces it with something else. In the code below it replaces everything that's behind a comma with nothing in the column `soc_names` in the data frame `soc_df`.  
 
@@ -349,6 +358,7 @@ scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff cleane
 #   column_spec(1, bold=T) %>%
 #   row_spec(0, bold=TRUE)
 ```
+\
 So we need yet to do some manual cleaning, one name seemed to be inconsistent with how the other names were listed on the webpage. As data get bigger, this becomes impossible to do manually and we simply have to accept this as noise. 
 
 ```{r, eval=TRUE}
@@ -398,12 +408,13 @@ save(soc_df, file="soc_dfv1.RData")
 ```{r, echo=FALSE, eval=TRUE}
 load("addfiles/soc_dfv1.RData")
 ```
+\
 
 Pretty good, so I think we can move on to the next section.
 
 ### Google Scholar Profiles and Publications
 
-What we now have is a data frame of sociology staff members. So we successfully gathered the anchor data set we can move on with. Next, we need to find out whether these staff have a Google Scholar profile. I imagine you have accessed [Google Scholar](www.scholar.google.com) many times during your studies for finding scientists or publications. The nice thing about Google Scholar is that it lists collaborators, publications, and citations on profiles. So what we first need to do is look for Google Scholar profiles among sociology staff. Luckily, we cleaned first and last names and have their affiliation. That makes looking them up much easier. So we need to do this for every person in our data frame. Before we query Google Scholar, we first need to go back to the neat trick of *for loops* (remember them from \@ref(tutorial)?). Can you follow the code below? We can thus do all kinds of things automatically in a for loop.
+What we now have is a data frame of sociology staff members. So we successfully gathered the anchor data set we can move on with. Next, we need to find out whether these staff have a Google Scholar profile. I imagine you have accessed [Google Scholar](www.scholar.google.com) many times during your studies for finding scientists or publications. The nice thing about Google Scholar is that it lists collaborators, publications, and citations on profiles. So what we first need to do is look for Google Scholar profiles among sociology staff. Luckily, we cleaned first and last names and have their affiliation. That makes looking them up much easier. So we need to do this for every person in our data frame. Before we query Google Scholar, we first need to go back to the neat trick of *for loops* (remember them from Appendix \@ref(loops)?). Can you follow the code below? We can thus do all kinds of things automatically in a for loop.
 
 
 ```{r, eval=TRUE}
@@ -424,11 +435,18 @@ for (i in 1:10) {
 ```
 
 Now that we know how to implement for loops in our workflow, we can utilize them to do slightly more complicated stuff. We want to know the identifying *link* on Google Scholar for each sociology staff member. We first set an empty identifier in our data frame so that we can "fill up" that data column later.
+
+<!---why not use NA ---> 
+
 ```{r, eval=TRUE}
 soc_df$gs_id <- "" # we set an empty identifier
 ```
 
 So let's move on with attempting to find Google Scholar profiles. The package `scholar` has a range of very nice functions! What type of functions does `scholar` have? Take a look by `?scholar` or `??scholar`. It includes all kinds of interesting functions like comparing scholars' careers, getting scholar citations, getting profiles, and so forth. Using `get_scholar_id` seems appropriate to find out what the profile ID is of Jochem's Google Scholar page. If you write `get_scholar_id` and then click `ctrl` or `cmd` together with your right mouse button, you can actually see precisely what the function does (it's quite complicated!). Note that this package does not use an API, but simple wrote code to extract Google Scholar pages from the internet. They then wrapped the code in much simpler functions for you to use.  The function `get_scholar_id` needs a last name, first name, and affiliation. Luckily, we already found those on the Radboud University website! So we can fill in those. Let's try it for one staff member first.
+
+<!---I get an error running the chunk below if I have not yet loaded scholar---> 
+
+Please download function here: [get_scholar_id_fix](addfiles/function_fix.R). 
 
 ```{r, eval=TRUE}
 source("addfiles/function_fix.R") # Put the function_fix.R in your working directory, we need this first line.
@@ -458,12 +476,15 @@ And now most importantly, Jochem's collaborators, and the collaborators of those
 ```{r, eval=TRUE}
 jochem_coauthors <- get_coauthors("Iu23-90AAAAJ", n_coauthors = 50, n_deep = 1) # Jochem's collaborators and their co-authors!
 ```
+
 ```{r, eval=FALSE}
 jochem_coauthors
 ```
+
 ``` {r, echo=FALSE, eval=TRUE}
 scroll_box(knitr::kable(jochem_coauthors, booktabs = TRUE, caption="Sociology staff cleanest?") , height="300px")
 ```
+\
 Notice, however, that we could easily plot Jochem's collaboration network already! This is thus a one-deeper network where we plot the co-authors of Jochem and who they collaborate with, there is some overlap, but not always.
 
 <!---this one bugs. have set eval=FALSE---> 
@@ -530,6 +551,7 @@ scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff with S
 #   column_spec(1, bold=T) %>%
 #   row_spec(0, bold=TRUE)
 ```
+\
 
 It works! So what is left to do is to get the data we already extracted for Jochem (citation, publications, and so forth), but now for all sociology staff. For that, we need a bunch of for loops. Let's first gather the profiles and publications. We store those in a `list()` which is an object in which you can store multiple data frames, vectors, matrices, and so forth. This is particularly good for for loops because you can store information that is -- at first sight -- not necessarily compatible. For instance, matrices of different length. Note that we bind a Google Scholar ID to the publications too which is important to be able match to the `soc_df` later on. 
 
@@ -569,12 +591,13 @@ load("addfiles/soc_list_profiles.RData")
 
 Note how `soc_list_profiles` contains all Google Scholar profile information in a list of 34 elements. We need to do some relatively involved data handling to attach the Google Scholar profiles in `soc_list_profiles` to the `soc_df`. That is, we want some information from `soc_list_profiles` to be attached to `soc_df`. Specifically, we want several things we want from the profiles: `id`, `name` (as reported on Scholar), `affiliation`, `tot_cites`, `h_index`, `i10index`, `fields`, and `homepage`.
 
-Some profile elements can contain more than one row. For instance, co-authors are stored in long format per profile that do not easily merge to a data frame where each staff member is a row. For instance, say Bas has two co-authors; one needs to first concatonate those co-authors before you can merge them in one row for Bas. So we need to get only the profile elements that have a single element per profile element (e.g., `total_cites`). Seems these are the first 8 elements in a list element. So we need to get those out of the lists and store those in a new dataframe. This involves several steps: \
-- We first `unlist` the 1 tot 8-th elements in a list element. \
-- We then make it a data frame. \
-- Then *transpose* the data such that each row contains 8 columns. \
-- We then use the function `bind_rows()` to simply make a data frame from the list elements. \
-- We then merge it to `soc_df`. So what we end up with is a sociology staff data frame with much more information than before: citations, indices, expertise listed on Google Scholar, and so forth. \
+Some profile elements can contain more than one row. For instance, co-authors are stored in long format per profile that do not easily merge to a data frame where each staff member is a row. For instance, say Bas has two co-authors; one needs to first concatonate those co-authors before you can merge them in one row for Bas. So we need to get only the profile elements that have a single element per profile element (e.g., `total_cites`). Seems these are the first 8 elements in a list element. So we need to get those out of the lists and store those in a new dataframe. This involves several steps:  
+
+- We first `unlist` the 1 tot 8-th elements in a list element.  
+- We then make it a data frame.  
+- Then *transpose* the data such that each row contains 8 columns.  
+- We then use the function `bind_rows()` to simply make a data frame from the list elements.  
+- We then merge it to `soc_df`. So what we end up with is a sociology staff data frame with much more information than before: citations, indices, expertise listed on Google Scholar, and so forth.  
 
 Note how we can do this at once, or all separately (I commented out the code that does the same as the next three rows). Which has your preference?
 
@@ -609,6 +632,7 @@ scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff with S
 #   column_spec(1, bold=T) %>%
 #   row_spec(0, bold=TRUE)
 ```
+\
 
 So we have papers and profiles. Remember how we got Jochem's citation history? We want that for each staff member too. Yet again, we use a for loop. We first store the citation history in a list. But notice the `if` statement! We only continue the for loop for that i-th element if some statement is `TRUE`. Here, we attempt to find out if the i-th element, the citation history of the staff member, has a length than is larger than 0. Some staff members are never cited (which happens all the time if papers are only just published), and so for these staff members that is no list element that contains information. We only attach a Google Scholar ID for those staff members that are cited at least once. We bind the rows again and end up with a data frame in *long format*: three columns with years, cites, and Google Scholar ID. Therefore, there is more than one row per staff member.
 
@@ -640,13 +664,16 @@ load("addfiles/soc_staff_cit.RData")
 # Also, no names yet! You could merge the names of scholars to gs_id here. 
 scroll_box(knitr::kable(soc_staff_cit, booktabs = TRUE, caption="Sociology staff citation by year") , height="300px")
 ```
+\
 
 ### Getting collaborators
 
 Next, we get the collaborators. Note that on Google Scholar, people add co-authors manually. Unfortunately, the Scholar package only scrapes the first *twenty*. Some scholars have more co-authors listed, but for that you would need to "click" on "VIEW ALL" on Google Scholar. The `scholar` package does not do that for us. However, we wrote the code for you to get more than twenty co-authors! You could take a look at the underlying code of `fcollabs.R` and attempt understand what is happening there. Because scholars add their own co-authors, it is a directed tie. For instance, I could list Albert Einstein as my co-author, but Albert probably doesn't reciprocate that tie. The for loop should be clear by now. We get collaborators for a given Google Scholar ID in `soc_df`. We then `bind_rows` again, and remove those staff members that did not list any collaborator.
 
+Please download function here: [fcollabs](addfiles/fcollabs.R). 
+
 ```{r, eval=TRUE}
-source("addfiles/fcollabs.R") # Put this fcollabs.R in your working directory, you can find it on Brightspace!
+source("addfiles/fcollabs.R") # Change path if necessary. 
 ```
 
 ```{r}
@@ -668,6 +695,7 @@ soc_collabs_unique <- unique(soc_collabs[, 3]) # so 229 unique collaborators for
 soc_collabs_unique <- soc_collabs_unique[!is.na(soc_collabs_unique)]
 save(soc_collabs, file="addfiles/soc_df_collabs1.RData") # you notice this takes a while, so we save the data here.
 ```
+
 ```{r, echo = FALSE, eval = TRUE}
 load("addfiles/soc_collabs1.RData")
 ```
@@ -680,6 +708,7 @@ scroll_box(knitr::kable(soc_collabs, booktabs = TRUE, caption="Sociology staff c
 #   column_spec(1, bold=T) %>%
 #   row_spec(0, bold=TRUE)
 ```
+\
 
 Pretty nice! We now have a dataframe with the `gs_id` ID of the focal author and their name plus their co-authors' names (if they have chosen to list any) and their Google Scholar ID. In turn, we can use these Google Scholar IDs to go even one layer deeper. In other words, to get the co-authors' co-authors. Note that we can also render this to be a 1.5 network if we drop all those nodes that are not immediately connected to the focal sociology staff members. Therefore, we need the *unique* co-author IDs from `soc_collabs` above, otherwise we would search for the same persons multiple times on Google Scholar. Therefore, we selected the unique authors above. We then loop again to find *their* co-authors. We also include and `if` statement: if we already know the collaboration network of a given author (if they are in the `soc_collabs` dataframe already), we don't include those in the loop to spare some time scraping these data.
 
@@ -790,6 +819,7 @@ soc_art_cit <- bind_rows(soc_art_cit)
 ```
 
 ---> 
+\
 
 Now we have a data frame with the self-declared co-authors of sociology staff and a dataframe of co-authors' their co-authors. Together, these can make a big *edgelist* of co-authors. Note, however, that the combinations of these dataframes make for a rather large network. If we add the sociology staff, their collaborators, and then their "one-deep" co-authors, we end up with around 2,6K authors! Perhaps a bit too big of a network to visualize? We shall see later. Nevertheless, we can now go provide some nice statistics about this network.
 
@@ -807,6 +837,8 @@ for (i in c("_ukytQYAAAAJ", "lkVq32sAAAAJ", "p3IwtT4AAAAJ")) { # drop google sch
 ### Data exploration
 
 How about the network stuff? We actually have data that are already in a pretty nice format, the edgelist. Can we show a "friendship paradox" in these data? Let's first get some additional information in the data frame with the collaborators. We first find the number of co-authors of sociology staff. Then, we find the average number of co-authors of sociology staff's co-authors. Finally, we provide averages of that: seems no friendship paradox here for the 20 sociology staff members that list their co-authors on Google Scholar!
+
+> Friendship paradox: Your friends have more friends than you do [@feld1991your]. 
 
 ```{r, eval = TRUE}
 # get num co-authors of soc staff
@@ -828,7 +860,7 @@ summary(friend_par$soc_collabs) # their collaborators' co-authors,
 summary(friend_par$col_collabs) # staff members
 t.test(friend_par$col_collabs, friend_par$soc_collabs) # no paradox it seems...
 ```
-
+\
 Who among sociology staff is cited often? Note how we start with making `total_cites` numeric. Then we call a function in `ggplot2` to make a nice plot. Note how I call a `theme` where I rotate the x-axis labels with 90 degrees, otherwise they would overlap heavily. Note how we use the function `ggplot`, a function of the package `ggplot2` in which you can visualize data with very consistent code.
 
 ```{r, eval = TRUE}
@@ -838,6 +870,7 @@ ggplot(soc_df) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
 
+<!---why are your doing this? ---> 
 Wow, Peer is sure cited a lot. Can we drop those often cited folks? Say, those cited more than 2K times?
 
 ```{r, eval = TRUE}
@@ -860,7 +893,7 @@ ggplot(num_pubs, aes(x=num_pubs, y=total_cites)) +
   geom_smooth(method=lm)
 ```
 
-How about number of citations by the both number of publications and the years since first publication (so proxying career age)? We need to first get years since first publication. Given the low number of observations and the high correlation between career age and number of publications, the regression outcome below does not tell us that much. 
+How about number of citations by both number of publications and the years since first publication (so proxying career age)? We need to first get years since first publication. Given the low number of observations and the high correlation between career age and number of publications, the regression outcome below does not tell us that much. 
 
 ```{r, eval = TRUE}
 soc_df_publications <- data.table(soc_df_publications) # make it a DT
@@ -870,7 +903,7 @@ num_pubs$career_age <- 2021-num_pubs$year # find career age
 summary(lm(total_cites ~ num_pubs + career_age, data = num_pubs)) # and the regression model
 ```
 
-Now let's look at the network. How about the simplest thing: outdegree, or the number nominated co-authors by the staff member. Does that help folks get cited? Seems so, even independent of number of publications. Obviously, these things are highly interdependent and likely have undue influence on eachother in the regression estimation below, especially with so few observations (N = 34).
+Now let's look at the network. How about the simplest thing: outdegree, or the number nominated co-authors by the staff member. Does that help folks get cited? Seems so, even independent of number of publications. Obviously, these things are highly interdependent and likely have undue influence on each other in the regression estimation below, especially with so few observations (N = 34).
 
 ```{r, eval = TRUE}
 num_coauth <- soc_collabs[!is.na(soc_collabs$coauth), ]
@@ -924,6 +957,7 @@ Let's check out the sociology staff once more to match names to perceived gender
 ```{r, echo = FALSE, eval = TRUE}
 scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff") , height="300px")
 ```
+\
 
 Seems this is correct below? Important note: It *may* be that other scholars have been added to the sociology staff list in the time that this code was written. That means you have to carefully check whether the list of genders below is still correct.
 
@@ -960,27 +994,87 @@ save(soc_staff_cit, file = "addfiles/soc_staff_cit.rda")
 #save(soc_art_cit, "addfiles/soc_art_cit.rda")) We didn't gather this one, takes too much time!
 ```
 
-Nicely done, this was the webscraping tutorial for bibliometric science data. We gathered useful information about sociology staff: \
-- 1.1 who actually is the staff on the RU website? \
-- 1.2 staff Google Scholar profiles (we merged 1.1 and 1.2) \
-- 2 publications and total cites per publication \
-- 3.1 collaborators \
-- 3.2 plus their collaborators ("friends-of-friends") \
-- (3.3 a 1.5 degree network of 3.1 and 3.2) \
-- 4 citation history of scholars themselves (cites per year) \
+Nicely done, this was the webscraping tutorial for bibliometric science data. We gathered useful information about sociology staff:  
+
+- 1.1 who actually is the staff on the RU website?  
+- 1.2 staff Google Scholar profiles (we merged 1.1 and 1.2)  
+- 2 publications and total cites per publication  
+- 3.1 collaborators  
+- 3.2 plus their collaborators ("friends-of-friends")  
+- (3.3 a 1.5 degree network of 3.1 and 3.2)  
+- 4 citation history of scholars themselves (cites per year)  
 
 ## Assignments 
 
-### Assignment 1 - Theoretical
-- Find a paper that you can label as computational sociology using the definition at the beginning of this chapter. Perhaps your favorite computational sociology paper if you have one? \
-- Read that paper and write a short review (say, 500-600 words/two pages) on how you see the promises and pitfalls of computational sociology described in this chapter reflected in that paper. \
-- Also provide some intuitions as to how you would address some of the pitfalls you find. In other words, maybe you have a great idea for a solution to that pitfall. \
-- Prepare a short presentation, 5-10 minutes, for Wednesday where you present the content of that review. In that presentation take at most 2 minutes to summarize the paper and then predominanly talk about the content of your review. 
+### Assignment 1 - Theoretical  
 
-### Assignment 2 - Practical
-- Redo the tutorial -- really should go much quicker now that you've got the hang of it! -- but with the sociology staff of the University of Groningen. \
-- All of it?! Yes, the goal is to get to the regression of citations on number of publications, career age, gender, and number of co-authors. \
-- Upload the associated code (with a summary of the regression results in comment blocks in the code) for that exercise. 
+1. Find a paper that you can label as computational sociology using the definition at the beginning of this chapter. Perhaps your favorite computational sociology paper if you have one? \
+    - Read that paper and write a short review (say, 500-600 words/two pages) on how you see the promises and pitfalls of computational sociology described in this chapter reflected in that paper.  
+    - Also provide some intuitions as to how you would address some of the pitfalls you find. In other words, maybe you have a great idea for a solution to that pitfall.  
+    - Prepare a short presentation, 5-10 minutes, for Wednesday where you present the content of that review. In that presentation take at most 2 minutes to summarize the paper and then predominantly talk about the content of your review. 
+
+### Assignment 2 - Practical  
+
+1. Redo the tutorial -- really should go much quicker now that you've got the hang of it! -- but with the sociology staff of the University of Groningen.  
+    - All of it?! Yes, the goal is to get to the regression of citations on number of publications, career age, gender, and number of co-authors.  
+    - Upload the associated code (with a summary of the regression results in comment blocks in the code) for that exercise. 
+
+```{r, echo=FALSE, eval=FALSE}
+
+library(data.table)
+library(tidyverse) 
+require(xml2)
+require(rvest)
+require(scholar)
+require(stringr)
+
+
+#save page
+soc_staff_rug <- read_html("https://www.rug.nl/gmw/sociology/organisation/staff/")
+
+#find links to personal names
+links <- soc_staff_rug %>% 
+  html_nodes("a") %>% 
+  html_attr("href") %>%
+  str_subset("/staff/")
+
+links <- links[-c(1:5, 92)]
+
+websites <- NA
+for (i in 1:length(links)) {
+  websites[i] <- paste("https://www.rug.nl", links[i], sep="") 
+}
+websites
+#save names
+
+names_staff <- list()
+ 
+for (i in 1:length(websites)) {
+  soc_staff_ind <- read_html(websites[i])
+  names <- soc_staff_ind  %>% html_nodes(".rug-mb-0") %>% html_text
+  names_staff[[i]] <- names[3]
+  print(i)
+}
+
+names_staff
+
+<!---there is a very nice sheet cheat for stringr---> 
+  
+res <- str_split(unlist(names_staff), "\\(")
+res2 <- sapply(res, function(x) x[2])
+res3 <- str_split(res2, "\\)")
+res3
+firstname <- sapply(res3, function(x) x[1])
+lastname <- sapply(res3, function(x) x[2])
+lastname <- res3 <- str_split(lastname, "\\,")
+lastname <- sapply(lastname, function(x) x[1])
+
+soc_staff_rug <- na.omit(data.frame(firstname, lastname))
+
+save(soc_staff_rug, file="addfiles\\soc_staff_rug.Rdata")
+```
+
+
 
 If all else fails, you can find the necessary files to work with here: \
 [soc_df](addfiles/soc_df.RData) \
@@ -991,5 +1085,6 @@ If all else fails, you can find the necessary files to work with here: \
 [soc_staff_cit](addfiles/soc_staff_cit.RData) \
 [onefivedegree](addfiles/soc_onefivedegree.RData)
 
+--- 
 
 
