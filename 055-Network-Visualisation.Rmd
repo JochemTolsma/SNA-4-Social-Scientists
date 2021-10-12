@@ -180,6 +180,7 @@ dyad.census(g)
 igraph::triad.census(g)
 #I will use sna because it shows the names of the triads as well. 
 sna::triad.census(gmat)
+detach(package:sna,unload=TRUE) #I will detach this package again, otherwise it will interfere with all kind of functions from igraph, and my students will hate me for that.
 ```
 
 Based on the above triad.census, please calculate the global transitivity of the network and check your answer with `igraph` or `sna`.  
@@ -703,6 +704,14 @@ knitr::include_graphics("MPplotv2.png")
 
 Remember the sociology staff at Radboud University? Let's plot the 1.5 degree co-authorship network of the sociology staff! Perhaps we can even mark those staff members that are actually at Radboud University's department of sociology? Or perhaps we can draw nodes proportional to some ego information? Do you remember that we went "one deep" in the collaboration networks? Well, that automatically means that those who do not work at RU sociology are also included in these data. And because we look at directed ties, it may mean that there are some isolated clusters. For instance, Hofstra lists McFarland as co-author, but not vice versa: this means that looking through Hofstra at his co-authors, McFarland is put into the data as well as his co-authors. What we first want is to look whether he lists any co-authors Bas his collaborators as well. If we succeed in that, we have the 1.5 degree network.
 
+
+If you did not yet downloaded the data, please do so now.   
+
+[soc_df](addfiles/soc_df.RData) \
+[soc_collabs](addfiles/soc_collabs1.RData) \
+[collabs_1deep](addfiles/soc_collabs2.RData) \
+
+
 ```{r, eval = TRUE}
 # load the necessary datasets
 load("addfiles/soc_df.RData")
@@ -831,6 +840,26 @@ plot(net1,
 ```
 
 And so on and so forth! You can play around with different algorithms that put these nodes on the grid differently too.
+
+Let us know focus on the staff members of the sociology department of Radboud University Nijmegen. We thus once again need to a selection of our graph. Here, we will use the `induced.subgraph` function of the `igraph` package. Above we changed the color of the nodes based on the info in our `in_network` data object. We could use that to identify the nodes. 
+
+```{r}
+
+net1_mat <- as_adjacency_matrix(net1, sparse = FALSE)
+
+net1_un <- (net1_mat + t(net1_mat) ) > 0 
+
+net1_un <- graph_from_adjacency_matrix(net1_un, mode="undirected")
+
+net_sel <- induced.subgraph(net1_un, vids=(in_network$vcol=="#56B4E9"))
+
+
+plot(net_sel)
+
+clp <- cluster_optimal(net_sel)
+layout(plot(clp, net_sel, margin=c(0,0,0,0) ))
+
+```
 
 
 ---  
