@@ -85,7 +85,7 @@ function myFunction() {
 
 <!---we need to include this somewhere as general r script---> 
 
-```{r colorize, echo=FALSE, cache=FALSE}
+```{r colorize, echo=FALSE, cache=TRUE}
 colorize <- function(x, color) {
   if (knitr::is_latex_output()) {
     sprintf("\\textcolor{%s}{%s}", color, x)
