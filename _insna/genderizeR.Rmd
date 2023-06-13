@@ -1,0 +1,207 @@
+---
+title: "GenderizeR"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+----
+
+# Goal
+
+This file is used to determine gender based on first name for our sample of sociologists and political scientists. 
+
+
+
+# Custom functions
+
+- `fpackage.check`: Check if packages are installed (and install if not) in R ([source](https://vbaliga.github.io/verify-that-r-packages-are-installed-and-loaded/)).  
+- `fsave`: Save to processed data in repository
+
+```{r customfunctions, results='hide'}
+
+rm(list = ls())
+
+fpackage.check <- function(packages) {
+  lapply(packages, FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      install.packages(x, dependencies = TRUE)
+      library(x, character.only = TRUE)
+    }
+  })
+}
+
+fsave <- function(x, file, location="./data/processed/") {
+  datename <- substr(gsub("[:-]", "", Sys.time()), 1,8)  
+  totalname <- paste(location, datename, file, sep="")
+  save(x, file = totalname)  
+}
+
+```
+
+
+---  
+
+# Packages
+
+- `genderizeR`: genderize package adapted to use in R, maps first names to gender
+
+
+```{r, results='hide'}
+
+packages = c("genderizeR", "tidyverse")
+
+fpackage.check(packages)
+
+```
+
+
+--- 
+
+# Input
+
+
+```{r}
+
+load(file="./data/processed/df_names.rda")
+
+```
+
+
+
+---
+
+
+
+# Preparing the dataframe
+
+We only need to check each unique first name once, so therefore we extract all unique names first. 
+
+```{r}
+
+uniquenames <- df %>% distinct(firstname) %>% select(firstname)
+uniquenames <- uniquenames[uniquenames$firstname!="", ] # transform to character vector
+
+
+# create empty lists to store the genderizeR info
+genderizer <- list()
+
+names <- list()
+count <- list()
+gender <- list()
+prob <- list()
+
+```
+
+
+
+# GenderizeR 
+
+It is possible to use specific databases of GenderizeR by country. In that case, you can add the 'country' argument in genderizeAPI. We will now use the worldwide database. 
+
+```{r}
+
+# First we scrape
+
+for (i in 1:length(uniquenames)) {
+  
+  Sys.sleep(0.1)
+  
+  genderizer[[i]] <- genderizeAPI(uniquenames[i])[[1]]
+  
+}
+
+
+
+
+# .. then we fill in names for which no info is found: count to 0, gender and probability to NA, but retain the name for reference
+
+for (i in 1:length(genderizer)) {
+  
+  if (nrow(genderizer[[i]])==0) {
+    
+    genderizer[[i]][1, c("count")] <- 0
+    genderizer[[i]][1, c("gender")] <- NA
+    genderizer[[i]][1, c("name")] <- uniquenames[i]
+    genderizer[[i]][1, c("probability")] <- NA
+    
+  }
+}
+
+
+
+# convert from list to dataframe structure
+
+for (i in 1:length(genderizer)) {
+  
+  names[[i]] <- data.frame(genderizer[[i]])$name
+  count[[i]] <- data.frame(genderizer[[i]])$count
+  gender[[i]] <- data.frame(genderizer[[i]])$gender
+  prob[[i]] <- data.frame(genderizer[[i]])$probability
+
+}
+
+
+df_genderizer <- do.call(rbind, Map(data.frame, name = names, count = count, gender = gender, probability = prob)) 
+
+
+# setting count = 0 for names that cannot be found in the for-loop does not work well
+df_genderizer$count <- ifelse(is.na(df_genderizer$count), 0, df_genderizer$count)
+
+
+
+```
+
+
+Intermittent save (for us, remove before WS)
+```{r, eval=FALSE}
+
+save(genderizer, file = "data/processed/genderizer_raw.rda")
+
+save(df_genderizer, file = "data/processed/df_genderizer.rda")
+
+
+```
+
+
+Decision moment! 
+
+We retain only names where we can be pretty sure about the gender. If the name is around 50/50 male- or female-typed, we cannot assign the gender with confidence.
+
+Our cut-off point is at .90, meaning we can be 90% confident that a name is either male or female.
+
+```{r}
+
+df_genderizer <- df_genderizer[df_genderizer$probability>.9, ]
+
+
+df_genderizer <- subset(df_genderizer, select=c("name", "gender"))
+
+
+```
+
+
+
+# Merging the genderizer info to the dataframe with names
+
+```{r}
+
+df %>%
+  left_join(df_genderizer, by=c("firstname"="name")) -> df_gender
+
+
+```
+
+
+# Saving the dataframe with gender
+
+```{r}
+
+save(df_gender, file="./data/processed/df_gender.rda")
+
+```
+

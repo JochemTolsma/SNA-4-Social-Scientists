@@ -1,0 +1,231 @@
+---
+title: "Name Curation"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+----
+
+# Goal
+
+This file is used to tidy up the dataframes of political scientists and sociologists, by combining the two into a single dataframe with unique IDs and neat first and last names. 
+
+
+
+# Custom functions
+
+- `fpackage.check`: Check if packages are installed (and install if not) in R ([source](https://vbaliga.github.io/verify-that-r-packages-are-installed-and-loaded/)).  
+- `fsave`: Save to processed data in repository
+
+```{r customfunctions, results='hide'}
+
+rm(list = ls())
+
+fpackage.check <- function(packages) {
+  lapply(packages, FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      install.packages(x, dependencies = TRUE)
+      library(x, character.only = TRUE)
+    }
+  })
+}
+
+fsave <- function(x, file, location="./data/processed/") {
+  datename <- substr(gsub("[:-]", "", Sys.time()), 1,8)  
+  totalname <- paste(location, datename, file, sep="")
+  save(x, file = totalname)  
+}
+
+```
+
+
+---  
+
+# Packages
+
+- `ids`: package used to randomly generate unique ids
+
+- `stringr` & `stringi` : for string manipulations
+
+
+```{r, results='hide'}
+
+packages = c("ids", "stringr", "stringi")
+
+fpackage.check(packages)
+
+```
+
+
+--- 
+
+# Input
+
+
+```{r}
+
+soc <- read.csv("./data/scholarid_soc.csv", sep=";", encoding="UTF-8") # encoding to maintain diacritics
+pol <- read.csv("./data/scholarid_pol.csv", sep=";", encoding="UTF-8")
+
+```
+
+
+---
+
+
+
+# Initial cleaning of the dataframes
+
+```{r}
+
+# removing the "specialisatie" column from the political science data frame because it is poorly filled and does not exist in sociology
+soc <- subset(soc, select=-X)
+pol <- subset(pol, select=-Specialisatie)
+
+
+# making the column names easier to call
+colnames(pol) <- c("name", "uni", "email", "position", "scholar_id")
+colnames(soc) <-c("name", "uni", "email", "position", "scholar_id")
+
+
+# removing empty rows
+soc <- soc[soc$name!="",]
+pol <- pol[pol$name!="",]
+
+
+
+# combining the two dataframes in one, but first adding a discipline identifier for both
+soc$discipline <- rep("sociology", nrow(soc))
+pol$discipline <- rep("political science", nrow(pol))
+
+df <- rbind.data.frame(soc, pol)
+
+
+# removing double spaces
+df$name <- gsub("\\s+", " ", df$name)
+df$name <- trimws(df$name)
+
+
+# adding the year variable 
+df$year <- rep(2022, nrow(df))
+
+
+# some people have double affiliations. Store those in two different columns
+df$affil1 <- df$uni
+df$affil1 <- str_remove(df$affil1, "\\/.*$") # remove the 2nd affiliation from the column of the first affiliation
+
+df$affil2 <- str_remove(df$uni, "^.*\\/") # extract everything after "/" to get the 2nd affiliation
+df$affil2 <- str_remove(df$affil2, df$affil1)
+
+
+# translating the positions to English - since the position string is free form, we have to extract the relevant info from there. 
+# we start by the most senior positions, because some people list multiple and we only want to extract the most senior research position they occupy
+df$position <- tolower(df$position)
+df$position <- ifelse(as.numeric(str_detect(df$position, "hoogleraar"))==1, "full_prof", df$position)
+df$position <- ifelse(as.numeric(str_detect(df$position, "hoofddocent"))==1, "associate_prof", df$position)
+df$position <- ifelse(as.numeric(str_detect(df$position, "universitair docent"))==1, "assistant_prof", df$position)
+df$position <- ifelse(as.numeric(str_detect(df$position, "postdoc"))==1, "postdoc", df$position)
+df$position <- ifelse(as.numeric(str_detect(df$position, "(phd)|(doctoral)|(promovendus)"))==1, "phd", df$position) 
+
+# all other positions are set to other
+df$position <- ifelse(!df$position %in% c("full_prof", "associate_prof", "assistant_prof", "postdoc", "phd"), "other", df$position)
+
+
+```
+
+
+
+# Creating a unique identifier for each person
+
+```{r}
+
+set.seed(2806)
+
+df$id <- ids::random_id(n = nrow(df), bytes = 3, use_openssl = FALSE)
+
+head(df$id)
+# should be "f84cb8" "ad5eeb" "5a5e57" "7c3ed2" "944260" "6c23fc" for reproducibility
+
+```
+
+
+
+
+# Getting last names out first
+
+The names are pretty neatly in the format "First name(s) last name(s)". So we know that the last names are at the end of the string. One difficulty we have, is that while for most people, the last name is simply the last 'word' in the name string, for a handful of people the last name takes up multiple words. For some, it is longer because there are nobiliary particles in the name, which we want to extract in a different object, while for others it is longer because they have multiple last names. 
+
+```{r}
+
+# Some names have nobiliary particles (e.g. "Da Costa" or "Du Bois"). Especially in Dutch names, they are very common. We extract these in a separate object
+np <- c("(V|v)an (D|d)er", "(V|v)an (D|d)en", "(V|v)an (D|d)e", "(V|v)ande(n)?", "(V|v)an '(T|t)", "(V|v)an'(T|t)", "(V|v)an (H|h)et", "(V|v)on (D|d)er", "(O|o)p (D|d)en?", "(O|o)p 't", "(O|o)f ten", "(A|a)an de(n)?", "(D|d)e (L|l)a", "(I|i)n (H|h)et", "(I|i)n '(T|t)", "(I|i)n'(T|t)", "(I|i)n (T|t)", "(I|i)n (D|d)er", "(B|b)ij (D|d)e") 
+
+np2 <- c("\\s(L|l)a\\s", "\\s(O|o)p\\s" ,"\\s(V|v)an\\s", "\\s(V|v)on\\s", "\\s(D|d)en\\s", "\\s(D|d)er\\s", "\\s(D|d)el\\s", "\\s(D|d)(e|a|u|i)\\s", "\\s(D|d)os?\\s", "\\s(T|t)er\\s", "\\s(T|t)en\\s", "\\s(T|t)e\\s", "\\s'(T|t)\\s", "\\s(L|l)e\\s", "\\s(E|A)l-", "\\s[(A|a)(E|e)](L|l)'?\\s", "\\s(D|d)'", "\\szu\\s", "\\s(Z|z)ur\\s", "\\s(Y|y)\\s", "\\s(E|e)\\s")
+
+
+# First we extract the nobiliary particles consisting of multiple words
+df$np <- str_extract(df$name, paste0(np, collapse="|"))
+df$np <- ifelse(is.na(df$np), str_extract(df$name, paste0(np2, collapse="|")), df$np) #only extract the single-word NP if it is not filled yet
+  
+# lastname: everything after nobiliary particle  
+df$lastname <- ifelse(!is.na(df$np), str_remove(df$name, paste0("^.*", df$np)), word(df$name, -1))
+
+
+# some cleaning: make the string lowercase and remove extra whitespaces
+df$np <- tolower(trimws(df$np, which="both"))
+df$np <- ifelse(is.na(df$np), "", df$np)
+
+df$lastname <- tolower(trimws(df$lastname, which="both"))
+df$lastname <- stri_trans_general(df$lastname, id="latin-ascii") #remove diacritics
+
+df$lastname <- str_extract(df$lastname, "[:lower:]+") # if multiple last names after the nobiliary particle, we take the first one
+
+
+```
+
+
+
+# Extracting first names 
+
+Due to the standard format of the name object, we can simply take out the first word of the name string. Please note that some people only have initials instead of a first name. 
+
+```{r}
+
+df$firstname <- str_remove(df$name, "\\s.*$") # remove everything from the name object after the first whitespace
+
+
+# I first detect the initials by using a general pattern - you can update this to match what you find in your own data
+initialpattern <- paste(c("^([:upper:]\\.)+[:upper:]$",       # Last initial does not have a full stop at the end (e.g. A.A.A)
+                          "([:upper:]\\.+)+",                 # All initials have full stops at the end (e.g. A.A.A.)
+                          "^\\s?[:upper:]+$"),                # Entire string consists of capital letters
+                        collapse = "|")
+
+df$ini <- str_extract(df$firstname, paste0(initialpattern)) # save initials in a different object
+df$firstname <- ifelse(!is.na(df$ini), str_remove(df$firstname, df$ini), df$firstname) # extract initials from first name object when present
+df$ini <- ifelse(is.na(df$ini), "", df$ini) # set initials object to empty if there are no initials
+
+
+# some cleaning: make the first name lowercase
+df$firstname <- tolower(df$firstname)
+df$firstname <- stri_trans_general(df$firstname, id="latin-ascii") #remove diacritics
+
+
+```
+
+
+
+# Saving the new dataframe
+
+Now with cleaned first and last names, ID variable and some data manipulation on the other variables. 
+
+```{r, eval=FALSE}
+
+save(df, file="./data/processed/df_names.rda")
+
+```
+
