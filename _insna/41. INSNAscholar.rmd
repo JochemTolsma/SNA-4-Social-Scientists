@@ -1,0 +1,196 @@
+# getting started
+
+```{r}
+#start with clean workspace 
+rm(list=ls())
+getwd()
+```
+
+# packages
+
+```{r}
+library(data.table) 
+library(tidyverse) 
+require(xml2)
+require(rvest)
+require(devtools)
+require(scholar)
+require(stringi)
+
+```
+
+```{r}
+df <- readxl::read_xls("./data/ids.xls", col_names = c("gs_id"))
+#manual fix
+df$gs_id[135] <- "-PJcZlYAAAAJ"
+df$gs_id[235] <- "-abxxmUAAAAJ"
+df$gs_id[249] <- "lbWtqPwAAAAJ"
+df$gs_id[388] <- "y4XBawMAAAAJ"
+df$gs_id[395] <- NA
+```
+
+```{r}
+save(df_list_profiles, file="./data/df_list_profiles_temp.rda")
+save(df_list_publications, file="./data/df_list_publications_temp.rda")
+```
+
+
+# publications and profiles
+
+
+```{r}
+df_list_profiles <- list()  # first we create an empty list that we then fill up with the for loop
+df_list_publications <- list()
+```
+
+```{r}
+time <- .1 # I placed the waiting time outside the loop
+i <- 448 # Our loop iterator is now a variable. This means I can change it within a while loop. Using a for loop you cant change your iterator in the loop itself.
+```
+
+```{r}
+
+while (i <= nrow(df)) {
+    print(i)
+    Sys.sleep(time)
+
+    tryCatch({
+    df_list_profiles[[i]] <- get_profile(df[i, c("gs_id")]) 
+    df_list_publications[[i]] <- get_publications(df[i, c("gs_id")])
+    df_list_publications[[i]][, c("gs_id")] <- df[i, c("gs_id")]  
+    i <- i + 1 
+    time <- .1
+    },
+    
+      warning = function(w) {
+        cat("WARNING:", conditionMessage(w), "\n") 
+        i <<- i + 1
+        }, 
+    
+      error =function(e) {
+        time <<- min(time + 100, 3600*2)
+        cat("Error:", conditionMessage(e), "\n") 
+        cat("sleep time:", time,  "\n")
+        cat("ik zit in loop", i)
+      })
+}
+```
+
+
+```{r}
+cs_df_publications <- names_df_publications <- bind_rows(df_list_publications)
+cs_list_profiles <- names_list_profiles <- df_list_profiles
+```
+
+
+```{r}
+save(names_df_publications, file="./data/names_df_publications_v20221006.RData")
+save(names_list_profiles, file= "./data/names_list_profiles_v20221006.RData")
+
+```
+
+
+
+## put the info of the profiles in our data set of staff members cs_df
+
+
+```{r}
+cs_profiles_df <- list()
+
+
+for (i in 1:length(cs_list_profiles)) {
+    # soc_profiles_df[[i]] <- data.frame(t(unlist(soc_list_profiles[[i]][1:8]))) #some annyoing
+    # data handling
+  if (!is.null(cs_list_profiles[[i]])) {
+    cs_profiles_df[[i]] <- unlist(cs_list_profiles[[i]][1:8])
+    cs_profiles_df[[i]] <- data.frame(cs_profiles_df[[i]])
+    cs_profiles_df[[i]] <- t(cs_profiles_df[[i]])
+    row.names(cs_profiles_df[[i]]) <- NULL
+    cs_profiles_df[[i]] <- data.frame(cs_profiles_df[[i]])
+  }
+}
+```
+
+let op we hebben dus duplicates. mensen staan zowel bij computer science als bij data science. 
+```{r}
+cs_profiles_df2 <- bind_rows(cs_profiles_df)
+
+names(cs_profiles_df2)[1] <- "gs_id"
+#cs_df <- names_df_copy[!names_df_copy$gs_id=="",]
+length(cs_df$id)
+duplicated(cs_df$gs_id)
+cs_df[order(cs_df$gs_id),]
+cs_df2 <- data.frame(cbind(cs_df, cs_profiles_df2) )
+names_df <- cs_df2
+
+```
+
+
+```{r}
+
+save(names_df, file="./data/names_df2_v20220106.RData")
+
+```
+
+
+# citation history
+
+```{r}
+cs_df <- cs_df2
+```
+
+
+```{r}
+# get citation history of a scholar
+cs_staff_cit <- list()
+```
+
+
+```{r}
+time <- .1 # I placed the waiting time outside the loop
+i <- 1 # Our loop iterator is now a variable. This means I can change it within a while loop. Using a for loop you cant change your iterator in the loop itself.
+```
+
+
+```{r}
+while (i <= nrow(cs_df)) {
+    print(i)
+    Sys.sleep(time)
+
+    tryCatch({
+      cs_staff_cit[[i]] <- get_citation_history(cs_df[i, c("gs_id")])
+        if (nrow(cs_staff_cit[[i]]) > 0) {
+          cs_staff_cit[[i]][, c("gs_id")] <- cs_df[i, c("gs_id")]  # again attach the gs_id as third column
+        }
+    i <- i + 1
+    time <- .1
+    },
+      warning = function(w) {
+        cat("WARNING:", conditionMessage(w), "\n") #WARNING message
+        i <<- i + 1}, #BUT WE DO WANT TO CONTINUE. NOTE THE DOUBLE << THIS IS BECAUSE I WANT TO CHANGE A VARIABLE WHICH EXISTS OUTSIDE THE WARNING FUNCTION
+      error =function(e) {
+        time <<- min(time + 10, 3600*2)
+        cat("Error:", conditionMessage(e), "\n") #ERROR message
+        cat("sleep time:", time,  "\n")
+        cat("ik zit in loop", i)
+        #AFTER THE NEW SLEEP TIME, WE TRY AGAIN, WE THEREFORE DO NOT UPDATE i. ideally you also want to have some break option. And maybe you also want to save your data when you hit a time out error. 
+      })
+
+    
+}
+names_staff_cit <- bind_rows(cs_staff_cit)
+
+```
+
+
+```{r}
+save(names_staff_cit, file="./data/names_staff_cit_v20221006.RData")
+
+```
+
+
+Hoe zou je nu etniciteit van samenwerkingsnetwerk kunnen bepalen. 
+Optie 1: via collaborator netwerken via google scholar zoals in tutorial. Echter, lang niet iedereen vult hier coauteurs in. 
+Optie 2: we hebben van iedereen de papers. van deze papers weten we de co-auteurs. dus via deze route zou je dan de weer etni kunnen bepalen. das best nog veel data-manipulatie. 
+Optie 3: handmatig. kijk voor elke auteur naar de laatste 3 publicaties. en codeer dan zelf. 
+

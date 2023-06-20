@@ -1,0 +1,61 @@
+---
+title: "Webscraping political science publications"
+output: html_document
+date: "2023-06-13"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+### Getting publications
+
+So note how in the prior tutorial we gathered names of staff and their associated Google Scholar profile IDs. On the basis of this we can extract information on co-authorship networks! Let's get those data again.
+
+```{r}
+read.csv("staff_scholar.csv")
+```
+
+Let's take a look at Jochem's publications: a whole bunch of them, so I only show the first two (notice the subsetting after the function? Can you follow what's happening there?) so as to not make this too long! Notice how not everything is in a nice data frame format yet, we'll get to that later. We already know the ID (`Iu23-90AAAAJ`) of Jochem, so we can simply input that in the `get_publications` function.
+
+```{r}
+get_publications("Iu23-90AAAAJ")[c(1:2),]  # Jochem's pubs
+```
+
+When and how often was Jochem cited? Seems like an increasing trend line!
+
+```{r}
+get_citation_history("Iu23-90AAAAJ") # Jochem's citation history
+```
+
+It works! So what is left to do is simply to get the data we already extracted for Jochem, but for all staff. For that, we need a for loop once more. Let's first gather the and publications. We store those in a `list()` which is an object in which you can store multiple data frames, vectors, matrices, and so forth. This is particularly useful for for loops because you can store information that is -- at first sight -- not necessarily compatible. For instance, matrices of different length. Note that bind a Google Scholar ID to the publications too. 
+
+```{r, eval = TRUE}
+staff_gs <- staff[staff$gs_id != "", ]
+list_publications <- list()
+for (i in 1:2) {
+
+  Sys.sleep(runif(1, 1, 2)) # system sleep between 0.5 and 1 seconds
+  
+  tryCatch({
+  
+  # note how you call different elements in a list "[[]]", fill in the i-th element
+    list_publications[[i]] <- get_publications(staff_gs[i, c("gs_id")]) 
+    list_publications[[i]][, c("gs_id")] <- staff_gs[i, c("gs_id")] # note that we again attach an id
+  # so both functions here call the entire profile and pubs for an author, based on google scholar ids
+  }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")}) # continue on error, but print the error
+
+}
+# Notice how fast the data blow up! 34 scholars publish ~3000 papers
+df_publications <- bind_rows(list_publications)
+```
+
+### Save and done!
+
+That was it, most of the hard work was already done in the other tutorial. Now we only had to input the Google Scholar IDs and get the publications.
+
+```{r}
+write.csv(df_publications, "/Users/u351132/Desktop/workshop/staff_scholar_publications.csv")
+```

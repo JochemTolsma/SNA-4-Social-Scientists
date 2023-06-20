@@ -1,0 +1,567 @@
+# getting started
+
+```{r}
+#start with clean workspace 
+rm(list=ls())
+```
+
+```{r}
+library(RSelenium)
+pjs <- wdman::phantomjs()
+dr <- rsDriver(browser = 'firefox')
+rm(remdr)
+remdr <- dr[['client']]
+remdr$navigate("https://www.jochemtolsma.nl")
+remdr$getCurrentUrl()
+remdr$getTitle()
+
+
+remdr$navigate("http://www.google.com/ncr")
+webElem <- remdr$findElement(using = "class", value = "lst")
+webElem$highlightElement()
+```
+
+# packages
+```{r}
+#install.packages("data.table") 
+library(data.table) # mainly for faster data handling
+library(tidyverse) # I assume you already installed this one!
+# install.packages("httr") # we don't need this for now
+# require(httr)
+#install.packages("xml2")
+require(xml2)
+#install.packages("rvest")
+require(rvest)
+#install.packages("devtools")
+require(devtools)
+# Note we're doing something different here. We're installing a *latest* version directly from GitHub
+# This is because the released version of this packages contains some errors!
+#devtools::install_github("jkeirstead/scholar") 
+
+
+require(scholar)
+
+#define workdirectory, note the double *backslashes* if you're on windows
+# setwd("/yourpathhere)"
+```
+
+# save webpage with staff names 
+
+```{r}
+# Let's first get the staff page read_html is a function that simply extracts html webpages and
+# puts them in xml format
+soc_staff <- read_html("https://www.ru.nl/sociology/research/staff/")
+
+recht_staff <- read_html("https://www.ru.nl/rechten/over-de-faculteit/vaksecties/rechtssociologie/medewerkers-0/")
+
+ recht_staff %>% 
+  rvest::html_nodes('body') %>%
+   xml2::xml_find_all('//ul') %>% 
+  rvest::html_text()
+ 
+
+ 
+ emailjs <- recht_staff %>% html_nodes('body') %>% html_nodes('script') %>% html_text()
+ library(V8)
+ct <- v8()
+  ct$eval(gsub('document.write','',emailjs[1])) 
+   
+   rvest::html_nodes('script')
+ 
+ 
+  rvest::html_elements('img') 
+ 
+ 
+ 
+
+#head(soc_staff)
+#class(soc_staff)
+```
+
+```{r}
+library(RSelenium)
+
+url <- "http://www.scoreboard.com/game/rosol-l-goffin-d-2014/8drhX07d/#game-summary"
+
+
+rD <- rsDriver(browser="firefox", port=4545L, verbose=F)
+remDr <- rD[["client"]]
+
+
+system('docker run -d -p 4445:4444 selenium/standalone-chrome') 
+remDr <- remoteDriver()
+remDr$open()
+remDr$navigate(url)
+
+remDr$navigate("www.jochemtolsma.nl")
+
+writeLines(sprintf("var page = require('webpage').create();
+page.open('%s', function () {
+    console.log(page.content); //page source
+    phantom.exit();
+});", url), con="scrape.js")
+
+system("phantomjs scrape.js > scrape.html", intern = T)
+
+# extract the content you need
+pg <- read_html("scrape.html")
+pg %>% html_nodes("#utime") %>% html_text()
+
+# [1] "10:20 AM, October 28, 2014"
+```
+
+
+# from xml to nice df of names
+
+## selecting the table with names
+
+```{r}
+soc_staff <- soc_staff %>%
+    rvest::html_nodes("body") %>%
+    xml2::xml_find_all("//td") %>%
+    rvest::html_text()
+```
+
+## selecting only the odd rowes with the names
+```{r}
+fodd <- function(x) {
+  #what is x, x is a vector
+ x%%2 != 0 
+}
+
+nstaf <- length(soc_staff)
+
+soc_names <- soc_staff[fodd(1:nstaf)] 
+head(soc_names)
+
+```
+
+## selecting only the even rowes with the expertise
+```{r}
+soc_experts <- soc_staff[!fodd(1:nstaf)]
+head(soc_experts)
+```
+
+## combining names and expertise in soc_df 
+```{r}
+soc_df <- data.frame(cbind(soc_names, soc_experts))  
+```
+
+Perhaps, you want to save `soc_df`. 
+
+# Cleaning the dataset  
+
+## delete rows without name info
+```{r}
+# inspect again, and remove the rows we don't need (check for yourself to be certain!)
+
+delrows <- which(soc_df$soc_names == "Staff:" | soc_df$soc_names == "PhD:" | soc_df$soc_names == "External PhD:" |
+    soc_df$soc_names == "Guest researchers:" | soc_df$soc_names == "Other researchers:")
+
+soc_df <- soc_df[-delrows, ]
+```
+
+## cleaning names a bit  
+```{r}
+# Last name seems to be everything before the comma
+soc_df$last_name <- gsub(",.*$", "", soc_df$soc_names)
+
+# first name is everything between brackets
+soc_df$first_name <- str_extract_all(soc_df$soc_names, "(?<=\\().+?(?=\\))", simplify = TRUE)
+```
+
+```{r}
+soc_df$last_name <- gsub(" J. \\(Jansje\\) van MSc", "", soc_df$last_name)
+soc_df$first_name <- tolower(soc_df$first_name)  # everything to lower!
+soc_df$last_name <- tolower(soc_df$last_name)
+```
+
+```{r}
+# trimws looses all spacing before and after (if you specify 'both') a character string
+soc_df$last_name <- trimws(soc_df$last_name, which = c("both"), whitespace = "[ \t\r\n]")
+soc_df$first_name <- trimws(soc_df$first_name, which = c("both"), whitespace = "[ \t\r\n]")
+soc_df$soc_experts <- trimws(soc_df$soc_experts, which = c("both"), whitespace = "[ \t\r\n]")
+soc_df$soc_names <- trimws(soc_df$soc_names, which = c("both"), whitespace = "[ \t\r\n]")
+```
+
+
+## adding gender to dataset
+
+### fgender
+
+Hereyago. 
+
+```{r}
+fgender <- function(firstname_df, me, file=NULL) {
+
+####################################
+# Author: Bas Hofstra, Anne Maaike Mulders, Jochem Tolsma
+# DAte:   13-10-2021, last edit: 22-09-2022
+# Tasks:  - assign gender baed on name
+#         - Adapted from Rense Corten code April 2021
+####################################
+
+
+#Input: 
+#  - firstname_df: a data.frame with a column named firstname  
+#  - me: a character vector introducing yourself: e.g. "J Tolsma, Radboud University"
+#  - file: location and name of file to be saved. 
+  
+#------------------------------------------------------------------------------------
+# Load required packages
+
+if (!require("tidyverse", character.only = TRUE)) {
+  install.packages("tidyverse", dependencies = TRUE)
+  library(tidyverse, character.only = TRUE)
+}
+
+if (!require("rvest", character.only = TRUE)) {
+  install.packages("rvest", dependencies = TRUE)
+  library(rvest, character.only = TRUE)
+}
+
+if (!require("polite", character.only = TRUE)) {
+  install.packages("polite", dependencies = TRUE)
+  library(polite, character.only = TRUE)
+}
+
+
+
+# make links to scrape
+firstname_df$name_url <- paste0("https://www.meertens.knaw.nl/nvb/naam/is/", firstname_df[, c("firstname")])
+
+
+
+#------------------------------------------------------------------------------------
+### 2: introduce to server ###
+
+# Introduce myself to the server
+session <- bow("https://www.meertens.knaw.nl/nvb/naam/is", user_agent = me , delay = 1)
+
+
+#------------------------------------------------------------------------------------
+### 3: make function to get table from ###
+  fnames <- function(link){ 
+    name_session <-nod(session, path = link)
+    name_page <- scrape(name_session) 
+    return(name_page)
+  }
+  
+name_list <- list()
+table_list <- list()
+firstname_df$gender <- NA
+
+  for (i in 1:nrow(firstname_df)) {
+    print(i)
+    name_list[[i]] <- fnames(firstname_df[i, c("name_url")])
+    # extract name frequency table and gender info
+    table_list[[i]] <- name_list[[i]] %>% html_table()
+    
+    table_list[[i]][[1]][table_list[[i]][[1]]=="--"] <- "0"
+    
+    if (as.numeric(table_list[[i]][[1]]$X3[2]) > as.numeric(table_list[[i]][[1]]$X3[6])) {
+      firstname_df$gender[i] <- "male" } else {
+        firstname_df$gender[i] <- "female"
+      }
+    
+    if (!is.null(file)) (save(firstname_df, file=file))
+    
+    }
+  return(firstname_df)
+}
+```
+
+### examples
+```{r}
+jo <- "J Tolsma, Radboud University" #Please change this to your own name!!!!
+df <- data.frame(firstname=c("Jochem", "Anne", "Bas"))
+location <-  "C:\\Users\\CYOD-ADMIN\\Desktop\\temp\\firstname_df.RData"
+
+fgender(firstname_df=df, me=jo)
+fgender(firstname_df=df, me=jo, file=location)
+```
+
+### gender to soc_df
+```{r}
+soc_df %>% rename(firstname=first_name) -> soc_df
+
+
+soc_df <- fgender(soc_df, me="Jochem Tolsma, RU/RUG")
+```
+
+
+
+## adding some other data manually
+
+### affiliation
+```{r}
+# set affiliation to radboud, comes in handy for querying google scholar
+soc_df$affiliation <- "radboud university"
+```
+
+### other stuff
+
+to do
+
+# let harvest data from google scholar
+
+## fixing a bug in the get_scholar_id function. 
+
+```{r}
+#require(scholar)
+
+get_scholar_id_fix <- function (last_name = "", first_name = "", affiliation = NA)
+{
+  if (!any(nzchar(c(first_name, last_name))))
+    stop("At least one of first and last name must be specified!")
+  site <- getOption("scholar_site")
+  url <- paste0(site, "/citations?view_op=search_authors&mauthors=",
+                first_name, "+", last_name, "&hl=en&oi=ao")
+  page <- get_scholar_resp(url)
+  if (is.null(page))
+    return(NA)
+  aa <- httr::content(page, as = "text")
+  # added by Bas Hofstra: bugfix for IDs that have a dash ("-")
+  ids <- substring(aa, regexpr(";user=", aa))
+  ids <- substr(ids, 1, 19) # error prone, but unsure how to solve otherwise
+  # if (nchar(stringr::str_extract_all(string = aa, pattern = ";user=[[:alnum:]]+[[:punct:]]")[[1]][1]) < 18) {
+  #   ids <- stringr::str_extract_all(string = aa, pattern = ";user=[[:alnum:]]+[[:punct:]]+[[:alnum:]]+[[:punct:]]")
+  # } else {
+  #   ids <- stringr::str_extract_all(string = aa, pattern = ";user=[[:alnum:]]+[[:punct:]]")
+  # }
+  if (length(unlist(ids)) == 0) {
+    message("No Scholar ID found.")
+    return(NA)
+  }
+  ids <- ids %>% unlist %>% gsub(";user=|[[:punct:]]$", "",
+                                 .) %>% unique
+  if (length(ids) > 1) {
+    profiles <- lapply(ids, scholar::get_profile)
+    if (is.na(affiliation)) {
+      x_profile <- profiles[[1]]
+      warning("Selecting first out of ", length(profiles),
+              " candidate matches.")
+    }
+    else {
+      which_profile <- sapply(profiles, function(x) {
+        stringr::str_count(string = x$affiliation, pattern = stringr::coll(affiliation,
+                                                                           ignore_case = TRUE))
+      })
+      if (all(which_profile == 0)) {
+        warning("No researcher found at the indicated affiliation.")
+        return(NA)
+      }
+      else {
+        x_profile <- profiles[[which(which_profile !=
+                                       0)]]
+      }
+    }
+  }
+  else {
+    x_profile <- scholar::get_profile(id = ids)
+  }
+  return(x_profile$id)
+}
+```
+
+## scholars id. 
+
+Don't forget to check manually if everything is okay. 
+
+We make an important decisson here. we remove staff members without scholar ids. perhaps a bit strange for our RSiena analysis later. I mean, we can include isolates
+```{r}
+
+soc_df$gs_id <- ""
+
+for (i in 1:nrow(soc_df)) {
+  print(i)
+  time <- runif(1, 0, 1)
+  Sys.sleep(time)
+  
+  tryCatch({
+     soc_df[i,c("gs_id")] <- get_scholar_id_fix(last_name = soc_df[i, c("last_name")], # so search on last_name of staff (third column)
+                                             first_name = soc_df[i, c("first_name")],  # search on first_name of staff (fourth column)
+                                             affiliation = soc_df[i,c("affiliation")]) # search on affiliation of each staff (fifth column)
+
+    }, error=function(e){cat("ERROR :", conditionMessage(e), "\n")}) # continue on error, but print the error
+  }
+
+# remove those without pubs from the df
+# seems we're left with about 34 sociology staff members!
+soc_df_copy <- soc_df #just to also have the data with staff without scholar_id
+soc_df <- soc_df[!soc_df$gs_id == "", ]
+
+```
+
+# publications and profiles
+
+We save the publications and info of the scholar profiles in new objects
+```{r}
+soc_list_profiles <- list()  # first we create an empty list that we then fill up with the for loop
+soc_list_publications <- list()
+
+for (i in 1:nrow(soc_df)) {
+    print(i)
+    time <- runif(1, 0, 1)
+    Sys.sleep(time)
+
+    # note how you call different elements in a list '[[]]', fill in the i-th element
+    soc_list_profiles[[i]] <- get_profile(soc_df[i, c("gs_id")])  # Note how we call row i (remember how to call rows in a DF/Matrix) and then the associated scholar id
+    soc_list_publications[[i]] <- get_publications(soc_df[i, c("gs_id")])
+    soc_list_publications[[i]][, c("gs_id")] <- soc_df[i, c("gs_id")]  # note that we again attach an id
+    # so both functions here call the entire profile and pubs for an author, based on google
+    # scholar ids
+
+}
+
+
+#soc_list_publications
+# Notice how fast the data blow up! The 34 RU sociology scholars publish ~3000 papers
+soc_df_publications2 <- bind_rows(soc_list_publications)
+```
+
+## put the info of the profiles in our data set of staff members soc_df
+
+Please note, I got an error with the original script (as in the book) so needed to tweak things a little. 
+```{r}
+soc_profiles_df <- list()
+
+
+for (i in 1:length(soc_list_profiles)) {
+    # soc_profiles_df[[i]] <- data.frame(t(unlist(soc_list_profiles[[i]][1:8]))) #some annyoing
+    # data handling
+    soc_profiles_df[[i]] <- unlist(soc_list_profiles[[i]][1:8])
+    soc_profiles_df[[i]] <- data.frame(soc_profiles_df[[i]])
+    soc_profiles_df[[i]] <- t(soc_profiles_df[[i]])
+    row.names(soc_profiles_df[[i]]) <- NULL
+    soc_profiles_df[[i]] <- data.frame(soc_profiles_df[[i]])
+
+}
+
+soc_profiles_df
+
+soc_profiles_df2 <- bind_rows(soc_profiles_df)
+soc_df <- left_join(soc_df, soc_profiles_df2, by = c(gs_id = "id"))  # merge data with soc_df
+soc_df  # notice all the new information we were able to get from the scholar profiles!
+
+```
+
+
+# citation history
+
+```{r}
+# get citation history of a scholar
+soc_staff_cit <- list()
+
+for (i in 1:nrow(soc_df)) {
+
+    soc_staff_cit[[i]] <- get_citation_history(soc_df[i, c("gs_id")])
+
+    if (nrow(soc_staff_cit[[i]]) > 0) {
+        soc_staff_cit[[i]][, c("gs_id")] <- soc_df[i, c("gs_id")]  # again attach the gs_id as third column
+    }
+}
+soc_staff_cit <- bind_rows(soc_staff_cit)
+colnames(soc_staff_cit)[3] <- "gs_id"
+```
+
+# collaborators
+
+## fcolabs
+
+```{r}
+require(rvest)
+require(xml2)
+require(tidyverse)
+
+# function to get collaborators and names from GS profiles
+fcollabs <- function(gsid, lookforcollabs) {
+
+  htmlpage1 <- read_html(paste0("https://scholar.google.nl/citations?user=", gsid, "&hl=en")) # so we paste the google scholar id
+  profilename <- htmlpage1 %>% html_nodes(xpath = "//*/div[@id='gsc_prf_in']") %>% html_text() # we extract the profile name of that google scholar page
+  profilecollabs1 <- as.data.frame(0) # empty df necessary for later
+  profilecollabs2 <- as.data.frame(0) # empty df necessary for later
+
+  if (lookforcollabs == 1) { # so if you want to look for collabs, set function to 1
+
+    htmlpage2 <- read_html(paste0("https://scholar.google.com/citations?view_op=list_colleagues&hl=en&user=", gsid)) # so we paste the google scholar id
+    profilecollabs1 <-  htmlpage2 %>% html_nodes(css="h3") %>% html_text() # get names
+    profilecollabs1 <-  as.data.frame(profilecollabs1)
+
+    profilecollabs2 <- htmlpage2 %>% html_nodes("a") %>% html_attr("href") # get the link
+    profilecollabs2 <- profilecollabs2[seq_along(profilecollabs2) %% 2 > 0]
+    profilecollabs2 <- substring(profilecollabs2, 23)
+
+  }
+  if (nrow(profilecollabs1)>1) { # if there ARE collabs
+
+    profilecollabs1 <- as.data.frame(profilecollabs1) # we want to...
+    profilecollabs2 <-  as.data.frame(profilecollabs2)
+    profilecollabs1[,c("coauth_id")] <- profilecollabs2[,1]
+
+    profilecollabs1[,c("gs_id")] <- gsid #... add gs_ids of focal GS profile
+    profilecollabs1[,c("name")] <- profilename #...and the the profile name of GS profile attached
+
+    names(profilecollabs1)[1] <- "coauth"
+
+  } else {
+    profilecollabs1 <- as.data.frame(cbind(gsid, profilename)) # if NOT looking for collabs...
+    names(profilecollabs1) <- c("gs_id", "name") #...we only attach gs_id and profilename
+
+  }
+  return(profilecollabs1)
+
+}
+
+
+
+```
+
+```{r}
+# input a google scholar id and a 1 (if you want to find collabs) or 0 (only extracting names)
+
+soc_collabs <- list()
+for (i in 1:nrow(soc_df)) {
+    print(i)
+    time <- runif(1, 0, 1)
+    Sys.sleep(time)
+
+    soc_collabs[[i]] <- fcollabs(soc_df[i, c("gs_id")], 1)
+
+}
+
+soc_collabs <- bind_rows(soc_collabs)  # bind rows, get the unique ones!
+soc_collabs_unique <- unique(soc_collabs[, 3]) 
+soc_collabs_unique <- soc_collabs_unique[!is.na(soc_collabs_unique)]
+#save(soc_collabs, file = "addfiles/soc_df_collabs1.RData")  # you notice this takes a while, so we save the data here
+```
+
+
+
+# network based on publications
+
+```{r}
+library(stringr)
+
+#empty adjacency matrix for the years 2001-2010
+network2001_2010 <- matrix(NA, nrow=nrow(soc_df), ncol=nrow(soc_df))
+
+#select publications of the corresponding time era
+pubs_sel <- soc_df_publications %>%
+              mutate(author = tolower(author)) %>%
+              filter(year>2000 & year<2011)
+
+#fill the matrix
+for (ego in 1: nrow(soc_df)) {
+  name_ego <- soc_df$last_name[ego] #which ego? 
+  pubs_sel2 <- pubs_sel[str_detect(pubs_sel$author, name_ego),] #publications of ego
+  for (alter in 1:nrow(soc_df)){
+    name_alter <- soc_df$last_name[alter] #which alter? 
+    network2001_2010[ego,alter] <- sum(str_detect(pubs_sel2$author, name_alter)) > 1 #did alter publish with ego
+  }
+}
+
+
+
+```
+

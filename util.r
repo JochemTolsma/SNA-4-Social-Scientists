@@ -7,3 +7,6 @@ colorize <- function(x, color) {
   } else x
 }
 
+biblio <- bibtex::read.bib("bibliography.bib")
+ref <- function(x){capture.output(print(biblio[x]))}
+

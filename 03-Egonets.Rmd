@@ -296,6 +296,7 @@ source("addfiles/function_fix.R")
 source("addfiles/fcollabs_JT.R")
 
 JTid <- get_scholar_id_fix(last_name="tolsma", first_name="jochem", affiliation="radboud university")
+PSid <- get_scholar_id_fix(last_name="scheepers", first_name="peer", affiliation="radboud university")
 BHid <- get_scholar_id_fix(last_name="hofstra", first_name="bas", affiliation="radboud university")
 
 #note only 20 most important coauthors are listed on page of scholar. So not all my coauthors are listed
@@ -342,8 +343,139 @@ G1b <- simplify(G1b)
 l <- layout_with_kk(G1b)
 plot(G1b, margin=c(0,0,0,0), layout=l) #still uggly of course
 save(G1b, file="G1b.Rdata")
+```
 
 
+```{r, echo=FALSE, eval=FALSE}
+require(scholar)
+require(igraph)
+require(tidyverse)
+source("addfiles/function_fix.R") 
+source("addfiles/fcollabs_JT.R")
+
+#install.packages("reshape")
+require(reshape)
+library(purrr)
+
+PSid <- get_scholar_id_fix(last_name="scheepers", first_name="peer", affiliation="radboud university")
+
+####egonet Peer Scheepers
+PSaut2 <- fcollabs(PSid) #fcollabs need to save scholar ids as well
+coaut <- list()
+for (i in 1:length(PSaut2$ids)) {
+  tryCatch({
+    coaut[[i]] <- fcollabs(PSaut2$ids[i])
+  }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
+}
+
+coaut2 <- c(coaut, list(PSaut2))
+
+coaut3 <- compact(coaut2)
+coaut3 <- reshape::merge_all(coaut3)
+table(coaut3$name)
+#make edgelist
+network <- coaut3[, c("name", "profilecollabs")]
+colnames(network) <- c("from", "to")
+head(network)
+
+network <- na.omit(network)
+
+ps <- read.csv2("C:\\Users\\CYOD-ADMIN\\Desktop\\temp\\ps2.csv")
+
+network2 <- rbind(network, ps)
+
+
+lst <- strsplit(network2$to, " ")
+
+names <- NA
+for (i in 1: length(lst)) {
+  names[i] <- lst[[i]][length(lst[[i]])]
+}
+
+network2[network2$from=="peer scheepers",]
+network3 <- network2
+network3$to <- names
+
+lst <- strsplit(network3$from, " ")
+
+names <- NA
+for (i in 1: length(lst)) {
+  names[i] <- lst[[i]][length(lst[[i]])]
+}
+
+network3$from <- names
+
+
+network2[network2$from=="peer scheepers",]
+network3[network3$from=="scheepers",]
+
+
+
+
+
+
+G1 <- igraph::graph_from_edgelist(as.matrix(network3), directed=FALSE)
+vcount(G1)
+plot(G1)
+test <- distances(G1)
+selection <- rownames(test)[test["scheepers",]<2] #I only want to plot my direct coauthors. 
+G1b <- induced_subgraph(G1,vids=selection)
+plot(G1b)
+vcount(G1b)
+V(G1b)$label.cex = .71
+V(G1b)$size = .5
+E(G1b)$width = 0.5
+#E(G1b)$arrow.size = 0.2
+plot(G1b) #still uggly of course
+G1b <- simplify(G1b)
+l <- layout_with_kk(G1b)
+
+names <- attributes(V(G1b))$names
+names[names=="scheepers"] <- "Scheepers"
+names[names=="pelzer"] <- "Pelzer"
+names[names=="rijnders"] <- "Rijnders"
+names[names=="otten"] <- "Otten"
+names[names=="vennix"] <- "Vennix"
+names[names=="verloo"] <- "Verloo"
+names[names=="Karen"] <- "Phalet"
+V(G1b)$label <- names
+plot(G1b, margin=c(0,0,0,0), layout=l) 
+
+
+
+#add phd_color
+phdcol <- read.csv2("C:\\Users\\CYOD-ADMIN\\Desktop\\temp\\peer phds.csv")
+phdcol <- na.omit(phdcol)
+sum(phdcol$Phd==1)
+
+set.seed(1234658)
+l1 <- layout_with_kk(G1b)
+l2 <- layout_with_dh(G1b)
+l3 <- layout_with_fr(G1b)
+V(G1b)$color <- ifelse(phdcol$Phd==1, "red", "dark blue")
+V(G1b)$label.color <- ifelse(phdcol$Phd==1, "red", "dark blue")
+
+V(G1b)$label.cex = .8
+V(G1b)$size = 1
+E(G1b)$width = 0.5
+plot(G1b, margin=c(0,0,0,0), layout=l3)
+save(G1b, file="G1PS.Rdata")
+```
+
+
+```{r, echo=FALSE, eval=FALSE}
+df <- data.frame(names = names)
+df$Phd <- NA
+fix(df)
+write.csv2(df ,"df.csv")
+save(G1b, file="PS.Rdata")
+
+which(df$names=="Kuipers")
+df$names
+```
+
+
+```{r, echo=FALSE, eval=FALSE}
 ####egonet Bas Hofstra
 #source the _JT version
 JTid <- get_scholar_id_fix(last_name="hofstra", first_name="bas", affiliation="radboud university")
@@ -395,14 +527,15 @@ The different methods for finding communities, they all return a communities obj
 load(file="G1b.Rdata")
 
 par(mfrow=c(1,2))
-V(G1b)$label.cex = .6
+V(G1b)$label.cex = 1
 l <- layout_with_kk(G1b)
-plot(G1b, margin=c(0,0,0,0), layout=l,vertex.label.cex = 0.55, vertex.label.degree = -pi/2)
+plot(G1b, margin=c(0,0,0,0), layout=l,vertex.label.cex = 0.55, vertex.label.color="black", vertex.label.degree = -pi/2)
 
 #clp$membership <- ifelse(clp$membership==4, NA, clp$membership) 
 #clp$names 2363422
 set.seed(2363418)
-clp <- cluster_optimal(G1b)
+clp <- cluster_walktrap(G1b)
+V(G1b)$label.color = "blue"
 plot(clp, G1b)
 
 # #make igraph object
