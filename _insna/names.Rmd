@@ -81,6 +81,10 @@ pol <- read.csv("./data/scholarid_pol.csv", sep=";", encoding="UTF-8")
 
 # Initial cleaning of the dataframes
 
+We start by cleaning up the .CSV files a bit. Sometimes transforming .csv files to an R format creates some odd things. In this case, for example, the first column name appears to be off. 
+Furthermore, dealing with files like this requires a little bit of 'regular expression magic'. Regular expressions help you to transform text (string) data, by calling either to specific strings (e.g. the word "dog"), or for certain generalizable string patterns (e.g. a string consisting of exactly three lowercase letters). Everything I have learned about string manipulation basically stems from [this webpage](https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html). Especially when using web-scraped data, you will encounter raw text data pretty regularly, so knowing about regular expressions will probably come in handy. 
+
+
 ```{r}
 
 # removing the "specialisatie" column from the political science data frame because it is poorly filled and does not exist in sociology
@@ -107,16 +111,16 @@ df <- rbind.data.frame(soc, pol)
 
 
 # removing double spaces
-df$name <- gsub("\\s+", " ", df$name)
+df$name <- gsub("\\s+", " ", df$name) #  "\\s" indicates a whitespace, so "\\s+" refers to 2 or more whitespaces
 df$name <- trimws(df$name)
 
 
-# adding the year variable 
+# adding a year variable - in case multiple years are used, you should keep track of this. 
 df$year <- rep(2022, nrow(df))
 
 
-# some people have double affiliations. Store those in two different columns
-df$affil1 <- df$uni
+# some people have double affiliations. These are stored as "uni1/uni2" in the 'uni' column. We now want to create two separate variables for each affiliation.
+df$affil1 <- df$uni # first we create a new variable for the 1st affiliation, which is a copy of the original 'uni' variable
 df$affil1 <- str_remove(df$affil1, "\\/.*$") # remove the 2nd affiliation from the column of the first affiliation
 
 df$affil2 <- str_remove(df$uni, "^.*\\/") # extract everything after "/" to get the 2nd affiliation
@@ -132,7 +136,8 @@ df$position <- ifelse(as.numeric(str_detect(df$position, "universitair docent"))
 df$position <- ifelse(as.numeric(str_detect(df$position, "postdoc"))==1, "postdoc", df$position)
 df$position <- ifelse(as.numeric(str_detect(df$position, "(phd)|(doctoral)|(promovendus)"))==1, "phd", df$position) 
 
-# all other positions are set to other
+# all other positions are set to other - we do this because the position form on the website is a free text form, so the entries here are not standardized. 
+# non-research positions are not really relevant for this analysis, because these people do not likely have very many co-authors. 
 df$position <- ifelse(!df$position %in% c("full_prof", "associate_prof", "assistant_prof", "postdoc", "phd"), "other", df$position)
 
 
@@ -141,6 +146,8 @@ df$position <- ifelse(!df$position %in% c("full_prof", "associate_prof", "assist
 
 
 # Creating a unique identifier for each person
+
+The excel file does not contain unique identifiers. This is important when combining multiple data sources to help you keep track of individuals in your sample, and make sure that the right information is matched to the right person. 
 
 ```{r}
 
@@ -155,10 +162,95 @@ head(df$id)
 
 
 
+# Names
 
-# Getting last names out first
+Now, we get to the nitty-gritty: creating separate objects from first and last names. 
 
-The names are pretty neatly in the format "First name(s) last name(s)". So we know that the last names are at the end of the string. One difficulty we have, is that while for most people, the last name is simply the last 'word' in the name string, for a handful of people the last name takes up multiple words. For some, it is longer because there are nobiliary particles in the name, which we want to extract in a different object, while for others it is longer because they have multiple last names. 
+
+... this shouldn't be too hard right? Let's look at some of the names. 
+
+
+```{r}
+
+head(df$name)
+
+```
+
+Well, in principle it isn't! The names are in a standard format, e.g. "Jane Doe", so we just extract the first word for the first name, and the last word for the last name.
+
+For most cases, that is completely true! So in a sense our lives are easy, BUT...
+
+There is also a handful of exceptions, which we need to deal with in some way. For the second and third names in the data ("Marcel van Assen", "Weverthon Barbosa Machado"), we see that the full name consists of more than 2 words. 
+
+In the case of the first name, I can tell you that the 2nd word of the name string is something called a nobiliary particle. These are prepositions that often come up in Dutch names ("Van", "De", "Ten", among others), but also in some Spanish names ("Da"), French names ("Du", "Le"), German names ("Von", "Zu") and those are just a few examples. 
+
+For the second name, a quick Google search informed me that the 2nd word of the name string is part of the last name. In Spanish- and Portuguese-speaking countries, it is quite common to take on the last names of both parents. 
+
+
+For matching names to various databases, it is useful to store last names and nobiliary particles in different objects. This has to do with the fact that sometimes, only the last name will give a match, while other databases require the full last name including nobiliary particles to match people from your dataframe. 
+
+In the case of multiple last names, it is a bit trickier. If a name is more than two words but there are no nobiliary particles, it is not easy to infer whether the names in the middle are actually part of the first or the last name, without checking all of them by hand. Therefore, I would advise you to simply try to extract the first word for the first name, and the last word for the last name to be sure. 
+
+
+## A little exercise for you! 
+
+
+So, now it is up to you to decide how you would go about extracting in separate objects of your dataframe: 
+
+* first names
+
+* nobiliary particles
+
+* last names
+
+
+For these operations, I would advise you to use functions from the `stringi` package or use the 'gsub' function from base R.
+
+
+```{r}
+
+
+# Your code here! 
+
+
+
+
+```
+
+
+A list of some common nobiliary particles 
+
+```{r}
+
+
+c("van den", "van der", "van de", "vanden", "vande", "van 't", "op de", "de la", "den" ,"van", "de", "ten", "ter", "el", "la", "di")
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+## Getting last names out first
+
+I start by extracting the last names and nobiliary particles. 
+
+I tend to first extract multiple-word nobiliary particles, and then the single-word nobiliary particles because otherwise, you risk only extracting the first word of a nobiliary particle consisting of multiple words (e.g. you extract only "van", while the complete nobiliary particle is "van de"). The majority of these nobiliary particles are highly specific to Dutch names to match to the database from Dutch universities. 
+
+
+After I have stored the nobiliary particle in a separate object, I use two strategies for extracting the rest of the last name:
+
+* 1: If there IS a nobiliary particle present: we extract everything after this, because we can be pretty sure that no first names will follow the nobiliary particle
+* 2: If there is NO nobiliary particle present: we extract just the last word in the string to be safe
+
 
 ```{r}
 
@@ -172,7 +264,7 @@ np2 <- c("\\s(L|l)a\\s", "\\s(O|o)p\\s" ,"\\s(V|v)an\\s", "\\s(V|v)on\\s", "\\s(
 df$np <- str_extract(df$name, paste0(np, collapse="|"))
 df$np <- ifelse(is.na(df$np), str_extract(df$name, paste0(np2, collapse="|")), df$np) #only extract the single-word NP if it is not filled yet
   
-# lastname: everything after nobiliary particle  
+# lastname: everything after nobiliary particle if there is one, otherwise we simply take the last word in the string
 df$lastname <- ifelse(!is.na(df$np), str_remove(df$name, paste0("^.*", df$np)), word(df$name, -1))
 
 
@@ -181,7 +273,7 @@ df$np <- tolower(trimws(df$np, which="both"))
 df$np <- ifelse(is.na(df$np), "", df$np)
 
 df$lastname <- tolower(trimws(df$lastname, which="both"))
-df$lastname <- stri_trans_general(df$lastname, id="latin-ascii") #remove diacritics
+df$lastname <- stri_trans_general(df$lastname, id="latin-ascii") #remove diacritics 
 
 df$lastname <- str_extract(df$lastname, "[:lower:]+") # if multiple last names after the nobiliary particle, we take the first one
 
@@ -190,23 +282,24 @@ df$lastname <- str_extract(df$lastname, "[:lower:]+") # if multiple last names a
 
 
 
-# Extracting first names 
+## Extracting first names 
 
-Due to the standard format of the name object, we can simply take out the first word of the name string. Please note that some people only have initials instead of a first name. 
+Due to the standard format of the name object, we can simply take out the first word of the name string. Please note that some people only have initials instead of a first name, but given we don't have much more information, there is not much we can do about that at this point in time. 
 
 ```{r}
 
 df$firstname <- str_remove(df$name, "\\s.*$") # remove everything from the name object after the first whitespace
 
 
-# I first detect the initials by using a general pattern - you can update this to match what you find in your own data
+# I first detect the initials by using a general pattern - some regular expression magic if you will. 
+# you can update this to match what you find in your own data
 initialpattern <- paste(c("^([:upper:]\\.)+[:upper:]$",       # Last initial does not have a full stop at the end (e.g. A.A.A)
                           "([:upper:]\\.+)+",                 # All initials have full stops at the end (e.g. A.A.A.)
                           "^\\s?[:upper:]+$"),                # Entire string consists of capital letters
                         collapse = "|")
 
-df$ini <- str_extract(df$firstname, paste0(initialpattern)) # save initials in a different object
-df$firstname <- ifelse(!is.na(df$ini), str_remove(df$firstname, df$ini), df$firstname) # extract initials from first name object when present
+df$ini <- str_extract(df$firstname, paste0(initialpattern)) # we extract the initials from format we defined, and save them in a different object
+df$firstname <- ifelse(!is.na(df$ini), str_remove(df$firstname, df$ini), df$firstname) # extract initials from first name object when present, so that the first name object really only contains first names 
 df$ini <- ifelse(is.na(df$ini), "", df$ini) # set initials object to empty if there are no initials
 
 
@@ -219,7 +312,7 @@ df$firstname <- stri_trans_general(df$firstname, id="latin-ascii") #remove diacr
 
 
 
-# Saving the new dataframe
+## Saving the new dataframe
 
 Now with cleaned first and last names, ID variable and some data manipulation on the other variables. 
 

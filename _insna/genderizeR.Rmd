@@ -83,6 +83,7 @@ We only need to check each unique first name once, so therefore we extract all u
 
 ```{r}
 
+# We use the distinct function from tidyverse to recognize and then select only unique entries in the first name object
 uniquenames <- df %>% distinct(firstname) %>% select(firstname)
 uniquenames <- uniquenames[uniquenames$firstname!="", ] # transform to character vector
 
@@ -101,15 +102,15 @@ prob <- list()
 
 # GenderizeR 
 
-It is possible to use specific databases of GenderizeR by country. In that case, you can add the 'country' argument in genderizeAPI. We will now use the worldwide database. 
+It is possible to use specific databases of GenderizeR by country. In that case, you can add the 'country' argument in genderizeAPI. We will now use the worldwide database, which this function defaults to when you don't add a country argument. 
 
 ```{r}
 
-# First we scrape
+# First we scrape by entering each name from our list of unique names into the genderizeAPI function. 
 
 for (i in 1:length(uniquenames)) {
   
-  Sys.sleep(0.1)
+  Sys.sleep(0.1) # building in a pause of 0.1 second in between scraping each name
   
   genderizer[[i]] <- genderizeAPI(uniquenames[i])[[1]]
   
