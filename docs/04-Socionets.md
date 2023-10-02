@@ -70,11 +70,63 @@ A complete, full, or sociocentric network is a network within a sampled context 
 We may for example sample a classroom, neighborhood, university or country and collect all relations between all nodes within this context. 
 
 
+> You now have come across a general definition for social networks and specific definitions for dyadic, egocentric and sociocentric social networks.  You also know that the social agents within the networks may not necessarily have to be persons but can also be companies, or political parties for example. A network in which the relations between two different type of nodes are present are called **multiple-mode networks** (e.g., football fans who may form friendships among each other and may support one or more football team. Relations between football teams may for example consist of whether they played against each other).  
+Similarly, between one type of node (e.g. persons) we may have information on more than one type of relation (e.g., friendship and bullying relations). These networks are called **multiplex networks**. > 
+>The networks we have considered so far refer to networks of binary relations (yes/no). If the relations can vary in strength, we call the networks a **weighted network**. 
+> The relations between actors can be directed (i.e., actors send and recieve ties) or undirected where the tie has the same value for the actors making up a dyad.
+>
+>Thus, we can have a two-mode, multiplex, weighted, directed network but also a single-mode, uniplex, binary, undirected network. 
+
+
+Research questions that deal with (full) social networks can be grouped in two main categories, each with two sub-categories: 
+
+  1. Descriptive questions: 
+      - with respect to **network composition**  
+      - with respect to **network structure**    
+  2. Explanatory questions:  
+      - with respect to the **causes** for these networks  
+      - with respect to the **consequences** of these networks  
+      
+Hopefully, you notice the resemblance with the four theoretical dimensions of social networks we introduced in section 5.2: 
+
+  1. size: the number of nodes in the network  
+  2. structure: the relations in the network  
+  3. composition: characteristics of the nodes in the network  
+  4. evolution: change in size, structure and/or composition  
+    i. network growth
+    ii. tie evolution: structure –> structure  
+    iii. node evolution: node attributes –> node attributes
+    iv. influence: structure –> node attributes  
+    v. selection: node attributes –> structure
+    
+    
+The **size** of the network refers to how many actors (social agents or persons or nodes) are part of the network. Thus if we investigate the complete network of a specific school class, the network size refers to the number of pupils. The isolates (pupils without any in- or out-degree) are also included. 
+
+The **structure** of the network refers to the relations we observe between persons. For example, we may seek explanations for why networks are more dense than others, why people tend to reciprocate positive relations and why we observe clusters in the network. 
+
+The **composition** of the network refers to characteristics of the persons in the network. We may seek explanations for who joins the Twitter network and when, or why we observe ethnic segregation between soccer teams even if they are part of the same club. These questions generally refer to selective selection into or out of networks, about joiners and leavers.  
+
+**Evolution** process refers to change of social networks. Let us first consider *tie evolution*. An important realization is that the ties we currently observe in the network are in part the consequence of the ties that were present at a previous time point. Consider the simple example of reciprocity. That we observe many reciprocated relations in a network is not only because people tend to reciprocate relations but also because people tend to make relations in the first place (we can only reciprocate a relation when there is a relation). With *node evolution* I mean that node attributes may change over time as a result of other node attributes. This sounds a little complicated but it simple means that persons develop and they may do say at different rates. For example, people who start to smoke will generally smoke more and more. Or, grades of girls in elementary school improve at a faster rate than the grades of boys. In these questions a social network perspective is not necessary. *Influence* processes are by now familiar to us. Node attributes may change because of the ties this node has to specific other nodes. *Selection* refers to the opposite process; the ties I have to other nodes may change as a result of the node attributes.
+Both influence and selection processes explain why specific structures (e.g. reciprocated dyads) more often have a specific composition (e.g. ego-alter similarity) than other structures (e.g. asymmetric dyad).
+
+>The composition of the network may thus change due to three different processes: (1) (de)selection into networks (persons joining and/or leaving) the network; (2) node evolution; (3) influence processes.
+
+
+**Descriptive questions**
+The **composition** of the network refers to static characteristics (e.g. sex) or dynamic characteristics (e.g. behavior) of the persons in the network. We may for example seek explanations for who leaves the Twitter network and when, or why we observe ethnic segregation between soccer teams even if they are part of the same club. These questions generally refer to selective selection into or out of networks, about joiners and leavers. That said, many important SNA deal with questions how the social network influences (or causes) dynamic characteristics of its members. Questions on the size of (complete) networks, for example, "How many staff members do the different sociology departments have in the Netherlands?" and composition, for example, "How does the male to female ratio differs among the different sociology departments in the Netherlands?" I will leave for another time. With respect to descriptive questions, I would like to focus on the network **structure** aspect. 
+
+**Explanatory questions**
+It is important to be aware that within SNA or network modelling, we commonly try to explain the observed network(s) by processes that have taken place and still take place within the network, that is by *micro-mechanisms*. Here that assumption is that actors - at the micro-level thus! - evaluate ties (or a behavior). The focus is on explanation of the micro-mechanisms that bring about a social network [\@Block2019]. 
+
 ## Network structures 
+
+The **network structure** refers to the number and distribution of ties across the network. 
+
+We already discussed network structures for dyads, triads and egonets. It will not come as a surprise that with full (and large) social networks, structures may become more complex.  
 
 We already discussed the following network structures: 
 
-- (in/out) degree or density: \@ref(density)  
+- (in/out) degree or density [5.3.3](#density)
 - reciprocity   \@ref(fig:dd)
 - dyad configurations \@ref(network-structures-dyad) 
 - triad configurations  \@ref(triad)
@@ -116,7 +168,7 @@ mean((ego_size(random_graph, order = 2, mode = "out") - 1)/vcount(random_graph))
 
 Thus for the small random graph above, Figure \@ref(fig:pl), if we take a path length of two we find that nodes 1 to 4 node can reach 0, 0.25, 0.5, 0 of all other nodes, respectively. This makes for an average reach of 0.1875.  
 
-For Smallworld we find the following:  
+For Smallworld \@ref(fig:dd) we find the following:  
 
 - path length one: 0.13%.  
 - path length two: 0.74%.  
@@ -128,25 +180,13 @@ The idea that all people are connected through just six degrees of separation is
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JWr5hBNWBOI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### cliques and communities  
-
-**to do**
-
 ### Segregation  
 
-**to do**
-
-#### inter- and intra-group density {-}
-
-**to do**
-
-#### Coleman {-}
-
-**to do**
+There are many ways how to determine the degree of segregation in social networks. See [@bojanowski2014]. A quite straightforward way is to compare inter- and intra-ethnic group densities (see: the chapter on [Network Visualization](#des.twit). 
 
 #### Moran's I {-}
 
-Our inter-/intra group density and Coleman's homophily measures describe the extent to which similar people are more likely to be connected. We now take a slightly different angle. We want to know if nodes who are closer to one another in the network are more a like. To which my students respond in unison with:  
+While inter-/intra group density and for example Coleman's homophily index describe the extent to which similar people are more likely to be connected. We now take a slightly different angle. We want to know if nodes who are closer to one another in the network are more a like. To which my students respond in unison with:  
 
 <p class= "quote">
  "Hey, that sounds like some sort of correlation!" 
@@ -499,33 +539,5 @@ Sigma
 
 </div>
 
-## Causes  
-
-## Consequences  
-
 ---  
-
-
-# Methods  {#socionetsm}
-
-## Causes  
-
-## Consequences  
-
-
----  
-
-# Data  
-
-## Sampling  
-
-## Ethical considerations  
-
-## Measurement 
-
----  
-
-
-
-
 

@@ -4,26 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Methods | SNASS</title>
+  <title>Chapter 7 Methods | SNASS</title>
   <meta name="description" content="Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks." />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Methods | SNASS" />
+  <meta property="og:title" content="Chapter 7 Methods | SNASS" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://jochemtolsma.github.io/SNA-4-Social-Scientists/" />
   <meta property="og:image" content="https://jochemtolsma.github.io/SNA-4-Social-Scientists/cover.jpg" />
   <meta property="og:description" content="Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks." />
   <meta name="github-repo" content="JochemTolsma/SNA-4-Social-Scientists" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Methods | SNASS" />
+  <meta name="twitter:title" content="Chapter 7 Methods | SNASS" />
   
   <meta name="twitter:description" content="Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks." />
   <meta name="twitter:image" content="https://jochemtolsma.github.io/SNA-4-Social-Scientists/cover.jpg" />
 
 
 
-<meta name="date" content="2021-10-08" />
+<meta name="date" content="2023-10-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,9 +30,9 @@
   
   <link rel="shortcut icon" href="turtle-favicon.ico" type="image/x-icon" />
 <link rel="prev" href="socionetst.html"/>
-<link rel="next" href="data-4.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<link rel="next" href="webintro.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,9 +48,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -94,7 +93,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +106,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -233,140 +232,140 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#assignment-2"><i class="fa fa-check"></i><b>3.7</b> Assignment</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i><b>4</b> Data</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="data-1.html"><a href="data-1.html#sampling"><i class="fa fa-check"></i><b>4.1</b> Sampling</a></li>
-<li class="chapter" data-level="4.2" data-path="data-1.html"><a href="data-1.html#ethical-considerations"><i class="fa fa-check"></i><b>4.2</b> Ethical considerations</a></li>
-<li class="chapter" data-level="4.3" data-path="data-1.html"><a href="data-1.html#measurement"><i class="fa fa-check"></i><b>4.3</b> Measurement</a></li>
-</ul></li>
 <li class="part"><span><b>II EGONETS</b></span></li>
-<li class="chapter" data-level="5" data-path="theory-1.html"><a href="theory-1.html"><i class="fa fa-check"></i><b>5</b> Theory</a>
+<li class="chapter" data-level="4" data-path="theory-1.html"><a href="theory-1.html"><i class="fa fa-check"></i><b>4</b> Theory</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="theory-1.html"><a href="theory-1.html#triad"><i class="fa fa-check"></i><b>5.1</b> Network Structures (TRIAD)</a></li>
-<li class="chapter" data-level="5.2" data-path="theory-1.html"><a href="theory-1.html#type-of-explanations"><i class="fa fa-check"></i><b>5.2</b> Type of explanations</a></li>
-<li class="chapter" data-level="5.3" data-path="theory-1.html"><a href="theory-1.html#causes-1"><i class="fa fa-check"></i><b>5.3</b> Causes</a>
+<li class="chapter" data-level="4.1" data-path="theory-1.html"><a href="theory-1.html#triad"><i class="fa fa-check"></i><b>4.1</b> Network Structures (TRIAD)</a></li>
+<li class="chapter" data-level="4.2" data-path="theory-1.html"><a href="theory-1.html#type-of-explanations"><i class="fa fa-check"></i><b>4.2</b> Type of explanations</a></li>
+<li class="chapter" data-level="4.3" data-path="theory-1.html"><a href="theory-1.html#causes-1"><i class="fa fa-check"></i><b>4.3</b> Causes</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="theory-1.html"><a href="theory-1.html#size"><i class="fa fa-check"></i><b>5.3.1</b> Size</a></li>
-<li class="chapter" data-level="5.3.2" data-path="theory-1.html"><a href="theory-1.html#composition"><i class="fa fa-check"></i><b>5.3.2</b> Composition</a></li>
-<li class="chapter" data-level="5.3.3" data-path="theory-1.html"><a href="theory-1.html#structure-1"><i class="fa fa-check"></i><b>5.3.3</b> Structure</a></li>
-<li class="chapter" data-level="5.3.4" data-path="theory-1.html"><a href="theory-1.html#stability"><i class="fa fa-check"></i><b>5.3.4</b> Stability</a></li>
+<li class="chapter" data-level="4.3.1" data-path="theory-1.html"><a href="theory-1.html#size"><i class="fa fa-check"></i><b>4.3.1</b> Size</a></li>
+<li class="chapter" data-level="4.3.2" data-path="theory-1.html"><a href="theory-1.html#structure-1"><i class="fa fa-check"></i><b>4.3.2</b> Structure</a></li>
+<li class="chapter" data-level="4.3.3" data-path="theory-1.html"><a href="theory-1.html#stability"><i class="fa fa-check"></i><b>4.3.3</b> Stability</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="theory-1.html"><a href="theory-1.html#consequences-1"><i class="fa fa-check"></i><b>5.4</b> Consequences</a></li>
-<li class="chapter" data-level="5.5" data-path="theory-1.html"><a href="theory-1.html#assignment-3"><i class="fa fa-check"></i><b>5.5</b> Assignment</a></li>
+<li class="chapter" data-level="4.4" data-path="theory-1.html"><a href="theory-1.html#consequences-1"><i class="fa fa-check"></i><b>4.4</b> Consequences</a></li>
+<li class="chapter" data-level="4.5" data-path="theory-1.html"><a href="theory-1.html#assignment-3"><i class="fa fa-check"></i><b>4.5</b> Assignment</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="methods-1.html"><a href="methods-1.html"><i class="fa fa-check"></i><b>6</b> Methods</a>
+<li class="chapter" data-level="5" data-path="methods-1.html"><a href="methods-1.html"><i class="fa fa-check"></i><b>5</b> Methods</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="methods-1.html"><a href="methods-1.html#causes-2"><i class="fa fa-check"></i><b>6.1</b> Causes</a></li>
-<li class="chapter" data-level="6.2" data-path="methods-1.html"><a href="methods-1.html#consequences-2"><i class="fa fa-check"></i><b>6.2</b> Consequences</a></li>
-<li class="chapter" data-level="6.3" data-path="methods-1.html"><a href="methods-1.html#rq"><i class="fa fa-check"></i><b>6.3</b> Research questions</a></li>
-<li class="chapter" data-level="6.4" data-path="methods-1.html"><a href="methods-1.html#data-2"><i class="fa fa-check"></i><b>6.4</b> Data</a>
+<li class="chapter" data-level="5.1" data-path="methods-1.html"><a href="methods-1.html#causes-2"><i class="fa fa-check"></i><b>5.1</b> Causes</a></li>
+<li class="chapter" data-level="5.2" data-path="methods-1.html"><a href="methods-1.html#consequences-2"><i class="fa fa-check"></i><b>5.2</b> Consequences</a></li>
+<li class="chapter" data-level="5.3" data-path="methods-1.html"><a href="methods-1.html#rq"><i class="fa fa-check"></i><b>5.3</b> Research questions</a></li>
+<li class="chapter" data-level="5.4" data-path="methods-1.html"><a href="methods-1.html#data-1"><i class="fa fa-check"></i><b>5.4</b> Data</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="methods-1.html"><a href="methods-1.html#variables-1"><i class="fa fa-check"></i><b>6.4.1</b> Variables</a></li>
-<li class="chapter" data-level="6.4.2" data-path="methods-1.html"><a href="methods-1.html#preperation-2"><i class="fa fa-check"></i><b>6.4.2</b> Preperation</a></li>
+<li class="chapter" data-level="5.4.1" data-path="methods-1.html"><a href="methods-1.html#variables-1"><i class="fa fa-check"></i><b>5.4.1</b> Variables</a></li>
+<li class="chapter" data-level="5.4.2" data-path="methods-1.html"><a href="methods-1.html#preperation-2"><i class="fa fa-check"></i><b>5.4.2</b> Preperation</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="methods-1.html"><a href="methods-1.html#disaggregation-method"><i class="fa fa-check"></i><b>6.5</b> Disaggregation method</a></li>
-<li class="chapter" data-level="6.6" data-path="methods-1.html"><a href="methods-1.html#aggregation-method"><i class="fa fa-check"></i><b>6.6</b> Aggregation method</a></li>
-<li class="chapter" data-level="6.7" data-path="methods-1.html"><a href="methods-1.html#micro-macro-model"><i class="fa fa-check"></i><b>6.7</b> Micro-macro model</a></li>
-<li class="chapter" data-level="6.8" data-path="methods-1.html"><a href="methods-1.html#random-intercept-cross-lagged-micro-macro-model-ri-clp-mm"><i class="fa fa-check"></i><b>6.8</b> Random Intercept Cross-Lagged Micro-Macro Model RI-CLP-MM</a>
+<li class="chapter" data-level="5.5" data-path="methods-1.html"><a href="methods-1.html#disaggregation-method"><i class="fa fa-check"></i><b>5.5</b> Disaggregation method</a></li>
+<li class="chapter" data-level="5.6" data-path="methods-1.html"><a href="methods-1.html#aggregation-method"><i class="fa fa-check"></i><b>5.6</b> Aggregation method</a></li>
+<li class="chapter" data-level="5.7" data-path="methods-1.html"><a href="methods-1.html#micro-macro-model"><i class="fa fa-check"></i><b>5.7</b> Micro-macro model</a></li>
+<li class="chapter" data-level="5.8" data-path="methods-1.html"><a href="methods-1.html#random-intercept-cross-lagged-micro-macro-model-ri-clp-mm"><i class="fa fa-check"></i><b>5.8</b> Random Intercept Cross-Lagged Micro-Macro Model RI-CLP-MM</a>
 <ul>
-<li class="chapter" data-level="6.8.1" data-path="methods-1.html"><a href="methods-1.html#measurement-model"><i class="fa fa-check"></i><b>6.8.1</b> Measurement model</a></li>
-<li class="chapter" data-level="6.8.2" data-path="methods-1.html"><a href="methods-1.html#the-structural-model"><i class="fa fa-check"></i><b>6.8.2</b> The structural model</a></li>
-<li class="chapter" data-level="6.8.3" data-path="methods-1.html"><a href="methods-1.html#include-egos-educational-level"><i class="fa fa-check"></i><b>6.8.3</b> Include ego’s educational level</a></li>
+<li class="chapter" data-level="5.8.1" data-path="methods-1.html"><a href="methods-1.html#measurement-model"><i class="fa fa-check"></i><b>5.8.1</b> Measurement model</a></li>
+<li class="chapter" data-level="5.8.2" data-path="methods-1.html"><a href="methods-1.html#the-structural-model"><i class="fa fa-check"></i><b>5.8.2</b> The structural model</a></li>
+<li class="chapter" data-level="5.8.3" data-path="methods-1.html"><a href="methods-1.html#include-egos-educational-level"><i class="fa fa-check"></i><b>5.8.3</b> Include ego’s educational level</a></li>
 </ul></li>
-<li class="chapter" data-level="6.9" data-path="methods-1.html"><a href="methods-1.html#assignment-4"><i class="fa fa-check"></i><b>6.9</b> Assignment</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="data-3.html"><a href="data-3.html"><i class="fa fa-check"></i><b>7</b> Data</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="data-3.html"><a href="data-3.html#sampling-1"><i class="fa fa-check"></i><b>7.1</b> Sampling</a></li>
-<li class="chapter" data-level="7.2" data-path="data-3.html"><a href="data-3.html#ethical-considerations-1"><i class="fa fa-check"></i><b>7.2</b> Ethical considerations</a></li>
-<li class="chapter" data-level="7.3" data-path="data-3.html"><a href="data-3.html#measurement-1"><i class="fa fa-check"></i><b>7.3</b> Measurement</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="data-3.html"><a href="data-3.html#su"><i class="fa fa-check"></i><b>7.3.1</b> Scaling up</a></li>
-</ul></li>
+<li class="chapter" data-level="5.9" data-path="methods-1.html"><a href="methods-1.html#assignment-4"><i class="fa fa-check"></i><b>5.9</b> Assignment</a></li>
 </ul></li>
 <li class="part"><span><b>III Part 3 SOCIONETS</b></span></li>
-<li class="chapter" data-level="8" data-path="socionetst.html"><a href="socionetst.html"><i class="fa fa-check"></i><b>8</b> Theory</a>
+<li class="chapter" data-level="6" data-path="socionetst.html"><a href="socionetst.html"><i class="fa fa-check"></i><b>6</b> Theory</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="socionetst.html"><a href="socionetst.html#network-structures"><i class="fa fa-check"></i><b>8.1</b> Network structures</a>
+<li class="chapter" data-level="6.1" data-path="socionetst.html"><a href="socionetst.html#network-structures"><i class="fa fa-check"></i><b>6.1</b> Network structures</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="socionetst.html"><a href="socionetst.html#path-length"><i class="fa fa-check"></i><b>8.1.1</b> Path length</a></li>
-<li class="chapter" data-level="8.1.2" data-path="socionetst.html"><a href="socionetst.html#cliques-and-communities"><i class="fa fa-check"></i><b>8.1.2</b> cliques and communities</a></li>
-<li class="chapter" data-level="8.1.3" data-path="socionetst.html"><a href="socionetst.html#segregation"><i class="fa fa-check"></i><b>8.1.3</b> Segregation</a></li>
+<li class="chapter" data-level="6.1.1" data-path="socionetst.html"><a href="socionetst.html#path-length"><i class="fa fa-check"></i><b>6.1.1</b> Path length</a></li>
+<li class="chapter" data-level="6.1.2" data-path="socionetst.html"><a href="socionetst.html#segregation"><i class="fa fa-check"></i><b>6.1.2</b> Segregation</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="socionetst.html"><a href="socionetst.html#random-graphs"><i class="fa fa-check"></i><b>8.2</b> Random graphs</a></li>
-<li class="chapter" data-level="8.3" data-path="socionetst.html"><a href="socionetst.html#causes-3"><i class="fa fa-check"></i><b>8.3</b> Causes</a></li>
-<li class="chapter" data-level="8.4" data-path="socionetst.html"><a href="socionetst.html#consequences-3"><i class="fa fa-check"></i><b>8.4</b> Consequences</a></li>
+<li class="chapter" data-level="6.2" data-path="socionetst.html"><a href="socionetst.html#random-graphs"><i class="fa fa-check"></i><b>6.2</b> Random graphs</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="socionetsm.html"><a href="socionetsm.html"><i class="fa fa-check"></i><b>9</b> Methods</a>
+<li class="chapter" data-level="7" data-path="socionetsm.html"><a href="socionetsm.html"><i class="fa fa-check"></i><b>7</b> Methods</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="socionetsm.html"><a href="socionetsm.html#causes-4"><i class="fa fa-check"></i><b>9.1</b> Causes</a></li>
-<li class="chapter" data-level="9.2" data-path="socionetsm.html"><a href="socionetsm.html#consequences-4"><i class="fa fa-check"></i><b>9.2</b> Consequences</a></li>
+<li class="chapter" data-level="7.1" data-path="socionetsm.html"><a href="socionetsm.html#goal"><i class="fa fa-check"></i><b>7.1</b> Goal</a></li>
+<li class="chapter" data-level="7.2" data-path="socionetsm.html"><a href="socionetsm.html#getting-started"><i class="fa fa-check"></i><b>7.2</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="socionetsm.html"><a href="socionetsm.html#custom-functions"><i class="fa fa-check"></i><b>7.2.1</b> Custom functions</a></li>
+<li class="chapter" data-level="7.2.2" data-path="socionetsm.html"><a href="socionetsm.html#packages"><i class="fa fa-check"></i><b>7.2.2</b> packages</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="data-4.html"><a href="data-4.html"><i class="fa fa-check"></i><b>10</b> Data</a>
+<li class="chapter" data-level="7.3" data-path="socionetsm.html"><a href="socionetsm.html#the-logic-of-saoms"><i class="fa fa-check"></i><b>7.3</b> The logic of SAOMs</a></li>
+<li class="chapter" data-level="7.4" data-path="socionetsm.html"><a href="socionetsm.html#rsiena-as-abm"><i class="fa fa-check"></i><b>7.4</b> RSiena as ABM</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="data-4.html"><a href="data-4.html#sampling-2"><i class="fa fa-check"></i><b>10.1</b> Sampling</a></li>
-<li class="chapter" data-level="10.2" data-path="data-4.html"><a href="data-4.html#ethical-considerations-2"><i class="fa fa-check"></i><b>10.2</b> Ethical considerations</a></li>
-<li class="chapter" data-level="10.3" data-path="data-4.html"><a href="data-4.html#measurement-2"><i class="fa fa-check"></i><b>10.3</b> Measurement</a></li>
+<li class="chapter" data-level="7.4.1" data-path="socionetsm.html"><a href="socionetsm.html#rsienas-ministep"><i class="fa fa-check"></i><b>7.4.1</b> RSiena’s ministep</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="socionetsm.html"><a href="socionetsm.html#simulation-logic"><i class="fa fa-check"></i><b>7.5</b> Simulation Logic</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="socionetsm.html"><a href="socionetsm.html#sample-an-ego"><i class="fa fa-check"></i><b>7.5.1</b> Sample an ego</a></li>
+<li class="chapter" data-level="7.5.2" data-path="socionetsm.html"><a href="socionetsm.html#possible-networks-after-ministep"><i class="fa fa-check"></i><b>7.5.2</b> Possible networks after ministep</a></li>
+<li class="chapter" data-level="7.5.3" data-path="socionetsm.html"><a href="socionetsm.html#network-statistics"><i class="fa fa-check"></i><b>7.5.3</b> Network statistics</a></li>
+<li class="chapter" data-level="7.5.4" data-path="socionetsm.html"><a href="socionetsm.html#evaluation-function"><i class="fa fa-check"></i><b>7.5.4</b> Evaluation function</a></li>
+<li class="chapter" data-level="7.5.5" data-path="socionetsm.html"><a href="socionetsm.html#choice-function"><i class="fa fa-check"></i><b>7.5.5</b> Choice function</a></li>
+<li class="chapter" data-level="7.5.6" data-path="socionetsm.html"><a href="socionetsm.html#stopping-rule"><i class="fa fa-check"></i><b>7.5.6</b> Stopping rule</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="socionetsm.html"><a href="socionetsm.html#simulation-example"><i class="fa fa-check"></i><b>7.6</b> Simulation example</a></li>
+<li class="chapter" data-level="7.7" data-path="socionetsm.html"><a href="socionetsm.html#estimation-logic"><i class="fa fa-check"></i><b>7.7</b> Estimation logic</a></li>
+<li class="chapter" data-level="7.8" data-path="socionetsm.html"><a href="socionetsm.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>7.8</b> Interpretation of parameters</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="socionetsm.html"><a href="socionetsm.html#rp"><i class="fa fa-check"></i><b>7.8.1</b> Rate parameter</a></li>
+<li class="chapter" data-level="7.8.2" data-path="socionetsm.html"><a href="socionetsm.html#network-statistics-1"><i class="fa fa-check"></i><b>7.8.2</b> Network statistics</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>IV Webscraping</b></span></li>
-<li class="chapter" data-level="11" data-path="webintro.html"><a href="webintro.html"><i class="fa fa-check"></i><b>11</b> Webscraping for Social Scientists</a>
+<li class="chapter" data-level="8" data-path="webintro.html"><a href="webintro.html"><i class="fa fa-check"></i><b>8</b> Webscraping for Social Scientists</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="webintro.html"><a href="webintro.html#chapter-overview"><i class="fa fa-check"></i><b>11.1</b> Chapter overview</a>
+<li class="chapter" data-level="8.1" data-path="webintro.html"><a href="webintro.html#chapter-overview"><i class="fa fa-check"></i><b>8.1</b> Chapter overview</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="webintro.html"><a href="webintro.html#definitions"><i class="fa fa-check"></i><b>11.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="8.1.1" data-path="webintro.html"><a href="webintro.html#definitions"><i class="fa fa-check"></i><b>8.1.1</b> Definitions</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="webintro.html"><a href="webintro.html#promises-and-pitfalls"><i class="fa fa-check"></i><b>11.2</b> Promises and pitfalls</a>
+<li class="chapter" data-level="8.2" data-path="webintro.html"><a href="webintro.html#promises-and-pitfalls"><i class="fa fa-check"></i><b>8.2</b> Promises and pitfalls</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="webintro.html"><a href="webintro.html#promises"><i class="fa fa-check"></i><b>11.2.1</b> Promises</a></li>
-<li class="chapter" data-level="11.2.2" data-path="webintro.html"><a href="webintro.html#pitfalls"><i class="fa fa-check"></i><b>11.2.2</b> Pitfalls</a></li>
+<li class="chapter" data-level="8.2.1" data-path="webintro.html"><a href="webintro.html#promises"><i class="fa fa-check"></i><b>8.2.1</b> Promises</a></li>
+<li class="chapter" data-level="8.2.2" data-path="webintro.html"><a href="webintro.html#pitfalls"><i class="fa fa-check"></i><b>8.2.2</b> Pitfalls</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="webintro.html"><a href="webintro.html#where-does-this-lead-us"><i class="fa fa-check"></i><b>11.3</b> Where does this lead us?</a></li>
-<li class="chapter" data-level="11.4" data-path="webintro.html"><a href="webintro.html#ethics"><i class="fa fa-check"></i><b>11.4</b> Ethics</a></li>
-<li class="chapter" data-level="11.5" data-path="webintro.html"><a href="webintro.html#webscraping-techniques"><i class="fa fa-check"></i><b>11.5</b> Webscraping techniques</a>
+<li class="chapter" data-level="8.3" data-path="webintro.html"><a href="webintro.html#where-does-this-lead-us"><i class="fa fa-check"></i><b>8.3</b> Where does this lead us?</a></li>
+<li class="chapter" data-level="8.4" data-path="webintro.html"><a href="webintro.html#ethics"><i class="fa fa-check"></i><b>8.4</b> Ethics</a></li>
+<li class="chapter" data-level="8.5" data-path="webintro.html"><a href="webintro.html#webscraping-techniques"><i class="fa fa-check"></i><b>8.5</b> Webscraping techniques</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="webintro.html"><a href="webintro.html#manual"><i class="fa fa-check"></i><b>11.5.1</b> Manual</a></li>
-<li class="chapter" data-level="11.5.2" data-path="webintro.html"><a href="webintro.html#apis"><i class="fa fa-check"></i><b>11.5.2</b> APIs</a></li>
-<li class="chapter" data-level="11.5.3" data-path="webintro.html"><a href="webintro.html#crawling"><i class="fa fa-check"></i><b>11.5.3</b> Crawling</a></li>
-<li class="chapter" data-level="11.5.4" data-path="webintro.html"><a href="webintro.html#industry-science-collaboration"><i class="fa fa-check"></i><b>11.5.4</b> Industry-Science Collaboration</a></li>
+<li class="chapter" data-level="8.5.1" data-path="webintro.html"><a href="webintro.html#manual"><i class="fa fa-check"></i><b>8.5.1</b> Manual</a></li>
+<li class="chapter" data-level="8.5.2" data-path="webintro.html"><a href="webintro.html#apis"><i class="fa fa-check"></i><b>8.5.2</b> APIs</a></li>
+<li class="chapter" data-level="8.5.3" data-path="webintro.html"><a href="webintro.html#crawling"><i class="fa fa-check"></i><b>8.5.3</b> Crawling</a></li>
+<li class="chapter" data-level="8.5.4" data-path="webintro.html"><a href="webintro.html#industry-science-collaboration"><i class="fa fa-check"></i><b>8.5.4</b> Industry-Science Collaboration</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="webintro.html"><a href="webintro.html#hands-on-webscraping"><i class="fa fa-check"></i><b>11.6</b> Hands-on webscraping</a>
+<li class="chapter" data-level="8.6" data-path="webintro.html"><a href="webintro.html#hands-on-webscraping"><i class="fa fa-check"></i><b>8.6</b> Hands-on webscraping</a>
 <ul>
-<li class="chapter" data-level="11.6.1" data-path="webintro.html"><a href="webintro.html#staging-your-script"><i class="fa fa-check"></i><b>11.6.1</b> Staging your script</a></li>
-<li class="chapter" data-level="11.6.2" data-path="webintro.html"><a href="webintro.html#getting-anchor-data"><i class="fa fa-check"></i><b>11.6.2</b> Getting “anchor” data</a></li>
-<li class="chapter" data-level="11.6.3" data-path="webintro.html"><a href="webintro.html#google-scholar-profiles-and-publications"><i class="fa fa-check"></i><b>11.6.3</b> Google Scholar Profiles and Publications</a></li>
-<li class="chapter" data-level="11.6.4" data-path="webintro.html"><a href="webintro.html#getting-collaborators"><i class="fa fa-check"></i><b>11.6.4</b> Getting collaborators</a></li>
-<li class="chapter" data-level="11.6.5" data-path="webintro.html"><a href="webintro.html#data-exploration"><i class="fa fa-check"></i><b>11.6.5</b> Data exploration</a></li>
+<li class="chapter" data-level="8.6.1" data-path="webintro.html"><a href="webintro.html#staging-your-script"><i class="fa fa-check"></i><b>8.6.1</b> Staging your script</a></li>
+<li class="chapter" data-level="8.6.2" data-path="webintro.html"><a href="webintro.html#getting-anchor-data"><i class="fa fa-check"></i><b>8.6.2</b> Getting “anchor” data</a></li>
+<li class="chapter" data-level="8.6.3" data-path="webintro.html"><a href="webintro.html#google-scholar-profiles-and-publications"><i class="fa fa-check"></i><b>8.6.3</b> Google Scholar Profiles and Publications</a></li>
+<li class="chapter" data-level="8.6.4" data-path="webintro.html"><a href="webintro.html#getting-collaborators"><i class="fa fa-check"></i><b>8.6.4</b> Getting collaborators</a></li>
+<li class="chapter" data-level="8.6.5" data-path="webintro.html"><a href="webintro.html#data-exploration"><i class="fa fa-check"></i><b>8.6.5</b> Data exploration</a></li>
 </ul></li>
-<li class="chapter" data-level="11.7" data-path="webintro.html"><a href="webintro.html#assignments"><i class="fa fa-check"></i><b>11.7</b> Assignments</a>
+<li class="chapter" data-level="8.7" data-path="webintro.html"><a href="webintro.html#assignments"><i class="fa fa-check"></i><b>8.7</b> Assignments</a>
 <ul>
-<li class="chapter" data-level="11.7.1" data-path="webintro.html"><a href="webintro.html#assignment-1---theoretical"><i class="fa fa-check"></i><b>11.7.1</b> Assignment 1 - Theoretical</a></li>
-<li class="chapter" data-level="11.7.2" data-path="webintro.html"><a href="webintro.html#assignment-2---practical"><i class="fa fa-check"></i><b>11.7.2</b> Assignment 2 - Practical</a></li>
+<li class="chapter" data-level="8.7.1" data-path="webintro.html"><a href="webintro.html#assignment-1---theoretical"><i class="fa fa-check"></i><b>8.7.1</b> Assignment 1 - Theoretical</a></li>
+<li class="chapter" data-level="8.7.2" data-path="webintro.html"><a href="webintro.html#assignment-2---practical"><i class="fa fa-check"></i><b>8.7.2</b> Assignment 2 - Practical</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>V Network Visualization</b></span></li>
-<li class="chapter" data-level="12" data-path="network-visualization.html"><a href="network-visualization.html"><i class="fa fa-check"></i><b>12</b> Network Visualization</a>
+<li class="chapter" data-level="9" data-path="network-visualization.html"><a href="network-visualization.html"><i class="fa fa-check"></i><b>9</b> Network Visualization</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="network-visualization.html"><a href="network-visualization.html#zacharys-karate-club"><i class="fa fa-check"></i><b>12.1</b> Zachary’s karate club</a>
+<li class="chapter" data-level="9.1" data-path="network-visualization.html"><a href="network-visualization.html#zacharys-karate-club"><i class="fa fa-check"></i><b>9.1</b> Zachary’s karate club</a>
 <ul>
-<li class="chapter" data-level="12.1.1" data-path="network-visualization.html"><a href="network-visualization.html#descriptive-statistics"><i class="fa fa-check"></i><b>12.1.1</b> Descriptive statistics</a></li>
-<li class="chapter" data-level="12.1.2" data-path="network-visualization.html"><a href="network-visualization.html#dyad-census"><i class="fa fa-check"></i><b>12.1.2</b> dyad-census</a></li>
-<li class="chapter" data-level="12.1.3" data-path="network-visualization.html"><a href="network-visualization.html#triad-census"><i class="fa fa-check"></i><b>12.1.3</b> triad-census</a></li>
-<li class="chapter" data-level="12.1.4" data-path="network-visualization.html"><a href="network-visualization.html#network-visualisation"><i class="fa fa-check"></i><b>12.1.4</b> Network visualisation</a></li>
+<li class="chapter" data-level="9.1.1" data-path="network-visualization.html"><a href="network-visualization.html#descriptive-statistics"><i class="fa fa-check"></i><b>9.1.1</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="9.1.2" data-path="network-visualization.html"><a href="network-visualization.html#dyad-census"><i class="fa fa-check"></i><b>9.1.2</b> dyad-census</a></li>
+<li class="chapter" data-level="9.1.3" data-path="network-visualization.html"><a href="network-visualization.html#triad-census"><i class="fa fa-check"></i><b>9.1.3</b> triad-census</a></li>
+<li class="chapter" data-level="9.1.4" data-path="network-visualization.html"><a href="network-visualization.html#network-visualisation"><i class="fa fa-check"></i><b>9.1.4</b> Network visualisation</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="network-visualization.html"><a href="network-visualization.html#twittersphere-in-the-dutch-hop"><i class="fa fa-check"></i><b>12.2</b> Twittersphere in the Dutch HoP</a>
+<li class="chapter" data-level="9.2" data-path="network-visualization.html"><a href="network-visualization.html#twittersphere-in-the-dutch-hop"><i class="fa fa-check"></i><b>9.2</b> Twittersphere in the Dutch HoP</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="network-visualization.html"><a href="network-visualization.html#descriptive-statistics-1"><i class="fa fa-check"></i><b>12.2.1</b> Descriptive statistics</a></li>
-<li class="chapter" data-level="12.2.2" data-path="network-visualization.html"><a href="network-visualization.html#first-plots"><i class="fa fa-check"></i><b>12.2.2</b> First plots</a></li>
-<li class="chapter" data-level="12.2.3" data-path="network-visualization.html"><a href="network-visualization.html#from-directed-to-reciprocated-ties"><i class="fa fa-check"></i><b>12.2.3</b> From directed to reciprocated ties</a></li>
-<li class="chapter" data-level="12.2.4" data-path="network-visualization.html"><a href="network-visualization.html#select-nodes-to-plot"><i class="fa fa-check"></i><b>12.2.4</b> Select nodes to plot</a></li>
-<li class="chapter" data-level="12.2.5" data-path="network-visualization.html"><a href="network-visualization.html#changing-vertices"><i class="fa fa-check"></i><b>12.2.5</b> Changing vertices</a></li>
-<li class="chapter" data-level="12.2.6" data-path="network-visualization.html"><a href="network-visualization.html#changing-edges-i"><i class="fa fa-check"></i><b>12.2.6</b> Changing edges I</a></li>
-<li class="chapter" data-level="12.2.7" data-path="network-visualization.html"><a href="network-visualization.html#add-a-legend"><i class="fa fa-check"></i><b>12.2.7</b> Add a legend</a></li>
-<li class="chapter" data-level="12.2.8" data-path="network-visualization.html"><a href="network-visualization.html#coordinates"><i class="fa fa-check"></i><b>12.2.8</b> Coordinates</a></li>
-<li class="chapter" data-level="12.2.9" data-path="network-visualization.html"><a href="network-visualization.html#changing-edges-ii"><i class="fa fa-check"></i><b>12.2.9</b> Changing edges II</a></li>
+<li class="chapter" data-level="9.2.1" data-path="network-visualization.html"><a href="network-visualization.html#descriptive-statistics-des.twit"><i class="fa fa-check"></i><b>9.2.1</b> Descriptive statistics {des.twit}</a></li>
+<li class="chapter" data-level="9.2.2" data-path="network-visualization.html"><a href="network-visualization.html#first-plots"><i class="fa fa-check"></i><b>9.2.2</b> First plots</a></li>
+<li class="chapter" data-level="9.2.3" data-path="network-visualization.html"><a href="network-visualization.html#from-directed-to-reciprocated-ties"><i class="fa fa-check"></i><b>9.2.3</b> From directed to reciprocated ties</a></li>
+<li class="chapter" data-level="9.2.4" data-path="network-visualization.html"><a href="network-visualization.html#select-nodes-to-plot"><i class="fa fa-check"></i><b>9.2.4</b> Select nodes to plot</a></li>
+<li class="chapter" data-level="9.2.5" data-path="network-visualization.html"><a href="network-visualization.html#changing-vertices"><i class="fa fa-check"></i><b>9.2.5</b> Changing vertices</a></li>
+<li class="chapter" data-level="9.2.6" data-path="network-visualization.html"><a href="network-visualization.html#changing-edges-i"><i class="fa fa-check"></i><b>9.2.6</b> Changing edges I</a></li>
+<li class="chapter" data-level="9.2.7" data-path="network-visualization.html"><a href="network-visualization.html#add-a-legend"><i class="fa fa-check"></i><b>9.2.7</b> Add a legend</a></li>
+<li class="chapter" data-level="9.2.8" data-path="network-visualization.html"><a href="network-visualization.html#coordinates"><i class="fa fa-check"></i><b>9.2.8</b> Coordinates</a></li>
+<li class="chapter" data-level="9.2.9" data-path="network-visualization.html"><a href="network-visualization.html#changing-edges-ii"><i class="fa fa-check"></i><b>9.2.9</b> Changing edges II</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="network-visualization.html"><a href="network-visualization.html#co-author-networks"><i class="fa fa-check"></i><b>12.3</b> Co-author networks</a></li>
-<li class="chapter" data-level="12.4" data-path="network-visualization.html"><a href="network-visualization.html#asplots"><i class="fa fa-check"></i><b>12.4</b> Assignment</a></li>
+<li class="chapter" data-level="9.3" data-path="network-visualization.html"><a href="network-visualization.html#co-author-networks"><i class="fa fa-check"></i><b>9.3</b> Co-author networks</a></li>
+<li class="chapter" data-level="9.4" data-path="network-visualization.html"><a href="network-visualization.html#asplots"><i class="fa fa-check"></i><b>9.4</b> Assignment</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="tutorial.html"><a href="tutorial.html"><i class="fa fa-check"></i><b>A</b> Introduction to R for SNA</a>
@@ -450,15 +449,779 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="socionetsm" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Methods</h1>
-<div id="causes-4" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Causes</h2>
+<div id="socionetsm" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Methods<a href="socionetsm.html#socionetsm" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>There are many methods for analyzing the four theoretical dimensions of social networks (i.e., size, composition, structure, evolution).</p>
+<p>If we focus on the explanation of the micro-mechanisms that bring about the structure of a social network, I would say there are two main flavors within the social sciences:</p>
+<ul>
+<li>Exponential-family Random Graph Models: estimated for example with <code>ergm</code> see the <a href="https://statnet.org/">statnet</a> website.<br />
+</li>
+<li>Stochastic Actor Orientated Models: estimated for example with <code>RSiena</code> see the Siena main page <a href="https://www.stats.ox.ac.uk/~snijders/siena/siena.html">Siena</a></li>
+</ul>
+<p>For a comparison of the two approaches and some advice on which method to choose see <span class="citation">(<a href="#ref-Block2019">Block, Stadtfeld, and Snijders 2019</a>)</span>.</p>
+<p>Ideally, you should try to test your hypotheses with both methods. And if results differ across models, …well try to understand why they do.</p>
+<p>In what follows I will focus on RSiena and I have several reasons for this:</p>
+<ol style="list-style-type: decimal">
+<li>we can use the micro-mechansism not only to explain the evoluation of network structure but also of network composition. Phrased otherwise, With this method (and the right type of data) it is possible to distinguish between selection and influence processes<br />
+</li>
+<li>I have way more expertise with RSiena than with ergm<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a><br />
+</li>
+<li>I think this book has something to add to the current Turorials for and introductions of RSiena.</li>
+</ol>
+<div id="goal" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Goal<a href="socionetsm.html#goal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The goal of this chapter is that after reading it you understand the very basics of RSiena and are able to read <em>and understand</em> the <a href="https://www.stats.ox.ac.uk/~snijders/siena/RSiena_Manual.pdf">manual</a> and that you can follow the different tutorials on RSiena on the RSiena website (for .rmd style see <a href="https://jochemtolsma.github.io/RSiena-scripts/">here</a>).</p>
 </div>
-<div id="consequences-4" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Consequences</h2>
+<div id="getting-started" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Getting started<a href="socionetsm.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Start with clean workspace</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb62-1"><a href="socionetsm.html#cb62-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<div id="custom-functions" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Custom functions<a href="socionetsm.html#custom-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>fpackage.check</code>: Check if packages are installed (and install if not) in R (<a href="https://vbaliga.github.io/verify-that-r-packages-are-installed-and-loaded/">source</a>).<br />
+</li>
+<li><code>fsave</code>: Save to processed data in repository<br />
+</li>
+<li><code>fload</code>: To load the files back after an <code>fsave</code><br />
+</li>
+<li><code>fshowdf</code>: To print objects (tibbles / data.frame) nicely on screen in .rmd</li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb63-1"><a href="socionetsm.html#cb63-1"></a>fpackage.check <span class="ot">&lt;-</span> <span class="cf">function</span>(packages) {</span>
+<span id="cb63-2"><a href="socionetsm.html#cb63-2"></a>    <span class="fu">lapply</span>(packages, <span class="at">FUN =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb63-3"><a href="socionetsm.html#cb63-3"></a>        <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb63-4"><a href="socionetsm.html#cb63-4"></a>            <span class="fu">install.packages</span>(x, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb63-5"><a href="socionetsm.html#cb63-5"></a>            <span class="fu">library</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb63-6"><a href="socionetsm.html#cb63-6"></a>        }</span>
+<span id="cb63-7"><a href="socionetsm.html#cb63-7"></a>    })</span>
+<span id="cb63-8"><a href="socionetsm.html#cb63-8"></a>}</span>
+<span id="cb63-9"><a href="socionetsm.html#cb63-9"></a></span>
+<span id="cb63-10"><a href="socionetsm.html#cb63-10"></a>fsave <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">file =</span> <span class="cn">NULL</span>, <span class="at">location =</span> <span class="st">&quot;./data/processed/&quot;</span>) {</span>
+<span id="cb63-11"><a href="socionetsm.html#cb63-11"></a>    <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">&quot;data&quot;</span>), <span class="fu">dir.create</span>(<span class="st">&quot;data&quot;</span>), <span class="cn">FALSE</span>)</span>
+<span id="cb63-12"><a href="socionetsm.html#cb63-12"></a>    <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">&quot;data/processed&quot;</span>), <span class="fu">dir.create</span>(<span class="st">&quot;data/processed&quot;</span>), <span class="cn">FALSE</span>)</span>
+<span id="cb63-13"><a href="socionetsm.html#cb63-13"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(file))</span>
+<span id="cb63-14"><a href="socionetsm.html#cb63-14"></a>        file <span class="ot">=</span> <span class="fu">deparse</span>(<span class="fu">substitute</span>(x))</span>
+<span id="cb63-15"><a href="socionetsm.html#cb63-15"></a>    datename <span class="ot">&lt;-</span> <span class="fu">substr</span>(<span class="fu">gsub</span>(<span class="st">&quot;[:-]&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="fu">Sys.time</span>()), <span class="dv">1</span>, <span class="dv">8</span>)</span>
+<span id="cb63-16"><a href="socionetsm.html#cb63-16"></a>    totalname <span class="ot">&lt;-</span> <span class="fu">paste</span>(location, datename, file, <span class="st">&quot;.rda&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb63-17"><a href="socionetsm.html#cb63-17"></a>    <span class="fu">save</span>(x, <span class="at">file =</span> totalname)  <span class="co">#need to fix if file is reloaded as input name, not as x. </span></span>
+<span id="cb63-18"><a href="socionetsm.html#cb63-18"></a>}</span>
+<span id="cb63-19"><a href="socionetsm.html#cb63-19"></a></span>
+<span id="cb63-20"><a href="socionetsm.html#cb63-20"></a>fload <span class="ot">&lt;-</span> <span class="cf">function</span>(filename) {</span>
+<span id="cb63-21"><a href="socionetsm.html#cb63-21"></a>    <span class="fu">load</span>(filename)</span>
+<span id="cb63-22"><a href="socionetsm.html#cb63-22"></a>    <span class="fu">get</span>(<span class="fu">ls</span>()[<span class="fu">ls</span>() <span class="sc">!=</span> <span class="st">&quot;filename&quot;</span>])</span>
+<span id="cb63-23"><a href="socionetsm.html#cb63-23"></a>}</span>
+<span id="cb63-24"><a href="socionetsm.html#cb63-24"></a></span>
+<span id="cb63-25"><a href="socionetsm.html#cb63-25"></a>fshowdf <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb63-26"><a href="socionetsm.html#cb63-26"></a>    knitr<span class="sc">::</span><span class="fu">kable</span>(x, <span class="at">digits =</span> <span class="dv">2</span>, <span class="st">&quot;html&quot;</span>, ...) <span class="sc">%&gt;%</span></span>
+<span id="cb63-27"><a href="socionetsm.html#cb63-27"></a>        kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb63-28"><a href="socionetsm.html#cb63-28"></a>        kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="at">height =</span> <span class="st">&quot;300px&quot;</span>)</span>
+<span id="cb63-29"><a href="socionetsm.html#cb63-29"></a>}</span></code></pre></div>
+</div>
+<div id="packages" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> packages<a href="socionetsm.html#packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>RSiena</code>: what do you think?</li>
+<li><code>RsienaTwoStep</code>: this packages assesses the ministep assumption of RSiena but is useful for this tutorial<br />
+</li>
+<li><code>devtools</code>: to load from github<br />
+</li>
+<li><code>igraph</code>: plotting tools. For a tutorial on plotting networks, see <a href="https://snass.netlify.app/network-visualization.html">our chapter in SNASS</a></li>
+</ul>
+<div class="sourceCode" id="cb64"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb64-1"><a href="socionetsm.html#cb64-1"></a>packages <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;RSiena&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;igraph&quot;</span>)</span>
+<span id="cb64-2"><a href="socionetsm.html#cb64-2"></a><span class="fu">fpackage.check</span>(packages)</span>
+<span id="cb64-3"><a href="socionetsm.html#cb64-3"></a><span class="co"># devtools::install_github(&#39;JochemTolsma/RsienaTwoStep&#39;, build_vignettes=TRUE)</span></span>
+<span id="cb64-4"><a href="socionetsm.html#cb64-4"></a>packages <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;RsienaTwoStep&quot;</span>)</span>
+<span id="cb64-5"><a href="socionetsm.html#cb64-5"></a><span class="fu">fpackage.check</span>(packages)</span></code></pre></div>
 <hr />
 </div>
+</div>
+<div id="the-logic-of-saoms" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> The logic of SAOMs<a href="socionetsm.html#the-logic-of-saoms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>See <span class="citation">(<a href="#ref-ripley2022manual">Ripley et al. 2022</a>)</span> paragraph 2.1</p>
+</div>
+<div id="rsiena-as-abm" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> RSiena as ABM<a href="socionetsm.html#rsiena-as-abm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>RSiena models <em>the evolution</em> of network structures and/or the behavior of the social agents.
+It takes the current situation <span class="math inline">\(T_0\)</span> as starting point. It estimates the ‘rules’ for the agents how to change their ties and/or behavior. If the model is specified correctly, these rules (or micro mechanisms) have led the situation at <span class="math inline">\(T_0\)</span> to evolve into the situation observed at <span class="math inline">\(T_1\)</span>.</p>
+<p>I would say these ‘rules’ are our <strong><em>micro theory of action</em></strong>.<br />
+Please note that our behavior may depend on the situation we are in. Similarly, the ‘rules’ we discover with RSiena are thus conditional on the situation at <span class="math inline">\(T_0\)</span>.</p>
+<p>If we know the ‘rules’ of the social agents, we can also simulate future networks. And I think this aspect will help us to understand what the ‘rules’ of the social agents are and to understand what is estimated by <code>RSiena</code>.</p>
+<div id="rsienas-ministep" class="section level3 hasAnchor" number="7.4.1">
+<h3><span class="header-section-number">7.4.1</span> RSiena’s ministep<a href="socionetsm.html#rsienas-ministep" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before we can start to simulate or understand RSiena we need to know what is meant by the ministep assumption.</p>
+<p>Let us quote the manual</p>
+<p class="quote">
+The Stochastic Actor-Oriented Model can be regarded as an agent-based (‘actorbased’) simulation model of the network evolution; where all network changes are decomposed into very small steps, so-called ministeps, in which one actor creates or terminates one outgoing tie.
+…
+…it does not necessarily reflect a commitment to or belief in any particular theory of action elaborated in the scientific disciplines.
+…
+It is assumed that actors change their scores on the dependent variable (tie or behavior) such that they improve their total satisfaction […] with her/his local network neighborhood configuration.
+…
+Actors only evaluate all possible results in the local network neighborhood configurations that result from one ministep.
+</p>
+<p>Thus, what does the SAOM of RSiena not do??:</p>
+<ul>
+<li>No re-activity<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>: The act of re-affirming, making or breaking an outgoing tie does not trigger a response by the involved alter<br />
+</li>
+<li>No simultaneity: Changes occur one by one<br />
+</li>
+<li>Hence also no cooperation, coordination or negotiation<br />
+</li>
+<li>No maximization of total utility:
+<ul>
+<li>No altruistic behavior: Individual utility is maximized, not total utility<br />
+</li>
+</ul></li>
+<li>No strategic behavior:
+<ul>
+<li>Very finite time horizon. Agent does not predict how his/her future local network neighborhood may change after:
+<ul>
+<li>Making another ministep him/herself<br />
+</li>
+<li>A ministep of other agents</li>
+</ul></li>
+<li>Hence also no investments</li>
+</ul></li>
+</ul>
+<p>This does not mean that RSiena cannot estimate (or better: ‘fit’) the evolution of networks/behavior that are the consequences of these more complex ‘rules’ or micro theories but it assumes actors only make ministeps.</p>
+</div>
+</div>
+<div id="simulation-logic" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Simulation Logic<a href="socionetsm.html#simulation-logic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Sample ego<br />
+</li>
+<li>Construct possible alternative future networks based on all possible ministeps of ego<br />
+</li>
+<li>Calculate how sampled ego evaluates these possible networks<br />
+</li>
+<li>Let the ego pick a network, that is, let agent decide on a tie-change<br />
+</li>
+<li>GOTO 1 (STOPPING RULE: until you think we have made enough ministeps)</li>
+</ol>
+<div id="sample-an-ego" class="section level3 hasAnchor" number="7.5.1">
+<h3><span class="header-section-number">7.5.1</span> Sample an ego<a href="socionetsm.html#sample-an-ego" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us first start with a network. We will use the build in network of <code>RsienaTwoStep</code>, namely <code>net1</code>.</p>
+<p>This is what the adjacency matrix looks like:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb65-1"><a href="socionetsm.html#cb65-1"></a>net1</span></code></pre></div>
+<pre><code>#&gt;       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+#&gt;  [1,]    0    0    0    0    0    0    0    0    0     0
+#&gt;  [2,]    0    0    1    0    0    0    0    0    0     0
+#&gt;  [3,]    1    0    0    0    0    1    0    0    0     0
+#&gt;  [4,]    0    0    0    0    0    0    0    0    1     0
+#&gt;  [5,]    0    0    0    0    0    0    0    0    0     0
+#&gt;  [6,]    0    0    0    0    0    0    0    0    1     1
+#&gt;  [7,]    1    0    0    0    0    0    0    0    0     0
+#&gt;  [8,]    0    0    0    0    0    0    0    0    0     1
+#&gt;  [9,]    0    0    0    1    0    0    0    1    0     0
+#&gt; [10,]    0    0    0    0    0    0    0    1    1     0</code></pre>
+<p>Naturally, we can also plot <code>net1</code>.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb67-1"><a href="socionetsm.html#cb67-1"></a>net1g <span class="ot">&lt;-</span> <span class="fu">graph_from_adjacency_matrix</span>(net1, <span class="at">mode =</span> <span class="st">&quot;directed&quot;</span>)</span>
+<span id="cb67-2"><a href="socionetsm.html#cb67-2"></a>coords <span class="ot">&lt;-</span> <span class="fu">layout_</span>(net1g, <span class="fu">nicely</span>())  <span class="co">#let us keep the layout</span></span>
+<span id="cb67-3"><a href="socionetsm.html#cb67-3"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
+<span id="cb67-4"><a href="socionetsm.html#cb67-4"></a>{</span>
+<span id="cb67-5"><a href="socionetsm.html#cb67-5"></a>    <span class="fu">plot.igraph</span>(net1g, <span class="at">layout =</span> coords)</span>
+<span id="cb67-6"><a href="socionetsm.html#cb67-6"></a>    graphics<span class="sc">::</span><span class="fu">box</span>()</span>
+<span id="cb67-7"><a href="socionetsm.html#cb67-7"></a>}</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="045-Socionets_files/figure-html/unnamed-chunk-6-1.png" alt="net1" width="672" />
+<p class="caption">
+Figure 7.1: net1
+</p>
+</div>
+<p>So only one actor is allowed to make one ministep. But who? This is determined by the rate function and it may depend on ego-characteristics of our social agents (e.g. male/female) and/or on structural-characteristics of our social agents (e.g. indegree, outdegree). And all this can be estimated within RSiena. More often than note, we simply assume that all actors have an equal chance of being selected to make a ministep.</p>
+<p>For more information on the rate function see (ref:#rp).</p>
+<p>Okay, we can thus randomly select/sample an agent.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb68-1"><a href="socionetsm.html#cb68-1"></a><span class="fu">set.seed</span>(<span class="dv">24553253</span>)</span>
+<span id="cb68-2"><a href="socionetsm.html#cb68-2"></a>ego <span class="ot">&lt;-</span> <span class="fu">ts_select</span>(<span class="at">net =</span> net1, <span class="at">steps =</span> <span class="dv">1</span>)  <span class="co">#in rsienatwostep two actors may make a change together but here not</span></span>
+<span id="cb68-3"><a href="socionetsm.html#cb68-3"></a>ego</span></code></pre></div>
+<pre><code>#&gt; [1] 4</code></pre>
+</div>
+<div id="possible-networks-after-ministep" class="section level3 hasAnchor" number="7.5.2">
+<h3><span class="header-section-number">7.5.2</span> Possible networks after ministep<a href="socionetsm.html#possible-networks-after-ministep" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let us suppose we want to know what the possible networks are after all possible ministeps of <code>ego</code> who is part of <code>net1</code>. That is, let us assume that it is ego’s turn (ego#: 4) to decide on tie-change. What are the possible networks?</p>
+<p>The function <code>ts_alternatives_ministep()</code> returns a list of all possible networks after all possible tie-changes available to an ego given network da network.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb70-1"><a href="socionetsm.html#cb70-1"></a>options <span class="ot">&lt;-</span> <span class="fu">ts_alternatives_ministep</span>(<span class="at">net =</span> net1, <span class="at">ego =</span> ego)</span>
+<span id="cb70-2"><a href="socionetsm.html#cb70-2"></a>options</span>
+<span id="cb70-3"><a href="socionetsm.html#cb70-3"></a>plots <span class="ot">&lt;-</span> <span class="fu">lapply</span>(options, graph_from_adjacency_matrix, <span class="at">mode =</span> <span class="st">&quot;directed&quot;</span>)</span>
+<span id="cb70-4"><a href="socionetsm.html#cb70-4"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>) <span class="sc">+</span> <span class="fl">0.1</span>)</span>
+<span id="cb70-5"><a href="socionetsm.html#cb70-5"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb70-6"><a href="socionetsm.html#cb70-6"></a></span>
+<span id="cb70-7"><a href="socionetsm.html#cb70-7"></a>fplot <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb70-8"><a href="socionetsm.html#cb70-8"></a>    <span class="fu">plot.igraph</span>(x, <span class="at">layout =</span> coords, <span class="at">margin =</span> <span class="dv">0</span>)</span>
+<span id="cb70-9"><a href="socionetsm.html#cb70-9"></a>    graphics<span class="sc">::</span><span class="fu">box</span>()</span>
+<span id="cb70-10"><a href="socionetsm.html#cb70-10"></a>}</span>
+<span id="cb70-11"><a href="socionetsm.html#cb70-11"></a></span>
+<span id="cb70-12"><a href="socionetsm.html#cb70-12"></a><span class="fu">lapply</span>(plots, fplot)</span></code></pre></div>
+<p><img src="045-Socionets_files/figure-html/unnamed-chunk-8-1.png" width="672" /><img src="045-Socionets_files/figure-html/unnamed-chunk-8-2.png" width="672" /><img src="045-Socionets_files/figure-html/unnamed-chunk-8-3.png" width="672" /></p>
+</div>
+<div id="network-statistics" class="section level3 hasAnchor" number="7.5.3">
+<h3><span class="header-section-number">7.5.3</span> Network statistics<a href="socionetsm.html#network-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Which option will ego choose? Naturally this will depend on which network characteristics (or statistics), <span class="math inline">\(s_i\)</span> ego finds relevant. Let us suppose that ego bases its decision solely on the number of ties it sends to others and the number of reciprocated ties it has with others.</p>
+<p>Let us count the number of ties ego sends to alters.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb71-1"><a href="socionetsm.html#cb71-1"></a><span class="fu">ts_degree</span>(<span class="at">net =</span> options[[<span class="dv">1</span>]], <span class="at">ego =</span> ego)</span></code></pre></div>
+<pre><code>#&gt; [1] 2</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb73-1"><a href="socionetsm.html#cb73-1"></a><span class="co"># or for all options</span></span>
+<span id="cb73-2"><a href="socionetsm.html#cb73-2"></a></span>
+<span id="cb73-3"><a href="socionetsm.html#cb73-3"></a><span class="fu">lapply</span>(options, ts_degree, <span class="at">ego =</span> ego)</span></code></pre></div>
+<pre><code>#&gt; [[1]]
+#&gt; [1] 2
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] 2
+#&gt; 
+#&gt; [[3]]
+#&gt; [1] 2
+#&gt; 
+#&gt; [[4]]
+#&gt; [1] 1
+#&gt; 
+#&gt; [[5]]
+#&gt; [1] 2
+#&gt; 
+#&gt; [[6]]
+#&gt; [1] 2
+#&gt; 
+#&gt; [[7]]
+#&gt; [1] 2
+#&gt; 
+#&gt; [[8]]
+#&gt; [1] 2
+#&gt; 
+#&gt; [[9]]
+#&gt; [1] 0
+#&gt; 
+#&gt; [[10]]
+#&gt; [1] 2</code></pre>
+<p>And let us count the number of reciprocated ties</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb75-1"><a href="socionetsm.html#cb75-1"></a><span class="fu">lapply</span>(options, ts_recip, <span class="at">ego =</span> ego)</span></code></pre></div>
+<pre><code>#&gt; [[1]]
+#&gt; [1] 1
+#&gt; 
+#&gt; [[2]]
+#&gt; [1] 1
+#&gt; 
+#&gt; [[3]]
+#&gt; [1] 1
+#&gt; 
+#&gt; [[4]]
+#&gt; [1] 1
+#&gt; 
+#&gt; [[5]]
+#&gt; [1] 1
+#&gt; 
+#&gt; [[6]]
+#&gt; [1] 1
+#&gt; 
+#&gt; [[7]]
+#&gt; [1] 1
+#&gt; 
+#&gt; [[8]]
+#&gt; [1] 1
+#&gt; 
+#&gt; [[9]]
+#&gt; [1] 0
+#&gt; 
+#&gt; [[10]]
+#&gt; [1] 1</code></pre>
+<p>In the package <code>RsienaTwoStep</code> there are functions for the following network statistics <span class="math inline">\(s\)</span>:</p>
+<ul>
+<li>degree: <code>ts_degree()</code></li>
+<li>reciprocity: <code>ts_recip()</code><br />
+</li>
+<li>outdegree activity: <code>ts_outAct()</code></li>
+<li>indegree activity: <code>ts_inAct()</code></li>
+<li>outdegree popularity: <code>ts_outPop()</code></li>
+<li>indegree popularity: <code>ts_inPop()</code><br />
+</li>
+<li>transitivity: <code>ts_transTrip()</code></li>
+<li>mediated transitivity: <code>ts_transMedTrip()</code><br />
+</li>
+<li>transitive reciprocated triplets: <code>ts_transRecTrip()</code></li>
+<li>number of three-cycles: <code>ts_cycle3()</code></li>
+</ul>
+<p><span style="color: red;">Update: there are quite a lot more. But not very relevant for us at this time.</span></p>
+<p>See <span class="citation">Ripley et al. (<a href="#ref-ripley2022manual">2022</a>)</span> (Chapter 12) for the mathematical formulation. Naturally, you are free to define your own network statistics.</p>
+</div>
+<div id="evaluation-function" class="section level3 hasAnchor" number="7.5.4">
+<h3><span class="header-section-number">7.5.4</span> Evaluation function<a href="socionetsm.html#evaluation-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>But what evaluation value does ego attach to these network statistics and consequently to the network (in its vicinity) as a whole? Well these are the parameters, <span class="math inline">\(\beta_i\)</span>, you will normally estimate with <code>RSiena::siena07()</code>.
+Let us suppose the importance for:</p>
+<ul>
+<li>the statistic ‘degree’, <span class="math inline">\(\beta_1\)</span>, is -1<br />
+</li>
+<li>for the statistic ‘reciprocity’, <span class="math inline">\(\beta_2\)</span>, is 1.5.</li>
+</ul>
+<p>So you could calculate the evaluation of the network saved in <code>options[[4]]</code> by hand:</p>
+<p><span class="math display">\[f_{i}(x) = \Sigma_k\beta_ks_{ik}(x)  ,\]</span></p>
+<p>with <span class="math inline">\(f_{i}\)</span> the evaluation function for agent <span class="math inline">\(i\)</span>. <span class="math inline">\(s_{ik}(x)\)</span> are the network statistics <span class="math inline">\(k\)</span> for network <span class="math inline">\(x\)</span> and actor <span class="math inline">\(i\)</span> and <span class="math inline">\(\beta_k\)</span> the corresponding parameters (or importance).</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb77-1"><a href="socionetsm.html#cb77-1"></a>option <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb77-2"><a href="socionetsm.html#cb77-2"></a><span class="fu">ts_degree</span>(options[[option]], <span class="at">ego =</span> ego) <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span> <span class="sc">+</span> <span class="fu">ts_recip</span>(options[[option]], <span class="at">ego =</span> ego) <span class="sc">*</span> <span class="fl">1.5</span></span></code></pre></div>
+<pre><code>#&gt; [1] 0.5</code></pre>
+<p>Or you could use the <code>ts_eval()</code>.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb79-1"><a href="socionetsm.html#cb79-1"></a>eval <span class="ot">&lt;-</span> <span class="fu">ts_eval</span>(<span class="at">net =</span> options[[option]], <span class="at">ego =</span> ego, <span class="at">statistics =</span> <span class="fu">list</span>(ts_degree, ts_recip), <span class="at">parameters =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb79-2"><a href="socionetsm.html#cb79-2"></a>    <span class="fl">1.5</span>))</span>
+<span id="cb79-3"><a href="socionetsm.html#cb79-3"></a>eval</span></code></pre></div>
+<pre><code>#&gt; [1] 0.5</code></pre>
+<p>Now, let us calculate the evaluation of all possible networks:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb81-1"><a href="socionetsm.html#cb81-1"></a>eval <span class="ot">&lt;-</span> <span class="fu">sapply</span>(options, <span class="at">FUN =</span> ts_eval, <span class="at">ego =</span> ego, <span class="at">statistics =</span> <span class="fu">list</span>(ts_degree, ts_recip), <span class="at">parameters =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb81-2"><a href="socionetsm.html#cb81-2"></a>    <span class="fl">1.5</span>))</span>
+<span id="cb81-3"><a href="socionetsm.html#cb81-3"></a>eval</span>
+<span id="cb81-4"><a href="socionetsm.html#cb81-4"></a><span class="fu">print</span>(<span class="st">&quot;network with maximum evaluation score:&quot;</span>)</span>
+<span id="cb81-5"><a href="socionetsm.html#cb81-5"></a><span class="fu">which.max</span>(eval)</span></code></pre></div>
+<pre><code>#&gt;  [1] -0.5 -0.5 -0.5  0.5 -0.5 -0.5 -0.5 -0.5  0.0 -0.5
+#&gt; [1] &quot;network with maximum evaluation score:&quot;
+#&gt; [1] 4</code></pre>
+</div>
+<div id="choice-function" class="section level3 hasAnchor" number="7.5.5">
+<h3><span class="header-section-number">7.5.5</span> Choice function<a href="socionetsm.html#choice-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>So which option will ego choose? Naturally this will be a stochastic process. But we see that option 4 has the highest evaluation.
+We use McFadden’s choice function (for more information see <a href="https://en.wikipedia.org/wiki/Discrete_choice">wiki</a>), that is let <span class="math inline">\(P_{i,a=2}\)</span> be the probability that ego <span class="math inline">\(i\)</span> chooses network/alternative 2 (<span class="math inline">\(x^{a=2}\)</span>), let us denote this network as <span class="math inline">\(x^{a=2}\)</span>. The choice function is then given by:</p>
+<p><span class="math display">\[P_{i,a=2} = \frac{exp(f_i(x^{2}))}{\Sigma_{a=1}^A exp(f_i(x^a))},\]</span></p>
+<p>with <span class="math inline">\(s_i\)</span> a vector of the value of each network statistics for network <span class="math inline">\(i\)</span> and <span class="math inline">\(\beta\)</span> is the vector of parameter values. Hence, <span class="math inline">\(\mathbf{s_i}^\mathsf{T}\mathbf{\beta}\)</span> is the value of the evaluation for network <span class="math inline">\(i\)</span>.</p>
+<p>Let us force ego to make a decision.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb83-1"><a href="socionetsm.html#cb83-1"></a>choice <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(eval), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> <span class="fu">exp</span>(eval)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">exp</span>(eval)))</span>
+<span id="cb83-2"><a href="socionetsm.html#cb83-2"></a><span class="fu">print</span>(<span class="st">&quot;choice:&quot;</span>)</span>
+<span id="cb83-3"><a href="socionetsm.html#cb83-3"></a>choice</span>
+<span id="cb83-4"><a href="socionetsm.html#cb83-4"></a><span class="co"># print(&#39;network:&#39;) options[[choice]]</span></span></code></pre></div>
+<pre><code>#&gt; [1] &quot;choice:&quot;
+#&gt; [1] 10</code></pre>
+<p>If we repeat this process, that is…:</p>
+<ol style="list-style-type: decimal">
+<li>sample agent<br />
+</li>
+<li>construct possible alternative networks<br />
+</li>
+<li>calculate how sampled agent evaluates the possible networks<br />
+</li>
+<li>Let the agent pick a network, that is, let agent decide on a tie-change<br />
+</li>
+<li>GO BACK TO 1 (STOPPING RULE: until you think we have made enough ministeps)</li>
+</ol>
+<p>…we have an agent based model.</p>
+</div>
+<div id="stopping-rule" class="section level3 hasAnchor" number="7.5.6">
+<h3><span class="header-section-number">7.5.6</span> Stopping rule<a href="socionetsm.html#stopping-rule" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>But how many ministeps do we allow? Well, normally this is estimated by <code>siena07</code> by the <code>rate</code> parameter.<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a> If we do not make this rate parameter conditional on actor covariates or on network characteristics, the rate parameter can be interpreted as the average number of ministeps each actor in the network is allowed to make before time is up. Let us suppose the <code>rate</code> parameter is 2 . Thus in total the number of possible ministeps will be <code>nrow(net1)*rate</code>: 20. For a more detailed - <strong>and more correct</strong> - interpretation of the rate parameter in <code>siena07</code> see below. <!---add link---></p>
+</div>
+</div>
+<div id="simulation-example" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Simulation example<a href="socionetsm.html#simulation-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let us now simulate how the network <strong>could</strong> evolve given:<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a></p>
+<ul>
+<li>starting point is <code>net1</code></li>
+<li>rate is set to 2<br />
+</li>
+<li>we as scientists think only network statistics degree and reciprocity are important<br />
+</li>
+<li><code>RSiena::siena07</code> has determined the parameters for these statistics are -1 and 1.5 respectively<br />
+</li>
+<li>We adhere to the ministep assumption and hence set <code>p2step</code> to <code>c(1,0,0)</code></li>
+</ul>
+<pre><code>#&gt;       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+#&gt;  [1,]    0    0    0    0    0    0    0    0    0     0
+#&gt;  [2,]    0    0    1    0    0    0    0    0    0     0
+#&gt;  [3,]    1    0    0    0    0    1    0    0    0     0
+#&gt;  [4,]    0    0    0    0    0    0    0    0    1     0
+#&gt;  [5,]    0    0    0    0    0    0    0    0    0     0
+#&gt;  [6,]    0    0    0    0    0    0    0    0    1     1
+#&gt;  [7,]    1    0    0    0    0    0    0    0    0     0
+#&gt;  [8,]    0    0    0    0    0    0    0    0    0     1
+#&gt;  [9,]    0    0    0    1    0    0    0    1    0     0
+#&gt; [10,]    0    0    0    0    0    0    0    1    1     0</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb86-1"><a href="socionetsm.html#cb86-1"></a><span class="fu">ts_sims</span>(<span class="at">nsims =</span> <span class="dv">1</span>, <span class="at">net =</span> net1, <span class="at">rate =</span> <span class="dv">2</span>, <span class="at">statistics =</span> <span class="fu">list</span>(ts_degree, ts_recip), <span class="at">parameters =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="fl">1.5</span>),</span>
+<span id="cb86-2"><a href="socionetsm.html#cb86-2"></a>    <span class="at">p2step =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">chain =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>#&gt; [[1]]
+#&gt;       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+#&gt;  [1,]    0    0    0    0    1    1    0    0    0     0
+#&gt;  [2,]    0    0    1    0    0    1    0    0    0     0
+#&gt;  [3,]    0    0    0    0    1    1    0    0    0     0
+#&gt;  [4,]    0    0    0    0    0    1    0    0    1     1
+#&gt;  [5,]    0    0    0    0    0    0    0    0    0     0
+#&gt;  [6,]    0    0    0    0    0    0    0    0    1     1
+#&gt;  [7,]    0    0    0    0    0    0    0    0    0     0
+#&gt;  [8,]    0    0    0    0    0    0    0    0    0     0
+#&gt;  [9,]    1    0    0    1    0    0    0    0    0     0
+#&gt; [10,]    0    0    0    0    0    0    0    1    0     0</code></pre>
+</div>
+<div id="estimation-logic" class="section level2 hasAnchor" number="7.7">
+<h2><span class="header-section-number">7.7</span> Estimation logic<a href="socionetsm.html#estimation-logic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>So now you have some grasp of the logic of RSiena. But how does the estimation work?</p>
+<p>Well, that is quite complicated. But it goes something like this:<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a></p>
+<ol style="list-style-type: decimal">
+<li>Define model: researcher includes effects<br />
+</li>
+<li>initial parameter values of effects (commonly ‘0’)<br />
+</li>
+<li>simulate an outcome network based on these parameter values<br />
+</li>
+<li>compare the network statistics of the simulated outcome network with the observed outcome network (i.e. the <em>target values</em>)
+<ul>
+<li>based on the included effects. Thus the simulated network may contain 10 ties, but the observed network may contain 20 ties. Apparently, with the current parameter values we underestimate the density of the outcome network.<br />
+</li>
+</ul></li>
+<li>tweak/update parameter values in some smart way<br />
+</li>
+<li>GOTO 3 (BREAK RULE: until parameter values cannot be improved anymore / or reached good fit)<br />
+</li>
+<li>simulate a bunch of outcome networks with the obtained parameter values and compare the <em>expected values</em> of statistics of the outcome networks with the <em>target values</em>.
+<ul>
+<li>we can assess the fit<br />
+</li>
+<li>estimate SE of the parameters</li>
+</ul></li>
+</ol>
+</div>
+<div id="interpretation-of-parameters" class="section level2 hasAnchor" number="7.8">
+<h2><span class="header-section-number">7.8</span> Interpretation of parameters<a href="socionetsm.html#interpretation-of-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rp" class="section level3 hasAnchor" number="7.8.1">
+<h3><span class="header-section-number">7.8.1</span> Rate parameter<a href="socionetsm.html#rp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The estimated rate parameter has a nice interpretation: <strong>the estimated rate parameter refers to the expected number of opportunities for change per actor in a time period</strong>.</p>
+<p>Let me try to explain.</p>
+<p>The rate function of actor <em>i</em> is denoted:</p>
+<p><span class="math display">\[ \lambda_i(x) \]</span></p>
+<p>Suppose we have three actors: <em>i</em>, <em>j</em> and <em>k</em>. And suppose that the rate function is a constant, thus the rate function does not depend on the network structure or attributes of the actors. Thus suppose for example:</p>
+<ul>
+<li><span class="math inline">\(\lambda_i=5\)</span><br />
+</li>
+<li><span class="math inline">\(\lambda_j=10\)</span><br />
+</li>
+<li><span class="math inline">\(\lambda_k=15\)</span></li>
+</ul>
+<p>The waiting times of actors <em>i</em>, <em>j</em> and <em>k</em> are exponentially distributed with rate parameter <span class="math inline">\(\lambda\)</span>.
+What do these exponential distribution look like?</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb88-1"><a href="socionetsm.html#cb88-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb88-2"><a href="socionetsm.html#cb88-2"></a></span>
+<span id="cb88-3"><a href="socionetsm.html#cb88-3"></a>dist_5 <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">10000</span>, <span class="at">rate =</span> <span class="dv">5</span>)</span>
+<span id="cb88-4"><a href="socionetsm.html#cb88-4"></a><span class="fu">hist</span>(dist_5, <span class="at">main =</span> <span class="st">&quot;rate = lambda_i = 5&quot;</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">&quot;waiting times&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,</span>
+<span id="cb88-5"><a href="socionetsm.html#cb88-5"></a>    <span class="dv">9</span>))</span>
+<span id="cb88-6"><a href="socionetsm.html#cb88-6"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb88-7"><a href="socionetsm.html#cb88-7"></a></span>
+<span id="cb88-8"><a href="socionetsm.html#cb88-8"></a>dist_10 <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">10000</span>, <span class="at">rate =</span> <span class="dv">10</span>)</span>
+<span id="cb88-9"><a href="socionetsm.html#cb88-9"></a><span class="fu">hist</span>(dist_10, <span class="at">main =</span> <span class="st">&quot;rate= lambda_j = 10&quot;</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">&quot;waiting times&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,</span>
+<span id="cb88-10"><a href="socionetsm.html#cb88-10"></a>    <span class="dv">9</span>))</span>
+<span id="cb88-11"><a href="socionetsm.html#cb88-11"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb88-12"><a href="socionetsm.html#cb88-12"></a></span>
+<span id="cb88-13"><a href="socionetsm.html#cb88-13"></a>dist_15 <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">10000</span>, <span class="at">rate =</span> <span class="dv">15</span>)</span>
+<span id="cb88-14"><a href="socionetsm.html#cb88-14"></a><span class="fu">hist</span>(dist_10, <span class="at">main =</span> <span class="st">&quot;rate = lambda_k = 15&quot;</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">&quot;waiting times&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,</span>
+<span id="cb88-15"><a href="socionetsm.html#cb88-15"></a>    <span class="dv">9</span>))</span>
+<span id="cb88-16"><a href="socionetsm.html#cb88-16"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="045-Socionets_files/figure-html/dists-1.png" width="672" /></p>
+<p>We now want to determine who will be allowed to take the next ministep. We thus need to sample a waiting time for each actor. Thus each actor gets a waiting time sampled from the exponential distribution with the specified rate parameter:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb89-1"><a href="socionetsm.html#cb89-1"></a><span class="fu">set.seed</span>(<span class="dv">34641</span>)</span>
+<span id="cb89-2"><a href="socionetsm.html#cb89-2"></a>waitingtimes <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb89-3"><a href="socionetsm.html#cb89-3"></a>waitingtimes[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">5</span>)</span>
+<span id="cb89-4"><a href="socionetsm.html#cb89-4"></a>waitingtimes[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">10</span>)</span>
+<span id="cb89-5"><a href="socionetsm.html#cb89-5"></a>waitingtimes[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">15</span>)</span>
+<span id="cb89-6"><a href="socionetsm.html#cb89-6"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;waitingtime_&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;i: &quot;</span>, <span class="st">&quot;j: &quot;</span>, <span class="st">&quot;k: &quot;</span>), <span class="fu">round</span>(waitingtimes, <span class="dv">3</span>), <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<pre><code>#&gt; [1] &quot;waitingtime_i: 0.264&quot; &quot;waitingtime_j: 0.414&quot; &quot;waitingtime_k: 0.028&quot;</code></pre>
+<p>Actor <em>k</em> has the shortest waiting time and is allowed to take a ministep.
+In the example above we only took one draw out of each exponential distribution. If we would take many draws the expected value of the waiting time is <span class="math inline">\(\frac{1}{\lambda}\)</span> and these values are added as vertical lines in the figure above. Thus with a higher rate parameter <span class="math inline">\(\lambda\)</span> the shorter the expected waiting time.</p>
+<p>Now let us repeat this process of determining who is allowed to take a ministep a couple of times and keep track of who will make the ministep and the time that has passed:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb91-1"><a href="socionetsm.html#cb91-1"></a><span class="fu">set.seed</span>(<span class="dv">245651</span>)</span>
+<span id="cb91-2"><a href="socionetsm.html#cb91-2"></a>sam_waitingtimes <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb91-3"><a href="socionetsm.html#cb91-3"></a>time <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb91-4"><a href="socionetsm.html#cb91-4"></a><span class="cf">for</span> (ministeps <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>) {</span>
+<span id="cb91-5"><a href="socionetsm.html#cb91-5"></a>    waitingtimes <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb91-6"><a href="socionetsm.html#cb91-6"></a>    waitingtimes[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">5</span>)</span>
+<span id="cb91-7"><a href="socionetsm.html#cb91-7"></a>    waitingtimes[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">10</span>)</span>
+<span id="cb91-8"><a href="socionetsm.html#cb91-8"></a>    waitingtimes[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">15</span>)</span>
+<span id="cb91-9"><a href="socionetsm.html#cb91-9"></a>    actor <span class="ot">&lt;-</span> <span class="fu">which</span>(waitingtimes <span class="sc">==</span> <span class="fu">min</span>(waitingtimes))</span>
+<span id="cb91-10"><a href="socionetsm.html#cb91-10"></a>    time <span class="ot">&lt;-</span> time <span class="sc">+</span> waitingtimes[actor]</span>
+<span id="cb91-11"><a href="socionetsm.html#cb91-11"></a>    sam_waitingtimes[ministeps] <span class="ot">&lt;-</span> waitingtimes[actor]</span>
+<span id="cb91-12"><a href="socionetsm.html#cb91-12"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;ministep nr.: &quot;</span>, ministeps, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span>
+<span id="cb91-13"><a href="socionetsm.html#cb91-13"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;waitingtime_&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;i: &quot;</span>, <span class="st">&quot;j: &quot;</span>, <span class="st">&quot;k: &quot;</span>)[actor], <span class="fu">round</span>(waitingtimes, <span class="dv">3</span>)[actor], <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span>
+<span id="cb91-14"><a href="socionetsm.html#cb91-14"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;time past: &quot;</span>, <span class="fu">round</span>(time, <span class="dv">3</span>), <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span>
+<span id="cb91-15"><a href="socionetsm.html#cb91-15"></a>}</span></code></pre></div>
+<pre><code>#&gt; [1] &quot;ministep nr.: 1&quot;
+#&gt; [1] &quot;waitingtime_i: 0.012&quot;
+#&gt; [1] &quot;time past: 0.012&quot;
+#&gt; [1] &quot;ministep nr.: 2&quot;
+#&gt; [1] &quot;waitingtime_k: 0.003&quot;
+#&gt; [1] &quot;time past: 0.014&quot;
+#&gt; [1] &quot;ministep nr.: 3&quot;
+#&gt; [1] &quot;waitingtime_k: 0.013&quot;
+#&gt; [1] &quot;time past: 0.027&quot;
+#&gt; [1] &quot;ministep nr.: 4&quot;
+#&gt; [1] &quot;waitingtime_i: 0&quot;
+#&gt; [1] &quot;time past: 0.027&quot;
+#&gt; [1] &quot;ministep nr.: 5&quot;
+#&gt; [1] &quot;waitingtime_j: 0.052&quot;
+#&gt; [1] &quot;time past: 0.08&quot;
+#&gt; [1] &quot;ministep nr.: 6&quot;
+#&gt; [1] &quot;waitingtime_j: 0.073&quot;
+#&gt; [1] &quot;time past: 0.153&quot;
+#&gt; [1] &quot;ministep nr.: 7&quot;
+#&gt; [1] &quot;waitingtime_k: 0.054&quot;
+#&gt; [1] &quot;time past: 0.207&quot;
+#&gt; [1] &quot;ministep nr.: 8&quot;
+#&gt; [1] &quot;waitingtime_i: 0.016&quot;
+#&gt; [1] &quot;time past: 0.223&quot;
+#&gt; [1] &quot;ministep nr.: 9&quot;
+#&gt; [1] &quot;waitingtime_k: 0.006&quot;
+#&gt; [1] &quot;time past: 0.229&quot;
+#&gt; [1] &quot;ministep nr.: 10&quot;
+#&gt; [1] &quot;waitingtime_k: 0.019&quot;
+#&gt; [1] &quot;time past: 0.248&quot;
+#&gt; [1] &quot;ministep nr.: 11&quot;
+#&gt; [1] &quot;waitingtime_k: 0.044&quot;
+#&gt; [1] &quot;time past: 0.292&quot;
+#&gt; [1] &quot;ministep nr.: 12&quot;
+#&gt; [1] &quot;waitingtime_k: 0.024&quot;
+#&gt; [1] &quot;time past: 0.316&quot;
+#&gt; [1] &quot;ministep nr.: 13&quot;
+#&gt; [1] &quot;waitingtime_i: 0.022&quot;
+#&gt; [1] &quot;time past: 0.338&quot;
+#&gt; [1] &quot;ministep nr.: 14&quot;
+#&gt; [1] &quot;waitingtime_k: 0.038&quot;
+#&gt; [1] &quot;time past: 0.376&quot;
+#&gt; [1] &quot;ministep nr.: 15&quot;
+#&gt; [1] &quot;waitingtime_i: 0.027&quot;
+#&gt; [1] &quot;time past: 0.403&quot;
+#&gt; [1] &quot;ministep nr.: 16&quot;
+#&gt; [1] &quot;waitingtime_k: 0.002&quot;
+#&gt; [1] &quot;time past: 0.405&quot;
+#&gt; [1] &quot;ministep nr.: 17&quot;
+#&gt; [1] &quot;waitingtime_i: 0.045&quot;
+#&gt; [1] &quot;time past: 0.45&quot;
+#&gt; [1] &quot;ministep nr.: 18&quot;
+#&gt; [1] &quot;waitingtime_k: 0.023&quot;
+#&gt; [1] &quot;time past: 0.473&quot;
+#&gt; [1] &quot;ministep nr.: 19&quot;
+#&gt; [1] &quot;waitingtime_i: 0&quot;
+#&gt; [1] &quot;time past: 0.474&quot;
+#&gt; [1] &quot;ministep nr.: 20&quot;
+#&gt; [1] &quot;waitingtime_i: 0.024&quot;
+#&gt; [1] &quot;time past: 0.498&quot;
+#&gt; [1] &quot;ministep nr.: 21&quot;
+#&gt; [1] &quot;waitingtime_k: 0.013&quot;
+#&gt; [1] &quot;time past: 0.511&quot;
+#&gt; [1] &quot;ministep nr.: 22&quot;
+#&gt; [1] &quot;waitingtime_j: 0.018&quot;
+#&gt; [1] &quot;time past: 0.529&quot;
+#&gt; [1] &quot;ministep nr.: 23&quot;
+#&gt; [1] &quot;waitingtime_j: 0.027&quot;
+#&gt; [1] &quot;time past: 0.556&quot;
+#&gt; [1] &quot;ministep nr.: 24&quot;
+#&gt; [1] &quot;waitingtime_j: 0.061&quot;
+#&gt; [1] &quot;time past: 0.617&quot;
+#&gt; [1] &quot;ministep nr.: 25&quot;
+#&gt; [1] &quot;waitingtime_k: 0.018&quot;
+#&gt; [1] &quot;time past: 0.635&quot;
+#&gt; [1] &quot;ministep nr.: 26&quot;
+#&gt; [1] &quot;waitingtime_j: 0.097&quot;
+#&gt; [1] &quot;time past: 0.732&quot;
+#&gt; [1] &quot;ministep nr.: 27&quot;
+#&gt; [1] &quot;waitingtime_j: 0.007&quot;
+#&gt; [1] &quot;time past: 0.739&quot;
+#&gt; [1] &quot;ministep nr.: 28&quot;
+#&gt; [1] &quot;waitingtime_j: 0.009&quot;
+#&gt; [1] &quot;time past: 0.748&quot;
+#&gt; [1] &quot;ministep nr.: 29&quot;
+#&gt; [1] &quot;waitingtime_k: 0.001&quot;
+#&gt; [1] &quot;time past: 0.75&quot;
+#&gt; [1] &quot;ministep nr.: 30&quot;
+#&gt; [1] &quot;waitingtime_j: 0.009&quot;
+#&gt; [1] &quot;time past: 0.759&quot;
+#&gt; [1] &quot;ministep nr.: 31&quot;
+#&gt; [1] &quot;waitingtime_i: 0.012&quot;
+#&gt; [1] &quot;time past: 0.77&quot;
+#&gt; [1] &quot;ministep nr.: 32&quot;
+#&gt; [1] &quot;waitingtime_i: 0.056&quot;
+#&gt; [1] &quot;time past: 0.826&quot;
+#&gt; [1] &quot;ministep nr.: 33&quot;
+#&gt; [1] &quot;waitingtime_k: 0.031&quot;
+#&gt; [1] &quot;time past: 0.857&quot;
+#&gt; [1] &quot;ministep nr.: 34&quot;
+#&gt; [1] &quot;waitingtime_j: 0.051&quot;
+#&gt; [1] &quot;time past: 0.908&quot;
+#&gt; [1] &quot;ministep nr.: 35&quot;
+#&gt; [1] &quot;waitingtime_k: 0.014&quot;
+#&gt; [1] &quot;time past: 0.923&quot;
+#&gt; [1] &quot;ministep nr.: 36&quot;
+#&gt; [1] &quot;waitingtime_j: 0.021&quot;
+#&gt; [1] &quot;time past: 0.943&quot;
+#&gt; [1] &quot;ministep nr.: 37&quot;
+#&gt; [1] &quot;waitingtime_k: 0.021&quot;
+#&gt; [1] &quot;time past: 0.965&quot;
+#&gt; [1] &quot;ministep nr.: 38&quot;
+#&gt; [1] &quot;waitingtime_k: 0.059&quot;
+#&gt; [1] &quot;time past: 1.024&quot;
+#&gt; [1] &quot;ministep nr.: 39&quot;
+#&gt; [1] &quot;waitingtime_k: 0.029&quot;
+#&gt; [1] &quot;time past: 1.053&quot;
+#&gt; [1] &quot;ministep nr.: 40&quot;
+#&gt; [1] &quot;waitingtime_j: 0.013&quot;
+#&gt; [1] &quot;time past: 1.065&quot;
+#&gt; [1] &quot;ministep nr.: 41&quot;
+#&gt; [1] &quot;waitingtime_j: 0.044&quot;
+#&gt; [1] &quot;time past: 1.11&quot;
+#&gt; [1] &quot;ministep nr.: 42&quot;
+#&gt; [1] &quot;waitingtime_k: 0.069&quot;
+#&gt; [1] &quot;time past: 1.178&quot;
+#&gt; [1] &quot;ministep nr.: 43&quot;
+#&gt; [1] &quot;waitingtime_i: 0.066&quot;
+#&gt; [1] &quot;time past: 1.244&quot;
+#&gt; [1] &quot;ministep nr.: 44&quot;
+#&gt; [1] &quot;waitingtime_j: 0.003&quot;
+#&gt; [1] &quot;time past: 1.248&quot;
+#&gt; [1] &quot;ministep nr.: 45&quot;
+#&gt; [1] &quot;waitingtime_j: 0.01&quot;
+#&gt; [1] &quot;time past: 1.258&quot;
+#&gt; [1] &quot;ministep nr.: 46&quot;
+#&gt; [1] &quot;waitingtime_k: 0.086&quot;
+#&gt; [1] &quot;time past: 1.343&quot;
+#&gt; [1] &quot;ministep nr.: 47&quot;
+#&gt; [1] &quot;waitingtime_k: 0.046&quot;
+#&gt; [1] &quot;time past: 1.389&quot;
+#&gt; [1] &quot;ministep nr.: 48&quot;
+#&gt; [1] &quot;waitingtime_k: 0.031&quot;
+#&gt; [1] &quot;time past: 1.42&quot;
+#&gt; [1] &quot;ministep nr.: 49&quot;
+#&gt; [1] &quot;waitingtime_i: 0.007&quot;
+#&gt; [1] &quot;time past: 1.427&quot;
+#&gt; [1] &quot;ministep nr.: 50&quot;
+#&gt; [1] &quot;waitingtime_j: 0.066&quot;
+#&gt; [1] &quot;time past: 1.493&quot;</code></pre>
+<p>I know you are wondering what the distribution of sampled waiting times look like, don’t you?
+Well let’s sample some more and plot them.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb93-1"><a href="socionetsm.html#cb93-1"></a><span class="fu">set.seed</span>(<span class="dv">245651</span>)</span>
+<span id="cb93-2"><a href="socionetsm.html#cb93-2"></a>sam_waitingtimes <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb93-3"><a href="socionetsm.html#cb93-3"></a><span class="cf">for</span> (ministeps <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5000</span>) {</span>
+<span id="cb93-4"><a href="socionetsm.html#cb93-4"></a>    waitingtimes <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb93-5"><a href="socionetsm.html#cb93-5"></a>    waitingtimes[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">5</span>)</span>
+<span id="cb93-6"><a href="socionetsm.html#cb93-6"></a>    waitingtimes[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">10</span>)</span>
+<span id="cb93-7"><a href="socionetsm.html#cb93-7"></a>    waitingtimes[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">15</span>)</span>
+<span id="cb93-8"><a href="socionetsm.html#cb93-8"></a>    actor <span class="ot">&lt;-</span> <span class="fu">which</span>(waitingtimes <span class="sc">==</span> <span class="fu">min</span>(waitingtimes))</span>
+<span id="cb93-9"><a href="socionetsm.html#cb93-9"></a>    sam_waitingtimes[ministeps] <span class="ot">&lt;-</span> waitingtimes[actor]</span>
+<span id="cb93-10"><a href="socionetsm.html#cb93-10"></a>}</span>
+<span id="cb93-11"><a href="socionetsm.html#cb93-11"></a></span>
+<span id="cb93-12"><a href="socionetsm.html#cb93-12"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb93-13"><a href="socionetsm.html#cb93-13"></a><span class="fu">hist</span>(sam_waitingtimes, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">&quot;waiting times&quot;</span>, <span class="at">main =</span> <span class="st">&quot;sampled waiting times&quot;</span>)</span>
+<span id="cb93-14"><a href="socionetsm.html#cb93-14"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(sam_waitingtimes), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb93-15"><a href="socionetsm.html#cb93-15"></a></span>
+<span id="cb93-16"><a href="socionetsm.html#cb93-16"></a><span class="fu">hist</span>(<span class="fu">rexp</span>(<span class="dv">5000</span>, <span class="at">rate =</span> <span class="dv">30</span>), <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">&quot;waiting times&quot;</span>, <span class="at">main =</span> <span class="st">&quot;rate=30&quot;</span>)</span>
+<span id="cb93-17"><a href="socionetsm.html#cb93-17"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">30</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="045-Socionets_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+The distribution of the sampled waiting times is plotted in the figure above on the left. As you see this distribution is ‘identical’ to the exponential distribution with a rate parameter <span class="math inline">\(\lambda\)</span> of 30 (which is plotted on the right). And the expected waiting time, plotted in red, is 1/30. This leads us to page 43 of the RSiena manual:</p>
+<blockquote>
+<p>The time duration until the next opportunity of change is exponentially distributed with parameter:<br />
+<span class="math display">\[ \lambda_+(x^0)=\Sigma_i \lambda_i (x^0) \]</span></p>
+</blockquote>
+<p>Remember, the waiting times for each actor <em>i</em> are exponentially distributed with parameter <span class="math inline">\(\lambda_i\)</span>. The observed time duration until the next ministeps are exponentially distributed with parameter <span class="math inline">\(\lambda_+\)</span>.</p>
+<p>If an actor has a higher rate parameter, the expected sampled waiting time is shorter. And since the actor with the shortest waiting time will make the ministep, actors with the highest rate parameter have the highest probability to have an opportunity for change. Thus <strong>the larger the rate parameter the more opportunities for change there are within a given time period</strong>.</p>
+<p>So how many opportunities for change do we have before the total time exceeds 1? Please have a look above with the example of actors <em>i</em>, <em>j</em> and <em>k</em> with rate parameters of 5, 10 and 15 respectively. We see that after ministep 38 time exceeds 1. Of course this was only one run. We could repeat the simulation a couple of times and keep track of the total ministeps and the ministeps for each actor. Let us plot the number of ministeps for actors <em>i</em>, <em>j</em> and <em>k</em> for 1000 simulations.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb94-1"><a href="socionetsm.html#cb94-1"></a><span class="fu">set.seed</span>(<span class="dv">245651</span>)</span>
+<span id="cb94-2"><a href="socionetsm.html#cb94-2"></a></span>
+<span id="cb94-3"><a href="socionetsm.html#cb94-3"></a>results <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb94-4"><a href="socionetsm.html#cb94-4"></a><span class="cf">for</span> (nsim <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>) {</span>
+<span id="cb94-5"><a href="socionetsm.html#cb94-5"></a>    time <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb94-6"><a href="socionetsm.html#cb94-6"></a>    steps_tot <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb94-7"><a href="socionetsm.html#cb94-7"></a>    steps_i <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb94-8"><a href="socionetsm.html#cb94-8"></a>    steps_j <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb94-9"><a href="socionetsm.html#cb94-9"></a>    steps_k <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb94-10"><a href="socionetsm.html#cb94-10"></a>    actors <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb94-11"><a href="socionetsm.html#cb94-11"></a>    <span class="cf">while</span> (time <span class="sc">&lt;</span> <span class="dv">1</span>) {</span>
+<span id="cb94-12"><a href="socionetsm.html#cb94-12"></a>        steps_tot <span class="ot">&lt;-</span> steps_tot <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb94-13"><a href="socionetsm.html#cb94-13"></a>        waitingtimes <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb94-14"><a href="socionetsm.html#cb94-14"></a>        waitingtimes[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">5</span>)</span>
+<span id="cb94-15"><a href="socionetsm.html#cb94-15"></a>        waitingtimes[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">10</span>)</span>
+<span id="cb94-16"><a href="socionetsm.html#cb94-16"></a>        waitingtimes[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">15</span>)</span>
+<span id="cb94-17"><a href="socionetsm.html#cb94-17"></a>        actor <span class="ot">&lt;-</span> <span class="fu">which</span>(waitingtimes <span class="sc">==</span> <span class="fu">min</span>(waitingtimes))</span>
+<span id="cb94-18"><a href="socionetsm.html#cb94-18"></a>        time <span class="ot">&lt;-</span> time <span class="sc">+</span> waitingtimes[actor]</span>
+<span id="cb94-19"><a href="socionetsm.html#cb94-19"></a>        actors[steps_tot] <span class="ot">&lt;-</span> actor</span>
+<span id="cb94-20"><a href="socionetsm.html#cb94-20"></a>    }</span>
+<span id="cb94-21"><a href="socionetsm.html#cb94-21"></a>    results[[nsim]] <span class="ot">&lt;-</span> actors</span>
+<span id="cb94-22"><a href="socionetsm.html#cb94-22"></a>}</span>
+<span id="cb94-23"><a href="socionetsm.html#cb94-23"></a></span>
+<span id="cb94-24"><a href="socionetsm.html#cb94-24"></a><span class="co"># sum(results[[1]]==1) hist(sapply(results, length))</span></span>
+<span id="cb94-25"><a href="socionetsm.html#cb94-25"></a></span>
+<span id="cb94-26"><a href="socionetsm.html#cb94-26"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb94-27"><a href="socionetsm.html#cb94-27"></a>{</span>
+<span id="cb94-28"><a href="socionetsm.html#cb94-28"></a>    <span class="fu">hist</span>(<span class="fu">sapply</span>(results, <span class="cf">function</span>(x) {</span>
+<span id="cb94-29"><a href="socionetsm.html#cb94-29"></a>        <span class="fu">sum</span>(x <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb94-30"><a href="socionetsm.html#cb94-30"></a>    }), <span class="at">xlab =</span> <span class="st">&quot;nsteps&quot;</span>, <span class="at">main =</span> <span class="st">&quot;actor i: lambda=5&quot;</span>)</span>
+<span id="cb94-31"><a href="socionetsm.html#cb94-31"></a>    <span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(<span class="fu">sapply</span>(results, <span class="cf">function</span>(x) {</span>
+<span id="cb94-32"><a href="socionetsm.html#cb94-32"></a>        <span class="fu">sum</span>(x <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb94-33"><a href="socionetsm.html#cb94-33"></a>    })), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb94-34"><a href="socionetsm.html#cb94-34"></a>}</span>
+<span id="cb94-35"><a href="socionetsm.html#cb94-35"></a></span>
+<span id="cb94-36"><a href="socionetsm.html#cb94-36"></a>{</span>
+<span id="cb94-37"><a href="socionetsm.html#cb94-37"></a>    <span class="fu">hist</span>(<span class="fu">sapply</span>(results, <span class="cf">function</span>(x) {</span>
+<span id="cb94-38"><a href="socionetsm.html#cb94-38"></a>        <span class="fu">sum</span>(x <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb94-39"><a href="socionetsm.html#cb94-39"></a>    }), <span class="at">xlab =</span> <span class="st">&quot;nsteps&quot;</span>, <span class="at">main =</span> <span class="st">&quot;actor j: lambda=10&quot;</span>)</span>
+<span id="cb94-40"><a href="socionetsm.html#cb94-40"></a>    <span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(<span class="fu">sapply</span>(results, <span class="cf">function</span>(x) {</span>
+<span id="cb94-41"><a href="socionetsm.html#cb94-41"></a>        <span class="fu">sum</span>(x <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb94-42"><a href="socionetsm.html#cb94-42"></a>    })), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb94-43"><a href="socionetsm.html#cb94-43"></a>}</span>
+<span id="cb94-44"><a href="socionetsm.html#cb94-44"></a></span>
+<span id="cb94-45"><a href="socionetsm.html#cb94-45"></a>{</span>
+<span id="cb94-46"><a href="socionetsm.html#cb94-46"></a>    <span class="fu">hist</span>(<span class="fu">sapply</span>(results, <span class="cf">function</span>(x) {</span>
+<span id="cb94-47"><a href="socionetsm.html#cb94-47"></a>        <span class="fu">sum</span>(x <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb94-48"><a href="socionetsm.html#cb94-48"></a>    }), <span class="at">xlab =</span> <span class="st">&quot;nsteps&quot;</span>, <span class="at">main =</span> <span class="st">&quot;actor k: lambda=15&quot;</span>)</span>
+<span id="cb94-49"><a href="socionetsm.html#cb94-49"></a>    <span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(<span class="fu">sapply</span>(results, <span class="cf">function</span>(x) {</span>
+<span id="cb94-50"><a href="socionetsm.html#cb94-50"></a>        <span class="fu">sum</span>(x <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb94-51"><a href="socionetsm.html#cb94-51"></a>    })), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb94-52"><a href="socionetsm.html#cb94-52"></a>}</span></code></pre></div>
+<p><img src="045-Socionets_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>Thus <strong>the larger the rate parameter the more opportunities for change per actor there are within a given time period</strong>. And in RSiena the optimal value for the rate parameter <span class="math inline">\(\lambda_i\)</span> is estimated. And from the figure above we see that the estimated parameter has a nice interpretation: <strong>the estimated rate parameter refers to the expected number of opportunities for change in a time period</strong>.</p>
+</div>
+<div id="network-statistics-1" class="section level3 hasAnchor" number="7.8.2">
+<h3><span class="header-section-number">7.8.2</span> Network statistics<a href="socionetsm.html#network-statistics-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The evaluation function is defined as:</p>
+<p><span class="math display">\[ f^{net}_i(x) = \Sigma_k \beta^{net}_ks_{ik}^{net}(x) \]</span>
+Thus <span class="math inline">\(f^{net}\)</span> is the evaluation function. And it attaches a value/number to the <em>attractiveness</em> of the network, <span class="math inline">\(x\)</span>. The subscript <em>i</em> refers to the agent, thus each agent will get its own value of the evaluation function. <span class="math inline">\(\beta^{net}_k\)</span> refers to our estimated parameters. These are what the results will spit out. And for each network effect <em>k</em>, <span class="math inline">\(s^{net}_{ik}\)</span>, we will obtain a separate estimate. Each agent evaluates the attractiveness of its local network environment. This is why <span class="math inline">\(s_i\)</span> has a subscript <em>i</em>. We as scientists have ideas about which network effects <span class="math inline">\(s^{net}_{ik}\)</span> may play a role in the evaluation of the local networks. Based on the mathematical definition of <span class="math inline">\(s^{net}_{ik}\)</span> the value of statistic <em>k</em> will be determined for each of the possible networks that may result after a ministep of agent <em>i</em>. Agent <em>i</em> is most likely to take a ministep that will result in the network with the highest attractiveness value. The RSiena software will then estimate the parameters <span class="math inline">\(\beta^{net}_k\)</span> for which it is most likely to obtain the network observed at T2 given the network observed at T1. More precisely, to observe a network at T2 with similar network structures as the actual network observed at T2.</p>
+<p>Now, let us suppose that actor <em>i</em> has an opportunity for change at that after a ministep three possible networks could occur. Or stated otherwise, the choice set consists of three networks for actor <em>i</em>. See below.</p>
+<p><img src="eva1.PNG" /></p>
+<p><strong>Figure:</strong> Choice set for actor <em>i</em>.</p>
+<p>How actor <em>i</em> evaluates these networks depends on the <span class="math inline">\(s^{net}_{ik}\)</span> in the evaluation function. Let us suppose only the outdegree effect is part of the evaluation function. Thus:</p>
+<p><span class="math display">\[ f^{net}_i(x) = \beta^{net}_1s_{i1}^{net}(x) \]</span>
+where</p>
+<p><span class="math display">\[ s_{i1}^{net}(x) = \Sigma_jx_{ij}\]</span>
+and given the networks above:</p>
+<p><span class="math display">\[ s_{i1}^{net}(x_a) = 0 , s_{i1}^{net}(x_b) = 1, s_{i1}^{net}(x_c) = 1\]</span>
+and hence:</p>
+<p><span class="math display">\[ f^{net}_i(x_a) = 0, f^{net}_i(x_b) = \beta^{net}_1, f^{net}_i(x_c) = \beta^{net}_1 \]</span>
+The probability that <span class="math inline">\(x_b\)</span> will be chosen is given by:</p>
+<p><span class="math display">\[ P(X= x_b) = \frac{exp(f^{net}_i(x_b))}{exp(f^{net}_i(x_a))+exp(f^{net}_i(x_b))+exp(f^{net}_i(x_c))} \]</span></p>
+<p>For the interpretation is much easier to interpret the ratio of two probabilities:</p>
+<p><span class="math display">\[ \frac{P(X= x_b)}{P(X= x_a)} = \frac{exp(f^{net}_i(x_b))}{exp(f^{net}_i(x_a))} = exp(f^{net}_i(x_b) - f^{net}_i(x_a) ) = exp(\beta^{net}_1)\]</span>
+Let us assume that <span class="math inline">\(\beta^{net}_1 = -2\)</span>
+This would imply that:</p>
+<p><span class="math display">\[ P(X= x_b) = exp(-2)* P(X= x_a) \approx 0.14*P(X= x_a) \]</span></p>
+<p>Thus the probability to observe a tie between <em>i</em> and <em>j</em> (network <span class="math inline">\(x_b\)</span>) is 14% the probability to observe no tie between <em>i</em> and <em>j</em> (network <span class="math inline">\(x_a\)</span>).</p>
+<blockquote>
+<p>Is it possible to deduce the density of the network from this formula? Well let suppose actor <em>i</em> would only have options <span class="math inline">\(x_a\)</span> and <span class="math inline">\(x_b\)</span> then the probabilities would need to sum to 1. And this would imply a density of approximately .12 (0.12=0.14*.88 and .12 + .88 = 1).</p>
+</blockquote>
+<p>The interpretation of the parameters thus resembles the interpretation of a logistic regression: if one covariate <span class="math inline">\(x_k\)</span> increases only with one step and the parameter estimate of this covariate is <span class="math inline">\(\beta_k\)</span>, the odds <span class="math inline">\(\frac{p_{x_k=1}}{1-p_{x_k=1}}\)</span> is exp(<span class="math inline">\(\beta_k\)</span>)*<span class="math inline">\(\frac{p_{x_k=0}}{1-p_{x_k=0}}\)</span><a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a></p>
+<hr />
+
+</div>
+</div>
+</div>
+
+
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Block2019" class="csl-entry">
+Block, Per, Christoph Stadtfeld, and Tom A. B. Snijders. 2019. <span>“Forms of Dependence: Comparing SAOMs and ERGMs from Basic Principles.”</span> <em>Sociological Methods &amp; Research</em> 48 (1): 202–39. <a href="https://doi.org/10.1177/0049124116672680">https://doi.org/10.1177/0049124116672680</a>.
+</div>
+<div id="ref-ripley2022manual" class="csl-entry">
+Ripley, Ruth M, Tom AB Snijders, Zsófia Boda, András Vörös, and Paulina Preciado. 2022. <em>Manual for SIENA Version 4.0 (Version August 11, 2022)</em>. University of Oxford, Department of Statistics, Nuffield College. <a href="http://www.stats.ox.ac.uk/~snijders/siena/RSiena_manual.pdf">http://www.stats.ox.ac.uk/~snijders/siena/RSiena_manual.pdf</a>.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="14">
+<li id="fn14"><p>naturally this does not mean I have a lot of expertise in RSiena<a href="socionetsm.html#fnref14" class="footnote-back">↩︎</a></p></li>
+<li id="fn15"><p><span style="color: red;">The no-reactivity assumption has been relaxed in the latest version of RSiena</span><a href="socionetsm.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<li id="fn16"><p>noterate: Naturally, it is a bit more complicated than that. In RSiena we have a choice between unconditional and conditional estimation. My description of the stopping rule refers to the unconditional estimation.<a href="socionetsm.html#fnref16" class="footnote-back">↩︎</a></p></li>
+<li id="fn17"><p>It is also possible to simulate networks within the <code>RSiena</code> package itself. But let us stick with functions from <code>RsienaTwoStep</code> for now.<a href="socionetsm.html#fnref17" class="footnote-back">↩︎</a></p></li>
+<li id="fn18"><p>‘it’ refers to estimation via the ‘Method of Moments’<a href="socionetsm.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<li id="fn19"><p><span class="math display">\[p = P(Y=1) = \frac{exp(\beta_kx_k)}{1+exp(\beta_kx_k)}\]</span><a href="socionetsm.html#fnref19" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
@@ -466,11 +1229,10 @@ div.csl-indent {
         </div>
       </div>
 <a href="socionetst.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="webintro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -511,7 +1273,7 @@ gitbook.start({
 },
 "download": null,
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {

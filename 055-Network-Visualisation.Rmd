@@ -11,7 +11,7 @@ library(kableExtra)
 ```
 
 
-```{r colorize, echo=FALSE}
+```{r colorize, echo=FALSE, cache=FALSE}
 colorize <- function(x, color) {
   if (knitr::is_latex_output()) {
     sprintf("\\textcolor{%s}{%s}", color, x)
@@ -149,14 +149,14 @@ We discussed several network structure in section \@ref(structure-1). Decide for
 
 #### degree {-}
 ```{r}
-degree(g)
+igraph::degree(g)
 #hist(table(degree(g)), xlab="indegree", main= "Histogram of indegree")
 ```
 
 #### transitivity {-}
 ```{r}
 #be aware that directed graphs are considered as undirected. but g is undirected. 
-transitivity(g, type = c("localundirected"), isolates = c("NaN", "zero"))
+igraph::transitivity(g, type = c("localundirected"), isolates = c("NaN", "zero"))
 
 
 ```
@@ -171,7 +171,7 @@ Which nodes attract your attention?
 
 ### dyad-census
 ```{r}
-dyad.census(g)
+igraph::dyad.census(g)
 ```
 
 ### triad-census
@@ -180,7 +180,7 @@ dyad.census(g)
 igraph::triad.census(g)
 #I will use sna because it shows the names of the triads as well. 
 sna::triad.census(gmat)
-detach(package:sna,unload=TRUE) #I will detach this package again, otherwise it will interfere with all kind of functions from igraph, and my students will hate me for that.
+unloadNamespace("sna") #I will detach this package again, otherwise it will interfere with all kind of functions from igraph, and my students will hate me for that.
 ```
 
 Based on the above triad.census, please calculate the global transitivity of the network and check your answer with `igraph` or `sna`.  
@@ -345,13 +345,13 @@ atmnet2[atmnet2==10] <- 0
 atmnet3[atmnet3==10] <- 0
 ```
 
-### Descriptive statistics  
+### Descriptive statistics  {des.twit}
 
 We describe this dataset in quite some detail in Chapter \@ref(socionetsm). But I think it is good to show an important observation here as well: 
 
 
 ```{r densities, echo=FALSE}
-
+require(kableExtra)
 desmat <- read.csv2("20190829desmat.csv")
 
 colnames(desmat) <- c("", "friends w1", "friends w2", "friends w3","atmentions w1","atmentions w2","atmentions w3","retweets w1","retweets w2","retweets w3") 
@@ -380,7 +380,7 @@ G1 <- igraph::graph_from_adjacency_matrix(atmnet1, mode = "directed", weighted =
 Suppose you would like to add the data to this graph. 
 ```{r}
 #we need to retrieve the edges. 
-edges <- as_data_frame(G1, what="edges")
+edges <- igraph::as_data_frame(G1, what="edges")
 
 #the first variable of the data we can attach needs to be some id, thus reorder columns of keyf
 keyf <- cbind(keyf$EGOid, keyf[,names(keyf)!="EGOid"])
@@ -432,7 +432,7 @@ atmnet1_un <- atmnet1 ==1 & t(atmnet1)==1
 G2 <- graph_from_adjacency_matrix(atmnet1_un, mode = "undirected", weighted = NULL, diag = TRUE,  add.colnames = NA, add.rownames = NA)
 
 #attach data if you want
-edges <- as_data_frame(G2, what="edges")
+edges <- igraph::as_data_frame(G2, what="edges")
 G2 <- graph_from_data_frame(edges, directed=FALSE, vertices=keyf)
 plot(G2)
 
@@ -502,7 +502,7 @@ You could use two different notations:
 ```{r}
 
 #changing V
-V(G2)$size = degree(G2)*1.05 #naturally, you may use a different node-level structural characteristic here. 
+V(G2)$size = igraph::degree(G2)*1.05 #naturally, you may use a different node-level structural characteristic here. 
 plot(G2, mode = "undirected")
 
 # this equivalent to: 
@@ -572,7 +572,7 @@ Lets assign these coordinates to our MPs
 V(G2)$color <- keyf$Partij_col
 
 #change node size a bit
-V(G2)$size= degree(G2)*1.05 + 6
+V(G2)$size= igraph::degree(G2)*1.05 + 6
 
 #remove the labels
 V(G2)$label=""
@@ -609,7 +609,7 @@ atmnet_weighted <- atmnet1_un + atmnet2_un + atmnet3_un
 G_w <- igraph::graph_from_adjacency_matrix(atmnet_weighted, mode = "undirected", weighted = TRUE, diag = TRUE,  add.colnames = NA, add.rownames = NA)
 
 #attach data
-edges <- as_data_frame(G_w, what="edges")
+edges <- igraph::as_data_frame(G_w, what="edges")
 #inspect the weight.
 edges$weight #not a lot of variation. 
 
@@ -620,7 +620,7 @@ G_w <- graph_from_data_frame(edges, directed=FALSE, vertices=keyf)
 
 #add changes as above
 V(G_w)$color <- keyf$Partij_col
-V(G_w)$size= degree(G_w)*1.05 + 6
+V(G_w)$size= igraph::degree(G_w)*1.05 + 6
 V(G_w)$label=""
 E(G_w)$curved=.1
 
@@ -845,7 +845,7 @@ Let us know focus on the staff members of the sociology department of Radboud Un
 
 ```{r}
 
-net1_mat <- as_adjacency_matrix(net1, sparse = FALSE)
+net1_mat <- igraph::as_adjacency_matrix(net1, sparse = FALSE)
 
 net1_un <- (net1_mat + t(net1_mat) ) > 0 
 
@@ -857,7 +857,9 @@ net_sel <- induced.subgraph(net1_un, vids=(in_network$vcol=="#56B4E9"))
 plot(net_sel)
 
 clp <- cluster_optimal(net_sel)
-layout(plot(clp, net_sel, margin=c(0,0,0,0) ))
+
+
+plot(clp, net_sel)
 
 ```
 

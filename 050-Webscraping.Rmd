@@ -636,7 +636,7 @@ scroll_box(knitr::kable(soc_df, booktabs = TRUE, caption="Sociology staff with S
 
 So we have papers and profiles. Remember how we got Jochem's citation history? We want that for each staff member too. Yet again, we use a for loop. We first store the citation history in a list. But notice the `if` statement! We only continue the for loop for that i-th element if some statement is `TRUE`. Here, we attempt to find out if the i-th element, the citation history of the staff member, has a length than is larger than 0. Some staff members are never cited (which happens all the time if papers are only just published), and so for these staff members that is no list element that contains information. We only attach a Google Scholar ID for those staff members that are cited at least once. We bind the rows again and end up with a data frame in *long format*: three columns with years, cites, and Google Scholar ID. Therefore, there is more than one row per staff member.
 
-```{r}
+```{r, eval=FALSE}
 # get citation history of a scholar
 soc_staff_cit <- list()
 for (i in 1:nrow(soc_df)) {
@@ -651,6 +651,7 @@ for (i in 1:nrow(soc_df)) {
 soc_staff_cit <- bind_rows(soc_staff_cit)
 colnames(soc_staff_cit)[3] <- "gs_id"
 ```
+
 ```{r, echo=FALSE, eval=FALSE}
 save(soc_staff_cit, file="addfiles/soc_staff_cit.RData")
 ```

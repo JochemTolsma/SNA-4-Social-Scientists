@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>B Interdependencies | SNASS</title>
   <meta name="description" content="Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks." />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="B Interdependencies | SNASS" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://jochemtolsma.github.io/SNA-4-Social-Scientists/" />
   <meta property="og:image" content="https://jochemtolsma.github.io/SNA-4-Social-Scientists/cover.jpg" />
   <meta property="og:description" content="Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks." />
   <meta name="github-repo" content="JochemTolsma/SNA-4-Social-Scientists" />
@@ -23,7 +22,7 @@
 
 
 
-<meta name="date" content="2021-10-08" />
+<meta name="date" content="2023-10-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="turtle-favicon.ico" type="image/x-icon" />
 <link rel="prev" href="tutorial.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,9 +48,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -94,7 +93,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -107,7 +106,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -233,140 +232,140 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#assignment-2"><i class="fa fa-check"></i><b>3.7</b> Assignment</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i><b>4</b> Data</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="data-1.html"><a href="data-1.html#sampling"><i class="fa fa-check"></i><b>4.1</b> Sampling</a></li>
-<li class="chapter" data-level="4.2" data-path="data-1.html"><a href="data-1.html#ethical-considerations"><i class="fa fa-check"></i><b>4.2</b> Ethical considerations</a></li>
-<li class="chapter" data-level="4.3" data-path="data-1.html"><a href="data-1.html#measurement"><i class="fa fa-check"></i><b>4.3</b> Measurement</a></li>
-</ul></li>
 <li class="part"><span><b>II EGONETS</b></span></li>
-<li class="chapter" data-level="5" data-path="theory-1.html"><a href="theory-1.html"><i class="fa fa-check"></i><b>5</b> Theory</a>
+<li class="chapter" data-level="4" data-path="theory-1.html"><a href="theory-1.html"><i class="fa fa-check"></i><b>4</b> Theory</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="theory-1.html"><a href="theory-1.html#triad"><i class="fa fa-check"></i><b>5.1</b> Network Structures (TRIAD)</a></li>
-<li class="chapter" data-level="5.2" data-path="theory-1.html"><a href="theory-1.html#type-of-explanations"><i class="fa fa-check"></i><b>5.2</b> Type of explanations</a></li>
-<li class="chapter" data-level="5.3" data-path="theory-1.html"><a href="theory-1.html#causes-1"><i class="fa fa-check"></i><b>5.3</b> Causes</a>
+<li class="chapter" data-level="4.1" data-path="theory-1.html"><a href="theory-1.html#triad"><i class="fa fa-check"></i><b>4.1</b> Network Structures (TRIAD)</a></li>
+<li class="chapter" data-level="4.2" data-path="theory-1.html"><a href="theory-1.html#type-of-explanations"><i class="fa fa-check"></i><b>4.2</b> Type of explanations</a></li>
+<li class="chapter" data-level="4.3" data-path="theory-1.html"><a href="theory-1.html#causes-1"><i class="fa fa-check"></i><b>4.3</b> Causes</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="theory-1.html"><a href="theory-1.html#size"><i class="fa fa-check"></i><b>5.3.1</b> Size</a></li>
-<li class="chapter" data-level="5.3.2" data-path="theory-1.html"><a href="theory-1.html#composition"><i class="fa fa-check"></i><b>5.3.2</b> Composition</a></li>
-<li class="chapter" data-level="5.3.3" data-path="theory-1.html"><a href="theory-1.html#structure-1"><i class="fa fa-check"></i><b>5.3.3</b> Structure</a></li>
-<li class="chapter" data-level="5.3.4" data-path="theory-1.html"><a href="theory-1.html#stability"><i class="fa fa-check"></i><b>5.3.4</b> Stability</a></li>
+<li class="chapter" data-level="4.3.1" data-path="theory-1.html"><a href="theory-1.html#size"><i class="fa fa-check"></i><b>4.3.1</b> Size</a></li>
+<li class="chapter" data-level="4.3.2" data-path="theory-1.html"><a href="theory-1.html#structure-1"><i class="fa fa-check"></i><b>4.3.2</b> Structure</a></li>
+<li class="chapter" data-level="4.3.3" data-path="theory-1.html"><a href="theory-1.html#stability"><i class="fa fa-check"></i><b>4.3.3</b> Stability</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="theory-1.html"><a href="theory-1.html#consequences-1"><i class="fa fa-check"></i><b>5.4</b> Consequences</a></li>
-<li class="chapter" data-level="5.5" data-path="theory-1.html"><a href="theory-1.html#assignment-3"><i class="fa fa-check"></i><b>5.5</b> Assignment</a></li>
+<li class="chapter" data-level="4.4" data-path="theory-1.html"><a href="theory-1.html#consequences-1"><i class="fa fa-check"></i><b>4.4</b> Consequences</a></li>
+<li class="chapter" data-level="4.5" data-path="theory-1.html"><a href="theory-1.html#assignment-3"><i class="fa fa-check"></i><b>4.5</b> Assignment</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="methods-1.html"><a href="methods-1.html"><i class="fa fa-check"></i><b>6</b> Methods</a>
+<li class="chapter" data-level="5" data-path="methods-1.html"><a href="methods-1.html"><i class="fa fa-check"></i><b>5</b> Methods</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="methods-1.html"><a href="methods-1.html#causes-2"><i class="fa fa-check"></i><b>6.1</b> Causes</a></li>
-<li class="chapter" data-level="6.2" data-path="methods-1.html"><a href="methods-1.html#consequences-2"><i class="fa fa-check"></i><b>6.2</b> Consequences</a></li>
-<li class="chapter" data-level="6.3" data-path="methods-1.html"><a href="methods-1.html#rq"><i class="fa fa-check"></i><b>6.3</b> Research questions</a></li>
-<li class="chapter" data-level="6.4" data-path="methods-1.html"><a href="methods-1.html#data-2"><i class="fa fa-check"></i><b>6.4</b> Data</a>
+<li class="chapter" data-level="5.1" data-path="methods-1.html"><a href="methods-1.html#causes-2"><i class="fa fa-check"></i><b>5.1</b> Causes</a></li>
+<li class="chapter" data-level="5.2" data-path="methods-1.html"><a href="methods-1.html#consequences-2"><i class="fa fa-check"></i><b>5.2</b> Consequences</a></li>
+<li class="chapter" data-level="5.3" data-path="methods-1.html"><a href="methods-1.html#rq"><i class="fa fa-check"></i><b>5.3</b> Research questions</a></li>
+<li class="chapter" data-level="5.4" data-path="methods-1.html"><a href="methods-1.html#data-1"><i class="fa fa-check"></i><b>5.4</b> Data</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="methods-1.html"><a href="methods-1.html#variables-1"><i class="fa fa-check"></i><b>6.4.1</b> Variables</a></li>
-<li class="chapter" data-level="6.4.2" data-path="methods-1.html"><a href="methods-1.html#preperation-2"><i class="fa fa-check"></i><b>6.4.2</b> Preperation</a></li>
+<li class="chapter" data-level="5.4.1" data-path="methods-1.html"><a href="methods-1.html#variables-1"><i class="fa fa-check"></i><b>5.4.1</b> Variables</a></li>
+<li class="chapter" data-level="5.4.2" data-path="methods-1.html"><a href="methods-1.html#preperation-2"><i class="fa fa-check"></i><b>5.4.2</b> Preperation</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="methods-1.html"><a href="methods-1.html#disaggregation-method"><i class="fa fa-check"></i><b>6.5</b> Disaggregation method</a></li>
-<li class="chapter" data-level="6.6" data-path="methods-1.html"><a href="methods-1.html#aggregation-method"><i class="fa fa-check"></i><b>6.6</b> Aggregation method</a></li>
-<li class="chapter" data-level="6.7" data-path="methods-1.html"><a href="methods-1.html#micro-macro-model"><i class="fa fa-check"></i><b>6.7</b> Micro-macro model</a></li>
-<li class="chapter" data-level="6.8" data-path="methods-1.html"><a href="methods-1.html#random-intercept-cross-lagged-micro-macro-model-ri-clp-mm"><i class="fa fa-check"></i><b>6.8</b> Random Intercept Cross-Lagged Micro-Macro Model RI-CLP-MM</a>
+<li class="chapter" data-level="5.5" data-path="methods-1.html"><a href="methods-1.html#disaggregation-method"><i class="fa fa-check"></i><b>5.5</b> Disaggregation method</a></li>
+<li class="chapter" data-level="5.6" data-path="methods-1.html"><a href="methods-1.html#aggregation-method"><i class="fa fa-check"></i><b>5.6</b> Aggregation method</a></li>
+<li class="chapter" data-level="5.7" data-path="methods-1.html"><a href="methods-1.html#micro-macro-model"><i class="fa fa-check"></i><b>5.7</b> Micro-macro model</a></li>
+<li class="chapter" data-level="5.8" data-path="methods-1.html"><a href="methods-1.html#random-intercept-cross-lagged-micro-macro-model-ri-clp-mm"><i class="fa fa-check"></i><b>5.8</b> Random Intercept Cross-Lagged Micro-Macro Model RI-CLP-MM</a>
 <ul>
-<li class="chapter" data-level="6.8.1" data-path="methods-1.html"><a href="methods-1.html#measurement-model"><i class="fa fa-check"></i><b>6.8.1</b> Measurement model</a></li>
-<li class="chapter" data-level="6.8.2" data-path="methods-1.html"><a href="methods-1.html#the-structural-model"><i class="fa fa-check"></i><b>6.8.2</b> The structural model</a></li>
-<li class="chapter" data-level="6.8.3" data-path="methods-1.html"><a href="methods-1.html#include-egos-educational-level"><i class="fa fa-check"></i><b>6.8.3</b> Include ego’s educational level</a></li>
+<li class="chapter" data-level="5.8.1" data-path="methods-1.html"><a href="methods-1.html#measurement-model"><i class="fa fa-check"></i><b>5.8.1</b> Measurement model</a></li>
+<li class="chapter" data-level="5.8.2" data-path="methods-1.html"><a href="methods-1.html#the-structural-model"><i class="fa fa-check"></i><b>5.8.2</b> The structural model</a></li>
+<li class="chapter" data-level="5.8.3" data-path="methods-1.html"><a href="methods-1.html#include-egos-educational-level"><i class="fa fa-check"></i><b>5.8.3</b> Include ego’s educational level</a></li>
 </ul></li>
-<li class="chapter" data-level="6.9" data-path="methods-1.html"><a href="methods-1.html#assignment-4"><i class="fa fa-check"></i><b>6.9</b> Assignment</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="data-3.html"><a href="data-3.html"><i class="fa fa-check"></i><b>7</b> Data</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="data-3.html"><a href="data-3.html#sampling-1"><i class="fa fa-check"></i><b>7.1</b> Sampling</a></li>
-<li class="chapter" data-level="7.2" data-path="data-3.html"><a href="data-3.html#ethical-considerations-1"><i class="fa fa-check"></i><b>7.2</b> Ethical considerations</a></li>
-<li class="chapter" data-level="7.3" data-path="data-3.html"><a href="data-3.html#measurement-1"><i class="fa fa-check"></i><b>7.3</b> Measurement</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="data-3.html"><a href="data-3.html#su"><i class="fa fa-check"></i><b>7.3.1</b> Scaling up</a></li>
-</ul></li>
+<li class="chapter" data-level="5.9" data-path="methods-1.html"><a href="methods-1.html#assignment-4"><i class="fa fa-check"></i><b>5.9</b> Assignment</a></li>
 </ul></li>
 <li class="part"><span><b>III Part 3 SOCIONETS</b></span></li>
-<li class="chapter" data-level="8" data-path="socionetst.html"><a href="socionetst.html"><i class="fa fa-check"></i><b>8</b> Theory</a>
+<li class="chapter" data-level="6" data-path="socionetst.html"><a href="socionetst.html"><i class="fa fa-check"></i><b>6</b> Theory</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="socionetst.html"><a href="socionetst.html#network-structures"><i class="fa fa-check"></i><b>8.1</b> Network structures</a>
+<li class="chapter" data-level="6.1" data-path="socionetst.html"><a href="socionetst.html#network-structures"><i class="fa fa-check"></i><b>6.1</b> Network structures</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="socionetst.html"><a href="socionetst.html#path-length"><i class="fa fa-check"></i><b>8.1.1</b> Path length</a></li>
-<li class="chapter" data-level="8.1.2" data-path="socionetst.html"><a href="socionetst.html#cliques-and-communities"><i class="fa fa-check"></i><b>8.1.2</b> cliques and communities</a></li>
-<li class="chapter" data-level="8.1.3" data-path="socionetst.html"><a href="socionetst.html#segregation"><i class="fa fa-check"></i><b>8.1.3</b> Segregation</a></li>
+<li class="chapter" data-level="6.1.1" data-path="socionetst.html"><a href="socionetst.html#path-length"><i class="fa fa-check"></i><b>6.1.1</b> Path length</a></li>
+<li class="chapter" data-level="6.1.2" data-path="socionetst.html"><a href="socionetst.html#segregation"><i class="fa fa-check"></i><b>6.1.2</b> Segregation</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="socionetst.html"><a href="socionetst.html#random-graphs"><i class="fa fa-check"></i><b>8.2</b> Random graphs</a></li>
-<li class="chapter" data-level="8.3" data-path="socionetst.html"><a href="socionetst.html#causes-3"><i class="fa fa-check"></i><b>8.3</b> Causes</a></li>
-<li class="chapter" data-level="8.4" data-path="socionetst.html"><a href="socionetst.html#consequences-3"><i class="fa fa-check"></i><b>8.4</b> Consequences</a></li>
+<li class="chapter" data-level="6.2" data-path="socionetst.html"><a href="socionetst.html#random-graphs"><i class="fa fa-check"></i><b>6.2</b> Random graphs</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="socionetsm.html"><a href="socionetsm.html"><i class="fa fa-check"></i><b>9</b> Methods</a>
+<li class="chapter" data-level="7" data-path="socionetsm.html"><a href="socionetsm.html"><i class="fa fa-check"></i><b>7</b> Methods</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="socionetsm.html"><a href="socionetsm.html#causes-4"><i class="fa fa-check"></i><b>9.1</b> Causes</a></li>
-<li class="chapter" data-level="9.2" data-path="socionetsm.html"><a href="socionetsm.html#consequences-4"><i class="fa fa-check"></i><b>9.2</b> Consequences</a></li>
+<li class="chapter" data-level="7.1" data-path="socionetsm.html"><a href="socionetsm.html#goal"><i class="fa fa-check"></i><b>7.1</b> Goal</a></li>
+<li class="chapter" data-level="7.2" data-path="socionetsm.html"><a href="socionetsm.html#getting-started"><i class="fa fa-check"></i><b>7.2</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="socionetsm.html"><a href="socionetsm.html#custom-functions"><i class="fa fa-check"></i><b>7.2.1</b> Custom functions</a></li>
+<li class="chapter" data-level="7.2.2" data-path="socionetsm.html"><a href="socionetsm.html#packages"><i class="fa fa-check"></i><b>7.2.2</b> packages</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="data-4.html"><a href="data-4.html"><i class="fa fa-check"></i><b>10</b> Data</a>
+<li class="chapter" data-level="7.3" data-path="socionetsm.html"><a href="socionetsm.html#the-logic-of-saoms"><i class="fa fa-check"></i><b>7.3</b> The logic of SAOMs</a></li>
+<li class="chapter" data-level="7.4" data-path="socionetsm.html"><a href="socionetsm.html#rsiena-as-abm"><i class="fa fa-check"></i><b>7.4</b> RSiena as ABM</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="data-4.html"><a href="data-4.html#sampling-2"><i class="fa fa-check"></i><b>10.1</b> Sampling</a></li>
-<li class="chapter" data-level="10.2" data-path="data-4.html"><a href="data-4.html#ethical-considerations-2"><i class="fa fa-check"></i><b>10.2</b> Ethical considerations</a></li>
-<li class="chapter" data-level="10.3" data-path="data-4.html"><a href="data-4.html#measurement-2"><i class="fa fa-check"></i><b>10.3</b> Measurement</a></li>
+<li class="chapter" data-level="7.4.1" data-path="socionetsm.html"><a href="socionetsm.html#rsienas-ministep"><i class="fa fa-check"></i><b>7.4.1</b> RSiena’s ministep</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="socionetsm.html"><a href="socionetsm.html#simulation-logic"><i class="fa fa-check"></i><b>7.5</b> Simulation Logic</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="socionetsm.html"><a href="socionetsm.html#sample-an-ego"><i class="fa fa-check"></i><b>7.5.1</b> Sample an ego</a></li>
+<li class="chapter" data-level="7.5.2" data-path="socionetsm.html"><a href="socionetsm.html#possible-networks-after-ministep"><i class="fa fa-check"></i><b>7.5.2</b> Possible networks after ministep</a></li>
+<li class="chapter" data-level="7.5.3" data-path="socionetsm.html"><a href="socionetsm.html#network-statistics"><i class="fa fa-check"></i><b>7.5.3</b> Network statistics</a></li>
+<li class="chapter" data-level="7.5.4" data-path="socionetsm.html"><a href="socionetsm.html#evaluation-function"><i class="fa fa-check"></i><b>7.5.4</b> Evaluation function</a></li>
+<li class="chapter" data-level="7.5.5" data-path="socionetsm.html"><a href="socionetsm.html#choice-function"><i class="fa fa-check"></i><b>7.5.5</b> Choice function</a></li>
+<li class="chapter" data-level="7.5.6" data-path="socionetsm.html"><a href="socionetsm.html#stopping-rule"><i class="fa fa-check"></i><b>7.5.6</b> Stopping rule</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="socionetsm.html"><a href="socionetsm.html#simulation-example"><i class="fa fa-check"></i><b>7.6</b> Simulation example</a></li>
+<li class="chapter" data-level="7.7" data-path="socionetsm.html"><a href="socionetsm.html#estimation-logic"><i class="fa fa-check"></i><b>7.7</b> Estimation logic</a></li>
+<li class="chapter" data-level="7.8" data-path="socionetsm.html"><a href="socionetsm.html#interpretation-of-parameters"><i class="fa fa-check"></i><b>7.8</b> Interpretation of parameters</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="socionetsm.html"><a href="socionetsm.html#rp"><i class="fa fa-check"></i><b>7.8.1</b> Rate parameter</a></li>
+<li class="chapter" data-level="7.8.2" data-path="socionetsm.html"><a href="socionetsm.html#network-statistics-1"><i class="fa fa-check"></i><b>7.8.2</b> Network statistics</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>IV Webscraping</b></span></li>
-<li class="chapter" data-level="11" data-path="webintro.html"><a href="webintro.html"><i class="fa fa-check"></i><b>11</b> Webscraping for Social Scientists</a>
+<li class="chapter" data-level="8" data-path="webintro.html"><a href="webintro.html"><i class="fa fa-check"></i><b>8</b> Webscraping for Social Scientists</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="webintro.html"><a href="webintro.html#chapter-overview"><i class="fa fa-check"></i><b>11.1</b> Chapter overview</a>
+<li class="chapter" data-level="8.1" data-path="webintro.html"><a href="webintro.html#chapter-overview"><i class="fa fa-check"></i><b>8.1</b> Chapter overview</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="webintro.html"><a href="webintro.html#definitions"><i class="fa fa-check"></i><b>11.1.1</b> Definitions</a></li>
+<li class="chapter" data-level="8.1.1" data-path="webintro.html"><a href="webintro.html#definitions"><i class="fa fa-check"></i><b>8.1.1</b> Definitions</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="webintro.html"><a href="webintro.html#promises-and-pitfalls"><i class="fa fa-check"></i><b>11.2</b> Promises and pitfalls</a>
+<li class="chapter" data-level="8.2" data-path="webintro.html"><a href="webintro.html#promises-and-pitfalls"><i class="fa fa-check"></i><b>8.2</b> Promises and pitfalls</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="webintro.html"><a href="webintro.html#promises"><i class="fa fa-check"></i><b>11.2.1</b> Promises</a></li>
-<li class="chapter" data-level="11.2.2" data-path="webintro.html"><a href="webintro.html#pitfalls"><i class="fa fa-check"></i><b>11.2.2</b> Pitfalls</a></li>
+<li class="chapter" data-level="8.2.1" data-path="webintro.html"><a href="webintro.html#promises"><i class="fa fa-check"></i><b>8.2.1</b> Promises</a></li>
+<li class="chapter" data-level="8.2.2" data-path="webintro.html"><a href="webintro.html#pitfalls"><i class="fa fa-check"></i><b>8.2.2</b> Pitfalls</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="webintro.html"><a href="webintro.html#where-does-this-lead-us"><i class="fa fa-check"></i><b>11.3</b> Where does this lead us?</a></li>
-<li class="chapter" data-level="11.4" data-path="webintro.html"><a href="webintro.html#ethics"><i class="fa fa-check"></i><b>11.4</b> Ethics</a></li>
-<li class="chapter" data-level="11.5" data-path="webintro.html"><a href="webintro.html#webscraping-techniques"><i class="fa fa-check"></i><b>11.5</b> Webscraping techniques</a>
+<li class="chapter" data-level="8.3" data-path="webintro.html"><a href="webintro.html#where-does-this-lead-us"><i class="fa fa-check"></i><b>8.3</b> Where does this lead us?</a></li>
+<li class="chapter" data-level="8.4" data-path="webintro.html"><a href="webintro.html#ethics"><i class="fa fa-check"></i><b>8.4</b> Ethics</a></li>
+<li class="chapter" data-level="8.5" data-path="webintro.html"><a href="webintro.html#webscraping-techniques"><i class="fa fa-check"></i><b>8.5</b> Webscraping techniques</a>
 <ul>
-<li class="chapter" data-level="11.5.1" data-path="webintro.html"><a href="webintro.html#manual"><i class="fa fa-check"></i><b>11.5.1</b> Manual</a></li>
-<li class="chapter" data-level="11.5.2" data-path="webintro.html"><a href="webintro.html#apis"><i class="fa fa-check"></i><b>11.5.2</b> APIs</a></li>
-<li class="chapter" data-level="11.5.3" data-path="webintro.html"><a href="webintro.html#crawling"><i class="fa fa-check"></i><b>11.5.3</b> Crawling</a></li>
-<li class="chapter" data-level="11.5.4" data-path="webintro.html"><a href="webintro.html#industry-science-collaboration"><i class="fa fa-check"></i><b>11.5.4</b> Industry-Science Collaboration</a></li>
+<li class="chapter" data-level="8.5.1" data-path="webintro.html"><a href="webintro.html#manual"><i class="fa fa-check"></i><b>8.5.1</b> Manual</a></li>
+<li class="chapter" data-level="8.5.2" data-path="webintro.html"><a href="webintro.html#apis"><i class="fa fa-check"></i><b>8.5.2</b> APIs</a></li>
+<li class="chapter" data-level="8.5.3" data-path="webintro.html"><a href="webintro.html#crawling"><i class="fa fa-check"></i><b>8.5.3</b> Crawling</a></li>
+<li class="chapter" data-level="8.5.4" data-path="webintro.html"><a href="webintro.html#industry-science-collaboration"><i class="fa fa-check"></i><b>8.5.4</b> Industry-Science Collaboration</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="webintro.html"><a href="webintro.html#hands-on-webscraping"><i class="fa fa-check"></i><b>11.6</b> Hands-on webscraping</a>
+<li class="chapter" data-level="8.6" data-path="webintro.html"><a href="webintro.html#hands-on-webscraping"><i class="fa fa-check"></i><b>8.6</b> Hands-on webscraping</a>
 <ul>
-<li class="chapter" data-level="11.6.1" data-path="webintro.html"><a href="webintro.html#staging-your-script"><i class="fa fa-check"></i><b>11.6.1</b> Staging your script</a></li>
-<li class="chapter" data-level="11.6.2" data-path="webintro.html"><a href="webintro.html#getting-anchor-data"><i class="fa fa-check"></i><b>11.6.2</b> Getting “anchor” data</a></li>
-<li class="chapter" data-level="11.6.3" data-path="webintro.html"><a href="webintro.html#google-scholar-profiles-and-publications"><i class="fa fa-check"></i><b>11.6.3</b> Google Scholar Profiles and Publications</a></li>
-<li class="chapter" data-level="11.6.4" data-path="webintro.html"><a href="webintro.html#getting-collaborators"><i class="fa fa-check"></i><b>11.6.4</b> Getting collaborators</a></li>
-<li class="chapter" data-level="11.6.5" data-path="webintro.html"><a href="webintro.html#data-exploration"><i class="fa fa-check"></i><b>11.6.5</b> Data exploration</a></li>
+<li class="chapter" data-level="8.6.1" data-path="webintro.html"><a href="webintro.html#staging-your-script"><i class="fa fa-check"></i><b>8.6.1</b> Staging your script</a></li>
+<li class="chapter" data-level="8.6.2" data-path="webintro.html"><a href="webintro.html#getting-anchor-data"><i class="fa fa-check"></i><b>8.6.2</b> Getting “anchor” data</a></li>
+<li class="chapter" data-level="8.6.3" data-path="webintro.html"><a href="webintro.html#google-scholar-profiles-and-publications"><i class="fa fa-check"></i><b>8.6.3</b> Google Scholar Profiles and Publications</a></li>
+<li class="chapter" data-level="8.6.4" data-path="webintro.html"><a href="webintro.html#getting-collaborators"><i class="fa fa-check"></i><b>8.6.4</b> Getting collaborators</a></li>
+<li class="chapter" data-level="8.6.5" data-path="webintro.html"><a href="webintro.html#data-exploration"><i class="fa fa-check"></i><b>8.6.5</b> Data exploration</a></li>
 </ul></li>
-<li class="chapter" data-level="11.7" data-path="webintro.html"><a href="webintro.html#assignments"><i class="fa fa-check"></i><b>11.7</b> Assignments</a>
+<li class="chapter" data-level="8.7" data-path="webintro.html"><a href="webintro.html#assignments"><i class="fa fa-check"></i><b>8.7</b> Assignments</a>
 <ul>
-<li class="chapter" data-level="11.7.1" data-path="webintro.html"><a href="webintro.html#assignment-1---theoretical"><i class="fa fa-check"></i><b>11.7.1</b> Assignment 1 - Theoretical</a></li>
-<li class="chapter" data-level="11.7.2" data-path="webintro.html"><a href="webintro.html#assignment-2---practical"><i class="fa fa-check"></i><b>11.7.2</b> Assignment 2 - Practical</a></li>
+<li class="chapter" data-level="8.7.1" data-path="webintro.html"><a href="webintro.html#assignment-1---theoretical"><i class="fa fa-check"></i><b>8.7.1</b> Assignment 1 - Theoretical</a></li>
+<li class="chapter" data-level="8.7.2" data-path="webintro.html"><a href="webintro.html#assignment-2---practical"><i class="fa fa-check"></i><b>8.7.2</b> Assignment 2 - Practical</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>V Network Visualization</b></span></li>
-<li class="chapter" data-level="12" data-path="network-visualization.html"><a href="network-visualization.html"><i class="fa fa-check"></i><b>12</b> Network Visualization</a>
+<li class="chapter" data-level="9" data-path="network-visualization.html"><a href="network-visualization.html"><i class="fa fa-check"></i><b>9</b> Network Visualization</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="network-visualization.html"><a href="network-visualization.html#zacharys-karate-club"><i class="fa fa-check"></i><b>12.1</b> Zachary’s karate club</a>
+<li class="chapter" data-level="9.1" data-path="network-visualization.html"><a href="network-visualization.html#zacharys-karate-club"><i class="fa fa-check"></i><b>9.1</b> Zachary’s karate club</a>
 <ul>
-<li class="chapter" data-level="12.1.1" data-path="network-visualization.html"><a href="network-visualization.html#descriptive-statistics"><i class="fa fa-check"></i><b>12.1.1</b> Descriptive statistics</a></li>
-<li class="chapter" data-level="12.1.2" data-path="network-visualization.html"><a href="network-visualization.html#dyad-census"><i class="fa fa-check"></i><b>12.1.2</b> dyad-census</a></li>
-<li class="chapter" data-level="12.1.3" data-path="network-visualization.html"><a href="network-visualization.html#triad-census"><i class="fa fa-check"></i><b>12.1.3</b> triad-census</a></li>
-<li class="chapter" data-level="12.1.4" data-path="network-visualization.html"><a href="network-visualization.html#network-visualisation"><i class="fa fa-check"></i><b>12.1.4</b> Network visualisation</a></li>
+<li class="chapter" data-level="9.1.1" data-path="network-visualization.html"><a href="network-visualization.html#descriptive-statistics"><i class="fa fa-check"></i><b>9.1.1</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="9.1.2" data-path="network-visualization.html"><a href="network-visualization.html#dyad-census"><i class="fa fa-check"></i><b>9.1.2</b> dyad-census</a></li>
+<li class="chapter" data-level="9.1.3" data-path="network-visualization.html"><a href="network-visualization.html#triad-census"><i class="fa fa-check"></i><b>9.1.3</b> triad-census</a></li>
+<li class="chapter" data-level="9.1.4" data-path="network-visualization.html"><a href="network-visualization.html#network-visualisation"><i class="fa fa-check"></i><b>9.1.4</b> Network visualisation</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="network-visualization.html"><a href="network-visualization.html#twittersphere-in-the-dutch-hop"><i class="fa fa-check"></i><b>12.2</b> Twittersphere in the Dutch HoP</a>
+<li class="chapter" data-level="9.2" data-path="network-visualization.html"><a href="network-visualization.html#twittersphere-in-the-dutch-hop"><i class="fa fa-check"></i><b>9.2</b> Twittersphere in the Dutch HoP</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="network-visualization.html"><a href="network-visualization.html#descriptive-statistics-1"><i class="fa fa-check"></i><b>12.2.1</b> Descriptive statistics</a></li>
-<li class="chapter" data-level="12.2.2" data-path="network-visualization.html"><a href="network-visualization.html#first-plots"><i class="fa fa-check"></i><b>12.2.2</b> First plots</a></li>
-<li class="chapter" data-level="12.2.3" data-path="network-visualization.html"><a href="network-visualization.html#from-directed-to-reciprocated-ties"><i class="fa fa-check"></i><b>12.2.3</b> From directed to reciprocated ties</a></li>
-<li class="chapter" data-level="12.2.4" data-path="network-visualization.html"><a href="network-visualization.html#select-nodes-to-plot"><i class="fa fa-check"></i><b>12.2.4</b> Select nodes to plot</a></li>
-<li class="chapter" data-level="12.2.5" data-path="network-visualization.html"><a href="network-visualization.html#changing-vertices"><i class="fa fa-check"></i><b>12.2.5</b> Changing vertices</a></li>
-<li class="chapter" data-level="12.2.6" data-path="network-visualization.html"><a href="network-visualization.html#changing-edges-i"><i class="fa fa-check"></i><b>12.2.6</b> Changing edges I</a></li>
-<li class="chapter" data-level="12.2.7" data-path="network-visualization.html"><a href="network-visualization.html#add-a-legend"><i class="fa fa-check"></i><b>12.2.7</b> Add a legend</a></li>
-<li class="chapter" data-level="12.2.8" data-path="network-visualization.html"><a href="network-visualization.html#coordinates"><i class="fa fa-check"></i><b>12.2.8</b> Coordinates</a></li>
-<li class="chapter" data-level="12.2.9" data-path="network-visualization.html"><a href="network-visualization.html#changing-edges-ii"><i class="fa fa-check"></i><b>12.2.9</b> Changing edges II</a></li>
+<li class="chapter" data-level="9.2.1" data-path="network-visualization.html"><a href="network-visualization.html#descriptive-statistics-des.twit"><i class="fa fa-check"></i><b>9.2.1</b> Descriptive statistics {des.twit}</a></li>
+<li class="chapter" data-level="9.2.2" data-path="network-visualization.html"><a href="network-visualization.html#first-plots"><i class="fa fa-check"></i><b>9.2.2</b> First plots</a></li>
+<li class="chapter" data-level="9.2.3" data-path="network-visualization.html"><a href="network-visualization.html#from-directed-to-reciprocated-ties"><i class="fa fa-check"></i><b>9.2.3</b> From directed to reciprocated ties</a></li>
+<li class="chapter" data-level="9.2.4" data-path="network-visualization.html"><a href="network-visualization.html#select-nodes-to-plot"><i class="fa fa-check"></i><b>9.2.4</b> Select nodes to plot</a></li>
+<li class="chapter" data-level="9.2.5" data-path="network-visualization.html"><a href="network-visualization.html#changing-vertices"><i class="fa fa-check"></i><b>9.2.5</b> Changing vertices</a></li>
+<li class="chapter" data-level="9.2.6" data-path="network-visualization.html"><a href="network-visualization.html#changing-edges-i"><i class="fa fa-check"></i><b>9.2.6</b> Changing edges I</a></li>
+<li class="chapter" data-level="9.2.7" data-path="network-visualization.html"><a href="network-visualization.html#add-a-legend"><i class="fa fa-check"></i><b>9.2.7</b> Add a legend</a></li>
+<li class="chapter" data-level="9.2.8" data-path="network-visualization.html"><a href="network-visualization.html#coordinates"><i class="fa fa-check"></i><b>9.2.8</b> Coordinates</a></li>
+<li class="chapter" data-level="9.2.9" data-path="network-visualization.html"><a href="network-visualization.html#changing-edges-ii"><i class="fa fa-check"></i><b>9.2.9</b> Changing edges II</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="network-visualization.html"><a href="network-visualization.html#co-author-networks"><i class="fa fa-check"></i><b>12.3</b> Co-author networks</a></li>
-<li class="chapter" data-level="12.4" data-path="network-visualization.html"><a href="network-visualization.html#asplots"><i class="fa fa-check"></i><b>12.4</b> Assignment</a></li>
+<li class="chapter" data-level="9.3" data-path="network-visualization.html"><a href="network-visualization.html#co-author-networks"><i class="fa fa-check"></i><b>9.3</b> Co-author networks</a></li>
+<li class="chapter" data-level="9.4" data-path="network-visualization.html"><a href="network-visualization.html#asplots"><i class="fa fa-check"></i><b>9.4</b> Assignment</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="tutorial.html"><a href="tutorial.html"><i class="fa fa-check"></i><b>A</b> Introduction to R for SNA</a>
@@ -450,10 +449,10 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="variance" class="section level1" number="14">
-<h1><span class="header-section-number">B</span> Interdependencies</h1>
-<div id="variance-and-covariance" class="section level2" number="14.1">
-<h2><span class="header-section-number">B.1</span> Variance and covariance</h2>
+<div id="variance" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">B</span> Interdependencies<a href="variance.html#variance" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="variance-and-covariance" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">B.1</span> Variance and covariance<a href="variance.html#variance-and-covariance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Social scientists try to explain variance and covariance. It is therefore a good idea to learn by heart the formula for variance and covariance. The sample variance of a random continuous variable X, VAR(X), is as follows:</p>
 <p><span class="math display">\[VAR(X)=s_{xx}^2 = s_x^2= \frac{\Sigma^n_{i=1}(X_i-\overline{X})(X_i-\overline{X})}{n-1}= \frac{\Sigma^n_{i=1}(X_i-\overline{X})^2}{n-1}\]</span><br />
 The sample standard deviation is given by:</p>
@@ -467,45 +466,45 @@ Just to be complete. The population equivalent of the covariance:</p>
 with <span class="math inline">\(\mu\)</span> the population mean.
 And the correlation within the population is:</p>
 <p><span class="math display">\[\rho_{xy} = \frac{\sigma_{xy}^2}{\sigma_x \sigma_y}\]</span></p>
-<div id="want-to-learn-more" class="section level3" number="14.1.1">
-<h3><span class="header-section-number">B.1.1</span> Want to learn more?!</h3>
-<p>I strongly recommend you to read the <a href="https://www.probabilitycourse.com/" title="probabilitycourse">online book on probability</a> by <span class="citation"><a href="#ref-pishro2016" role="doc-biblioref">Pishro-Nik</a> (<a href="#ref-pishro2016" role="doc-biblioref">2016</a>)</span>!</p>
+<div id="want-to-learn-more" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">B.1.1</span> Want to learn more?!<a href="variance.html#want-to-learn-more" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I strongly recommend you to read the <a href="https://www.probabilitycourse.com/" title="probabilitycourse">online book on probability</a> by <span class="citation">Pishro-Nik (<a href="#ref-pishro2016">2016</a>)</span>!</p>
 <p><a href="https://www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#">
 <img src="book_probability.jpg">
 </a></p>
 </div>
 </div>
-<div id="intraclass-correlation" class="section level2" number="14.2">
-<h2><span class="header-section-number">B.2</span> Intraclass correlation</h2>
-<div id="dyadic-data" class="section level3" number="14.2.1">
-<h3><span class="header-section-number">B.2.1</span> Dyadic data</h3>
+<div id="intraclass-correlation" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">B.2</span> Intraclass correlation<a href="variance.html#intraclass-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="dyadic-data" class="section level3 hasAnchor" number="11.2.1">
+<h3><span class="header-section-number">B.2.1</span> Dyadic data<a href="variance.html#dyadic-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let us suppose we have dyadic data. For example on the political opinion of two marriage partners. We want to know if these data are interdependent.</p>
 <p>Run the code chunck below to simulate some data.</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb346-1"><a href="variance.html#cb346-1"></a><span class="fu">require</span>(MASS)</span>
-<span id="cb346-2"><a href="variance.html#cb346-2"></a><span class="fu">set.seed</span>(<span class="dv">9864</span>)  <span class="co">#We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).</span></span>
-<span id="cb346-3"><a href="variance.html#cb346-3"></a></span>
-<span id="cb346-4"><a href="variance.html#cb346-4"></a><span class="co"># let us start with simulating the opinion of both partners.</span></span>
-<span id="cb346-5"><a href="variance.html#cb346-5"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb346-6"><a href="variance.html#cb346-6"></a>opinions <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>), Sigma)</span>
-<span id="cb346-7"><a href="variance.html#cb346-7"></a>opinion_W <span class="ot">&lt;-</span> opinions[, <span class="dv">1</span>]</span>
-<span id="cb346-8"><a href="variance.html#cb346-8"></a>opinion_M <span class="ot">&lt;-</span> opinions[, <span class="dv">2</span>]</span>
-<span id="cb346-9"><a href="variance.html#cb346-9"></a>dyad_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
-<span id="cb346-10"><a href="variance.html#cb346-10"></a></span>
-<span id="cb346-11"><a href="variance.html#cb346-11"></a><span class="co"># and let&#39;s put everything together</span></span>
-<span id="cb346-12"><a href="variance.html#cb346-12"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(dyad_id, opinion_W, opinion_M)</span>
-<span id="cb346-13"><a href="variance.html#cb346-13"></a><span class="co"># add some description to the data</span></span>
-<span id="cb346-14"><a href="variance.html#cb346-14"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with </span><span class="sc">\&quot;</span><span class="st">_W</span><span class="sc">\&quot;</span><span class="st"> refer to women,</span><span class="sc">\&quot;</span><span class="st">_M</span><span class="sc">\&quot;</span><span class="st"> refer to men.&quot;</span></span>
-<span id="cb346-15"><a href="variance.html#cb346-15"></a></span>
-<span id="cb346-16"><a href="variance.html#cb346-16"></a><span class="co"># I don&#39;t think the variables need any further description.</span></span></code></pre></div>
-<div id="describe-data" class="section level4" number="14.2.1.1">
-<h4><span class="header-section-number">B.2.1.1</span> Describe data</h4>
+<div class="sourceCode" id="cb382"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb382-1"><a href="variance.html#cb382-1"></a><span class="fu">require</span>(MASS)</span>
+<span id="cb382-2"><a href="variance.html#cb382-2"></a><span class="fu">set.seed</span>(<span class="dv">9864</span>)  <span class="co">#We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).</span></span>
+<span id="cb382-3"><a href="variance.html#cb382-3"></a></span>
+<span id="cb382-4"><a href="variance.html#cb382-4"></a><span class="co"># let us start with simulating the opinion of both partners.</span></span>
+<span id="cb382-5"><a href="variance.html#cb382-5"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb382-6"><a href="variance.html#cb382-6"></a>opinions <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>), Sigma)</span>
+<span id="cb382-7"><a href="variance.html#cb382-7"></a>opinion_W <span class="ot">&lt;-</span> opinions[, <span class="dv">1</span>]</span>
+<span id="cb382-8"><a href="variance.html#cb382-8"></a>opinion_M <span class="ot">&lt;-</span> opinions[, <span class="dv">2</span>]</span>
+<span id="cb382-9"><a href="variance.html#cb382-9"></a>dyad_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
+<span id="cb382-10"><a href="variance.html#cb382-10"></a></span>
+<span id="cb382-11"><a href="variance.html#cb382-11"></a><span class="co"># and let&#39;s put everything together</span></span>
+<span id="cb382-12"><a href="variance.html#cb382-12"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(dyad_id, opinion_W, opinion_M)</span>
+<span id="cb382-13"><a href="variance.html#cb382-13"></a><span class="co"># add some description to the data</span></span>
+<span id="cb382-14"><a href="variance.html#cb382-14"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with </span><span class="sc">\&quot;</span><span class="st">_W</span><span class="sc">\&quot;</span><span class="st"> refer to women,</span><span class="sc">\&quot;</span><span class="st">_M</span><span class="sc">\&quot;</span><span class="st"> refer to men.&quot;</span></span>
+<span id="cb382-15"><a href="variance.html#cb382-15"></a></span>
+<span id="cb382-16"><a href="variance.html#cb382-16"></a><span class="co"># I don&#39;t think the variables need any further description.</span></span></code></pre></div>
+<div id="describe-data" class="section level4 hasAnchor" number="11.2.1.1">
+<h4><span class="header-section-number">B.2.1.1</span> Describe data<a href="variance.html#describe-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Lets have a look at our data.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb347-1"><a href="variance.html#cb347-1"></a><span class="fu">require</span>(psych)</span>
-<span id="cb347-2"><a href="variance.html#cb347-2"></a><span class="fu">head</span>(data)</span>
-<span id="cb347-3"><a href="variance.html#cb347-3"></a><span class="fu">str</span>(data)</span>
-<span id="cb347-4"><a href="variance.html#cb347-4"></a><span class="fu">summary</span>(data)</span>
-<span id="cb347-5"><a href="variance.html#cb347-5"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>)</span>
-<span id="cb347-6"><a href="variance.html#cb347-6"></a><span class="fu">describe</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb383-1"><a href="variance.html#cb383-1"></a><span class="fu">require</span>(psych)</span>
+<span id="cb383-2"><a href="variance.html#cb383-2"></a><span class="fu">head</span>(data)</span>
+<span id="cb383-3"><a href="variance.html#cb383-3"></a><span class="fu">str</span>(data)</span>
+<span id="cb383-4"><a href="variance.html#cb383-4"></a><span class="fu">summary</span>(data)</span>
+<span id="cb383-5"><a href="variance.html#cb383-5"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>)</span>
+<span id="cb383-6"><a href="variance.html#cb383-6"></a><span class="fu">describe</span>(data)</span></code></pre></div>
 <pre><code>#&gt;   dyad_id opinion_W opinion_M
 #&gt; 1       1  1.180285  3.651525
 #&gt; 2       2  9.930618  7.117465
@@ -531,18 +530,18 @@ And the correlation within the population is:</p>
 #&gt; opinion_W    2 1000   4.20   3.18   4.22    4.19   3.01 -5.34   14.48  19.81  0.05     0.01 0.10
 #&gt; opinion_M    3 1000   5.01   2.27   5.01    5.02   2.25 -2.99   11.67  14.66 -0.06    -0.03 0.07</code></pre>
 </div>
-<div id="interdependencies-correlation" class="section level4" number="14.2.1.2">
-<h4><span class="header-section-number">B.2.1.2</span> Interdependencies: correlation</h4>
+<div id="interdependencies-correlation" class="section level4 hasAnchor" number="11.2.1.2">
+<h4><span class="header-section-number">B.2.1.2</span> Interdependencies: correlation<a href="variance.html#interdependencies-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>There are different (naive and less naive) ways to check for interdependence.</p>
 <p>For more background information see <a href="http://davidakenny.net/dyad.htm">this page</a> by David A. Kenny.<br />
-Also check out paragraph 3.3 of the book by <span class="citation">(<a href="#ref-snijders1999" role="doc-biblioref">Snijders and Bosker 1999</a>)</span>.</p>
+Also check out paragraph 3.3 of the book by <span class="citation">(<a href="#ref-snijders1999">Snijders and Bosker 1999</a>)</span>.</p>
 <p>Lets us start with something that pops up in your mind immediately…a correlation.</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb349-1"><a href="variance.html#cb349-1"></a><span class="fu">cov</span>(data<span class="sc">$</span>opinion_M, data<span class="sc">$</span>opinion_W)  <span class="co">#the covariance between the two variables. Have a look at the simulation. This is indeed what we have put into the data. </span></span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb385-1"><a href="variance.html#cb385-1"></a><span class="fu">cov</span>(data<span class="sc">$</span>opinion_M, data<span class="sc">$</span>opinion_W)  <span class="co">#the covariance between the two variables. Have a look at the simulation. This is indeed what we have put into the data. </span></span></code></pre></div>
 <pre><code>#&gt; [1] 4.154203</code></pre>
-<div class="sourceCode" id="cb351"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb351-1"><a href="variance.html#cb351-1"></a><span class="fu">cov</span>(<span class="fu">scale</span>(data<span class="sc">$</span>opinion_M), <span class="fu">scale</span>(data<span class="sc">$</span>opinion_W))  <span class="co">#the covariance between the two standardized variables. That is the correlation. </span></span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb387-1"><a href="variance.html#cb387-1"></a><span class="fu">cov</span>(<span class="fu">scale</span>(data<span class="sc">$</span>opinion_M), <span class="fu">scale</span>(data<span class="sc">$</span>opinion_W))  <span class="co">#the covariance between the two standardized variables. That is the correlation. </span></span></code></pre></div>
 <pre><code>#&gt;           [,1]
 #&gt; [1,] 0.5741921</code></pre>
-<div class="sourceCode" id="cb353"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb353-1"><a href="variance.html#cb353-1"></a><span class="fu">cor.test</span>(data<span class="sc">$</span>opinion_M, data<span class="sc">$</span>opinion_W)  <span class="co">#See, same value. Now also with significance. </span></span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb389-1"><a href="variance.html#cb389-1"></a><span class="fu">cor.test</span>(data<span class="sc">$</span>opinion_M, data<span class="sc">$</span>opinion_W)  <span class="co">#See, same value. Now also with significance. </span></span></code></pre></div>
 <pre><code>#&gt; 
 #&gt;  Pearson&#39;s product-moment correlation
 #&gt; 
@@ -556,9 +555,9 @@ Also check out paragraph 3.3 of the book by <span class="citation">(<a href="#re
 #&gt; 0.5741921</code></pre>
 <p>This would indicate a strong and significant correlation.
 Remember that our data is in wide format. A better way is to calculate the correlation on a long dataset. This method is called the double entry method. Why is this a better way? It takes into account that the variance and mean of the opinions of men and women may be different. The endresult will more closely resemble the ICC we will encounter later.</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb355-1"><a href="variance.html#cb355-1"></a>var1 <span class="ot">&lt;-</span> <span class="fu">c</span>(data<span class="sc">$</span>opinion_M, data<span class="sc">$</span>opinion_W)</span>
-<span id="cb355-2"><a href="variance.html#cb355-2"></a>var2 <span class="ot">&lt;-</span> <span class="fu">c</span>(data<span class="sc">$</span>opinion_W, data<span class="sc">$</span>opinion_M)</span>
-<span id="cb355-3"><a href="variance.html#cb355-3"></a><span class="fu">cor.test</span>(var1, var2)</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb391-1"><a href="variance.html#cb391-1"></a>var1 <span class="ot">&lt;-</span> <span class="fu">c</span>(data<span class="sc">$</span>opinion_M, data<span class="sc">$</span>opinion_W)</span>
+<span id="cb391-2"><a href="variance.html#cb391-2"></a>var2 <span class="ot">&lt;-</span> <span class="fu">c</span>(data<span class="sc">$</span>opinion_W, data<span class="sc">$</span>opinion_M)</span>
+<span id="cb391-3"><a href="variance.html#cb391-3"></a><span class="fu">cor.test</span>(var1, var2)</span></code></pre></div>
 <pre><code>#&gt; 
 #&gt;  Pearson&#39;s product-moment correlation
 #&gt; 
@@ -572,25 +571,25 @@ Remember that our data is in wide format. A better way is to calculate the corre
 #&gt; 0.5110503</code></pre>
 <p>Lower, but still significant.</p>
 <p>It is even possible that to now see a negative (and significant) correlation. For example try to repeat the above with a dataset we would get after running the following simulation.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb357-1"><a href="variance.html#cb357-1"></a><span class="fu">require</span>(MASS)</span>
-<span id="cb357-2"><a href="variance.html#cb357-2"></a><span class="fu">set.seed</span>(<span class="dv">9864</span>)  <span class="co">#We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).</span></span>
-<span id="cb357-3"><a href="variance.html#cb357-3"></a></span>
-<span id="cb357-4"><a href="variance.html#cb357-4"></a><span class="co"># let us start with simulating the opinion of both partners.</span></span>
-<span id="cb357-5"><a href="variance.html#cb357-5"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb357-6"><a href="variance.html#cb357-6"></a>opinions <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>), Sigma)</span>
-<span id="cb357-7"><a href="variance.html#cb357-7"></a>opinion_W <span class="ot">&lt;-</span> opinions[, <span class="dv">1</span>]</span>
-<span id="cb357-8"><a href="variance.html#cb357-8"></a>opinion_M <span class="ot">&lt;-</span> opinions[, <span class="dv">2</span>]</span>
-<span id="cb357-9"><a href="variance.html#cb357-9"></a>dyad_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
-<span id="cb357-10"><a href="variance.html#cb357-10"></a></span>
-<span id="cb357-11"><a href="variance.html#cb357-11"></a><span class="co"># and let&#39;s put everything together</span></span>
-<span id="cb357-12"><a href="variance.html#cb357-12"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(dyad_id, opinion_W, opinion_M)</span>
-<span id="cb357-13"><a href="variance.html#cb357-13"></a><span class="co"># add some description to the data</span></span>
-<span id="cb357-14"><a href="variance.html#cb357-14"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with </span><span class="sc">\&quot;</span><span class="st">_W</span><span class="sc">\&quot;</span><span class="st"> refer to women,</span><span class="sc">\&quot;</span><span class="st">_M</span><span class="sc">\&quot;</span><span class="st"> refer to men.&quot;</span></span>
-<span id="cb357-15"><a href="variance.html#cb357-15"></a></span>
-<span id="cb357-16"><a href="variance.html#cb357-16"></a><span class="co"># I don&#39;t think the variables need any further description.</span></span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb393-1"><a href="variance.html#cb393-1"></a><span class="fu">require</span>(MASS)</span>
+<span id="cb393-2"><a href="variance.html#cb393-2"></a><span class="fu">set.seed</span>(<span class="dv">9864</span>)  <span class="co">#We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).</span></span>
+<span id="cb393-3"><a href="variance.html#cb393-3"></a></span>
+<span id="cb393-4"><a href="variance.html#cb393-4"></a><span class="co"># let us start with simulating the opinion of both partners.</span></span>
+<span id="cb393-5"><a href="variance.html#cb393-5"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb393-6"><a href="variance.html#cb393-6"></a>opinions <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>), Sigma)</span>
+<span id="cb393-7"><a href="variance.html#cb393-7"></a>opinion_W <span class="ot">&lt;-</span> opinions[, <span class="dv">1</span>]</span>
+<span id="cb393-8"><a href="variance.html#cb393-8"></a>opinion_M <span class="ot">&lt;-</span> opinions[, <span class="dv">2</span>]</span>
+<span id="cb393-9"><a href="variance.html#cb393-9"></a>dyad_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
+<span id="cb393-10"><a href="variance.html#cb393-10"></a></span>
+<span id="cb393-11"><a href="variance.html#cb393-11"></a><span class="co"># and let&#39;s put everything together</span></span>
+<span id="cb393-12"><a href="variance.html#cb393-12"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(dyad_id, opinion_W, opinion_M)</span>
+<span id="cb393-13"><a href="variance.html#cb393-13"></a><span class="co"># add some description to the data</span></span>
+<span id="cb393-14"><a href="variance.html#cb393-14"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with </span><span class="sc">\&quot;</span><span class="st">_W</span><span class="sc">\&quot;</span><span class="st"> refer to women,</span><span class="sc">\&quot;</span><span class="st">_M</span><span class="sc">\&quot;</span><span class="st"> refer to men.&quot;</span></span>
+<span id="cb393-15"><a href="variance.html#cb393-15"></a></span>
+<span id="cb393-16"><a href="variance.html#cb393-16"></a><span class="co"># I don&#39;t think the variables need any further description.</span></span></code></pre></div>
 </div>
-<div id="icc" class="section level4" number="14.2.1.3">
-<h4><span class="header-section-number">B.2.1.3</span> ICC</h4>
+<div id="icc" class="section level4 hasAnchor" number="11.2.1.3">
+<h4><span class="header-section-number">B.2.1.3</span> ICC<a href="variance.html#icc" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The intraclass correlation is the correlation between two random subjects of the same cluster. There are many mathematical definitions of the ICC. Let us start with a definition from the ANOVA tradition:</p>
 <p><span class="math display">\[ ICC = \frac{(MS_B - MS_W)}{(MS_B + MS_W)} \]</span>
 where,</p>
@@ -598,28 +597,28 @@ where,</p>
 <p>and</p>
 <p><span class="math display">\[ MS_W = \sum(X_{ego} - X_{alter})^2 / (2* N_{dyads}) \]</span></p>
 <p>Let’s have a go!</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb358-1"><a href="variance.html#cb358-1"></a>MSB <span class="ot">&lt;-</span> <span class="fu">var</span>((data<span class="sc">$</span>opinion_M <span class="sc">+</span> data<span class="sc">$</span>opinion_W)<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb358-2"><a href="variance.html#cb358-2"></a>MSW <span class="ot">&lt;-</span> (<span class="fu">sum</span>((data<span class="sc">$</span>opinion_M <span class="sc">-</span> data<span class="sc">$</span>opinion_W)<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(data<span class="sc">$</span>opinion_W))</span>
-<span id="cb358-3"><a href="variance.html#cb358-3"></a>ICC_anova <span class="ot">&lt;-</span> (MSB <span class="sc">-</span> MSW)<span class="sc">/</span>(MSB <span class="sc">+</span> MSW)</span>
-<span id="cb358-4"><a href="variance.html#cb358-4"></a>ICC_anova</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb394-1"><a href="variance.html#cb394-1"></a>MSB <span class="ot">&lt;-</span> <span class="fu">var</span>((data<span class="sc">$</span>opinion_M <span class="sc">+</span> data<span class="sc">$</span>opinion_W)<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb394-2"><a href="variance.html#cb394-2"></a>MSW <span class="ot">&lt;-</span> (<span class="fu">sum</span>((data<span class="sc">$</span>opinion_M <span class="sc">-</span> data<span class="sc">$</span>opinion_W)<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(data<span class="sc">$</span>opinion_W))</span>
+<span id="cb394-3"><a href="variance.html#cb394-3"></a>ICC_anova <span class="ot">&lt;-</span> (MSB <span class="sc">-</span> MSW)<span class="sc">/</span>(MSB <span class="sc">+</span> MSW)</span>
+<span id="cb394-4"><a href="variance.html#cb394-4"></a>ICC_anova</span></code></pre></div>
 <pre><code>#&gt; [1] 0.5114198</code></pre>
 <p>Do you see that the ICC is very close to the correlation based on a dataset in long format (double entry method)? Thus in practice, the double entry method is very convenient to check for interdependencies if you are working on dyadic data.</p>
-<p>Most of you are probably more familiar with definitions of the ICC as provided within textbooks on multi-level analysis. Where the intraclass correlation - at least for continuous dependent variables - is defined as the between variance (i.e. the variance in dyad means) divided by the total variance (i.e. the sum of the between and within variance). There is only one problem, we need these variances present in the ‘real population.’ In our data we only observe the variances present in our sample. The observed between variance needs to be corrected. Below I will show you how to do that.</p>
+<p>Most of you are probably more familiar with definitions of the ICC as provided within textbooks on multi-level analysis. Where the intraclass correlation - at least for continuous dependent variables - is defined as the between variance (i.e. the variance in dyad means) divided by the total variance (i.e. the sum of the between and within variance). There is only one problem, we need these variances present in the ‘real population’. In our data we only observe the variances present in our sample. The observed between variance needs to be corrected. Below I will show you how to do that.</p>
 <p>First make a dataset in longformat.</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb360-1"><a href="variance.html#cb360-1"></a><span class="co"># first make a dataset in longformat.</span></span>
-<span id="cb360-2"><a href="variance.html#cb360-2"></a>dyadmean <span class="ot">&lt;-</span> (data<span class="sc">$</span>opinion_M <span class="sc">+</span> data<span class="sc">$</span>opinion_W)<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb360-3"><a href="variance.html#cb360-3"></a>data_long <span class="ot">&lt;-</span> <span class="fu">rbind</span>(data, data)</span>
-<span id="cb360-4"><a href="variance.html#cb360-4"></a>data_long<span class="sc">$</span>partner_id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">each =</span> <span class="dv">1000</span>)</span>
-<span id="cb360-5"><a href="variance.html#cb360-5"></a>data_long<span class="sc">$</span>dyad_id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="at">times =</span> <span class="dv">2</span>)</span>
-<span id="cb360-6"><a href="variance.html#cb360-6"></a>data_long<span class="sc">$</span>dyadmean <span class="ot">&lt;-</span> <span class="fu">c</span>(dyadmean, dyadmean)</span>
-<span id="cb360-7"><a href="variance.html#cb360-7"></a></span>
-<span id="cb360-8"><a href="variance.html#cb360-8"></a><span class="co"># lets the first dyad entry refer to the women and the second to the men</span></span>
-<span id="cb360-9"><a href="variance.html#cb360-9"></a>data_long<span class="sc">$</span>opinion <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(data_long<span class="sc">$</span>partner_id <span class="sc">==</span> <span class="dv">1</span>, data_long<span class="sc">$</span>opinion_W, data_long<span class="sc">$</span>opinion_M)</span>
-<span id="cb360-10"><a href="variance.html#cb360-10"></a></span>
-<span id="cb360-11"><a href="variance.html#cb360-11"></a><span class="co"># also define the opinion of the partner</span></span>
-<span id="cb360-12"><a href="variance.html#cb360-12"></a>data_long<span class="sc">$</span>opinion_P <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(data_long<span class="sc">$</span>partner_id <span class="sc">==</span> <span class="dv">2</span>, data_long<span class="sc">$</span>opinion_W, data_long<span class="sc">$</span>opinion_M)</span>
-<span id="cb360-13"><a href="variance.html#cb360-13"></a></span>
-<span id="cb360-14"><a href="variance.html#cb360-14"></a><span class="fu">head</span>(data_long)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb396-1"><a href="variance.html#cb396-1"></a><span class="co"># first make a dataset in longformat.</span></span>
+<span id="cb396-2"><a href="variance.html#cb396-2"></a>dyadmean <span class="ot">&lt;-</span> (data<span class="sc">$</span>opinion_M <span class="sc">+</span> data<span class="sc">$</span>opinion_W)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb396-3"><a href="variance.html#cb396-3"></a>data_long <span class="ot">&lt;-</span> <span class="fu">rbind</span>(data, data)</span>
+<span id="cb396-4"><a href="variance.html#cb396-4"></a>data_long<span class="sc">$</span>partner_id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">each =</span> <span class="dv">1000</span>)</span>
+<span id="cb396-5"><a href="variance.html#cb396-5"></a>data_long<span class="sc">$</span>dyad_id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="at">times =</span> <span class="dv">2</span>)</span>
+<span id="cb396-6"><a href="variance.html#cb396-6"></a>data_long<span class="sc">$</span>dyadmean <span class="ot">&lt;-</span> <span class="fu">c</span>(dyadmean, dyadmean)</span>
+<span id="cb396-7"><a href="variance.html#cb396-7"></a></span>
+<span id="cb396-8"><a href="variance.html#cb396-8"></a><span class="co"># lets the first dyad entry refer to the women and the second to the men</span></span>
+<span id="cb396-9"><a href="variance.html#cb396-9"></a>data_long<span class="sc">$</span>opinion <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(data_long<span class="sc">$</span>partner_id <span class="sc">==</span> <span class="dv">1</span>, data_long<span class="sc">$</span>opinion_W, data_long<span class="sc">$</span>opinion_M)</span>
+<span id="cb396-10"><a href="variance.html#cb396-10"></a></span>
+<span id="cb396-11"><a href="variance.html#cb396-11"></a><span class="co"># also define the opinion of the partner</span></span>
+<span id="cb396-12"><a href="variance.html#cb396-12"></a>data_long<span class="sc">$</span>opinion_P <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(data_long<span class="sc">$</span>partner_id <span class="sc">==</span> <span class="dv">2</span>, data_long<span class="sc">$</span>opinion_W, data_long<span class="sc">$</span>opinion_M)</span>
+<span id="cb396-13"><a href="variance.html#cb396-13"></a></span>
+<span id="cb396-14"><a href="variance.html#cb396-14"></a><span class="fu">head</span>(data_long)</span></code></pre></div>
 <pre><code>#&gt;   dyad_id opinion_W opinion_M partner_id dyadmean  opinion opinion_P
 #&gt; 1       1  1.180285  3.651525          1 2.415905 1.180285  3.651525
 #&gt; 2       2  9.930618  7.117465          1 8.524041 9.930618  7.117465
@@ -629,31 +628,31 @@ where,</p>
 #&gt; 6       6  8.408048  4.720610          1 6.564329 8.408048  4.720610</code></pre>
 <p><br />
 With this dataset in longformat we can calculate the ICC.</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb362-1"><a href="variance.html#cb362-1"></a><span class="co"># first calculate the between variance of our sample. Note that this we only need observations of</span></span>
-<span id="cb362-2"><a href="variance.html#cb362-2"></a><span class="co"># the dyads once (thus N_dyads=1000)</span></span>
-<span id="cb362-3"><a href="variance.html#cb362-3"></a>S_B <span class="ot">&lt;-</span> <span class="fu">var</span>(data_long<span class="sc">$</span>dyadmean[<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>])</span>
-<span id="cb362-4"><a href="variance.html#cb362-4"></a><span class="co"># within variance</span></span>
-<span id="cb362-5"><a href="variance.html#cb362-5"></a>SW <span class="ot">&lt;-</span> <span class="fu">sum</span>((data_long<span class="sc">$</span>opinion <span class="sc">-</span> data_long<span class="sc">$</span>dyadmean)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">1000</span>  <span class="co">#we divide by the number of dyads</span></span>
-<span id="cb362-6"><a href="variance.html#cb362-6"></a><span class="co"># We now need to correct the observed between variance to reflect the population between variance.</span></span>
-<span id="cb362-7"><a href="variance.html#cb362-7"></a>S_B_E <span class="ot">&lt;-</span> S_B <span class="sc">-</span> SW<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb362-8"><a href="variance.html#cb362-8"></a>ICC_ML <span class="ot">&lt;-</span> S_B_E<span class="sc">/</span>(S_B_E <span class="sc">+</span> SW)</span>
-<span id="cb362-9"><a href="variance.html#cb362-9"></a>ICC_ML</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb398-1"><a href="variance.html#cb398-1"></a><span class="co"># first calculate the between variance of our sample. Note that this we only need observations of</span></span>
+<span id="cb398-2"><a href="variance.html#cb398-2"></a><span class="co"># the dyads once (thus N_dyads=1000)</span></span>
+<span id="cb398-3"><a href="variance.html#cb398-3"></a>S_B <span class="ot">&lt;-</span> <span class="fu">var</span>(data_long<span class="sc">$</span>dyadmean[<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>])</span>
+<span id="cb398-4"><a href="variance.html#cb398-4"></a><span class="co"># within variance</span></span>
+<span id="cb398-5"><a href="variance.html#cb398-5"></a>SW <span class="ot">&lt;-</span> <span class="fu">sum</span>((data_long<span class="sc">$</span>opinion <span class="sc">-</span> data_long<span class="sc">$</span>dyadmean)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">1000</span>  <span class="co">#we divide by the number of dyads</span></span>
+<span id="cb398-6"><a href="variance.html#cb398-6"></a><span class="co"># We now need to correct the observed between variance to reflect the population between variance.</span></span>
+<span id="cb398-7"><a href="variance.html#cb398-7"></a>S_B_E <span class="ot">&lt;-</span> S_B <span class="sc">-</span> SW<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb398-8"><a href="variance.html#cb398-8"></a>ICC_ML <span class="ot">&lt;-</span> S_B_E<span class="sc">/</span>(S_B_E <span class="sc">+</span> SW)</span>
+<span id="cb398-9"><a href="variance.html#cb398-9"></a>ICC_ML</span></code></pre></div>
 <pre><code>#&gt; [1] 0.5114198</code></pre>
 <p>Of course exactly similar to the ICC_anova.
 But this procedure is of course quite cumbersome. It may be a lot easier to estimate an empty multi-level model which also spits out the ICC (after some tweaking).
 See below.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb364-1"><a href="variance.html#cb364-1"></a><span class="fu">require</span>(nlme)</span>
-<span id="cb364-2"><a href="variance.html#cb364-2"></a><span class="co"># estimate empty model with ML</span></span>
-<span id="cb364-3"><a href="variance.html#cb364-3"></a>mlme <span class="ot">&lt;-</span> <span class="fu">lme</span>(opinion <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> data_long, <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span> <span class="sc">|</span> dyad_id), )</span>
-<span id="cb364-4"><a href="variance.html#cb364-4"></a><span class="fu">summary</span>(mlme)</span>
-<span id="cb364-5"><a href="variance.html#cb364-5"></a><span class="co"># Standard deviations are reported instead of variances.  extract the variances.</span></span>
-<span id="cb364-6"><a href="variance.html#cb364-6"></a><span class="fu">VarCorr</span>(mlme)</span>
-<span id="cb364-7"><a href="variance.html#cb364-7"></a><span class="co"># the intercept variance is at the between-level. the residual variances are at the observation /</span></span>
-<span id="cb364-8"><a href="variance.html#cb364-8"></a><span class="co"># within-level.  thus based on these numbers we may calculate the ICC ourselves.</span></span>
-<span id="cb364-9"><a href="variance.html#cb364-9"></a>varests <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">VarCorr</span>(mlme)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
-<span id="cb364-10"><a href="variance.html#cb364-10"></a>varests</span>
-<span id="cb364-11"><a href="variance.html#cb364-11"></a>ICC_MLb <span class="ot">&lt;-</span> varests[<span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(varests)</span>
-<span id="cb364-12"><a href="variance.html#cb364-12"></a>ICC_MLb</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb400-1"><a href="variance.html#cb400-1"></a><span class="fu">require</span>(nlme)</span>
+<span id="cb400-2"><a href="variance.html#cb400-2"></a><span class="co"># estimate empty model with ML</span></span>
+<span id="cb400-3"><a href="variance.html#cb400-3"></a>mlme <span class="ot">&lt;-</span> <span class="fu">lme</span>(opinion <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> data_long, <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span> <span class="sc">|</span> dyad_id), )</span>
+<span id="cb400-4"><a href="variance.html#cb400-4"></a><span class="fu">summary</span>(mlme)</span>
+<span id="cb400-5"><a href="variance.html#cb400-5"></a><span class="co"># Standard deviations are reported instead of variances.  extract the variances.</span></span>
+<span id="cb400-6"><a href="variance.html#cb400-6"></a><span class="fu">VarCorr</span>(mlme)</span>
+<span id="cb400-7"><a href="variance.html#cb400-7"></a><span class="co"># the intercept variance is at the between-level. the residual variances are at the observation /</span></span>
+<span id="cb400-8"><a href="variance.html#cb400-8"></a><span class="co"># within-level.  thus based on these numbers we may calculate the ICC ourselves.</span></span>
+<span id="cb400-9"><a href="variance.html#cb400-9"></a>varests <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">VarCorr</span>(mlme)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
+<span id="cb400-10"><a href="variance.html#cb400-10"></a>varests</span>
+<span id="cb400-11"><a href="variance.html#cb400-11"></a>ICC_MLb <span class="ot">&lt;-</span> varests[<span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(varests)</span>
+<span id="cb400-12"><a href="variance.html#cb400-12"></a>ICC_MLb</span></code></pre></div>
 <pre><code>#&gt; Linear mixed-effects model fit by REML
 #&gt;   Data: data_long 
 #&gt;        AIC      BIC    logLik
@@ -681,18 +680,18 @@ See below.</p>
 #&gt; [1] 3.993974 3.815620
 #&gt; [1] 0.5114189</code></pre>
 <p>In this course we will rely heavily on the Lavaan package. We can also calculate the ICC with Lavaan.</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb366-1"><a href="variance.html#cb366-1"></a><span class="fu">require</span>(<span class="st">&quot;lavaan&quot;</span>)</span>
-<span id="cb366-2"><a href="variance.html#cb366-2"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb366-3"><a href="variance.html#cb366-3"></a><span class="st">    level: 1</span></span>
-<span id="cb366-4"><a href="variance.html#cb366-4"></a><span class="st">        opinion ~ 1 #regression model</span></span>
-<span id="cb366-5"><a href="variance.html#cb366-5"></a><span class="st">        opinion ~~ opinion #variance</span></span>
-<span id="cb366-6"><a href="variance.html#cb366-6"></a><span class="st">    level: 2</span></span>
-<span id="cb366-7"><a href="variance.html#cb366-7"></a><span class="st">        opinion ~ 1</span></span>
-<span id="cb366-8"><a href="variance.html#cb366-8"></a><span class="st">        opinion ~~ opinion</span></span>
-<span id="cb366-9"><a href="variance.html#cb366-9"></a><span class="st">&quot;</span></span>
-<span id="cb366-10"><a href="variance.html#cb366-10"></a>fit <span class="ot">&lt;-</span> <span class="fu">lavaan</span>(<span class="at">model =</span> model, <span class="at">data =</span> data_long, <span class="at">cluster =</span> <span class="st">&quot;dyad_id&quot;</span>)</span>
-<span id="cb366-11"><a href="variance.html#cb366-11"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
-<pre><code>#&gt; lavaan 0.6-9 ended normally after 7 iterations
+<div class="sourceCode" id="cb402"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb402-1"><a href="variance.html#cb402-1"></a><span class="fu">require</span>(<span class="st">&quot;lavaan&quot;</span>)</span>
+<span id="cb402-2"><a href="variance.html#cb402-2"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb402-3"><a href="variance.html#cb402-3"></a><span class="st">    level: 1</span></span>
+<span id="cb402-4"><a href="variance.html#cb402-4"></a><span class="st">        opinion ~ 1 #regression model</span></span>
+<span id="cb402-5"><a href="variance.html#cb402-5"></a><span class="st">        opinion ~~ opinion #variance</span></span>
+<span id="cb402-6"><a href="variance.html#cb402-6"></a><span class="st">    level: 2</span></span>
+<span id="cb402-7"><a href="variance.html#cb402-7"></a><span class="st">        opinion ~ 1</span></span>
+<span id="cb402-8"><a href="variance.html#cb402-8"></a><span class="st">        opinion ~~ opinion</span></span>
+<span id="cb402-9"><a href="variance.html#cb402-9"></a><span class="st">&quot;</span></span>
+<span id="cb402-10"><a href="variance.html#cb402-10"></a>fit <span class="ot">&lt;-</span> <span class="fu">lavaan</span>(<span class="at">model =</span> model, <span class="at">data =</span> data_long, <span class="at">cluster =</span> <span class="st">&quot;dyad_id&quot;</span>)</span>
+<span id="cb402-11"><a href="variance.html#cb402-11"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<pre><code>#&gt; lavaan 0.6-11 ended normally after 7 iterations
 #&gt; 
 #&gt;   Estimator                                         ML
 #&gt;   Optimization method                           NLMINB
@@ -733,49 +732,49 @@ See below.</p>
 #&gt; Variances:
 #&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)
 #&gt;     opinion           3.988    0.277   14.391    0.000</code></pre>
-<div class="sourceCode" id="cb368"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb368-1"><a href="variance.html#cb368-1"></a><span class="fu">lavInspect</span>(fit, <span class="st">&quot;icc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb404-1"><a href="variance.html#cb404-1"></a><span class="fu">lavInspect</span>(fit, <span class="st">&quot;icc&quot;</span>)</span></code></pre></div>
 <pre><code>#&gt; opinion 
 #&gt;   0.511</code></pre>
 <p>The take home message is that the two observations for each dyad are indeed interrelated. Is this a lot? Is this significant?</p>
 </div>
 </div>
-<div id="egonet-socionet-data" class="section level3" number="14.2.2">
-<h3><span class="header-section-number">B.2.2</span> Egonet / Socionet data</h3>
+<div id="egonet-socionet-data" class="section level3 hasAnchor" number="11.2.2">
+<h3><span class="header-section-number">B.2.2</span> Egonet / Socionet data<a href="variance.html#egonet-socionet-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The above procedure to calculate the ICC correlation can also be used for egonet data.</p>
 <p>Let us suppose we have egonet data. For example on the political opinions of you and your friends. We want to know if these data are interdependent.</p>
 <p>Run the code chunck below to simulate some data.</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb370-1"><a href="variance.html#cb370-1"></a><span class="fu">require</span>(MASS)</span>
-<span id="cb370-2"><a href="variance.html#cb370-2"></a><span class="fu">set.seed</span>(<span class="dv">9864</span>)  <span class="co">#We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).</span></span>
-<span id="cb370-3"><a href="variance.html#cb370-3"></a></span>
-<span id="cb370-4"><a href="variance.html#cb370-4"></a><span class="co"># let us start with simulating the opinion of ego and its alters.</span></span>
-<span id="cb370-5"><a href="variance.html#cb370-5"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">36</span>, <span class="at">replace =</span> T), <span class="dv">6</span>, <span class="dv">6</span>)</span>
-<span id="cb370-6"><a href="variance.html#cb370-6"></a>Sigma[<span class="fu">lower.tri</span>(Sigma)] <span class="ot">=</span> <span class="fu">t</span>(Sigma)[<span class="fu">lower.tri</span>(Sigma)]</span>
-<span id="cb370-7"><a href="variance.html#cb370-7"></a><span class="fu">diag</span>(Sigma) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
-<span id="cb370-8"><a href="variance.html#cb370-8"></a><span class="co"># Sigma</span></span>
-<span id="cb370-9"><a href="variance.html#cb370-9"></a></span>
-<span id="cb370-10"><a href="variance.html#cb370-10"></a>opinions <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>), Sigma)</span>
-<span id="cb370-11"><a href="variance.html#cb370-11"></a>opinion_ego <span class="ot">&lt;-</span> opinions[, <span class="dv">1</span>]</span>
-<span id="cb370-12"><a href="variance.html#cb370-12"></a>opinion_alter1 <span class="ot">&lt;-</span> opinions[, <span class="dv">2</span>]</span>
-<span id="cb370-13"><a href="variance.html#cb370-13"></a>opinion_alter2 <span class="ot">&lt;-</span> opinions[, <span class="dv">3</span>]</span>
-<span id="cb370-14"><a href="variance.html#cb370-14"></a>opinion_alter3 <span class="ot">&lt;-</span> opinions[, <span class="dv">4</span>]</span>
-<span id="cb370-15"><a href="variance.html#cb370-15"></a>opinion_alter4 <span class="ot">&lt;-</span> opinions[, <span class="dv">5</span>]</span>
-<span id="cb370-16"><a href="variance.html#cb370-16"></a>opinion_alter5 <span class="ot">&lt;-</span> opinions[, <span class="dv">6</span>]</span>
-<span id="cb370-17"><a href="variance.html#cb370-17"></a></span>
-<span id="cb370-18"><a href="variance.html#cb370-18"></a>egonet_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
-<span id="cb370-19"><a href="variance.html#cb370-19"></a></span>
-<span id="cb370-20"><a href="variance.html#cb370-20"></a><span class="co"># and let&#39;s put everything together</span></span>
-<span id="cb370-21"><a href="variance.html#cb370-21"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(egonet_id, opinion_alter1, opinion_alter2, opinion_alter3, opinion_alter4, opinion_alter5)</span>
-<span id="cb370-22"><a href="variance.html#cb370-22"></a></span>
-<span id="cb370-23"><a href="variance.html#cb370-23"></a><span class="co"># I don&#39;t think the variables need any further description.</span></span></code></pre></div>
-<div id="describe-data-1" class="section level4" number="14.2.2.1">
-<h4><span class="header-section-number">B.2.2.1</span> Describe data</h4>
+<div class="sourceCode" id="cb406"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb406-1"><a href="variance.html#cb406-1"></a><span class="fu">require</span>(MASS)</span>
+<span id="cb406-2"><a href="variance.html#cb406-2"></a><span class="fu">set.seed</span>(<span class="dv">9864</span>)  <span class="co">#We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).</span></span>
+<span id="cb406-3"><a href="variance.html#cb406-3"></a></span>
+<span id="cb406-4"><a href="variance.html#cb406-4"></a><span class="co"># let us start with simulating the opinion of ego and its alters.</span></span>
+<span id="cb406-5"><a href="variance.html#cb406-5"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">36</span>, <span class="at">replace =</span> T), <span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb406-6"><a href="variance.html#cb406-6"></a>Sigma[<span class="fu">lower.tri</span>(Sigma)] <span class="ot">=</span> <span class="fu">t</span>(Sigma)[<span class="fu">lower.tri</span>(Sigma)]</span>
+<span id="cb406-7"><a href="variance.html#cb406-7"></a><span class="fu">diag</span>(Sigma) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
+<span id="cb406-8"><a href="variance.html#cb406-8"></a><span class="co"># Sigma</span></span>
+<span id="cb406-9"><a href="variance.html#cb406-9"></a></span>
+<span id="cb406-10"><a href="variance.html#cb406-10"></a>opinions <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>), Sigma)</span>
+<span id="cb406-11"><a href="variance.html#cb406-11"></a>opinion_ego <span class="ot">&lt;-</span> opinions[, <span class="dv">1</span>]</span>
+<span id="cb406-12"><a href="variance.html#cb406-12"></a>opinion_alter1 <span class="ot">&lt;-</span> opinions[, <span class="dv">2</span>]</span>
+<span id="cb406-13"><a href="variance.html#cb406-13"></a>opinion_alter2 <span class="ot">&lt;-</span> opinions[, <span class="dv">3</span>]</span>
+<span id="cb406-14"><a href="variance.html#cb406-14"></a>opinion_alter3 <span class="ot">&lt;-</span> opinions[, <span class="dv">4</span>]</span>
+<span id="cb406-15"><a href="variance.html#cb406-15"></a>opinion_alter4 <span class="ot">&lt;-</span> opinions[, <span class="dv">5</span>]</span>
+<span id="cb406-16"><a href="variance.html#cb406-16"></a>opinion_alter5 <span class="ot">&lt;-</span> opinions[, <span class="dv">6</span>]</span>
+<span id="cb406-17"><a href="variance.html#cb406-17"></a></span>
+<span id="cb406-18"><a href="variance.html#cb406-18"></a>egonet_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
+<span id="cb406-19"><a href="variance.html#cb406-19"></a></span>
+<span id="cb406-20"><a href="variance.html#cb406-20"></a><span class="co"># and let&#39;s put everything together</span></span>
+<span id="cb406-21"><a href="variance.html#cb406-21"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(egonet_id, opinion_alter1, opinion_alter2, opinion_alter3, opinion_alter4, opinion_alter5)</span>
+<span id="cb406-22"><a href="variance.html#cb406-22"></a></span>
+<span id="cb406-23"><a href="variance.html#cb406-23"></a><span class="co"># I don&#39;t think the variables need any further description.</span></span></code></pre></div>
+<div id="describe-data-1" class="section level4 hasAnchor" number="11.2.2.1">
+<h4><span class="header-section-number">B.2.2.1</span> Describe data<a href="variance.html#describe-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Lets have a look at our data.</p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb371-1"><a href="variance.html#cb371-1"></a><span class="fu">require</span>(psych)</span>
-<span id="cb371-2"><a href="variance.html#cb371-2"></a><span class="fu">head</span>(data)</span>
-<span id="cb371-3"><a href="variance.html#cb371-3"></a><span class="fu">str</span>(data)</span>
-<span id="cb371-4"><a href="variance.html#cb371-4"></a><span class="fu">summary</span>(data)</span>
-<span id="cb371-5"><a href="variance.html#cb371-5"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>)</span>
-<span id="cb371-6"><a href="variance.html#cb371-6"></a><span class="fu">describe</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb407-1"><a href="variance.html#cb407-1"></a><span class="fu">require</span>(psych)</span>
+<span id="cb407-2"><a href="variance.html#cb407-2"></a><span class="fu">head</span>(data)</span>
+<span id="cb407-3"><a href="variance.html#cb407-3"></a><span class="fu">str</span>(data)</span>
+<span id="cb407-4"><a href="variance.html#cb407-4"></a><span class="fu">summary</span>(data)</span>
+<span id="cb407-5"><a href="variance.html#cb407-5"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>)</span>
+<span id="cb407-6"><a href="variance.html#cb407-6"></a><span class="fu">describe</span>(data)</span></code></pre></div>
 <pre><code>#&gt;   egonet_id opinion_alter1 opinion_alter2 opinion_alter3 opinion_alter4 opinion_alter5
 #&gt; 1         1     -0.1024247       2.473552       2.993974      0.1604888      1.7443645
 #&gt; 2         2      6.4712148       2.689709       6.052834      5.7392350      7.1487502
@@ -820,12 +819,12 @@ See below.</p>
 #&gt; opinion_alter4 0.08
 #&gt; opinion_alter5 0.08</code></pre>
 <p>Reshape into long format.</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb373-1"><a href="variance.html#cb373-1"></a><span class="fu">require</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb373-2"><a href="variance.html#cb373-2"></a></span>
-<span id="cb373-3"><a href="variance.html#cb373-3"></a>data_long <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">data =</span> data, <span class="at">cols =</span> <span class="fu">everything</span>()[<span class="sc">-</span><span class="dv">1</span>], <span class="at">names_to =</span> <span class="st">&quot;alter&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;opinion&quot;</span>)</span>
-<span id="cb373-4"><a href="variance.html#cb373-4"></a></span>
-<span id="cb373-5"><a href="variance.html#cb373-5"></a><span class="fu">head</span>(data_long)</span></code></pre></div>
-<pre><code>#&gt; # A tibble: 6 x 3
+<div class="sourceCode" id="cb409"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb409-1"><a href="variance.html#cb409-1"></a><span class="fu">require</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb409-2"><a href="variance.html#cb409-2"></a></span>
+<span id="cb409-3"><a href="variance.html#cb409-3"></a>data_long <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">data =</span> data, <span class="at">cols =</span> <span class="fu">everything</span>()[<span class="sc">-</span><span class="dv">1</span>], <span class="at">names_to =</span> <span class="st">&quot;alter&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;opinion&quot;</span>)</span>
+<span id="cb409-4"><a href="variance.html#cb409-4"></a></span>
+<span id="cb409-5"><a href="variance.html#cb409-5"></a><span class="fu">head</span>(data_long)</span></code></pre></div>
+<pre><code>#&gt; # A tibble: 6 × 3
 #&gt;   egonet_id alter          opinion
 #&gt;       &lt;int&gt; &lt;chr&gt;            &lt;dbl&gt;
 #&gt; 1         1 opinion_alter1  -0.102
@@ -835,20 +834,20 @@ See below.</p>
 #&gt; 5         1 opinion_alter5   1.74 
 #&gt; 6         2 opinion_alter1   6.47</code></pre>
 </div>
-<div id="icc-via-ml" class="section level4" number="14.2.2.2">
-<h4><span class="header-section-number">B.2.2.2</span> ICC via ML</h4>
-<div class="sourceCode" id="cb375"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb375-1"><a href="variance.html#cb375-1"></a><span class="fu">require</span>(nlme)</span>
-<span id="cb375-2"><a href="variance.html#cb375-2"></a><span class="co"># estimate empty model with ML</span></span>
-<span id="cb375-3"><a href="variance.html#cb375-3"></a>mlme <span class="ot">&lt;-</span> <span class="fu">lme</span>(opinion <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> data_long, <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span> <span class="sc">|</span> egonet_id), )</span>
-<span id="cb375-4"><a href="variance.html#cb375-4"></a><span class="fu">summary</span>(mlme)</span>
-<span id="cb375-5"><a href="variance.html#cb375-5"></a><span class="co"># Standard deviations are reported instead of variances.  extract the variances.</span></span>
-<span id="cb375-6"><a href="variance.html#cb375-6"></a><span class="fu">VarCorr</span>(mlme)</span>
-<span id="cb375-7"><a href="variance.html#cb375-7"></a><span class="co"># the intercept variance is at the between-level. the residual variances are at the observation /</span></span>
-<span id="cb375-8"><a href="variance.html#cb375-8"></a><span class="co"># within-level.  thus based on these numbers we may calculate the ICC ourselves.</span></span>
-<span id="cb375-9"><a href="variance.html#cb375-9"></a>varests <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">VarCorr</span>(mlme)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
-<span id="cb375-10"><a href="variance.html#cb375-10"></a>varests</span>
-<span id="cb375-11"><a href="variance.html#cb375-11"></a>ICC_MLb <span class="ot">&lt;-</span> varests[<span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(varests)</span>
-<span id="cb375-12"><a href="variance.html#cb375-12"></a>ICC_MLb</span></code></pre></div>
+<div id="icc-via-ml" class="section level4 hasAnchor" number="11.2.2.2">
+<h4><span class="header-section-number">B.2.2.2</span> ICC via ML<a href="variance.html#icc-via-ml" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb411"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb411-1"><a href="variance.html#cb411-1"></a><span class="fu">require</span>(nlme)</span>
+<span id="cb411-2"><a href="variance.html#cb411-2"></a><span class="co"># estimate empty model with ML</span></span>
+<span id="cb411-3"><a href="variance.html#cb411-3"></a>mlme <span class="ot">&lt;-</span> <span class="fu">lme</span>(opinion <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> data_long, <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span> <span class="sc">|</span> egonet_id), )</span>
+<span id="cb411-4"><a href="variance.html#cb411-4"></a><span class="fu">summary</span>(mlme)</span>
+<span id="cb411-5"><a href="variance.html#cb411-5"></a><span class="co"># Standard deviations are reported instead of variances.  extract the variances.</span></span>
+<span id="cb411-6"><a href="variance.html#cb411-6"></a><span class="fu">VarCorr</span>(mlme)</span>
+<span id="cb411-7"><a href="variance.html#cb411-7"></a><span class="co"># the intercept variance is at the between-level. the residual variances are at the observation /</span></span>
+<span id="cb411-8"><a href="variance.html#cb411-8"></a><span class="co"># within-level.  thus based on these numbers we may calculate the ICC ourselves.</span></span>
+<span id="cb411-9"><a href="variance.html#cb411-9"></a>varests <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">VarCorr</span>(mlme)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
+<span id="cb411-10"><a href="variance.html#cb411-10"></a>varests</span>
+<span id="cb411-11"><a href="variance.html#cb411-11"></a>ICC_MLb <span class="ot">&lt;-</span> varests[<span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(varests)</span>
+<span id="cb411-12"><a href="variance.html#cb411-12"></a>ICC_MLb</span></code></pre></div>
 <pre><code>#&gt; Linear mixed-effects model fit by REML
 #&gt;   Data: data_long 
 #&gt;        AIC     BIC    logLik
@@ -876,20 +875,20 @@ See below.</p>
 #&gt; [1] 1.493065 3.694073
 #&gt; [1] 0.2878398</code></pre>
 </div>
-<div id="icc-via-semlavaan" class="section level4" number="14.2.2.3">
-<h4><span class="header-section-number">B.2.2.3</span> ICC via SEM/lavaan</h4>
-<div class="sourceCode" id="cb377"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb377-1"><a href="variance.html#cb377-1"></a><span class="fu">require</span>(<span class="st">&quot;lavaan&quot;</span>)</span>
-<span id="cb377-2"><a href="variance.html#cb377-2"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb377-3"><a href="variance.html#cb377-3"></a><span class="st">    level: 1</span></span>
-<span id="cb377-4"><a href="variance.html#cb377-4"></a><span class="st">        opinion ~ 1 #regression model</span></span>
-<span id="cb377-5"><a href="variance.html#cb377-5"></a><span class="st">        opinion ~~ opinion #variance</span></span>
-<span id="cb377-6"><a href="variance.html#cb377-6"></a><span class="st">    level: 2</span></span>
-<span id="cb377-7"><a href="variance.html#cb377-7"></a><span class="st">        opinion ~ 1</span></span>
-<span id="cb377-8"><a href="variance.html#cb377-8"></a><span class="st">        opinion ~~ opinion</span></span>
-<span id="cb377-9"><a href="variance.html#cb377-9"></a><span class="st">&quot;</span></span>
-<span id="cb377-10"><a href="variance.html#cb377-10"></a>fit <span class="ot">&lt;-</span> <span class="fu">lavaan</span>(<span class="at">model =</span> model, <span class="at">data =</span> data_long, <span class="at">cluster =</span> <span class="st">&quot;egonet_id&quot;</span>)</span>
-<span id="cb377-11"><a href="variance.html#cb377-11"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
-<pre><code>#&gt; lavaan 0.6-9 ended normally after 11 iterations
+<div id="icc-via-semlavaan" class="section level4 hasAnchor" number="11.2.2.3">
+<h4><span class="header-section-number">B.2.2.3</span> ICC via SEM/lavaan<a href="variance.html#icc-via-semlavaan" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb413"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb413-1"><a href="variance.html#cb413-1"></a><span class="fu">require</span>(<span class="st">&quot;lavaan&quot;</span>)</span>
+<span id="cb413-2"><a href="variance.html#cb413-2"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb413-3"><a href="variance.html#cb413-3"></a><span class="st">    level: 1</span></span>
+<span id="cb413-4"><a href="variance.html#cb413-4"></a><span class="st">        opinion ~ 1 #regression model</span></span>
+<span id="cb413-5"><a href="variance.html#cb413-5"></a><span class="st">        opinion ~~ opinion #variance</span></span>
+<span id="cb413-6"><a href="variance.html#cb413-6"></a><span class="st">    level: 2</span></span>
+<span id="cb413-7"><a href="variance.html#cb413-7"></a><span class="st">        opinion ~ 1</span></span>
+<span id="cb413-8"><a href="variance.html#cb413-8"></a><span class="st">        opinion ~~ opinion</span></span>
+<span id="cb413-9"><a href="variance.html#cb413-9"></a><span class="st">&quot;</span></span>
+<span id="cb413-10"><a href="variance.html#cb413-10"></a>fit <span class="ot">&lt;-</span> <span class="fu">lavaan</span>(<span class="at">model =</span> model, <span class="at">data =</span> data_long, <span class="at">cluster =</span> <span class="st">&quot;egonet_id&quot;</span>)</span>
+<span id="cb413-11"><a href="variance.html#cb413-11"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<pre><code>#&gt; lavaan 0.6-11 ended normally after 11 iterations
 #&gt; 
 #&gt;   Estimator                                         ML
 #&gt;   Optimization method                           NLMINB
@@ -930,7 +929,7 @@ See below.</p>
 #&gt; Variances:
 #&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)
 #&gt;     opinion           1.491    0.101   14.750    0.000</code></pre>
-<div class="sourceCode" id="cb379"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb379-1"><a href="variance.html#cb379-1"></a><span class="fu">lavInspect</span>(fit, <span class="st">&quot;icc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb415-1"><a href="variance.html#cb415-1"></a><span class="fu">lavInspect</span>(fit, <span class="st">&quot;icc&quot;</span>)</span></code></pre></div>
 <pre><code>#&gt; opinion 
 #&gt;   0.288</code></pre>
 <hr />
@@ -957,7 +956,6 @@ Snijders, Tom A. B., and Roel J Bosker. 1999. <em>Multilevel Analysis: An Introd
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -998,7 +996,7 @@ gitbook.start({
 },
 "download": null,
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {

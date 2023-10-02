@@ -642,7 +642,7 @@ str(cv08_haven)
 ```
 
 ```
-#> tibble [1,963 x 278] (S3: tbl_df/tbl/data.frame)
+#> tibble [1,963 × 278] (S3: tbl_df/tbl/data.frame)
 #>  $ we_id   : dbl+lbl [1:1963] 36775330, 36775340, 36775420, 36775440, 36775450, 36775460, 36775480, 367...
 #>    ..@ label        : chr "WE_ID"
 #>    ..@ format.spss  : chr "F10.0"
@@ -2002,7 +2002,7 @@ cv08_haven <- cv08_haven %>%
 cv08_haven <- cv08_haven %>%
     mutate(int_mean_temp = rowMeans(cbind(int055n, int056n, int057n), na.rm = TRUE), nmis = rowSums(is.na(cbind(int055n,
         int056n, int057n))), int_mean = ifelse(nmis < 2, int_mean_temp, NA)) %>%
-    select(-int_mean_temp, -nmis)
+    dplyr::select(-int_mean_temp, -nmis)
 ```
 
 ```
@@ -2308,10 +2308,10 @@ head(cv_tot_panel)
 # step 1: selecting the variables you want to keep. for this tutorial only 6 variables: id, age,
 # sex, educ, health, region (not that R is case sensitive)
 cv08_sel <- cv08_haven %>%
-    select(c("we_id", "lftop", "geslacht", "var006n", "v401", "landd"))
+    dplyr::select(c("we_id", "lftop", "geslacht", "var006n", "v401", "landd"))
 
 cv10_sel <- cv10_haven %>%
-    select(c("Sleutel", "var002", "var001", "Vltoplop", "V401", "Landd"))
+    dplyr::select(c("Sleutel", "var002", "var001", "Vltoplop", "V401", "Landd"))
 ```
 
 #### Step2: make consistent
@@ -2373,10 +2373,10 @@ cv10_sel$id2 <- rank(cv10_sel$id)
 # datasets. perhaps clean up first.
 
 cv08_sel <- cv08_sel %>%
-    select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave"))
+    dplyr::select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave"))
 
 cv10_sel <- cv10_sel %>%
-    select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave"))
+    dplyr::select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave"))
 
 cv_tot_tidy <- cv08_sel %>%
     add_row(cv10_sel)
@@ -2413,7 +2413,7 @@ head(cv_tot_tidy)
 ```
 
 ```
-#> # A tibble: 6 x 8
+#> # A tibble: 6 × 8
 #> # Rowwise: 
 #>          id   id2       age       men educ3            health             region  wave
 #>   <dbl+lbl> <dbl> <dbl+lbl> <dbl+lbl> <fct>         <dbl+lbl>          <dbl+lbl> <dbl>
@@ -3098,7 +3098,7 @@ model3
 
 ```{.r .numberLines}
   pred <- cv_total_tidy  %>%
-  select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave")) %>% #start with the original variables.
+  dplyr::select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave")) %>% #start with the original variables.
   mutate_all(as.numeric)  %>%
   mutate_at(c("men", "educ3"), as.factor) %>%
   mice(method = c("", "", "cart", "logreg", "polr", "cart", "", "")) %>%
@@ -3112,7 +3112,7 @@ model3
 #impute missings (again but now on correct predictors) and fit model on imputed dataset
 
 model_imp <- cv_total_tidy %>%
-  select(c("id","id2","age","men","educ3","health","region","wave")) %>%
+  dplyr::select(c("id","id2","age","men","educ3","health","region","wave")) %>%
   mutate_all(as.numeric)  %>%
   mutate_at(c("men", "educ3"), as.factor) %>%
   mice(method = c("", "", "cart", "logreg", "polr", "cart", "", ""), pred = pred, seed = 45622) %>%
@@ -3594,7 +3594,7 @@ summary(fit)
 ```
 
 ```
-#> lavaan 0.6-9 ended normally after 7 iterations
+#> lavaan 0.6-11 ended normally after 7 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -3756,7 +3756,7 @@ head(data_long)
 ```
 
 ```
-#> # A tibble: 6 x 3
+#> # A tibble: 6 × 3
 #>   egonet_id alter          opinion
 #>       <int> <chr>            <dbl>
 #> 1         1 opinion_alter1  -0.102
@@ -3831,7 +3831,7 @@ summary(fit)
 ```
 
 ```
-#> lavaan 0.6-9 ended normally after 11 iterations
+#> lavaan 0.6-11 ended normally after 11 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
