@@ -535,7 +535,7 @@ partner_df_long %>%
 ```
 
 ```
-#> # A tibble: 11 x 4
+#> # A tibble: 11 × 4
 #>    within_time mean_dist  cors  covs
 #>          <dbl>     <dbl> <dbl> <dbl>
 #>  1           1     0.716 0.440 0.422
@@ -1143,7 +1143,7 @@ summary(results[[4]])
 ```
 
 ```
-#> lavaan 0.6-9 ended normally after 31 iterations
+#> lavaan 0.6-11 ended normally after 31 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -1347,7 +1347,7 @@ summary(results[[4]])
 #>    .x11               0.796    0.033   24.016    0.000
 #>    .y11               0.620    0.027   22.840    0.000
 #> 
-#> lavaan 0.6-9 ended normally after 26 iterations
+#> lavaan 0.6-11 ended normally after 26 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -1551,7 +1551,7 @@ summary(results[[4]])
 #>    .x11               0.492    0.020   24.435    0.000
 #>    .y11               0.451    0.019   24.036    0.000
 #> 
-#> lavaan 0.6-9 ended normally after 74 iterations
+#> lavaan 0.6-11 ended normally after 74 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -1755,7 +1755,7 @@ summary(results[[4]])
 #>    .x11               0.362    0.015   24.067    0.000
 #>    .y11               0.367    0.015   23.792    0.000
 #> 
-#> lavaan 0.6-9 ended normally after 48 iterations
+#> lavaan 0.6-11 ended normally after 48 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -2089,7 +2089,7 @@ summary(results[[8]])
 ```
 
 ```
-#> lavaan 0.6-9 ended normally after 42 iterations
+#> lavaan 0.6-11 ended normally after 42 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -2374,7 +2374,7 @@ summary(results[[8]])
 #>    .y10               0.000                           
 #>    .y11               0.000                           
 #> 
-#> lavaan 0.6-9 ended normally after 39 iterations
+#> lavaan 0.6-11 ended normally after 39 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -2659,7 +2659,7 @@ summary(results[[8]])
 #>    .y10               0.000                           
 #>    .y11               0.000                           
 #> 
-#> lavaan 0.6-9 ended normally after 57 iterations
+#> lavaan 0.6-11 ended normally after 57 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -2944,7 +2944,7 @@ summary(results[[8]])
 #>    .y10               0.000                           
 #>    .y11               0.000                           
 #> 
-#> lavaan 0.6-9 ended normally after 51 iterations
+#> lavaan 0.6-11 ended normally after 51 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -3360,7 +3360,7 @@ summary(results[[12]])
 ```
 
 ```
-#> lavaan 0.6-9 ended normally after 51 iterations
+#> lavaan 0.6-11 ended normally after 51 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -3645,7 +3645,7 @@ summary(results[[12]])
 #>    .y10               0.000                           
 #>    .y11               0.000                           
 #> 
-#> lavaan 0.6-9 ended normally after 44 iterations
+#> lavaan 0.6-11 ended normally after 44 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -3930,7 +3930,7 @@ summary(results[[12]])
 #>    .y10               0.000                           
 #>    .y11               0.000                           
 #> 
-#> lavaan 0.6-9 ended normally after 94 iterations
+#> lavaan 0.6-11 ended normally after 94 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -4215,7 +4215,7 @@ summary(results[[12]])
 #>    .y10               0.000                           
 #>    .y11               0.000                           
 #> 
-#> lavaan 0.6-9 ended normally after 67 iterations
+#> lavaan 0.6-11 ended normally after 67 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -4649,7 +4649,7 @@ summary(results[[16]])
 ```
 
 ```
-#> lavaan 0.6-9 ended normally after 86 iterations
+#> lavaan 0.6-11 ended normally after 86 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -4976,7 +4976,7 @@ summary(results[[16]])
 #>    .y10               0.000                           
 #>    .y11               0.000                           
 #> 
-#> lavaan 0.6-9 ended normally after 122 iterations
+#> lavaan 0.6-11 ended normally after 122 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -5303,7 +5303,7 @@ summary(results[[16]])
 #>    .y10               0.000                           
 #>    .y11               0.000                           
 #> 
-#> lavaan 0.6-9 ended normally after 107 iterations
+#> lavaan 0.6-11 ended normally after 107 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -5630,7 +5630,7 @@ summary(results[[16]])
 #>    .y10               0.000                           
 #>    .y11               0.000                           
 #> 
-#> lavaan 0.6-9 ended normally after 83 iterations
+#> lavaan 0.6-11 ended normally after 83 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -6249,7 +6249,7 @@ summary(results[[20]])
 ```
 
 ```
-#> lavaan 0.6-9 ended normally after 39 iterations
+#> lavaan 0.6-11 ended normally after 39 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -6459,7 +6459,7 @@ summary(results[[20]])
 #>     dif2              0.012    0.011    1.097    0.273
 #>     dif3              0.007    0.003    2.106    0.035
 #> 
-#> lavaan 0.6-9 ended normally after 38 iterations
+#> lavaan 0.6-11 ended normally after 38 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -6669,7 +6669,7 @@ summary(results[[20]])
 #>     dif2              0.024    0.010    2.265    0.024
 #>     dif3             -0.004    0.003   -1.575    0.115
 #> 
-#> lavaan 0.6-9 ended normally after 68 iterations
+#> lavaan 0.6-11 ended normally after 68 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -6879,7 +6879,7 @@ summary(results[[20]])
 #>     dif2              0.020    0.010    2.051    0.040
 #>     dif3              0.000    0.002    0.218    0.827
 #> 
-#> lavaan 0.6-9 ended normally after 54 iterations
+#> lavaan 0.6-11 ended normally after 54 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -7228,7 +7228,7 @@ summary(results[[24]])
 ```
 
 ```
-#> lavaan 0.6-9 ended normally after 32 iterations
+#> lavaan 0.6-11 ended normally after 32 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -7519,7 +7519,7 @@ summary(results[[24]])
 #>     dif2             -0.025    0.013   -1.817    0.069
 #>     dif3             -0.000    0.002   -0.137    0.891
 #> 
-#> lavaan 0.6-9 ended normally after 41 iterations
+#> lavaan 0.6-11 ended normally after 41 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -7810,7 +7810,7 @@ summary(results[[24]])
 #>     dif2              0.017    0.012    1.376    0.169
 #>     dif3             -0.010    0.002   -6.291    0.000
 #> 
-#> lavaan 0.6-9 ended normally after 65 iterations
+#> lavaan 0.6-11 ended normally after 65 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -8101,7 +8101,7 @@ summary(results[[24]])
 #>     dif2              0.004    0.012    0.300    0.764
 #>     dif3             -0.013    0.002   -6.125    0.000
 #> 
-#> lavaan 0.6-9 ended normally after 45 iterations
+#> lavaan 0.6-11 ended normally after 45 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -8531,7 +8531,7 @@ summary(results[[28]])
 ```
 
 ```
-#> lavaan 0.6-9 ended normally after 51 iterations
+#> lavaan 0.6-11 ended normally after 51 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -8822,7 +8822,7 @@ summary(results[[28]])
 #>     dif2             -0.014    0.013   -1.063    0.288
 #>     dif3             -0.002    0.002   -0.695    0.487
 #> 
-#> lavaan 0.6-9 ended normally after 50 iterations
+#> lavaan 0.6-11 ended normally after 50 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -9113,7 +9113,7 @@ summary(results[[28]])
 #>     dif2              0.017    0.013    1.310    0.190
 #>     dif3             -0.010    0.002   -5.415    0.000
 #> 
-#> lavaan 0.6-9 ended normally after 103 iterations
+#> lavaan 0.6-11 ended normally after 103 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -9404,7 +9404,7 @@ summary(results[[28]])
 #>     dif2              0.014    0.013    1.094    0.274
 #>     dif3             -0.013    0.002   -5.771    0.000
 #> 
-#> lavaan 0.6-9 ended normally after 69 iterations
+#> lavaan 0.6-11 ended normally after 69 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -9846,7 +9846,7 @@ summary(results[[32]])
 ```
 
 ```
-#> lavaan 0.6-9 ended normally after 105 iterations
+#> lavaan 0.6-11 ended normally after 105 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -10180,7 +10180,7 @@ summary(results[[32]])
 #>     dif3              0.003    0.002    1.494    0.135
 #>     dif4             -0.001    0.000   -1.904    0.057
 #> 
-#> lavaan 0.6-9 ended normally after 103 iterations
+#> lavaan 0.6-11 ended normally after 103 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -10514,7 +10514,7 @@ summary(results[[32]])
 #>     dif3             -0.009    0.002   -5.209    0.000
 #>     dif4             -0.000    0.000   -0.337    0.736
 #> 
-#> lavaan 0.6-9 ended normally after 123 iterations
+#> lavaan 0.6-11 ended normally after 123 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -10848,7 +10848,7 @@ summary(results[[32]])
 #>     dif3             -0.013    0.002   -5.475    0.000
 #>     dif4             -0.000    0.000   -0.120    0.905
 #> 
-#> lavaan 0.6-9 ended normally after 96 iterations
+#> lavaan 0.6-11 ended normally after 96 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -11475,16 +11475,5 @@ summary(results[[32]])
 
 
 ---  
-
-# Data  
-
-## Sampling  
-
-## Ethical considerations  
-
-## Measurement  
-
----  
-
 
 

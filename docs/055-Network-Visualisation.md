@@ -3,6 +3,9 @@
 # Network Visualization     
 
 
+```
+## Warning: package 'kableExtra' was built under R version 4.2.3
+```
 
 
 
@@ -253,7 +256,7 @@ We discussed several network structure in section \@ref(structure-1). Decide for
 #### degree {-}
 
 ```{.r .numberLines}
-degree(g)
+igraph::degree(g)
 # hist(table(degree(g)), xlab='indegree', main= 'Histogram of indegree')
 ```
 
@@ -266,7 +269,7 @@ degree(g)
 
 ```{.r .numberLines}
 # be aware that directed graphs are considered as undirected. but g is undirected.
-transitivity(g, type = c("localundirected"), isolates = c("NaN", "zero"))
+igraph::transitivity(g, type = c("localundirected"), isolates = c("NaN", "zero"))
 ```
 
 ```
@@ -296,7 +299,7 @@ Which nodes attract your attention?
 ### dyad-census
 
 ```{.r .numberLines}
-dyad.census(g)
+igraph::dyad.census(g)
 ```
 
 ```
@@ -317,6 +320,7 @@ dyad.census(g)
 igraph::triad.census(g)
 # I will use sna because it shows the names of the triads as well.
 sna::triad.census(gmat)
+unloadNamespace("sna")  #I will detach this package again, otherwise it will interfere with all kind of functions from igraph, and my students will hate me for that.
 ```
 
 ```
@@ -599,7 +603,7 @@ atmnet2[atmnet2 == 10] <- 0
 atmnet3[atmnet3 == 10] <- 0
 ```
 
-### Descriptive statistics  
+### Descriptive statistics  {des.twit}
 
 We describe this dataset in quite some detail in Chapter \@ref(socionetsm). But I think it is good to show an important observation here as well: 
 
@@ -761,7 +765,7 @@ Suppose you would like to add the data to this graph.
 
 ```{.r .numberLines}
 # we need to retrieve the edges.
-edges <- as_data_frame(G1, what = "edges")
+edges <- igraph::as_data_frame(G1, what = "edges")
 
 # the first variable of the data we can attach needs to be some id, thus reorder columns of keyf
 keyf <- cbind(keyf$EGOid, keyf[, names(keyf) != "EGOid"])
@@ -2056,7 +2060,7 @@ edge_density(G1)
 ```
 
 ```
-#> [1] 0.04845774
+#> [1] 0.04962259
 ```
 Actually, not very high at all. 
 
@@ -2073,7 +2077,7 @@ G2 <- graph_from_adjacency_matrix(atmnet1_un, mode = "undirected", weighted = NU
     add.rownames = NA)
 
 # attach data if you want
-edges <- as_data_frame(G2, what = "edges")
+edges <- igraph::as_data_frame(G2, what = "edges")
 G2 <- graph_from_data_frame(edges, directed = FALSE, vertices = keyf)
 plot(G2)
 ```
@@ -2152,7 +2156,7 @@ You could use two different notations:
 
 ```{.r .numberLines}
 # changing V
-V(G2)$size = degree(G2) * 1.05  #naturally, you may use a different node-level structural characteristic here. 
+V(G2)$size = igraph::degree(G2) * 1.05  #naturally, you may use a different node-level structural characteristic here. 
 plot(G2, mode = "undirected")
 ```
 
@@ -2236,7 +2240,7 @@ Lets assign these coordinates to our MPs
 V(G2)$color <- keyf$Partij_col
 
 # change node size a bit
-V(G2)$size = degree(G2) * 1.05 + 6
+V(G2)$size = igraph::degree(G2) * 1.05 + 6
 
 # remove the labels
 V(G2)$label = ""
@@ -2275,7 +2279,7 @@ G_w <- igraph::graph_from_adjacency_matrix(atmnet_weighted, mode = "undirected",
     add.colnames = NA, add.rownames = NA)
 
 # attach data
-edges <- as_data_frame(G_w, what = "edges")
+edges <- igraph::as_data_frame(G_w, what = "edges")
 # inspect the weight.
 edges$weight  #not a lot of variation. 
 
@@ -2286,7 +2290,7 @@ G_w <- graph_from_data_frame(edges, directed = FALSE, vertices = keyf)
 
 # add changes as above
 V(G_w)$color <- keyf$Partij_col
-V(G_w)$size = degree(G_w) * 1.05 + 6
+V(G_w)$size = igraph::degree(G_w) * 1.05 + 6
 V(G_w)$label = ""
 E(G_w)$curved = 0.1
 
@@ -2385,6 +2389,14 @@ Party_cols <- Party_cols[c(7, 3, 9, 10, 12, 11, 5, 4, 6, 2, 8, 1, 13)]
 ## Co-author networks
 
 Remember the sociology staff at Radboud University? Let's plot the 1.5 degree co-authorship network of the sociology staff! Perhaps we can even mark those staff members that are actually at Radboud University's department of sociology? Or perhaps we can draw nodes proportional to some ego information? Do you remember that we went "one deep" in the collaboration networks? Well, that automatically means that those who do not work at RU sociology are also included in these data. And because we look at directed ties, it may mean that there are some isolated clusters. For instance, Hofstra lists McFarland as co-author, but not vice versa: this means that looking through Hofstra at his co-authors, McFarland is put into the data as well as his co-authors. What we first want is to look whether he lists any co-authors Bas his collaborators as well. If we succeed in that, we have the 1.5 degree network.
+
+
+If you did not yet downloaded the data, please do so now.   
+
+[soc_df](addfiles/soc_df.RData) \
+[soc_collabs](addfiles/soc_collabs1.RData) \
+[collabs_1deep](addfiles/soc_collabs2.RData) \
+
 
 
 ```{.r .numberLines}
@@ -2528,6 +2540,33 @@ plot(net1,
 <img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-46-1.png" width="768" />
 
 And so on and so forth! You can play around with different algorithms that put these nodes on the grid differently too.
+
+Let us know focus on the staff members of the sociology department of Radboud University Nijmegen. We thus once again need to a selection of our graph. Here, we will use the `induced.subgraph` function of the `igraph` package. Above we changed the color of the nodes based on the info in our `in_network` data object. We could use that to identify the nodes. 
+
+
+```{.r .numberLines}
+net1_mat <- igraph::as_adjacency_matrix(net1, sparse = FALSE)
+
+net1_un <- (net1_mat + t(net1_mat)) > 0
+
+net1_un <- graph_from_adjacency_matrix(net1_un, mode = "undirected")
+
+net_sel <- induced.subgraph(net1_un, vids = (in_network$vcol == "#56B4E9"))
+
+
+plot(net_sel)
+```
+
+<img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-47-1.png" width="672" />
+
+```{.r .numberLines}
+clp <- cluster_optimal(net_sel)
+
+
+plot(clp, net_sel)
+```
+
+<img src="055-Network-Visualisation_files/figure-html/unnamed-chunk-47-2.png" width="672" />
 
 
 ---  

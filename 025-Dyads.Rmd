@@ -85,7 +85,7 @@ function myFunction() {
 
 <!---we need to include this somewhere as general r script---> 
 
-```{r colorize, echo=FALSE, cache=TRUE}
+```{r colorize, echo=FALSE, cache=FALSE}
 colorize <- function(x, color) {
   if (knitr::is_latex_output()) {
     sprintf("\\textcolor{%s}{%s}", color, x)
@@ -2125,16 +2125,5 @@ hypo2
 
 
 ---  
-
-# Data  
-
-## Sampling  
-
-## Ethical considerations  
-
-## Measurement  
-
----  
-
 
 

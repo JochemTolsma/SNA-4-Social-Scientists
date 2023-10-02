@@ -1,0 +1,235 @@
+# getting started
+
+Start with clean workspace 
+
+```{r}
+rm(list=ls())
+```
+
+----
+
+# Goal
+
+We have two goals:  
+
+1. How to make an RSiena object ready to analyze.  
+2. Analyze a (very very) simple network evoluation model  
+
+
+
+# Custom functions
+
+- `fpackage.check`: Check if packages are installed (and install if not) in R ([source](https://vbaliga.github.io/verify-that-r-packages-are-installed-and-loaded/)).  
+- `fsave`: Save to processed data in repository  
+- `f_pubnets`: select scholars and construct directed publication network. 
+
+```{r customfunctions, results='hide'}
+fpackage.check <- function(packages) {
+  lapply(packages, FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      install.packages(x, dependencies = TRUE)
+      library(x, character.only = TRUE)
+    }
+  })
+}
+
+fsave <- function(x, file=NULL, location="./data/processed/") {
+  ifelse(!dir.exists("data"), dir.create("data"), FALSE)
+  ifelse(!dir.exists("data/processed"), dir.create("data/processed"), FALSE)
+  if (is.null(file)) file= deparse(substitute(x))
+  datename <- substr(gsub("[:-]", "", Sys.time()), 1,8)  
+  totalname <- paste(location, datename, file, ".rda", sep="")
+  save(x, file = totalname)  #need to fix if file is reloaded as input name, not as x. 
+}
+
+#this is the most important one. We created it in the previous script
+
+f_pubnets <- function(df_scholars=df, list_publications=publications, discip="sociology", affiliation="RU", waves=list(wave1=c(2018,2019,2020), wave2=c(2021,2022,2023))) {
+  
+  publications <- list_publications %>% 
+  bind_rows() %>%
+  distinct(title, .keep_all = TRUE) 
+  
+  df_scholars %>% 
+  filter(affil1==affiliation | affil2==affiliation) %>%
+  filter(discipline==discip) -> df_sel
+  
+  networklist <- list()
+  for (wave in 1:length(waves)) {
+    networklist[[wave]] <- matrix(0, nrow=nrow(df_sel), ncol=nrow(df_sel))
+  }
+  
+  publicationlist <- list()
+  for (wave in 1:length(waves)) {
+    publicationlist[[wave]] <- publications %>%
+    filter(gs_id %in% df_sel$gs_id) %>% 
+    filter (year %in% waves[[wave]]) %>%
+    select(author) %>% 
+    lapply(str_split, pattern=",") 
+  }  
+    
+  publicationlist2 <- list()
+  for (wave in 1:length(waves)) {
+    publicationlist2[[wave]] <- publicationlist[[wave]]$author %>%
+    #lowercase
+    lapply(tolower) %>% 
+    # Removing diacritics
+    lapply(stri_trans_general, id = "latin-ascii") %>%
+    # only last name
+    lapply(word, start=-1, sep=" ") %>%
+    # only last last name
+    lapply(word, start=-1, sep="-")
+  }
+  
+  for (wave in 1:length(waves)) {
+    #let us remove all publications with only one author
+    remove <- which(sapply(publicationlist2[[wave]], FUN = function(x) length(x)==1 )==TRUE)
+    publicationlist2[[wave]] <- publicationlist2[[wave]][-remove]
+  }
+
+  for (wave in 1:length(waves)) {
+    pubs <- publicationlist2[[wave]]
+    for (ego in 1: nrow(df_sel)) {
+      #which ego? 
+      lastname_ego <- df_sel$lastname[ego]
+      #for all publications
+      for (pub in 1:length(pubs)) {
+        #only continue if ego is author of pub
+        if (lastname_ego %in% pubs[[pub]]) {
+          aut_pot <- which.max(pubs[[pub]] %in% lastname_ego)
+          #only continue if ego is first author of pub
+          if (aut_pot==1) {
+            #check all alters/co-authors
+            for (alter in 1: nrow(df_sel)) {
+              #which alter
+              lastname_alter <- df_sel$lastname[alter]
+              if (lastname_alter %in% pubs[[pub]]) {
+                networklist[[wave]][ego,alter] <- networklist[[wave]][ego,alter] + 1
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return(list(df=df_sel, network=networklist))
+}
+```
+
+
+
+
+
+# packages
+
+- `RSiena`: what do you think? :-)
+
+
+```{r, results='hide'}
+packages = c("RSiena", "tidyverse")
+
+fpackage.check(packages)
+```
+
+# input
+
+```{r}
+load("./data/processed/20230621df_complete.rda")
+df <- x
+load("./data/processed/20230621list_publications_jt.rda")
+publications <- x
+rm(x)
+```
+
+
+# RU - sociology 
+
+```{r}
+output <- f_pubnets()
+df_soc <- output[[1]]
+df_network <- output[[2]]
+
+```
+## Step 1: define data
+
+### dependent variable  
+
+```{r}
+#let us check the number of waves
+length(df_network)
+wave1 <- df_network[[1]]
+wave2 <- df_network[[2]]
+#let us put the diagonal to zero
+diag(wave1) <- 0
+diag(wave2) <- 0
+#we want a binary tie (not a weighted tie) 
+wave1[wave1>1] <- 1
+wave2[wave2>1] <- 1
+#put the nets in an array
+net_soc_array <- array(data = c(wave1, wave2), dim=c(dim(wave1),2))
+#dependent
+net <- sienaDependent(net_soc_array)
+```
+
+### independent variables
+
+```{r}
+#gender
+gender <- as.numeric(df_soc$gender=="female")
+gender <- coCovar(gender)
+```
+
+Note that you can and must a lot more relevant independent variables.  
+
+```{r}
+mydata <- sienaDataCreate(net, gender)
+```
+
+## Step 2: create effects structure
+
+```{r}
+myeff <- getEffects(mydata)
+#effectsDocumentation(myeff)
+```
+
+
+## Step 3: get initial description
+
+```{r}
+ifelse(!dir.exists("results"), dir.create("results"), FALSE)
+print01Report(mydata, modelname = "./results/soc_init")
+```
+
+**And have a look at it!!**
+
+![](results/soc_init.txt){#id .class width=100% height=200px}
+
+What do we learn from this file?  
+
+## Step 4: specify model  
+
+This should be both empirically and theoretically motivated. 
+Most importantly, hopefully you have already thought about this step when you formulated your hypotheses.  
+
+```{r, eval=FALSE}
+myeff <- includeEffects(myeff, isolateNet, inPop, outAct) #we know that quite a lot of staff has not published with someone else
+myeff <- includeEffects(myeff, sameX, egoX, altX, interaction1 = "gender")
+```
+What structural effects would we normally want to include? 
+
+
+### Step5 estimate
+
+```{r}
+myAlgorithm <- sienaAlgorithmCreate(projname = "soc_init")
+(ans <- siena07(myAlgorithm, data = mydata, effects = myeff))
+# (the outer parentheses lead to printing the obtained result on the screen) if necessary, estimate
+# further
+(ans <- siena07(myAlgorithm, data = mydata, effects = myeff, prevAns = ans))
+```
+
+### Step 6: GOF
+
+That's for Rob!
+
+
