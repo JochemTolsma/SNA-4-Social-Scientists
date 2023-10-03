@@ -12,7 +12,7 @@ There are many methods for analyzing the four theoretical dimensions of social n
 If we focus on the explanation of the micro-mechanisms that bring about the structure of a social network, I would say there are two main flavors within the social sciences:  
 
 - Exponential-family Random Graph Models: estimated for example with `ergm` see the [statnet](https://statnet.org/) website.  
-- Stochastic Actor Orientated Models: estimated for example with `RSiena` see the Siena main page [Siena](https://www.stats.ox.ac.uk/~snijders/siena/siena.html)  
+- Stochastic Actor Orientated Models: estimated for example with `RSiena` see the [Siena](https://www.stats.ox.ac.uk/~snijders/siena/siena.html) main page  
 
 For a comparison of the two approaches and some advice on which method to choose see [@Block2019]. 
 
@@ -20,9 +20,9 @@ Ideally, you should try to test your hypotheses with both methods. And if result
 
 In what follows I will focus on RSiena and I have several reasons for this:  
 
-1. we can use the micro-mechansism not only to explain the evoluation of network structure but also of network composition. Phrased otherwise, With this method (and the right type of data) it is possible to distinguish between selection and influence processes  
+1. We can use the micro-mechanism not only to explain the evolution of network structure but also of network composition. Phrased otherwise, with this method (and the right type of data) it is possible to distinguish between selection and influence processes  
 2. I have way more expertise with RSiena than with ergm^[naturally this does not mean I have a lot of expertise in RSiena]  
-3. I think this book has something to add to the current Turorials for and introductions of RSiena. 
+3. I think this book has something to add to the current Tutorials for and introductions of RSiena. 
 
 
 ## Goal
@@ -104,12 +104,12 @@ See [@ripley2022manual] paragraph 2.1
 ## RSiena as ABM 
 
 RSiena models *the evolution* of network structures and/or the behavior of the social agents. 
-It takes the current situation $T_0$ as starting point. It estimates the 'rules' for the agents how to change their ties and/or behavior. If the model is specified correctly, these rules (or micro mechanisms) have led the situation at $T_0$ to evolve into the situation observed at $T_1$. 
+It takes the situation of the network observed at $T_0$ as starting point. It estimates the 'rules' for the agents how to change their ties and/or behavior. If the model is specified correctly, these rules (or micro mechanisms) have led the situation at wave $T_0$ to evolve into the situation observed at wave $T_1$. 
 
 I would say these 'rules' are our ***micro theory of action***.  
-Please note that our behavior may depend on the situation we are in. Similarly, the 'rules' we discover with RSiena are thus conditional on the situation at $T_0$. 
+Please note that our behavior may depend on the situation we are in. Similarly, the 'rules' we discover with RSiena are thus conditional on the situation at wave $T_0$. 
 
-If we know the 'rules' of the social agents, we can also simulate future networks. And I think this aspect will help us to understand what the 'rules' of the social agents are and to understand what is estimated by `RSiena`. 
+If we know the 'rules' of the social agents, we can also *simulate* future networks. And I think this aspect will help us to understand what the 'rules' of the social agents are and to understand what is estimated by `RSiena`. 
 
 ### RSiena's ministep
 
@@ -130,8 +130,10 @@ Actors only evaluate all possible results in the local network neighborhood conf
 Thus, what does the SAOM of RSiena not do??:  
 
 - No re-activity^[<span style='color: red;'>The no-reactivity assumption has been relaxed in the latest version of RSiena</span>]: The act of re-affirming, making or breaking an outgoing tie does not trigger a response by the involved alter  
-- No simultaneity: Changes occur one by one  
-- Hence also no cooperation, coordination or negotiation  
+- No simultaneity: Changes occur one by one.  
+  - Hence also no cooperation;  
+  - no coordination;  
+  - no negotiation  
 - No maximization of total utility:  
     - No altruistic behavior: Individual utility is maximized, not total utility  
 - No strategic behavior:  
@@ -140,8 +142,7 @@ Thus, what does the SAOM of RSiena not do??:
         - A ministep of other agents
     - Hence also no investments
 
-This does not mean that RSiena cannot estimate (or better: 'fit') the evolution of networks/behavior that are the consequences of these more complex 'rules' or micro theories but it assumes actors only make ministeps.  
-
+This does not mean that RSiena cannot estimate (or better: 'fit') the evolution of networks/behavior that are the consequences of these more complex 'rules' or micro theories but it does so by assuming actors only make ministeps.^[tsnote: The goal of the package [`RsienaTwoStep`](https://jochemtolsma.github.io/RsienaTwoStep/index.html) is to provide a method to asses the extent to which results obtained by `RSiena::siena07()` depend on the validity of the ministep assumption.]
 
 
 ## Simulation Logic
@@ -154,7 +155,7 @@ This does not mean that RSiena cannot estimate (or better: 'fit') the evolution 
 
 ### Sample an ego  
 
-Let us first start with a network. We will use the build in network of `RsienaTwoStep`, namely `net1`. 
+Let us first start with a network. We will use the build in network of `RsienaTwoStep`, namely `ts_net1`. 
 
 This is what the adjacency matrix looks like:
 
@@ -163,7 +164,7 @@ This is what the adjacency matrix looks like:
 
 
 ```{.r .numberLines}
-net1
+ts_net1
 ```
 
 ```
@@ -180,11 +181,11 @@ net1
 #> [10,]    0    0    0    0    0    0    0    1    1     0
 ```
 
-Naturally, we can also plot `net1`. 
+Naturally, we can also plot `ts_net1`. 
 
 
 ```{.r .numberLines}
-net1g <- graph_from_adjacency_matrix(net1, mode = "directed")
+net1g <- graph_from_adjacency_matrix(ts_net1, mode = "directed")
 coords <- layout_(net1g, nicely())  #let us keep the layout
 par(mar = c(0.1, 0.1, 0.1, 0.1))
 {
@@ -194,21 +195,21 @@ par(mar = c(0.1, 0.1, 0.1, 0.1))
 ```
 
 <div class="figure">
-<img src="045-Socionets_files/figure-html/unnamed-chunk-6-1.png" alt="net1" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-6)net1</p>
+<img src="045-Socionets_files/figure-html/unnamed-chunk-6-1.png" alt="ts_net1" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-6)ts_net1</p>
 </div>
 
 
 So only one actor is allowed to make one ministep. But who? This is determined by the rate function and it may depend on ego-characteristics of our social agents (e.g. male/female) and/or on structural-characteristics of our social agents (e.g. indegree, outdegree). And all this can be estimated within RSiena. More often than note, we simply assume that all actors have an equal chance of being selected to make a ministep.  
 
-For more information on the rate function see (ref:#rp).
+For more information on the rate function see (#rp).
 
 Okay, we can thus randomly select/sample an agent. 
 
 
 ```{.r .numberLines}
 set.seed(24553253)
-ego <- ts_select(net = net1, steps = 1)  #in rsienatwostep two actors may make a change together but here not
+ego <- ts_select(net = ts_net1, steps = 1)  #in rsienatwostep two actors may make a change together but here not
 ego
 ```
 
@@ -219,14 +220,14 @@ ego
 
 ### Possible networks after ministep  
 
-Let us suppose we want to know what the possible networks are after all possible ministeps of `ego` who is part of `net1`. That is, let us assume that it is ego's turn (ego#: 4) to decide on tie-change. What are the possible networks? 
+Let us suppose we want to know what the possible networks are after all possible ministeps of `ego` who is part of `ts_net1`. That is, let us assume that it is ego's turn (ego#: 4) to decide on tie-change. What are the possible networks? 
 
-The function `ts_alternatives_ministep()` returns a list of all possible networks after all possible tie-changes available to an ego given network da network.
+The function `ts_alternatives_ministep()` returns a list of all possible networks after all possible tie-changes available to an ego given the current network.
 
 
 ```{.r .numberLines}
-options <- ts_alternatives_ministep(net = net1, ego = ego)
-options
+options <- ts_alternatives_ministep(net = ts_net1, ego = ego)
+# options
 plots <- lapply(options, graph_from_adjacency_matrix, mode = "directed")
 par(mar = c(0, 0, 0, 0) + 0.1)
 par(mfrow = c(2, 2))
@@ -409,12 +410,13 @@ which.max(eval)
 ### Choice function 
 
 So which option will ego choose? Naturally this will be a stochastic process. But we see that option 4 has the highest evaluation. 
-We use McFadden's choice function (for more information see [wiki](https://en.wikipedia.org/wiki/Discrete_choice)), that is let $P_{i,a=2}$ be the probability that ego $i$ chooses network/alternative 2 ($x^{a=2}$), let us denote this network as $x^{a=2}$. The choice function is then given by:  
+We use McFadden's choice function (for more information see [wiki](https://en.wikipedia.org/wiki/Discrete_choice)), that is let $P_{i,a=2}$ be the probability that ego $i$ chooses network/alternative 2 ($x_{a=2}$). The choice function is then given by:  
 
 
-$$P_{i,a=2} = \frac{exp(f_i(x^{2}))}{\Sigma_{a=1}^A exp(f_i(x^a))},$$  
-
+$$P_{i,a=2} = \frac{exp(f_i(x_{2}))}{\Sigma_{a=1}^A exp(f_i(x_a))},$$  
+<!---
 with $s_i$ a vector of the value of each network statistics for network $i$ and $\beta$ is the vector of parameter values. Hence, $\mathbf{s_i}^\mathsf{T}\mathbf{\beta}$ is the value of the evaluation for network $i$.
+---> 
 
 Let us force ego to make a decision. 
 
@@ -444,37 +446,31 @@ If we repeat this process, that is...:
 
 ### Stopping rule  
 
-But how many ministeps do we allow? Well, normally this is estimated by `siena07` by the `rate` parameter.^[noterate: Naturally, it is a bit more complicated than that. In RSiena we have a choice between unconditional and conditional estimation. My description of the stopping rule refers to the unconditional estimation.] If we do not make this rate parameter conditional on actor covariates or on network characteristics, the rate parameter can be interpreted as the average number of ministeps each actor in the network is allowed to make before time is up. Let us suppose the `rate` parameter is 2 . Thus in total the number of possible ministeps will be `nrow(net1)*rate`: 20. For a more detailed - **and more correct** -  interpretation of the rate parameter in `siena07` see below. <!---add link--->
+But how many ministeps do we allow? Well, normally this is estimated by `siena07` by the `rate` parameter.^[noterate: Naturally, it is a bit more complicated than that. In RSiena we have a choice between unconditional and conditional estimation. My description of the stopping rule refers to the unconditional estimation.] If we do not make this rate parameter conditional on actor covariates or on network characteristics, the rate parameter can be interpreted as the average number of ministeps each actor in the network is allowed to make before time is up. Let us suppose the `rate` parameter is 2 . Thus in total the number of possible ministeps will be `nrow(ts_net1) * rate`: 20. For a more detailed - **and more correct** -  interpretation of the rate parameter in `siena07` see [below](#rf). 
 
 ## Simulation example  
 
 Let us now simulate how the network **could** evolve given:^[It is also possible to simulate networks within the `RSiena` package itself. But let us stick with functions from `RsienaTwoStep` for now.]  
 
-- starting point is `net1` 
+- starting point is `ts_net1` 
 - rate is set to 2  
 - we as scientists think only network statistics degree and reciprocity are important  
 - `RSiena::siena07` has determined the parameters for these statistics are -1 and 1.5 respectively  
 - We adhere to the ministep assumption and hence set `p2step` to `c(1,0,0)`
 
 
-```
-#>       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
-#>  [1,]    0    0    0    0    0    0    0    0    0     0
-#>  [2,]    0    0    1    0    0    0    0    0    0     0
-#>  [3,]    1    0    0    0    0    1    0    0    0     0
-#>  [4,]    0    0    0    0    0    0    0    0    1     0
-#>  [5,]    0    0    0    0    0    0    0    0    0     0
-#>  [6,]    0    0    0    0    0    0    0    0    1     1
-#>  [7,]    1    0    0    0    0    0    0    0    0     0
-#>  [8,]    0    0    0    0    0    0    0    0    0     1
-#>  [9,]    0    0    0    1    0    0    0    1    0     0
-#> [10,]    0    0    0    0    0    0    0    1    1     0
-```
 
 
 ```{.r .numberLines}
-ts_sims(nsims = 1, net = net1, rate = 2, statistics = list(ts_degree, ts_recip), parameters = c(-1, 1.5),
-    p2step = c(1, 0, 0), chain = FALSE)
+rate <- 2
+degree <- -1
+recip <- 1.5
+ts_sims(nsims = 1, net = ts_net1, startvalues = c(rate, degree, recip), statistics = list(ts_degree,
+    ts_recip), p2step = c(1, 0, 0), chain = FALSE)  #not that rate parameter is automatically included. 
+```
+
+```
+#> [1] "nsim: 1"
 ```
 
 ```
@@ -508,6 +504,35 @@ Well, that is quite complicated. But it goes something like this:^['it' refers t
 7. simulate a bunch of outcome networks with the obtained parameter values and compare the *expected values* of statistics of the outcome networks with the *target values*.  
     - we can assess the fit  
     - estimate SE of the parameters
+    
+Let us suppose network `s501` developed into `s502`. For more information on these networks see `?s501`. 
+
+To estimate this network with `ts_estim`^[I recommend you to estimate networks following the ministep assumption with the package `RSiena`. See next chapter!], we can do the following: 
+
+
+```{.r .numberLines}
+# we do not calculate SE for now.
+ans <- ts_estim(net1 = s501, net2 = s502, statistics = list(ts_degree, ts_recip), p2step = c(1, 0, 0),
+    conv = 0.01, verbose = FALSE)
+```
+
+
+
+
+
+Let us have a look at the final results: 
+
+
+```{.r .numberLines}
+ans[nrow(ans), ]
+```
+
+```
+#>      rate    degree     recip 
+#>  5.071705 -2.207873  2.418046
+```
+How to interpret these numbers??
+
 
 ## Interpretation of parameters
 
@@ -551,7 +576,10 @@ hist(dist_10, main = "rate = lambda_k = 15", freq = FALSE, xlab = "waiting times
 abline(v = 1/15, col = "red")
 ```
 
-<img src="045-Socionets_files/figure-html/dists-1.png" width="672" />
+<div class="figure">
+<img src="045-Socionets_files/figure-html/dists-1.png" alt="Rate parameters and waiting times" width="672" />
+<p class="caption">(\#fig:dists)Rate parameters and waiting times</p>
+</div>
 
 We now want to determine who will be allowed to take the next ministep. We thus need to sample a waiting time for each actor. Thus each actor gets a waiting time sampled from the exponential distribution with the specified rate parameter: 
 
@@ -770,7 +798,10 @@ hist(rexp(5000, rate = 30), freq = FALSE, xlab = "waiting times", main = "rate=3
 abline(v = 1/30, col = "red")
 ```
 
-<img src="045-Socionets_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<div class="figure">
+<img src="045-Socionets_files/figure-html/dists2-1.png" alt="Distribution of waiting times" width="672" />
+<p class="caption">(\#fig:dists2)Distribution of waiting times</p>
+</div>
 The distribution of the sampled waiting times is plotted in the figure above on the left. As you see this distribution is 'identical' to the exponential distribution with a rate parameter $\lambda$ of 30 (which is plotted on the right). And the expected waiting time, plotted in red, is 1/30. This leads us to page 43 of the RSiena manual: 
 
 > The time duration until the next opportunity of change is exponentially distributed with parameter:  
@@ -838,7 +869,10 @@ par(mfrow = c(1, 3))
 }
 ```
 
-<img src="045-Socionets_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<div class="figure">
+<img src="045-Socionets_files/figure-html/dists3-1.png" alt="Relation between rate parameters and numuber of ministeps" width="672" />
+<p class="caption">(\#fig:dists3)Relation between rate parameters and numuber of ministeps</p>
+</div>
 
 
 Thus **the larger the rate parameter the more opportunities for change per actor there are within a given time period**. And in RSiena the optimal value for the rate parameter $\lambda_i$ is estimated. And from the figure above we see that the estimated parameter has a nice interpretation: **the estimated rate parameter refers to the expected number of opportunities for change in a time period**. 
@@ -852,9 +886,11 @@ Thus $f^{net}$ is the evaluation function. And it attaches a value/number to the
 
 Now, let us suppose that actor *i* has an opportunity for change at that after a ministep three possible networks could occur. Or stated otherwise, the choice set consists of three networks for actor *i*. See below. 
 
-![](eva1.PNG)   
 
-**Figure:** Choice set for actor *i*.  
+<div class="figure">
+<img src="./eva1.PNG" alt="Choice set for actor *i*." width="616" />
+<p class="caption">(\#fig:choiceset)Choice set for actor *i*.</p>
+</div>
 
 How actor *i* evaluates these networks depends on the $s^{net}_{ik}$ in the evaluation function. Let us suppose only the outdegree effect is part of the evaluation function. Thus: 
 
@@ -864,33 +900,40 @@ where
 $$ s_{i1}^{net}(x) = \Sigma_jx_{ij}$$
 and given the networks above: 
 
-$$ s_{i1}^{net}(x_a) = 0 , s_{i1}^{net}(x_b) = 1, s_{i1}^{net}(x_c) = 1$$
+- $$ s_{i1}^{net}(x_a) = 0 $$  
+- $$ s_{i1}^{net}(x_b) = 1 $$  
+- $$ s_{i1}^{net}(x_c) = 1 $$  
+
 and hence: 
 
-$$ f^{net}_i(x_a) = 0, f^{net}_i(x_b) = \beta^{net}_1, f^{net}_i(x_c) = \beta^{net}_1 $$
+- $$ f^{net}_i(x_a) = 0$$
+- $$ f^{net}_i(x_b) = \beta^{net}_1, f^{net}_i(x_c) = \beta^{net}_1 $$  
+
 The probability that $x_b$ will be chosen is given by:
 
-$$ P(X= x_b) = \frac{exp(f^{net}_i(x_b))}{exp(f^{net}_i(x_a))+exp(f^{net}_i(x_b))+exp(f^{net}_i(x_c))} $$
+$$ P(X= x_b) = \frac{exp(f^{net}_i(x_b))}{exp(f^{net}_i(x_a))+exp(f^{net}_i(x_b))+exp(f^{net}_i(x_c))} $$  
 
 For the interpretation is much easier to interpret the ratio of two probabilities: 
 
 $$ \frac{P(X= x_b)}{P(X= x_a)} = \frac{exp(f^{net}_i(x_b))}{exp(f^{net}_i(x_a))} = exp(f^{net}_i(x_b) - f^{net}_i(x_a) ) = exp(\beta^{net}_1)$$
+
 Let us assume that $\beta^{net}_1 = -2$
 This would imply that: 
 
-$$ P(X= x_b) = exp(-2)* P(X= x_a) \approx 0.14*P(X= x_a) $$ 
+$$ P(X= x_b) = exp(-2) * P(X= x_a) = 
+exp(-2) * (1 - P(X= x_b)) = exp(-2) / (1 + exp(-2)) \approx 0.12 $$ 
 
 Thus the probability to observe a tie between *i* and *j* (network $x_b$) is 14% the probability to observe no tie between *i* and *j* (network $x_a$).  
 
 
->Is it possible to deduce the density of the network from this formula? Well let suppose actor *i* would only have options $x_a$ and $x_b$ then the probabilities would need to sum to 1. And this would imply a density of approximately .12 (0.12=0.14*.88 and .12 + .88 = 1).  
+>Is it possible to deduce the density of the network from this formula? Well let suppose actor *i* would only have options $x_a$ and $x_b$ then the probabilities would need to sum to 1. And thus:  
+$$ P(X= x_b) = exp(-2) * P(X= x_a) = 
+exp(-2) * (1 - P(X= x_b)) = exp(-2) / (1 + exp(-2)) \approx 0.12 $$  
+Tis would imply a density of approximately .12 (0.12=0.14*.88 and .12 + .88 = 1).  
 
-The interpretation of the parameters thus resembles the interpretation of a logistic regression: if one covariate $x_k$ increases only with one step and the parameter estimate of this covariate is $\beta_k$, the odds $\frac{p_{x_k=1}}{1-p_{x_k=1}}$ is exp($\beta_k$)*$\frac{p_{x_k=0}}{1-p_{x_k=0}}$[^1]
+The interpretation of the parameters thus resembles the interpretation of a logistic regression: if one covariate $x_k$ increases only with one step and the parameter estimate of this covariate is $\beta_k$, the odds $\frac{p_{x_k=1}}{1-p_{x_k=1}}$ is exp($\beta_k$)*$\frac{p_{x_k=0}}{1-p_{x_k=0}}$[^1045]
 
-[^1]: $$p = P(Y=1) = \frac{exp(\beta_kx_k)}{1+exp(\beta_kx_k)}$$ 
+[^1045]: $$p = P(Y=1) = \frac{exp(\beta_kx_k)}{1+exp(\beta_kx_k)}$$ 
+
 
 ---  
-
-
-
-

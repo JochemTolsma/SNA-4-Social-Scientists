@@ -33,6 +33,10 @@ fig:mm
 fig:pl
 fig:rgraphs
 fig:unnamed-chunk-6
+fig:dists
+fig:dists2
+fig:dists3
+fig:choiceset
 fig:inspect
 fig:inspectbody
 fig:inspecttd

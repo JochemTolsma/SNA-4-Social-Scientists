@@ -177,10 +177,10 @@ head(soc_staff)
 
 ```
 #> $node
-#> <pointer: 0x0000024b3173d540>
+#> <pointer: 0x00000296dda14e50>
 #> 
 #> $doc
-#> <pointer: 0x0000024b39ef97e0>
+#> <pointer: 0x00000296e549b540>
 ```
 
 That looks kinda weird. What type of object did we store it by putting the html into `soc_staff`?
@@ -1835,7 +1835,7 @@ get_profile("Iu23-90AAAAJ")  # Jochem's profile
 #> [1] "Professor, Radboud University Nijmegen / University of Groningen"
 #> 
 #> $total_cites
-#> [1] 3015
+#> [1] 3019
 #> 
 #> $h_index
 #> [1] 26
@@ -1897,8 +1897,8 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 22                                                                               Explaining monetary donations to international development organisations: A factorial survey approach
 #> 23                                                                                       How, when and where can spatial segregation induce opinion polarization? Two competing models
 #> 24     Onderwijs als nieuwe sociale scheidslijn? De gevolgen van onderwijsexpansie voor sociale mobiliteit, de waarde van diploma's en het relatieve belang van opleiding in Nederland
-#> 25                                                                                           Social origin and occupational success at labour market entry in The Netherlands, 1931–80
-#> 26  Ethnic hostility among ethnic majority and minority groups in the Netherlands: An investigation into the impact of social mobility experiences, the local living environment and …
+#> 25  Ethnic hostility among ethnic majority and minority groups in the Netherlands: An investigation into the impact of social mobility experiences, the local living environment and …
+#> 26                                                                                           Social origin and occupational success at labour market entry in The Netherlands, 1931–80
 #> 27                                                    Where does ethnic concentration matter for populist radical right support? An analysis of geographical scale and the halo effect
 #> 28                      Perceptions as the crucial link? The mediating role of neighborhood perceptions in the relationship between the neighborhood context and neighborhood cohesion
 #> 29                                                                                          Explaining natives' interethnic friendship and contact with colleagues in European regions
@@ -1910,9 +1910,9 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 35     De onderwijskansen van allochtone en autochtone Nederlanders vergeleken: Een cohort-design [Ethnic inequality of educational opportunities in the Netherlands: A cohort design]
 #> 36                                                                            Like two peas in a pod? Explaining friendship selection processes related to victimization and offending
 #> 37                                                                                        Netherlands Longitudinal Lifecourse Study-NELLS Panel Wave 1 2009 and Wave 2 2013-versie 1.2
-#> 38                                                                                                                     Preferences for work arrangements: A discrete choice experiment
-#> 39                                                                                                                De aangifte van delicten bij de multichannelstrategie van de politie
-#> 40                                                                            Aangiftebereidheid: Welke overwegingen spelen een rol bij de beslissing om wel of niet aangifte te doen?
+#> 38                                                                            Aangiftebereidheid: Welke overwegingen spelen een rol bij de beslissing om wel of niet aangifte te doen?
+#> 39                                                                                                                     Preferences for work arrangements: A discrete choice experiment
+#> 40                                                                                                                De aangifte van delicten bij de multichannelstrategie van de politie
 #> 41                                                                                                         Opleiding als sociale scheidslijn. Een nieuw perspectief op een oude kloof.
 #> 42                                                                                                                                                   Opleiding als sociale scheidslijn
 #> 43                                                                                                                        Taakstraffen langs de lat: strafopvattingen van Nederlanders
@@ -2002,8 +2002,8 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 22                                       S Kinsbergen, J Tolsma
 #> 23                              T Feliciani, A Flache, J Tolsma
 #> 24                                        J Tolsma, MHJ Wolbers
-#> 25                                        J Tolsma, MHJ Wolbers
-#> 26                                                     J Tolsma
+#> 25                                                     J Tolsma
+#> 26                                        J Tolsma, MHJ Wolbers
 #> 27                                 D van Wijk, G Bolt, J Tolsma
 #> 28                                 J Laméris, JR Hipp, J Tolsma
 #> 29                           M Savelkoul, J Tolsma, P Scheepers
@@ -2015,9 +2015,9 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 35                            J Tolsma, MTA Coenders, M Lubbers
 #> 36                   JJ Rokven, J Tolsma, S Ruiter, G Kraaykamp
 #> 37    J Tolsma, GLM Kraaykamp, DM de Graaf, M Kalmijn, C Monden
-#> 38                                   P Valet, C Sauer, J Tolsma
-#> 39                                      PFM Boekhoorn, J Tolsma
-#> 40                                                     J Tolsma
+#> 38                                                     J Tolsma
+#> 39                                   P Valet, C Sauer, J Tolsma
+#> 40                                      PFM Boekhoorn, J Tolsma
 #> 41                            M de Lange, J Tolsma, MHJ Wolbers
 #> 42                               M Lange, J Tolsma, MHJ Wolbers
 #> 43                                           S Ruiter, J Tolsma
@@ -2107,8 +2107,8 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 22                                                           Social science research
 #> 23                             Journal of Artificial Societies and Social Simulation
 #> 24                                                       Tijdschrift voor Sociologie
-#> 25                                                                  Acta Sociologica
-#> 26                                                 [Sl]: sn [ICS dissertation series
+#> 25                                                 [Sl]: sn [ICS dissertation series
+#> 26                                                                  Acta Sociologica
 #> 27                                                               Political Geography
 #> 28                                                           Social Science Research
 #> 29                                           Journal of Ethnic and Migration Studies
@@ -2120,9 +2120,9 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 35                                                                                  
 #> 36                                                   European Journal of Criminology
 #> 37                                                                         DANS EASY
-#> 38                                                                          PloS one
-#> 39           Apeldoorn; Nijmegen: Politie & Wetenschap; BBSO en Radboud Universiteit
-#> 40                                  Proces-verbaal, aangifte en forensisch onderzoek
+#> 38                                  Proces-verbaal, aangifte en forensisch onderzoek
+#> 39                                                                          PloS one
+#> 40           Apeldoorn; Nijmegen: Politie & Wetenschap; BBSO en Radboud Universiteit
 #> 41                                                                             Maklu
 #> 42                                                                                  
 #> 43                                                                                  
@@ -2193,8 +2193,8 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 3                                                                  44 (3)   316 2009
 #> 4                                                         27 (3), 291-306   148 2011
 #> 5                                                           35 (1), 51-61   142 2013
-#> 6                                                         24 (2), 215-230   130 2008
-#> 7                                                              8, 117-134    95 2012
+#> 6                                                         24 (2), 215-230   131 2008
+#> 7                                                              8, 117-134    96 2012
 #> 8                                                         38 (5), 793-813    89 2012
 #> 9                                                         23 (3), 325-339    82 2007
 #> 10                                                        60 (2), 257-277    77 2009
@@ -2212,8 +2212,8 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 22                                                      42 (6), 1571-1586    32 2013
 #> 23                                                              20 (2), 6    31 2017
 #> 24                                                        31 (3), 239-259    31 2010
-#> 25                                                        57 (3), 253-269    27 2014
-#> 26                                                                   155]    27 2009
+#> 25                                                                   155]    28 2009
+#> 26                                                        57 (3), 253-269    27 2014
 #> 27                                                             77, 102097    23 2020
 #> 28                                                              72, 53-68    23 2018
 #> 29                                                        41 (5), 683-709    20 2015
@@ -2225,9 +2225,9 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 35                                                                           14 2007
 #> 36                                                        13 (2), 231-256    13 2016
 #> 37                                                                           13 2014
-#> 38                                                       16 (7), e0254483    11 2021
-#> 39                                                                           11 2016
-#> 40                                                                     11    11 2011
+#> 38                                                                     11    12 2011
+#> 39                                                       16 (7), e0254483    11 2021
+#> 40                                                                           11 2016
 #> 41                                                                           10 2015
 #> 42                                                                            8 2016
 #> 43                                                                            8 2010
@@ -2317,8 +2317,8 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 22                                            10149692484122806616 aqlVkmm33-oC
 #> 23                                             6880814424039971499 g5m5HwL7SMYC
 #> 24                                            17130607869100522312 YsMSGLbcyi4C
-#> 25                                             8248470043986462984 M3ejUd6NZC8C
-#> 26                                            10378332126833599949 IjCSPb-OGe4C
+#> 25                                            10378332126833599949 IjCSPb-OGe4C
+#> 26                                             8248470043986462984 M3ejUd6NZC8C
 #> 27                                             4092382021694339447 SP6oXDckpogC
 #> 28                                            16357054384393453824 D03iK_w7-QYC
 #> 29                                            18182577779862774305 -f6ydRqryjwC
@@ -2330,9 +2330,9 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 35                                               41511425553822262 zYLM7Y9cAGgC
 #> 36                                            16075774780598089063 k_IJM867U9cC
 #> 37                                             7914543636642646054 mB3voiENLucC
-#> 38                                            14800116132549688497 tKAzc9rXhukC
-#> 39                                            14256154602665082067 JV2RwH3_ST0C
-#> 40                                            10745397192148013810 LkGwnXOMwfcC
+#> 38                                            10745397192148013810 LkGwnXOMwfcC
+#> 39                                            14800116132549688497 tKAzc9rXhukC
+#> 40                                            14256154602665082067 JV2RwH3_ST0C
 #> 41                                             6027896113597554400 isC4tDSrTZIC
 #> 42                                             4589290607551316207 O3NaXMp0MMsC
 #> 43                                            15258532569899652859 W7OEmFMy1HYC
@@ -2410,20 +2410,20 @@ get_citation_history("Iu23-90AAAAJ")  # Jochem's citation history
 #>    year cites
 #> 1  2008    12
 #> 2  2009    23
-#> 3  2010    29
+#> 3  2010    30
 #> 4  2011    76
 #> 5  2012    81
 #> 6  2013   118
-#> 7  2014   162
-#> 8  2015   212
-#> 9  2016   231
+#> 7  2014   163
+#> 8  2015   214
+#> 9  2016   230
 #> 10 2017   227
 #> 11 2018   280
-#> 12 2019   303
-#> 13 2020   300
-#> 14 2021   334
-#> 15 2022   336
-#> 16 2023   248
+#> 12 2019   309
+#> 13 2020   297
+#> 14 2021   331
+#> 15 2022   332
+#> 16 2023   253
 ```
 
 And now most importantly, Jochem's collaborators, and the collaborators of those collaborators (note the `n_deep = 1`, can you find out what that does?). So essentially a "one-step-further-than-Jochem" network. 
