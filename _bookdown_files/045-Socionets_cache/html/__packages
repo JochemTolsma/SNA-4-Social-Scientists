@@ -5,3 +5,14 @@ devtools
 igraph
 foreach
 RsienaTwoStep
+tidyverse
+ggplot2
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+stringdist
+stringi
