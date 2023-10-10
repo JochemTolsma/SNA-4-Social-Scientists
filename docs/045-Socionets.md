@@ -1456,9 +1456,5 @@ What do we conclude. We can compare the relative influence at the two time point
 We can also compare the relative influence between actors. We observe that for many actors reciprocity does not play a role in their decisions. This make sense as many actors do not have a tie to reciprocate. 
 
 
-YES, you made it until the end!. 
-
-Congrats. Time for drinks. 
-
 ----
 

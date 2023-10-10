@@ -177,10 +177,10 @@ head(soc_staff)
 
 ```
 #> $node
-#> <pointer: 0x000002c8a6c9efb0>
+#> <pointer: 0x000001bb138032a0>
 #> 
 #> $doc
-#> <pointer: 0x000002c8b06fad30>
+#> <pointer: 0x000001bb0eeec390>
 ```
 
 That looks kinda weird. What type of object did we store it by putting the html into `soc_staff`?
@@ -1835,7 +1835,7 @@ get_profile("Iu23-90AAAAJ")  # Jochem's profile
 #> [1] "Professor, Radboud University Nijmegen / University of Groningen"
 #> 
 #> $total_cites
-#> [1] 3019
+#> [1] 3034
 #> 
 #> $h_index
 #> [1] 26
@@ -1854,8 +1854,8 @@ get_profile("Iu23-90AAAAJ")  # Jochem's profile
 #>  [1] "Gerbert Kraaykamp"   "Tom van der Meer"    "Maarten HJ Wolbers"  "Michael Savelkoul"  
 #>  [5] "Stijn Ruiter"        "peer scheepers"      "Marcel Lubbers"      "Joran Lameris"      
 #>  [9] "Marcel Coenders"     "Nan Dirk de Graaf"   "Sara Kinsbergen"     "dr. Natascha Notten"
-#> [13] "Tobias H. Stark"     "Carlijn Bussemakers" "Thomas Feliciani"    "Andreas Flache"     
-#> [17] "Lincoln Quillian"    "Ariana Need"         "René Veenstra"       "Ioana Van Deurzen"  
+#> [13] "Tobias H. Stark"     "Thomas Feliciani"    "Andreas Flache"      "Carlijn Bussemakers"
+#> [17] "Lincoln Quillian"    "René Veenstra"       "Ioana Van Deurzen"   "Ariana Need"        
 #> 
 #> $available
 #> [1] 13
@@ -1894,13 +1894,13 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 19                                                                                           At which geographic scale does ethnic diversity affect intra-neighborhood social capital?
 #> 20                                                                                                              The NEtherlands Longitudinal Lifecourse Study (NELLS, Panel): Codebook
 #> 21                                                                                                                                                          Naar een open samenleving?
-#> 22                                                                               Explaining monetary donations to international development organisations: A factorial survey approach
-#> 23                                                                                       How, when and where can spatial segregation induce opinion polarization? Two competing models
+#> 22                                                                                       How, when and where can spatial segregation induce opinion polarization? Two competing models
+#> 23                                                                               Explaining monetary donations to international development organisations: A factorial survey approach
 #> 24     Onderwijs als nieuwe sociale scheidslijn? De gevolgen van onderwijsexpansie voor sociale mobiliteit, de waarde van diploma's en het relatieve belang van opleiding in Nederland
 #> 25  Ethnic hostility among ethnic majority and minority groups in the Netherlands: An investigation into the impact of social mobility experiences, the local living environment and …
 #> 26                                                                                           Social origin and occupational success at labour market entry in The Netherlands, 1931–80
-#> 27                                                    Where does ethnic concentration matter for populist radical right support? An analysis of geographical scale and the halo effect
-#> 28                      Perceptions as the crucial link? The mediating role of neighborhood perceptions in the relationship between the neighborhood context and neighborhood cohesion
+#> 27                      Perceptions as the crucial link? The mediating role of neighborhood perceptions in the relationship between the neighborhood context and neighborhood cohesion
+#> 28                                                    Where does ethnic concentration matter for populist radical right support? An analysis of geographical scale and the halo effect
 #> 29                                                                                          Explaining natives' interethnic friendship and contact with colleagues in European regions
 #> 30                                                       Combating hooliganism in the Netherlands: An evaluation of measures to combat hooliganism with longitudinal registration data
 #> 31                                                                                       De burger als rechter: een onderzoek naar geprefereerde sancties voor misdrijven in Nederland
@@ -1920,9 +1920,9 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 45                                                                                                                                                      Dader, slachtoffer, of beiden?
 #> 46                                                        Parents, television and children's weight status: On lasting effects of parental television socialization in the Netherlands
 #> 47                                                                                      Vrijheid versus veiligheid: Wie steunt vrijheidsbeperking omwille van veiligheid in Nederland?
-#> 48                                                                                                                              Running together: How sports partners keep you running
-#> 49                                                                                                    Archeologische verwachtings-en beleidskaart buitengebied gemeente Midden-Drenthe
-#> 50                                                                                            Kudos make you run! How runners influence each other on the online social network Strava
+#> 48                                                                                            Kudos make you run! How runners influence each other on the online social network Strava
+#> 49                                                                                                                              Running together: How sports partners keep you running
+#> 50                                                                                                    Archeologische verwachtings-en beleidskaart buitengebied gemeente Midden-Drenthe
 #> 51                                                                                                                     Education's impact on explanations of radical right-wing voting
 #> 52                                                                                                       The social outcomes of psychosocial support: A grey literature scoping review
 #> 53                                                                                                                                                               De burger als rechter
@@ -1999,13 +1999,13 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 19                             R Sluiter, J Tolsma, P Scheepers
 #> 20  J Tolsma, GLM Kraaykamp, PM De Graaf, M Kalmijn, CWS Monden
 #> 21                                        J Tolsma, MHJ Wolbers
-#> 22                                       S Kinsbergen, J Tolsma
-#> 23                              T Feliciani, A Flache, J Tolsma
+#> 22                              T Feliciani, A Flache, J Tolsma
+#> 23                                       S Kinsbergen, J Tolsma
 #> 24                                        J Tolsma, MHJ Wolbers
 #> 25                                                     J Tolsma
 #> 26                                        J Tolsma, MHJ Wolbers
-#> 27                                 D van Wijk, G Bolt, J Tolsma
-#> 28                                 J Laméris, JR Hipp, J Tolsma
+#> 27                                 J Laméris, JR Hipp, J Tolsma
+#> 28                                 D van Wijk, G Bolt, J Tolsma
 #> 29                           M Savelkoul, J Tolsma, P Scheepers
 #> 30                       D Schaap, M Postma, L Jansen, J Tolsma
 #> 31     S Ruiter, J Tolsma, M de Hoon, H Elffers, P van der Laan
@@ -2026,8 +2026,8 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 46                              N Notten, G Kraaykamp, J Tolsma
 #> 47                              G Jansen, J Tolsma, ND de Graaf
 #> 48                               R Franken, H Bekhuis, J Tolsma
-#> 49                                       MG Marinelli, J Tolsma
-#> 50                               R Franken, H Bekhuis, J Tolsma
+#> 49                               R Franken, H Bekhuis, J Tolsma
+#> 50                                       MG Marinelli, J Tolsma
 #> 51                                          M Lubbers, J Tolsma
 #> 52                     T Ubels, S Kinsbergen, J Tolsma, DJ Koch
 #> 53                S Ruiter, J Tolsma, M Hoon, H Elffers, P Laan
@@ -2104,13 +2104,13 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 19                                                           Social science research
 #> 20              Nijmegen; Tilburg; Amsterdam: Radboud University Nijmegen; Tilburg …
 #> 21                                                                                  
-#> 22                                                           Social science research
-#> 23                             Journal of Artificial Societies and Social Simulation
+#> 22                             Journal of Artificial Societies and Social Simulation
+#> 23                                                           Social science research
 #> 24                                                       Tijdschrift voor Sociologie
 #> 25                                                 [Sl]: sn [ICS dissertation series
 #> 26                                                                  Acta Sociologica
-#> 27                                                               Political Geography
-#> 28                                                           Social Science Research
+#> 27                                                           Social Science Research
+#> 28                                                               Political Geography
 #> 29                                           Journal of Ethnic and Migration Studies
 #> 30                                  European Journal on Criminal Policy and Research
 #> 31                                                    Den Haag, Boom Lemma Uitgevers
@@ -2130,9 +2130,9 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 45                                                     Tijdschrift voor Criminologie
 #> 46                                                     Journal of Children and Media
 #> 47                                                              Mens en maatschappij
-#> 48                                             Frontiers in Sports and Active Living
-#> 49                                                            Oranjewoud, Heerenveen
-#> 50                                                                   Social Networks
+#> 48                                                                   Social Networks
+#> 49                                             Frontiers in Sports and Active Living
+#> 50                                                            Oranjewoud, Heerenveen
 #> 51    Interdisciplinary Conference on Migration, Economic Change, Social Challenge …
 #> 52                                                                 SSM-mental health
 #> 53                                                                              NSCR
@@ -2188,20 +2188,20 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 103                                                                Book of Abstracts
 #> 104                                                                                 
 #>                                                                    number cites year
-#> 1                                                         40 (1), 459-478   625 2014
+#> 1                                                         40 (1), 459-478   629 2014
 #> 2                                                         27 (6), 741-758   345 2011
-#> 3                                                                  44 (3)   316 2009
+#> 3                                                                  44 (3)   317 2009
 #> 4                                                         27 (3), 291-306   148 2011
-#> 5                                                           35 (1), 51-61   142 2013
-#> 6                                                         24 (2), 215-230   131 2008
+#> 5                                                           35 (1), 51-61   143 2013
+#> 6                                                         24 (2), 215-230   132 2008
 #> 7                                                              8, 117-134    96 2012
 #> 8                                                         38 (5), 793-813    89 2012
 #> 9                                                         23 (3), 325-339    82 2007
-#> 10                                                        60 (2), 257-277    77 2009
+#> 10                                                        60 (2), 257-277    78 2009
 #> 11                                                        26 (2), 235-252    69 2010
 #> 12                                                        33 (2), 209-224    56 2017
 #> 13                                                          27 (1), 20-33    56 2017
-#> 14                                                                           45 2016
+#> 14                                                                           46 2016
 #> 15                                                             98, 104185    43 2019
 #> 16                                                      34 (5-6), 888-906    43 2013
 #> 17                                                          42 (1), 59-83    39 2013
@@ -2209,18 +2209,18 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 19                                                              54, 80-95    38 2015
 #> 20                                                                           34 2014
 #> 21                                                                           33 2010
-#> 22                                                      42 (6), 1571-1586    32 2013
-#> 23                                                              20 (2), 6    31 2017
+#> 22                                                              20 (2), 6    32 2017
+#> 23                                                      42 (6), 1571-1586    32 2013
 #> 24                                                        31 (3), 239-259    31 2010
 #> 25                                                                   155]    28 2009
 #> 26                                                        57 (3), 253-269    27 2014
-#> 27                                                             77, 102097    23 2020
-#> 28                                                              72, 53-68    23 2018
+#> 27                                                              72, 53-68    24 2018
+#> 28                                                             77, 102097    23 2020
 #> 29                                                        41 (5), 683-709    20 2015
 #> 30                                                              21, 83-97    20 2015
 #> 31                                                                           18 2011
 #> 32                                                             77, 102098    17 2020
-#> 33                                                             73, 92-106    15 2018
+#> 33                                                             73, 92-106    16 2018
 #> 34                                                              63, 80-94    15 2018
 #> 35                                                                           14 2007
 #> 36                                                        13 (2), 231-256    13 2016
@@ -2228,16 +2228,16 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 38                                                                     11    12 2011
 #> 39                                                       16 (7), e0254483    11 2021
 #> 40                                                                           11 2016
-#> 41                                                                           10 2015
-#> 42                                                                            8 2016
+#> 41                                                                           11 2015
+#> 42                                                                            9 2016
 #> 43                                                                            8 2010
 #> 44                                                       16 (2), e0245644     7 2021
 #> 45                                                            55 (3), 278     7 2013
 #> 46                                                         7 (2), 235-252     7 2013
 #> 47                                                          83 (1), 47-69     7 2008
-#> 48                                                              4, 643150     6 2022
-#> 49                                                                            6 2009
-#> 50                                                            72, 151-164     5 2023
+#> 48                                                            72, 151-164     6 2023
+#> 49                                                              4, 643150     6 2022
+#> 50                                                                            6 2009
 #> 51                                                                            5 2011
 #> 52                                                              2, 100074     4 2022
 #> 53                                                                            4 2011
@@ -2314,13 +2314,13 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 19                                             7670225499012303854 e5wmG9Sq2KIC
 #> 20                                             8792123396141403739 xtRiw3GOFMkC
 #> 21                                             2539524527836644253 Y0pCki6q_DkC
-#> 22                                            10149692484122806616 aqlVkmm33-oC
-#> 23                                             6880814424039971499 g5m5HwL7SMYC
+#> 22                                             6880814424039971499 g5m5HwL7SMYC
+#> 23                                            10149692484122806616 aqlVkmm33-oC
 #> 24                                            17130607869100522312 YsMSGLbcyi4C
 #> 25                                            10378332126833599949 IjCSPb-OGe4C
 #> 26                                             8248470043986462984 M3ejUd6NZC8C
-#> 27                                             4092382021694339447 SP6oXDckpogC
-#> 28                                            16357054384393453824 D03iK_w7-QYC
+#> 27                                            16357054384393453824 D03iK_w7-QYC
+#> 28                                             4092382021694339447 SP6oXDckpogC
 #> 29                                            18182577779862774305 -f6ydRqryjwC
 #> 30                                             9528443224826780083 ZeXyd9-uunAC
 #> 31                                             7211129999202990486 KlAtU1dfN6UC
@@ -2340,9 +2340,9 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 45                                            10200636729873805270 QIV2ME_5wuYC
 #> 46                                              818925813101569366 Se3iqnhoufwC
 #> 47                                             6273244451878075724 ufrVoPGSRksC
-#> 48                                             6762471506678500061 evX43VCCuoAC
-#> 49                                              641362829363743487 kzcrU_BdoSEC
-#> 50                                            12114155743971894213 9Nmd_mFXekcC
+#> 48                                            12114155743971894213 9Nmd_mFXekcC
+#> 49                                             6762471506678500061 evX43VCCuoAC
+#> 50                                              641362829363743487 kzcrU_BdoSEC
 #> 51                                            10658172101302530460 4TOpqqG69KYC
 #> 52                                            12792330965359094918 2KloaMYe4IUC
 #> 53                                            16411127097378483929 ns9cj8rnVeAC
@@ -2410,7 +2410,7 @@ get_citation_history("Iu23-90AAAAJ")  # Jochem's citation history
 #>    year cites
 #> 1  2008    12
 #> 2  2009    23
-#> 3  2010    30
+#> 3  2010    32
 #> 4  2011    76
 #> 5  2012    81
 #> 6  2013   118
@@ -2421,9 +2421,9 @@ get_citation_history("Iu23-90AAAAJ")  # Jochem's citation history
 #> 11 2018   280
 #> 12 2019   309
 #> 13 2020   297
-#> 14 2021   331
+#> 14 2021   335
 #> 15 2022   332
-#> 16 2023   253
+#> 16 2023   262
 ```
 
 And now most importantly, Jochem's collaborators, and the collaborators of those collaborators (note the `n_deep = 1`, can you find out what that does?). So essentially a "one-step-further-than-Jochem" network. 
@@ -2516,17 +2516,17 @@ jochem_coauthors
   <tr>
    <td style="text-align:left;"> 14 </td>
    <td style="text-align:left;"> Jochem Tolsma </td>
-   <td style="text-align:left;"> Carlijn Bussemakers </td>
+   <td style="text-align:left;"> Thomas Feliciani </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 15 </td>
    <td style="text-align:left;"> Jochem Tolsma </td>
-   <td style="text-align:left;"> Thomas Feliciani </td>
+   <td style="text-align:left;"> Andreas Flache </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 16 </td>
    <td style="text-align:left;"> Jochem Tolsma </td>
-   <td style="text-align:left;"> Andreas Flache </td>
+   <td style="text-align:left;"> Carlijn Bussemakers </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 17 </td>
@@ -2536,17 +2536,17 @@ jochem_coauthors
   <tr>
    <td style="text-align:left;"> 18 </td>
    <td style="text-align:left;"> Jochem Tolsma </td>
-   <td style="text-align:left;"> Ariana Need </td>
+   <td style="text-align:left;"> René Veenstra </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 19 </td>
    <td style="text-align:left;"> Jochem Tolsma </td>
-   <td style="text-align:left;"> René Veenstra </td>
+   <td style="text-align:left;"> Ioana Van Deurzen </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 20 </td>
    <td style="text-align:left;"> Jochem Tolsma </td>
-   <td style="text-align:left;"> Ioana Van Deurzen </td>
+   <td style="text-align:left;"> Ariana Need </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 24 </td>
@@ -2921,12 +2921,12 @@ jochem_coauthors
   <tr>
    <td style="text-align:left;"> 82 </td>
    <td style="text-align:left;"> Michael Savelkoul </td>
-   <td style="text-align:left;"> Marcel Lubbers </td>
+   <td style="text-align:left;"> Jasper Van Assche </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 83 </td>
    <td style="text-align:left;"> Michael Savelkoul </td>
-   <td style="text-align:left;"> Jasper Van Assche </td>
+   <td style="text-align:left;"> Marcel Lubbers </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 87 </td>
@@ -3539,153 +3539,153 @@ jochem_coauthors
    <td style="text-align:left;"> Search Help </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 236 </td>
-   <td style="text-align:left;"> Carlijn Bussemakers </td>
-   <td style="text-align:left;"> Gerbert Kraaykamp </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 237 </td>
-   <td style="text-align:left;"> Carlijn Bussemakers </td>
-   <td style="text-align:left;"> Jochem Tolsma </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 238 </td>
-   <td style="text-align:left;"> Carlijn Bussemakers </td>
-   <td style="text-align:left;"> Niels Spierings </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> 239 </td>
-   <td style="text-align:left;"> Carlijn Bussemakers </td>
-   <td style="text-align:left;"> Kars Van Oosterhout </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 243 </td>
-   <td style="text-align:left;"> Carlijn Bussemakers </td>
-   <td style="text-align:left;"> About Scholar </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 244 </td>
-   <td style="text-align:left;"> Carlijn Bussemakers </td>
-   <td style="text-align:left;"> Search Help </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 248 </td>
    <td style="text-align:left;"> Thomas Feliciani </td>
    <td style="text-align:left;"> About Scholar </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 249 </td>
+   <td style="text-align:left;"> 240 </td>
    <td style="text-align:left;"> Thomas Feliciani </td>
    <td style="text-align:left;"> Search Help </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 250 </td>
+   <td style="text-align:left;"> 241 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Michael Macy </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 251 </td>
+   <td style="text-align:left;"> 242 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Michael Mäs </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 252 </td>
+   <td style="text-align:left;"> 243 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Tobias H. Stark </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 253 </td>
+   <td style="text-align:left;"> 244 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Rainer Hegselmann </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 254 </td>
+   <td style="text-align:left;"> 245 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> René Veenstra </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 255 </td>
+   <td style="text-align:left;"> 246 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Károly Takács </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 256 </td>
+   <td style="text-align:left;"> 247 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Rafael Wittek </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 257 </td>
+   <td style="text-align:left;"> 248 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Guillaume Deffuant </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 258 </td>
+   <td style="text-align:left;"> 249 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Anke Munniksma </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 259 </td>
+   <td style="text-align:left;"> 250 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Dirk Helbing </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 260 </td>
+   <td style="text-align:left;"> 251 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> James A Kitts </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 261 </td>
+   <td style="text-align:left;"> 252 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Maykel Verkuyten </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 262 </td>
+   <td style="text-align:left;"> 253 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Josep M. Pujol </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 263 </td>
+   <td style="text-align:left;"> 254 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Nigel Gilbert </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 264 </td>
+   <td style="text-align:left;"> 255 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Maxi San Miguel </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 265 </td>
+   <td style="text-align:left;"> 256 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Rosaria Conte </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 266 </td>
+   <td style="text-align:left;"> 257 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Andrzej Nowak </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 267 </td>
+   <td style="text-align:left;"> 258 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> André Grow </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 268 </td>
+   <td style="text-align:left;"> 259 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Werner Raub </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 269 </td>
+   <td style="text-align:left;"> 260 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> Rene Torenvlied </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 273 </td>
+   <td style="text-align:left;"> 264 </td>
    <td style="text-align:left;"> Andreas Flache </td>
    <td style="text-align:left;"> About Scholar </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 274 </td>
+   <td style="text-align:left;"> 265 </td>
    <td style="text-align:left;"> Andreas Flache </td>
+   <td style="text-align:left;"> Search Help </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 266 </td>
+   <td style="text-align:left;"> Carlijn Bussemakers </td>
+   <td style="text-align:left;"> Gerbert Kraaykamp </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 267 </td>
+   <td style="text-align:left;"> Carlijn Bussemakers </td>
+   <td style="text-align:left;"> Jochem Tolsma </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 268 </td>
+   <td style="text-align:left;"> Carlijn Bussemakers </td>
+   <td style="text-align:left;"> Niels Spierings </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 269 </td>
+   <td style="text-align:left;"> Carlijn Bussemakers </td>
+   <td style="text-align:left;"> Kars Van Oosterhout </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 273 </td>
+   <td style="text-align:left;"> Carlijn Bussemakers </td>
+   <td style="text-align:left;"> About Scholar </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 274 </td>
+   <td style="text-align:left;"> Carlijn Bussemakers </td>
    <td style="text-align:left;"> Search Help </td>
   </tr>
   <tr>
@@ -3704,158 +3704,158 @@ jochem_coauthors
    <td style="text-align:left;"> Search Help </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 284 </td>
-   <td style="text-align:left;"> Ariana Need </td>
-   <td style="text-align:left;"> About Scholar </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 285 </td>
-   <td style="text-align:left;"> Ariana Need </td>
-   <td style="text-align:left;"> Search Help </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 286 </td>
+   <td style="text-align:left;"> 281 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Ormel, Johan (Hans) </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 287 </td>
+   <td style="text-align:left;"> 282 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Frank Verhulst </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 288 </td>
+   <td style="text-align:left;"> 283 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Siegwart Lindenberg </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 289 </td>
+   <td style="text-align:left;"> 284 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Jan Kornelis Dijkstra </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 290 </td>
+   <td style="text-align:left;"> 285 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Tineke Oldehinkel </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 291 </td>
+   <td style="text-align:left;"> 286 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Gijs Huitsing </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 292 </td>
+   <td style="text-align:left;"> 287 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Christian Steglich </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 293 </td>
+   <td style="text-align:left;"> 288 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Wilma Vollebergh </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 294 </td>
+   <td style="text-align:left;"> 289 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Christina Salmivalli </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 295 </td>
+   <td style="text-align:left;"> 290 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Tina Kretschmer </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 296 </td>
+   <td style="text-align:left;"> 291 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Miranda Sentse </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 297 </td>
+   <td style="text-align:left;"> 292 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Jelle Sijtsema </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 298 </td>
+   <td style="text-align:left;"> 293 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Rozemarijn Van Der Ploeg </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 299 </td>
+   <td style="text-align:left;"> 294 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Lydia Laninga-Wijnen </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 300 </td>
+   <td style="text-align:left;"> 295 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Sijmen A Reijneveld </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 301 </td>
+   <td style="text-align:left;"> 296 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Catharina A. Hartman </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 302 </td>
+   <td style="text-align:left;"> 297 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Beau Oldenburg </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 303 </td>
+   <td style="text-align:left;"> 298 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Miia Sainio </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 304 </td>
+   <td style="text-align:left;"> 299 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Marijtje A.j. Van Duijn </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 305 </td>
+   <td style="text-align:left;"> 300 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Z Harakeh </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 309 </td>
+   <td style="text-align:left;"> 304 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> About Scholar </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 310 </td>
+   <td style="text-align:left;"> 305 </td>
    <td style="text-align:left;"> René Veenstra </td>
    <td style="text-align:left;"> Search Help </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 311 </td>
+   <td style="text-align:left;"> 306 </td>
    <td style="text-align:left;"> Ioana Van Deurzen </td>
    <td style="text-align:left;"> Wim Van Oorschot </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 312 </td>
+   <td style="text-align:left;"> 307 </td>
    <td style="text-align:left;"> Ioana Van Deurzen </td>
    <td style="text-align:left;"> Erik Van Ingen </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 313 </td>
+   <td style="text-align:left;"> 308 </td>
    <td style="text-align:left;"> Ioana Van Deurzen </td>
    <td style="text-align:left;"> Tobias H. Stark </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 314 </td>
+   <td style="text-align:left;"> 309 </td>
    <td style="text-align:left;"> Ioana Van Deurzen </td>
    <td style="text-align:left;"> René Veenstra </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 315 </td>
+   <td style="text-align:left;"> 310 </td>
    <td style="text-align:left;"> Ioana Van Deurzen </td>
    <td style="text-align:left;"> Jochem Tolsma </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 319 </td>
+   <td style="text-align:left;"> 314 </td>
    <td style="text-align:left;"> Ioana Van Deurzen </td>
    <td style="text-align:left;"> About Scholar </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 320 </td>
+   <td style="text-align:left;"> 315 </td>
    <td style="text-align:left;"> Ioana Van Deurzen </td>
+   <td style="text-align:left;"> Search Help </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 319 </td>
+   <td style="text-align:left;"> Ariana Need </td>
+   <td style="text-align:left;"> About Scholar </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 320 </td>
+   <td style="text-align:left;"> Ariana Need </td>
    <td style="text-align:left;"> Search Help </td>
   </tr>
 </tbody>
