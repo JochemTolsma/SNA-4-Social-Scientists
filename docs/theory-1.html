@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Theory | SNASS</title>
   <meta name="description" content="Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Theory | SNASS" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-10-10" />
+<meta name="date" content="2024-08-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -120,6 +120,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -497,7 +501,7 @@ Figure 4.1: A Triad within an egonet
 <h2><span class="header-section-number">4.1</span> Network Structures (TRIAD)<a href="theory-1.html#triad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let us start with all possible triad configurations if we have a (binary) undirected tie. See Figure <a href="theory-1.html#fig:ut">4.2</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:ut"></span>
-<img src="Slide7.PNG" alt="undirected triad configurations" width="30%" />
+<img src="slide7.png" alt="undirected triad configurations" width="30%" />
 <p class="caption">
 Figure 4.2: undirected triad configurations
 </p>
@@ -508,7 +512,7 @@ Figure 4.2: undirected triad configurations
 </blockquote>
 <p>We only have three nodes but network structures become complex quite quickly. See Figure <a href="theory-1.html#fig:mut">4.3</a> for the many possible configurations for triads when we consider two different type of undirected ties (i.e. multiplexity).</p>
 <div class="figure"><span style="display:block;" id="fig:mut"></span>
-<img src="Slide8.PNG" alt="Multiplex, undirected triad configurations" width="100%" />
+<img src="slide8.png" alt="Multiplex, undirected triad configurations" width="100%" />
 <p class="caption">
 Figure 4.3: Multiplex, undirected triad configurations
 </p>
@@ -540,14 +544,14 @@ Figure 4.4: Directed triad configurations
 </ul>
 <p>This triad census has been developed by <span class="citation">Davis and Leinhardt (<a href="#ref-davis1967">1967</a>)</span> and their original picture in the paper is too cool not to show here:</p>
 <div class="figure"><span style="display:block;" id="fig:triadold"></span>
-<img src="Capture.PNG" alt="Original Triad census by Davis and Leinhard (1967)" width="100%" />
+<img src="Capture.png" alt="Original Triad census by Davis and Leinhard (1967)" width="100%" />
 <p class="caption">
 Figure 4.5: Original Triad census by Davis and Leinhard (1967)
 </p>
 </div>
 <p>Suppose we are trying to come up with an explanation for why we observe transitive triads (030T) in our network. We must realize that a transitive dyad may be the outcome of different evolution processes. See Figure <a href="theory-1.html#fig:evo">4.6</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:evo"></span>
-<img src="Slide9.PNG" alt="Different pathways to a transitive triad." width="100%" />
+<img src="slide9.png" alt="Different pathways to a transitive triad." width="100%" />
 <p class="caption">
 Figure 4.6: Different pathways to a transitive triad.
 </p>
@@ -1005,7 +1009,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

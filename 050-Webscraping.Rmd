@@ -2,6 +2,10 @@
 
 <!--- put the dataframes in a kable and then use a scrollbox. you can also have captions. works best. see last part of script ---> 
 
+> This part of the book has developed over time in a series of workshops we ran during the Sunbelt conferences of [INSNA](https://www.insna.org/).  
+> For the latest version of the Sunbelt webscraping workshop see [here](https://jochemtolsma.github.io/webscraping/index.html). You will find more examples, neater code --**both in R and Python**-- and different approaches than in this chapter of the book. 
+
+
 # Webscraping for Social Scientists {#webintro}
 
 <!---I think I have run into the rate limit. to be able to build the book, I have set eval=FALSE globally--->
@@ -187,10 +191,27 @@ So what are these different packages? You already know the `tidyverse` from Appe
 A first step is to get the "anchor" data. The anchor data are the first data we scrape with which we then link to further data sources. Our goal is to get to know (i) who the Radboud University Department of Sociology staff is, (ii) what they publish with respect to scientific work, and (iii) who they collaborate with. So that means at least three data sources we need to collect from somewhere. What would be a nice starting (read: anchor) point be? First, we have to know who is on the sociology staff. Let's check out [the Radboud sociology website](https://www.ru.nl/sociology/). There is lots of intriguing information, but not on who is who. There is, however, a specific link to the [research staff](https://www.ru.nl/sociology/research/staff/). Here we do see a nice list on who is on the sociology staff! How do we get that data? It is actually quite simple, the package `xml2` has a very nice function `html_read()` which simply extracts the source html of a webpage:
 
 
-```{r anchorlist, eval=TRUE}
+```{r anchorlist, eval=TRUE, error = TRUE}
 # Let's first get the staff page
 # read_html is a function that simply extracts html webpages and puts them in xml format
 soc_staff <- read_html("https://www.ru.nl/sociology/research/staff/")
+```
+
+Whoops, this gives an error because as of 2024 this website does not exist anymore. This happens frequently with webscraping. In our [Sunbelt workshop](https://jochemtolsma.github.io/webscraping/12scholars.html) we show how to scrape the new website.  
+
+Here we will use a trick, namely the [wayback machine](https://web.archive.org/). 
+
+
+```{r, eval = FALSE}
+soc_staff <- read_html("https://web.archive.org/web/20230528153336/https://www.ru.nl/sociology/research/staff/")
+```
+
+```{r, echo = FALSE, eval = FALSE}
+xml2::write_xml(soc_staff, file="addfiles/soc_staff2024.xml", options = "as_xml")
+```
+
+```{r, echo=FALSE, eval=TRUE}
+soc_staff <- xml2::read_xml("addfiles/soc_staff2024.xml")
 ```
 
 ```{r whatisthis, eval=TRUE}
@@ -226,7 +247,7 @@ knitr::include_graphics("inspect_td.JPEG")
 
 Something like the code below should do just that:
 
-```{r}
+```{r, eval = TRUE}
 # so we need to find WHERE the table is located in the html
 # "inspect element" in mozilla firefox
 # or "view page source" 

@@ -4,11 +4,10 @@
 
 ```{r globalsettings, echo=FALSE, warning=FALSE}
 library(knitr)
-opts_chunk$set(tidy.opts=list(width.cutoff=100),tidy=TRUE, warning = FALSE, message = FALSE,comment = "#>", cache=TRUE)
+opts_chunk$set(tidy.opts = list(width.cutoff = 100), tidy = TRUE, warning = FALSE, message = FALSE, comment = "#>", cache = TRUE)
 opts_chunk$set(attr.source = ".numberLines")
 options(width = 100)
 source("util.r")
-
 ```
 
 
@@ -31,14 +30,14 @@ This very short R tutorial is for students who already have some experience with
 ## Getting up and running
 
 -   install the latest version of R: [R](https://cran.r-project.org/)
--   install the latest version of RStudio: [RStudio](https://www.rstudio.com/)
--   open RStudio and follow a brief tour/tutorial [brief tour of Gulzar](https://web.cs.ucla.edu/~gulzar/rstudio/basic-tutorial.html)
+-   install the latest version of RStudio Desktop: [RStudio](https://www.rstudio.com/)
+
 
 Do you Want more information, or are you looking for a different (tidyverse) tutorial?
 
 -   [R-bloggers](https://www.r-bloggers.com/how-to-learn-r-2/)
 -   [RStudio cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
--   [R for Data Science](http://r4ds.had.co.nz/)
+-   [R for Data Science](https://r4ds.hadley.nz/)
 -   [Statistical Inference via Data Science: A Modern Dive into R and the tidyverse](https://www.moderndive.com/)
 
 Are you a Research Master Social and Cultural Science student? Or, a social science student/scientist with some statistical background in descriptive and explanatory statistics (e.g. regression analysis) who wants to make a switch from SPSS to R? Please read on.
@@ -69,21 +68,20 @@ Thus your RScript will look something like this:
 # version: 30-10-2019
 ###########################
 
-#start with clean workspace 
-rm(list=ls())
+# start with clean workspace
+rm(list = ls())
 
-#install.packages I will need later here
-install.packages("installr") #you  first install packages
-require(installr) #then you will need to load them. This package is used to simply update R
+# install.packages I will need later here
+install.packages("installr") # you  first install packages
+require(installr) # then you will need to load them. This package is used to simply update R
 install.packages("foreign")
-require(foreign) #used to read in spss data files
+require(foreign) # used to read in spss data files
 require(tidyverse)
-#update if necessarry. Best to run this command in RGui, not in RStudio.
+# update if necessarry. Best to run this command in RGui, not in RStudio.
 updateR()
 
-#define workdirectory, note the double backslashes
-setwd('C:\\SNA-4-Social-Scientists\\') #change to your own workdirectory
-
+# define workdirectory, note the double backslashes
+setwd("C:\\SNA-4-Social-Scientists\\") # change to your own workdirectory
 ```
 
 Do you see I start some lines with a `#` these lines are comments and not code/commands. This is similar as the `*` sign in SPSS.\
@@ -111,15 +109,14 @@ Let's give it a go:
 ```{r, results}
 tesvariable <- 4
 ls()
-list=ls()
+list <- ls()
 list
 ls()
 rm(list)
 ls()
-#? :-)
-rm(list=ls())
+# ? :-)
+rm(list = ls())
 ls()
-
 ```
 
 If you want to know more about specific functions, try to use the help function. For example try the following:
@@ -135,7 +132,7 @@ How am I to remember all that code/syntax??!!
 
 -   By using them.
 -   You don't need to, you just need to remember in which script you used them before.
--   By using [existing cheat sheets]("https://www.rstudio.com/resources/cheatsheets/")
+-   By using [existing cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
 -   By making your own cheat sheets.
 
 > You being the ideal student, you started your own cheat sheet. What should be on it by know?
@@ -162,7 +159,7 @@ How am I to remember all that code/syntax??!!
 
 ## Reading in data files
 
-We are going to work with two datasets: "Culturele Veranderingen". For more information on these datasets, see [here](https://www.scp.nl/Onderzoek/Bronnen/Beknopte_onderzoeksbeschrijvingen/Culturele_veranderingen_in_Nederland_CV).
+We are going to work with two datasets: "Culturele Veranderingen". For more information on these datasets, see [here](https://www.scp.nl/over-scp/data-en-methoden/onderzoeksbeschrijvingen/culturele-veranderingen-in-nederland-cv).
 
 Please download the files to your working directory.
 
@@ -174,21 +171,20 @@ There are different packages to read in data. Generally, I would recommend to us
 > below I will use `package_name::function_name` notation, to make explicit from which package the function belongs.
 
 ```{r readingspss, warning=FALSE, message=FALSE}
-#ignore the warnings  
-#?read.spss
-#note that I have saved the data files in a folder called 'addfiles'. 
+# ignore the warnings
+# ?read.spss
+# note that I have saved the data files in a folder called 'addfiles'.
 
-cv08 <- foreign::read.spss("addfiles\\Cultural_Changes_2008.sav", use.value.labels=T, to.data.frame=T)
-cv10 <- foreign::read.spss("addfiles\\Cultural_Changes_2010.sav", use.value.labels=T, to.data.frame=T)
+cv08 <- foreign::read.spss("addfiles\\Cultural_Changes_2008.sav", use.value.labels = T, to.data.frame = T)
+cv10 <- foreign::read.spss("addfiles\\Cultural_Changes_2010.sav", use.value.labels = T, to.data.frame = T)
 
-#normally I think setting use.value.labels=F is more convenient. Thus lets load the data again but now without labels 
-cv08_nolab <- foreign::read.spss("addfiles\\Cultural_Changes_2008.sav", use.value.labels=F, to.data.frame=T)
-cv10_nolab <- foreign::read.spss("addfiles\\Cultural_Changes_2010.sav", use.value.labels=F, to.data.frame=T)
+# normally I think setting use.value.labels=F is more convenient. Thus lets load the data again but now without labels
+cv08_nolab <- foreign::read.spss("addfiles\\Cultural_Changes_2008.sav", use.value.labels = F, to.data.frame = T)
+cv10_nolab <- foreign::read.spss("addfiles\\Cultural_Changes_2010.sav", use.value.labels = F, to.data.frame = T)
 
-#finally, import the data using haven
+# finally, import the data using haven
 cv08_haven <- haven::read_spss("addfiles\\Cultural_Changes_2008.sav")
 cv10_haven <- haven::read_spss("addfiles\\Cultural_Changes_2010.sav")
-
 ```
 
 So you see I read in the data by using the function `read.spss()` of the package 'foreign'. Within this function I set some arguments/parameters (e.g. use.value.labels).
@@ -219,16 +215,16 @@ Let us have quick look at the structure of some variables. The take home message
 > Add to your cheat sheet under operators/symbols: `$`
 
 ```{r}
-str(cv08$lftop) #a factor
+str(cv08$lftop) # a factor
 str(cv08_nolab$lftop) # a numeric variable
 str(cv08_haven$lftop) # a 'dbl+lbl' this stands for doubles, or real numbers, which are labeled
 
-#next to the data itself, attributes are stored
+# next to the data itself, attributes are stored
 attributes(cv08$lftop)
 attributes(cv08_nolab$lftop)
 attributes(cv08_haven$lftop)
 
-#to access specific attributes
+# to access specific attributes
 attr(cv08_haven$lftop, "labels")
 
 summary(cv08$lftop)
@@ -244,7 +240,7 @@ You can also have a look at your data. Try out the following commands.
 names(cv08_haven)
 summary(cv08_haven)
 head(cv08_haven)
-#fix(cv08_haven) #will produce an error
+# fix(cv08_haven) #will produce an error
 fix(cv08)
 View(cv08_haven)
 ```
@@ -264,7 +260,7 @@ Lets use age as example. This variable is called **lftop** in CV. First have a l
 str(cv08_haven$lftop)
 summary(cv08_haven$lftop)
 attr(cv08_haven$lftop, "labels")
-table(cv08_haven$lftop, useNA="always")
+table(cv08_haven$lftop, useNA = "always")
 ```
 
 We have category 'onbekend', which should be a missing. Let's copy the original variable in a new one, and attach it to the dataset. Thus not:\
@@ -272,13 +268,13 @@ We have category 'onbekend', which should be a missing. Let's copy the original 
 but:
 
 ```{r}
-cv08$lftop_new <-  cv08$lftop
+cv08$lftop_new <- cv08$lftop
 ```
 
 You probably already noticed that to assign values to a new object we use `<-`. What we now want to do is to replace those values of our new variable `cv08$lftop_new` which have the values **Onbekend**. We thus have to use **subsetting**. 
 
 ```{r}
-cv08$lftop_new[cv08$lftop_new=="Onbekend"] <-  NA
+cv08$lftop_new[cv08$lftop_new == "Onbekend"] <- NA
 ```
 
 Dont forget, if you want to understand the code work inside out.
@@ -290,7 +286,7 @@ Dont forget, if you want to understand the code work inside out.
 So did our recode work?
 
 ```{r}
-table(cv08$lftop_new, useNA="always")
+table(cv08$lftop_new, useNA = "always")
 levels(cv08$lftop_new)
 ```
 
@@ -298,8 +294,8 @@ But we want age as numeric variable not as a factor (categorical).
 
 ```{r}
 str(cv08$lftop_new)
-cv08$agen <- as.numeric(as.character(cv08$lftop_new)) #how clumsy. we first convert the factor to a string and then to a numeric variable. 
-table(cv08$agen, useNA="always")
+cv08$agen <- as.numeric(as.character(cv08$lftop_new)) # how clumsy. we first convert the factor to a string and then to a numeric variable.
+table(cv08$agen, useNA = "always")
 str(cv08$agen)
 ```
 
@@ -313,7 +309,7 @@ Copy the variable\
 We will 'mutate' the original dataset by adding a variable.
 
 ```{r}
-cv08_haven <- mutate(cv08_haven, lftop_new=lftop)
+cv08_haven <- mutate(cv08_haven, lftop_new = lftop)
 ```
 
 Replace missings.\
@@ -326,13 +322,13 @@ cv08_haven$lftop_new <- na_if(cv08_haven$lftop_new, 99)
 Normally you would combine these two steps into one
 
 ```{r}
-cv08_haven <- mutate(cv08_haven, lftop_new=na_if(lftop, 99))
+cv08_haven <- mutate(cv08_haven, lftop_new = na_if(lftop, 99))
 ```
 
 check
 
 ```{r}
-table(cv08_haven$lftop_new, useNA="always")
+table(cv08_haven$lftop_new, useNA = "always")
 ```
 
 An advantage of the tidy way is that it is more intuitive and requires less subsetting.\
@@ -352,29 +348,29 @@ So, we defined a missing value for age. As a second example let us recode the va
 
 ```{r recode}
 levels(cv08$var006n)
-table(cv08$var006n, useNA="always")
+table(cv08$var006n, useNA = "always")
 
-#lets make it a numeric var first
+# lets make it a numeric var first
 cv08$educn <- as.numeric(cv08$var006n)
-#check
-table(cv08$educn, useNA="always")
+# check
+table(cv08$educn, useNA = "always")
 
-#start with an empty variable
+# start with an empty variable
 cv08$educ3 <- NA
-#fill category by category
-cv08$educ3[cv08$educn==2 | cv08$educn==3] <- 1
-cv08$educ3[cv08$educn>3 & cv08$educn<8] <- 2
-cv08$educ3[cv08$educn>7 & cv08$educn<11] <- 3
+# fill category by category
+cv08$educ3[cv08$educn == 2 | cv08$educn == 3] <- 1
+cv08$educ3[cv08$educn > 3 & cv08$educn < 8] <- 2
+cv08$educ3[cv08$educn > 7 & cv08$educn < 11] <- 3
 
-#check
-table(cv08$educ3, useNA="always")
-prop.table(table(cv08$educ3, useNA="always"))
+# check
+table(cv08$educ3, useNA = "always")
+prop.table(table(cv08$educ3, useNA = "always"))
 
-#now educ3 is a numeric variable, we want it as factor
+# now educ3 is a numeric variable, we want it as factor
 cv08$educ3 <- as.factor(cv08$educ3)
-table(cv08$educ3, useNA="always")
+table(cv08$educ3, useNA = "always")
 levels(cv08$educ3) <- c("primary", "secondary", "tertiary")
-table(cv08$educ3, useNA="always")
+table(cv08$educ3, useNA = "always")
 ```
 
 > Is this really the first time we encountered the function `c()`? Well, make sure it is somewhere at the top of your cheat sheet.
@@ -384,46 +380,49 @@ table(cv08$educ3, useNA="always")
 And now the fun starts. Tidyverse includes a `dplyr::recode` function, but this function does not work on labelled variables imported via the haven package. Luckily, there is a package that extends the original function, `labelled`.
 
 ```{r}
-#install.packages("labelled")
-require(labelled) #to be able to use the recode function on haven labelled variables
+# install.packages("labelled")
+require(labelled) # to be able to use the recode function on haven labelled variables
 
-#inspect variable
+# inspect variable
 str(cv08_haven$var006n)
 attr(cv08_haven$var006n, "labels")
-table(cv08_haven$var006n, useNA="always")
+table(cv08_haven$var006n, useNA = "always")
 
-#recode values, all missings as one value
-cv08_haven <- mutate(cv08_haven, educ3=recode(var006n, '-3'=-9, '-1'=1, '1'=1, '2'= 2 , '3'= 2, '4'= 2, '5'= 2, '6'= 3, '7'= 3, '8'= 3, '10'= -9), .keep_value_labels = FALSE)
+# recode values, all missings as one value
+cv08_haven <- mutate(cv08_haven, educ3 = recode(var006n, "-3" = -9, "-1" = 1, "1" = 1, "2" = 2, "3" = 2, "4" = 2, "5" = 2, "6" = 3, "7" = 3, "8" = 3, "10" = -9), .keep_value_labels = FALSE)
 
-#replace missing values with NA.
-cv08_haven <- mutate(cv08_haven, educ3=na_if(educ3, -9))
+# replace missing values with NA.
+cv08_haven <- mutate(cv08_haven, educ3 = na_if(educ3, -9))
 
-#make educ3 a factor
-cv08_haven <- mutate(cv08_haven, educ3=factor(educ3, levels = c(1,2,3),
-labels = c("primary", "secondary", "tertiary")))
+# make educ3 a factor
+cv08_haven <- mutate(cv08_haven, educ3 = factor(educ3,
+  levels = c(1, 2, 3),
+  labels = c("primary", "secondary", "tertiary")
+))
 
-#check
-table(cv08_haven$educ3, useNA="always")
-
+# check
+table(cv08_haven$educ3, useNA = "always")
 ```
 
 Personally, I think this is all quite complicated. But I guess this is a matter of taste.
 
-And advantage of the Tidy way is that you could use the `%>%`, the **piping operator**. Now, your code does not read from the inside out but from left to right. For many people this is more intuitive. The output of the function on the left is transported to the (first argument of the) function on the right. Thus, in the example below, you see that in the second and third call to mutate I don't have to tell the function which dataset I am using.
+And advantage of the Tidy way is that you could use the `%>%`, the **piping operator**. Now, your code does not read from the inside out but from left to right. For many people this is more intuitive. The output of the function on the left is transported to the (first argument of the) function on the right. Thus, in the example below, you see that in the second and third call to mutate I don't have to tell the function which dataset I am using. 
+
+> Note in Base R (since 4.1.0) `|>` is uased as a pipe operator.  
 
 ```{r}
-cv08_haven <- mutate(cv08_haven, educ3=recode(var006n, '-3'=-9, '-1'=1, '1'=1, '2'= 2 , '3'= 2, '4'= 2, '5'= 2, '6'= 3, '7'= 3, '8'= 3, '10'= -9), .keep_value_labels = FALSE) %>%  
-  mutate(educ3=na_if(educ3, -9)) %>%
-  mutate(educ3=factor(educ3, levels = c(1,2,3), labels = c("primary", "secondary", "tertiary")))
+cv08_haven <- mutate(cv08_haven, educ3 = recode(var006n, "-3" = -9, "-1" = 1, "1" = 1, "2" = 2, "3" = 2, "4" = 2, "5" = 2, "6" = 3, "7" = 3, "8" = 3, "10" = -9), .keep_value_labels = FALSE) %>%
+  mutate(educ3 = na_if(educ3, -9)) %>%
+  mutate(educ3 = factor(educ3, levels = c(1, 2, 3), labels = c("primary", "secondary", "tertiary")))
 ```
 
 Perhaps an even tidier way would be:
 
 ```{r, eval=FALSE}
-cv08_haven <- cv08_haven %>% 
-  mutate(educ3=recode(var006n, '-3'=-9, '-1'=1, '1'=1, '2'= 2 , '3'= 2, '4'= 2, '5'= 2, '6'= 3, '7'= 3, '8'= 3, '10'= -9), .keep_value_labels = FALSE) %>%  
-  mutate(educ3=na_if(educ3, -9)) %>%
-  mutate(educ3=factor(educ3, levels = c(1,2,3), labels = c("primary", "secondary", "tertiary")))
+cv08_haven <- cv08_haven %>%
+  mutate(educ3 = recode(var006n, "-3" = -9, "-1" = 1, "1" = 1, "2" = 2, "3" = 2, "4" = 2, "5" = 2, "6" = 3, "7" = 3, "8" = 3, "10" = -9), .keep_value_labels = FALSE) %>%
+  mutate(educ3 = na_if(educ3, -9)) %>%
+  mutate(educ3 = factor(educ3, levels = c(1, 2, 3), labels = c("primary", "secondary", "tertiary")))
 ```
 
 In the example above, it still may 'feel' a little clumsy to have to make a call to the same `mutate` function three times. Well, this is indeed not necessary.
@@ -431,10 +430,12 @@ In the example above, it still may 'feel' a little clumsy to have to make a call
 Thus, the most tidy way is:
 
 ```{r, eval=FALSE}
-cv08_haven <- cv08_haven %>% 
-  mutate(educ3=recode(var006n, '-3'=-9, '-1'=1, '1'=1, '2'= 2 , '3'= 2, '4'= 2, '5'= 2, '6'= 3, '7'= 3, '8'= 3, '10'= -9, .keep_value_labels = FALSE),
-         educ3=na_if(educ3, -9),
-         educ3=factor(educ3, levels = c(1,2,3), labels = c("primary", "secondary", "tertiary")))
+cv08_haven <- cv08_haven %>%
+  mutate(
+    educ3 = recode(var006n, "-3" = -9, "-1" = 1, "1" = 1, "2" = 2, "3" = 2, "4" = 2, "5" = 2, "6" = 3, "7" = 3, "8" = 3, "10" = -9, .keep_value_labels = FALSE),
+    educ3 = na_if(educ3, -9),
+    educ3 = factor(educ3, levels = c(1, 2, 3), labels = c("primary", "secondary", "tertiary"))
+  )
 ```
 
 ## Means and counting specific values
@@ -453,55 +454,51 @@ summary(cv08$int057)
 Step 2: make numeric
 ```{r, results='hold' }
 cv08$int055n <- as.numeric(cv08$int055)
-table(cv08$int055n, useNA="always")
+table(cv08$int055n, useNA = "always")
 cv08$int056n <- as.numeric(cv08$int056)
-table(cv08$int056n, useNA="always")
+table(cv08$int056n, useNA = "always")
 cv08$int057n <- as.numeric(cv08$int057)
-table(cv08$int057n, useNA="always")
+table(cv08$int057n, useNA = "always")
 ```
 
 Step 3: define missings and recode
 ```{r, results='hold' }
-cv08$int055n[cv08$int055n<5] <- NA
-cv08$int055n <- cv08$int055n  - 4
-cv08$int056n[cv08$int056n<5] <- NA
-cv08$int056n <- cv08$int056n  - 4
-cv08$int057n[cv08$int057n<5] <- NA
-cv08$int057n <- cv08$int057n  - 4
+cv08$int055n[cv08$int055n < 5] <- NA
+cv08$int055n <- cv08$int055n - 4
+cv08$int056n[cv08$int056n < 5] <- NA
+cv08$int056n <- cv08$int056n - 4
+cv08$int057n[cv08$int057n < 5] <- NA
+cv08$int057n <- cv08$int057n - 4
 ```
 
 Step 4: calculate means. 
 ```{r, results='hold' }
-#How does the function mean work in R?
-mean(cv08$int055n) #whoops
-mean(cv08$int055n, na.rm=TRUE) #works.  but not what we want. 
-mean(c(cv08$int055n, cv08$int056n, cv08$int057n), na.rm = T) #works but not what we want.
+# How does the function mean work in R?
+mean(cv08$int055n) # whoops
+mean(cv08$int055n, na.rm = TRUE) # works.  but not what we want.
+mean(c(cv08$int055n, cv08$int056n, cv08$int057n), na.rm = T) # works but not what we want.
 ```
 
 This is not what we want. What we want is to calculate a mean for each row/respondent. This will do the trick:
 
 ```{r }
 testmeans <- rowMeans(cbind(cv08$int055n, cv08$int056n, cv08$int057n), na.rm = T)
-head(testmeans) #yes!
+head(testmeans) # yes!
 ```
 
 What we really want is a mean but only if there is a maximum of 1 NA in the three variables.
 
 ```{r}
-#lets first count how many missings we have for each respondent
+# lets first count how many missings we have for each respondent
 nmis <- rowSums(is.na(cbind(cv08$int055n, cv08$int056n, cv08$int057n)))
 
 # ?is.na
 # ?rowSums
 
-testmeans <- ifelse(nmis<2,testmeans, NA)
+testmeans <- ifelse(nmis < 2, testmeans, NA)
 
-#add the calculated means to our dataset
+# add the calculated means to our dataset
 cv08$int_mean <- testmeans
-
-#Bonus: count specific values
-#so now we have this, it is easy to find how many times respondents answered 'zeer groot', that is '1'
-#timesZG <- rowSums(cbind(cv08$int055n, cv08$int056n, cv08$int057n)==1, na.rm=T)
 ```
 
 > You need to add a lot of very powerful functions to your cheat sheet: `mean()`, `rowMeans()`, `rowSums`, `cbind()`, `is.na()`, `ifelse().`
@@ -512,53 +509,51 @@ cv08$int_mean <- testmeans
 
 Here it goes in one big code chunk. 
 ```{r, results='hold' }
-
-#Step 1: have a look at the vars
+# Step 1: have a look at the vars
 str(cv08_haven$int055)
 attr(cv08_haven$int055, "labels")
 summary(cv08_haven$int055)
 summary(cv08_haven$int056)
 summary(cv08_haven$int057)
 
-table(cv08_haven$int055n, useNA="always")
-table(cv08_haven$int056, useNA="always")
-table(cv08_haven$int057, useNA="always")
+table(cv08_haven$int055n, useNA = "always")
+table(cv08_haven$int056, useNA = "always")
+table(cv08_haven$int057, useNA = "always")
 
-#Step 2: define missings and recode
-cv08_haven <- mutate(cv08_haven, int055n=recode(int055, '-6'=-9, '-5'=-9,'-3'=-9,'-2'=-9, '1'=4, '2'= 3 , '3'= 2, '4'= 1), .keep_value_labels = FALSE) %>% 
-  mutate(int055n=na_if(int055n, -9)) %>%
-  mutate(int055n=labelled(int055n, c("Helemaal geen tegenstelling" = 1, "Niet zo groot" = 2, "Groot"=3, "Zeer groot"=4)))
+# Step 2: define missings and recode
+cv08_haven <- mutate(cv08_haven, int055n = recode(int055, "-6" = -9, "-5" = -9, "-3" = -9, "-2" = -9, "1" = 4, "2" = 3, "3" = 2, "4" = 1), .keep_value_labels = FALSE) %>%
+  mutate(int055n = na_if(int055n, -9)) %>%
+  mutate(int055n = labelled(int055n, c("Helemaal geen tegenstelling" = 1, "Niet zo groot" = 2, "Groot" = 3, "Zeer groot" = 4)))
 
-cv08_haven <- mutate(cv08_haven, int056n=recode(int056, '-6'=-9, '-5'=-9,'-3'=-9,'-2'=-9, '1'=4, '2'= 3 , '3'= 2, '4'= 1), .keep_value_labels = FALSE) %>% 
-  mutate(int056n=na_if(int056n, -9)) %>%
-  mutate(int056n=labelled(int056n, c("Helemaal geen tegenstelling" = 1, "Niet zo groot" = 2, "Groot"=3, "Zeer groot"=4)))
+cv08_haven <- mutate(cv08_haven, int056n = recode(int056, "-6" = -9, "-5" = -9, "-3" = -9, "-2" = -9, "1" = 4, "2" = 3, "3" = 2, "4" = 1), .keep_value_labels = FALSE) %>%
+  mutate(int056n = na_if(int056n, -9)) %>%
+  mutate(int056n = labelled(int056n, c("Helemaal geen tegenstelling" = 1, "Niet zo groot" = 2, "Groot" = 3, "Zeer groot" = 4)))
 
-cv08_haven <- mutate(cv08_haven, int057n=recode(int057, '-6'=-9, '-5'=-9,'-3'=-9,'-2'=-9, '1'=4, '2'= 3 , '3'= 2, '4'= 1), .keep_value_labels = FALSE) %>% 
-  mutate(int057n=na_if(int057n, -9)) %>%
-  mutate(int057n=labelled(int057n, c("Helemaal geen tegenstelling" = 1, "Niet zo groot" = 2, "Groot"=3, "Zeer groot"=4)))
+cv08_haven <- mutate(cv08_haven, int057n = recode(int057, "-6" = -9, "-5" = -9, "-3" = -9, "-2" = -9, "1" = 4, "2" = 3, "3" = 2, "4" = 1), .keep_value_labels = FALSE) %>%
+  mutate(int057n = na_if(int057n, -9)) %>%
+  mutate(int057n = labelled(int057n, c("Helemaal geen tegenstelling" = 1, "Niet zo groot" = 2, "Groot" = 3, "Zeer groot" = 4)))
 
 
-#Step 3: calculate means. 
+# Step 3: calculate means.
 ## option 1
-cv08_haven <- cv08_haven %>% 
-  rowwise() %>% 
-  mutate(int_mean = mean(c(int055n, int056n, int057n), na.rm=TRUE))
+cv08_haven <- cv08_haven %>%
+  rowwise() %>%
+  mutate(int_mean = mean(c(int055n, int056n, int057n), na.rm = TRUE))
 
 
 ## option 2
-cv08_haven <- cv08_haven %>% 
-  mutate(int_mean = rowMeans(cbind(int055n, int056n, int057n), na.rm=TRUE))
+cv08_haven <- cv08_haven %>%
+  mutate(int_mean = rowMeans(cbind(int055n, int056n, int057n), na.rm = TRUE))
 
-#what we really want is a mean but only if there is a maximum of 1 NA in the three variables
+# what we really want is a mean but only if there is a maximum of 1 NA in the three variables
 
-cv08_haven <- cv08_haven %>% 
-  mutate(int_mean_temp = rowMeans(cbind(int055n, int056n, int057n), na.rm=TRUE),
-         nmis = rowSums(is.na(cbind(int055n, int056n, int057n))), 
-         int_mean = ifelse(nmis<2, int_mean_temp, NA)) %>%
+cv08_haven <- cv08_haven %>%
+  mutate(
+    int_mean_temp = rowMeans(cbind(int055n, int056n, int057n), na.rm = TRUE),
+    nmis = rowSums(is.na(cbind(int055n, int056n, int057n))),
+    int_mean = ifelse(nmis < 2, int_mean_temp, NA)
+  ) %>%
   dplyr::select(-int_mean_temp, -nmis)
-
-
-
 ```
 
 > So what are you adding to your cheat sheet? `rowwise()`, `select()`.
@@ -580,10 +575,10 @@ We need to follow these steps:
 #### Step1: select variables
 
 ```{r merging}
-#step 1: selecting the variables you want to keep.
-#for this tutorial only 6 variables: id, age, sex, educ, health, region (not that R is case sensitive)
-cv08_sel <- cv08[,c("we_id", "lftop", "geslacht", "var006n", "v401", "landd")]
-cv10_sel <- cv10[,c("Sleutel", "var002", "var001", "Vltoplop", "V401", "Landd")]
+# step 1: selecting the variables you want to keep.
+# for this tutorial only 6 variables: id, age, sex, educ, health, region (not that R is case sensitive)
+cv08_sel <- cv08[, c("we_id", "lftop", "geslacht", "var006n", "v401", "landd")]
+cv10_sel <- cv10[, c("Sleutel", "var002", "var001", "Vltoplop", "V401", "Landd")]
 ```
 
 > Note that to select rows, you need to set an expression before the "," [row,] and to select columns, after the "," [,col]. Thus with `dataset[i,j]` you will select row *i* and column *j*. You have learned to subset dataframes by using indici (e.g. `dataset[,1:3]`), logical expressions (e.g. `dataset[var1>1,])`, and names (e.g. `dataset[,"varname"]`).
@@ -591,94 +586,93 @@ cv10_sel <- cv10[,c("Sleutel", "var002", "var001", "Vltoplop", "V401", "Landd")]
 #### Step2: make consistent
 
 ```{r , results='hide'}
-#step 2: making the variables similar across individual datasets
-#step 2a: making names the same
+# step 2: making the variables similar across individual datasets
+# step 2a: making names the same
 names(cv08_sel) <- names(cv10_sel) <- c("id", "age", "sex", "educ", "health", "region")
 
-#step 2b: making levels and labels consistent
+# step 2b: making levels and labels consistent
 summary(cv08_sel)
 summary(cv10_sel)
-#they look very consistent already. but check carefully. 
+# they look very consistent already. but check carefully.
 
-#we don't want id to be a factor but numeric. Note that we don't want the factor level values as numbers but the actual labels as numbers. 
+# we don't want id to be a factor but numeric. Note that we don't want the factor level values as numbers but the actual labels as numbers.
 
-#id
+# id
 cv08_sel$id <- as.numeric(as.character(cv08_sel$id))
 cv10_sel$id <- as.numeric(as.character(cv10_sel$id))
 
-#age
+# age
 cv08_sel$age <- as.numeric(as.character(cv08_sel$age))
 cv10_sel$age <- as.numeric(as.character(cv10_sel$age))
 
-#sex men
+# sex men
 levels(cv08_sel$sex)
 levels(cv10_sel$sex)
-table(cv08_sel$sex, useNA="always")
-table(cv10_sel$sex, useNA="always")
-#lets make it a numeric var first
+table(cv08_sel$sex, useNA = "always")
+table(cv10_sel$sex, useNA = "always")
+# lets make it a numeric var first
 cv08_sel$sexn <- as.numeric(cv08_sel$sex)
 table(cv08_sel$sexn)
-#recode into dummy
-cv08_sel$men <- ifelse(cv08_sel$sexn==2, 1, 0)
-cv08_sel$men <- ifelse(cv08_sel$sexn==1, NA, cv08_sel$men)
-#check
-table(cv08_sel$men, useNA="always")
-#lets make it a numeric var first
+# recode into dummy
+cv08_sel$men <- ifelse(cv08_sel$sexn == 2, 1, 0)
+cv08_sel$men <- ifelse(cv08_sel$sexn == 1, NA, cv08_sel$men)
+# check
+table(cv08_sel$men, useNA = "always")
+# lets make it a numeric var first
 cv10_sel$sexn <- as.numeric(cv10_sel$sex)
 table(cv10_sel$sexn)
-#recode into dummy
-cv10_sel$men <- ifelse(cv10_sel$sexn==2, 1, 0)
-#check
-table(cv10_sel$men, useNA="always")
+# recode into dummy
+cv10_sel$men <- ifelse(cv10_sel$sexn == 2, 1, 0)
+# check
+table(cv10_sel$men, useNA = "always")
 
-#educ educ3
+# educ educ3
 levels(cv08_sel$educ)
 levels(cv10_sel$educ)
-table(cv08_sel$educ, useNA="always")
-table(cv10_sel$educ, useNA="always")
-#lets make it a numeric var first
+table(cv08_sel$educ, useNA = "always")
+table(cv10_sel$educ, useNA = "always")
+# lets make it a numeric var first
 cv08_sel$educn <- as.numeric(cv08_sel$educ)
 table(cv08_sel$educn)
-#recode into 3cats: 1 primair, 2 secundair, 3 is tertiair
+# recode into 3cats: 1 primair, 2 secundair, 3 is tertiair
 cv08_sel$educ3 <- NA
-cv08_sel$educ3[cv08_sel$educn==2 | cv08_sel$educn==3] <- 1
-cv08_sel$educ3[cv08_sel$educn>3 & cv08_sel$educn<8] <- 2
-cv08_sel$educ3[cv08_sel$educn>7 & cv08_sel$educn<11] <- 3
-#check
-table(cv08_sel$educ3, useNA="always")
-prop.table(table(cv08_sel$educ3, useNA="always"))
+cv08_sel$educ3[cv08_sel$educn == 2 | cv08_sel$educn == 3] <- 1
+cv08_sel$educ3[cv08_sel$educn > 3 & cv08_sel$educn < 8] <- 2
+cv08_sel$educ3[cv08_sel$educn > 7 & cv08_sel$educn < 11] <- 3
+# check
+table(cv08_sel$educ3, useNA = "always")
+prop.table(table(cv08_sel$educ3, useNA = "always"))
 
-#lets make it a numeric var first
+# lets make it a numeric var first
 cv10_sel$educn <- as.numeric(cv10_sel$educ)
 table(cv10_sel$educn)
-#recode into 3cats: 1 primair, 2 secundari, 3 is tertiair
+# recode into 3cats: 1 primair, 2 secundari, 3 is tertiair
 cv10_sel$educ3 <- NA
-cv10_sel$educ3[cv10_sel$educn<3] <- 1 #correct?
-cv10_sel$educ3[cv10_sel$educn>2 & cv10_sel$educn<6] <- 2
-cv10_sel$educ3[cv10_sel$educn==6] <- 3
-#check
-table(cv10_sel$educ3, useNA="always")
-prop.table(table(cv10_sel$educ3, useNA="always"))
-
+cv10_sel$educ3[cv10_sel$educn < 3] <- 1 # correct?
+cv10_sel$educ3[cv10_sel$educn > 2 & cv10_sel$educn < 6] <- 2
+cv10_sel$educ3[cv10_sel$educn == 6] <- 3
+# check
+table(cv10_sel$educ3, useNA = "always")
+prop.table(table(cv10_sel$educ3, useNA = "always"))
 ```
 
 #### Step3: merge
 
 ```{r}
-#lets add a wave variable
+# lets add a wave variable
 cv08_sel$wave <- 2008
 cv10_sel$wave <- 2010
 
-#let make a fake ID, we will use this later when we pretend CV is panel data. 
+# let make a fake ID, we will use this later when we pretend CV is panel data.
 cv08_sel$id2 <- rank(cv08_sel$id)
 cv10_sel$id2 <- rank(cv10_sel$id)
 
-#simply place one dataset under the other thus row bind (rbind)
-#check first if same vars in both datasets.
-#perhaps clean up first. 
+# simply place one dataset under the other thus row bind (rbind)
+# check first if same vars in both datasets.
+# perhaps clean up first.
 
-cv08_sel <- cv08_sel[,c("id","id2", "age", "men", "educ3", "health", "region", "wave")]
-cv10_sel <- cv10_sel[,c("id", "id2", "age", "men", "educ3", "health", "region", "wave")]
+cv08_sel <- cv08_sel[, c("id", "id2", "age", "men", "educ3", "health", "region", "wave")]
+cv10_sel <- cv10_sel[, c("id", "id2", "age", "men", "educ3", "health", "region", "wave")]
 
 summary(cv08_sel)
 summary(cv10_sel)
@@ -699,13 +693,13 @@ If you don't know the difference between long and wide format, check the differe
 #### Step3b: merge
 
 ```{r}
-#lets make a panel dataset in wide format
-cv_tot_panel <- merge(cv08_sel, cv10_sel, all=TRUE, by="id2")
+# lets make a panel dataset in wide format
+cv_tot_panel <- merge(cv08_sel, cv10_sel, all = TRUE, by = "id2")
 head(cv_tot_panel)
-#rename variables. and when necessary merge again with third wave. not very efficient but it works.
+# rename variables. and when necessary merge again with third wave. not very efficient but it works.
 
-#many people prefer the reshape function. (i like doing it myself but here it goes)
-cv_tot_panel <- reshape(cv_tot, timevar="wave", idvar="id2", direction="wide")
+# many people prefer the reshape function. (i like doing it myself but here it goes)
+cv_tot_panel <- reshape(cv_tot, timevar = "wave", idvar = "id2", direction = "wide")
 head(cv_tot_panel)
 ```
 
@@ -714,10 +708,10 @@ head(cv_tot_panel)
 #### Step1: select variables
 
 ```{r }
-#step 1: selecting the variables you want to keep.
-#for this tutorial only 6 variables: id, age, sex, educ, health, region (not that R is case sensitive)
+# step 1: selecting the variables you want to keep.
+# for this tutorial only 6 variables: id, age, sex, educ, health, region (not that R is case sensitive)
 cv08_sel <- cv08_haven %>%
-    dplyr::select(c("we_id", "lftop", "geslacht", "var006n", "v401", "landd")) 
+  dplyr::select(c("we_id", "lftop", "geslacht", "var006n", "v401", "landd"))
 
 cv10_sel <- cv10_haven %>%
   dplyr::select(c("Sleutel", "var002", "var001", "Vltoplop", "V401", "Landd"))
@@ -726,67 +720,74 @@ cv10_sel <- cv10_haven %>%
 #### Step2: make consistent
 
 ```{r , results='hide'}
-#step 2: making the variables similar across individual datasets
-#step 2a: making names the same
+# step 2: making the variables similar across individual datasets
+# step 2a: making names the same
 names(cv08_sel) <- names(cv10_sel) <- c("id", "age", "sex", "educ", "health", "region")
 
-#step 2b: making levels and labels consistent
+# step 2b: making levels and labels consistent
 str(cv08_sel)
 str(cv10_sel)
 
-#summary(cv08_sel)
-#summary(cv10_sel)
+# summary(cv08_sel)
+# summary(cv10_sel)
 
-#they look very consistent already. but check carefully. 
-#id is okay
+# they look very consistent already. but check carefully.
+# id is okay
 
-#age: replace 'onbekend'
-cv08_sel <- cv08_sel %>% mutate(age=na_if(age, 99))
-cv10_sel <- cv10_sel %>% mutate(age=na_if(age, 99))
+# age: replace 'onbekend'
+cv08_sel <- cv08_sel %>% mutate(age = na_if(age, 99))
+cv10_sel <- cv10_sel %>% mutate(age = na_if(age, 99))
 
-#sex: men
-cv08_sel <- cv08_sel %>% mutate(men=recode(sex, '9'=-9, 'M'=1, 'V'=0, .keep_value_labels = FALSE),
-                                men=na_if(men,-9),
-                                men=labelled(men, c("man"=1, "vrouw"=0)))
-cv10_sel <- cv10_sel %>% mutate(men=recode(sex, '2'=0, .keep_value_labels = FALSE),
-                                men=labelled(men, c("man"=1, "vrouw"=0)))
+# sex: men
+cv08_sel <- cv08_sel %>% mutate(
+  men = recode(sex, "9" = -9, "M" = 1, "V" = 0, .keep_value_labels = FALSE),
+  men = na_if(men, -9),
+  men = labelled(men, c("man" = 1, "vrouw" = 0))
+)
+cv10_sel <- cv10_sel %>% mutate(
+  men = recode(sex, "2" = 0, .keep_value_labels = FALSE),
+  men = labelled(men, c("man" = 1, "vrouw" = 0))
+)
 
-#educ educ3
+# educ educ3
 attr(cv08_sel$educ, "labels")
 attr(cv10_sel$educ, "labels")
 
-cv08_sel <- cv08_sel %>% 
-  mutate(educ3=recode(educ, '-3'=-9, '-1'=1, '1'=1, '2'= 2 , '3'= 2, '4'= 2, '5'= 2, '6'= 3, '7'= 3, '8'= 3, '10'= -9, .keep_value_labels = FALSE),   
-    educ3=na_if(educ3, -9),
-    educ3=factor(educ3, levels = c(1,2,3), labels = c("primary", "secondary", "tertiary")))
+cv08_sel <- cv08_sel %>%
+  mutate(
+    educ3 = recode(educ, "-3" = -9, "-1" = 1, "1" = 1, "2" = 2, "3" = 2, "4" = 2, "5" = 2, "6" = 3, "7" = 3, "8" = 3, "10" = -9, .keep_value_labels = FALSE),
+    educ3 = na_if(educ3, -9),
+    educ3 = factor(educ3, levels = c(1, 2, 3), labels = c("primary", "secondary", "tertiary"))
+  )
 
-cv10_sel <- cv10_sel %>% 
-  mutate(educ3=recode(educ, '-1'=1, '1'=1, '2'= 2 , '3'= 2, '4'= 2, '5'= 3, '10'= -9, .keep_value_labels = FALSE),   
-    educ3=na_if(educ3, -9),
-    educ3=factor(educ3, levels = c(1,2,3), labels = c("primary", "secondary", "tertiary")))
-
+cv10_sel <- cv10_sel %>%
+  mutate(
+    educ3 = recode(educ, "-1" = 1, "1" = 1, "2" = 2, "3" = 2, "4" = 2, "5" = 3, "10" = -9, .keep_value_labels = FALSE),
+    educ3 = na_if(educ3, -9),
+    educ3 = factor(educ3, levels = c(1, 2, 3), labels = c("primary", "secondary", "tertiary"))
+  )
 ```
 
 #### Step3: merge
 
 ```{r}
-#lets add a wave variable
+# lets add a wave variable
 cv08_sel$wave <- 2008
 cv10_sel$wave <- 2010
 
-#let make a fake ID, we will use this later when we pretend CV is panel data. 
+# let make a fake ID, we will use this later when we pretend CV is panel data.
 cv08_sel$id2 <- rank(cv08_sel$id)
 cv10_sel$id2 <- rank(cv10_sel$id)
 
-#simply place one dataset under the other thus row bind (rbind)
-#check first if same vars in both datasets.
-#perhaps clean up first. 
+# simply place one dataset under the other thus row bind (rbind)
+# check first if same vars in both datasets.
+# perhaps clean up first.
 
 cv08_sel <- cv08_sel %>%
-    dplyr::select(c("id","id2", "age", "men", "educ3", "health", "region", "wave")) 
+  dplyr::select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave"))
 
 cv10_sel <- cv10_sel %>%
-  dplyr::select(c("id","id2", "age", "men", "educ3", "health", "region", "wave"))
+  dplyr::select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave"))
 
 cv_tot_tidy <- cv08_sel %>% add_row(cv10_sel)
 ```
@@ -804,8 +805,8 @@ If you don't know the difference between long and wide format, check the differe
 #### Step3b: merge
 
 ```{r}
-#lets make a panel dataset in wide format
-cv_tot_panel_tidy <- full_join(cv08_sel, cv10_sel, by="id2", suffix=c(".2008", ".2010"))
+# lets make a panel dataset in wide format
+cv_tot_panel_tidy <- full_join(cv08_sel, cv10_sel, by = "id2", suffix = c(".2008", ".2010"))
 ```
 
 
@@ -817,24 +818,24 @@ Lets suppose you want to add the mean age of each region as contextual variable 
 ### R Base
 
 ```{r, results='hold'}
-#step 1. construct dataset with aggregate info
-age_region <- aggregate(cv_tot$age, by=list(cv_tot$region), FUN=mean)
+# step 1. construct dataset with aggregate info
+age_region <- aggregate(cv_tot$age, by = list(cv_tot$region), FUN = mean)
 head(age_region)
 ```
 
 Ai, we have missings in age. Luckily the aggregate function can deal with missings.  
 
 ```{r, results='hold'}
-#step 1. construct dataset with aggregate info
-age_region <- aggregate(cv_tot$age, by=list(cv_tot$region), FUN=mean, na.rm = TRUE)
+# step 1. construct dataset with aggregate info
+age_region <- aggregate(cv_tot$age, by = list(cv_tot$region), FUN = mean, na.rm = TRUE)
 head(age_region)
 
-#lets correct variable names
-names(age_region) <- c("region","age_region")
+# lets correct variable names
+names(age_region) <- c("region", "age_region")
 age_region
 
-#step 2. match to dataset
-cv_total <- merge(cv_tot, age_region, by="region", all.x=TRUE)
+# step 2. match to dataset
+cv_total <- merge(cv_tot, age_region, by = "region", all.x = TRUE)
 head(cv_total)
 tail(cv_total)
 ```
@@ -842,26 +843,27 @@ tail(cv_total)
 ```{r functions, class.source="watch-out" }
 # You can also define your own functions and use these.
 
-fmean_narm <- function(x){mean(x,na.rm=T)}
+fmean_narm <- function(x) {
+  mean(x, na.rm = T)
+}
 
-age_region_test <- aggregate(cv_tot$age, by=list(cv_tot$region), FUN=fmean_narm)
+age_region_test <- aggregate(cv_tot$age, by = list(cv_tot$region), FUN = fmean_narm)
 head(age_region_test)
-
 ```
 
 ### Tidy
 ```{r, results='hold'}
-#step 1. convert the dataset to an aggregate/grouped version using the "group_by" function from the Dplyr package (part of the tidyverse), which will enable you to perform aggregate-level, or "by group," operations.
+# step 1. convert the dataset to an aggregate/grouped version using the "group_by" function from the Dplyr package (part of the tidyverse), which will enable you to perform aggregate-level, or "by group," operations.
 age_region <- group_by(cv_tot_tidy, region)
 
-#step 2. use mutate to create and append the mean age by region to the original data frame (don't forget to remove NA values).
+# step 2. use mutate to create and append the mean age by region to the original data frame (don't forget to remove NA values).
 age_region <- mutate(age_region, mean = mean(age, na.rm = TRUE))
 
-#step 3. you can link both commands using the pipe operator %>% to keep your code concise (and readable if you're writing a script).
-cv_total_tidy <- cv_tot_tidy  %>%
-  group_by(region) %>% 
+# step 3. you can link both commands using the pipe operator %>% to keep your code concise (and readable if you're writing a script).
+cv_total_tidy <- cv_tot_tidy %>%
+  group_by(region) %>%
   mutate(age_region = mean(age, na.rm = TRUE)) %>%
-  ungroup() #because group_by() returns a grouped tibble (a tibble specific class with a group attribute), it's good practice to close the pipe-chain with ungroup() to avoid an errors down the line. 
+  ungroup() # because group_by() returns a grouped tibble (a tibble specific class with a group attribute), it's good practice to close the pipe-chain with ungroup() to avoid any errors down the line.
 ```
 
 ## Missing values
@@ -871,14 +873,14 @@ cv_total_tidy <- cv_tot_tidy  %>%
 Suppose you want to estimate the following model:
 
 ```{r, model1base}
-model1 <- lm(as.numeric(health) ~ men + age +  as.factor(educ3) + as.factor(region), data=cv_total)
+model1 <- lm(as.numeric(health) ~ men + age + as.factor(educ3) + as.factor(region), data = cv_total)
 summary(model1)
 ```
 
 You see that 22 cases are deleted due to missingness but what happened with your health variable? 
 
 ```{r, results="hold"}
-cv_total$health[cv_total$health=="Weigert"] <- NA
+cv_total$health[cv_total$health == "Weigert"] <- NA
 cv_total$healthn <- as.numeric(cv_total$health) - 4
 table(cv_total$health, useNA = "always")
 table(cv_total$healthn, useNA = "always")
@@ -893,9 +895,9 @@ Of course we have several options:
 #### Option 1: listwise deletion
 
 ```{r, listwisebase}
-#step 1. define all missings
+# step 1. define all missings
 summary(cv_total)
-model2 <- lm(as.numeric(healthn) ~ men + age +  as.factor(educ3) + as.factor(region), data=cv_total)
+model2 <- lm(as.numeric(healthn) ~ men + age + as.factor(educ3) + as.factor(region), data = cv_total)
 summary(model2)
 ```
 
@@ -915,14 +917,14 @@ summary(cv_total$men2)
 cv_total$educ3b <- ifelse(is.na(cv_total$educ3), 4, cv_total$educ3)
 summary(cv_total$educ3b)
 
-cv_total$age2 <- ifelse(is.na(cv_total$age), mean(cv_total$age, na.rm=TRUE), cv_total$age)
-#And lets make a dummy that indicates for whom we replaced missing values. 
-cv_total$age_mis <- ifelse(is.na(cv_total$age), 1,0)
+cv_total$age2 <- ifelse(is.na(cv_total$age), mean(cv_total$age, na.rm = TRUE), cv_total$age)
+# And lets make a dummy that indicates for whom we replaced missing values.
+cv_total$age_mis <- ifelse(is.na(cv_total$age), 1, 0)
 summary(cv_total$age2)
 table(cv_total$age_mis)
 
-#pay attention, now use categorical variable men2
-model3 <- lm(healthn ~ as.factor(men2) + age2 + age_mis +  as.factor(educ3b) + as.factor(region), data=cv_total)
+# pay attention, now use categorical variable men2
+model3 <- lm(healthn ~ as.factor(men2) + age2 + age_mis + as.factor(educ3b) + as.factor(region), data = cv_total)
 summary(model3)
 ```
 
@@ -930,54 +932,54 @@ summary(model3)
 
 We will use the R package @mice.
 
-For theory please see:  
-* [https://stefvanbuuren.name/Winnipeg](https://stefvanbuuren.name/Winnipeg)  
-* [https://stefvanbuuren.name/Winnipeg/Lectures/Winnipeg.pdf](https://stefvanbuuren.name/Winnipeg/Lectures/Winnipeg.pdf)  
+For more info please see:  
+
+* [mice](https://amices.org/mice/)  
 * For great reading see: [https://bookdown.org/mwheymans/bookmi/](https://bookdown.org/mwheymans/bookmi/)
 
-Read the literature, lectures and have a look at all vignettes of the package mice (here). This is not basic stuff!
+Read the literature and have a look at all vignettes of the package mice. This is not basic stuff!
 
 
 ```{r micebase, results="hold", error=TRUE }
-#lets start with the original dataset, that is without replacement of the missings
-cv_total <- cv_total[,c("id", "id2", "age", "men", "educ3", "health", "region", "wave")]
-#define all missings
-#only for health needs to be redefined
-cv_total$health[cv_total$health=="Weigert"] <- NA
+# lets start with the original dataset, that is without replacement of the missings
+cv_total <- cv_total[, c("id", "id2", "age", "men", "educ3", "health", "region", "wave")]
+# define all missings
+# only for health needs to be redefined
+cv_total$health[cv_total$health == "Weigert"] <- NA
 cv_total$health <- as.numeric(cv_total$health) - 4
 
-#multiple imputation
-#take into account measurement level of variables
+# multiple imputation
+# take into account measurement level of variables
 cv_total$men <- as.factor(cv_total$men)
 cv_total$educ3 <- as.factor(cv_total$educ3)
 
-#check pattern
+# check pattern
 md.pattern(cv_total)
-#we do not have real patterns. thus MCAR. This is only seldom the case!!
+# we do not have real patterns. thus MCAR. This is only seldom the case!!
 
-#lets impute
+# lets impute
 names(cv_total)
 
-#We do not want to use id id2 and wave to predict the other variables thus we need to tell mice in the predictorMatrix argument. Easiest way is to first estimate and then correct. 
+# We do not want to use id id2 and wave to predict the other variables thus we need to tell mice in the predictorMatrix argument. Easiest way is to first estimate and then correct.
 
-imp <- mice(data=cv_total, method=c("","", "cart", "logreg",    "polr",  "cart", "" ,""  ))
+imp <- mice(data = cv_total, method = c("", "", "cart", "logreg", "polr", "cart", "", ""))
 attributes(imp)
 pred <- imp$pred
-pred[,"id"] <- 0
-pred[,"id2"] <- 0
-pred[,"wave"] <- 0
+pred[, "id"] <- 0
+pred[, "id2"] <- 0
+pred[, "wave"] <- 0
 pred
 
-#let us also use a seed, so we have the same data in class. 
-imp <- mice(data=cv_total, method=c("","", "cart", "logreg",    "polr",  "cart", "" ,""  ), pred=pred, seed=45622)
+# let us also use a seed, so we have the same data in class.
+imp <- mice(data = cv_total, method = c("", "", "cart", "logreg", "polr", "cart", "", ""), pred = pred, seed = 45622)
 
 summary(cv_total)
 summary(complete(imp))
 
 plot(imp)
-#in real life: check convergence, check plausible values. see vignette 2 of mice package
+# in real life: check convergence, check plausible values. see vignette 2 of mice package
 
-#and fit model on imputed dataset
+# and fit model on imputed dataset
 model_imp <- with(imp, lm(as.numeric(health) ~ men + age + educ3 + region))
 pool_model_imp <- pool(model_imp)
 summary(pool_model_imp)
@@ -989,13 +991,15 @@ Suppose you want to estimate the following model:
 
 ```{r, model1tidy}
 model1 <- cv_total_tidy %>%
-  mutate(healthn = as.numeric(health),
-         across(c(educ3, region), as.factor)) %>%
+  mutate(
+    healthn = as.numeric(health),
+    across(c(educ3, region), as.factor)
+  ) %>%
   lm(formula = healthn ~ men + age + educ3 + region) %>%
   summary()
-#the across function from the Dplyr package is similar to the apply function (if MARGIN = 2) from base R. it performs the same operation on multiple columns (or, if you have groups, for each combination of columns and groups).
+# the across function from the Dplyr package is similar to the apply function (if MARGIN = 2) from base R. it performs the same operation on multiple columns (or, if you have groups, for each combination of columns and groups).
 
-#lm is not a 'pipe friendly' function because the data is provided in the second argument, while the pipe operator reads the data from the first unnamed(!) argument that follows the %>%. by naming the first argument, the pipe will take data from the second argument, which is (in this case) the correct data argument.
+# lm is not a 'pipe friendly' function because the data is provided in the second argument, while the pipe operator reads the data from the first unnamed(!) argument that follows the %>%. by naming the first argument, the pipe will take data from the second argument, which is (in this case) the correct data argument.
 
 model1
 ```
@@ -1003,11 +1007,13 @@ model1
 Whoops, tidy also includes th "weigert" observation for the `health` variable. Let us correct. 
 
 ```{r, results="hold"}
-#step 1. define all missings 
-  
+# step 1. define all missings
+
 cv_total_tidy <- cv_total_tidy %>%
-  mutate(health = na_if(health, -2),
-         healthn = as.numeric(health) - 4)
+  mutate(
+    health = na_if(health, -2),
+    healthn = as.numeric(health) - 4
+  )
 ```
 
 
@@ -1028,23 +1034,24 @@ Besides the `ifelse()` command, you can use `replace_na` from the Tidyr package 
 However, using `replace_na` will return an error if the variable is a factor and requires conversion to numeric-type values. We'll still use `ifelse()` to create the dummy `age_mis`.
 
 ```{r replacetidy, results="hold"}
-#with the first mutate argument you avoid repeating as.numeric() for each variable.
+# with the first mutate argument you avoid repeating as.numeric() for each variable.
 cv_total_tidy2 <- cv_total_tidy %>%
   mutate(across(everything(), as.numeric),
-         men2 = replace_na(men, 2),
-         educ3b = replace_na(educ3, 4),
-         age2 = replace_na(age, mean(age, na.rm = TRUE)),
-         age_mis = ifelse(is.na(age), 1, 0))
+    men2 = replace_na(men, 2),
+    educ3b = replace_na(educ3, 4),
+    age2 = replace_na(age, mean(age, na.rm = TRUE)),
+    age_mis = ifelse(is.na(age), 1, 0)
+  )
 
-#note: the following two commands are equivalent:
-#mutate(across(everything(), as.numeric))
-#mutate_all(as.numeric)
-#the next two as well: 
-#mutate_at(c("men2", "educ3b", "region"), as.factor)
-#mutate(across(c(men2, educ3b, region), as.factor))
+# note: the following two commands are equivalent:
+# mutate(across(everything(), as.numeric))
+# mutate_all(as.numeric)
+# the next two as well:
+# mutate_at(c("men2", "educ3b", "region"), as.factor)
+# mutate(across(c(men2, educ3b, region), as.factor))
 
-#pay attention, now use categorical variable men2.
-model3 <- cv_total_tidy2 %>% 
+# pay attention, now use categorical variable men2.
+model3 <- cv_total_tidy2 %>%
   mutate_at(c("men2", "educ3b", "region"), as.factor) %>%
   lm(formula = healthn ~ men2 + age2 + age_mis + educ3b + region) %>%
   summary()
@@ -1057,25 +1064,23 @@ model3
 <!---something goes wrong with df. chunks work but build fails!---> 
 
 ```{r micetidy, results="hold", error=FALSE, eval=FALSE }
-
-
-  pred <- cv_total_tidy  %>%
-  dplyr::select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave")) %>% #start with the original variables.
-  mutate_all(as.numeric)  %>%
+pred <- cv_total_tidy %>%
+  dplyr::select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave")) %>% # start with the original variables.
+  mutate_all(as.numeric) %>%
   mutate_at(c("men", "educ3"), as.factor) %>%
   mice(method = c("", "", "cart", "logreg", "polr", "cart", "", "")) %>%
-  unclass() %>% #The object returned from the mice function is of class 'mids,' which dplyr's functions cannot handle. The unclass() function from base R solve this issue as it removes the class attribute and, in this case, returns a list that dplyr can handle.
-  pluck("predictorMatrix") %>% #the pluck() function from the Purrr package (part of the tidyverse) is the user-friendly equivalent of `[[` in base R: `[[`("predictorMatrix"), which enables you to extract a single element from the list we just created using unclass().
-  as.data.frame() %>% #Because the mutate function (and its variations) are not build for lists, we need to coerce into a data frame (or Tibble)
-  mutate_at(c("id", "id2", "age"), funs(recode(1, 0))) %>% #To 'remove' the columns id id2 and wave as predictors, we recode all their 1s to 0s using mutate_at() and recode().
+  unclass() %>% # The object returned from the mice function is of class 'mids,' which dplyr's functions cannot handle. The unclass() function from base R solve this issue as it removes the class attribute and, in this case, returns a list that dplyr can handle.
+  pluck("predictorMatrix") %>% # the pluck() function from the Purrr package (part of the tidyverse) is the user-friendly equivalent of `[[` in base R: `[[`("predictorMatrix"), which enables you to extract a single element from the list we just created using unclass().
+  as.data.frame() %>% # Because the mutate function (and its variations) are not build for lists, we need to coerce into a data frame (or Tibble)
+  mutate_at(c("id", "id2", "age"), funs(recode(1, 0))) %>% # To 'remove' the columns id id2 and wave as predictors, we recode all their 1s to 0s using mutate_at() and recode().
   as.matrix()
 
 
-#impute missings (again but now on correct predictors) and fit model on imputed dataset
+# impute missings (again but now on correct predictors) and fit model on imputed dataset
 
 model_imp <- cv_total_tidy %>%
-  dplyr::select(c("id","id2","age","men","educ3","health","region","wave")) %>%
-  mutate_all(as.numeric)  %>%
+  dplyr::select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave")) %>%
+  mutate_all(as.numeric) %>%
   mutate_at(c("men", "educ3"), as.factor) %>%
   mice(method = c("", "", "cart", "logreg", "polr", "cart", "", ""), pred = pred, seed = 45622) %>%
   with(lm(as.numeric(health) ~ men + age + educ3 + region)) %>%
@@ -1099,8 +1104,7 @@ if (condition) {
 }
 ```
 
-Useful links:  
-- [r4ds](https://r4ds.had.co.nz/functions.html?q=if%20statement#conditional-execution)  
+Useful link:  
 - [Advanced R](https://adv-r.hadley.nz/control-flow.html?#choices)
 
 
@@ -1128,27 +1132,26 @@ output[i] <- x[i] + y[i] }
 But: 
 
 ```{r}
-x <- c(4,5,6,2,7,897,23, NA, 7)
-y <- c(7,9,6,98,1,NA,3, NA, 7)
+x <- c(4, 5, 6, 2, 7, 897, 23, NA, 7)
+y <- c(7, 9, 6, 98, 1, NA, 3, NA, 7)
 
-output <- rep(NA, length(x)) #store data here
+output <- rep(NA, length(x)) # store data here
 for (i in seq_along(x)) {
-  # I want to add x and y if both have valid values and otherwise just have the valid value. 
+  # I want to add x and y if both have valid values and otherwise just have the valid value.
   if (!is.na(x[i]) & !is.na(y[i])) {
-    output[i] <- x[i] + y[i] #both have valid values. 
+    output[i] <- x[i] + y[i] # both have valid values.
   } else if (!is.na(x[i]) & is.na(y[i])) {
-    output[i] <- x[i] #only x has valid value
+    output[i] <- x[i] # only x has valid value
   } else if (is.na(x[i]) & !is.na(y[i])) {
-    output[i] <- y[i] #only y has valid value
+    output[i] <- y[i] # only y has valid value
   } else {
-    output[i] <- NA #no valid values
+    output[i] <- NA # no valid values
   }
 }
 ```
 
 
-Useful links:  
-- [r4ds](https://r4ds.had.co.nz/iteration.html?q=lapply#for-loops)  
+Useful link:  
 - [Advanced R](https://adv-r.hadley.nz/control-flow.html#loops)  
 (Just read the complete chapters please.)
 
@@ -1159,7 +1162,7 @@ A very useful object in R. Please try to use them asap.
 
 Useful links:  
 - The basics: [Quick R](https://www.statmethods.net/input/datatypes.html)  
-- All you need to know (just read the complete chapter please): [r4ds](https://r4ds.had.co.nz/vectors.html?q=lists#lists)  
+- All you need to know (just read the complete chapter please): [r4ds](https://r4ds.hadley.nz/rectangling.html#lists)  
 - Advanced (just read the complete chapter please): [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#lists)
 
 
@@ -1177,13 +1180,34 @@ Think of the desired output. Should it be a list or a vector?
 Some personal opinions:  
 
 - start the name of your new function with an "f" and use "snake_case": `fnew_name`  
-- Always use `return`: `fnew_name(arg1) {output <- arg1 + 1; return(output)}`  
-- Use comments either above the line or at the same line: `fnew_name(arg1) {#what am I doing in the next line; output <- arg + 1; return(output) #what do I do in this line}`  
-- return an informative error if something goes wrong: `if (length(arg1)!=length(arg2)) stop("arguments have a different length")`
+- Always use `return`: 
+
+```
+fnew_name(arg1) {
+  output <- arg1 + 1
+  return(output)
+  }
+```
+
+- Use comments either above the line or at the same line: 
+
+```
+fnew_name(arg1) {
+  #what am I doing in the next line; 
+  output <- arg + 1; 
+  return(output) #what do I do in this line
+  }
+``` 
+
+- return an informative error if something goes wrong: 
+
+```
+if (length(arg1) != length(arg2)) stop("arguments have a different length")
+``` 
 
 Useful links:  
 - The basics: [Quick R](https://www.statmethods.net/management/userfunctions.html)  
-- All you need to know: [r4ds](https://r4ds.had.co.nz/functions.html?q=function#functions)  
+- All you need to know: [r4ds](https://r4ds.hadley.nz/functions)  
 - Advanced: [Advanced R](http://adv-r.had.co.nz/Functions.html)
 
 
@@ -1204,7 +1228,7 @@ Time to practice.
 * Consider the following list: `annoyinglist <- list(v1=c(2,45,6, NA), v2=c(23536), v3=NA, v4=c(2346))`  
   - calculate the mean of **all** elements saved in the annoyinglist with a loop  
   - calculate the mean of each list-element (i.e. `v1 v2 v3`) with a loop  
-  - Please do the two same things but know with using lapply, map and do.call  
+  - Please do the two same things but now with using lapply, map and do.call  
   - Define your own function which does the two same things and just needs as input the list. 
 
 ---  
@@ -1254,21 +1278,21 @@ Run the code chunck below to simulate some data.
 
 ```{r }
 require(MASS)
-set.seed(9864) #We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
+set.seed(9864) # We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
 
-#let us start with simulating the opinion of both partners.
-Sigma <- matrix(c(10,4,4,5),2,2)
-opinions <- mvrnorm(n = 1000, mu=c(4,5), Sigma)
-opinion_W <- opinions[,1]
-opinion_M <- opinions[,2]
+# let us start with simulating the opinion of both partners.
+Sigma <- matrix(c(10, 4, 4, 5), 2, 2)
+opinions <- mvrnorm(n = 1000, mu = c(4, 5), Sigma)
+opinion_W <- opinions[, 1]
+opinion_M <- opinions[, 2]
 dyad_id <- 1:1000
 
-#and let's put everything together
+# and let's put everything together
 data <- data.frame(dyad_id, opinion_W, opinion_M)
-#add some description to the data  
-attr(data, "description") <- "This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with \"_W\" refer to women,\"_M\" refer to men." 
+# add some description to the data
+attr(data, "description") <- "This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with \"_W\" refer to women,\"_M\" refer to men."
 
-#I don't think the variables need any further description.
+# I don't think the variables need any further description.
 ```
 
 
@@ -1283,7 +1307,6 @@ str(data)
 summary(data)
 attr(data, "description")
 describe(data)
-
 ```
 
 #### Interdependencies: correlation 
@@ -1297,9 +1320,9 @@ Also check out paragraph 3.3 of the book by [@snijders1999].
 Lets us start with something that pops up in your mind immediately...a correlation. 
 
 ```{r icc_correlation}
-cov(data$opinion_M, data$opinion_W) #the covariance between the two variables. Have a look at the simulation. This is indeed what we have put into the data. 
-cov(scale(data$opinion_M), scale(data$opinion_W)) #the covariance between the two standardized variables. That is the correlation. 
-cor.test(data$opinion_M, data$opinion_W) #See, same value. Now also with significance. 
+cov(data$opinion_M, data$opinion_W) # the covariance between the two variables. Have a look at the simulation. This is indeed what we have put into the data.
+cov(scale(data$opinion_M), scale(data$opinion_W)) # the covariance between the two standardized variables. That is the correlation.
+cor.test(data$opinion_M, data$opinion_W) # See, same value. Now also with significance.
 ```
 
 This would indicate a strong and significant correlation. 
@@ -1316,21 +1339,21 @@ It is even possible that to now see a negative (and significant) correlation. Fo
 
 ```{r , eval=FALSE}
 require(MASS)
-set.seed(9864) #We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
+set.seed(9864) # We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
 
-#let us start with simulating the opinion of both partners.
-Sigma <- matrix(c(10,4,4,5),2,2)
-opinions <- mvrnorm(n = 1000, mu=c(20,25), Sigma)
-opinion_W <- opinions[,1]
-opinion_M <- opinions[,2]
+# let us start with simulating the opinion of both partners.
+Sigma <- matrix(c(10, 4, 4, 5), 2, 2)
+opinions <- mvrnorm(n = 1000, mu = c(20, 25), Sigma)
+opinion_W <- opinions[, 1]
+opinion_M <- opinions[, 2]
 dyad_id <- 1:1000
 
-#and let's put everything together
+# and let's put everything together
 data <- data.frame(dyad_id, opinion_W, opinion_M)
-#add some description to the data  
-attr(data, "description") <- "This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with \"_W\" refer to women,\"_M\" refer to men." 
+# add some description to the data
+attr(data, "description") <- "This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with \"_W\" refer to women,\"_M\" refer to men."
 
-#I don't think the variables need any further description.
+# I don't think the variables need any further description.
 ```
 
 
@@ -1350,11 +1373,10 @@ $$ MS_W = \sum(X_{ego} - X_{alter})^2 / (2* N_{dyads}) $$
 
 Let's have a go! 
 ```{r ICC_anova}
-MSB <- var((data$opinion_M + data$opinion_W)/2)*2
-MSW <- (sum((data$opinion_M - data$opinion_W)^2))/(2*length(data$opinion_W))
-ICC_anova <- (MSB - MSW)/(MSB + MSW)
+MSB <- var((data$opinion_M + data$opinion_W) / 2) * 2
+MSW <- (sum((data$opinion_M - data$opinion_W)^2)) / (2 * length(data$opinion_W))
+ICC_anova <- (MSB - MSW) / (MSB + MSW)
 ICC_anova
-
 ```
 Do you see that the ICC is very close to the correlation based on a dataset in long format (double entry method)? Thus in practice, the double entry method is very convenient to check for interdependencies if you are working on dyadic data. 
 
@@ -1362,32 +1384,31 @@ Most of you are probably more familiar with definitions of the ICC as provided w
   
 First make a dataset in longformat.
 ```{r}
-#first make a dataset in longformat. 
-dyadmean <- (data$opinion_M + data$opinion_W)/2
-data_long <- rbind(data,data)
-data_long$partner_id <- rep(1:2, each=1000)
-data_long$dyad_id <- rep(1:1000, times=2)
+# first make a dataset in longformat.
+dyadmean <- (data$opinion_M + data$opinion_W) / 2
+data_long <- rbind(data, data)
+data_long$partner_id <- rep(1:2, each = 1000)
+data_long$dyad_id <- rep(1:1000, times = 2)
 data_long$dyadmean <- c(dyadmean, dyadmean)
 
-#lets the first dyad entry refer to the women and the second to the men
-data_long$opinion <- ifelse(data_long$partner_id==1, data_long$opinion_W, data_long$opinion_M)
+# lets the first dyad entry refer to the women and the second to the men
+data_long$opinion <- ifelse(data_long$partner_id == 1, data_long$opinion_W, data_long$opinion_M)
 
-#also define the opinion of the partner
-data_long$opinion_P <- ifelse(data_long$partner_id==2, data_long$opinion_W, data_long$opinion_M)
+# also define the opinion of the partner
+data_long$opinion_P <- ifelse(data_long$partner_id == 2, data_long$opinion_W, data_long$opinion_M)
 
 head(data_long)
-
 ```
 \
 With this dataset in longformat we can calculate the ICC. 
 
 ```{r ICC_ML , results="hold"}
-#first calculate the between variance of our sample. Note that this we only need observations of the dyads once (thus N_dyads=1000)
+# first calculate the between variance of our sample. Note that this we only need observations of the dyads once (thus N_dyads=1000)
 S_B <- var(data_long$dyadmean[1:1000])
-#within variance
-SW <- sum((data_long$opinion - data_long$dyadmean)^2)/1000 #we divide by the number of dyads
-#We now need to correct the observed between variance to reflect the population between variance. 
-S_B_E <- S_B - SW/2
+# within variance
+SW <- sum((data_long$opinion - data_long$dyadmean)^2) / 1000 # we divide by the number of dyads
+# We now need to correct the observed between variance to reflect the population between variance.
+S_B_E <- S_B - SW / 2
 ICC_ML <- S_B_E / (S_B_E + SW)
 ICC_ML
 ```
@@ -1397,18 +1418,18 @@ See below.
 
 ```{r , results="hold"}
 require(nlme)
-#estimate empty model with ML
-mlme <- lme(opinion ~ 1,  data=data_long, random = list(~ 1| dyad_id),)
+# estimate empty model with ML
+mlme <- lme(opinion ~ 1, data = data_long, random = list(~ 1 | dyad_id), )
 summary(mlme)
-#Standard deviations are reported instead of variances. 
-#extract the variances.
+# Standard deviations are reported instead of variances.
+# extract the variances.
 VarCorr(mlme)
-#the intercept variance is at the between-level.
-#the residual variances are at the observation / within-level. 
-#thus based on these numbers we may calculate the ICC ourselves. 
+# the intercept variance is at the between-level.
+# the residual variances are at the observation / within-level.
+# thus based on these numbers we may calculate the ICC ourselves.
 varests <- as.numeric(VarCorr(mlme)[1:2])
 varests
-ICC_MLb <- varests[1]/sum(varests)
+ICC_MLb <- varests[1] / sum(varests)
 ICC_MLb
 ```
 
@@ -1417,14 +1438,14 @@ In this course we will rely heavily on the Lavaan package. We can also calculate
 
 ```{r}
 require("lavaan")
-model <- '
+model <- "
     level: 1
         opinion ~ 1 #regression model
         opinion ~~ opinion #variance
     level: 2
         opinion ~ 1
         opinion ~~ opinion
-'
+"
 fit <- lavaan(model = model, data = data_long, cluster = "dyad_id")
 summary(fit)
 lavInspect(fit, "icc")
@@ -1443,28 +1464,28 @@ Run the code chunck below to simulate some data.
 
 ```{r }
 require(MASS)
-set.seed(9864) #We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
+set.seed(9864) # We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
 
-#let us start with simulating the opinion of ego and its alters.
-Sigma <- matrix(sample(c(1,2,3), 36, replace=T),6,6)
-Sigma[lower.tri(Sigma)] = t(Sigma)[lower.tri(Sigma)]
-diag(Sigma) <- c(5,4,6,3,7,6)
-#Sigma
+# let us start with simulating the opinion of ego and its alters.
+Sigma <- matrix(sample(c(1, 2, 3), 36, replace = T), 6, 6)
+Sigma[lower.tri(Sigma)] <- t(Sigma)[lower.tri(Sigma)]
+diag(Sigma) <- c(5, 4, 6, 3, 7, 6)
+# Sigma
 
-opinions <- mvrnorm(n = 1000, mu=c(4,4,4,4,4,4), Sigma)
-opinion_ego <- opinions[,1]
-opinion_alter1 <- opinions[,2]
-opinion_alter2 <- opinions[,3]
-opinion_alter3 <- opinions[,4]
-opinion_alter4 <- opinions[,5]
-opinion_alter5 <- opinions[,6]
+opinions <- mvrnorm(n = 1000, mu = c(4, 4, 4, 4, 4, 4), Sigma)
+opinion_ego <- opinions[, 1]
+opinion_alter1 <- opinions[, 2]
+opinion_alter2 <- opinions[, 3]
+opinion_alter3 <- opinions[, 4]
+opinion_alter4 <- opinions[, 5]
+opinion_alter5 <- opinions[, 6]
 
 egonet_id <- 1:1000
 
-#and let's put everything together
+# and let's put everything together
 data <- data.frame(egonet_id, opinion_alter1, opinion_alter2, opinion_alter3, opinion_alter4, opinion_alter5)
 
-#I don't think the variables need any further description.
+# I don't think the variables need any further description.
 ```
 
 
@@ -1479,14 +1500,13 @@ str(data)
 summary(data)
 attr(data, "description")
 describe(data)
-
 ```
 
 Reshape into long format. 
 ```{r}
 require("tidyverse")
 
-data_long <- tidyr::pivot_longer(data=data, cols=everything()[-1], names_to="alter", values_to="opinion")
+data_long <- tidyr::pivot_longer(data = data, cols = everything()[-1], names_to = "alter", values_to = "opinion")
 
 head(data_long)
 ```
@@ -1495,32 +1515,32 @@ head(data_long)
 
 ```{r , results="hold"}
 require(nlme)
-#estimate empty model with ML
-mlme <- lme(opinion ~ 1,  data=data_long, random = list(~ 1| egonet_id),)
+# estimate empty model with ML
+mlme <- lme(opinion ~ 1, data = data_long, random = list(~ 1 | egonet_id), )
 summary(mlme)
-#Standard deviations are reported instead of variances. 
-#extract the variances.
+# Standard deviations are reported instead of variances.
+# extract the variances.
 VarCorr(mlme)
-#the intercept variance is at the between-level.
-#the residual variances are at the observation / within-level. 
-#thus based on these numbers we may calculate the ICC ourselves. 
+# the intercept variance is at the between-level.
+# the residual variances are at the observation / within-level.
+# thus based on these numbers we may calculate the ICC ourselves.
 varests <- as.numeric(VarCorr(mlme)[1:2])
 varests
-ICC_MLb <- varests[1]/sum(varests)
+ICC_MLb <- varests[1] / sum(varests)
 ICC_MLb
 ```
 #### ICC via SEM/lavaan
 
 ```{r}
 require("lavaan")
-model <- '
+model <- "
     level: 1
         opinion ~ 1 #regression model
         opinion ~~ opinion #variance
     level: 2
         opinion ~ 1
         opinion ~~ opinion
-'
+"
 fit <- lavaan(model = model, data = data_long, cluster = "egonet_id")
 summary(fit)
 lavInspect(fit, "icc")
@@ -1534,6 +1554,3 @@ lavInspect(fit, "icc")
 <div id="refs"></div>
 
 ---  
-
-
-

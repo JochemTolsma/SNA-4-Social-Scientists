@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>B Interdependencies | SNASS</title>
   <meta name="description" content="Social Network Analysis for Social Scientists (SNASS): A theoretical and practical introduction to Social Networks." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="B Interdependencies | SNASS" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2023-10-10" />
+<meta name="date" content="2024-08-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -120,6 +120,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -506,31 +510,31 @@ And the correlation within the population is:</p>
 <h3><span class="header-section-number">B.2.1</span> Dyadic data<a href="variance.html#dyadic-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let us suppose we have dyadic data. For example on the political opinion of two marriage partners. We want to know if these data are interdependent.</p>
 <p>Run the code chunck below to simulate some data.</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb412-1"><a href="variance.html#cb412-1"></a><span class="fu">require</span>(MASS)</span>
-<span id="cb412-2"><a href="variance.html#cb412-2"></a><span class="fu">set.seed</span>(<span class="dv">9864</span>)  <span class="co">#We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).</span></span>
-<span id="cb412-3"><a href="variance.html#cb412-3"></a></span>
-<span id="cb412-4"><a href="variance.html#cb412-4"></a><span class="co"># let us start with simulating the opinion of both partners.</span></span>
-<span id="cb412-5"><a href="variance.html#cb412-5"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb412-6"><a href="variance.html#cb412-6"></a>opinions <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>), Sigma)</span>
-<span id="cb412-7"><a href="variance.html#cb412-7"></a>opinion_W <span class="ot">&lt;-</span> opinions[, <span class="dv">1</span>]</span>
-<span id="cb412-8"><a href="variance.html#cb412-8"></a>opinion_M <span class="ot">&lt;-</span> opinions[, <span class="dv">2</span>]</span>
-<span id="cb412-9"><a href="variance.html#cb412-9"></a>dyad_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
-<span id="cb412-10"><a href="variance.html#cb412-10"></a></span>
-<span id="cb412-11"><a href="variance.html#cb412-11"></a><span class="co"># and let&#39;s put everything together</span></span>
-<span id="cb412-12"><a href="variance.html#cb412-12"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(dyad_id, opinion_W, opinion_M)</span>
-<span id="cb412-13"><a href="variance.html#cb412-13"></a><span class="co"># add some description to the data</span></span>
-<span id="cb412-14"><a href="variance.html#cb412-14"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with </span><span class="sc">\&quot;</span><span class="st">_W</span><span class="sc">\&quot;</span><span class="st"> refer to women,</span><span class="sc">\&quot;</span><span class="st">_M</span><span class="sc">\&quot;</span><span class="st"> refer to men.&quot;</span></span>
-<span id="cb412-15"><a href="variance.html#cb412-15"></a></span>
-<span id="cb412-16"><a href="variance.html#cb412-16"></a><span class="co"># I don&#39;t think the variables need any further description.</span></span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb416-1"><a href="variance.html#cb416-1"></a><span class="fu">require</span>(MASS)</span>
+<span id="cb416-2"><a href="variance.html#cb416-2"></a><span class="fu">set.seed</span>(<span class="dv">9864</span>)  <span class="co"># We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).</span></span>
+<span id="cb416-3"><a href="variance.html#cb416-3"></a></span>
+<span id="cb416-4"><a href="variance.html#cb416-4"></a><span class="co"># let us start with simulating the opinion of both partners.</span></span>
+<span id="cb416-5"><a href="variance.html#cb416-5"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb416-6"><a href="variance.html#cb416-6"></a>opinions <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>), Sigma)</span>
+<span id="cb416-7"><a href="variance.html#cb416-7"></a>opinion_W <span class="ot">&lt;-</span> opinions[, <span class="dv">1</span>]</span>
+<span id="cb416-8"><a href="variance.html#cb416-8"></a>opinion_M <span class="ot">&lt;-</span> opinions[, <span class="dv">2</span>]</span>
+<span id="cb416-9"><a href="variance.html#cb416-9"></a>dyad_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
+<span id="cb416-10"><a href="variance.html#cb416-10"></a></span>
+<span id="cb416-11"><a href="variance.html#cb416-11"></a><span class="co"># and let&#39;s put everything together</span></span>
+<span id="cb416-12"><a href="variance.html#cb416-12"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(dyad_id, opinion_W, opinion_M)</span>
+<span id="cb416-13"><a href="variance.html#cb416-13"></a><span class="co"># add some description to the data</span></span>
+<span id="cb416-14"><a href="variance.html#cb416-14"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with </span><span class="sc">\&quot;</span><span class="st">_W</span><span class="sc">\&quot;</span><span class="st"> refer to women,</span><span class="sc">\&quot;</span><span class="st">_M</span><span class="sc">\&quot;</span><span class="st"> refer to men.&quot;</span></span>
+<span id="cb416-15"><a href="variance.html#cb416-15"></a></span>
+<span id="cb416-16"><a href="variance.html#cb416-16"></a><span class="co"># I don&#39;t think the variables need any further description.</span></span></code></pre></div>
 <div id="describe-data" class="section level4 hasAnchor" number="11.2.1.1">
 <h4><span class="header-section-number">B.2.1.1</span> Describe data<a href="variance.html#describe-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Lets have a look at our data.</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb413-1"><a href="variance.html#cb413-1"></a><span class="fu">require</span>(psych)</span>
-<span id="cb413-2"><a href="variance.html#cb413-2"></a><span class="fu">head</span>(data)</span>
-<span id="cb413-3"><a href="variance.html#cb413-3"></a><span class="fu">str</span>(data)</span>
-<span id="cb413-4"><a href="variance.html#cb413-4"></a><span class="fu">summary</span>(data)</span>
-<span id="cb413-5"><a href="variance.html#cb413-5"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>)</span>
-<span id="cb413-6"><a href="variance.html#cb413-6"></a><span class="fu">describe</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb417-1"><a href="variance.html#cb417-1"></a><span class="fu">require</span>(psych)</span>
+<span id="cb417-2"><a href="variance.html#cb417-2"></a><span class="fu">head</span>(data)</span>
+<span id="cb417-3"><a href="variance.html#cb417-3"></a><span class="fu">str</span>(data)</span>
+<span id="cb417-4"><a href="variance.html#cb417-4"></a><span class="fu">summary</span>(data)</span>
+<span id="cb417-5"><a href="variance.html#cb417-5"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>)</span>
+<span id="cb417-6"><a href="variance.html#cb417-6"></a><span class="fu">describe</span>(data)</span></code></pre></div>
 <pre><code>#&gt;   dyad_id opinion_W opinion_M
 #&gt; 1       1  1.180285  3.651525
 #&gt; 2       2  9.930618  7.117465
@@ -562,12 +566,12 @@ And the correlation within the population is:</p>
 <p>For more background information see <a href="http://davidakenny.net/dyad.htm">this page</a> by David A. Kenny.<br />
 Also check out paragraph 3.3 of the book by <span class="citation">(<a href="#ref-snijders1999">Snijders and Bosker 1999</a>)</span>.</p>
 <p>Lets us start with something that pops up in your mind immediately…a correlation.</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb415-1"><a href="variance.html#cb415-1"></a><span class="fu">cov</span>(data<span class="sc">$</span>opinion_M, data<span class="sc">$</span>opinion_W)  <span class="co">#the covariance between the two variables. Have a look at the simulation. This is indeed what we have put into the data. </span></span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb419-1"><a href="variance.html#cb419-1"></a><span class="fu">cov</span>(data<span class="sc">$</span>opinion_M, data<span class="sc">$</span>opinion_W)  <span class="co"># the covariance between the two variables. Have a look at the simulation. This is indeed what we have put into the data.</span></span></code></pre></div>
 <pre><code>#&gt; [1] 4.154203</code></pre>
-<div class="sourceCode" id="cb417"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb417-1"><a href="variance.html#cb417-1"></a><span class="fu">cov</span>(<span class="fu">scale</span>(data<span class="sc">$</span>opinion_M), <span class="fu">scale</span>(data<span class="sc">$</span>opinion_W))  <span class="co">#the covariance between the two standardized variables. That is the correlation. </span></span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb421-1"><a href="variance.html#cb421-1"></a><span class="fu">cov</span>(<span class="fu">scale</span>(data<span class="sc">$</span>opinion_M), <span class="fu">scale</span>(data<span class="sc">$</span>opinion_W))  <span class="co"># the covariance between the two standardized variables. That is the correlation.</span></span></code></pre></div>
 <pre><code>#&gt;           [,1]
 #&gt; [1,] 0.5741921</code></pre>
-<div class="sourceCode" id="cb419"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb419-1"><a href="variance.html#cb419-1"></a><span class="fu">cor.test</span>(data<span class="sc">$</span>opinion_M, data<span class="sc">$</span>opinion_W)  <span class="co">#See, same value. Now also with significance. </span></span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb423-1"><a href="variance.html#cb423-1"></a><span class="fu">cor.test</span>(data<span class="sc">$</span>opinion_M, data<span class="sc">$</span>opinion_W)  <span class="co"># See, same value. Now also with significance.</span></span></code></pre></div>
 <pre><code>#&gt; 
 #&gt;  Pearson&#39;s product-moment correlation
 #&gt; 
@@ -581,9 +585,9 @@ Also check out paragraph 3.3 of the book by <span class="citation">(<a href="#re
 #&gt; 0.5741921</code></pre>
 <p>This would indicate a strong and significant correlation.
 Remember that our data is in wide format. A better way is to calculate the correlation on a long dataset. This method is called the double entry method. Why is this a better way? It takes into account that the variance and mean of the opinions of men and women may be different. The endresult will more closely resemble the ICC we will encounter later.</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb421-1"><a href="variance.html#cb421-1"></a>var1 <span class="ot">&lt;-</span> <span class="fu">c</span>(data<span class="sc">$</span>opinion_M, data<span class="sc">$</span>opinion_W)</span>
-<span id="cb421-2"><a href="variance.html#cb421-2"></a>var2 <span class="ot">&lt;-</span> <span class="fu">c</span>(data<span class="sc">$</span>opinion_W, data<span class="sc">$</span>opinion_M)</span>
-<span id="cb421-3"><a href="variance.html#cb421-3"></a><span class="fu">cor.test</span>(var1, var2)</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb425-1"><a href="variance.html#cb425-1"></a>var1 <span class="ot">&lt;-</span> <span class="fu">c</span>(data<span class="sc">$</span>opinion_M, data<span class="sc">$</span>opinion_W)</span>
+<span id="cb425-2"><a href="variance.html#cb425-2"></a>var2 <span class="ot">&lt;-</span> <span class="fu">c</span>(data<span class="sc">$</span>opinion_W, data<span class="sc">$</span>opinion_M)</span>
+<span id="cb425-3"><a href="variance.html#cb425-3"></a><span class="fu">cor.test</span>(var1, var2)</span></code></pre></div>
 <pre><code>#&gt; 
 #&gt;  Pearson&#39;s product-moment correlation
 #&gt; 
@@ -597,22 +601,22 @@ Remember that our data is in wide format. A better way is to calculate the corre
 #&gt; 0.5110503</code></pre>
 <p>Lower, but still significant.</p>
 <p>It is even possible that to now see a negative (and significant) correlation. For example try to repeat the above with a dataset we would get after running the following simulation.</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb423-1"><a href="variance.html#cb423-1"></a><span class="fu">require</span>(MASS)</span>
-<span id="cb423-2"><a href="variance.html#cb423-2"></a><span class="fu">set.seed</span>(<span class="dv">9864</span>)  <span class="co">#We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).</span></span>
-<span id="cb423-3"><a href="variance.html#cb423-3"></a></span>
-<span id="cb423-4"><a href="variance.html#cb423-4"></a><span class="co"># let us start with simulating the opinion of both partners.</span></span>
-<span id="cb423-5"><a href="variance.html#cb423-5"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb423-6"><a href="variance.html#cb423-6"></a>opinions <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>), Sigma)</span>
-<span id="cb423-7"><a href="variance.html#cb423-7"></a>opinion_W <span class="ot">&lt;-</span> opinions[, <span class="dv">1</span>]</span>
-<span id="cb423-8"><a href="variance.html#cb423-8"></a>opinion_M <span class="ot">&lt;-</span> opinions[, <span class="dv">2</span>]</span>
-<span id="cb423-9"><a href="variance.html#cb423-9"></a>dyad_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
-<span id="cb423-10"><a href="variance.html#cb423-10"></a></span>
-<span id="cb423-11"><a href="variance.html#cb423-11"></a><span class="co"># and let&#39;s put everything together</span></span>
-<span id="cb423-12"><a href="variance.html#cb423-12"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(dyad_id, opinion_W, opinion_M)</span>
-<span id="cb423-13"><a href="variance.html#cb423-13"></a><span class="co"># add some description to the data</span></span>
-<span id="cb423-14"><a href="variance.html#cb423-14"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with </span><span class="sc">\&quot;</span><span class="st">_W</span><span class="sc">\&quot;</span><span class="st"> refer to women,</span><span class="sc">\&quot;</span><span class="st">_M</span><span class="sc">\&quot;</span><span class="st"> refer to men.&quot;</span></span>
-<span id="cb423-15"><a href="variance.html#cb423-15"></a></span>
-<span id="cb423-16"><a href="variance.html#cb423-16"></a><span class="co"># I don&#39;t think the variables need any further description.</span></span></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb427-1"><a href="variance.html#cb427-1"></a><span class="fu">require</span>(MASS)</span>
+<span id="cb427-2"><a href="variance.html#cb427-2"></a><span class="fu">set.seed</span>(<span class="dv">9864</span>)  <span class="co"># We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).</span></span>
+<span id="cb427-3"><a href="variance.html#cb427-3"></a></span>
+<span id="cb427-4"><a href="variance.html#cb427-4"></a><span class="co"># let us start with simulating the opinion of both partners.</span></span>
+<span id="cb427-5"><a href="variance.html#cb427-5"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb427-6"><a href="variance.html#cb427-6"></a>opinions <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>), Sigma)</span>
+<span id="cb427-7"><a href="variance.html#cb427-7"></a>opinion_W <span class="ot">&lt;-</span> opinions[, <span class="dv">1</span>]</span>
+<span id="cb427-8"><a href="variance.html#cb427-8"></a>opinion_M <span class="ot">&lt;-</span> opinions[, <span class="dv">2</span>]</span>
+<span id="cb427-9"><a href="variance.html#cb427-9"></a>dyad_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
+<span id="cb427-10"><a href="variance.html#cb427-10"></a></span>
+<span id="cb427-11"><a href="variance.html#cb427-11"></a><span class="co"># and let&#39;s put everything together</span></span>
+<span id="cb427-12"><a href="variance.html#cb427-12"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(dyad_id, opinion_W, opinion_M)</span>
+<span id="cb427-13"><a href="variance.html#cb427-13"></a><span class="co"># add some description to the data</span></span>
+<span id="cb427-14"><a href="variance.html#cb427-14"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;This is a simulated dataset to illustrate interdependencies of observations within dyads (i.e. heterosexual couples). The dataset is in wide-format: one row refers to one couple. Variables with </span><span class="sc">\&quot;</span><span class="st">_W</span><span class="sc">\&quot;</span><span class="st"> refer to women,</span><span class="sc">\&quot;</span><span class="st">_M</span><span class="sc">\&quot;</span><span class="st"> refer to men.&quot;</span></span>
+<span id="cb427-15"><a href="variance.html#cb427-15"></a></span>
+<span id="cb427-16"><a href="variance.html#cb427-16"></a><span class="co"># I don&#39;t think the variables need any further description.</span></span></code></pre></div>
 </div>
 <div id="icc" class="section level4 hasAnchor" number="11.2.1.3">
 <h4><span class="header-section-number">B.2.1.3</span> ICC<a href="variance.html#icc" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -623,28 +627,28 @@ where,</p>
 <p>and</p>
 <p><span class="math display">\[ MS_W = \sum(X_{ego} - X_{alter})^2 / (2* N_{dyads}) \]</span></p>
 <p>Let’s have a go!</p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb424-1"><a href="variance.html#cb424-1"></a>MSB <span class="ot">&lt;-</span> <span class="fu">var</span>((data<span class="sc">$</span>opinion_M <span class="sc">+</span> data<span class="sc">$</span>opinion_W)<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb424-2"><a href="variance.html#cb424-2"></a>MSW <span class="ot">&lt;-</span> (<span class="fu">sum</span>((data<span class="sc">$</span>opinion_M <span class="sc">-</span> data<span class="sc">$</span>opinion_W)<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(data<span class="sc">$</span>opinion_W))</span>
-<span id="cb424-3"><a href="variance.html#cb424-3"></a>ICC_anova <span class="ot">&lt;-</span> (MSB <span class="sc">-</span> MSW)<span class="sc">/</span>(MSB <span class="sc">+</span> MSW)</span>
-<span id="cb424-4"><a href="variance.html#cb424-4"></a>ICC_anova</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb428-1"><a href="variance.html#cb428-1"></a>MSB <span class="ot">&lt;-</span> <span class="fu">var</span>((data<span class="sc">$</span>opinion_M <span class="sc">+</span> data<span class="sc">$</span>opinion_W)<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb428-2"><a href="variance.html#cb428-2"></a>MSW <span class="ot">&lt;-</span> (<span class="fu">sum</span>((data<span class="sc">$</span>opinion_M <span class="sc">-</span> data<span class="sc">$</span>opinion_W)<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fu">length</span>(data<span class="sc">$</span>opinion_W))</span>
+<span id="cb428-3"><a href="variance.html#cb428-3"></a>ICC_anova <span class="ot">&lt;-</span> (MSB <span class="sc">-</span> MSW)<span class="sc">/</span>(MSB <span class="sc">+</span> MSW)</span>
+<span id="cb428-4"><a href="variance.html#cb428-4"></a>ICC_anova</span></code></pre></div>
 <pre><code>#&gt; [1] 0.5114198</code></pre>
 <p>Do you see that the ICC is very close to the correlation based on a dataset in long format (double entry method)? Thus in practice, the double entry method is very convenient to check for interdependencies if you are working on dyadic data.</p>
 <p>Most of you are probably more familiar with definitions of the ICC as provided within textbooks on multi-level analysis. Where the intraclass correlation - at least for continuous dependent variables - is defined as the between variance (i.e. the variance in dyad means) divided by the total variance (i.e. the sum of the between and within variance). There is only one problem, we need these variances present in the ‘real population’. In our data we only observe the variances present in our sample. The observed between variance needs to be corrected. Below I will show you how to do that.</p>
 <p>First make a dataset in longformat.</p>
-<div class="sourceCode" id="cb426"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb426-1"><a href="variance.html#cb426-1"></a><span class="co"># first make a dataset in longformat.</span></span>
-<span id="cb426-2"><a href="variance.html#cb426-2"></a>dyadmean <span class="ot">&lt;-</span> (data<span class="sc">$</span>opinion_M <span class="sc">+</span> data<span class="sc">$</span>opinion_W)<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb426-3"><a href="variance.html#cb426-3"></a>data_long <span class="ot">&lt;-</span> <span class="fu">rbind</span>(data, data)</span>
-<span id="cb426-4"><a href="variance.html#cb426-4"></a>data_long<span class="sc">$</span>partner_id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">each =</span> <span class="dv">1000</span>)</span>
-<span id="cb426-5"><a href="variance.html#cb426-5"></a>data_long<span class="sc">$</span>dyad_id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="at">times =</span> <span class="dv">2</span>)</span>
-<span id="cb426-6"><a href="variance.html#cb426-6"></a>data_long<span class="sc">$</span>dyadmean <span class="ot">&lt;-</span> <span class="fu">c</span>(dyadmean, dyadmean)</span>
-<span id="cb426-7"><a href="variance.html#cb426-7"></a></span>
-<span id="cb426-8"><a href="variance.html#cb426-8"></a><span class="co"># lets the first dyad entry refer to the women and the second to the men</span></span>
-<span id="cb426-9"><a href="variance.html#cb426-9"></a>data_long<span class="sc">$</span>opinion <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(data_long<span class="sc">$</span>partner_id <span class="sc">==</span> <span class="dv">1</span>, data_long<span class="sc">$</span>opinion_W, data_long<span class="sc">$</span>opinion_M)</span>
-<span id="cb426-10"><a href="variance.html#cb426-10"></a></span>
-<span id="cb426-11"><a href="variance.html#cb426-11"></a><span class="co"># also define the opinion of the partner</span></span>
-<span id="cb426-12"><a href="variance.html#cb426-12"></a>data_long<span class="sc">$</span>opinion_P <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(data_long<span class="sc">$</span>partner_id <span class="sc">==</span> <span class="dv">2</span>, data_long<span class="sc">$</span>opinion_W, data_long<span class="sc">$</span>opinion_M)</span>
-<span id="cb426-13"><a href="variance.html#cb426-13"></a></span>
-<span id="cb426-14"><a href="variance.html#cb426-14"></a><span class="fu">head</span>(data_long)</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb430-1"><a href="variance.html#cb430-1"></a><span class="co"># first make a dataset in longformat.</span></span>
+<span id="cb430-2"><a href="variance.html#cb430-2"></a>dyadmean <span class="ot">&lt;-</span> (data<span class="sc">$</span>opinion_M <span class="sc">+</span> data<span class="sc">$</span>opinion_W)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb430-3"><a href="variance.html#cb430-3"></a>data_long <span class="ot">&lt;-</span> <span class="fu">rbind</span>(data, data)</span>
+<span id="cb430-4"><a href="variance.html#cb430-4"></a>data_long<span class="sc">$</span>partner_id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">each =</span> <span class="dv">1000</span>)</span>
+<span id="cb430-5"><a href="variance.html#cb430-5"></a>data_long<span class="sc">$</span>dyad_id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="at">times =</span> <span class="dv">2</span>)</span>
+<span id="cb430-6"><a href="variance.html#cb430-6"></a>data_long<span class="sc">$</span>dyadmean <span class="ot">&lt;-</span> <span class="fu">c</span>(dyadmean, dyadmean)</span>
+<span id="cb430-7"><a href="variance.html#cb430-7"></a></span>
+<span id="cb430-8"><a href="variance.html#cb430-8"></a><span class="co"># lets the first dyad entry refer to the women and the second to the men</span></span>
+<span id="cb430-9"><a href="variance.html#cb430-9"></a>data_long<span class="sc">$</span>opinion <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(data_long<span class="sc">$</span>partner_id <span class="sc">==</span> <span class="dv">1</span>, data_long<span class="sc">$</span>opinion_W, data_long<span class="sc">$</span>opinion_M)</span>
+<span id="cb430-10"><a href="variance.html#cb430-10"></a></span>
+<span id="cb430-11"><a href="variance.html#cb430-11"></a><span class="co"># also define the opinion of the partner</span></span>
+<span id="cb430-12"><a href="variance.html#cb430-12"></a>data_long<span class="sc">$</span>opinion_P <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(data_long<span class="sc">$</span>partner_id <span class="sc">==</span> <span class="dv">2</span>, data_long<span class="sc">$</span>opinion_W, data_long<span class="sc">$</span>opinion_M)</span>
+<span id="cb430-13"><a href="variance.html#cb430-13"></a></span>
+<span id="cb430-14"><a href="variance.html#cb430-14"></a><span class="fu">head</span>(data_long)</span></code></pre></div>
 <pre><code>#&gt;   dyad_id opinion_W opinion_M partner_id dyadmean  opinion opinion_P
 #&gt; 1       1  1.180285  3.651525          1 2.415905 1.180285  3.651525
 #&gt; 2       2  9.930618  7.117465          1 8.524041 9.930618  7.117465
@@ -654,31 +658,31 @@ where,</p>
 #&gt; 6       6  8.408048  4.720610          1 6.564329 8.408048  4.720610</code></pre>
 <p><br />
 With this dataset in longformat we can calculate the ICC.</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb428-1"><a href="variance.html#cb428-1"></a><span class="co"># first calculate the between variance of our sample. Note that this we only need observations of</span></span>
-<span id="cb428-2"><a href="variance.html#cb428-2"></a><span class="co"># the dyads once (thus N_dyads=1000)</span></span>
-<span id="cb428-3"><a href="variance.html#cb428-3"></a>S_B <span class="ot">&lt;-</span> <span class="fu">var</span>(data_long<span class="sc">$</span>dyadmean[<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>])</span>
-<span id="cb428-4"><a href="variance.html#cb428-4"></a><span class="co"># within variance</span></span>
-<span id="cb428-5"><a href="variance.html#cb428-5"></a>SW <span class="ot">&lt;-</span> <span class="fu">sum</span>((data_long<span class="sc">$</span>opinion <span class="sc">-</span> data_long<span class="sc">$</span>dyadmean)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">1000</span>  <span class="co">#we divide by the number of dyads</span></span>
-<span id="cb428-6"><a href="variance.html#cb428-6"></a><span class="co"># We now need to correct the observed between variance to reflect the population between variance.</span></span>
-<span id="cb428-7"><a href="variance.html#cb428-7"></a>S_B_E <span class="ot">&lt;-</span> S_B <span class="sc">-</span> SW<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb428-8"><a href="variance.html#cb428-8"></a>ICC_ML <span class="ot">&lt;-</span> S_B_E<span class="sc">/</span>(S_B_E <span class="sc">+</span> SW)</span>
-<span id="cb428-9"><a href="variance.html#cb428-9"></a>ICC_ML</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb432-1"><a href="variance.html#cb432-1"></a><span class="co"># first calculate the between variance of our sample. Note that this we only need observations of</span></span>
+<span id="cb432-2"><a href="variance.html#cb432-2"></a><span class="co"># the dyads once (thus N_dyads=1000)</span></span>
+<span id="cb432-3"><a href="variance.html#cb432-3"></a>S_B <span class="ot">&lt;-</span> <span class="fu">var</span>(data_long<span class="sc">$</span>dyadmean[<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>])</span>
+<span id="cb432-4"><a href="variance.html#cb432-4"></a><span class="co"># within variance</span></span>
+<span id="cb432-5"><a href="variance.html#cb432-5"></a>SW <span class="ot">&lt;-</span> <span class="fu">sum</span>((data_long<span class="sc">$</span>opinion <span class="sc">-</span> data_long<span class="sc">$</span>dyadmean)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">1000</span>  <span class="co"># we divide by the number of dyads</span></span>
+<span id="cb432-6"><a href="variance.html#cb432-6"></a><span class="co"># We now need to correct the observed between variance to reflect the population between variance.</span></span>
+<span id="cb432-7"><a href="variance.html#cb432-7"></a>S_B_E <span class="ot">&lt;-</span> S_B <span class="sc">-</span> SW<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb432-8"><a href="variance.html#cb432-8"></a>ICC_ML <span class="ot">&lt;-</span> S_B_E<span class="sc">/</span>(S_B_E <span class="sc">+</span> SW)</span>
+<span id="cb432-9"><a href="variance.html#cb432-9"></a>ICC_ML</span></code></pre></div>
 <pre><code>#&gt; [1] 0.5114198</code></pre>
 <p>Of course exactly similar to the ICC_anova.
 But this procedure is of course quite cumbersome. It may be a lot easier to estimate an empty multi-level model which also spits out the ICC (after some tweaking).
 See below.</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb430-1"><a href="variance.html#cb430-1"></a><span class="fu">require</span>(nlme)</span>
-<span id="cb430-2"><a href="variance.html#cb430-2"></a><span class="co"># estimate empty model with ML</span></span>
-<span id="cb430-3"><a href="variance.html#cb430-3"></a>mlme <span class="ot">&lt;-</span> <span class="fu">lme</span>(opinion <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> data_long, <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span> <span class="sc">|</span> dyad_id), )</span>
-<span id="cb430-4"><a href="variance.html#cb430-4"></a><span class="fu">summary</span>(mlme)</span>
-<span id="cb430-5"><a href="variance.html#cb430-5"></a><span class="co"># Standard deviations are reported instead of variances.  extract the variances.</span></span>
-<span id="cb430-6"><a href="variance.html#cb430-6"></a><span class="fu">VarCorr</span>(mlme)</span>
-<span id="cb430-7"><a href="variance.html#cb430-7"></a><span class="co"># the intercept variance is at the between-level. the residual variances are at the observation /</span></span>
-<span id="cb430-8"><a href="variance.html#cb430-8"></a><span class="co"># within-level.  thus based on these numbers we may calculate the ICC ourselves.</span></span>
-<span id="cb430-9"><a href="variance.html#cb430-9"></a>varests <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">VarCorr</span>(mlme)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
-<span id="cb430-10"><a href="variance.html#cb430-10"></a>varests</span>
-<span id="cb430-11"><a href="variance.html#cb430-11"></a>ICC_MLb <span class="ot">&lt;-</span> varests[<span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(varests)</span>
-<span id="cb430-12"><a href="variance.html#cb430-12"></a>ICC_MLb</span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb434-1"><a href="variance.html#cb434-1"></a><span class="fu">require</span>(nlme)</span>
+<span id="cb434-2"><a href="variance.html#cb434-2"></a><span class="co"># estimate empty model with ML</span></span>
+<span id="cb434-3"><a href="variance.html#cb434-3"></a>mlme <span class="ot">&lt;-</span> <span class="fu">lme</span>(opinion <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> data_long, <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span> <span class="sc">|</span> dyad_id), )</span>
+<span id="cb434-4"><a href="variance.html#cb434-4"></a><span class="fu">summary</span>(mlme)</span>
+<span id="cb434-5"><a href="variance.html#cb434-5"></a><span class="co"># Standard deviations are reported instead of variances.  extract the variances.</span></span>
+<span id="cb434-6"><a href="variance.html#cb434-6"></a><span class="fu">VarCorr</span>(mlme)</span>
+<span id="cb434-7"><a href="variance.html#cb434-7"></a><span class="co"># the intercept variance is at the between-level.  the residual variances are at the observation /</span></span>
+<span id="cb434-8"><a href="variance.html#cb434-8"></a><span class="co"># within-level.  thus based on these numbers we may calculate the ICC ourselves.</span></span>
+<span id="cb434-9"><a href="variance.html#cb434-9"></a>varests <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">VarCorr</span>(mlme)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
+<span id="cb434-10"><a href="variance.html#cb434-10"></a>varests</span>
+<span id="cb434-11"><a href="variance.html#cb434-11"></a>ICC_MLb <span class="ot">&lt;-</span> varests[<span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(varests)</span>
+<span id="cb434-12"><a href="variance.html#cb434-12"></a>ICC_MLb</span></code></pre></div>
 <pre><code>#&gt; Linear mixed-effects model fit by REML
 #&gt;   Data: data_long 
 #&gt;        AIC      BIC    logLik
@@ -691,41 +695,41 @@ See below.</p>
 #&gt; 
 #&gt; Fixed effects:  opinion ~ 1 
 #&gt;                Value  Std.Error   DF  t-value p-value
-#&gt; (Intercept) 4.603242 0.07682307 1000 59.92004       0
+#&gt; (Intercept) 4.603242 0.07682306 1000 59.92005       0
 #&gt; 
 #&gt; Standardized Within-Group Residuals:
 #&gt;         Min          Q1         Med          Q3         Max 
-#&gt; -3.28830881 -0.51102249  0.01645221  0.57161594  2.75065667 
+#&gt; -3.28830880 -0.51102270  0.01645208  0.57161606  2.75065678 
 #&gt; 
 #&gt; Number of Observations: 2000
 #&gt; Number of Groups: 1000 
 #&gt; dyad_id = pdLogChol(1) 
 #&gt;             Variance StdDev  
-#&gt; (Intercept) 3.993974 1.998493
-#&gt; Residual    3.815620 1.953361
-#&gt; [1] 3.993974 3.815620
-#&gt; [1] 0.5114189</code></pre>
+#&gt; (Intercept) 3.993973 1.998493
+#&gt; Residual    3.815621 1.953361
+#&gt; [1] 3.993973 3.815621
+#&gt; [1] 0.5114188</code></pre>
 <p>In this course we will rely heavily on the Lavaan package. We can also calculate the ICC with Lavaan.</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb432-1"><a href="variance.html#cb432-1"></a><span class="fu">require</span>(<span class="st">&quot;lavaan&quot;</span>)</span>
-<span id="cb432-2"><a href="variance.html#cb432-2"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb432-3"><a href="variance.html#cb432-3"></a><span class="st">    level: 1</span></span>
-<span id="cb432-4"><a href="variance.html#cb432-4"></a><span class="st">        opinion ~ 1 #regression model</span></span>
-<span id="cb432-5"><a href="variance.html#cb432-5"></a><span class="st">        opinion ~~ opinion #variance</span></span>
-<span id="cb432-6"><a href="variance.html#cb432-6"></a><span class="st">    level: 2</span></span>
-<span id="cb432-7"><a href="variance.html#cb432-7"></a><span class="st">        opinion ~ 1</span></span>
-<span id="cb432-8"><a href="variance.html#cb432-8"></a><span class="st">        opinion ~~ opinion</span></span>
-<span id="cb432-9"><a href="variance.html#cb432-9"></a><span class="st">&quot;</span></span>
-<span id="cb432-10"><a href="variance.html#cb432-10"></a>fit <span class="ot">&lt;-</span> <span class="fu">lavaan</span>(<span class="at">model =</span> model, <span class="at">data =</span> data_long, <span class="at">cluster =</span> <span class="st">&quot;dyad_id&quot;</span>)</span>
-<span id="cb432-11"><a href="variance.html#cb432-11"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
-<pre><code>#&gt; lavaan 0.6-11 ended normally after 7 iterations
+<div class="sourceCode" id="cb436"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb436-1"><a href="variance.html#cb436-1"></a><span class="fu">require</span>(<span class="st">&quot;lavaan&quot;</span>)</span>
+<span id="cb436-2"><a href="variance.html#cb436-2"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb436-3"><a href="variance.html#cb436-3"></a><span class="st">    level: 1</span></span>
+<span id="cb436-4"><a href="variance.html#cb436-4"></a><span class="st">        opinion ~ 1 #regression model</span></span>
+<span id="cb436-5"><a href="variance.html#cb436-5"></a><span class="st">        opinion ~~ opinion #variance</span></span>
+<span id="cb436-6"><a href="variance.html#cb436-6"></a><span class="st">    level: 2</span></span>
+<span id="cb436-7"><a href="variance.html#cb436-7"></a><span class="st">        opinion ~ 1</span></span>
+<span id="cb436-8"><a href="variance.html#cb436-8"></a><span class="st">        opinion ~~ opinion</span></span>
+<span id="cb436-9"><a href="variance.html#cb436-9"></a><span class="st">&quot;</span></span>
+<span id="cb436-10"><a href="variance.html#cb436-10"></a>fit <span class="ot">&lt;-</span> <span class="fu">lavaan</span>(<span class="at">model =</span> model, <span class="at">data =</span> data_long, <span class="at">cluster =</span> <span class="st">&quot;dyad_id&quot;</span>)</span>
+<span id="cb436-11"><a href="variance.html#cb436-11"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<pre><code>#&gt; lavaan 0.6.17 ended normally after 7 iterations
 #&gt; 
 #&gt;   Estimator                                         ML
 #&gt;   Optimization method                           NLMINB
 #&gt;   Number of model parameters                         3
-#&gt;                                                       
+#&gt; 
 #&gt;   Number of observations                          2000
 #&gt;   Number of clusters [dyad_id]                    1000
-#&gt;                                                       
+#&gt; 
 #&gt; Model Test User Model:
 #&gt;                                                       
 #&gt;   Test statistic                                 0.000
@@ -758,7 +762,7 @@ See below.</p>
 #&gt; Variances:
 #&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)
 #&gt;     opinion           3.988    0.277   14.391    0.000</code></pre>
-<div class="sourceCode" id="cb434"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb434-1"><a href="variance.html#cb434-1"></a><span class="fu">lavInspect</span>(fit, <span class="st">&quot;icc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb438-1"><a href="variance.html#cb438-1"></a><span class="fu">lavInspect</span>(fit, <span class="st">&quot;icc&quot;</span>)</span></code></pre></div>
 <pre><code>#&gt; opinion 
 #&gt;   0.511</code></pre>
 <p>The take home message is that the two observations for each dyad are indeed interrelated. Is this a lot? Is this significant?</p>
@@ -769,74 +773,74 @@ See below.</p>
 <p>The above procedure to calculate the ICC correlation can also be used for egonet data.</p>
 <p>Let us suppose we have egonet data. For example on the political opinions of you and your friends. We want to know if these data are interdependent.</p>
 <p>Run the code chunck below to simulate some data.</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb436-1"><a href="variance.html#cb436-1"></a><span class="fu">require</span>(MASS)</span>
-<span id="cb436-2"><a href="variance.html#cb436-2"></a><span class="fu">set.seed</span>(<span class="dv">9864</span>)  <span class="co">#We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).</span></span>
-<span id="cb436-3"><a href="variance.html#cb436-3"></a></span>
-<span id="cb436-4"><a href="variance.html#cb436-4"></a><span class="co"># let us start with simulating the opinion of ego and its alters.</span></span>
-<span id="cb436-5"><a href="variance.html#cb436-5"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">36</span>, <span class="at">replace =</span> T), <span class="dv">6</span>, <span class="dv">6</span>)</span>
-<span id="cb436-6"><a href="variance.html#cb436-6"></a>Sigma[<span class="fu">lower.tri</span>(Sigma)] <span class="ot">=</span> <span class="fu">t</span>(Sigma)[<span class="fu">lower.tri</span>(Sigma)]</span>
-<span id="cb436-7"><a href="variance.html#cb436-7"></a><span class="fu">diag</span>(Sigma) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
-<span id="cb436-8"><a href="variance.html#cb436-8"></a><span class="co"># Sigma</span></span>
-<span id="cb436-9"><a href="variance.html#cb436-9"></a></span>
-<span id="cb436-10"><a href="variance.html#cb436-10"></a>opinions <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>), Sigma)</span>
-<span id="cb436-11"><a href="variance.html#cb436-11"></a>opinion_ego <span class="ot">&lt;-</span> opinions[, <span class="dv">1</span>]</span>
-<span id="cb436-12"><a href="variance.html#cb436-12"></a>opinion_alter1 <span class="ot">&lt;-</span> opinions[, <span class="dv">2</span>]</span>
-<span id="cb436-13"><a href="variance.html#cb436-13"></a>opinion_alter2 <span class="ot">&lt;-</span> opinions[, <span class="dv">3</span>]</span>
-<span id="cb436-14"><a href="variance.html#cb436-14"></a>opinion_alter3 <span class="ot">&lt;-</span> opinions[, <span class="dv">4</span>]</span>
-<span id="cb436-15"><a href="variance.html#cb436-15"></a>opinion_alter4 <span class="ot">&lt;-</span> opinions[, <span class="dv">5</span>]</span>
-<span id="cb436-16"><a href="variance.html#cb436-16"></a>opinion_alter5 <span class="ot">&lt;-</span> opinions[, <span class="dv">6</span>]</span>
-<span id="cb436-17"><a href="variance.html#cb436-17"></a></span>
-<span id="cb436-18"><a href="variance.html#cb436-18"></a>egonet_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
-<span id="cb436-19"><a href="variance.html#cb436-19"></a></span>
-<span id="cb436-20"><a href="variance.html#cb436-20"></a><span class="co"># and let&#39;s put everything together</span></span>
-<span id="cb436-21"><a href="variance.html#cb436-21"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(egonet_id, opinion_alter1, opinion_alter2, opinion_alter3, opinion_alter4, opinion_alter5)</span>
-<span id="cb436-22"><a href="variance.html#cb436-22"></a></span>
-<span id="cb436-23"><a href="variance.html#cb436-23"></a><span class="co"># I don&#39;t think the variables need any further description.</span></span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb440-1"><a href="variance.html#cb440-1"></a><span class="fu">require</span>(MASS)</span>
+<span id="cb440-2"><a href="variance.html#cb440-2"></a><span class="fu">set.seed</span>(<span class="dv">9864</span>)  <span class="co"># We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).</span></span>
+<span id="cb440-3"><a href="variance.html#cb440-3"></a></span>
+<span id="cb440-4"><a href="variance.html#cb440-4"></a><span class="co"># let us start with simulating the opinion of ego and its alters.</span></span>
+<span id="cb440-5"><a href="variance.html#cb440-5"></a>Sigma <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">36</span>, <span class="at">replace =</span> T), <span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb440-6"><a href="variance.html#cb440-6"></a>Sigma[<span class="fu">lower.tri</span>(Sigma)] <span class="ot">&lt;-</span> <span class="fu">t</span>(Sigma)[<span class="fu">lower.tri</span>(Sigma)]</span>
+<span id="cb440-7"><a href="variance.html#cb440-7"></a><span class="fu">diag</span>(Sigma) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">6</span>)</span>
+<span id="cb440-8"><a href="variance.html#cb440-8"></a><span class="co"># Sigma</span></span>
+<span id="cb440-9"><a href="variance.html#cb440-9"></a></span>
+<span id="cb440-10"><a href="variance.html#cb440-10"></a>opinions <span class="ot">&lt;-</span> <span class="fu">mvrnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>), Sigma)</span>
+<span id="cb440-11"><a href="variance.html#cb440-11"></a>opinion_ego <span class="ot">&lt;-</span> opinions[, <span class="dv">1</span>]</span>
+<span id="cb440-12"><a href="variance.html#cb440-12"></a>opinion_alter1 <span class="ot">&lt;-</span> opinions[, <span class="dv">2</span>]</span>
+<span id="cb440-13"><a href="variance.html#cb440-13"></a>opinion_alter2 <span class="ot">&lt;-</span> opinions[, <span class="dv">3</span>]</span>
+<span id="cb440-14"><a href="variance.html#cb440-14"></a>opinion_alter3 <span class="ot">&lt;-</span> opinions[, <span class="dv">4</span>]</span>
+<span id="cb440-15"><a href="variance.html#cb440-15"></a>opinion_alter4 <span class="ot">&lt;-</span> opinions[, <span class="dv">5</span>]</span>
+<span id="cb440-16"><a href="variance.html#cb440-16"></a>opinion_alter5 <span class="ot">&lt;-</span> opinions[, <span class="dv">6</span>]</span>
+<span id="cb440-17"><a href="variance.html#cb440-17"></a></span>
+<span id="cb440-18"><a href="variance.html#cb440-18"></a>egonet_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
+<span id="cb440-19"><a href="variance.html#cb440-19"></a></span>
+<span id="cb440-20"><a href="variance.html#cb440-20"></a><span class="co"># and let&#39;s put everything together</span></span>
+<span id="cb440-21"><a href="variance.html#cb440-21"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(egonet_id, opinion_alter1, opinion_alter2, opinion_alter3, opinion_alter4, opinion_alter5)</span>
+<span id="cb440-22"><a href="variance.html#cb440-22"></a></span>
+<span id="cb440-23"><a href="variance.html#cb440-23"></a><span class="co"># I don&#39;t think the variables need any further description.</span></span></code></pre></div>
 <div id="describe-data-1" class="section level4 hasAnchor" number="11.2.2.1">
 <h4><span class="header-section-number">B.2.2.1</span> Describe data<a href="variance.html#describe-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Lets have a look at our data.</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb437-1"><a href="variance.html#cb437-1"></a><span class="fu">require</span>(psych)</span>
-<span id="cb437-2"><a href="variance.html#cb437-2"></a><span class="fu">head</span>(data)</span>
-<span id="cb437-3"><a href="variance.html#cb437-3"></a><span class="fu">str</span>(data)</span>
-<span id="cb437-4"><a href="variance.html#cb437-4"></a><span class="fu">summary</span>(data)</span>
-<span id="cb437-5"><a href="variance.html#cb437-5"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>)</span>
-<span id="cb437-6"><a href="variance.html#cb437-6"></a><span class="fu">describe</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb441-1"><a href="variance.html#cb441-1"></a><span class="fu">require</span>(psych)</span>
+<span id="cb441-2"><a href="variance.html#cb441-2"></a><span class="fu">head</span>(data)</span>
+<span id="cb441-3"><a href="variance.html#cb441-3"></a><span class="fu">str</span>(data)</span>
+<span id="cb441-4"><a href="variance.html#cb441-4"></a><span class="fu">summary</span>(data)</span>
+<span id="cb441-5"><a href="variance.html#cb441-5"></a><span class="fu">attr</span>(data, <span class="st">&quot;description&quot;</span>)</span>
+<span id="cb441-6"><a href="variance.html#cb441-6"></a><span class="fu">describe</span>(data)</span></code></pre></div>
 <pre><code>#&gt;   egonet_id opinion_alter1 opinion_alter2 opinion_alter3 opinion_alter4 opinion_alter5
-#&gt; 1         1     -0.1024247       2.473552       2.993974      0.1604888      1.7443645
-#&gt; 2         2      6.4712148       2.689709       6.052834      5.7392350      7.1487502
-#&gt; 3         3      4.0474525       1.715663       2.469049      2.7659637      0.8816233
-#&gt; 4         4      1.4692597       4.354919       4.253400      0.3809896      4.0698368
-#&gt; 5         5      1.8042561       3.262400       4.754952      0.4194922      4.5527566
-#&gt; 6         6      5.4410875       6.103960       3.432771      3.7275621      2.0488686
+#&gt; 1         1   -0.002812297       2.341753       3.184144     0.06355581      0.7949200
+#&gt; 2         2    6.420180903       2.757233       5.955405     5.78889612      7.6351737
+#&gt; 3         3    4.035976025       1.730848       2.447139     2.77713143      0.9910096
+#&gt; 4         4    1.572971112       4.217697       4.451395     0.28006793      3.0813234
+#&gt; 5         5    1.847221600       3.205552       4.836978     0.37768238      4.1432356
+#&gt; 6         6    5.896886119       5.500884       4.302935     3.28402390     -2.2955251
 #&gt; &#39;data.frame&#39;:    1000 obs. of  6 variables:
 #&gt;  $ egonet_id     : int  1 2 3 4 5 6 7 8 9 10 ...
-#&gt;  $ opinion_alter1: num  -0.102 6.471 4.047 1.469 1.804 ...
-#&gt;  $ opinion_alter2: num  2.47 2.69 1.72 4.35 3.26 ...
-#&gt;  $ opinion_alter3: num  2.99 6.05 2.47 4.25 4.75 ...
-#&gt;  $ opinion_alter4: num  0.16 5.739 2.766 0.381 0.419 ...
-#&gt;  $ opinion_alter5: num  1.744 7.149 0.882 4.07 4.553 ...
+#&gt;  $ opinion_alter1: num  -0.00281 6.42018 4.03598 1.57297 1.84722 ...
+#&gt;  $ opinion_alter2: num  2.34 2.76 1.73 4.22 3.21 ...
+#&gt;  $ opinion_alter3: num  3.18 5.96 2.45 4.45 4.84 ...
+#&gt;  $ opinion_alter4: num  0.0636 5.7889 2.7771 0.2801 0.3777 ...
+#&gt;  $ opinion_alter5: num  0.795 7.635 0.991 3.081 4.143 ...
 #&gt;    egonet_id      opinion_alter1   opinion_alter2   opinion_alter3   opinion_alter4  
-#&gt;  Min.   :   1.0   Min.   :-1.855   Min.   :-5.919   Min.   :-1.443   Min.   :-4.722  
-#&gt;  1st Qu.: 250.8   1st Qu.: 2.713   1st Qu.: 2.515   1st Qu.: 3.014   1st Qu.: 2.179  
-#&gt;  Median : 500.5   Median : 4.027   Median : 4.146   Median : 4.132   Median : 4.014  
-#&gt;  Mean   : 500.5   Mean   : 4.058   Mean   : 4.118   Mean   : 4.131   Mean   : 3.943  
-#&gt;  3rd Qu.: 750.2   3rd Qu.: 5.426   3rd Qu.: 5.765   3rd Qu.: 5.318   3rd Qu.: 5.732  
-#&gt;  Max.   :1000.0   Max.   :10.244   Max.   :12.382   Max.   :10.869   Max.   :11.874  
+#&gt;  Min.   :   1.0   Min.   :-1.903   Min.   :-6.030   Min.   :-1.951   Min.   :-4.307  
+#&gt;  1st Qu.: 250.8   1st Qu.: 2.744   1st Qu.: 2.508   1st Qu.: 2.958   1st Qu.: 2.205  
+#&gt;  Median : 500.5   Median : 4.035   Median : 4.169   Median : 4.118   Median : 4.038  
+#&gt;  Mean   : 500.5   Mean   : 4.052   Mean   : 4.125   Mean   : 4.121   Mean   : 3.948  
+#&gt;  3rd Qu.: 750.2   3rd Qu.: 5.435   3rd Qu.: 5.825   3rd Qu.: 5.286   3rd Qu.: 5.753  
+#&gt;  Max.   :1000.0   Max.   :10.038   Max.   :12.676   Max.   :11.346   Max.   :11.918  
 #&gt;  opinion_alter5  
-#&gt;  Min.   :-3.280  
-#&gt;  1st Qu.: 2.528  
-#&gt;  Median : 4.044  
-#&gt;  Mean   : 4.100  
-#&gt;  3rd Qu.: 5.764  
-#&gt;  Max.   :13.241  
+#&gt;  Min.   :-3.012  
+#&gt;  1st Qu.: 2.540  
+#&gt;  Median : 4.128  
+#&gt;  Mean   : 4.153  
+#&gt;  3rd Qu.: 5.762  
+#&gt;  Max.   :12.227  
 #&gt; NULL
 #&gt;                vars    n   mean     sd median trimmed    mad   min     max  range  skew kurtosis
 #&gt; egonet_id         1 1000 500.50 288.82 500.50  500.50 370.65  1.00 1000.00 999.00  0.00    -1.20
-#&gt; opinion_alter1    2 1000   4.06   1.98   4.03    4.06   2.00 -1.86   10.24  12.10  0.03    -0.21
-#&gt; opinion_alter2    3 1000   4.12   2.46   4.15    4.11   2.41 -5.92   12.38  18.30 -0.03     0.26
-#&gt; opinion_alter3    4 1000   4.13   1.75   4.13    4.14   1.71 -1.44   10.87  12.31 -0.04     0.26
-#&gt; opinion_alter4    5 1000   3.94   2.64   4.01    3.97   2.66 -4.72   11.87  16.60 -0.09    -0.09
-#&gt; opinion_alter5    6 1000   4.10   2.44   4.04    4.09   2.43 -3.28   13.24  16.52  0.03     0.00
+#&gt; opinion_alter1    2 1000   4.05   1.99   4.04    4.06   1.99 -1.90   10.04  11.94  0.01    -0.21
+#&gt; opinion_alter2    3 1000   4.12   2.45   4.17    4.12   2.46 -6.03   12.68  18.71 -0.04     0.28
+#&gt; opinion_alter3    4 1000   4.12   1.74   4.12    4.13   1.73 -1.95   11.35  13.30 -0.03     0.35
+#&gt; opinion_alter4    5 1000   3.95   2.63   4.04    3.97   2.63 -4.31   11.92  16.22 -0.09    -0.11
+#&gt; opinion_alter5    6 1000   4.15   2.49   4.13    4.14   2.38 -3.01   12.23  15.24  0.04    -0.11
 #&gt;                  se
 #&gt; egonet_id      9.13
 #&gt; opinion_alter1 0.06
@@ -845,84 +849,84 @@ See below.</p>
 #&gt; opinion_alter4 0.08
 #&gt; opinion_alter5 0.08</code></pre>
 <p>Reshape into long format.</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb439-1"><a href="variance.html#cb439-1"></a><span class="fu">require</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb439-2"><a href="variance.html#cb439-2"></a></span>
-<span id="cb439-3"><a href="variance.html#cb439-3"></a>data_long <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">data =</span> data, <span class="at">cols =</span> <span class="fu">everything</span>()[<span class="sc">-</span><span class="dv">1</span>], <span class="at">names_to =</span> <span class="st">&quot;alter&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;opinion&quot;</span>)</span>
-<span id="cb439-4"><a href="variance.html#cb439-4"></a></span>
-<span id="cb439-5"><a href="variance.html#cb439-5"></a><span class="fu">head</span>(data_long)</span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb443-1"><a href="variance.html#cb443-1"></a><span class="fu">require</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb443-2"><a href="variance.html#cb443-2"></a></span>
+<span id="cb443-3"><a href="variance.html#cb443-3"></a>data_long <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">data =</span> data, <span class="at">cols =</span> <span class="fu">everything</span>()[<span class="sc">-</span><span class="dv">1</span>], <span class="at">names_to =</span> <span class="st">&quot;alter&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;opinion&quot;</span>)</span>
+<span id="cb443-4"><a href="variance.html#cb443-4"></a></span>
+<span id="cb443-5"><a href="variance.html#cb443-5"></a><span class="fu">head</span>(data_long)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 6 × 3
-#&gt;   egonet_id alter          opinion
-#&gt;       &lt;int&gt; &lt;chr&gt;            &lt;dbl&gt;
-#&gt; 1         1 opinion_alter1  -0.102
-#&gt; 2         1 opinion_alter2   2.47 
-#&gt; 3         1 opinion_alter3   2.99 
-#&gt; 4         1 opinion_alter4   0.160
-#&gt; 5         1 opinion_alter5   1.74 
-#&gt; 6         2 opinion_alter1   6.47</code></pre>
+#&gt;   egonet_id alter           opinion
+#&gt;       &lt;int&gt; &lt;chr&gt;             &lt;dbl&gt;
+#&gt; 1         1 opinion_alter1 -0.00281
+#&gt; 2         1 opinion_alter2  2.34   
+#&gt; 3         1 opinion_alter3  3.18   
+#&gt; 4         1 opinion_alter4  0.0636 
+#&gt; 5         1 opinion_alter5  0.795  
+#&gt; 6         2 opinion_alter1  6.42</code></pre>
 </div>
 <div id="icc-via-ml" class="section level4 hasAnchor" number="11.2.2.2">
 <h4><span class="header-section-number">B.2.2.2</span> ICC via ML<a href="variance.html#icc-via-ml" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb441"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb441-1"><a href="variance.html#cb441-1"></a><span class="fu">require</span>(nlme)</span>
-<span id="cb441-2"><a href="variance.html#cb441-2"></a><span class="co"># estimate empty model with ML</span></span>
-<span id="cb441-3"><a href="variance.html#cb441-3"></a>mlme <span class="ot">&lt;-</span> <span class="fu">lme</span>(opinion <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> data_long, <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span> <span class="sc">|</span> egonet_id), )</span>
-<span id="cb441-4"><a href="variance.html#cb441-4"></a><span class="fu">summary</span>(mlme)</span>
-<span id="cb441-5"><a href="variance.html#cb441-5"></a><span class="co"># Standard deviations are reported instead of variances.  extract the variances.</span></span>
-<span id="cb441-6"><a href="variance.html#cb441-6"></a><span class="fu">VarCorr</span>(mlme)</span>
-<span id="cb441-7"><a href="variance.html#cb441-7"></a><span class="co"># the intercept variance is at the between-level. the residual variances are at the observation /</span></span>
-<span id="cb441-8"><a href="variance.html#cb441-8"></a><span class="co"># within-level.  thus based on these numbers we may calculate the ICC ourselves.</span></span>
-<span id="cb441-9"><a href="variance.html#cb441-9"></a>varests <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">VarCorr</span>(mlme)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
-<span id="cb441-10"><a href="variance.html#cb441-10"></a>varests</span>
-<span id="cb441-11"><a href="variance.html#cb441-11"></a>ICC_MLb <span class="ot">&lt;-</span> varests[<span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(varests)</span>
-<span id="cb441-12"><a href="variance.html#cb441-12"></a>ICC_MLb</span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb445-1"><a href="variance.html#cb445-1"></a><span class="fu">require</span>(nlme)</span>
+<span id="cb445-2"><a href="variance.html#cb445-2"></a><span class="co"># estimate empty model with ML</span></span>
+<span id="cb445-3"><a href="variance.html#cb445-3"></a>mlme <span class="ot">&lt;-</span> <span class="fu">lme</span>(opinion <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> data_long, <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span><span class="dv">1</span> <span class="sc">|</span> egonet_id), )</span>
+<span id="cb445-4"><a href="variance.html#cb445-4"></a><span class="fu">summary</span>(mlme)</span>
+<span id="cb445-5"><a href="variance.html#cb445-5"></a><span class="co"># Standard deviations are reported instead of variances.  extract the variances.</span></span>
+<span id="cb445-6"><a href="variance.html#cb445-6"></a><span class="fu">VarCorr</span>(mlme)</span>
+<span id="cb445-7"><a href="variance.html#cb445-7"></a><span class="co"># the intercept variance is at the between-level.  the residual variances are at the observation /</span></span>
+<span id="cb445-8"><a href="variance.html#cb445-8"></a><span class="co"># within-level.  thus based on these numbers we may calculate the ICC ourselves.</span></span>
+<span id="cb445-9"><a href="variance.html#cb445-9"></a>varests <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">VarCorr</span>(mlme)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
+<span id="cb445-10"><a href="variance.html#cb445-10"></a>varests</span>
+<span id="cb445-11"><a href="variance.html#cb445-11"></a>ICC_MLb <span class="ot">&lt;-</span> varests[<span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(varests)</span>
+<span id="cb445-12"><a href="variance.html#cb445-12"></a>ICC_MLb</span></code></pre></div>
 <pre><code>#&gt; Linear mixed-effects model fit by REML
 #&gt;   Data: data_long 
-#&gt;        AIC     BIC    logLik
-#&gt;   21837.85 21857.4 -10915.93
+#&gt;        AIC      BIC    logLik
+#&gt;   21909.51 21929.06 -10951.75
 #&gt; 
 #&gt; Random effects:
 #&gt;  Formula: ~1 | egonet_id
 #&gt;         (Intercept) Residual
-#&gt; StdDev:     1.22191 1.921997
+#&gt; StdDev:    1.206648 1.941675
 #&gt; 
 #&gt; Fixed effects:  opinion ~ 1 
 #&gt;                Value  Std.Error   DF  t-value p-value
-#&gt; (Intercept) 4.069793 0.04724277 4000 86.14638       0
+#&gt; (Intercept) 4.079877 0.04701084 4000 86.78588       0
 #&gt; 
 #&gt; Standardized Within-Group Residuals:
 #&gt;         Min          Q1         Med          Q3         Max 
-#&gt; -3.77787873 -0.59863578  0.01410604  0.59669184  4.14533775 
+#&gt; -3.76909452 -0.60344130  0.01233244  0.59998904  4.12122284 
 #&gt; 
 #&gt; Number of Observations: 5000
 #&gt; Number of Groups: 1000 
 #&gt; egonet_id = pdLogChol(1) 
 #&gt;             Variance StdDev  
-#&gt; (Intercept) 1.493065 1.221910
-#&gt; Residual    3.694073 1.921997
-#&gt; [1] 1.493065 3.694073
-#&gt; [1] 0.2878398</code></pre>
+#&gt; (Intercept) 1.455998 1.206648
+#&gt; Residual    3.770102 1.941675
+#&gt; [1] 1.455998 3.770102
+#&gt; [1] 0.2786013</code></pre>
 </div>
 <div id="icc-via-semlavaan" class="section level4 hasAnchor" number="11.2.2.3">
 <h4><span class="header-section-number">B.2.2.3</span> ICC via SEM/lavaan<a href="variance.html#icc-via-semlavaan" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb443"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb443-1"><a href="variance.html#cb443-1"></a><span class="fu">require</span>(<span class="st">&quot;lavaan&quot;</span>)</span>
-<span id="cb443-2"><a href="variance.html#cb443-2"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb443-3"><a href="variance.html#cb443-3"></a><span class="st">    level: 1</span></span>
-<span id="cb443-4"><a href="variance.html#cb443-4"></a><span class="st">        opinion ~ 1 #regression model</span></span>
-<span id="cb443-5"><a href="variance.html#cb443-5"></a><span class="st">        opinion ~~ opinion #variance</span></span>
-<span id="cb443-6"><a href="variance.html#cb443-6"></a><span class="st">    level: 2</span></span>
-<span id="cb443-7"><a href="variance.html#cb443-7"></a><span class="st">        opinion ~ 1</span></span>
-<span id="cb443-8"><a href="variance.html#cb443-8"></a><span class="st">        opinion ~~ opinion</span></span>
-<span id="cb443-9"><a href="variance.html#cb443-9"></a><span class="st">&quot;</span></span>
-<span id="cb443-10"><a href="variance.html#cb443-10"></a>fit <span class="ot">&lt;-</span> <span class="fu">lavaan</span>(<span class="at">model =</span> model, <span class="at">data =</span> data_long, <span class="at">cluster =</span> <span class="st">&quot;egonet_id&quot;</span>)</span>
-<span id="cb443-11"><a href="variance.html#cb443-11"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
-<pre><code>#&gt; lavaan 0.6-11 ended normally after 11 iterations
+<div class="sourceCode" id="cb447"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb447-1"><a href="variance.html#cb447-1"></a><span class="fu">require</span>(<span class="st">&quot;lavaan&quot;</span>)</span>
+<span id="cb447-2"><a href="variance.html#cb447-2"></a>model <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb447-3"><a href="variance.html#cb447-3"></a><span class="st">    level: 1</span></span>
+<span id="cb447-4"><a href="variance.html#cb447-4"></a><span class="st">        opinion ~ 1 #regression model</span></span>
+<span id="cb447-5"><a href="variance.html#cb447-5"></a><span class="st">        opinion ~~ opinion #variance</span></span>
+<span id="cb447-6"><a href="variance.html#cb447-6"></a><span class="st">    level: 2</span></span>
+<span id="cb447-7"><a href="variance.html#cb447-7"></a><span class="st">        opinion ~ 1</span></span>
+<span id="cb447-8"><a href="variance.html#cb447-8"></a><span class="st">        opinion ~~ opinion</span></span>
+<span id="cb447-9"><a href="variance.html#cb447-9"></a><span class="st">&quot;</span></span>
+<span id="cb447-10"><a href="variance.html#cb447-10"></a>fit <span class="ot">&lt;-</span> <span class="fu">lavaan</span>(<span class="at">model =</span> model, <span class="at">data =</span> data_long, <span class="at">cluster =</span> <span class="st">&quot;egonet_id&quot;</span>)</span>
+<span id="cb447-11"><a href="variance.html#cb447-11"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<pre><code>#&gt; lavaan 0.6.17 ended normally after 11 iterations
 #&gt; 
 #&gt;   Estimator                                         ML
 #&gt;   Optimization method                           NLMINB
 #&gt;   Number of model parameters                         3
-#&gt;                                                       
+#&gt; 
 #&gt;   Number of observations                          5000
 #&gt;   Number of clusters [egonet_id]                  1000
-#&gt;                                                       
+#&gt; 
 #&gt; Model Test User Model:
 #&gt;                                                       
 #&gt;   Test statistic                                 0.000
@@ -943,21 +947,21 @@ See below.</p>
 #&gt; 
 #&gt; Variances:
 #&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)
-#&gt;     opinion           3.694    0.083   44.721    0.000
+#&gt;     opinion           3.770    0.084   44.721    0.000
 #&gt; 
 #&gt; 
 #&gt; Level 2 [egonet_id]:
 #&gt; 
 #&gt; Intercepts:
 #&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)
-#&gt;     opinion           4.070    0.047   86.190    0.000
+#&gt;     opinion           4.080    0.047   86.829    0.000
 #&gt; 
 #&gt; Variances:
 #&gt;                    Estimate  Std.Err  z-value  P(&gt;|z|)
-#&gt;     opinion           1.491    0.101   14.750    0.000</code></pre>
-<div class="sourceCode" id="cb445"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb445-1"><a href="variance.html#cb445-1"></a><span class="fu">lavInspect</span>(fit, <span class="st">&quot;icc&quot;</span>)</span></code></pre></div>
+#&gt;     opinion           1.454    0.100   14.514    0.000</code></pre>
+<div class="sourceCode" id="cb449"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb449-1"><a href="variance.html#cb449-1"></a><span class="fu">lavInspect</span>(fit, <span class="st">&quot;icc&quot;</span>)</span></code></pre></div>
 <pre><code>#&gt; opinion 
-#&gt;   0.288</code></pre>
+#&gt;   0.278</code></pre>
 <hr />
 </div>
 </div>
@@ -1038,7 +1042,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

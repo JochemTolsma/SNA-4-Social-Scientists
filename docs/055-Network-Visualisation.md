@@ -3,9 +3,6 @@
 # Network Visualization     
 
 
-```
-## Warning: package 'kableExtra' was built under R version 4.2.3
-```
 
 
 

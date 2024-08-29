@@ -18,14 +18,14 @@ This very short R tutorial is for students who already have some experience with
 ## Getting up and running
 
 -   install the latest version of R: [R](https://cran.r-project.org/)
--   install the latest version of RStudio: [RStudio](https://www.rstudio.com/)
--   open RStudio and follow a brief tour/tutorial [brief tour of Gulzar](https://web.cs.ucla.edu/~gulzar/rstudio/basic-tutorial.html)
+-   install the latest version of RStudio Desktop: [RStudio](https://www.rstudio.com/)
+
 
 Do you Want more information, or are you looking for a different (tidyverse) tutorial?
 
 -   [R-bloggers](https://www.r-bloggers.com/how-to-learn-r-2/)
 -   [RStudio cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
--   [R for Data Science](http://r4ds.had.co.nz/)
+-   [R for Data Science](https://r4ds.hadley.nz/)
 -   [Statistical Inference via Data Science: A Modern Dive into R and the tidyverse](https://www.moderndive.com/)
 
 Are you a Research Master Social and Cultural Science student? Or, a social science student/scientist with some statistical background in descriptive and explanatory statistics (e.g. regression analysis) who wants to make a switch from SPSS to R? Please read on.
@@ -58,16 +58,16 @@ Thus your RScript will look something like this:
 rm(list = ls())
 
 # install.packages I will need later here
-install.packages("installr")  #you  first install packages
-require(installr)  #then you will need to load them. This package is used to simply update R
+install.packages("installr")  # you  first install packages
+require(installr)  # then you will need to load them. This package is used to simply update R
 install.packages("foreign")
-require(foreign)  #used to read in spss data files
+require(foreign)  # used to read in spss data files
 require(tidyverse)
 # update if necessarry. Best to run this command in RGui, not in RStudio.
 updateR()
 
 # define workdirectory, note the double backslashes
-setwd("C:\\SNA-4-Social-Scientists\\")  #change to your own workdirectory
+setwd("C:\\SNA-4-Social-Scientists\\")  # change to your own workdirectory
 ```
 
 Do you see I start some lines with a `#` these lines are comments and not code/commands. This is similar as the `*` sign in SPSS.\
@@ -103,7 +103,7 @@ ls()
 ```
 
 ```{.r .numberLines}
-list = ls()
+list <- ls()
 list
 ```
 
@@ -151,7 +151,7 @@ How am I to remember all that code/syntax??!!
 
 -   By using them.
 -   You don't need to, you just need to remember in which script you used them before.
--   By using [existing cheat sheets]("https://www.rstudio.com/resources/cheatsheets/")
+-   By using [existing cheat sheets](https://www.rstudio.com/resources/cheatsheets/)
 -   By making your own cheat sheets.
 
 > You being the ideal student, you started your own cheat sheet. What should be on it by know?
@@ -178,7 +178,7 @@ How am I to remember all that code/syntax??!!
 
 ## Reading in data files
 
-We are going to work with two datasets: "Culturele Veranderingen". For more information on these datasets, see [here](https://www.scp.nl/Onderzoek/Bronnen/Beknopte_onderzoeksbeschrijvingen/Culturele_veranderingen_in_Nederland_CV).
+We are going to work with two datasets: "Culturele Veranderingen". For more information on these datasets, see [here](https://www.scp.nl/over-scp/data-en-methoden/onderzoeksbeschrijvingen/culturele-veranderingen-in-nederland-cv).
 
 Please download the files to your working directory.
 
@@ -1245,7 +1245,7 @@ Let us have quick look at the structure of some variables. The take home message
 
 
 ```{.r .numberLines}
-str(cv08$lftop)  #a factor
+str(cv08$lftop)  # a factor
 ```
 
 ```
@@ -1537,7 +1537,7 @@ str(cv08$lftop_new)
 ```
 
 ```{.r .numberLines}
-cv08$agen <- as.numeric(as.character(cv08$lftop_new))  #how clumsy. we first convert the factor to a string and then to a numeric variable. 
+cv08$agen <- as.numeric(as.character(cv08$lftop_new))  # how clumsy. we first convert the factor to a string and then to a numeric variable.
 table(cv08$agen, useNA = "always")
 ```
 
@@ -1731,7 +1731,7 @@ And now the fun starts. Tidyverse includes a `dplyr::recode` function, but this 
 
 ```{.r .numberLines}
 # install.packages('labelled')
-require(labelled)  #to be able to use the recode function on haven labelled variables
+require(labelled)  # to be able to use the recode function on haven labelled variables
 
 # inspect variable
 str(cv08_haven$var006n)
@@ -1799,7 +1799,9 @@ table(cv08_haven$educ3, useNA = "always")
 
 Personally, I think this is all quite complicated. But I guess this is a matter of taste.
 
-And advantage of the Tidy way is that you could use the `%>%`, the **piping operator**. Now, your code does not read from the inside out but from left to right. For many people this is more intuitive. The output of the function on the left is transported to the (first argument of the) function on the right. Thus, in the example below, you see that in the second and third call to mutate I don't have to tell the function which dataset I am using.
+And advantage of the Tidy way is that you could use the `%>%`, the **piping operator**. Now, your code does not read from the inside out but from left to right. For many people this is more intuitive. The output of the function on the left is transported to the (first argument of the) function on the right. Thus, in the example below, you see that in the second and third call to mutate I don't have to tell the function which dataset I am using. 
+
+> Note in Base R (since 4.1.0) `|>` is uased as a pipe operator.  
 
 
 ```{.r .numberLines}
@@ -1905,9 +1907,9 @@ Step 4: calculate means.
 
 ```{.r .numberLines}
 # How does the function mean work in R?
-mean(cv08$int055n)  #whoops
-mean(cv08$int055n, na.rm = TRUE)  #works.  but not what we want. 
-mean(c(cv08$int055n, cv08$int056n, cv08$int057n), na.rm = T)  #works but not what we want.
+mean(cv08$int055n)  # whoops
+mean(cv08$int055n, na.rm = TRUE)  # works.  but not what we want.
+mean(c(cv08$int055n, cv08$int056n, cv08$int057n), na.rm = T)  # works but not what we want.
 ```
 
 ```
@@ -1921,7 +1923,7 @@ This is not what we want. What we want is to calculate a mean for each row/respo
 
 ```{.r .numberLines}
 testmeans <- rowMeans(cbind(cv08$int055n, cv08$int056n, cv08$int057n), na.rm = T)
-head(testmeans)  #yes!
+head(testmeans)  # yes!
 ```
 
 ```
@@ -1941,10 +1943,6 @@ testmeans <- ifelse(nmis < 2, testmeans, NA)
 
 # add the calculated means to our dataset
 cv08$int_mean <- testmeans
-
-# Bonus: count specific values so now we have this, it is easy to find how many times respondents
-# answered 'zeer groot', that is '1' timesZG <- rowSums(cbind(cv08$int055n, cv08$int056n,
-# cv08$int057n)==1, na.rm=T)
 ```
 
 > You need to add a lot of very powerful functions to your cheat sheet: `mean()`, `rowMeans()`, `rowSums`, `cbind()`, `is.na()`, `ifelse().`
@@ -2055,7 +2053,7 @@ We need to follow these steps:
 
 
 ```{.r .numberLines}
-# step 1: selecting the variables you want to keep. for this tutorial only 6 variables: id, age,
+# step 1: selecting the variables you want to keep.  for this tutorial only 6 variables: id, age,
 # sex, educ, health, region (not that R is case sensitive)
 cv08_sel <- cv08[, c("we_id", "lftop", "geslacht", "var006n", "v401", "landd")]
 cv10_sel <- cv10[, c("Sleutel", "var002", "var001", "Vltoplop", "V401", "Landd")]
@@ -2129,7 +2127,7 @@ cv10_sel$educn <- as.numeric(cv10_sel$educ)
 table(cv10_sel$educn)
 # recode into 3cats: 1 primair, 2 secundari, 3 is tertiair
 cv10_sel$educ3 <- NA
-cv10_sel$educ3[cv10_sel$educn < 3] <- 1  #correct?
+cv10_sel$educ3[cv10_sel$educn < 3] <- 1  # correct?
 cv10_sel$educ3[cv10_sel$educn > 2 & cv10_sel$educn < 6] <- 2
 cv10_sel$educ3[cv10_sel$educn == 6] <- 3
 # check
@@ -2150,7 +2148,7 @@ cv08_sel$id2 <- rank(cv08_sel$id)
 cv10_sel$id2 <- rank(cv10_sel$id)
 
 # simply place one dataset under the other thus row bind (rbind) check first if same vars in both
-# datasets. perhaps clean up first.
+# datasets.  perhaps clean up first.
 
 cv08_sel <- cv08_sel[, c("id", "id2", "age", "men", "educ3", "health", "region", "wave")]
 cv10_sel <- cv10_sel[, c("id", "id2", "age", "men", "educ3", "health", "region", "wave")]
@@ -2305,7 +2303,7 @@ head(cv_tot_panel)
 
 
 ```{.r .numberLines}
-# step 1: selecting the variables you want to keep. for this tutorial only 6 variables: id, age,
+# step 1: selecting the variables you want to keep.  for this tutorial only 6 variables: id, age,
 # sex, educ, health, region (not that R is case sensitive)
 cv08_sel <- cv08_haven %>%
     dplyr::select(c("we_id", "lftop", "geslacht", "var006n", "v401", "landd"))
@@ -2370,7 +2368,7 @@ cv08_sel$id2 <- rank(cv08_sel$id)
 cv10_sel$id2 <- rank(cv10_sel$id)
 
 # simply place one dataset under the other thus row bind (rbind) check first if same vars in both
-# datasets. perhaps clean up first.
+# datasets.  perhaps clean up first.
 
 cv08_sel <- cv08_sel %>%
     dplyr::select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave"))
@@ -2541,7 +2539,7 @@ age_region <- mutate(age_region, mean = mean(age, na.rm = TRUE))
 cv_total_tidy <- cv_tot_tidy %>%
     group_by(region) %>%
     mutate(age_region = mean(age, na.rm = TRUE)) %>%
-    ungroup()  #because group_by() returns a grouped tibble (a tibble specific class with a group attribute), it's good practice to close the pipe-chain with ungroup() to avoid an errors down the line. 
+    ungroup()  # because group_by() returns a grouped tibble (a tibble specific class with a group attribute), it's good practice to close the pipe-chain with ungroup() to avoid any errors down the line.
 ```
 
 ## Missing values
@@ -2746,12 +2744,12 @@ summary(model3)
 
 We will use the R package @mice.
 
-For theory please see:  
-* [https://stefvanbuuren.name/Winnipeg](https://stefvanbuuren.name/Winnipeg)  
-* [https://stefvanbuuren.name/Winnipeg/Lectures/Winnipeg.pdf](https://stefvanbuuren.name/Winnipeg/Lectures/Winnipeg.pdf)  
+For more info please see:  
+
+* [mice](https://amices.org/mice/)  
 * For great reading see: [https://bookdown.org/mwheymans/bookmi/](https://bookdown.org/mwheymans/bookmi/)
 
-Read the literature, lectures and have a look at all vignettes of the package mice (here). This is not basic stuff!
+Read the literature and have a look at all vignettes of the package mice. This is not basic stuff!
 
 
 
@@ -2922,15 +2920,15 @@ summary(pool_model_imp)
 #>  West-Nederland         :2116   Mean   :2009  
 #>  Zuid-Nederland         :1163   3rd Qu.:2010  
 #>                                 Max.   :2010  
-#>                   term    estimate    std.error  statistic       df      p.value
-#> 1          (Intercept)  1.64227489 0.0515381739 31.8652131 4883.812 0.000000e+00
-#> 2                 men1 -0.01821954 0.0211574583 -0.8611405 4683.712 3.892048e-01
-#> 3                  age  0.01146351 0.0005846149 19.6086530 4854.560 0.000000e+00
-#> 4               educ32 -0.17813172 0.0292524289 -6.0894676 4881.477 1.219647e-09
-#> 5               educ33 -0.31977903 0.0330290911 -9.6817388 4859.881 0.000000e+00
-#> 6 regionOost-Nederland -0.05554060 0.0391698388 -1.4179430 4888.390 1.562711e-01
-#> 7 regionWest-Nederland -0.01515412 0.0360044223 -0.4208962 4888.453 6.738494e-01
-#> 8 regionZuid-Nederland  0.01582036 0.0387973170  0.4077694 4888.453 6.834609e-01
+#>                   term    estimate    std.error  statistic       df       p.value
+#> 1          (Intercept)  1.64227489 0.0515381739 31.8652131 4883.812 1.314456e-202
+#> 2                 men1 -0.01821954 0.0211574583 -0.8611405 4683.712  3.892048e-01
+#> 3                  age  0.01146351 0.0005846149 19.6086530 4854.560  1.877524e-82
+#> 4               educ32 -0.17813172 0.0292524289 -6.0894676 4881.477  1.219647e-09
+#> 5               educ33 -0.31977903 0.0330290911 -9.6817388 4859.881  5.686942e-22
+#> 6 regionOost-Nederland -0.05554060 0.0391698388 -1.4179430 4888.390  1.562711e-01
+#> 7 regionWest-Nederland -0.01515412 0.0360044223 -0.4208962 4888.453  6.738494e-01
+#> 8 regionZuid-Nederland  0.01582036 0.0387973170  0.4077694 4888.453  6.834609e-01
 ```
 
 ### Tidy
@@ -3097,23 +3095,23 @@ model3
 
 
 ```{.r .numberLines}
-  pred <- cv_total_tidy  %>%
-  dplyr::select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave")) %>% #start with the original variables.
-  mutate_all(as.numeric)  %>%
+pred <- cv_total_tidy %>%
+  dplyr::select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave")) %>% # start with the original variables.
+  mutate_all(as.numeric) %>%
   mutate_at(c("men", "educ3"), as.factor) %>%
   mice(method = c("", "", "cart", "logreg", "polr", "cart", "", "")) %>%
-  unclass() %>% #The object returned from the mice function is of class 'mids,' which dplyr's functions cannot handle. The unclass() function from base R solve this issue as it removes the class attribute and, in this case, returns a list that dplyr can handle.
-  pluck("predictorMatrix") %>% #the pluck() function from the Purrr package (part of the tidyverse) is the user-friendly equivalent of `[[` in base R: `[[`("predictorMatrix"), which enables you to extract a single element from the list we just created using unclass().
-  as.data.frame() %>% #Because the mutate function (and its variations) are not build for lists, we need to coerce into a data frame (or Tibble)
-  mutate_at(c("id", "id2", "age"), funs(recode(1, 0))) %>% #To 'remove' the columns id id2 and wave as predictors, we recode all their 1s to 0s using mutate_at() and recode().
+  unclass() %>% # The object returned from the mice function is of class 'mids,' which dplyr's functions cannot handle. The unclass() function from base R solve this issue as it removes the class attribute and, in this case, returns a list that dplyr can handle.
+  pluck("predictorMatrix") %>% # the pluck() function from the Purrr package (part of the tidyverse) is the user-friendly equivalent of `[[` in base R: `[[`("predictorMatrix"), which enables you to extract a single element from the list we just created using unclass().
+  as.data.frame() %>% # Because the mutate function (and its variations) are not build for lists, we need to coerce into a data frame (or Tibble)
+  mutate_at(c("id", "id2", "age"), funs(recode(1, 0))) %>% # To 'remove' the columns id id2 and wave as predictors, we recode all their 1s to 0s using mutate_at() and recode().
   as.matrix()
 
 
-#impute missings (again but now on correct predictors) and fit model on imputed dataset
+# impute missings (again but now on correct predictors) and fit model on imputed dataset
 
 model_imp <- cv_total_tidy %>%
-  dplyr::select(c("id","id2","age","men","educ3","health","region","wave")) %>%
-  mutate_all(as.numeric)  %>%
+  dplyr::select(c("id", "id2", "age", "men", "educ3", "health", "region", "wave")) %>%
+  mutate_all(as.numeric) %>%
   mutate_at(c("men", "educ3"), as.factor) %>%
   mice(method = c("", "", "cart", "logreg", "polr", "cart", "", ""), pred = pred, seed = 45622) %>%
   with(lm(as.numeric(health) ~ men + age + educ3 + region)) %>%
@@ -3138,8 +3136,7 @@ if (condition) {
 }
 ```
 
-Useful links:  
-- [r4ds](https://r4ds.had.co.nz/functions.html?q=if%20statement#conditional-execution)  
+Useful link:  
 - [Advanced R](https://adv-r.hadley.nz/control-flow.html?#choices)
 
 
@@ -3172,24 +3169,23 @@ But:
 x <- c(4, 5, 6, 2, 7, 897, 23, NA, 7)
 y <- c(7, 9, 6, 98, 1, NA, 3, NA, 7)
 
-output <- rep(NA, length(x))  #store data here
+output <- rep(NA, length(x))  # store data here
 for (i in seq_along(x)) {
     # I want to add x and y if both have valid values and otherwise just have the valid value.
     if (!is.na(x[i]) & !is.na(y[i])) {
-        output[i] <- x[i] + y[i]  #both have valid values. 
+        output[i] <- x[i] + y[i]  # both have valid values.
     } else if (!is.na(x[i]) & is.na(y[i])) {
-        output[i] <- x[i]  #only x has valid value
+        output[i] <- x[i]  # only x has valid value
     } else if (is.na(x[i]) & !is.na(y[i])) {
-        output[i] <- y[i]  #only y has valid value
+        output[i] <- y[i]  # only y has valid value
     } else {
-        output[i] <- NA  #no valid values
+        output[i] <- NA  # no valid values
     }
 }
 ```
 
 
-Useful links:  
-- [r4ds](https://r4ds.had.co.nz/iteration.html?q=lapply#for-loops)  
+Useful link:  
 - [Advanced R](https://adv-r.hadley.nz/control-flow.html#loops)  
 (Just read the complete chapters please.)
 
@@ -3200,7 +3196,7 @@ A very useful object in R. Please try to use them asap.
 
 Useful links:  
 - The basics: [Quick R](https://www.statmethods.net/input/datatypes.html)  
-- All you need to know (just read the complete chapter please): [r4ds](https://r4ds.had.co.nz/vectors.html?q=lists#lists)  
+- All you need to know (just read the complete chapter please): [r4ds](https://r4ds.hadley.nz/rectangling.html#lists)  
 - Advanced (just read the complete chapter please): [Advanced R](https://adv-r.hadley.nz/vectors-chap.html#lists)
 
 
@@ -3218,13 +3214,34 @@ Think of the desired output. Should it be a list or a vector?
 Some personal opinions:  
 
 - start the name of your new function with an "f" and use "snake_case": `fnew_name`  
-- Always use `return`: `fnew_name(arg1) {output <- arg1 + 1; return(output)}`  
-- Use comments either above the line or at the same line: `fnew_name(arg1) {#what am I doing in the next line; output <- arg + 1; return(output) #what do I do in this line}`  
-- return an informative error if something goes wrong: `if (length(arg1)!=length(arg2)) stop("arguments have a different length")`
+- Always use `return`: 
+
+```
+fnew_name(arg1) {
+  output <- arg1 + 1
+  return(output)
+  }
+```
+
+- Use comments either above the line or at the same line: 
+
+```
+fnew_name(arg1) {
+  #what am I doing in the next line; 
+  output <- arg + 1; 
+  return(output) #what do I do in this line
+  }
+``` 
+
+- return an informative error if something goes wrong: 
+
+```
+if (length(arg1) != length(arg2)) stop("arguments have a different length")
+``` 
 
 Useful links:  
 - The basics: [Quick R](https://www.statmethods.net/management/userfunctions.html)  
-- All you need to know: [r4ds](https://r4ds.had.co.nz/functions.html?q=function#functions)  
+- All you need to know: [r4ds](https://r4ds.hadley.nz/functions)  
 - Advanced: [Advanced R](http://adv-r.had.co.nz/Functions.html)
 
 
@@ -3245,7 +3262,7 @@ Time to practice.
 * Consider the following list: `annoyinglist <- list(v1=c(2,45,6, NA), v2=c(23536), v3=NA, v4=c(2346))`  
   - calculate the mean of **all** elements saved in the annoyinglist with a loop  
   - calculate the mean of each list-element (i.e. `v1 v2 v3`) with a loop  
-  - Please do the two same things but know with using lapply, map and do.call  
+  - Please do the two same things but now with using lapply, map and do.call  
   - Define your own function which does the two same things and just needs as input the list. 
 
 ---  
@@ -3296,7 +3313,7 @@ Run the code chunck below to simulate some data.
 
 ```{.r .numberLines}
 require(MASS)
-set.seed(9864)  #We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
+set.seed(9864)  # We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
 
 # let us start with simulating the opinion of both partners.
 Sigma <- matrix(c(10, 4, 4, 5), 2, 2)
@@ -3367,7 +3384,7 @@ Lets us start with something that pops up in your mind immediately...a correlati
 
 
 ```{.r .numberLines}
-cov(data$opinion_M, data$opinion_W)  #the covariance between the two variables. Have a look at the simulation. This is indeed what we have put into the data. 
+cov(data$opinion_M, data$opinion_W)  # the covariance between the two variables. Have a look at the simulation. This is indeed what we have put into the data.
 ```
 
 ```
@@ -3375,7 +3392,7 @@ cov(data$opinion_M, data$opinion_W)  #the covariance between the two variables. 
 ```
 
 ```{.r .numberLines}
-cov(scale(data$opinion_M), scale(data$opinion_W))  #the covariance between the two standardized variables. That is the correlation. 
+cov(scale(data$opinion_M), scale(data$opinion_W))  # the covariance between the two standardized variables. That is the correlation.
 ```
 
 ```
@@ -3384,7 +3401,7 @@ cov(scale(data$opinion_M), scale(data$opinion_W))  #the covariance between the t
 ```
 
 ```{.r .numberLines}
-cor.test(data$opinion_M, data$opinion_W)  #See, same value. Now also with significance. 
+cor.test(data$opinion_M, data$opinion_W)  # See, same value. Now also with significance.
 ```
 
 ```
@@ -3431,7 +3448,7 @@ It is even possible that to now see a negative (and significant) correlation. Fo
 
 ```{.r .numberLines}
 require(MASS)
-set.seed(9864)  #We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
+set.seed(9864)  # We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
 
 # let us start with simulating the opinion of both partners.
 Sigma <- matrix(c(10, 4, 4, 5), 2, 2)
@@ -3516,7 +3533,7 @@ With this dataset in longformat we can calculate the ICC.
 # the dyads once (thus N_dyads=1000)
 S_B <- var(data_long$dyadmean[1:1000])
 # within variance
-SW <- sum((data_long$opinion - data_long$dyadmean)^2)/1000  #we divide by the number of dyads
+SW <- sum((data_long$opinion - data_long$dyadmean)^2)/1000  # we divide by the number of dyads
 # We now need to correct the observed between variance to reflect the population between variance.
 S_B_E <- S_B - SW/2
 ICC_ML <- S_B_E/(S_B_E + SW)
@@ -3538,7 +3555,7 @@ mlme <- lme(opinion ~ 1, data = data_long, random = list(~1 | dyad_id), )
 summary(mlme)
 # Standard deviations are reported instead of variances.  extract the variances.
 VarCorr(mlme)
-# the intercept variance is at the between-level. the residual variances are at the observation /
+# the intercept variance is at the between-level.  the residual variances are at the observation /
 # within-level.  thus based on these numbers we may calculate the ICC ourselves.
 varests <- as.numeric(VarCorr(mlme)[1:2])
 varests
@@ -3559,20 +3576,20 @@ ICC_MLb
 #> 
 #> Fixed effects:  opinion ~ 1 
 #>                Value  Std.Error   DF  t-value p-value
-#> (Intercept) 4.603242 0.07682307 1000 59.92004       0
+#> (Intercept) 4.603242 0.07682306 1000 59.92005       0
 #> 
 #> Standardized Within-Group Residuals:
 #>         Min          Q1         Med          Q3         Max 
-#> -3.28830881 -0.51102249  0.01645221  0.57161594  2.75065667 
+#> -3.28830880 -0.51102270  0.01645208  0.57161606  2.75065678 
 #> 
 #> Number of Observations: 2000
 #> Number of Groups: 1000 
 #> dyad_id = pdLogChol(1) 
 #>             Variance StdDev  
-#> (Intercept) 3.993974 1.998493
-#> Residual    3.815620 1.953361
-#> [1] 3.993974 3.815620
-#> [1] 0.5114189
+#> (Intercept) 3.993973 1.998493
+#> Residual    3.815621 1.953361
+#> [1] 3.993973 3.815621
+#> [1] 0.5114188
 ```
 
 In this course we will rely heavily on the Lavaan package. We can also calculate the ICC with Lavaan. 
@@ -3594,15 +3611,15 @@ summary(fit)
 ```
 
 ```
-#> lavaan 0.6-11 ended normally after 7 iterations
+#> lavaan 0.6.17 ended normally after 7 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
 #>   Number of model parameters                         3
-#>                                                       
+#> 
 #>   Number of observations                          2000
 #>   Number of clusters [dyad_id]                    1000
-#>                                                       
+#> 
 #> Model Test User Model:
 #>                                                       
 #>   Test statistic                                 0.000
@@ -3660,11 +3677,11 @@ Run the code chunck below to simulate some data.
 
 ```{.r .numberLines}
 require(MASS)
-set.seed(9864)  #We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
+set.seed(9864)  # We set a seed. In this we the random numbers we will generate be the same and we thus end up with the same dataset. Please not that to be absolutely sure to get the same dataset, we need to run the same R version (and packages).
 
 # let us start with simulating the opinion of ego and its alters.
 Sigma <- matrix(sample(c(1, 2, 3), 36, replace = T), 6, 6)
-Sigma[lower.tri(Sigma)] = t(Sigma)[lower.tri(Sigma)]
+Sigma[lower.tri(Sigma)] <- t(Sigma)[lower.tri(Sigma)]
 diag(Sigma) <- c(5, 4, 6, 3, 7, 6)
 # Sigma
 
@@ -3701,41 +3718,41 @@ describe(data)
 
 ```
 #>   egonet_id opinion_alter1 opinion_alter2 opinion_alter3 opinion_alter4 opinion_alter5
-#> 1         1     -0.1024247       2.473552       2.993974      0.1604888      1.7443645
-#> 2         2      6.4712148       2.689709       6.052834      5.7392350      7.1487502
-#> 3         3      4.0474525       1.715663       2.469049      2.7659637      0.8816233
-#> 4         4      1.4692597       4.354919       4.253400      0.3809896      4.0698368
-#> 5         5      1.8042561       3.262400       4.754952      0.4194922      4.5527566
-#> 6         6      5.4410875       6.103960       3.432771      3.7275621      2.0488686
+#> 1         1   -0.002812297       2.341753       3.184144     0.06355581      0.7949200
+#> 2         2    6.420180903       2.757233       5.955405     5.78889612      7.6351737
+#> 3         3    4.035976025       1.730848       2.447139     2.77713143      0.9910096
+#> 4         4    1.572971112       4.217697       4.451395     0.28006793      3.0813234
+#> 5         5    1.847221600       3.205552       4.836978     0.37768238      4.1432356
+#> 6         6    5.896886119       5.500884       4.302935     3.28402390     -2.2955251
 #> 'data.frame':	1000 obs. of  6 variables:
 #>  $ egonet_id     : int  1 2 3 4 5 6 7 8 9 10 ...
-#>  $ opinion_alter1: num  -0.102 6.471 4.047 1.469 1.804 ...
-#>  $ opinion_alter2: num  2.47 2.69 1.72 4.35 3.26 ...
-#>  $ opinion_alter3: num  2.99 6.05 2.47 4.25 4.75 ...
-#>  $ opinion_alter4: num  0.16 5.739 2.766 0.381 0.419 ...
-#>  $ opinion_alter5: num  1.744 7.149 0.882 4.07 4.553 ...
+#>  $ opinion_alter1: num  -0.00281 6.42018 4.03598 1.57297 1.84722 ...
+#>  $ opinion_alter2: num  2.34 2.76 1.73 4.22 3.21 ...
+#>  $ opinion_alter3: num  3.18 5.96 2.45 4.45 4.84 ...
+#>  $ opinion_alter4: num  0.0636 5.7889 2.7771 0.2801 0.3777 ...
+#>  $ opinion_alter5: num  0.795 7.635 0.991 3.081 4.143 ...
 #>    egonet_id      opinion_alter1   opinion_alter2   opinion_alter3   opinion_alter4  
-#>  Min.   :   1.0   Min.   :-1.855   Min.   :-5.919   Min.   :-1.443   Min.   :-4.722  
-#>  1st Qu.: 250.8   1st Qu.: 2.713   1st Qu.: 2.515   1st Qu.: 3.014   1st Qu.: 2.179  
-#>  Median : 500.5   Median : 4.027   Median : 4.146   Median : 4.132   Median : 4.014  
-#>  Mean   : 500.5   Mean   : 4.058   Mean   : 4.118   Mean   : 4.131   Mean   : 3.943  
-#>  3rd Qu.: 750.2   3rd Qu.: 5.426   3rd Qu.: 5.765   3rd Qu.: 5.318   3rd Qu.: 5.732  
-#>  Max.   :1000.0   Max.   :10.244   Max.   :12.382   Max.   :10.869   Max.   :11.874  
+#>  Min.   :   1.0   Min.   :-1.903   Min.   :-6.030   Min.   :-1.951   Min.   :-4.307  
+#>  1st Qu.: 250.8   1st Qu.: 2.744   1st Qu.: 2.508   1st Qu.: 2.958   1st Qu.: 2.205  
+#>  Median : 500.5   Median : 4.035   Median : 4.169   Median : 4.118   Median : 4.038  
+#>  Mean   : 500.5   Mean   : 4.052   Mean   : 4.125   Mean   : 4.121   Mean   : 3.948  
+#>  3rd Qu.: 750.2   3rd Qu.: 5.435   3rd Qu.: 5.825   3rd Qu.: 5.286   3rd Qu.: 5.753  
+#>  Max.   :1000.0   Max.   :10.038   Max.   :12.676   Max.   :11.346   Max.   :11.918  
 #>  opinion_alter5  
-#>  Min.   :-3.280  
-#>  1st Qu.: 2.528  
-#>  Median : 4.044  
-#>  Mean   : 4.100  
-#>  3rd Qu.: 5.764  
-#>  Max.   :13.241  
+#>  Min.   :-3.012  
+#>  1st Qu.: 2.540  
+#>  Median : 4.128  
+#>  Mean   : 4.153  
+#>  3rd Qu.: 5.762  
+#>  Max.   :12.227  
 #> NULL
 #>                vars    n   mean     sd median trimmed    mad   min     max  range  skew kurtosis
 #> egonet_id         1 1000 500.50 288.82 500.50  500.50 370.65  1.00 1000.00 999.00  0.00    -1.20
-#> opinion_alter1    2 1000   4.06   1.98   4.03    4.06   2.00 -1.86   10.24  12.10  0.03    -0.21
-#> opinion_alter2    3 1000   4.12   2.46   4.15    4.11   2.41 -5.92   12.38  18.30 -0.03     0.26
-#> opinion_alter3    4 1000   4.13   1.75   4.13    4.14   1.71 -1.44   10.87  12.31 -0.04     0.26
-#> opinion_alter4    5 1000   3.94   2.64   4.01    3.97   2.66 -4.72   11.87  16.60 -0.09    -0.09
-#> opinion_alter5    6 1000   4.10   2.44   4.04    4.09   2.43 -3.28   13.24  16.52  0.03     0.00
+#> opinion_alter1    2 1000   4.05   1.99   4.04    4.06   1.99 -1.90   10.04  11.94  0.01    -0.21
+#> opinion_alter2    3 1000   4.12   2.45   4.17    4.12   2.46 -6.03   12.68  18.71 -0.04     0.28
+#> opinion_alter3    4 1000   4.12   1.74   4.12    4.13   1.73 -1.95   11.35  13.30 -0.03     0.35
+#> opinion_alter4    5 1000   3.95   2.63   4.04    3.97   2.63 -4.31   11.92  16.22 -0.09    -0.11
+#> opinion_alter5    6 1000   4.15   2.49   4.13    4.14   2.38 -3.01   12.23  15.24  0.04    -0.11
 #>                  se
 #> egonet_id      9.13
 #> opinion_alter1 0.06
@@ -3757,14 +3774,14 @@ head(data_long)
 
 ```
 #> # A tibble: 6 × 3
-#>   egonet_id alter          opinion
-#>       <int> <chr>            <dbl>
-#> 1         1 opinion_alter1  -0.102
-#> 2         1 opinion_alter2   2.47 
-#> 3         1 opinion_alter3   2.99 
-#> 4         1 opinion_alter4   0.160
-#> 5         1 opinion_alter5   1.74 
-#> 6         2 opinion_alter1   6.47
+#>   egonet_id alter           opinion
+#>       <int> <chr>             <dbl>
+#> 1         1 opinion_alter1 -0.00281
+#> 2         1 opinion_alter2  2.34   
+#> 3         1 opinion_alter3  3.18   
+#> 4         1 opinion_alter4  0.0636 
+#> 5         1 opinion_alter5  0.795  
+#> 6         2 opinion_alter1  6.42
 ```
 
 #### ICC via ML
@@ -3777,7 +3794,7 @@ mlme <- lme(opinion ~ 1, data = data_long, random = list(~1 | egonet_id), )
 summary(mlme)
 # Standard deviations are reported instead of variances.  extract the variances.
 VarCorr(mlme)
-# the intercept variance is at the between-level. the residual variances are at the observation /
+# the intercept variance is at the between-level.  the residual variances are at the observation /
 # within-level.  thus based on these numbers we may calculate the ICC ourselves.
 varests <- as.numeric(VarCorr(mlme)[1:2])
 varests
@@ -3788,30 +3805,30 @@ ICC_MLb
 ```
 #> Linear mixed-effects model fit by REML
 #>   Data: data_long 
-#>        AIC     BIC    logLik
-#>   21837.85 21857.4 -10915.93
+#>        AIC      BIC    logLik
+#>   21909.51 21929.06 -10951.75
 #> 
 #> Random effects:
 #>  Formula: ~1 | egonet_id
 #>         (Intercept) Residual
-#> StdDev:     1.22191 1.921997
+#> StdDev:    1.206648 1.941675
 #> 
 #> Fixed effects:  opinion ~ 1 
 #>                Value  Std.Error   DF  t-value p-value
-#> (Intercept) 4.069793 0.04724277 4000 86.14638       0
+#> (Intercept) 4.079877 0.04701084 4000 86.78588       0
 #> 
 #> Standardized Within-Group Residuals:
 #>         Min          Q1         Med          Q3         Max 
-#> -3.77787873 -0.59863578  0.01410604  0.59669184  4.14533775 
+#> -3.76909452 -0.60344130  0.01233244  0.59998904  4.12122284 
 #> 
 #> Number of Observations: 5000
 #> Number of Groups: 1000 
 #> egonet_id = pdLogChol(1) 
 #>             Variance StdDev  
-#> (Intercept) 1.493065 1.221910
-#> Residual    3.694073 1.921997
-#> [1] 1.493065 3.694073
-#> [1] 0.2878398
+#> (Intercept) 1.455998 1.206648
+#> Residual    3.770102 1.941675
+#> [1] 1.455998 3.770102
+#> [1] 0.2786013
 ```
 #### ICC via SEM/lavaan
 
@@ -3831,15 +3848,15 @@ summary(fit)
 ```
 
 ```
-#> lavaan 0.6-11 ended normally after 11 iterations
+#> lavaan 0.6.17 ended normally after 11 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
 #>   Number of model parameters                         3
-#>                                                       
+#> 
 #>   Number of observations                          5000
 #>   Number of clusters [egonet_id]                  1000
-#>                                                       
+#> 
 #> Model Test User Model:
 #>                                                       
 #>   Test statistic                                 0.000
@@ -3860,18 +3877,18 @@ summary(fit)
 #> 
 #> Variances:
 #>                    Estimate  Std.Err  z-value  P(>|z|)
-#>     opinion           3.694    0.083   44.721    0.000
+#>     opinion           3.770    0.084   44.721    0.000
 #> 
 #> 
 #> Level 2 [egonet_id]:
 #> 
 #> Intercepts:
 #>                    Estimate  Std.Err  z-value  P(>|z|)
-#>     opinion           4.070    0.047   86.190    0.000
+#>     opinion           4.080    0.047   86.829    0.000
 #> 
 #> Variances:
 #>                    Estimate  Std.Err  z-value  P(>|z|)
-#>     opinion           1.491    0.101   14.750    0.000
+#>     opinion           1.454    0.100   14.514    0.000
 ```
 
 ```{.r .numberLines}
@@ -3880,7 +3897,7 @@ lavInspect(fit, "icc")
 
 ```
 #> opinion 
-#>   0.288
+#>   0.278
 ```
 
 
@@ -3891,6 +3908,3 @@ lavInspect(fit, "icc")
 <div id="refs"></div>
 
 ---  
-
-
-
