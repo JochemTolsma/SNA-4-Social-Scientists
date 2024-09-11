@@ -655,10 +655,10 @@ div.csl-indent {
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="webintro.html#cb128-1" tabindex="-1"></a>soc_staff <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://web.archive.org/web/20230528153336/https://www.ru.nl/sociology/research/staff/&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="webintro.html#cb129-1" tabindex="-1"></a><span class="fu">head</span>(soc_staff)</span></code></pre></div>
 <pre><code>#&gt; $node
-#&gt; &lt;pointer: 0x00000177f48fec50&gt;
+#&gt; &lt;pointer: 0x000001ecd41fe350&gt;
 #&gt; 
 #&gt; $doc
-#&gt; &lt;pointer: 0x00000177ef6e6e00&gt;</code></pre>
+#&gt; &lt;pointer: 0x000001ecd0bff460&gt;</code></pre>
 <p>That looks kinda weird. What type of object did we store it by putting the html into <code>soc_staff</code>?</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="webintro.html#cb131-1" tabindex="-1"></a><span class="fu">class</span>(soc_staff)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;xml_document&quot; &quot;xml_node&quot;</code></pre>

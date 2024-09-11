@@ -35,7 +35,7 @@ Dyads are the smallest possible networks. For undirected relations there are two
 
 
 <div class="figure">
-<img src="slide3.PNG" alt="undirected dyad configurations" width="50%" />
+<img src="Slide3.PNG" alt="undirected dyad configurations" width="50%" />
 <p class="caption">(\#fig:ud)undirected dyad configurations</p>
 </div>
 
@@ -43,7 +43,7 @@ Dyads are the smallest possible networks. For undirected relations there are two
 There are four options for directed dayds. See Figure \@ref(fig:dd). However, two configurations (the two in the middle row) are *isomorphic*. We cannot distinguish them in the network. From now on, I won't draw all isomorphs.
 
 <div class="figure">
-<img src="slide4.PNG" alt="undirected dyad configurations" width="100%" />
+<img src="Slide4.PNG" alt="undirected dyad configurations" width="100%" />
 <p class="caption">(\#fig:dd)undirected dyad configurations</p>
 </div>
 
@@ -52,7 +52,7 @@ When there is a tie from *i* to *j* and vice versa, we call this a reciprocated 
 If we consider two types of undirected relations simultaneously, we have three distinct configurations. See Figure \@ref(fig:mud).
 
 <div class="figure">
-<img src="slide5.PNG" alt="multiplex, undirected dyad configurations" width="100%" />
+<img src="Slide5.PNG" alt="multiplex, undirected dyad configurations" width="100%" />
 <p class="caption">(\#fig:mud)multiplex, undirected dyad configurations</p>
 </div>
 
@@ -61,7 +61,7 @@ Explanations for multiplex configuration are multicomplex. A first step to consi
 Lets have a look at the possible configuration of directed dyads with two types of relations (Figure \@ref(fig:mdd))
 
 <div class="figure">
-<img src="slide6.PNG" alt="multiplex, undirected dyad configurations" width="100%" />
+<img src="Slide6.PNG" alt="multiplex, undirected dyad configurations" width="100%" />
 <p class="caption">(\#fig:mdd)multiplex, undirected dyad configurations</p>
 </div>
 Can you come up with an explanation for each configuration? Well you should if you study multiple type of relations between (two) social agents! But let us start with a single undirected tie: marriage. 

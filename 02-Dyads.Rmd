@@ -79,14 +79,14 @@ Dyads are the smallest possible networks. For undirected relations there are two
 
 
 ```{r ud, echo=FALSE, , eval=TRUE, fig.cap="undirected dyad configurations", out.width = '50%'}
-knitr::include_graphics("slide3.PNG")
+knitr::include_graphics("Slide3.PNG")
 ```
 
 
 There are four options for directed dayds. See Figure \@ref(fig:dd). However, two configurations (the two in the middle row) are *isomorphic*. We cannot distinguish them in the network. From now on, I won't draw all isomorphs.
 
 ```{r dd, echo=FALSE, , eval=TRUE, fig.cap="undirected dyad configurations", out.width = '100%'}
-knitr::include_graphics("slide4.PNG")
+knitr::include_graphics("Slide4.PNG")
 ```
 
 When there is a tie from *i* to *j* and vice versa, we call this a reciprocated dyad. I hope you see that the reasons for me to start or break a relation with you (e.g. a helping relation) if you don't have a relation with me, may be different from the reasons for me to start or break a relation with you if you already have a relation with me. 
@@ -94,7 +94,7 @@ When there is a tie from *i* to *j* and vice versa, we call this a reciprocated 
 If we consider two types of undirected relations simultaneously, we have three distinct configurations. See Figure \@ref(fig:mud).
 
 ```{r mud, echo=FALSE, , eval=TRUE, fig.cap="multiplex, undirected dyad configurations", out.width = '100%'}
-knitr::include_graphics("slide5.PNG")
+knitr::include_graphics("Slide5.PNG")
 ```
 
 Explanations for multiplex configuration are multicomplex. A first step to consider is whether there is a necessary, or likely, order in the relations. To illustrate. I first became friends with my wife and afterwards she became my wife. Although this situations hopefully holds true for most married couples, it is not logically necessary of course. A second step is to consider the valence of the relations. Are they positive or negative. It is not likely that I would name my friend a foe and vice versa but there is a thin line between love and hate. Feelings of hate and love for the same person may even coexist. Ever heard someone saying: "I can't live with him/her but I can't live without him/her either"?.
@@ -102,7 +102,7 @@ Explanations for multiplex configuration are multicomplex. A first step to consi
 Lets have a look at the possible configuration of directed dyads with two types of relations (Figure \@ref(fig:mdd))
 
 ```{r mdd, echo=FALSE, , eval=TRUE, fig.cap="multiplex, undirected dyad configurations", out.width = '100%'}
-knitr::include_graphics("slide6.PNG")
+knitr::include_graphics("Slide6.PNG")
 ```
 Can you come up with an explanation for each configuration? Well you should if you study multiple type of relations between (two) social agents! But let us start with a single undirected tie: marriage. 
 

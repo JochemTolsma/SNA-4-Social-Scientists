@@ -118,7 +118,7 @@ Let us start with all possible triad configurations if we have a (binary) undire
 
 
 ```{r ut, echo=FALSE, , eval=TRUE, fig.cap="undirected triad configurations", out.width = '30%'}
-knitr::include_graphics("Slide7.png")
+knitr::include_graphics("Slide7.PNG")
 ```
 
 
@@ -130,7 +130,7 @@ We observe an *unconnected* triad, a triad with a *connected pair*, an *open tri
 We only have three nodes but network structures become complex quite quickly. See Figure \@ref(fig:mut) for the many possible configurations for triads when we consider two different type of undirected ties (i.e. multiplexity). 
 
 ```{r mut, echo=FALSE, , eval=TRUE, fig.cap="Multiplex, undirected triad configurations", out.width = '100%'}
-knitr::include_graphics("Slide8.png")
+knitr::include_graphics("Slide8.PNG")
 ```
 
 
@@ -160,7 +160,7 @@ knitr::include_graphics("Capture.png")
 Suppose we are trying to come up with an explanation for why we observe transitive triads (030T) in our network. We must realize that a transitive dyad may be the outcome of different evolution processes. See Figure \@ref(fig:evo).
 
 ```{r evo, echo=FALSE, eval=TRUE, fig.cap="Different pathways to a transitive triad.", out.width = '100%'}
-knitr::include_graphics("slide9.png")
+knitr::include_graphics("Slide9.PNG")
 ```
 That is, if we assume that each tie is made subsequently, thus not two tie are created at the same time.^[Otherwise there would be a third pathway directly from the situation on the left to the end state, the transitive triad, on the right.] The reason why *i* closes the triad, may be very different from the reason why *k* closes the triad. It all depends on the social relation under consideration. The take home message is that we need longitudinal data if we would like to disentangle specific explanations.   
 

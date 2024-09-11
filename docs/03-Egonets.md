@@ -34,7 +34,7 @@ Let us start with all possible triad configurations if we have a (binary) undire
 
 
 <div class="figure">
-<img src="Slide7.png" alt="undirected triad configurations" width="30%" />
+<img src="Slide7.PNG" alt="undirected triad configurations" width="30%" />
 <p class="caption">(\#fig:ut)undirected triad configurations</p>
 </div>
 
@@ -47,7 +47,7 @@ We observe an *unconnected* triad, a triad with a *connected pair*, an *open tri
 We only have three nodes but network structures become complex quite quickly. See Figure \@ref(fig:mut) for the many possible configurations for triads when we consider two different type of undirected ties (i.e. multiplexity). 
 
 <div class="figure">
-<img src="Slide8.png" alt="Multiplex, undirected triad configurations" width="100%" />
+<img src="Slide8.PNG" alt="Multiplex, undirected triad configurations" width="100%" />
 <p class="caption">(\#fig:mut)Multiplex, undirected triad configurations</p>
 </div>
 
@@ -80,7 +80,7 @@ This triad census has been developed by @davis1967 and their original picture in
 Suppose we are trying to come up with an explanation for why we observe transitive triads (030T) in our network. We must realize that a transitive dyad may be the outcome of different evolution processes. See Figure \@ref(fig:evo).
 
 <div class="figure">
-<img src="slide9.png" alt="Different pathways to a transitive triad." width="100%" />
+<img src="Slide9.PNG" alt="Different pathways to a transitive triad." width="100%" />
 <p class="caption">(\#fig:evo)Different pathways to a transitive triad.</p>
 </div>
 That is, if we assume that each tie is made subsequently, thus not two tie are created at the same time.^[Otherwise there would be a third pathway directly from the situation on the left to the end state, the transitive triad, on the right.] The reason why *i* closes the triad, may be very different from the reason why *k* closes the triad. It all depends on the social relation under consideration. The take home message is that we need longitudinal data if we would like to disentangle specific explanations.   
