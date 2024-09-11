@@ -118,7 +118,7 @@ Let us start with all possible triad configurations if we have a (binary) undire
 
 
 ```{r ut, echo=FALSE, , eval=TRUE, fig.cap="undirected triad configurations", out.width = '30%'}
-knitr::include_graphics("slide7.png")
+knitr::include_graphics("Slide7.png")
 ```
 
 
@@ -130,7 +130,7 @@ We observe an *unconnected* triad, a triad with a *connected pair*, an *open tri
 We only have three nodes but network structures become complex quite quickly. See Figure \@ref(fig:mut) for the many possible configurations for triads when we consider two different type of undirected ties (i.e. multiplexity). 
 
 ```{r mut, echo=FALSE, , eval=TRUE, fig.cap="Multiplex, undirected triad configurations", out.width = '100%'}
-knitr::include_graphics("slide8.png")
+knitr::include_graphics("Slide8.png")
 ```
 
 

@@ -34,7 +34,7 @@ Let us start with all possible triad configurations if we have a (binary) undire
 
 
 <div class="figure">
-<img src="slide7.png" alt="undirected triad configurations" width="30%" />
+<img src="Slide7.png" alt="undirected triad configurations" width="30%" />
 <p class="caption">(\#fig:ut)undirected triad configurations</p>
 </div>
 
@@ -47,7 +47,7 @@ We observe an *unconnected* triad, a triad with a *connected pair*, an *open tri
 We only have three nodes but network structures become complex quite quickly. See Figure \@ref(fig:mut) for the many possible configurations for triads when we consider two different type of undirected ties (i.e. multiplexity). 
 
 <div class="figure">
-<img src="slide8.png" alt="Multiplex, undirected triad configurations" width="100%" />
+<img src="Slide8.png" alt="Multiplex, undirected triad configurations" width="100%" />
 <p class="caption">(\#fig:mut)Multiplex, undirected triad configurations</p>
 </div>
 
