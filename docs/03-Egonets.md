@@ -52,10 +52,11 @@ We only have three nodes but network structures become complex quite quickly. Se
 </div>
 
 
-By now, I am a bit tired of drawing all these nodes and relations. Luckily, the net is full of pictures of the possible directed triad configurations. I stole this one from an online workshop on Social Network Analysis for Anthropologists [here](https://eehh-stanford.github.io/SNA-workshop/).
+And below (\@ref(fig:dt)) you will find the 16 different triad configurations for directed networks.  
+
 
 <div class="figure">
-<img src="new-triad-census.png" alt="Directed triad configurations" width="100%" />
+<img src="TriadsCensus.png" alt="Directed triad configurations" width="100%" />
 <p class="caption">(\#fig:dt)Directed triad configurations</p>
 </div>
 
@@ -73,7 +74,7 @@ These triads all have unique names:
 This triad census has been developed by @davis1967 and their original picture in the paper is too cool not to show here:
 
 <div class="figure">
-<img src="Capture.png" alt="Original Triad census by Davis and Leinhard (1967)" width="100%" />
+<img src="Capture.PNG" alt="Original Triad census by Davis and Leinhard (1967)" width="100%" />
 <p class="caption">(\#fig:triadold)Original Triad census by Davis and Leinhard (1967)</p>
 </div>
 

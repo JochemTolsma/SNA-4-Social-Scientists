@@ -134,10 +134,11 @@ knitr::include_graphics("Slide8.PNG")
 ```
 
 
-By now, I am a bit tired of drawing all these nodes and relations. Luckily, the net is full of pictures of the possible directed triad configurations. I stole this one from an online workshop on Social Network Analysis for Anthropologists [here](https://eehh-stanford.github.io/SNA-workshop/).
+And below (\@ref(fig:dt)) you will find the 16 different triad configurations for directed networks.  
+
 
 ```{r dt, echo=FALSE, , eval=TRUE, fig.cap="Directed triad configurations", out.width = '100%'}
-knitr::include_graphics("new-triad-census.png")
+knitr::include_graphics("TriadsCensus.png")
 ```
 
 These triads all have unique names: 
@@ -154,7 +155,7 @@ These triads all have unique names:
 This triad census has been developed by @davis1967 and their original picture in the paper is too cool not to show here:
 
 ```{r triadold, echo=FALSE, , eval=TRUE, fig.cap="Original Triad census by Davis and Leinhard (1967)", out.width = '100%'}
-knitr::include_graphics("Capture.png")
+knitr::include_graphics("Capture.PNG")
 ```
 
 Suppose we are trying to come up with an explanation for why we observe transitive triads (030T) in our network. We must realize that a transitive dyad may be the outcome of different evolution processes. See Figure \@ref(fig:evo).
