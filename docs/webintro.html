@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2024-09-11" />
+<meta name="date" content="2024-09-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -655,10 +655,10 @@ div.csl-indent {
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="webintro.html#cb128-1" tabindex="-1"></a>soc_staff <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://web.archive.org/web/20230528153336/https://www.ru.nl/sociology/research/staff/&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="webintro.html#cb129-1" tabindex="-1"></a><span class="fu">head</span>(soc_staff)</span></code></pre></div>
 <pre><code>#&gt; $node
-#&gt; &lt;pointer: 0x000001ecd41fe350&gt;
+#&gt; &lt;pointer: 0x00000214c225a250&gt;
 #&gt; 
 #&gt; $doc
-#&gt; &lt;pointer: 0x000001ecd0bff460&gt;</code></pre>
+#&gt; &lt;pointer: 0x00000214bfaff670&gt;</code></pre>
 <p>That looks kinda weird. What type of object did we store it by putting the html into <code>soc_staff</code>?</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="webintro.html#cb131-1" tabindex="-1"></a><span class="fu">class</span>(soc_staff)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;xml_document&quot; &quot;xml_node&quot;</code></pre>
@@ -3778,7 +3778,7 @@ radboud university
 #&gt; [1] &quot;Professor, Radboud University Nijmegen / University of Groningen&quot;
 #&gt; 
 #&gt; $total_cites
-#&gt; [1] 3391
+#&gt; [1] 3392
 #&gt; 
 #&gt; $h_index
 #&gt; [1] 27
@@ -4155,7 +4155,7 @@ radboud university
 #&gt;                                                                    number cites year
 #&gt; 1                                                                           712 2014
 #&gt; 2                                                         27 (6), 741-758   372 2011
-#&gt; 3                                                                  44 (3)   329 2009
+#&gt; 3                                                                  44 (3)   328 2009
 #&gt; 4                                                         27 (3), 291-306   158 2011
 #&gt; 5                                                           35 (1), 51-61   154 2013
 #&gt; 6                                                         24 (2), 215-230   135 2008
@@ -4165,7 +4165,7 @@ radboud university
 #&gt; 10                                                        60 (2), 257-277    84 2009
 #&gt; 11                                                        26 (2), 235-252    82 2010
 #&gt; 12                                                          27 (1), 20-33    69 2017
-#&gt; 13                                                        33 (2), 209-224    67 2017
+#&gt; 13                                                        33 (2), 209-224    68 2017
 #&gt; 14                                                             98, 104185    54 2019
 #&gt; 15                                                                           53 2016
 #&gt; 16                                                      34 (5-6), 888-906    51 2013
@@ -4177,7 +4177,7 @@ radboud university
 #&gt; 22                                                        31 (3), 239-259    37 2010
 #&gt; 23                                                              20 (2), 6    33 2017
 #&gt; 24                                                                           33 2010
-#&gt; 25                                                             77, 102097    30 2020
+#&gt; 25                                                             77, 102097    31 2020
 #&gt; 26                                                        57 (3), 253-269    30 2014
 #&gt; 27                                                                           28 2009
 #&gt; 28                                                            72, 151-164    23 2023
@@ -4393,7 +4393,7 @@ radboud university
 #&gt; 6  2013   124
 #&gt; 7  2014   167
 #&gt; 8  2015   218
-#&gt; 9  2016   227
+#&gt; 9  2016   226
 #&gt; 10 2017   228
 #&gt; 11 2018   288
 #&gt; 12 2019   311
@@ -4401,7 +4401,7 @@ radboud university
 #&gt; 14 2021   329
 #&gt; 15 2022   334
 #&gt; 16 2023   334
-#&gt; 17 2024   257</code></pre>
+#&gt; 17 2024   259</code></pre>
 <p>And now most importantly, Jochem’s collaborators, and the collaborators of those collaborators (note the <code>n_deep = 1</code>, can you find out what that does?). So essentially a “one-step-further-than-Jochem” network.</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="webintro.html#cb163-1" tabindex="-1"></a>jochem_coauthors <span class="ot">&lt;-</span> <span class="fu">get_coauthors</span>(<span class="st">&quot;Iu23-90AAAAJ&quot;</span>, <span class="at">n_coauthors =</span> <span class="dv">50</span>, <span class="at">n_deep =</span> <span class="dv">1</span>)  <span class="co"># Jochem&#39;s collaborators and their co-authors!</span></span></code></pre></div>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="webintro.html#cb164-1" tabindex="-1"></a>jochem_coauthors</span></code></pre></div>
@@ -5091,7 +5091,7 @@ Sonja Zmerli
 Tom Van Der Meer
 </td>
 <td style="text-align:left;">
-Kristof Jacobs
+Mérove Gijsberts
 </td>
 </tr>
 <tr>
@@ -5102,7 +5102,7 @@ Kristof Jacobs
 Tom Van Der Meer
 </td>
 <td style="text-align:left;">
-Ben Pelzer
+Kristof Jacobs
 </td>
 </tr>
 <tr>
@@ -5113,7 +5113,7 @@ Ben Pelzer
 Tom Van Der Meer
 </td>
 <td style="text-align:left;">
-Loes Aaldering
+Ben Pelzer
 </td>
 </tr>
 <tr>
@@ -5124,7 +5124,7 @@ Loes Aaldering
 Tom Van Der Meer
 </td>
 <td style="text-align:left;">
-Jan W. Van Deth
+Loes Aaldering
 </td>
 </tr>
 <tr>

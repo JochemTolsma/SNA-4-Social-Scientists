@@ -199,10 +199,10 @@ head(soc_staff)
 
 ```
 #> $node
-#> <pointer: 0x000001ecd41fe350>
+#> <pointer: 0x00000214c225a250>
 #> 
 #> $doc
-#> <pointer: 0x000001ecd0bff460>
+#> <pointer: 0x00000214bfaff670>
 ```
 
 That looks kinda weird. What type of object did we store it by putting the html into `soc_staff`?
@@ -1857,7 +1857,7 @@ get_profile("Iu23-90AAAAJ")  # Jochem's profile
 #> [1] "Professor, Radboud University Nijmegen / University of Groningen"
 #> 
 #> $total_cites
-#> [1] 3391
+#> [1] 3392
 #> 
 #> $h_index
 #> [1] 27
@@ -2242,7 +2242,7 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #>                                                                    number cites year
 #> 1                                                                           712 2014
 #> 2                                                         27 (6), 741-758   372 2011
-#> 3                                                                  44 (3)   329 2009
+#> 3                                                                  44 (3)   328 2009
 #> 4                                                         27 (3), 291-306   158 2011
 #> 5                                                           35 (1), 51-61   154 2013
 #> 6                                                         24 (2), 215-230   135 2008
@@ -2252,7 +2252,7 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 10                                                        60 (2), 257-277    84 2009
 #> 11                                                        26 (2), 235-252    82 2010
 #> 12                                                          27 (1), 20-33    69 2017
-#> 13                                                        33 (2), 209-224    67 2017
+#> 13                                                        33 (2), 209-224    68 2017
 #> 14                                                             98, 104185    54 2019
 #> 15                                                                           53 2016
 #> 16                                                      34 (5-6), 888-906    51 2013
@@ -2264,7 +2264,7 @@ get_publications("Iu23-90AAAAJ")  # Jochem's pubs
 #> 22                                                        31 (3), 239-259    37 2010
 #> 23                                                              20 (2), 6    33 2017
 #> 24                                                                           33 2010
-#> 25                                                             77, 102097    30 2020
+#> 25                                                             77, 102097    31 2020
 #> 26                                                        57 (3), 253-269    30 2014
 #> 27                                                                           28 2009
 #> 28                                                            72, 151-164    23 2023
@@ -2488,7 +2488,7 @@ get_citation_history("Iu23-90AAAAJ")  # Jochem's citation history
 #> 6  2013   124
 #> 7  2014   167
 #> 8  2015   218
-#> 9  2016   227
+#> 9  2016   226
 #> 10 2017   228
 #> 11 2018   288
 #> 12 2019   311
@@ -2496,7 +2496,7 @@ get_citation_history("Iu23-90AAAAJ")  # Jochem's citation history
 #> 14 2021   329
 #> 15 2022   334
 #> 16 2023   334
-#> 17 2024   257
+#> 17 2024   259
 ```
 
 And now most importantly, Jochem's collaborators, and the collaborators of those collaborators (note the `n_deep = 1`, can you find out what that does?). So essentially a "one-step-further-than-Jochem" network. 
@@ -2824,22 +2824,22 @@ jochem_coauthors
   <tr>
    <td style="text-align:left;"> 42 </td>
    <td style="text-align:left;"> Tom Van Der Meer </td>
-   <td style="text-align:left;"> Kristof Jacobs </td>
+   <td style="text-align:left;"> Mérove Gijsberts </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 43 </td>
    <td style="text-align:left;"> Tom Van Der Meer </td>
-   <td style="text-align:left;"> Ben Pelzer </td>
+   <td style="text-align:left;"> Kristof Jacobs </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 44 </td>
    <td style="text-align:left;"> Tom Van Der Meer </td>
-   <td style="text-align:left;"> Loes Aaldering </td>
+   <td style="text-align:left;"> Ben Pelzer </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 45 </td>
    <td style="text-align:left;"> Tom Van Der Meer </td>
-   <td style="text-align:left;"> Jan W. Van Deth </td>
+   <td style="text-align:left;"> Loes Aaldering </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 49 </td>
