@@ -184,7 +184,7 @@ div.csl-indent {
 <li class="part"><span><b>I DYADS</b></span></li>
 <li class="chapter" data-level="2" data-path="theory.html"><a href="theory.html"><i class="fa fa-check"></i><b>2</b> Theory</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#network-structures-dyad"><i class="fa fa-check"></i><b>2.1</b> Network structures (DYAD)</a></li>
+<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#reciprocity"><i class="fa fa-check"></i><b>2.1</b> Network structures (DYAD)</a></li>
 <li class="chapter" data-level="2.2" data-path="theory.html"><a href="theory.html#mm"><i class="fa fa-check"></i><b>2.2</b> Causes of dyads</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="theory.html"><a href="theory.html#GTF"><i class="fa fa-check"></i><b>2.2.1</b> General Theoretical Framework</a></li>
@@ -655,10 +655,10 @@ div.csl-indent {
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="webintro.html#cb128-1" tabindex="-1"></a>soc_staff <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">&quot;https://web.archive.org/web/20230528153336/https://www.ru.nl/sociology/research/staff/&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="webintro.html#cb129-1" tabindex="-1"></a><span class="fu">head</span>(soc_staff)</span></code></pre></div>
 <pre><code>#&gt; $node
-#&gt; &lt;pointer: 0x00000214c225a250&gt;
+#&gt; &lt;pointer: 0x00000252619fe250&gt;
 #&gt; 
 #&gt; $doc
-#&gt; &lt;pointer: 0x00000214bfaff670&gt;</code></pre>
+#&gt; &lt;pointer: 0x000002525ecec880&gt;</code></pre>
 <p>That looks kinda weird. What type of object did we store it by putting the html into <code>soc_staff</code>?</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="webintro.html#cb131-1" tabindex="-1"></a><span class="fu">class</span>(soc_staff)</span></code></pre></div>
 <pre><code>#&gt; [1] &quot;xml_document&quot; &quot;xml_node&quot;</code></pre>

@@ -93,9 +93,9 @@ Hopefully, you notice the resemblance with the four theoretical dimensions of so
   2. structure: the relations in the network  
   3. composition: characteristics of the nodes in the network  
   4. evolution: change in size, structure and/or composition  
-    i. network growth
+    i. network growth  
     ii. tie evolution: structure –> structure  
-    iii. node evolution: node attributes –> node attributes
+    iii. node evolution: node attributes –> node attributes  
     iv. influence: structure –> node attributes  
     v. selection: node attributes –> structure
     
@@ -116,7 +116,7 @@ Both influence and selection processes explain why specific structures (e.g. rec
 The **composition** of the network refers to static characteristics (e.g. sex) or dynamic characteristics (e.g. behavior) of the persons in the network. We may for example seek explanations for who leaves the Twitter network and when, or why we observe ethnic segregation between soccer teams even if they are part of the same club. These questions generally refer to selective selection into or out of networks, about joiners and leavers. That said, many important SNA deal with questions how the social network influences (or causes) dynamic characteristics of its members. Questions on the size of (complete) networks, for example, "How many staff members do the different sociology departments have in the Netherlands?" and composition, for example, "How does the male to female ratio differs among the different sociology departments in the Netherlands?" I will leave for another time. With respect to descriptive questions, I would like to focus on the network **structure** aspect. 
 
 **Explanatory questions**
-It is important to be aware that within SNA or network modelling, we commonly try to explain the observed network(s) by processes that have taken place and still take place within the network, that is by *micro-mechanisms*. Here that assumption is that actors - at the micro-level thus! - evaluate ties (or a behavior). The focus is on explanation of the micro-mechanisms that bring about a social network [\@Block2019]. 
+It is important to be aware that within SNA or network modelling, we commonly try to explain the observed network(s) by processes that have taken place and still take place within the network, that is by *micro-mechanisms*. Here that assumption is that actors - at the micro-level thus! - evaluate ties (or a behavior). The focus is on explanation of the micro-mechanisms that bring about a social network [@Block2019]. 
 
 ## Network structures 
 
@@ -151,7 +151,7 @@ Average shortest path length is defined as the average number of steps along the
 This is a directed graph, thus node 3 is connected to node 4 (path length 2) but 4 is not connected to 3. What is the average path length? ...  
 It is: 1.33. 
 
-The average path length in Smallworld is very low considering the size (105)  and density (0.14), it is: 2.12. 
+The average path length in Smallworld is very low considering the size (105)  and density (0.14), it is: 2.13. 
 Since path length excludes disconnected nodes, it does not necessarily tells us something about the 'degrees of separation'. Let us instead calculate for each path length the proportion of nodes each node can reach and take the average value of that. 
 
 To do that, we will make use of the function `ego_size` in the `igraph` package. See code chunk below for an example. 
@@ -171,7 +171,7 @@ Thus for the small random graph above, Figure \@ref(fig:pl), if we take a path l
 For Smallworld \@ref(fig:dd) we find the following:  
 
 - path length one: 0.13%.  
-- path length two: 0.74%.  
+- path length two: 0.72%.  
 - path length three: 0.99%.  
  
 This brings us to the six-degrees-of-separation phenomenon. This is the observation that for real societies and real worlds 100% of the population would be connected to 100% of the population via 6 other persons (making for a path length of seven). Phrased otherwise, with path length seven, the average reach would be 100%. 

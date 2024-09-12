@@ -113,7 +113,7 @@ simulate_caveman <- function(n = 25, clique_size = 5){
   
   g <- graph.adjacency(adj, mode = "undirected") # I graph this matrix
 
-  group_connect <- seq(from = 1, to = n, by = clique_size) # I determine the points of connection using a sequence funciton
+  group_connect <- seq(from = 1, to = n, by = clique_size) # I determine the points of connection using a sequence function
   
   for( i in 1:(length(group_connect)-1)){
     p1 <- group_connect[i] + 1
@@ -171,9 +171,9 @@ Hopefully, you notice the resemblance with the four theoretical dimensions of so
   2. structure: the relations in the network  
   3. composition: characteristics of the nodes in the network  
   4. evolution: change in size, structure and/or composition  
-    i. network growth
+    i. network growth  
     ii. tie evolution: structure –> structure  
-    iii. node evolution: node attributes –> node attributes
+    iii. node evolution: node attributes –> node attributes  
     iv. influence: structure –> node attributes  
     v. selection: node attributes –> structure
     
@@ -194,7 +194,7 @@ Both influence and selection processes explain why specific structures (e.g. rec
 The **composition** of the network refers to static characteristics (e.g. sex) or dynamic characteristics (e.g. behavior) of the persons in the network. We may for example seek explanations for who leaves the Twitter network and when, or why we observe ethnic segregation between soccer teams even if they are part of the same club. These questions generally refer to selective selection into or out of networks, about joiners and leavers. That said, many important SNA deal with questions how the social network influences (or causes) dynamic characteristics of its members. Questions on the size of (complete) networks, for example, "How many staff members do the different sociology departments have in the Netherlands?" and composition, for example, "How does the male to female ratio differs among the different sociology departments in the Netherlands?" I will leave for another time. With respect to descriptive questions, I would like to focus on the network **structure** aspect. 
 
 **Explanatory questions**
-It is important to be aware that within SNA or network modelling, we commonly try to explain the observed network(s) by processes that have taken place and still take place within the network, that is by *micro-mechanisms*. Here that assumption is that actors - at the micro-level thus! - evaluate ties (or a behavior). The focus is on explanation of the micro-mechanisms that bring about a social network [\@Block2019]. 
+It is important to be aware that within SNA or network modelling, we commonly try to explain the observed network(s) by processes that have taken place and still take place within the network, that is by *micro-mechanisms*. Here that assumption is that actors - at the micro-level thus! - evaluate ties (or a behavior). The focus is on explanation of the micro-mechanisms that bring about a social network [@Block2019]. 
 
 ## Network structures 
 

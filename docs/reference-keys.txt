@@ -65,6 +65,8 @@ social-network-perspective
 aim
 structure
 types
+dyads
+egonets
 sn
 causes-and-consequences
 implications
@@ -74,7 +76,7 @@ data-implications
 what-makes-this-course-stand-out
 assignment
 theory
-network-structures-dyad
+reciprocity
 mm
 GTF
 social-context-effects

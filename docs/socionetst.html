@@ -184,7 +184,7 @@ div.csl-indent {
 <li class="part"><span><b>I DYADS</b></span></li>
 <li class="chapter" data-level="2" data-path="theory.html"><a href="theory.html"><i class="fa fa-check"></i><b>2</b> Theory</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#network-structures-dyad"><i class="fa fa-check"></i><b>2.1</b> Network structures (DYAD)</a></li>
+<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#reciprocity"><i class="fa fa-check"></i><b>2.1</b> Network structures (DYAD)</a></li>
 <li class="chapter" data-level="2.2" data-path="theory.html"><a href="theory.html#mm"><i class="fa fa-check"></i><b>2.2</b> Causes of dyads</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="theory.html"><a href="theory.html#GTF"><i class="fa fa-check"></i><b>2.2.1</b> General Theoretical Framework</a></li>
@@ -561,9 +561,9 @@ The relations between actors can be directed (i.e., actors send and recieve ties
 <li>composition: characteristics of the nodes in the network<br />
 </li>
 <li>evolution: change in size, structure and/or composition<br />
-i. network growth
+i. network growth<br />
 ii. tie evolution: structure –&gt; structure<br />
-iii. node evolution: node attributes –&gt; node attributes
+iii. node evolution: node attributes –&gt; node attributes<br />
 iv. influence: structure –&gt; node attributes<br />
 v. selection: node attributes –&gt; structure</li>
 </ol>
@@ -578,7 +578,7 @@ Both influence and selection processes explain why specific structures (e.g. re
 <p><strong>Descriptive questions</strong>
 The <strong>composition</strong> of the network refers to static characteristics (e.g. sex) or dynamic characteristics (e.g. behavior) of the persons in the network. We may for example seek explanations for who leaves the Twitter network and when, or why we observe ethnic segregation between soccer teams even if they are part of the same club. These questions generally refer to selective selection into or out of networks, about joiners and leavers. That said, many important SNA deal with questions how the social network influences (or causes) dynamic characteristics of its members. Questions on the size of (complete) networks, for example, “How many staff members do the different sociology departments have in the Netherlands?” and composition, for example, “How does the male to female ratio differs among the different sociology departments in the Netherlands?” I will leave for another time. With respect to descriptive questions, I would like to focus on the network <strong>structure</strong> aspect.</p>
 <p><strong>Explanatory questions</strong>
-It is important to be aware that within SNA or network modelling, we commonly try to explain the observed network(s) by processes that have taken place and still take place within the network, that is by <em>micro-mechanisms</em>. Here that assumption is that actors - at the micro-level thus! - evaluate ties (or a behavior). The focus is on explanation of the micro-mechanisms that bring about a social network [@Block2019].</p>
+It is important to be aware that within SNA or network modelling, we commonly try to explain the observed network(s) by processes that have taken place and still take place within the network, that is by <em>micro-mechanisms</em>. Here that assumption is that actors - at the micro-level thus! - evaluate ties (or a behavior). The focus is on explanation of the micro-mechanisms that bring about a social network <span class="citation">(<a href="#ref-Block2019">Block, Stadtfeld, and Snijders 2019</a>)</span>.</p>
 <div id="network-structures" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Network structures<a href="socionetst.html#network-structures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <strong>network structure</strong> refers to the number and distribution of ties across the network.</p>
@@ -587,7 +587,7 @@ It is important to be aware that within SNA or network modelling, we commonly tr
 <ul>
 <li>(in/out) degree or density <a href="theory-1.html#density">5.3.3</a></li>
 <li>reciprocity <a href="theory.html#fig:dd">2.2</a></li>
-<li>dyad configurations <a href="theory.html#network-structures-dyad">2.1</a></li>
+<li>dyad configurations <a href="#network-structures-dyad"><strong>??</strong></a></li>
 <li>triad configurations <a href="theory-1.html#triad">4.1</a></li>
 <li>degree centrality <a href="theory-1.html#degreecentrality">4.3.2.2</a></li>
 <li>closeness centrality <a href="theory-1.html#closenesscentrality">4.3.2.3</a></li>
@@ -608,7 +608,7 @@ Figure 6.1: small random graph
 </div>
 <p>This is a directed graph, thus node 3 is connected to node 4 (path length 2) but 4 is not connected to 3. What is the average path length? …<br />
 It is: 1.33.</p>
-<p>The average path length in Smallworld is very low considering the size (105) and density (0.14), it is: 2.12.
+<p>The average path length in Smallworld is very low considering the size (105) and density (0.14), it is: 2.13.
 Since path length excludes disconnected nodes, it does not necessarily tells us something about the ‘degrees of separation’. Let us instead calculate for each path length the proportion of nodes each node can reach and take the average value of that.</p>
 <p>To do that, we will make use of the function <code>ego_size</code> in the <code>igraph</code> package. See code chunk below for an example.</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb48-1"><a href="socionetst.html#cb48-1"></a><span class="fu">mean</span>((<span class="fu">ego_size</span>(random_graph, <span class="at">order =</span> <span class="dv">2</span>, <span class="at">mode =</span> <span class="st">&quot;out&quot;</span>) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span><span class="fu">vcount</span>(random_graph))</span></code></pre></div>
@@ -618,7 +618,7 @@ Since path length excludes disconnected nodes, it does not necessarily tells us 
 <ul>
 <li>path length one: 0.13%.<br />
 </li>
-<li>path length two: 0.74%.<br />
+<li>path length two: 0.72%.<br />
 </li>
 <li>path length three: 0.99%.</li>
 </ul>
@@ -918,6 +918,9 @@ Only click button after 5 minutes!
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Block2019" class="csl-entry">
+Block, Per, Christoph Stadtfeld, and Tom A. B. Snijders. 2019. <span>“Forms of Dependence: Comparing SAOMs and ERGMs from Basic Principles.”</span> <em>Sociological Methods &amp; Research</em> 48 (1): 202–39. <a href="https://doi.org/10.1177/0049124116672680">https://doi.org/10.1177/0049124116672680</a>.
+</div>
 <div id="ref-bojanowski2014" class="csl-entry">
 Bojanowski, Michał, and Rense Corten. 2014. <span>“Measuring Segregation in Social Networks.”</span> <em>Social Networks</em> 39: 14–32.
 </div>

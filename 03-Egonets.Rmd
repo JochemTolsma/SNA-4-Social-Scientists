@@ -487,7 +487,7 @@ plot(clp, G1BH)
 ```
 
 
-#### Density {-} {#density}
+#### Density {#density}
 
 
 Density is defined as all observed relations divided by all possible relations. Look at the examples below. Are you able to calculate the density of the networks yourself? 
@@ -548,7 +548,7 @@ The density in Jochem's network turns out to be: `r round(igraph::graph.density(
 
 For comparison, if we look at friendship networks among pupils in classrooms, we generally observe a density within the range of .2 and .4.
 
-#### Degree centrality {-} {#degreecentrality}
+#### Degree centrality {#degreecentrality}
 
 Closely related to density is the concept of degree. The number of ingoing (indegree), outgoing (outdegree) or undirected (degree) relations from each node. In real social networks, we generally observe a right-skewed degree distribution (most people have some friends, few people have many friends). 
 
@@ -572,7 +572,7 @@ V(G1BH)$name
 centr_degree(G1BH, loops = FALSE, normalized = TRUE)
 ```
 
-#### Closeness centrality {-}  {#closenesscentrality}
+#### Closeness centrality  {#closenesscentrality}
 
 Closely related to degree centrality is (normalized) 'closeness centrality':  
 
@@ -580,21 +580,26 @@ $$ C_C(v_i) = \frac{N}{\sum_{j}d(v_j, v_i)}, $$
 
 with N the number of nodes and *d* stands for distance.
 
-#### Betweenness centrality {-} {#betweennesscentrality} 
+#### Betweenness centrality {#betweennesscentrality} 
 
 A final important measure of centrality I would like to discuss is called betweenness. It is defined as:  
 
-$$ C_B(v_i) = \frac{\sigma_{v_j,v_k}(v_i)}{\sum_{j\neq k\neq i}\sigma(v_j,v_k)}, $$ 
+$$ C_B(v_i) = \sum_{j\neq k\neq i} \frac{\sigma_{v_j,v_k}(v_i)}{\sigma(v_j,v_k)}, $$ 
 
 
 where $\sigma(v_j,v_k)$ is the number of shortest paths between vertices *j* and *k*, $\sigma_{v_j,v_k}(v_i)$, are the number of these shortest paths that pass through vertex $v_i$ . One way to normalize this measure is as follows:  
 
 $$ C_{B_{normalized}}(v_i) =  \frac{C_B(v_i) - min(C_B(v))}{max(C_B(v))-min(C_B(v))} $$  
 
-#### Clustering {-}  {#clustering}
+#### Clustering  {#clustering}
 
 Clustering is an interesting concept. We have immediately an intuitive understanding of it, people lump together in separate groups. But how should we go about defining it more formally? 
-The **clustering coefficient** for $v_i$ is defined as the observed ties between all direct neighbors of $v_i$ divided by all possible ties between all direct neighbors of $v_i$. Direct neighbours are connected to $v_i$ via an ingoing and/or outgoing relation. For undirected networks, the clustering coefficient is the same as the **transitivity index**: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.  
+The **clustering coefficient** for $v_i$ is defined as the observed ties between all direct neighbors of $v_i$ divided by all possible ties between all direct neighbors of $v_i$. Direct neighbours are connected to $v_i$ via an ingoing and/or outgoing relation. Let $k_i$ be the number of neighbors of $v_i$ and let $\sum{e_{jk}}$ be the number of edges between these neighbours, then we can define the local clustering coefficient as:  
+
+$$ C_C(v_i) =  \frac{\sum{e_{jk}}} {k_i * (k_i -1)} $$
+
+
+For undirected networks, the clustering coefficient is the same as the **transitivity index**: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.  
 
 
 Bas' transitivity network in his network turns out to be: `r round(igraph::transitivity(G1BH, type = c("localundirected"), vids = "Bas Hofstra", weights = NULL, isolates = c("NaN", "zero")),2)`. 
@@ -722,7 +727,7 @@ In this part we we start with estimating a micro-macro model. See Figure \@ref(f
 Moreover, if we wish to relate characteristics of our CDN to characteristics of our egos - and yes that is our wish in this section -, our dependent variable is at the macro-level and we 'have to' estimate a micro-macro model. Please read @croon2007predicting and @bennink2016micro.^[If in contrast we would wish to explain ego-characteristics to characteristics of the ties/confidants we could estimate a more traditional macro-micro multi-level model [@duijn1999multilevel]]       
 
 ```{r mm, echo=FALSE, eval=TRUE, fig.cap="Basic micro-macro model"}
-knitr::include_graphics("micro-macro1.PNG")
+knitr::include_graphics("micro-macro1.png")
 ```
 *note:* Adapted from @bennink2016micro
 

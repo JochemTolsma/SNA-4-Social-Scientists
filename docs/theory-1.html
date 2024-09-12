@@ -184,7 +184,7 @@ div.csl-indent {
 <li class="part"><span><b>I DYADS</b></span></li>
 <li class="chapter" data-level="2" data-path="theory.html"><a href="theory.html"><i class="fa fa-check"></i><b>2</b> Theory</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#network-structures-dyad"><i class="fa fa-check"></i><b>2.1</b> Network structures (DYAD)</a></li>
+<li class="chapter" data-level="2.1" data-path="theory.html"><a href="theory.html#reciprocity"><i class="fa fa-check"></i><b>2.1</b> Network structures (DYAD)</a></li>
 <li class="chapter" data-level="2.2" data-path="theory.html"><a href="theory.html#mm"><i class="fa fa-check"></i><b>2.2</b> Causes of dyads</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="theory.html"><a href="theory.html#GTF"><i class="fa fa-check"></i><b>2.2.1</b> General Theoretical Framework</a></li>
@@ -781,7 +781,7 @@ Figure 4.8: 1.5 degree co-author egonetwork of BAS HOFSTRA
 </p>
 </div>
 <div id="density" class="section level4 hasAnchor" number="4.3.2.1">
-<h4><span class="header-section-number">4.3.2.1</span> Density {-}<a href="theory-1.html#density" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">4.3.2.1</span> Density<a href="theory-1.html#density" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Density is defined as all observed relations divided by all possible relations. Look at the examples below. Are you able to calculate the density of the networks yourself?</p>
 <div class="figure"><span style="display:block;" id="fig:densities"></span>
 <img src="test.png" alt="Different densities?" width="100%" />
@@ -794,7 +794,7 @@ Figure 4.9: Different densities?
 <p>For comparison, if we look at friendship networks among pupils in classrooms, we generally observe a density within the range of .2 and .4.</p>
 </div>
 <div id="degreecentrality" class="section level4 hasAnchor" number="4.3.2.2">
-<h4><span class="header-section-number">4.3.2.2</span> Degree centrality {-}<a href="theory-1.html#degreecentrality" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">4.3.2.2</span> Degree centrality<a href="theory-1.html#degreecentrality" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Closely related to density is the concept of degree. The number of ingoing (indegree), outgoing (outdegree) or undirected (degree) relations from each node. In real social networks, we generally observe a right-skewed degree distribution (most people have some friends, few people have many friends).</p>
 <blockquote>
 <p>Centrality measures, like degree, can be measured at the <strong>node-level</strong>. For the graph as a whole, we may calculate the <strong>average centrality score</strong> but every node-level centrality measure also has its specific <strong>graph-level</strong> analogue. In what follows we focus on node-level centrality scores.<br />
@@ -809,22 +809,24 @@ Suppose you want to compare the degree centrality of Bas in Bas’s network with
 </blockquote>
 </div>
 <div id="closenesscentrality" class="section level4 hasAnchor" number="4.3.2.3">
-<h4><span class="header-section-number">4.3.2.3</span> Closeness centrality {-}<a href="theory-1.html#closenesscentrality" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">4.3.2.3</span> Closeness centrality<a href="theory-1.html#closenesscentrality" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Closely related to degree centrality is (normalized) ‘closeness centrality’:</p>
 <p><span class="math display">\[ C_C(v_i) = \frac{N}{\sum_{j}d(v_j, v_i)}, \]</span></p>
 <p>with N the number of nodes and <em>d</em> stands for distance.</p>
 </div>
 <div id="betweennesscentrality" class="section level4 hasAnchor" number="4.3.2.4">
-<h4><span class="header-section-number">4.3.2.4</span> Betweenness centrality {-}<a href="theory-1.html#betweennesscentrality" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">4.3.2.4</span> Betweenness centrality<a href="theory-1.html#betweennesscentrality" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A final important measure of centrality I would like to discuss is called betweenness. It is defined as:</p>
-<p><span class="math display">\[ C_B(v_i) = \frac{\sigma_{v_j,v_k}(v_i)}{\sum_{j\neq k\neq i}\sigma(v_j,v_k)}, \]</span></p>
+<p><span class="math display">\[ C_B(v_i) = \sum_{j\neq k\neq i} \frac{\sigma_{v_j,v_k}(v_i)}{\sigma(v_j,v_k)}, \]</span></p>
 <p>where <span class="math inline">\(\sigma(v_j,v_k)\)</span> is the number of shortest paths between vertices <em>j</em> and <em>k</em>, <span class="math inline">\(\sigma_{v_j,v_k}(v_i)\)</span>, are the number of these shortest paths that pass through vertex <span class="math inline">\(v_i\)</span> . One way to normalize this measure is as follows:</p>
 <p><span class="math display">\[ C_{B_{normalized}}(v_i) =  \frac{C_B(v_i) - min(C_B(v))}{max(C_B(v))-min(C_B(v))} \]</span></p>
 </div>
 <div id="clustering" class="section level4 hasAnchor" number="4.3.2.5">
-<h4><span class="header-section-number">4.3.2.5</span> Clustering {-}<a href="theory-1.html#clustering" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">4.3.2.5</span> Clustering<a href="theory-1.html#clustering" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Clustering is an interesting concept. We have immediately an intuitive understanding of it, people lump together in separate groups. But how should we go about defining it more formally?
-The <strong>clustering coefficient</strong> for <span class="math inline">\(v_i\)</span> is defined as the observed ties between all direct neighbors of <span class="math inline">\(v_i\)</span> divided by all possible ties between all direct neighbors of <span class="math inline">\(v_i\)</span>. Direct neighbours are connected to <span class="math inline">\(v_i\)</span> via an ingoing and/or outgoing relation. For undirected networks, the clustering coefficient is the same as the <strong>transitivity index</strong>: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.</p>
+The <strong>clustering coefficient</strong> for <span class="math inline">\(v_i\)</span> is defined as the observed ties between all direct neighbors of <span class="math inline">\(v_i\)</span> divided by all possible ties between all direct neighbors of <span class="math inline">\(v_i\)</span>. Direct neighbours are connected to <span class="math inline">\(v_i\)</span> via an ingoing and/or outgoing relation. Let <span class="math inline">\(k_i\)</span> be the number of neighbors of <span class="math inline">\(v_i\)</span> and let <span class="math inline">\(\sum{e_{jk}}\)</span> be the number of edges between these neighbours, then we can define the local clustering coefficient as:</p>
+<p><span class="math display">\[ C_C(v_i) =  \frac{\sum{e_{jk}}} {k_i * (k_i -1)} \]</span></p>
+<p>For undirected networks, the clustering coefficient is the same as the <strong>transitivity index</strong>: the number of transitive triads divided by all possible transitive triads. For directed graphs not so.</p>
 <p>Bas’ transitivity network in his network turns out to be: 0.18.</p>
 <p>Jochem’s transitivity in his network turns out to be: 0.15.</p>
 </div>
